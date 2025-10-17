@@ -1,0 +1,7 @@
+node_modules
+dist
+.nx
+coverage
+*.spec.ts
+*.test.ts
+jest.config.ts

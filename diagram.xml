@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="Mozilla/5.0" version="24.0.0" etag="orion-architecture" type="device">
+  <diagram name="Orion Architecture" id="orion-main">
+    <mxGraphModel dx="2000" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="🚀 ORION MICROSERVICES ARCHITECTURE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- External Layer (Top) -->
+        <mxCell id="external-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1520" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="external-label" value="EXTERNAL CLIENTS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="85" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- CLI AI Tools -->
+        <mxCell id="claude-cli" value="Claude Code&#xa;(CLI/stdin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="amazonq-cli" value="Amazon Q&#xa;(CLI/stdin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="copilot-cli" value="GitHub Copilot&#xa;(CLI/stdin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="380" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="codex-cli" value="GPT Codex&#xa;(CLI/stdin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="520" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Web Browsers -->
+        <mxCell id="web-browser" value="Web Browsers&#xa;(Admin UI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="720" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Developer Tools -->
+        <mxCell id="webstorm" value="WebStorm IDE&#xa;(Debug/Dev)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="860" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- External Services -->
+        <mxCell id="github" value="GitHub&#xa;(Specs/Issues)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pinecone" value="Pinecone&#xa;(Vector DB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="smtp" value="Email/SMS&#xa;(External)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="slack" value="Slack/Discord&#xa;(Webhooks)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Gateway Layer -->
+        <mxCell id="gateway-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="1520" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gateway-label" value="GATEWAY LAYER" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="215" width="120" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="api-gateway" value="@orion/gateway&#xa;API Gateway&#xa;(Auth, Rate Limit, Routing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="300" y="230" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mcp-server" value="@orion/mcp-server&#xa;Model Context Protocol&#xa;(AI Orchestration)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="600" y="230" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="admin-ui" value="@orion/admin-ui&#xa;React Admin Dashboard&#xa;(Monitoring & Control)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="900" y="230" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="websocket-gateway" value="WebSocket Gateway&#xa;(Real-time Events)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="230" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Core Services Layer -->
+        <mxCell id="services-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="1520" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services-label" value="CORE SERVICES" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="325" width="120" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Row 1 of Services -->
+        <mxCell id="auth-service" value="@orion/auth&#xa;Authentication&#xa;(JWT, Sessions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ai-interface" value="@orion/ai-interface&#xa;CLI AI Adapter&#xa;(stdin/stdout)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="orchestrator" value="@orion/orchestrator&#xa;Workflow Engine&#xa;(Complex Flows)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="460" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="notifications" value="@orion/notifications&#xa;Multi-channel&#xa;(Email, SMS, Push)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="640" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="scheduler" value="@orion/scheduler&#xa;Cron & Jobs&#xa;(Scheduled Tasks)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="820" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="audit" value="@orion/audit&#xa;Audit Trail&#xa;(Compliance)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="secrets" value="@orion/secrets&#xa;Secrets Manager&#xa;(Encryption)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="logger" value="@orion/logger&#xa;Centralized Logs&#xa;(OpenTelemetry)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Row 2 of Services -->
+        <mxCell id="storage" value="@orion/storage&#xa;File Storage&#xa;(S3/Local)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cache" value="@orion/cache&#xa;Redis Cache&#xa;(Performance)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="vector-db" value="@orion/vector-db&#xa;Context Storage&#xa;(Pinecone)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="search" value="@orion/search&#xa;Full-text Search&#xa;(Elasticsearch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="640" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="config" value="@orion/config&#xa;Feature Flags&#xa;(A/B Testing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="820" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="analytics" value="@orion/analytics&#xa;Business Metrics&#xa;(KPIs, Usage)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="webhooks" value="@orion/webhooks&#xa;Outbound Hooks&#xa;(Retries)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="migrations" value="@orion/migrations&#xa;Data Migrations&#xa;(Schema Updates)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="440" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Row 3 - Dev Tools -->
+        <mxCell id="dev-tools" value="@orion/dev-tools&#xa;Spec Generator, Health Checks&#xa;Reflection, Fixtures" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="460" y="520" width="640" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Infrastructure Layer -->
+        <mxCell id="infra-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="630" width="1520" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="infra-label" value="INFRASTRUCTURE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="635" width="120" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="postgres" value="PostgreSQL&#xa;(Primary DB)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="150" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="redis" value="Redis&#xa;(Cache/Queues)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="320" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="elasticsearch" value="Elasticsearch&#xa;(Search)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="490" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="bull-queues" value="Bull Queues&#xa;(Job Processing)" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="660" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="nx-monorepo" value="Nx Monorepo&#xa;(Build System)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="830" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prisma" value="Prisma ORM&#xa;(Type-safe DB)" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="docker" value="Docker&#xa;(Containers)" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=0;darkOpacity=0.05;darkOpacity2=0.1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="k8s" value="Kubernetes&#xa;(Future Deploy)" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring Layer -->
+        <mxCell id="monitor-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="1520" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="monitor-label" value="OBSERVABILITY" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="765" width="120" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grafana" value="Grafana&#xa;(Dashboards)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="780" width="150" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prometheus" value="Prometheus&#xa;(Metrics)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="400" y="780" width="150" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="loki" value="Loki&#xa;(Log Aggregation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="600" y="780" width="150" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jaeger" value="Jaeger&#xa;(Distributed Tracing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="800" y="780" width="150" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="otel" value="OpenTelemetry&#xa;(Instrumentation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="780" width="150" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="github-actions" value="GitHub Actions&#xa;(CI/CD)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="780" width="150" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Connections - AI Tools to MCP -->
+        <mxCell id="edge1" edge="1" parent="1" source="claude-cli" target="mcp-server">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge2" edge="1" parent="1" source="amazonq-cli" target="mcp-server">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge3" edge="1" parent="1" source="copilot-cli" target="mcp-server">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge4" edge="1" parent="1" source="codex-cli" target="mcp-server">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- MCP to AI Interface -->
+        <mxCell id="edge5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#FF0000;" edge="1" parent="1" source="mcp-server" target="ai-interface">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Browser to Admin UI -->
+        <mxCell id="edge6" edge="1" parent="1" source="web-browser" target="admin-ui">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Gateway to Services -->
+        <mxCell id="edge7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0000FF;entryX=0.5;entryY=0;" edge="1" parent="1" source="api-gateway" target="auth-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Pinecone to Vector DB -->
+        <mxCell id="edge8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00FF00;" edge="1" parent="1" source="pinecone" target="vector-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-text" value="LEGEND:&#xa;🟦 HTTP/REST&#xa;🟥 CLI/stdin&#xa;🟩 External API" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1445" y="25" width="110" height="50" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
