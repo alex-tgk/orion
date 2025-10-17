@@ -1,0 +1,516 @@
+{
+  "packages/auth": {
+    "root": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/auth/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:auth": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune-lockfile": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune-lockfile.dependsOn": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune-lockfile.cache": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune-lockfile.executor": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune-lockfile.outputs": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune-lockfile.options": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune-lockfile.options.buildTarget": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.copy-workspace-modules": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.copy-workspace-modules.dependsOn": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.copy-workspace-modules.cache": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.copy-workspace-modules.outputs": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.copy-workspace-modules.executor": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.copy-workspace-modules.options": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.copy-workspace-modules.options.buildTarget": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune.dependsOn": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.prune.executor": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/shared": {
+    "root": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "packages/shared/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:shared": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:lib": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.packageJson": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.main": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "packages/shared/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/auth-e2e": {
+    "root": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.auth": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.executor": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.outputs": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.dependsOn": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.jestConfig": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.passWithNoTests": [
+      "packages/auth-e2e/project.json",
+      "nx/core/project-json"
+    ]
+  }
+}

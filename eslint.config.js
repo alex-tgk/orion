@@ -17,6 +17,8 @@ module.exports = [
       '**/*.spec.ts',
       '**/*.test.ts',
       '**/jest.config.ts',
+      '**/*-e2e/**',
+      '**/webpack.config.js',
     ],
   },
   {
