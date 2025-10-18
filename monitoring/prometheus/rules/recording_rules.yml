@@ -1,0 +1,273 @@
+# Prometheus Recording Rules for ORION Platform
+# Pre-compute expensive queries for faster dashboard loading
+
+groups:
+  # HTTP Request Metrics
+  - name: http_metrics
+    interval: 30s
+    rules:
+      # Request rate by service
+      - record: service:http_requests:rate5m
+        expr: |
+          sum(rate(http_requests_total[5m])) by (service, method, status)
+
+      # Error rate by service
+      - record: service:http_errors:rate5m
+        expr: |
+          sum(rate(http_requests_total{status=~"5.."}[5m])) by (service)
+
+      # Success rate by service
+      - record: service:http_success_rate:rate5m
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"2.."}[5m])) by (service)
+            /
+            sum(rate(http_requests_total[5m])) by (service)
+          )
+
+      # Request duration percentiles
+      - record: service:http_request_duration:p50
+        expr: |
+          histogram_quantile(0.50,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (service, le)
+          )
+
+      - record: service:http_request_duration:p95
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (service, le)
+          )
+
+      - record: service:http_request_duration:p99
+        expr: |
+          histogram_quantile(0.99,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (service, le)
+          )
+
+  # Database Metrics
+  - name: database_metrics
+    interval: 30s
+    rules:
+      # Query rate by service
+      - record: service:db_queries:rate5m
+        expr: |
+          sum(rate(db_queries_total[5m])) by (service, operation)
+
+      # Query duration percentiles
+      - record: service:db_query_duration:p95
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(db_query_duration_seconds_bucket[5m])) by (service, le)
+          )
+
+      # Connection pool usage
+      - record: service:db_connection_pool_usage
+        expr: |
+          (
+            db_connection_pool_active
+            /
+            db_connection_pool_max
+          )
+
+      # Cache hit rate
+      - record: service:db_cache_hit_rate:rate5m
+        expr: |
+          (
+            sum(rate(db_cache_hits[5m])) by (service)
+            /
+            (sum(rate(db_cache_hits[5m])) by (service) + sum(rate(db_cache_misses[5m])) by (service))
+          )
+
+  # Cache Metrics
+  - name: cache_metrics
+    interval: 30s
+    rules:
+      # Redis operations rate
+      - record: redis:operations:rate5m
+        expr: |
+          sum(rate(redis_commands_processed_total[5m])) by (instance, cmd)
+
+      # Cache hit rate
+      - record: redis:hit_rate:rate5m
+        expr: |
+          (
+            rate(redis_keyspace_hits_total[5m])
+            /
+            (rate(redis_keyspace_hits_total[5m]) + rate(redis_keyspace_misses_total[5m]))
+          )
+
+      # Memory usage percentage
+      - record: redis:memory_usage_percent
+        expr: |
+          (
+            redis_memory_used_bytes
+            /
+            redis_memory_max_bytes
+          ) * 100
+
+  # Message Queue Metrics
+  - name: queue_metrics
+    interval: 30s
+    rules:
+      # Message publish rate
+      - record: queue:messages_published:rate5m
+        expr: |
+          sum(rate(rabbitmq_queue_messages_published_total[5m])) by (queue)
+
+      # Message consumption rate
+      - record: queue:messages_consumed:rate5m
+        expr: |
+          sum(rate(rabbitmq_queue_messages_delivered_total[5m])) by (queue)
+
+      # Queue depth
+      - record: queue:depth
+        expr: |
+          rabbitmq_queue_messages_ready
+
+      # Processing lag
+      - record: queue:processing_lag
+        expr: |
+          (
+            rabbitmq_queue_messages_ready
+            /
+            (rate(rabbitmq_queue_messages_delivered_total[5m]) + 0.001)
+          )
+
+  # Business Metrics
+  - name: business_metrics
+    interval: 1m
+    rules:
+      # User registration rate
+      - record: business:user_registrations:rate1h
+        expr: |
+          rate(users_created_total[1h])
+
+      # Authentication attempts
+      - record: business:auth_attempts:rate5m
+        expr: |
+          sum(rate(auth_attempts_total[5m])) by (status)
+
+      # Notification delivery rate
+      - record: business:notifications_sent:rate5m
+        expr: |
+          sum(rate(notifications_sent_total[5m])) by (type, status)
+
+      # Active sessions
+      - record: business:active_sessions
+        expr: |
+          auth_active_sessions
+
+  # Resource Utilization
+  - name: resource_metrics
+    interval: 30s
+    rules:
+      # CPU usage by container
+      - record: container:cpu_usage:rate5m
+        expr: |
+          sum(rate(container_cpu_usage_seconds_total{name=~"orion-.*"}[5m])) by (name)
+
+      # Memory usage by container
+      - record: container:memory_usage_percent
+        expr: |
+          (
+            container_memory_usage_bytes{name=~"orion-.*"}
+            /
+            container_spec_memory_limit_bytes{name=~"orion-.*"}
+          ) * 100
+
+      # Network I/O by container
+      - record: container:network_receive:rate5m
+        expr: |
+          sum(rate(container_network_receive_bytes_total{name=~"orion-.*"}[5m])) by (name)
+
+      - record: container:network_transmit:rate5m
+        expr: |
+          sum(rate(container_network_transmit_bytes_total{name=~"orion-.*"}[5m])) by (name)
+
+  # SLI/SLO Metrics
+  - name: slo_metrics
+    interval: 1m
+    rules:
+      # Availability SLI (99.5% target)
+      - record: slo:availability:1h
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"2.."}[1h]))
+            /
+            sum(rate(http_requests_total[1h]))
+          )
+
+      # Latency SLI (95th percentile < 500ms)
+      - record: slo:latency_p95:1h
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket[1h])) by (le)
+          )
+
+      # Error budget remaining (based on 99.5% SLO)
+      - record: slo:error_budget_remaining:30d
+        expr: |
+          (
+            0.995 - (
+              sum(rate(http_requests_total{status=~"2.."}[30d]))
+              /
+              sum(rate(http_requests_total[30d]))
+            )
+          ) / 0.005
+
+  # Service Dependencies
+  - name: dependency_metrics
+    interval: 30s
+    rules:
+      # External API call rate
+      - record: service:external_api_calls:rate5m
+        expr: |
+          sum(rate(external_api_requests_total[5m])) by (service, provider)
+
+      # External API error rate
+      - record: service:external_api_errors:rate5m
+        expr: |
+          sum(rate(external_api_requests_total{status=~"5.."}[5m])) by (service, provider)
+
+      # Circuit breaker state
+      - record: service:circuit_breaker_open
+        expr: |
+          circuit_breaker_state == 1
+
+  # Aggregated Platform Metrics
+  - name: platform_aggregates
+    interval: 1m
+    rules:
+      # Total platform request rate
+      - record: platform:requests:rate5m
+        expr: |
+          sum(rate(http_requests_total[5m]))
+
+      # Platform error rate
+      - record: platform:errors:rate5m
+        expr: |
+          sum(rate(http_requests_total{status=~"5.."}[5m]))
+
+      # Platform success rate
+      - record: platform:success_rate:rate5m
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"2.."}[5m]))
+            /
+            sum(rate(http_requests_total[5m]))
+          )
+
+      # Total active connections
+      - record: platform:active_connections
+        expr: |
+          sum(db_connection_pool_active) + sum(redis_connected_clients)
+
+      # Total memory usage
+      - record: platform:memory_usage_bytes
+        expr: |
+          sum(container_memory_usage_bytes{name=~"orion-.*"})
+
+      # Total CPU usage
+      - record: platform:cpu_usage
+        expr: |
+          sum(rate(container_cpu_usage_seconds_total{name=~"orion-.*"}[5m]))

@@ -1,0 +1,110 @@
+# Tempo Configuration for ORION Platform
+# Distributed tracing backend
+
+server:
+  http_listen_port: 3200
+  log_level: info
+
+distributor:
+  receivers:
+    jaeger:
+      protocols:
+        thrift_http:
+          endpoint: 0.0.0.0:14268
+        grpc:
+          endpoint: 0.0.0.0:14250
+        thrift_binary:
+          endpoint: 0.0.0.0:6832
+        thrift_compact:
+          endpoint: 0.0.0.0:6831
+    zipkin:
+      endpoint: 0.0.0.0:9411
+    otlp:
+      protocols:
+        http:
+          endpoint: 0.0.0.0:4318
+        grpc:
+          endpoint: 0.0.0.0:4317
+
+ingester:
+  max_block_duration: 5m
+  max_block_bytes: 1073741824
+  complete_block_timeout: 10m
+  trace_idle_period: 30s
+  lifecycler:
+    ring:
+      kvstore:
+        store: inmemory
+      replication_factor: 1
+
+compactor:
+  compaction:
+    block_retention: 48h
+    compacted_block_retention: 1h
+    max_compaction_objects: 6000000
+    max_block_bytes: 107374182400
+    retention_concurrency: 10
+  ring:
+    kvstore:
+      store: inmemory
+
+metrics_generator:
+  registry:
+    external_labels:
+      source: tempo
+      cluster: orion
+  storage:
+    path: /tmp/tempo/generator/wal
+    remote_write:
+      - url: http://prometheus:9090/api/v1/write
+        send_exemplars: true
+  traces_storage:
+    path: /tmp/tempo/generator/traces
+  processor:
+    service_graphs:
+      dimensions:
+        - service
+        - service.namespace
+      histogram_buckets: [0.1, 0.2, 0.4, 0.8, 1.6, 3.2, 6.4, 12.8]
+      wait: 10s
+      max_items: 10000
+    span_metrics:
+      dimensions:
+        - service
+        - service.namespace
+        - http.method
+        - http.status_code
+      histogram_buckets: [0.002, 0.004, 0.008, 0.016, 0.032, 0.064, 0.128, 0.256, 0.512, 1.024, 2.048, 4.096, 8.192, 16.384]
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /tmp/tempo/traces
+    wal:
+      path: /tmp/tempo/wal
+    pool:
+      max_workers: 100
+      queue_depth: 10000
+
+querier:
+  max_concurrent_queries: 20
+  search:
+    external_hedge_requests_at: 8s
+    external_hedge_requests_up_to: 2
+
+query_frontend:
+  search:
+    concurrent_jobs: 2000
+    max_duration: 0
+    query_backend_after: 15s
+  trace_by_id:
+    hedge_requests_at: 2s
+    hedge_requests_up_to: 2
+
+overrides:
+  metrics_generator_processors:
+    - service-graphs
+    - span-metrics
+  max_search_duration: 0
+  max_bytes_per_trace: 50000000

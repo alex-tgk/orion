@@ -1,0 +1,458 @@
+---
+# User Service - Stable Deployment (95% traffic)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-stable
+  namespace: orion
+  labels:
+    app: user-service
+    version: stable
+    deployment-strategy: canary
+    app.kubernetes.io/name: user-service
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/component: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service
+      version: stable
+  template:
+    metadata:
+      labels:
+        app: user-service
+        version: stable
+        deployment-strategy: canary
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3002"
+        prometheus.io/path: "/metrics"
+        sidecar.istio.io/inject: "true"
+    spec:
+      serviceAccountName: user-service
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+      containers:
+      - name: user-service
+        image: ghcr.io/orion/user:stable
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 3002
+          protocol: TCP
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3002"
+        - name: VERSION
+          value: "stable"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: user-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: user-secrets
+              key: redis-url
+        - name: AUTH_SERVICE_URL
+          value: "http://auth-service:3001"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /api/users/health/liveness
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/users/health/readiness
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          successThreshold: 1
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /api/users/health
+            port: http
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 3
+          successThreshold: 1
+          failureThreshold: 30
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: cache
+          mountPath: /app/.cache
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - user-service
+                - key: version
+                  operator: In
+                  values:
+                  - stable
+              topologyKey: kubernetes.io/hostname
+
+---
+# User Service - Canary Deployment (5% traffic initially)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-canary
+  namespace: orion
+  labels:
+    app: user-service
+    version: canary
+    deployment-strategy: canary
+    app.kubernetes.io/name: user-service
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-service
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: user-service
+        version: canary
+        deployment-strategy: canary
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3002"
+        prometheus.io/path: "/metrics"
+        sidecar.istio.io/inject: "true"
+        canary.deployment.orion.io/enabled: "true"
+        canary.deployment.orion.io/traffic-percentage: "5"
+    spec:
+      serviceAccountName: user-service
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+      containers:
+      - name: user-service
+        image: ghcr.io/orion/user:canary
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 3002
+          protocol: TCP
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3002"
+        - name: VERSION
+          value: "canary"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: user-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: user-secrets
+              key: redis-url
+        - name: AUTH_SERVICE_URL
+          value: "http://auth-service:3001"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /api/users/health/liveness
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/users/health/readiness
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          successThreshold: 1
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /api/users/health
+            port: http
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 3
+          successThreshold: 1
+          failureThreshold: 30
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: cache
+          mountPath: /app/.cache
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - user-service
+                - key: version
+                  operator: In
+                  values:
+                  - canary
+              topologyKey: kubernetes.io/hostname
+
+---
+# User Service - Base Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+  namespace: orion
+  labels:
+    app: user-service
+    deployment-strategy: canary
+spec:
+  selector:
+    app: user-service
+  ports:
+  - name: http
+    port: 3002
+    targetPort: http
+    protocol: TCP
+  type: ClusterIP
+
+---
+# Istio VirtualService for traffic splitting
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: user-service
+  namespace: orion
+  labels:
+    deployment-strategy: canary
+spec:
+  hosts:
+  - user-service
+  - user-service.orion.svc.cluster.local
+  http:
+  - match:
+    - headers:
+        x-canary:
+          exact: "true"
+    route:
+    - destination:
+        host: user-service
+        subset: canary
+      weight: 100
+  - route:
+    - destination:
+        host: user-service
+        subset: stable
+      weight: 95
+    - destination:
+        host: user-service
+        subset: canary
+      weight: 5
+
+---
+# Istio DestinationRule for subset definitions
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: user-service
+  namespace: orion
+  labels:
+    deployment-strategy: canary
+spec:
+  host: user-service
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 100
+      http:
+        http1MaxPendingRequests: 50
+        http2MaxRequests: 100
+        maxRequestsPerConnection: 2
+    loadBalancer:
+      simple: LEAST_REQUEST
+    outlierDetection:
+      consecutiveErrors: 5
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50
+      minHealthPercent: 50
+  subsets:
+  - name: stable
+    labels:
+      version: stable
+    trafficPolicy:
+      connectionPool:
+        tcp:
+          maxConnections: 100
+  - name: canary
+    labels:
+      version: canary
+    trafficPolicy:
+      connectionPool:
+        tcp:
+          maxConnections: 50
+
+---
+# Alternative: Linkerd TrafficSplit
+apiVersion: split.smi-spec.io/v1alpha2
+kind: TrafficSplit
+metadata:
+  name: user-service-split
+  namespace: orion
+spec:
+  service: user-service
+  backends:
+  - service: user-service-stable
+    weight: 950  # 95%
+  - service: user-service-canary
+    weight: 50   # 5%
+
+---
+# Linkerd Service for stable version
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service-stable
+  namespace: orion
+  labels:
+    app: user-service
+    version: stable
+spec:
+  selector:
+    app: user-service
+    version: stable
+  ports:
+  - name: http
+    port: 3002
+    targetPort: http
+    protocol: TCP
+  type: ClusterIP
+
+---
+# Linkerd Service for canary version
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service-canary
+  namespace: orion
+  labels:
+    app: user-service
+    version: canary
+spec:
+  selector:
+    app: user-service
+    version: canary
+  ports:
+  - name: http
+    port: 3002
+    targetPort: http
+    protocol: TCP
+  type: ClusterIP
+
+---
+# ServiceMonitor for Prometheus (stable version)
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: user-service-stable
+  namespace: orion
+  labels:
+    app: user-service
+    version: stable
+spec:
+  selector:
+    matchLabels:
+      app: user-service
+      version: stable
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 15s
+    scrapeTimeout: 10s
+
+---
+# ServiceMonitor for Prometheus (canary version)
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: user-service-canary
+  namespace: orion
+  labels:
+    app: user-service
+    version: canary
+spec:
+  selector:
+    matchLabels:
+      app: user-service
+      version: canary
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 15s
+    scrapeTimeout: 10s

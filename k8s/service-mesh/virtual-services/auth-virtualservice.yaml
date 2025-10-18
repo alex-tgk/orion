@@ -1,0 +1,104 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: auth-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: auth-service
+    app.kubernetes.io/component: virtualservice
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  hosts:
+  - "auth.orion.example.com"
+  - "auth-service"
+  - "auth-service.orion.svc.cluster.local"
+
+  gateways:
+  - orion-gateway
+  - mesh # Allow internal mesh traffic
+
+  http:
+  # Health check endpoint (high priority)
+  - name: "health-check"
+    match:
+    - uri:
+        exact: /api/auth/health
+    route:
+    - destination:
+        host: auth-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 5s
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: 5xx,reset,connect-failure,refused-stream
+
+  # Authentication endpoints
+  - name: "auth-login"
+    match:
+    - uri:
+        prefix: /api/auth/login
+    route:
+    - destination:
+        host: auth-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 10s
+    retries:
+      attempts: 2
+      perTryTimeout: 5s
+      retryOn: 5xx,reset,connect-failure
+    corsPolicy:
+      allowOrigins:
+      - exact: "https://app.orion.example.com"
+      - prefix: "https://*.orion.example.com"
+      allowMethods:
+      - POST
+      - OPTIONS
+      allowHeaders:
+      - content-type
+      - authorization
+      allowCredentials: true
+      maxAge: 24h
+
+  # Token validation
+  - name: "auth-validate"
+    match:
+    - uri:
+        prefix: /api/auth/validate
+    route:
+    - destination:
+        host: auth-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 3s
+    retries:
+      attempts: 3
+      perTryTimeout: 1s
+      retryOn: 5xx,reset
+
+  # Default route for all other auth endpoints
+  - name: "auth-default"
+    route:
+    - destination:
+        host: auth-service
+        port:
+          number: 80
+        subset: stable
+      weight: 100
+    timeout: 15s
+    retries:
+      attempts: 2
+      perTryTimeout: 7s
+      retryOn: 5xx,reset,connect-failure
+
+  # Traffic mirroring for canary testing (optional)
+  # mirror:
+  #   host: auth-service
+  #   subset: canary
+  # mirrorPercentage:
+  #   value: 10.0

@@ -1,0 +1,290 @@
+{
+  "nodes": [
+    {
+      "id": "auth",
+      "label": "Auth Service",
+      "group": "service",
+      "level": 1,
+      "type": "service",
+      "metadata": {
+        "port": 20000,
+        "path": "packages/auth"
+      }
+    },
+    {
+      "id": "gateway",
+      "label": "Gateway Service",
+      "group": "service",
+      "level": 0,
+      "type": "service",
+      "metadata": {
+        "port": 20001,
+        "path": "packages/gateway"
+      }
+    },
+    {
+      "id": "user",
+      "label": "User Service",
+      "group": "service",
+      "level": 1,
+      "type": "service",
+      "metadata": {
+        "port": 20002,
+        "path": "packages/user"
+      }
+    },
+    {
+      "id": "notifications",
+      "label": "Notifications Service",
+      "group": "service",
+      "level": 1,
+      "type": "service",
+      "metadata": {
+        "port": 20003,
+        "path": "packages/notifications"
+      }
+    },
+    {
+      "id": "admin-ui",
+      "label": "Admin UI Service",
+      "group": "service",
+      "level": 0,
+      "type": "service",
+      "metadata": {
+        "port": 20004,
+        "path": "packages/admin-ui"
+      }
+    },
+    {
+      "id": "mcp-server",
+      "label": "MCP Server",
+      "group": "service",
+      "level": 2,
+      "type": "service",
+      "metadata": {
+        "port": 20005,
+        "path": "packages/mcp-server"
+      }
+    },
+    {
+      "id": "feature-flags",
+      "label": "Feature Flags Service",
+      "group": "service",
+      "level": 1,
+      "type": "service",
+      "metadata": {
+        "port": 20006,
+        "path": "packages/feature-flags"
+      }
+    },
+    {
+      "id": "ab-testing",
+      "label": "AB Testing Service",
+      "group": "service",
+      "level": 1,
+      "type": "service",
+      "metadata": {
+        "port": 20007,
+        "path": "packages/ab-testing"
+      }
+    },
+    {
+      "id": "@nestjs/core",
+      "label": "@nestjs/core",
+      "group": "package",
+      "level": 3,
+      "type": "package",
+      "metadata": {
+        "version": "^11.1.6"
+      }
+    },
+    {
+      "id": "@nestjs/common",
+      "label": "@nestjs/common",
+      "group": "package",
+      "level": 3,
+      "type": "package",
+      "metadata": {
+        "version": "^11.1.6"
+      }
+    },
+    {
+      "id": "@prisma/client",
+      "label": "@prisma/client",
+      "group": "package",
+      "level": 3,
+      "type": "package",
+      "metadata": {
+        "version": "^6.17.1"
+      }
+    },
+    {
+      "id": "bull",
+      "label": "bull",
+      "group": "package",
+      "level": 3,
+      "type": "package",
+      "metadata": {
+        "version": "^4.16.5"
+      }
+    },
+    {
+      "id": "ioredis",
+      "label": "ioredis",
+      "group": "package",
+      "level": 3,
+      "type": "package",
+      "metadata": {
+        "version": "^5.8.1"
+      }
+    },
+    {
+      "id": "socket.io",
+      "label": "socket.io",
+      "group": "package",
+      "level": 3,
+      "type": "package",
+      "metadata": {
+        "version": "^4.8.1"
+      }
+    },
+    {
+      "id": "postgresql",
+      "label": "PostgreSQL",
+      "group": "infrastructure",
+      "level": 4,
+      "type": "infrastructure"
+    },
+    {
+      "id": "redis",
+      "label": "Redis",
+      "group": "infrastructure",
+      "level": 4,
+      "type": "infrastructure"
+    }
+  ],
+  "edges": [
+    {
+      "from": "gateway",
+      "to": "auth",
+      "type": "communication"
+    },
+    {
+      "from": "gateway",
+      "to": "user",
+      "type": "communication"
+    },
+    {
+      "from": "gateway",
+      "to": "notifications",
+      "type": "communication"
+    },
+    {
+      "from": "gateway",
+      "to": "feature-flags",
+      "type": "communication"
+    },
+    {
+      "from": "gateway",
+      "to": "ab-testing",
+      "type": "communication"
+    },
+    {
+      "from": "user",
+      "to": "auth",
+      "type": "communication",
+      "label": "validate"
+    },
+    {
+      "from": "admin-ui",
+      "to": "gateway",
+      "type": "communication"
+    },
+    {
+      "from": "mcp-server",
+      "to": "auth",
+      "type": "communication",
+      "dashes": true,
+      "label": "observe"
+    },
+    {
+      "from": "mcp-server",
+      "to": "gateway",
+      "type": "communication",
+      "dashes": true,
+      "label": "observe"
+    },
+    {
+      "from": "auth",
+      "to": "postgresql",
+      "type": "data",
+      "label": "data"
+    },
+    {
+      "from": "user",
+      "to": "postgresql",
+      "type": "data",
+      "label": "data"
+    },
+    {
+      "from": "notifications",
+      "to": "postgresql",
+      "type": "data",
+      "label": "data"
+    },
+    {
+      "from": "feature-flags",
+      "to": "postgresql",
+      "type": "data",
+      "label": "data"
+    },
+    {
+      "from": "ab-testing",
+      "to": "postgresql",
+      "type": "data",
+      "label": "data"
+    },
+    {
+      "from": "auth",
+      "to": "redis",
+      "type": "data",
+      "label": "cache"
+    },
+    {
+      "from": "user",
+      "to": "redis",
+      "type": "data",
+      "label": "cache"
+    },
+    {
+      "from": "notifications",
+      "to": "redis",
+      "type": "data",
+      "label": "cache"
+    },
+    {
+      "from": "gateway",
+      "to": "redis",
+      "type": "data",
+      "label": "cache"
+    },
+    {
+      "from": "feature-flags",
+      "to": "redis",
+      "type": "data",
+      "label": "cache"
+    },
+    {
+      "from": "ab-testing",
+      "to": "redis",
+      "type": "data",
+      "label": "cache"
+    }
+  ],
+  "metadata": {
+    "generatedAt": "2025-10-18T06:18:52.412Z",
+    "totalNodes": 16,
+    "totalEdges": 20,
+    "circularDependencies": 0
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "dashboard": {
+    "title": "Traffic Patterns",
+    "uid": "traffic-patterns",
+    "tags": ["istio", "service-mesh", "traffic", "orion"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "templating": {
+      "list": [
+        {
+          "name": "namespace",
+          "type": "query",
+          "datasource": "Prometheus",
+          "query": "label_values(istio_requests_total, destination_service_namespace)",
+          "current": {
+            "value": "orion",
+            "text": "orion"
+          },
+          "refresh": 1
+        }
+      ]
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "Traffic Volume Trend",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m]))",
+            "legendFormat": "Total Traffic",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",response_code=~\"2..\"}[5m]))",
+            "legendFormat": "2xx Success",
+            "refId": "B"
+          },
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",response_code=~\"4..\"}[5m]))",
+            "legendFormat": "4xx Client Errors",
+            "refId": "C"
+          },
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",response_code=~\"5..\"}[5m]))",
+            "legendFormat": "5xx Server Errors",
+            "refId": "D"
+          }
+        ],
+        "yaxes": [
+          {"format": "reqps", "label": "Requests/sec"},
+          {"format": "short"}
+        ],
+        "seriesOverrides": [
+          {"alias": "2xx Success", "color": "green"},
+          {"alias": "4xx Client Errors", "color": "yellow"},
+          {"alias": "5xx Server Errors", "color": "red"}
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Traffic Distribution by Protocol",
+        "type": "piechart",
+        "gridPos": {"h": 8, "w": 8, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (request_protocol)",
+            "legendFormat": "{{request_protocol}}",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "percent"]
+          },
+          "pieType": "pie"
+        }
+      },
+      {
+        "id": 3,
+        "title": "Top Services by Traffic",
+        "type": "bargauge",
+        "gridPos": {"h": 8, "w": 8, "x": 8, "y": 8},
+        "targets": [
+          {
+            "expr": "topk(10, sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (destination_service_name))",
+            "legendFormat": "{{destination_service_name}}",
+            "instant": true,
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "orientation": "horizontal",
+          "displayMode": "gradient",
+          "showUnfilled": true
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Traffic by Response Code",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 8, "x": 16, "y": 8},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (response_code)",
+            "legendFormat": "{{response_code}}",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          }
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 10
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Request Rate Heatmap",
+        "type": "heatmap",
+        "gridPos": {"h": 10, "w": 12, "x": 0, "y": 16},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (le)",
+            "format": "heatmap",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "calculate": false,
+          "cellGap": 2,
+          "color": {
+            "mode": "scheme",
+            "scheme": "Spectral"
+          },
+          "yAxis": {
+            "unit": "ms",
+            "decimals": 0
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Latency Percentiles Over Time",
+        "type": "graph",
+        "gridPos": {"h": 10, "w": 12, "x": 12, "y": 16},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.50, sum(rate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (le))",
+            "legendFormat": "p50",
+            "refId": "A"
+          },
+          {
+            "expr": "histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (le))",
+            "legendFormat": "p90",
+            "refId": "B"
+          },
+          {
+            "expr": "histogram_quantile(0.95, sum(rate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (le))",
+            "legendFormat": "p95",
+            "refId": "C"
+          },
+          {
+            "expr": "histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (le))",
+            "legendFormat": "p99",
+            "refId": "D"
+          }
+        ],
+        "yaxes": [
+          {"format": "ms", "label": "Latency"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Peak Traffic Hours",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 26},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[1h]))",
+            "legendFormat": "Hourly Average",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "reqps", "label": "Avg Requests/sec"},
+          {"format": "short"}
+        ],
+        "xaxis": {
+          "mode": "time"
+        }
+      },
+      {
+        "id": 8,
+        "title": "Traffic Anomalies",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 26},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m]))",
+            "legendFormat": "Current Traffic",
+            "refId": "A"
+          },
+          {
+            "expr": "avg_over_time((sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])))[1h:5m])",
+            "legendFormat": "1h Average",
+            "refId": "B"
+          },
+          {
+            "expr": "stddev_over_time((sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])))[1h:5m]) * 2",
+            "legendFormat": "2σ Threshold",
+            "refId": "C"
+          }
+        ],
+        "yaxes": [
+          {"format": "reqps", "label": "Requests/sec"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Canary Traffic Split",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 34},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",destination_version=\"stable\"}[5m])) by (destination_service_name)",
+            "legendFormat": "{{destination_service_name}} - Stable",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",destination_version=\"canary\"}[5m])) by (destination_service_name)",
+            "legendFormat": "{{destination_service_name}} - Canary",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "custom": {
+              "fillOpacity": 20,
+              "stacking": {
+                "mode": "normal"
+              }
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {"id": "byRegexp", "options": ".*Stable.*"},
+              "properties": [{"id": "color", "value": {"mode": "fixed", "fixedColor": "green"}}]
+            },
+            {
+              "matcher": {"id": "byRegexp", "options": ".*Canary.*"},
+              "properties": [{"id": "color", "value": {"mode": "fixed", "fixedColor": "orange"}}]
+            }
+          ]
+        }
+      },
+      {
+        "id": 10,
+        "title": "Bandwidth Usage",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 34},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_request_bytes_sum{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m]))",
+            "legendFormat": "Inbound Bytes/sec",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(rate(istio_response_bytes_sum{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m]))",
+            "legendFormat": "Outbound Bytes/sec",
+            "refId": "B"
+          }
+        ],
+        "yaxes": [
+          {"format": "Bps", "label": "Bandwidth"},
+          {"format": "short"}
+        ]
+      }
+    ]
+  }
+}

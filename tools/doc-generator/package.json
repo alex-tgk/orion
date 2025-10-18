@@ -1,0 +1,28 @@
+{
+  "name": "@orion/doc-generator",
+  "version": "1.0.0",
+  "description": "AI-powered documentation generator for ORION platform",
+  "main": "generator.ts",
+  "scripts": {
+    "generate": "ts-node cli.ts --command generate",
+    "validate": "ts-node cli.ts --command validate",
+    "metrics": "ts-node cli.ts --command metrics"
+  },
+  "keywords": [
+    "documentation",
+    "generator",
+    "ai",
+    "typescript",
+    "nestjs"
+  ],
+  "author": "ORION Team",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.67.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "ts-node": "^10.9.2"
+  }
+}

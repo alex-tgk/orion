@@ -1,0 +1,524 @@
+{
+  "dashboard": {
+    "title": "Cost Tracking Dashboard",
+    "uid": "cost-tracking",
+    "tags": ["cost", "billing", "optimization"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "5m",
+    "time": {
+      "from": "now-30d",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "Current Month Total Cost",
+        "type": "stat",
+        "gridPos": { "x": 0, "y": 0, "w": 6, "h": 4 },
+        "targets": [
+          {
+            "expr": "sum(cost_metric_total_cost{period=\"MONTHLY\"})",
+            "legendFormat": "Total Cost",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "graphMode": "area",
+          "colorMode": "value",
+          "textMode": "value_and_name",
+          "reduceOptions": {
+            "values": false,
+            "fields": "",
+            "calcs": ["lastNotNull"]
+          }
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "value": null, "color": "green" },
+                { "value": 8000, "color": "yellow" },
+                { "value": 9500, "color": "red" }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Budget vs Actual",
+        "type": "gauge",
+        "gridPos": { "x": 6, "y": 0, "w": 6, "h": 4 },
+        "targets": [
+          {
+            "expr": "(sum(cost_metric_total_cost{period=\"MONTHLY\"}) / 10000) * 100",
+            "legendFormat": "Budget Usage %",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true
+        },
+        "fieldConfig": {
+          "defaults": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "value": null, "color": "green" },
+                { "value": 80, "color": "yellow" },
+                { "value": 95, "color": "red" }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Cost Trend (Last 30 Days)",
+        "type": "graph",
+        "gridPos": { "x": 12, "y": 0, "w": 12, "h": 4 },
+        "targets": [
+          {
+            "expr": "sum(rate(cost_metric_total_cost{period=\"DAILY\"}[1d]))",
+            "legendFormat": "Daily Cost",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": null,
+            "logBase": 1,
+            "min": null,
+            "max": null,
+            "show": true
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Cost by Category",
+        "type": "piechart",
+        "gridPos": { "x": 0, "y": 4, "w": 6, "h": 8 },
+        "targets": [
+          {
+            "expr": "sum by (category) (cost_metric_total_cost{period=\"MONTHLY\"})",
+            "legendFormat": "{{category}}",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "pieType": "pie",
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Cost by Service",
+        "type": "bargauge",
+        "gridPos": { "x": 6, "y": 4, "w": 6, "h": 8 },
+        "targets": [
+          {
+            "expr": "topk(10, sum by (service_name) (cost_metric_total_cost{period=\"MONTHLY\"}))",
+            "legendFormat": "{{service_name}}",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "orientation": "horizontal",
+          "displayMode": "gradient",
+          "showUnfilled": true
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "value": null, "color": "green" },
+                { "value": 500, "color": "yellow" },
+                { "value": 1000, "color": "red" }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Resource Utilization vs Cost",
+        "type": "graph",
+        "gridPos": { "x": 12, "y": 4, "w": 12, "h": 8 },
+        "targets": [
+          {
+            "expr": "sum by (resource_type) (cost_metric_total_cost{period=\"MONTHLY\"})",
+            "legendFormat": "{{resource_type}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": "Cost",
+            "show": true
+          }
+        ],
+        "seriesOverrides": []
+      },
+      {
+        "id": 7,
+        "title": "Top Cost Drivers",
+        "type": "table",
+        "gridPos": { "x": 0, "y": 12, "w": 12, "h": 8 },
+        "targets": [
+          {
+            "expr": "topk(20, sum by (resource_name, service_name, resource_type) (cost_metric_total_cost{period=\"MONTHLY\"}))",
+            "format": "table",
+            "instant": true,
+            "refId": "A"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true
+              },
+              "indexByName": {},
+              "renameByName": {
+                "resource_name": "Resource",
+                "service_name": "Service",
+                "resource_type": "Type",
+                "Value": "Cost"
+              }
+            }
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto"
+            }
+          },
+          "overrides": [
+            {
+              "matcher": { "id": "byName", "options": "Cost" },
+              "properties": [
+                { "id": "unit", "value": "currencyUSD" },
+                { "id": "custom.displayMode", "value": "color-background" }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 8,
+        "title": "Cost Forecast (30 Days)",
+        "type": "graph",
+        "gridPos": { "x": 12, "y": 12, "w": 12, "h": 8 },
+        "targets": [
+          {
+            "expr": "sum(cost_metric_total_cost{period=\"DAILY\"})",
+            "legendFormat": "Actual Cost",
+            "refId": "A"
+          },
+          {
+            "expr": "predict_linear(sum(cost_metric_total_cost{period=\"DAILY\"})[7d], 86400 * 30)",
+            "legendFormat": "Forecasted Cost",
+            "refId": "B"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": "Cost",
+            "show": true
+          }
+        ],
+        "seriesOverrides": [
+          {
+            "alias": "Forecasted Cost",
+            "dashes": true,
+            "color": "#FF9830"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Active Cost Alerts",
+        "type": "table",
+        "gridPos": { "x": 0, "y": 20, "w": 12, "h": 6 },
+        "targets": [
+          {
+            "expr": "cost_alert_active{status=\"ACTIVE\"}",
+            "format": "table",
+            "instant": true,
+            "refId": "A"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "renameByName": {
+                "alert_type": "Type",
+                "severity": "Severity",
+                "title": "Alert",
+                "current_value": "Current",
+                "threshold_value": "Threshold"
+              }
+            }
+          }
+        ],
+        "fieldConfig": {
+          "overrides": [
+            {
+              "matcher": { "id": "byName", "options": "Severity" },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-background"
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "type": "value",
+                      "options": {
+                        "CRITICAL": { "color": "red", "text": "Critical" },
+                        "WARNING": { "color": "yellow", "text": "Warning" },
+                        "INFO": { "color": "blue", "text": "Info" }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 10,
+        "title": "Cost Optimization Opportunities",
+        "type": "table",
+        "gridPos": { "x": 12, "y": 20, "w": 12, "h": 6 },
+        "targets": [
+          {
+            "expr": "topk(10, cost_optimization_potential_savings{is_implemented=\"false\"})",
+            "format": "table",
+            "instant": true,
+            "refId": "A"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "renameByName": {
+                "title": "Recommendation",
+                "category": "Category",
+                "potential_savings": "Potential Savings",
+                "priority": "Priority"
+              }
+            }
+          }
+        ],
+        "fieldConfig": {
+          "overrides": [
+            {
+              "matcher": { "id": "byName", "options": "Potential Savings" },
+              "properties": [
+                { "id": "unit", "value": "currencyUSD" },
+                { "id": "custom.displayMode", "value": "color-background" }
+              ]
+            },
+            {
+              "matcher": { "id": "byName", "options": "Priority" },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-background"
+                },
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      { "value": null, "color": "green" },
+                      { "value": 3, "color": "yellow" },
+                      { "value": 5, "color": "red" }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 11,
+        "title": "Kubernetes CPU Cost",
+        "type": "graph",
+        "gridPos": { "x": 0, "y": 26, "w": 8, "h": 6 },
+        "targets": [
+          {
+            "expr": "sum by (namespace) (cost_metric_total_cost{resource_type=\"KUBERNETES_CPU\", period=\"HOURLY\"})",
+            "legendFormat": "{{namespace}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": "Cost per Hour",
+            "show": true
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Kubernetes Memory Cost",
+        "type": "graph",
+        "gridPos": { "x": 8, "y": 26, "w": 8, "h": 6 },
+        "targets": [
+          {
+            "expr": "sum by (namespace) (cost_metric_total_cost{resource_type=\"KUBERNETES_MEMORY\", period=\"HOURLY\"})",
+            "legendFormat": "{{namespace}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": "Cost per Hour",
+            "show": true
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Storage Costs",
+        "type": "graph",
+        "gridPos": { "x": 16, "y": 26, "w": 8, "h": 6 },
+        "targets": [
+          {
+            "expr": "sum by (resource_type) (cost_metric_total_cost{resource_type=~\".*_STORAGE\", period=\"DAILY\"})",
+            "legendFormat": "{{resource_type}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": "Daily Cost",
+            "show": true
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Network Costs",
+        "type": "graph",
+        "gridPos": { "x": 0, "y": 32, "w": 12, "h": 6 },
+        "targets": [
+          {
+            "expr": "sum by (resource_type) (cost_metric_total_cost{resource_type=~\".*_BANDWIDTH|API_GATEWAY.*|LOAD_BALANCER\", period=\"DAILY\"})",
+            "legendFormat": "{{resource_type}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": "Daily Cost",
+            "show": true
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Database Costs",
+        "type": "graph",
+        "gridPos": { "x": 12, "y": 32, "w": 12, "h": 6 },
+        "targets": [
+          {
+            "expr": "sum by (resource_type) (cost_metric_total_cost{resource_type=~\"DATABASE.*\", period=\"DAILY\"})",
+            "legendFormat": "{{resource_type}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {
+            "format": "currencyUSD",
+            "label": "Daily Cost",
+            "show": true
+          }
+        ]
+      }
+    ],
+    "templating": {
+      "list": [
+        {
+          "name": "namespace",
+          "type": "query",
+          "label": "Namespace",
+          "query": "label_values(cost_metric_total_cost, namespace)",
+          "multi": true,
+          "includeAll": true,
+          "allValue": ".*"
+        },
+        {
+          "name": "service",
+          "type": "query",
+          "label": "Service",
+          "query": "label_values(cost_metric_total_cost, service_name)",
+          "multi": true,
+          "includeAll": true,
+          "allValue": ".*"
+        },
+        {
+          "name": "environment",
+          "type": "query",
+          "label": "Environment",
+          "query": "label_values(cost_metric_total_cost, environment)",
+          "multi": false,
+          "includeAll": true,
+          "allValue": ".*"
+        }
+      ]
+    },
+    "annotations": {
+      "list": [
+        {
+          "name": "Budget Alerts",
+          "datasource": "Prometheus",
+          "enable": true,
+          "expr": "ALERTS{alertname=~\"BudgetWarning|BudgetCritical|BudgetExceeded\"}",
+          "iconColor": "red",
+          "tagKeys": "severity"
+        }
+      ]
+    }
+  }
+}

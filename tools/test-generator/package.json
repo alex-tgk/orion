@@ -1,0 +1,32 @@
+{
+  "name": "@orion/test-generator",
+  "version": "1.0.0",
+  "description": "AI-powered test generation for ORION using Claude API",
+  "main": "index.ts",
+  "bin": {
+    "test-generator": "./cli.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node cli.ts"
+  },
+  "keywords": [
+    "testing",
+    "ai",
+    "code-generation",
+    "claude",
+    "nestjs",
+    "jest"
+  ],
+  "author": "ORION Team",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "commander": "^12.1.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@nestjs/testing": "^11.0.0",
+    "jest": "^30.0.0"
+  }
+}

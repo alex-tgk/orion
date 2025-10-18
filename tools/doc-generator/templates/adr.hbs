@@ -1,0 +1,68 @@
+# {{number}}. {{title}}
+
+Date: {{date}}
+
+## Status
+
+{{status}}
+
+{{#if supersedes}}
+Supersedes: [ADR-{{supersedes}}]({{supersedes}}.md)
+{{/if}}
+
+{{#if supersededBy}}
+Superseded by: [ADR-{{supersededBy}}]({{supersededBy}}.md)
+{{/if}}
+
+## Context
+
+{{context}}
+
+## Decision
+
+{{decision}}
+
+## Consequences
+
+### Positive
+
+{{#each consequences.positive}}
+- {{this}}
+{{/each}}
+
+### Negative
+
+{{#each consequences.negative}}
+- {{this}}
+{{/each}}
+
+### Neutral
+
+{{#each consequences.neutral}}
+- {{this}}
+{{/each}}
+
+## Alternatives Considered
+
+{{#each alternatives}}
+### {{name}}
+
+{{description}}
+
+**Pros:**
+{{#each pros}}
+- {{this}}
+{{/each}}
+
+**Cons:**
+{{#each cons}}
+- {{this}}
+{{/each}}
+
+{{/each}}
+
+## References
+
+{{#each references}}
+- [{{title}}]({{url}})
+{{/each}}

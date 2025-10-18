@@ -1,0 +1,75 @@
+# {{name}}
+
+> {{description}}
+
+{{#if badges}}
+{{badges}}
+{{/if}}
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [Configuration](#configuration)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+```bash
+pnpm install
+```
+
+## Usage
+
+{{usage}}
+
+## API
+
+{{#each exports}}
+### `{{name}}`
+
+{{#if description}}
+{{description}}
+{{/if}}
+
+{{#if signature}}
+```typescript
+{{signature}}
+```
+{{/if}}
+
+{{/each}}
+
+## Configuration
+
+{{#if configuration}}
+{{configuration}}
+{{else}}
+No configuration required.
+{{/if}}
+
+## Examples
+
+{{#each examples}}
+### {{title}}
+
+```typescript
+{{code}}
+```
+
+{{#if description}}
+{{description}}
+{{/if}}
+
+{{/each}}
+
+## Contributing
+
+Please read [CONTRIBUTING.md](../../CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the {{license}} License.

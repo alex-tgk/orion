@@ -1,0 +1,78 @@
+# {{serviceName}} API Documentation
+
+{{#if description}}
+{{description}}
+{{/if}}
+
+## Base URL
+
+```
+{{baseUrl}}
+```
+
+## Authentication
+
+{{#if authentication}}
+{{authentication}}
+{{else}}
+No authentication required.
+{{/if}}
+
+## Endpoints
+
+{{#each endpoints}}
+### {{method}} {{path}}
+
+{{#if summary}}
+**{{summary}}**
+{{/if}}
+
+{{#if description}}
+{{description}}
+{{/if}}
+
+{{#if deprecated}}
+> **Warning:** This endpoint is deprecated.
+{{/if}}
+
+{{#if parameters}}
+#### Parameters
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+{{#each parameters}}
+| `{{name}}` | `{{type}}` | {{#if required}}Yes{{else}}No{{/if}} | {{description}} |
+{{/each}}
+{{/if}}
+
+{{#if requestBody}}
+#### Request Body
+
+```json
+{{requestBody}}
+```
+{{/if}}
+
+{{#if responses}}
+#### Responses
+
+{{#each responses}}
+##### {{status}} - {{description}}
+
+```json
+{{example}}
+```
+{{/each}}
+{{/if}}
+
+{{#if example}}
+#### Example
+
+```typescript
+{{example}}
+```
+{{/if}}
+
+---
+
+{{/each}}

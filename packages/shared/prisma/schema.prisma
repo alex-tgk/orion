@@ -1,0 +1,157 @@
+// Prisma schema for Feature Flags Service
+// Part of the ORION shared schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Feature Flag Model
+// Main feature flag configuration
+model FeatureFlag {
+  id          String   @id @default(uuid())
+  key         String   @unique // Unique identifier for the flag (e.g., "new-dashboard")
+  name        String   // Human-readable name
+  description String?  // Optional description
+  enabled     Boolean  @default(false) // Global on/off switch
+
+  // Flag type
+  type        FlagType @default(BOOLEAN)
+
+  // Rollout configuration
+  rolloutPercentage Int @default(0) // 0-100 for gradual rollout
+
+  // Metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String?  // User ID who created the flag
+
+  // Soft delete
+  deletedAt   DateTime?
+
+  // Relations
+  variants    FlagVariant[]
+  targets     FlagTarget[]
+  auditLogs   FlagAuditLog[]
+
+  @@index([key])
+  @@index([enabled])
+  @@index([deletedAt])
+  @@map("feature_flags")
+}
+
+// Flag Type Enum
+enum FlagType {
+  BOOLEAN    // Simple on/off
+  STRING     // String value
+  NUMBER     // Numeric value
+  JSON       // Complex JSON value
+  MULTIVARIATE // A/B testing with multiple variants
+}
+
+// Flag Variant Model
+// For A/B testing and multivariate flags
+model FlagVariant {
+  id          String   @id @default(uuid())
+  flagId      String
+  key         String   // Variant identifier (e.g., "control", "variant-a", "variant-b")
+  name        String   // Human-readable name
+  description String?
+  value       String   // JSON-encoded value
+  weight      Int      @default(0) // Distribution weight (0-100)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  flag        FeatureFlag @relation(fields: [flagId], references: [id], onDelete: Cascade)
+
+  @@unique([flagId, key])
+  @@index([flagId])
+  @@map("flag_variants")
+}
+
+// Flag Target Model
+// User/role-based targeting rules
+model FlagTarget {
+  id          String   @id @default(uuid())
+  flagId      String
+
+  // Targeting configuration
+  targetType  TargetType
+  targetValue String   // User ID, role, email, organization, etc.
+  enabled     Boolean  @default(true)
+
+  // For percentage rollouts within a target
+  percentage  Int?     @default(100) // 0-100
+
+  // Variant override for this target
+  variantKey  String?
+
+  // Priority for conflicting rules (higher = more priority)
+  priority    Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  flag        FeatureFlag @relation(fields: [flagId], references: [id], onDelete: Cascade)
+
+  @@index([flagId])
+  @@index([targetType, targetValue])
+  @@map("flag_targets")
+}
+
+// Target Type Enum
+enum TargetType {
+  USER          // Specific user ID
+  ROLE          // User role
+  EMAIL         // User email
+  ORGANIZATION  // Organization ID
+  GROUP         // User group
+  CUSTOM        // Custom attribute
+}
+
+// Flag Audit Log Model
+// Track all changes to feature flags
+model FlagAuditLog {
+  id          String   @id @default(uuid())
+  flagId      String
+
+  // Change information
+  action      AuditAction
+  changedBy   String?  // User ID
+  changes     String   // JSON-encoded changes
+
+  // Metadata
+  ipAddress   String?
+  userAgent   String?
+
+  createdAt   DateTime @default(now())
+
+  flag        FeatureFlag @relation(fields: [flagId], references: [id], onDelete: Cascade)
+
+  @@index([flagId])
+  @@index([createdAt])
+  @@index([changedBy])
+  @@map("flag_audit_logs")
+}
+
+// Audit Action Enum
+enum AuditAction {
+  CREATED
+  UPDATED
+  DELETED
+  ENABLED
+  DISABLED
+  VARIANT_ADDED
+  VARIANT_UPDATED
+  VARIANT_REMOVED
+  TARGET_ADDED
+  TARGET_UPDATED
+  TARGET_REMOVED
+  ROLLOUT_CHANGED
+}

@@ -1,0 +1,275 @@
+{
+  "review": {
+    "enabled": true,
+    "model": "claude-3-5-sonnet-20241022",
+    "maxTokens": 8000,
+    "temperature": 0.3,
+    "autoFix": {
+      "enabled": true,
+      "confidence": 0.8,
+      "categories": ["formatting", "imports", "simple-refactoring"]
+    },
+    "learning": {
+      "enabled": true,
+      "feedbackThreshold": 0.7,
+      "storageType": "local",
+      "storagePath": ".ai-review-learning"
+    }
+  },
+  "analyzers": {
+    "security": {
+      "enabled": true,
+      "severity": {
+        "critical": ["sql-injection", "xss", "command-injection", "hardcoded-secrets"],
+        "high": ["insecure-crypto", "path-traversal", "unvalidated-redirect"],
+        "medium": ["weak-random", "missing-auth", "cors-misconfiguration"],
+        "low": ["console-log", "todo-comment"]
+      },
+      "thresholds": {
+        "critical": 0,
+        "high": 2,
+        "medium": 5,
+        "low": 10
+      },
+      "patterns": {
+        "secrets": {
+          "enabled": true,
+          "patterns": [
+            "(?i)(password|passwd|pwd)\\s*[:=]\\s*['\"][^'\"]{8,}['\"]",
+            "(?i)(api[_-]?key|apikey)\\s*[:=]\\s*['\"][^'\"]{16,}['\"]",
+            "(?i)(secret|token)\\s*[:=]\\s*['\"][^'\"]{16,}['\"]",
+            "(?i)(private[_-]?key)\\s*[:=]\\s*['\"][^'\"]+['\"]"
+          ]
+        },
+        "sqlInjection": {
+          "enabled": true,
+          "patterns": [
+            "\\$\\{.*\\}.*(?:SELECT|INSERT|UPDATE|DELETE)",
+            "\\+\\s*.*\\s*\\+.*(?:WHERE|FROM|JOIN)",
+            "(?<!prepare)\\(.*\\$\\{.*\\}.*\\)"
+          ]
+        },
+        "xss": {
+          "enabled": true,
+          "patterns": [
+            "innerHTML\\s*=",
+            "dangerouslySetInnerHTML",
+            "document\\.write\\(",
+            "eval\\("
+          ]
+        }
+      }
+    },
+    "performance": {
+      "enabled": true,
+      "checks": {
+        "algorithmComplexity": true,
+        "memoryLeaks": true,
+        "inefficientLoops": true,
+        "excessiveApiCalls": true,
+        "largePayloads": true,
+        "blockingOperations": true
+      },
+      "thresholds": {
+        "cyclomaticComplexity": 10,
+        "nestedLoops": 3,
+        "functionLines": 100,
+        "fileSize": 500
+      },
+      "patterns": {
+        "nPlusOne": {
+          "enabled": true,
+          "description": "Detect potential N+1 query problems"
+        },
+        "synchronousBlocking": {
+          "enabled": true,
+          "patterns": [
+            "(?<!a)wait\\s+[^(]",
+            "sync(?!hronize)\\(",
+            "readFileSync",
+            "execSync"
+          ]
+        }
+      }
+    },
+    "quality": {
+      "enabled": true,
+      "checks": {
+        "complexity": true,
+        "duplicateCode": true,
+        "codeSmells": true,
+        "maintainability": true,
+        "readability": true,
+        "bestPractices": true
+      },
+      "thresholds": {
+        "duplicateLines": 10,
+        "complexity": 15,
+        "maintainabilityIndex": 65,
+        "cognitiveComplexity": 15
+      },
+      "patterns": {
+        "codeSmells": [
+          {
+            "name": "large-function",
+            "pattern": "function\\s+\\w+.*\\{[\\s\\S]{1000,}\\}",
+            "severity": "medium"
+          },
+          {
+            "name": "deep-nesting",
+            "pattern": "(\\s{4}){5,}(?:if|for|while)",
+            "severity": "medium"
+          },
+          {
+            "name": "magic-numbers",
+            "pattern": "(?<!const\\s+\\w+\\s*=\\s*)\\b\\d{2,}\\b",
+            "severity": "low"
+          },
+          {
+            "name": "console-log",
+            "pattern": "console\\.log\\(",
+            "severity": "low"
+          }
+        ],
+        "bestPractices": [
+          {
+            "name": "error-handling",
+            "require": "try-catch in async functions",
+            "severity": "high"
+          },
+          {
+            "name": "input-validation",
+            "require": "validation decorators on DTOs",
+            "severity": "high"
+          }
+        ]
+      }
+    },
+    "test": {
+      "enabled": true,
+      "checks": {
+        "coverage": true,
+        "testQuality": true,
+        "missingTests": true,
+        "testStructure": true,
+        "assertions": true
+      },
+      "thresholds": {
+        "lineCoverage": 80,
+        "branchCoverage": 75,
+        "functionCoverage": 85,
+        "statementCoverage": 80
+      },
+      "patterns": {
+        "testFiles": ["**/*.spec.ts", "**/*.test.ts", "**/__tests__/**/*.ts"],
+        "requiredTests": [
+          {
+            "filePattern": "*.controller.ts",
+            "testPattern": "*.controller.spec.ts",
+            "required": true
+          },
+          {
+            "filePattern": "*.service.ts",
+            "testPattern": "*.service.spec.ts",
+            "required": true
+          },
+          {
+            "filePattern": "*.gateway.ts",
+            "testPattern": "*.gateway.spec.ts",
+            "required": true
+          }
+        ]
+      }
+    },
+    "documentation": {
+      "enabled": true,
+      "checks": {
+        "publicApi": true,
+        "complexFunctions": true,
+        "types": true,
+        "readme": true,
+        "examples": true
+      },
+      "requirements": {
+        "publicClasses": true,
+        "publicMethods": true,
+        "publicInterfaces": true,
+        "complexFunctions": true,
+        "typeDefinitions": true
+      },
+      "thresholds": {
+        "minCommentDensity": 0.1,
+        "complexityForDocs": 10,
+        "parameterCountForDocs": 3
+      },
+      "patterns": {
+        "jsdoc": {
+          "required": true,
+          "tags": ["param", "returns", "throws", "example"]
+        },
+        "readme": {
+          "sections": [
+            "Installation",
+            "Usage",
+            "API",
+            "Configuration",
+            "Testing"
+          ]
+        }
+      }
+    }
+  },
+  "reporting": {
+    "formats": ["markdown", "json", "html", "console"],
+    "includeFixSuggestions": true,
+    "includeExamples": true,
+    "includeMetrics": true,
+    "groupBy": "severity",
+    "sortBy": "severity",
+    "verbosity": "detailed"
+  },
+  "github": {
+    "postComments": true,
+    "postSummary": true,
+    "createReviewRequests": false,
+    "addLabels": true,
+    "labels": {
+      "critical": "🚨 critical-review",
+      "high": "⚠️ needs-attention",
+      "medium": "💡 suggestions",
+      "low": "📝 minor-improvements"
+    },
+    "commentStyle": "inline",
+    "batchComments": true,
+    "maxCommentsPerFile": 10
+  },
+  "metrics": {
+    "enabled": true,
+    "track": [
+      "review-count",
+      "issues-found",
+      "issues-fixed",
+      "false-positives",
+      "review-time",
+      "acceptance-rate"
+    ],
+    "storage": "local",
+    "aggregation": "daily"
+  },
+  "exclusions": {
+    "files": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/*.min.js",
+      "**/*.bundle.js",
+      "**/coverage/**",
+      "**/.nx/**"
+    ],
+    "patterns": [
+      "generated",
+      "migration",
+      "vendor"
+    ]
+  }
+}

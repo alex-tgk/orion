@@ -1,0 +1,506 @@
+name: Blue-Green Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        description: 'Service to deploy (auth, gateway, notifications, user, all)'
+        required: true
+        type: choice
+        options:
+          - auth
+          - gateway
+          - notifications
+          - user
+          - all
+      image_tag:
+        description: 'Docker image tag to deploy (e.g., v1.2.3)'
+        required: true
+        type: string
+      environment:
+        description: 'Target environment'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+        default: staging
+      skip_tests:
+        description: 'Skip smoke tests'
+        required: false
+        type: boolean
+        default: false
+      no_switch:
+        description: 'Deploy but do not switch traffic'
+        required: false
+        type: boolean
+        default: false
+      auto_rollback:
+        description: 'Automatically rollback on failure'
+        required: false
+        type: boolean
+        default: true
+
+  push:
+    tags:
+      - 'v*.*.*'
+
+env:
+  KUBECTL_VERSION: '1.28.0'
+
+jobs:
+  validate:
+    name: Validate Deployment
+    runs-on: ubuntu-latest
+    outputs:
+      service: ${{ steps.set-params.outputs.service }}
+      image_tag: ${{ steps.set-params.outputs.image_tag }}
+      environment: ${{ steps.set-params.outputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set deployment parameters
+        id: set-params
+        run: |
+          if [ "${{ github.event_name }}" == "push" ]; then
+            # Extract version from tag
+            VERSION=${GITHUB_REF#refs/tags/}
+            echo "image_tag=$VERSION" >> $GITHUB_OUTPUT
+            echo "service=all" >> $GITHUB_OUTPUT
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          else
+            echo "image_tag=${{ inputs.image_tag }}" >> $GITHUB_OUTPUT
+            echo "service=${{ inputs.service }}" >> $GITHUB_OUTPUT
+            echo "environment=${{ inputs.environment }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Validate image tag format
+        run: |
+          TAG="${{ steps.set-params.outputs.image_tag }}"
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] && [ "$TAG" != "latest" ]; then
+            echo "Error: Invalid image tag format. Expected vX.Y.Z or 'latest'"
+            exit 1
+          fi
+
+      - name: Validate service name
+        run: |
+          SERVICE="${{ steps.set-params.outputs.service }}"
+          if [[ ! "$SERVICE" =~ ^(auth|gateway|notifications|user|all)$ ]]; then
+            echo "Error: Invalid service name"
+            exit 1
+          fi
+
+  build-images:
+    name: Build and Push Docker Images
+    runs-on: ubuntu-latest
+    needs: validate
+    if: needs.validate.outputs.service == 'all' || needs.validate.outputs.service == github.event.inputs.service
+    strategy:
+      matrix:
+        service: [auth, gateway, notifications, user]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/${{ matrix.service }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ needs.validate.outputs.image_tag }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ needs.validate.outputs.image_tag }}
+            type=sha
+
+      - name: Determine if service should be built
+        id: should-build
+        run: |
+          if [ "${{ needs.validate.outputs.service }}" == "all" ] || [ "${{ needs.validate.outputs.service }}" == "${{ matrix.service }}" ]; then
+            echo "build=true" >> $GITHUB_OUTPUT
+          else
+            echo "build=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push Docker image
+        if: steps.should-build.outputs.build == 'true'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: packages/${{ matrix.service }}/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            BUILD_DATE=${{ github.event.head_commit.timestamp }}
+            VERSION=${{ needs.validate.outputs.image_tag }}
+            COMMIT_SHA=${{ github.sha }}
+
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [validate, build-images]
+    if: needs.validate.outputs.environment == 'staging'
+    environment:
+      name: staging
+      url: https://staging.orion.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: ${{ env.KUBECTL_VERSION }}
+
+      - name: Set up kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG_STAGING }}" | base64 -d > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      - name: Verify cluster connection
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
+
+      - name: Run blue-green deployment
+        run: |
+          chmod +x scripts/deployment/blue-green-deploy.sh
+
+          OPTS=""
+          if [ "${{ inputs.skip_tests }}" == "true" ]; then
+            OPTS="$OPTS --skip-tests"
+          fi
+          if [ "${{ inputs.no_switch }}" == "true" ]; then
+            OPTS="$OPTS --no-switch"
+          fi
+          if [ "${{ inputs.auto_rollback }}" == "false" ]; then
+            OPTS="$OPTS --no-auto-rollback"
+          fi
+
+          ./scripts/deployment/blue-green-deploy.sh \
+            ${{ needs.validate.outputs.service }} \
+            ${{ needs.validate.outputs.image_tag }} \
+            --namespace orion-staging \
+            $OPTS
+
+      - name: Run post-deployment tests
+        if: ${{ !inputs.skip_tests }}
+        run: |
+          chmod +x scripts/smoke-tests.sh
+          ./scripts/smoke-tests.sh --namespace orion-staging
+
+      - name: Notify Slack on success
+        if: success()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "Blue-Green Deployment Successful",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":rocket: *Staging Deployment Successful*\n*Service:* ${{ needs.validate.outputs.service }}\n*Version:* ${{ needs.validate.outputs.image_tag }}\n*Environment:* Staging\n*Deployed by:* ${{ github.actor }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "Blue-Green Deployment Failed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":x: *Staging Deployment Failed*\n*Service:* ${{ needs.validate.outputs.service }}\n*Version:* ${{ needs.validate.outputs.image_tag }}\n*Environment:* Staging\n*Attempted by:* ${{ github.actor }}\n*Action:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Logs>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [validate, build-images]
+    if: needs.validate.outputs.environment == 'production'
+    environment:
+      name: production
+      url: https://orion.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: ${{ env.KUBECTL_VERSION }}
+
+      - name: Set up kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG_PRODUCTION }}" | base64 -d > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      - name: Verify cluster connection
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
+
+      - name: Create deployment backup
+        run: |
+          mkdir -p deployment-backups
+          kubectl get deployments -n orion -o yaml > deployment-backups/pre-deployment-$(date +%Y%m%d-%H%M%S).yaml
+
+      - name: Run blue-green deployment
+        run: |
+          chmod +x scripts/deployment/blue-green-deploy.sh
+
+          OPTS=""
+          if [ "${{ inputs.skip_tests }}" == "true" ]; then
+            OPTS="$OPTS --skip-tests"
+          fi
+          if [ "${{ inputs.no_switch }}" == "true" ]; then
+            OPTS="$OPTS --no-switch"
+          fi
+          if [ "${{ inputs.auto_rollback }}" == "false" ]; then
+            OPTS="$OPTS --no-auto-rollback"
+          fi
+
+          ./scripts/deployment/blue-green-deploy.sh \
+            ${{ needs.validate.outputs.service }} \
+            ${{ needs.validate.outputs.image_tag }} \
+            --namespace orion \
+            $OPTS
+
+      - name: Run post-deployment tests
+        if: ${{ !inputs.skip_tests }}
+        run: |
+          chmod +x scripts/smoke-tests.sh
+          ./scripts/smoke-tests.sh --namespace orion
+
+      - name: Monitor deployment
+        run: |
+          echo "Monitoring deployment for 5 minutes..."
+          sleep 300
+
+          # Check for pod errors
+          ERROR_COUNT=$(kubectl get pods -n orion \
+            -l app=${{ needs.validate.outputs.service }}-service \
+            -o jsonpath='{.items[?(@.status.phase!="Running")].metadata.name}' | wc -w)
+
+          if [ "$ERROR_COUNT" -gt 0 ]; then
+            echo "Warning: $ERROR_COUNT pods are not running"
+            kubectl get pods -n orion -l app=${{ needs.validate.outputs.service }}-service
+          fi
+
+      - name: Archive deployment logs
+        if: always()
+        run: |
+          mkdir -p deployment-logs
+          kubectl logs -n orion -l app=${{ needs.validate.outputs.service }}-service \
+            --tail=1000 > deployment-logs/${{ needs.validate.outputs.service }}-$(date +%Y%m%d-%H%M%S).log
+
+      - name: Upload deployment artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-artifacts
+          path: |
+            deployment-backups/
+            deployment-logs/
+          retention-days: 30
+
+      - name: Notify Slack on success
+        if: success()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "Production Deployment Successful",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":rocket: *Production Deployment Successful*\n*Service:* ${{ needs.validate.outputs.service }}\n*Version:* ${{ needs.validate.outputs.image_tag }}\n*Environment:* Production\n*Deployed by:* ${{ github.actor }}\n*Time:* <!date^${{ github.event.head_commit.timestamp }}^{date_short_pretty} at {time}|${{ github.event.head_commit.timestamp }}>"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Deployment"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Metrics"
+                      },
+                      "url": "https://grafana.orion.com"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "Production Deployment Failed - URGENT",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":rotating_light: *PRODUCTION DEPLOYMENT FAILED*\n*Service:* ${{ needs.validate.outputs.service }}\n*Version:* ${{ needs.validate.outputs.image_tag }}\n*Environment:* Production\n*Attempted by:* ${{ github.actor }}\n*Action Required:* Immediate investigation needed"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Logs"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                      "style": "danger"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Incident Response"
+                      },
+                      "url": "https://wiki.orion.com/incident-response"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  rollback:
+    name: Rollback Deployment
+    runs-on: ubuntu-latest
+    needs: [deploy-production]
+    if: failure() && needs.validate.outputs.environment == 'production'
+    environment:
+      name: production-rollback
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: ${{ env.KUBECTL_VERSION }}
+
+      - name: Set up kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG_PRODUCTION }}" | base64 -d > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      - name: Automatic rollback
+        run: |
+          echo "Performing automatic rollback..."
+
+          # Determine services to rollback
+          SERVICES="${{ needs.validate.outputs.service }}"
+          if [ "$SERVICES" == "all" ]; then
+            SERVICES="auth gateway notifications user"
+          fi
+
+          for service in $SERVICES; do
+            echo "Rolling back $service..."
+
+            # Get current active slot
+            ACTIVE_SLOT=$(kubectl get service ${service}-service -n orion \
+              -o jsonpath='{.spec.selector.slot}' 2>/dev/null || echo "unknown")
+
+            # Determine rollback slot
+            if [ "$ACTIVE_SLOT" == "blue" ]; then
+              ROLLBACK_SLOT="green"
+            elif [ "$ACTIVE_SLOT" == "green" ]; then
+              ROLLBACK_SLOT="blue"
+            else
+              echo "Cannot determine active slot for $service, skipping"
+              continue
+            fi
+
+            echo "Switching $service from $ACTIVE_SLOT to $ROLLBACK_SLOT"
+
+            # Switch traffic
+            kubectl patch service ${service}-service -n orion \
+              -p "{\"spec\":{\"selector\":{\"slot\":\"${ROLLBACK_SLOT}\"}}}"
+
+            # Update annotation
+            kubectl annotate service ${service}-service -n orion \
+              "deployment.orion.io/active-slot=${ROLLBACK_SLOT}" --overwrite
+
+            echo "$service rolled back successfully"
+          done
+
+      - name: Verify rollback
+        run: |
+          echo "Verifying rollback status..."
+          kubectl get deployments -n orion
+          kubectl get services -n orion
+
+      - name: Notify team
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "Automatic Rollback Executed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":warning: *Automatic Rollback Executed*\n*Service:* ${{ needs.validate.outputs.service }}\n*Failed Version:* ${{ needs.validate.outputs.image_tag }}\n*Environment:* Production\n*Status:* Traffic switched to previous version\n*Action Required:* Investigate failure and fix issues before redeployment"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

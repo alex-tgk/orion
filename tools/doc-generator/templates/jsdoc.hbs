@@ -1,0 +1,25 @@
+/**
+ * {{description}}
+ {{#if since}}
+ * @since {{since}}
+ {{/if}}
+ {{#if author}}
+ * @author {{author}}
+ {{/if}}
+ {{#each parameters}}
+ * @param {{#if optional}}[{{name}}]{{else}}{{{type}}} {{name}}{{/if}} - {{description}}
+ {{/each}}
+ {{#if returns}}
+ * @returns {{{returns.type}}} {{returns.description}}
+ {{/if}}
+ {{#if throws}}
+ * @throws {{{throws.type}}} {{throws.description}}
+ {{/if}}
+ {{#each examples}}
+ * @example
+ * {{this}}
+ {{/each}}
+ {{#if deprecated}}
+ * @deprecated {{deprecated}}
+ {{/if}}
+ */

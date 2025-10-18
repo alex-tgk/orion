@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "thresholds": {
+    "cpu": {
+      "warning": 70,
+      "critical": 85,
+      "unit": "percentage"
+    },
+    "memory": {
+      "warning": 512,
+      "critical": 1024,
+      "unit": "MB"
+    },
+    "responseTime": {
+      "p50": 100,
+      "p95": 500,
+      "p99": 1000,
+      "unit": "ms"
+    },
+    "database": {
+      "queryTime": {
+        "warning": 100,
+        "critical": 500,
+        "unit": "ms"
+      },
+      "connectionPool": {
+        "warning": 80,
+        "critical": 95,
+        "unit": "percentage"
+      }
+    },
+    "bundleSize": {
+      "warning": 500,
+      "critical": 1000,
+      "unit": "KB"
+    }
+  },
+  "profiling": {
+    "cpu": {
+      "enabled": true,
+      "samplingInterval": 10,
+      "duration": 60
+    },
+    "memory": {
+      "enabled": true,
+      "heapSnapshot": true,
+      "gcTracking": true
+    },
+    "database": {
+      "enabled": true,
+      "slowQueryThreshold": 100,
+      "trackQueryPlans": true
+    }
+  },
+  "optimization": {
+    "aiModel": "claude-3-5-sonnet-20241022",
+    "maxSuggestions": 10,
+    "confidenceThreshold": 0.7,
+    "categories": [
+      "database",
+      "algorithm",
+      "memory",
+      "caching",
+      "bundling",
+      "lazy-loading"
+    ]
+  },
+  "benchmarking": {
+    "iterations": 10,
+    "warmupRuns": 3,
+    "timeout": 30000,
+    "parallel": false
+  },
+  "tracking": {
+    "enabled": true,
+    "retentionDays": 90,
+    "storageBackend": "postgresql"
+  },
+  "performanceBudgets": {
+    "api": {
+      "responseTime": {
+        "target": 200,
+        "budget": 300
+      },
+      "throughput": {
+        "target": 1000,
+        "budget": 800
+      }
+    },
+    "frontend": {
+      "firstContentfulPaint": 1500,
+      "timeToInteractive": 3500,
+      "totalBundleSize": 500000
+    }
+  },
+  "alerts": {
+    "channels": ["slack", "email"],
+    "thresholdExceededCount": 3,
+    "cooldownPeriod": 300
+  }
+}

@@ -1,0 +1,466 @@
+// A/B Testing Service Database Schema
+// Production-grade schema for experiment management and statistical analysis
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/ab-testing"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("AB_TESTING_DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum ExperimentStatus {
+  DRAFT         // Being configured
+  SCHEDULED     // Scheduled to start
+  RUNNING       // Currently active
+  PAUSED        // Temporarily stopped
+  COMPLETED     // Finished successfully
+  STOPPED       // Stopped manually
+  ARCHIVED      // Archived for historical purposes
+}
+
+enum ExperimentType {
+  AB_TEST       // Traditional A/B test (2 variants)
+  MULTIVARIATE  // Multiple variants (A/B/C/D...)
+  MULTI_ARMED_BANDIT // Dynamic allocation based on performance
+  SEQUENTIAL    // Sequential testing with early stopping
+}
+
+enum AllocationStrategy {
+  RANDOM        // Random allocation
+  DETERMINISTIC // Consistent hashing based on user ID
+  WEIGHTED      // Weighted random allocation
+  ADAPTIVE      // Dynamic allocation based on performance
+}
+
+enum MetricType {
+  CONVERSION    // Binary conversion (yes/no)
+  REVENUE       // Monetary value
+  ENGAGEMENT    // Time, clicks, interactions
+  CUSTOM        // Custom metric
+}
+
+enum MetricAggregation {
+  SUM           // Sum of values
+  AVERAGE       // Average of values
+  COUNT         // Count of occurrences
+  UNIQUE_COUNT  // Count of unique values
+  PERCENTILE    // Percentile calculation
+}
+
+enum SignificanceLevel {
+  P_90          // 90% confidence (p < 0.10)
+  P_95          // 95% confidence (p < 0.05)
+  P_99          // 99% confidence (p < 0.01)
+  P_999         // 99.9% confidence (p < 0.001)
+}
+
+enum VariantStatus {
+  ACTIVE
+  PAUSED
+  WINNER
+  LOSER
+}
+
+// ============================================================================
+// EXPERIMENTS
+// ============================================================================
+
+model Experiment {
+  id          String           @id @default(uuid()) @db.Uuid
+
+  // Basic information
+  key         String           @unique @db.VarChar(255) // Unique identifier for code
+  name        String           @db.VarChar(255)
+  description String?          @db.Text
+  hypothesis  String?          @db.Text // What we're testing
+
+  // Configuration
+  type        ExperimentType   @default(AB_TEST)
+  status      ExperimentStatus @default(DRAFT)
+
+  // Allocation
+  allocationStrategy AllocationStrategy @default(DETERMINISTIC) @map("allocation_strategy")
+  trafficAllocation  Float              @default(1.0) @map("traffic_allocation") // 0.0 to 1.0 (percentage of users to include)
+
+  // Targeting
+  targetingRules Json            @default("{}") @map("targeting_rules") @db.JsonB
+  includeRules   Json            @default("[]") @map("include_rules") @db.JsonB // User segments to include
+  excludeRules   Json            @default("[]") @map("exclude_rules") @db.JsonB // User segments to exclude
+
+  // Statistical configuration
+  significanceLevel  SignificanceLevel @default(P_95) @map("significance_level")
+  minimumSampleSize  Int               @default(1000) @map("minimum_sample_size")
+  minimumDetectable  Float             @default(0.05) @map("minimum_detectable") // Minimum detectable effect (5%)
+  powerAnalysis      Float             @default(0.8) @map("power_analysis") // Statistical power (80%)
+
+  // Timing
+  scheduledStartAt DateTime?  @map("scheduled_start_at") @db.Timestamptz
+  startedAt        DateTime?  @map("started_at") @db.Timestamptz
+  scheduledEndAt   DateTime?  @map("scheduled_end_at") @db.Timestamptz
+  endedAt          DateTime?  @map("ended_at") @db.Timestamptz
+  duration         Int?       // Expected duration in seconds
+
+  // Results
+  winnerVariantId  String?    @map("winner_variant_id") @db.Uuid
+  confidenceLevel  Float?     @map("confidence_level") // Actual confidence level achieved
+  pValue           Float?     @map("p_value") // Statistical significance
+
+  // Feature flag integration
+  featureFlagKey   String?    @map("feature_flag_key") @db.VarChar(255)
+
+  // Ownership
+  ownerId          String     @map("owner_id") @db.Uuid // User who created the experiment
+  teamId           String?    @map("team_id") @db.Uuid
+
+  // Metadata
+  tags             String[]   @default([])
+  metadata         Json       @default("{}") @db.JsonB
+  notes            String?    @db.Text
+
+  // Audit fields
+  createdAt        DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime   @updatedAt @map("updated_at") @db.Timestamptz
+  createdBy        String     @map("created_by") @db.Uuid
+  updatedBy        String?    @map("updated_by") @db.Uuid
+
+  // Relations
+  variants         ExperimentVariant[]
+  assignments      ExperimentAssignment[]
+  metrics          ExperimentMetric[]
+  events           ExperimentEvent[]
+  results          ExperimentResult[]
+
+  @@index([key])
+  @@index([status])
+  @@index([type])
+  @@index([ownerId])
+  @@index([teamId])
+  @@index([featureFlagKey])
+  @@index([startedAt])
+  @@index([endedAt])
+  @@index([tags])
+  @@index([status, startedAt])
+  @@map("experiments")
+}
+
+// ============================================================================
+// EXPERIMENT VARIANTS
+// ============================================================================
+
+model ExperimentVariant {
+  id             String        @id @default(uuid()) @db.Uuid
+  experimentId   String        @map("experiment_id") @db.Uuid
+
+  // Variant information
+  key            String        @db.VarChar(255) // control, variant_a, variant_b, etc.
+  name           String        @db.VarChar(255)
+  description    String?       @db.Text
+
+  // Configuration
+  isControl      Boolean       @default(false) @map("is_control")
+  status         VariantStatus @default(ACTIVE)
+
+  // Allocation
+  weight         Float         @default(1.0) // Relative weight for allocation
+  allocation     Float?        // Actual allocation percentage (calculated)
+
+  // Variant configuration (what changes for this variant)
+  config         Json          @default("{}") @db.JsonB
+  payload        Json?         @db.JsonB // Additional data to send to client
+
+  // Performance tracking
+  assignmentCount Int          @default(0) @map("assignment_count")
+  conversionCount Int          @default(0) @map("conversion_count")
+  conversionRate  Float?       @map("conversion_rate")
+
+  // Statistical metrics
+  confidenceInterval Json?     @map("confidence_interval") @db.JsonB
+  standardError      Float?    @map("standard_error")
+
+  // Metadata
+  metadata       Json          @default("{}") @db.JsonB
+
+  // Audit fields
+  createdAt      DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime      @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  experiment     Experiment    @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  assignments    ExperimentAssignment[]
+  metrics        MetricValue[]
+
+  @@unique([experimentId, key])
+  @@index([experimentId])
+  @@index([status])
+  @@index([isControl])
+  @@map("experiment_variants")
+}
+
+// ============================================================================
+// EXPERIMENT ASSIGNMENTS (User -> Variant mapping)
+// ============================================================================
+
+model ExperimentAssignment {
+  id             String    @id @default(uuid()) @db.Uuid
+  experimentId   String    @map("experiment_id") @db.Uuid
+  variantId      String    @map("variant_id") @db.Uuid
+  userId         String    @map("user_id") @db.Uuid
+
+  // Assignment details
+  bucketValue    Int       @map("bucket_value") // Hash value for consistent bucketing (0-9999)
+  isOverride     Boolean   @default(false) @map("is_override") // Manual override
+
+  // Context
+  context        Json      @default("{}") @db.JsonB // User attributes at assignment time
+  deviceId       String?   @map("device_id") @db.VarChar(255)
+  sessionId      String?   @map("session_id") @db.Uuid
+
+  // Tracking
+  ipAddress      String?   @map("ip_address") @db.VarChar(45)
+  userAgent      String?   @map("user_agent") @db.Text
+
+  // Exposure tracking
+  exposureCount  Int       @default(0) @map("exposure_count")
+  firstExposedAt DateTime? @map("first_exposed_at") @db.Timestamptz
+  lastExposedAt  DateTime? @map("last_exposed_at") @db.Timestamptz
+
+  // Conversion tracking
+  hasConverted   Boolean   @default(false) @map("has_converted")
+  convertedAt    DateTime? @map("converted_at") @db.Timestamptz
+
+  // Metadata
+  metadata       Json      @default("{}") @db.JsonB
+
+  // Timing
+  assignedAt     DateTime  @default(now()) @map("assigned_at") @db.Timestamptz
+
+  // Relations
+  experiment     Experiment        @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  variant        ExperimentVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@unique([experimentId, userId])
+  @@index([experimentId])
+  @@index([variantId])
+  @@index([userId])
+  @@index([assignedAt])
+  @@index([hasConverted])
+  @@index([experimentId, variantId])
+  @@index([experimentId, userId, variantId])
+  @@map("experiment_assignments")
+}
+
+// ============================================================================
+// EXPERIMENT METRICS (Metric definitions)
+// ============================================================================
+
+model ExperimentMetric {
+  id             String            @id @default(uuid()) @db.Uuid
+  experimentId   String            @map("experiment_id") @db.Uuid
+
+  // Metric information
+  key            String            @db.VarChar(255) // unique identifier
+  name           String            @db.VarChar(255)
+  description    String?           @db.Text
+
+  // Configuration
+  type           MetricType
+  aggregation    MetricAggregation @default(SUM)
+  isPrimary      Boolean           @default(false) @map("is_primary") // Primary success metric
+
+  // Statistical configuration
+  expectedValue  Float?            @map("expected_value") // Expected baseline value
+  targetValue    Float?            @map("target_value") // Target improvement
+
+  // Filters
+  eventFilters   Json              @default("{}") @map("event_filters") @db.JsonB
+  userFilters    Json              @default("{}") @map("user_filters") @db.JsonB
+
+  // Metadata
+  metadata       Json              @default("{}") @db.JsonB
+
+  // Audit fields
+  createdAt      DateTime          @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime          @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  experiment     Experiment        @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  values         MetricValue[]
+
+  @@unique([experimentId, key])
+  @@index([experimentId])
+  @@index([isPrimary])
+  @@map("experiment_metrics")
+}
+
+// ============================================================================
+// METRIC VALUES (Actual metric data points)
+// ============================================================================
+
+model MetricValue {
+  id             String            @id @default(uuid()) @db.Uuid
+  metricId       String            @map("metric_id") @db.Uuid
+  variantId      String            @map("variant_id") @db.Uuid
+  userId         String            @map("user_id") @db.Uuid
+
+  // Value
+  value          Float
+  stringValue    String?           @map("string_value") @db.VarChar(255)
+
+  // Context
+  context        Json              @default("{}") @db.JsonB
+  sessionId      String?           @map("session_id") @db.Uuid
+
+  // Metadata
+  metadata       Json              @default("{}") @db.JsonB
+
+  // Timing
+  recordedAt     DateTime          @default(now()) @map("recorded_at") @db.Timestamptz
+
+  // Relations
+  metric         ExperimentMetric  @relation(fields: [metricId], references: [id], onDelete: Cascade)
+  variant        ExperimentVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@index([metricId])
+  @@index([variantId])
+  @@index([userId])
+  @@index([recordedAt])
+  @@index([metricId, variantId])
+  @@map("metric_values")
+}
+
+// ============================================================================
+// EXPERIMENT RESULTS (Statistical analysis results)
+// ============================================================================
+
+model ExperimentResult {
+  id                String    @id @default(uuid()) @db.Uuid
+  experimentId      String    @map("experiment_id") @db.Uuid
+  metricId          String?   @map("metric_id") @db.Uuid
+
+  // Analysis type
+  analysisType      String    @db.VarChar(100) // t-test, chi-square, bayesian, etc.
+
+  // Results per variant
+  variantResults    Json      @map("variant_results") @db.JsonB // Array of variant statistics
+
+  // Statistical significance
+  pValue            Float?    @map("p_value")
+  confidenceLevel   Float?    @map("confidence_level")
+  isSignificant     Boolean   @default(false) @map("is_significant")
+
+  // Effect size
+  effectSize        Float?    @map("effect_size")
+  relativeUplift    Float?    @map("relative_uplift") // Percentage improvement
+  absoluteUplift    Float?    @map("absolute_uplift")
+
+  // Sample sizes
+  totalSampleSize   Int       @map("total_sample_size")
+  variantSampleSizes Json     @map("variant_sample_sizes") @db.JsonB
+
+  // Confidence intervals
+  confidenceIntervals Json?   @map("confidence_intervals") @db.JsonB
+
+  // Bayesian analysis (if applicable)
+  probabilityToBeBest Float?  @map("probability_to_be_best")
+  expectedLoss        Float?  @map("expected_loss")
+
+  // Recommendations
+  recommendation      String? @db.Text
+  recommendedAction   String? @map("recommended_action") @db.VarChar(100) // continue, stop, declare_winner
+
+  // Metadata
+  metadata            Json    @default("{}") @db.JsonB
+  rawData             Json?   @map("raw_data") @db.JsonB // Full statistical analysis data
+
+  // Timing
+  calculatedAt        DateTime @default(now()) @map("calculated_at") @db.Timestamptz
+
+  // Relations
+  experiment          Experiment @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+
+  @@index([experimentId])
+  @@index([metricId])
+  @@index([isSignificant])
+  @@index([calculatedAt])
+  @@map("experiment_results")
+}
+
+// ============================================================================
+// EXPERIMENT EVENTS (Audit trail and history)
+// ============================================================================
+
+model ExperimentEvent {
+  id             String    @id @default(uuid()) @db.Uuid
+  experimentId   String    @map("experiment_id") @db.Uuid
+
+  // Event details
+  eventType      String    @map("event_type") @db.VarChar(100) // created, started, paused, stopped, etc.
+  eventCategory  String    @map("event_category") @db.VarChar(50) // lifecycle, allocation, result
+
+  // Description
+  title          String    @db.VarChar(255)
+  description    String?   @db.Text
+
+  // Context
+  userId         String?   @map("user_id") @db.Uuid
+  variantId      String?   @map("variant_id") @db.Uuid
+
+  // Changes
+  changes        Json?     @db.JsonB // Before/after comparison
+
+  // Metadata
+  metadata       Json      @default("{}") @db.JsonB
+
+  // Timing
+  occurredAt     DateTime  @default(now()) @map("occurred_at") @db.Timestamptz
+
+  // Relations
+  experiment     Experiment @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+
+  @@index([experimentId])
+  @@index([eventType])
+  @@index([eventCategory])
+  @@index([occurredAt])
+  @@map("experiment_events")
+}
+
+// ============================================================================
+// EXPERIMENT OVERRIDES (Force users into specific variants)
+// ============================================================================
+
+model ExperimentOverride {
+  id             String    @id @default(uuid()) @db.Uuid
+  experimentId   String    @map("experiment_id") @db.Uuid
+
+  // Override target
+  userId         String?   @map("user_id") @db.Uuid
+  email          String?   @db.VarChar(255)
+  segment        String?   @db.VarChar(255) // Segment identifier
+
+  // Override configuration
+  variantKey     String    @map("variant_key") @db.VarChar(255)
+  reason         String?   @db.Text
+
+  // Metadata
+  metadata       Json      @default("{}") @db.JsonB
+
+  // Audit
+  createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  createdBy      String    @map("created_by") @db.Uuid
+  expiresAt      DateTime? @map("expires_at") @db.Timestamptz
+
+  @@unique([experimentId, userId])
+  @@unique([experimentId, email])
+  @@index([experimentId])
+  @@index([userId])
+  @@index([email])
+  @@index([segment])
+  @@map("experiment_overrides")
+}

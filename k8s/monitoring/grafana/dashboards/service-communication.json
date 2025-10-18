@@ -1,0 +1,245 @@
+{
+  "dashboard": {
+    "title": "Service Communication",
+    "uid": "service-communication",
+    "tags": ["istio", "service-mesh", "communication", "orion"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "30s",
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "templating": {
+      "list": [
+        {
+          "name": "namespace",
+          "type": "query",
+          "datasource": "Prometheus",
+          "query": "label_values(istio_requests_total, destination_service_namespace)",
+          "current": {
+            "value": "orion",
+            "text": "orion"
+          },
+          "refresh": 1
+        },
+        {
+          "name": "source_service",
+          "type": "query",
+          "datasource": "Prometheus",
+          "query": "label_values(istio_requests_total{destination_service_namespace=\"$namespace\"}, source_app)",
+          "current": {
+            "value": "all",
+            "text": "All"
+          },
+          "includeAll": true,
+          "refresh": 1
+        },
+        {
+          "name": "destination_service",
+          "type": "query",
+          "datasource": "Prometheus",
+          "query": "label_values(istio_requests_total{destination_service_namespace=\"$namespace\"}, destination_service_name)",
+          "current": {
+            "value": "all",
+            "text": "All"
+          },
+          "includeAll": true,
+          "refresh": 1
+        }
+      ]
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "Service-to-Service Traffic Map",
+        "type": "nodeGraph",
+        "gridPos": {"h": 12, "w": 24, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{destination_service_namespace=\"$namespace\"}[5m])) by (source_app, destination_service_name)",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "nodes": {
+            "mainStatUnit": "reqps"
+          },
+          "edges": {
+            "mainStatUnit": "reqps"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Inbound Traffic Rate",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",destination_service_name=~\"$destination_service\"}[5m])) by (source_app)",
+            "legendFormat": "from {{source_app}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "reqps", "label": "Requests/sec"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Outbound Traffic Rate",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"source\",source_app=~\"$source_service\",destination_service_namespace=\"$namespace\"}[5m])) by (destination_service_name)",
+            "legendFormat": "to {{destination_service_name}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "reqps", "label": "Requests/sec"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Request Success Rate by Source",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 20},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",response_code!~\"5..\"}[5m])) by (source_app) / sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (source_app) * 100",
+            "legendFormat": "{{source_app}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "percent", "label": "Success Rate", "min": 0, "max": 100},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Request Duration by Service Pair",
+        "type": "heatmap",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 20},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (source_app, destination_service_name, le)",
+            "format": "heatmap",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "calculate": false,
+          "cellGap": 2,
+          "color": {
+            "mode": "scheme",
+            "scheme": "Spectral"
+          },
+          "yAxis": {
+            "unit": "ms"
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Failed Requests by Service Pair",
+        "type": "table",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 28},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_requests_total{reporter=\"destination\",destination_service_namespace=\"$namespace\",response_code=~\"5..\"}[5m])) by (source_app, destination_service_name, response_code) > 0",
+            "format": "table",
+            "instant": true,
+            "refId": "A"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true
+              },
+              "renameByName": {
+                "source_app": "Source",
+                "destination_service_name": "Destination",
+                "response_code": "Status Code",
+                "Value": "Error Rate"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Retry Rate by Service",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 28},
+        "targets": [
+          {
+            "expr": "sum(rate(envoy_cluster_upstream_rq_retry{cluster_name=~\"outbound.*$namespace.*\"}[5m])) by (cluster_name)",
+            "legendFormat": "{{cluster_name}}",
+            "refId": "A"
+          }
+        ],
+        "yaxes": [
+          {"format": "reqps", "label": "Retries/sec"},
+          {"format": "short"}
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Connection Pool Status",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 36},
+        "targets": [
+          {
+            "expr": "envoy_cluster_upstream_cx_active{cluster_name=~\"outbound.*$namespace.*\"}",
+            "legendFormat": "{{cluster_name}} - Active",
+            "refId": "A"
+          },
+          {
+            "expr": "envoy_cluster_upstream_cx_overflow{cluster_name=~\"outbound.*$namespace.*\"}",
+            "legendFormat": "{{cluster_name}} - Overflow",
+            "refId": "B"
+          }
+        ],
+        "yaxes": [
+          {"format": "short", "label": "Connections"},
+          {"format": "short"}
+        ],
+        "seriesOverrides": [
+          {"alias": "/.*Overflow.*/", "color": "red", "yaxis": 2}
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Request/Response Size",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 36},
+        "targets": [
+          {
+            "expr": "sum(rate(istio_request_bytes_sum{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (destination_service_name) / sum(rate(istio_request_bytes_count{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (destination_service_name)",
+            "legendFormat": "{{destination_service_name}} - Request",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(rate(istio_response_bytes_sum{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (destination_service_name) / sum(rate(istio_response_bytes_count{reporter=\"destination\",destination_service_namespace=\"$namespace\"}[5m])) by (destination_service_name)",
+            "legendFormat": "{{destination_service_name}} - Response",
+            "refId": "B"
+          }
+        ],
+        "yaxes": [
+          {"format": "bytes", "label": "Avg Size"},
+          {"format": "short"}
+        ]
+      }
+    ]
+  }
+}

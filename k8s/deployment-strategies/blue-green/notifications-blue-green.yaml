@@ -1,0 +1,449 @@
+# Blue-Green Deployment Configuration for Notification Service
+# This manifest includes both blue and green deployments with a service that can switch between them
+
+---
+# Blue Deployment (Current/Stable Version)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service-blue
+  namespace: orion
+  labels:
+    app: notification-service
+    version: blue
+    component: backend
+    deployment-strategy: blue-green
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/part-of: orion-platform
+  annotations:
+    deployment.kubernetes.io/revision: "blue"
+    deployment.orion.io/strategy: "blue-green"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: notification-service
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: notification-service
+        version: blue
+        component: backend
+        slot: blue
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3003"
+        prometheus.io/path: "/metrics"
+        deployment.orion.io/slot: "blue"
+    spec:
+      serviceAccountName: notification-service
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+      containers:
+      - name: notification-service
+        image: orion/notification-service:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 3003
+          protocol: TCP
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: NOTIFICATION_SERVICE_PORT
+          value: "3003"
+        - name: DEPLOYMENT_SLOT
+          value: "blue"
+        - name: NOTIFICATION_DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: notification-database-url
+        - name: RABBITMQ_URL
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: rabbitmq-url
+        - name: RABBITMQ_EXCHANGE
+          value: "orion.events"
+        - name: RABBITMQ_PREFETCH
+          value: "10"
+        - name: SENDGRID_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: sendgrid-api-key
+        - name: SENDGRID_FROM_EMAIL
+          value: "noreply@orion.com"
+        - name: SENDGRID_FROM_NAME
+          value: "ORION Platform"
+        - name: SENDGRID_REPLY_TO
+          value: "support@orion.com"
+        - name: SENDGRID_ENABLED
+          value: "true"
+        - name: TWILIO_ACCOUNT_SID
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: twilio-account-sid
+        - name: TWILIO_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: twilio-auth-token
+        - name: TWILIO_PHONE_NUMBER
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: twilio-phone-number
+        - name: TWILIO_ENABLED
+          value: "true"
+        - name: FRONTEND_URL
+          value: "https://orion.com"
+        - name: API_URL
+          value: "https://api.orion.com"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /api/v1/health/live
+            port: 3003
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/v1/health/ready
+            port: 3003
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - notification-service
+              topologyKey: kubernetes.io/hostname
+
+---
+# Green Deployment (New Version)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service-green
+  namespace: orion
+  labels:
+    app: notification-service
+    version: green
+    component: backend
+    deployment-strategy: blue-green
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/part-of: orion-platform
+  annotations:
+    deployment.kubernetes.io/revision: "green"
+    deployment.orion.io/strategy: "blue-green"
+spec:
+  replicas: 0  # Initially scaled to 0, scaled up during deployment
+  selector:
+    matchLabels:
+      app: notification-service
+      version: green
+  template:
+    metadata:
+      labels:
+        app: notification-service
+        version: green
+        component: backend
+        slot: green
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3003"
+        prometheus.io/path: "/metrics"
+        deployment.orion.io/slot: "green"
+    spec:
+      serviceAccountName: notification-service
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+      containers:
+      - name: notification-service
+        image: orion/notification-service:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 3003
+          protocol: TCP
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: NOTIFICATION_SERVICE_PORT
+          value: "3003"
+        - name: DEPLOYMENT_SLOT
+          value: "green"
+        - name: NOTIFICATION_DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: notification-database-url
+        - name: RABBITMQ_URL
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: rabbitmq-url
+        - name: RABBITMQ_EXCHANGE
+          value: "orion.events"
+        - name: RABBITMQ_PREFETCH
+          value: "10"
+        - name: SENDGRID_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: sendgrid-api-key
+        - name: SENDGRID_FROM_EMAIL
+          value: "noreply@orion.com"
+        - name: SENDGRID_FROM_NAME
+          value: "ORION Platform"
+        - name: SENDGRID_REPLY_TO
+          value: "support@orion.com"
+        - name: SENDGRID_ENABLED
+          value: "true"
+        - name: TWILIO_ACCOUNT_SID
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: twilio-account-sid
+        - name: TWILIO_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: twilio-auth-token
+        - name: TWILIO_PHONE_NUMBER
+          valueFrom:
+            secretKeyRef:
+              name: orion-secrets
+              key: twilio-phone-number
+        - name: TWILIO_ENABLED
+          value: "true"
+        - name: FRONTEND_URL
+          value: "https://orion.com"
+        - name: API_URL
+          value: "https://api.orion.com"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /api/v1/health/live
+            port: 3003
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/v1/health/ready
+            port: 3003
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - notification-service
+              topologyKey: kubernetes.io/hostname
+
+---
+# Service that routes traffic to active slot (blue or green)
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-service
+  namespace: orion
+  labels:
+    app: notification-service
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/part-of: orion-platform
+  annotations:
+    deployment.orion.io/active-slot: "blue"  # Change to 'green' to switch traffic
+    deployment.orion.io/strategy: "blue-green"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3003
+    targetPort: 3003
+    protocol: TCP
+    name: http
+  selector:
+    app: notification-service
+    slot: blue  # This selector switches between 'blue' and 'green'
+
+---
+# Blue-specific service for testing
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-service-blue
+  namespace: orion
+  labels:
+    app: notification-service
+    version: blue
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3003
+    targetPort: 3003
+    protocol: TCP
+    name: http
+  selector:
+    app: notification-service
+    slot: blue
+
+---
+# Green-specific service for testing
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-service-green
+  namespace: orion
+  labels:
+    app: notification-service
+    version: green
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3003
+    targetPort: 3003
+    protocol: TCP
+    name: http
+  selector:
+    app: notification-service
+    slot: green
+
+---
+# ServiceAccount (shared between blue and green)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: notification-service
+  namespace: orion
+  labels:
+    app: notification-service
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/part-of: orion-platform
+
+---
+# HorizontalPodAutoscaler for Blue deployment
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: notification-service-blue-hpa
+  namespace: orion
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: notification-service-blue
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+---
+# HorizontalPodAutoscaler for Green deployment
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: notification-service-green-hpa
+  namespace: orion
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: notification-service-green
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

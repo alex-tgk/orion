@@ -1,0 +1,255 @@
+name: Test Coverage Improvement
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      service:
+        description: 'Service to generate tests for (leave empty for all)'
+        required: false
+        type: string
+      threshold:
+        description: 'Coverage threshold percentage'
+        required: false
+        default: '60'
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  analyze-coverage:
+    runs-on: ubuntu-latest
+    outputs:
+      has-low-coverage: ${{ steps.check.outputs.has-low-coverage }}
+      services: ${{ steps.check.outputs.services }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run test coverage
+        run: pnpm run test:coverage
+        continue-on-error: true
+
+      - name: Analyze coverage
+        id: check
+        run: |
+          # Find services with low coverage
+          LOW_COVERAGE_SERVICES=$(pnpm run generate:tests:coverage -- --threshold ${{ inputs.threshold || '60' }} | grep -E "^[a-z-]+: [0-9]+\.[0-9]+%" | awk '$2 < 60 {print $1}' | tr ':' ' ' | cut -d' ' -f1)
+
+          if [ -n "$LOW_COVERAGE_SERVICES" ]; then
+            echo "has-low-coverage=true" >> $GITHUB_OUTPUT
+            echo "services=$(echo $LOW_COVERAGE_SERVICES | tr '\n' ' ')" >> $GITHUB_OUTPUT
+          else
+            echo "has-low-coverage=false" >> $GITHUB_OUTPUT
+          fi
+
+  generate-tests:
+    needs: analyze-coverage
+    if: needs.analyze-coverage.outputs.has-low-coverage == 'true'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        service: ${{ fromJson(format('["{0}"]', needs.analyze-coverage.outputs.services)) }}
+      fail-fast: false
+      max-parallel: 3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate tests for ${{ matrix.service }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          pnpm run generate:tests:service ${{ matrix.service }} --integration --edge-cases --error-scenarios
+
+      - name: Validate generated tests
+        run: |
+          # Compile TypeScript
+          pnpm exec tsc --noEmit
+
+          # Run the newly generated tests
+          pnpm exec nx test ${{ matrix.service }} --coverage
+
+      - name: Upload generated tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-tests-${{ matrix.service }}
+          path: |
+            packages/${{ matrix.service }}/**/*.spec.ts
+            packages/${{ matrix.service }}/**/*.integration.spec.ts
+          retention-days: 7
+
+  create-pr:
+    needs: [analyze-coverage, generate-tests]
+    if: needs.analyze-coverage.outputs.has-low-coverage == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download all generated tests
+        uses: actions/download-artifact@v4
+        with:
+          pattern: generated-tests-*
+          merge-multiple: true
+
+      - name: Create feature branch
+        run: |
+          BRANCH_NAME="feat/ai-generated-tests-$(date +%Y%m%d)"
+          git checkout -b $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add packages/**/*.spec.ts packages/**/*.integration.spec.ts
+          git commit -m "feat: add AI-generated tests for low-coverage areas
+
+          Generated tests for services with coverage below ${{ inputs.threshold || '60' }}%:
+          ${{ needs.analyze-coverage.outputs.services }}
+
+          - Added comprehensive unit tests
+          - Added integration test scenarios
+          - Included edge cases and error handling
+          - Used Claude API for intelligent test generation
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+
+      - name: Push changes
+        run: git push origin ${{ env.BRANCH_NAME }}
+
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr create \
+            --title "feat: AI-generated tests for coverage improvement" \
+            --body "$(cat <<'EOF'
+          ## Summary
+          This PR adds AI-generated tests for services with low test coverage.
+
+          ### Coverage Improvements
+          Services updated:
+          ${{ needs.analyze-coverage.outputs.services }}
+
+          ### What's Included
+          - Comprehensive unit tests following Arrange-Act-Assert pattern
+          - Integration tests with full request/response cycles
+          - Edge case testing
+          - Error scenario handling
+          - Proper mock setup for all dependencies
+
+          ### Quality Checks
+          - ✓ All generated tests compile successfully
+          - ✓ All tests pass
+          - ✓ Follow ORION testing patterns
+          - ✓ Include descriptive test names
+          - ✓ Proper dependency mocking
+
+          ### Generated By
+          This PR was automatically created by the AI Test Generation workflow using Claude API.
+
+          ### Testing
+          ```bash
+          # Run all tests
+          pnpm test
+
+          # Run specific service tests
+          pnpm nx test <service-name>
+
+          # Check coverage
+          pnpm run test:coverage
+          ```
+
+          ### Review Notes
+          Please review the generated tests and:
+          1. Verify test scenarios are appropriate
+          2. Check mock implementations
+          3. Ensure test data is realistic
+          4. Add any missing edge cases
+          5. Update test descriptions if needed
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+          Co-Authored-By: Claude <noreply@anthropic.com>
+          EOF
+          )" \
+            --label "testing" \
+            --label "ai-generated" \
+            --label "coverage-improvement"
+
+  report:
+    needs: [analyze-coverage, generate-tests, create-pr]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate summary
+        run: |
+          echo "## Test Coverage Improvement Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ needs.analyze-coverage.outputs.has-low-coverage }}" == "true" ]; then
+            echo "### Services with Low Coverage" >> $GITHUB_STEP_SUMMARY
+            echo "${{ needs.analyze-coverage.outputs.services }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✓ Generated tests for low-coverage services" >> $GITHUB_STEP_SUMMARY
+            echo "✓ Created pull request with improvements" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✓ All services meet coverage threshold!" >> $GITHUB_STEP_SUMMARY
+          fi

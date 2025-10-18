@@ -1,0 +1,68 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: gateway-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: gateway-service
+    app.kubernetes.io/component: destinationrule
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  host: gateway-service.orion.svc.cluster.local
+
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 200 # Higher for API gateway
+        connectTimeout: 30s
+        tcpKeepalive:
+          time: 7200s
+          interval: 75s
+      http:
+        http1MaxPendingRequests: 200
+        http2MaxRequests: 2000
+        maxRequestsPerConnection: 20
+        maxRetries: 3
+        idleTimeout: 3600s
+
+    loadBalancer:
+      consistentHash:
+        httpCookie:
+          name: orion-session
+          ttl: 3600s
+          path: /
+      localityLbSetting:
+        enabled: true
+
+    outlierDetection:
+      consecutiveErrors: 5
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 30 # Lower for critical service
+      minHealthPercent: 70
+      consecutiveGatewayErrors: 5
+
+    tls:
+      mode: ISTIO_MUTUAL
+      sni: gateway-service.orion.svc.cluster.local
+
+  subsets:
+  - name: stable
+    labels:
+      version: stable
+
+  - name: canary
+    labels:
+      version: canary
+    trafficPolicy:
+      outlierDetection:
+        consecutiveErrors: 2
+        baseEjectionTime: 120s
+
+  - name: v1
+    labels:
+      version: v1
+
+  - name: v2
+    labels:
+      version: v2

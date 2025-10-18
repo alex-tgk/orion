@@ -1,0 +1,369 @@
+# Prometheus Alert Rules for ORION Platform
+# These rules define critical alerts for monitoring system health
+
+groups:
+  # Service Availability Alerts
+  - name: service_availability
+    interval: 30s
+    rules:
+      - alert: ServiceDown
+        expr: up{job=~"gateway|auth|user|notifications|admin-ui"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          team: platform
+          component: "{{ $labels.service }}"
+        annotations:
+          summary: "Service {{ $labels.service }} is down"
+          description: "Service {{ $labels.service }} (instance {{ $labels.instance }}) has been down for more than 2 minutes."
+          runbook_url: "https://docs.orion.dev/runbooks/service-down"
+
+      - alert: HighErrorRate
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"5.."}[5m])) by (service)
+            /
+            sum(rate(http_requests_total[5m])) by (service)
+          ) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+          team: platform
+        annotations:
+          summary: "High error rate on {{ $labels.service }}"
+          description: "Service {{ $labels.service }} has error rate above 5% (current: {{ $value | humanizePercentage }})"
+          runbook_url: "https://docs.orion.dev/runbooks/high-error-rate"
+
+      - alert: ServiceHealthCheckFailing
+        expr: probe_success{job="blackbox"} == 0
+        for: 3m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Health check failing for {{ $labels.instance }}"
+          description: "Health check probe for {{ $labels.instance }} has been failing for 3 minutes."
+
+  # Performance Alerts
+  - name: performance
+    interval: 30s
+    rules:
+      - alert: HighLatency
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (service, le)
+          ) > 1
+        for: 10m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "High latency on {{ $labels.service }}"
+          description: "95th percentile latency is above 1s for {{ $labels.service }} (current: {{ $value }}s)"
+          runbook_url: "https://docs.orion.dev/runbooks/high-latency"
+
+      - alert: SlowDatabaseQueries
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(db_query_duration_seconds_bucket[5m])) by (service, le)
+          ) > 0.5
+        for: 10m
+        labels:
+          severity: warning
+          team: database
+        annotations:
+          summary: "Slow database queries on {{ $labels.service }}"
+          description: "95th percentile DB query time is above 500ms for {{ $labels.service }}"
+
+  # Resource Alerts
+  - name: resources
+    interval: 30s
+    rules:
+      - alert: HighMemoryUsage
+        expr: |
+          (
+            container_memory_usage_bytes{name=~"orion-.*"}
+            /
+            container_spec_memory_limit_bytes{name=~"orion-.*"}
+          ) > 0.85
+        for: 5m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "High memory usage on {{ $labels.name }}"
+          description: "Container {{ $labels.name }} memory usage is above 85% (current: {{ $value | humanizePercentage }})"
+
+      - alert: HighCPUUsage
+        expr: |
+          rate(container_cpu_usage_seconds_total{name=~"orion-.*"}[5m]) > 0.8
+        for: 10m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "High CPU usage on {{ $labels.name }}"
+          description: "Container {{ $labels.name }} CPU usage is above 80% (current: {{ $value | humanizePercentage }})"
+
+      - alert: DiskSpaceRunningOut
+        expr: |
+          (
+            node_filesystem_avail_bytes{mountpoint="/"}
+            /
+            node_filesystem_size_bytes{mountpoint="/"}
+          ) < 0.1
+        for: 5m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Disk space running out on {{ $labels.instance }}"
+          description: "Available disk space is below 10% on {{ $labels.instance }}"
+
+  # Database Alerts
+  - name: database
+    interval: 30s
+    rules:
+      - alert: PostgresDown
+        expr: pg_up == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: database
+        annotations:
+          summary: "PostgreSQL is down"
+          description: "PostgreSQL database on {{ $labels.instance }} is down"
+          runbook_url: "https://docs.orion.dev/runbooks/postgres-down"
+
+      - alert: HighDatabaseConnections
+        expr: |
+          (
+            pg_stat_database_numbackends
+            /
+            pg_settings_max_connections
+          ) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+          team: database
+        annotations:
+          summary: "High database connection usage"
+          description: "Database connections are above 80% (current: {{ $value | humanizePercentage }})"
+
+      - alert: DatabaseReplicationLag
+        expr: |
+          pg_replication_lag_bytes > 1073741824
+        for: 5m
+        labels:
+          severity: warning
+          team: database
+        annotations:
+          summary: "High replication lag"
+          description: "Replication lag is above 1GB (current: {{ $value | humanize1024 }}B)"
+
+      - alert: DatabaseDeadlocks
+        expr: |
+          rate(pg_stat_database_deadlocks[5m]) > 0
+        for: 2m
+        labels:
+          severity: warning
+          team: database
+        annotations:
+          summary: "Database deadlocks detected"
+          description: "Deadlocks are occurring in database {{ $labels.datname }}"
+
+  # Cache Alerts
+  - name: cache
+    interval: 30s
+    rules:
+      - alert: RedisDown
+        expr: redis_up == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Redis is down"
+          description: "Redis instance {{ $labels.instance }} is down"
+          runbook_url: "https://docs.orion.dev/runbooks/redis-down"
+
+      - alert: LowCacheHitRate
+        expr: |
+          (
+            rate(redis_keyspace_hits_total[5m])
+            /
+            (rate(redis_keyspace_hits_total[5m]) + rate(redis_keyspace_misses_total[5m]))
+          ) < 0.8
+        for: 10m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "Low cache hit rate"
+          description: "Redis cache hit rate is below 80% (current: {{ $value | humanizePercentage }})"
+
+      - alert: HighRedisMemoryUsage
+        expr: |
+          (
+            redis_memory_used_bytes
+            /
+            redis_memory_max_bytes
+          ) > 0.9
+        for: 5m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "High Redis memory usage"
+          description: "Redis memory usage is above 90% (current: {{ $value | humanizePercentage }})"
+
+  # Message Queue Alerts
+  - name: message_queue
+    interval: 30s
+    rules:
+      - alert: RabbitMQDown
+        expr: rabbitmq_up == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: messaging
+        annotations:
+          summary: "RabbitMQ is down"
+          description: "RabbitMQ instance {{ $labels.instance }} is down"
+          runbook_url: "https://docs.orion.dev/runbooks/rabbitmq-down"
+
+      - alert: HighQueueDepth
+        expr: |
+          rabbitmq_queue_messages_ready > 1000
+        for: 10m
+        labels:
+          severity: warning
+          team: messaging
+        annotations:
+          summary: "High queue depth in {{ $labels.queue }}"
+          description: "Queue {{ $labels.queue }} has more than 1000 messages ready (current: {{ $value }})"
+
+      - alert: MessageQueueProcessingStalled
+        expr: |
+          rate(rabbitmq_queue_messages_delivered_total[5m]) == 0
+          and
+          rabbitmq_queue_messages_ready > 0
+        for: 5m
+        labels:
+          severity: critical
+          team: messaging
+        annotations:
+          summary: "Message processing stalled on {{ $labels.queue }}"
+          description: "Queue {{ $labels.queue }} has messages but no consumption activity"
+
+      - alert: HighMessagePublishRate
+        expr: |
+          rate(rabbitmq_queue_messages_published_total[5m]) > 100
+        for: 10m
+        labels:
+          severity: info
+          team: messaging
+        annotations:
+          summary: "High message publish rate"
+          description: "Queue {{ $labels.queue }} is receiving more than 100 msg/s"
+
+  # Business Metrics Alerts
+  - name: business_metrics
+    interval: 1m
+    rules:
+      - alert: HighAuthenticationFailureRate
+        expr: |
+          (
+            sum(rate(auth_attempts_total{status="failed"}[5m]))
+            /
+            sum(rate(auth_attempts_total[5m]))
+          ) > 0.2
+        for: 5m
+        labels:
+          severity: warning
+          team: security
+        annotations:
+          summary: "High authentication failure rate"
+          description: "Authentication failure rate is above 20% (current: {{ $value | humanizePercentage }})"
+          runbook_url: "https://docs.orion.dev/runbooks/high-auth-failures"
+
+      - alert: NotificationDeliveryFailures
+        expr: |
+          rate(notifications_sent_total{status="failed"}[5m]) > 1
+        for: 10m
+        labels:
+          severity: warning
+          team: messaging
+        annotations:
+          summary: "Notification delivery failures"
+          description: "More than 1 notification/s is failing to deliver"
+
+      - alert: NoUserRegistrations
+        expr: |
+          rate(users_created_total[1h]) == 0
+        for: 2h
+        labels:
+          severity: info
+          team: product
+        annotations:
+          summary: "No user registrations"
+          description: "No new users have registered in the last 2 hours"
+
+  # Security Alerts
+  - name: security
+    interval: 30s
+    rules:
+      - alert: TooManyLoginAttempts
+        expr: |
+          sum(rate(auth_attempts_total{status="failed"}[5m])) by (ip) > 5
+        for: 2m
+        labels:
+          severity: warning
+          team: security
+        annotations:
+          summary: "Too many login attempts from {{ $labels.ip }}"
+          description: "IP {{ $labels.ip }} has more than 5 failed login attempts per second"
+          runbook_url: "https://docs.orion.dev/runbooks/brute-force-attack"
+
+      - alert: UnauthorizedAccessAttempts
+        expr: |
+          rate(http_requests_total{status="401"}[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+          team: security
+        annotations:
+          summary: "High rate of unauthorized access attempts"
+          description: "More than 10 unauthorized requests/s detected on {{ $labels.service }}"
+
+  # SLA Alerts
+  - name: sla
+    interval: 1m
+    rules:
+      - alert: SLOViolation
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"2.."}[1h]))
+            /
+            sum(rate(http_requests_total[1h]))
+          ) < 0.995
+        for: 5m
+        labels:
+          severity: critical
+          team: platform
+        annotations:
+          summary: "SLO violation - availability below 99.5%"
+          description: "Service availability is below SLO target (current: {{ $value | humanizePercentage }})"
+
+      - alert: LatencySLOViolation
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket[1h])) by (le)
+          ) > 0.5
+        for: 10m
+        labels:
+          severity: critical
+          team: platform
+        annotations:
+          summary: "Latency SLO violation"
+          description: "95th percentile latency is above 500ms (current: {{ $value }}s)"

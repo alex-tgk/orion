@@ -1,0 +1,83 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: user-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: user-service
+    app.kubernetes.io/component: virtualservice
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  hosts:
+  - "user.orion.example.com"
+  - "user-service"
+  - "user-service.orion.svc.cluster.local"
+
+  gateways:
+  - orion-gateway
+  - mesh
+
+  http:
+  # Health check
+  - name: "health-check"
+    match:
+    - uri:
+        exact: /api/users/health
+    route:
+    - destination:
+        host: user-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 5s
+
+  # User profile endpoints
+  - name: "user-profile"
+    match:
+    - uri:
+        prefix: /api/users/profile
+    route:
+    - destination:
+        host: user-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 10s
+    retries:
+      attempts: 3
+      perTryTimeout: 5s
+      retryOn: 5xx,reset
+    headers:
+      request:
+        add:
+          x-service: user-service
+
+  # User search with caching
+  - name: "user-search"
+    match:
+    - uri:
+        prefix: /api/users/search
+    route:
+    - destination:
+        host: user-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 8s
+    headers:
+      response:
+        add:
+          Cache-Control: "public, max-age=300"
+
+  # Default user service routes
+  - name: "default"
+    route:
+    - destination:
+        host: user-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 15s
+    retries:
+      attempts: 2
+      perTryTimeout: 7s

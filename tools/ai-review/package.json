@@ -1,0 +1,54 @@
+{
+  "name": "@orion/ai-review",
+  "version": "1.0.0",
+  "description": "AI-powered code review engine for ORION",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "eslint src --ext .ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "bin": {
+    "ai-review": "./dist/cli.js"
+  },
+  "keywords": [
+    "ai",
+    "code-review",
+    "claude",
+    "static-analysis",
+    "automation"
+  ],
+  "author": "ORION Team",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.20.0",
+    "@octokit/rest": "^20.0.0",
+    "axios": "^1.6.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.0",
+    "glob": "^10.3.0",
+    "lodash": "^4.17.21",
+    "ora": "^8.0.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "yaml": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

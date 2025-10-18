@@ -1,0 +1,68 @@
+{
+  "name": "ab-testing",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ab-testing/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/packages/ab-testing",
+        "main": "packages/ab-testing/src/main.ts",
+        "tsConfig": "packages/ab-testing/tsconfig.app.json",
+        "webpackConfig": "packages/ab-testing/webpack.config.js",
+        "assets": ["packages/ab-testing/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "packages/ab-testing/src/environments/environment.ts",
+              "with": "packages/ab-testing/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "ab-testing:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ab-testing:build:development"
+        },
+        "production": {
+          "buildTarget": "ab-testing:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/ab-testing/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "tags": ["type:service", "scope:ab-testing"]
+}

@@ -1,0 +1,168 @@
+{
+  "documentation": {
+    "standards": {
+      "style": "technical",
+      "tone": "professional",
+      "targetAudience": ["developers", "architects", "operators"],
+      "complexity": "intermediate-to-advanced"
+    },
+    "structure": {
+      "readme": {
+        "sections": [
+          "overview",
+          "features",
+          "installation",
+          "usage",
+          "api",
+          "configuration",
+          "examples",
+          "troubleshooting",
+          "contributing",
+          "license"
+        ],
+        "maxLength": 5000,
+        "includeTableOfContents": true,
+        "includeBadges": true
+      },
+      "api": {
+        "format": "openapi-3.0",
+        "includeExamples": true,
+        "includeSchemas": true,
+        "groupByController": true,
+        "includeAuthentication": true
+      },
+      "jsdoc": {
+        "includeExamples": true,
+        "includeTypeInfo": true,
+        "includeComplexity": false,
+        "includeAuthor": true,
+        "includeSince": true
+      },
+      "adr": {
+        "template": "madr-3.0",
+        "numbering": "sequential",
+        "status": ["proposed", "accepted", "deprecated", "superseded"]
+      }
+    },
+    "quality": {
+      "coverage": {
+        "minimum": 80,
+        "targets": {
+          "publicApi": 100,
+          "exports": 95,
+          "interfaces": 90,
+          "types": 85
+        }
+      },
+      "freshness": {
+        "maxAgeDays": 30,
+        "autoUpdateOnCodeChange": true,
+        "warnOnDrift": true
+      },
+      "completeness": {
+        "requireDescription": true,
+        "requireExamples": true,
+        "requireReturnTypes": true,
+        "requireParamDocs": true
+      }
+    },
+    "generation": {
+      "ai": {
+        "enabled": true,
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022",
+        "temperature": 0.3,
+        "maxTokens": 2000,
+        "features": {
+          "naturalLanguageDescriptions": true,
+          "codeExamples": true,
+          "troubleshooting": true,
+          "bestPractices": true,
+          "migrationGuides": true
+        }
+      },
+      "templates": {
+        "readme": "templates/readme.hbs",
+        "api": "templates/api.hbs",
+        "jsdoc": "templates/jsdoc.hbs",
+        "changelog": "templates/changelog.hbs",
+        "migration": "templates/migration.hbs",
+        "adr": "templates/adr.hbs"
+      },
+      "output": {
+        "formats": ["markdown", "html", "json"],
+        "destinations": {
+          "readme": "{packageRoot}/README.md",
+          "api": "docs/api/{serviceName}.md",
+          "types": "docs/types/{packageName}.md",
+          "changelog": "{packageRoot}/CHANGELOG.md",
+          "adr": "docs/architecture/decisions"
+        }
+      }
+    },
+    "analysis": {
+      "codePatterns": {
+        "controllers": ["@Controller", "@Get", "@Post", "@Put", "@Delete", "@Patch"],
+        "services": ["@Injectable"],
+        "modules": ["@Module"],
+        "decorators": ["@ApiTags", "@ApiOperation", "@ApiResponse"],
+        "dtos": ["class.*Dto", "class.*Request", "class.*Response"],
+        "interfaces": ["interface I.*", "type T.*"]
+      },
+      "extractors": {
+        "jsdoc": true,
+        "typeScript": true,
+        "decorators": true,
+        "imports": true,
+        "exports": true
+      },
+      "dependencies": {
+        "track": true,
+        "includeVersions": true,
+        "detectCircular": true
+      }
+    },
+    "validation": {
+      "rules": {
+        "noEmptyDescriptions": true,
+        "noPlaceholders": true,
+        "validMarkdown": true,
+        "validLinks": true,
+        "consistentFormatting": true,
+        "codeBlocksHaveLanguage": true
+      },
+      "autofix": true,
+      "reportFormat": "json"
+    },
+    "changelog": {
+      "conventional": true,
+      "groupBy": "type",
+      "types": {
+        "feat": "Features",
+        "fix": "Bug Fixes",
+        "perf": "Performance Improvements",
+        "refactor": "Code Refactoring",
+        "docs": "Documentation",
+        "style": "Styles",
+        "test": "Tests",
+        "build": "Build System",
+        "ci": "Continuous Integration",
+        "chore": "Chores"
+      },
+      "includeCommitLinks": true,
+      "includeIssueLinks": true
+    },
+    "diagrams": {
+      "enabled": true,
+      "formats": ["mermaid", "plantuml"],
+      "types": {
+        "architecture": true,
+        "sequence": true,
+        "classHierarchy": true,
+        "dependencyGraph": true,
+        "flowcharts": true
+      },
+      "autoGenerate": true
+    }
+  }
+}

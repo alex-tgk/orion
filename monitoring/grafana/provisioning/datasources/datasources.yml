@@ -1,0 +1,139 @@
+# Grafana Datasources Configuration
+# Auto-provision datasources on startup
+
+apiVersion: 1
+
+datasources:
+  # Prometheus datasource for metrics
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+    jsonData:
+      httpMethod: POST
+      timeInterval: 15s
+      queryTimeout: 60s
+      # Custom headers
+      customQueryParameters: ''
+      # Enable Exemplars support
+      exemplarTraceIdDestinations:
+        - name: trace_id
+          datasourceUid: tempo
+    version: 1
+
+  # Loki datasource for logs
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    editable: true
+    jsonData:
+      maxLines: 1000
+      derivedFields:
+        # Extract trace ID from logs and link to Tempo
+        - datasourceUid: tempo
+          matcherRegex: "trace_id=(\\w+)"
+          name: TraceID
+          url: '$${__value.raw}'
+    version: 1
+
+  # Tempo datasource for traces
+  - name: Tempo
+    type: tempo
+    access: proxy
+    url: http://tempo:3200
+    editable: true
+    jsonData:
+      httpMethod: GET
+      # Link traces back to logs
+      tracesToLogs:
+        datasourceUid: loki
+        tags: ['service', 'instance']
+        mappedTags: [{ key: 'service.name', value: 'service' }]
+        mapTagNamesEnabled: true
+        spanStartTimeShift: '1h'
+        spanEndTimeShift: '1h'
+        filterByTraceID: true
+        filterBySpanID: false
+      # Link traces to metrics
+      tracesToMetrics:
+        datasourceUid: prometheus
+        tags: [{ key: 'service.name', value: 'service' }]
+        queries:
+          - name: 'Request Rate'
+            query: 'sum(rate(http_requests_total{$$__tags}[5m]))'
+      # Service graph
+      serviceMap:
+        datasourceUid: prometheus
+      # Node graph
+      nodeGraph:
+        enabled: true
+      # Search configuration
+      search:
+        hide: false
+      # Trace to logs configuration
+      lokiSearch:
+        datasourceUid: loki
+    version: 1
+
+  # Elasticsearch datasource for logs (alternative to Loki)
+  - name: Elasticsearch
+    type: elasticsearch
+    access: proxy
+    url: http://elasticsearch:9200
+    database: '[logs-]YYYY.MM.DD'
+    editable: true
+    jsonData:
+      esVersion: '8.0.0'
+      timeField: '@timestamp'
+      logMessageField: 'message'
+      logLevelField: 'level'
+      interval: Daily
+      # Index pattern
+      index: 'logs-*'
+      # Maximum concurrent shard requests
+      maxConcurrentShardRequests: 5
+    version: 1
+
+  # Jaeger datasource (alternative to Tempo)
+  - name: Jaeger
+    type: jaeger
+    access: proxy
+    url: http://jaeger-query:16686
+    editable: true
+    jsonData:
+      tracesToLogs:
+        datasourceUid: loki
+        tags: ['service', 'instance']
+        mappedTags: [{ key: 'service.name', value: 'service' }]
+        mapTagNamesEnabled: true
+        spanStartTimeShift: '1h'
+        spanEndTimeShift: '1h'
+        filterByTraceID: true
+    version: 1
+
+  # PostgreSQL datasource for direct database queries
+  - name: PostgreSQL
+    type: postgres
+    access: proxy
+    url: postgres:5432
+    database: '${DB_NAME:-orion_dev}'
+    user: '${DB_USER:-orion}'
+    editable: false
+    jsonData:
+      sslmode: 'disable'
+      maxOpenConns: 10
+      maxIdleConns: 10
+      connMaxLifetime: 14400
+      postgresVersion: 1600
+      timescaledb: false
+    secureJsonData:
+      password: '${DB_PASSWORD:-orion_dev}'
+    version: 1
+
+# Delete datasources that are not in this file
+deleteDatasources:
+  - name: TestData
+    orgId: 1

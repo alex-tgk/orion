@@ -1,0 +1,100 @@
+{
+  "title": "ORION Kubernetes Cluster",
+  "uid": "orion-kubernetes-cluster",
+  "tags": ["orion", "kubernetes", "infrastructure"],
+  "refresh": "10s",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Cluster CPU Usage",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "targets": [
+        {"expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"orion\"}[5m])) by (pod) * 100"}
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Cluster Memory Usage",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "targets": [
+        {"expr": "sum(container_memory_usage_bytes{namespace=\"orion\"}) by (pod)"}
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Pod Count",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 8},
+      "targets": [
+        {"expr": "count(kube_pod_info{namespace=\"orion\"})"}
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Running Pods",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 8},
+      "targets": [
+        {"expr": "sum(kube_pod_status_phase{namespace=\"orion\",phase=\"Running\"})"}
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Failed Pods",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 8},
+      "targets": [
+        {"expr": "sum(kube_pod_status_phase{namespace=\"orion\",phase=\"Failed\"})"}
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Pending Pods",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 8},
+      "targets": [
+        {"expr": "sum(kube_pod_status_phase{namespace=\"orion\",phase=\"Pending\"})"}
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Network I/O",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+      "targets": [
+        {"expr": "sum(rate(container_network_receive_bytes_total{namespace=\"orion\"}[5m])) by (pod)", "legendFormat": "Receive - {{pod}}"},
+        {"expr": "sum(rate(container_network_transmit_bytes_total{namespace=\"orion\"}[5m])) by (pod)", "legendFormat": "Transmit - {{pod}}"}
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Disk I/O",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+      "targets": [
+        {"expr": "sum(rate(container_fs_reads_bytes_total{namespace=\"orion\"}[5m])) by (pod)", "legendFormat": "Read - {{pod}}"},
+        {"expr": "sum(rate(container_fs_writes_bytes_total{namespace=\"orion\"}[5m])) by (pod)", "legendFormat": "Write - {{pod}}"}
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Pod Restarts",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 20},
+      "targets": [
+        {"expr": "sum(kube_pod_container_status_restarts_total{namespace=\"orion\"}) by (pod)"}
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Resource Quotas",
+      "type": "table",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 20},
+      "targets": [
+        {"expr": "kube_resourcequota{namespace=\"orion\"}", "format": "table", "instant": true}
+      ]
+    }
+  ]
+}

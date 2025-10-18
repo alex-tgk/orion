@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: orion
+
+resources:
+# Gateway configuration
+- gateway.yaml
+
+# Virtual Services
+- virtual-services/auth-virtualservice.yaml
+- virtual-services/gateway-virtualservice.yaml
+- virtual-services/user-virtualservice.yaml
+- virtual-services/notification-virtualservice.yaml
+- virtual-services/admin-ui-virtualservice.yaml
+
+# Destination Rules
+- destination-rules/auth-destinationrule.yaml
+- destination-rules/gateway-destinationrule.yaml
+- destination-rules/user-destinationrule.yaml
+- destination-rules/notification-destinationrule.yaml
+- destination-rules/admin-ui-destinationrule.yaml
+
+# Telemetry and Security
+- telemetry.yaml
+- peer-authentication.yaml
+
+commonLabels:
+  app.kubernetes.io/managed-by: kustomize
+  app.kubernetes.io/part-of: orion-service-mesh
+  app.kubernetes.io/component: service-mesh
+
+# Configuration for different environments can be added here
+# Images, replicas, and other environment-specific settings
+# can be overridden in overlays

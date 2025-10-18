@@ -1,0 +1,85 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: notification-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/component: virtualservice
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  hosts:
+  - "notifications.orion.example.com"
+  - "notification-service"
+  - "notification-service.orion.svc.cluster.local"
+
+  gateways:
+  - orion-gateway
+  - mesh
+
+  http:
+  # Health check
+  - name: "health-check"
+    match:
+    - uri:
+        exact: /api/notifications/health
+    route:
+    - destination:
+        host: notification-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 5s
+
+  # WebSocket connections for real-time notifications
+  - name: "websocket"
+    match:
+    - uri:
+        prefix: /api/notifications/ws
+    route:
+    - destination:
+        host: notification-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 0s # No timeout for WebSocket connections
+    websocketUpgrade: true
+
+  # Send notification endpoint (async)
+  - name: "send-notification"
+    match:
+    - uri:
+        prefix: /api/notifications/send
+    route:
+    - destination:
+        host: notification-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 5s # Fast timeout for async operations
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+
+  # Get user notifications (with pagination)
+  - name: "get-notifications"
+    match:
+    - uri:
+        prefix: /api/notifications/user
+    route:
+    - destination:
+        host: notification-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 10s
+
+  # Default route
+  - name: "default"
+    route:
+    - destination:
+        host: notification-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 15s

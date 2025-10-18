@@ -1,0 +1,490 @@
+// Cost Tracking Service Database Schema
+// Tracks resource usage and costs across the platform
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/cost-tracking"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("COST_TRACKING_DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum ResourceType {
+  KUBERNETES_CPU
+  KUBERNETES_MEMORY
+  KUBERNETES_STORAGE
+  DATABASE_STORAGE
+  DATABASE_IOPS
+  DATABASE_CONNECTIONS
+  API_GATEWAY_REQUESTS
+  API_GATEWAY_BANDWIDTH
+  EXTERNAL_API_CALLS
+  BUILD_MINUTES
+  OBJECT_STORAGE
+  CDN_BANDWIDTH
+  LOGS_STORAGE
+  METRICS_STORAGE
+  BACKUP_STORAGE
+  EGRESS_BANDWIDTH
+  INGRESS_BANDWIDTH
+  LOAD_BALANCER
+  IP_ADDRESS
+  DNS_QUERIES
+}
+
+enum CostPeriod {
+  HOURLY
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+enum AlertStatus {
+  ACTIVE
+  ACKNOWLEDGED
+  RESOLVED
+  EXPIRED
+}
+
+enum AlertSeverity {
+  INFO
+  WARNING
+  CRITICAL
+}
+
+enum CostCategory {
+  COMPUTE
+  STORAGE
+  NETWORK
+  DATABASE
+  MONITORING
+  LOGGING
+  SECURITY
+  CI_CD
+  EXTERNAL_SERVICES
+  OTHER
+}
+
+// ============================================================================
+// COST METRICS
+// ============================================================================
+
+model CostMetric {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Time information
+  timestamp     DateTime     @db.Timestamptz
+  period        CostPeriod
+  periodStart   DateTime     @map("period_start") @db.Timestamptz
+  periodEnd     DateTime     @map("period_end") @db.Timestamptz
+
+  // Resource information
+  resourceType  ResourceType @map("resource_type")
+  resourceId    String?      @map("resource_id") @db.VarChar(255)
+  resourceName  String?      @map("resource_name") @db.VarChar(255)
+
+  // Service/Team allocation
+  serviceName   String?      @map("service_name") @db.VarChar(100)
+  namespace     String?      @db.VarChar(100)
+  team          String?      @db.VarChar(100)
+  environment   String?      @db.VarChar(50) // dev, staging, production
+
+  // Cost calculation
+  quantity      Float        // Amount of resource used
+  unit          String       @db.VarChar(50) // cores, GB, requests, etc.
+  unitPrice     Float        @map("unit_price") @db.DoublePrecision // Cost per unit
+  totalCost     Float        @map("total_cost") @db.DoublePrecision
+  currency      String       @default("USD") @db.VarChar(3)
+
+  // Cost category
+  category      CostCategory
+
+  // Cloud provider info
+  provider      String?      @db.VarChar(50) // aws, gcp, azure, on-premise
+  region        String?      @db.VarChar(100)
+  zone          String?      @db.VarChar(100)
+
+  // Tags for filtering
+  tags          Json         @default("{}") @db.JsonB
+  labels        Json         @default("{}") @db.JsonB
+
+  // Metadata
+  metadata      Json         @default("{}") @db.JsonB
+  notes         String?      @db.Text
+
+  // Audit
+  createdAt     DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime     @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([timestamp])
+  @@index([period])
+  @@index([resourceType])
+  @@index([serviceName])
+  @@index([namespace])
+  @@index([team])
+  @@index([environment])
+  @@index([category])
+  @@index([provider])
+  @@index([periodStart, periodEnd])
+  @@index([serviceName, timestamp])
+  @@index([team, timestamp])
+  @@map("cost_metrics")
+}
+
+// ============================================================================
+// RESOURCE USAGE
+// ============================================================================
+
+model ResourceUsage {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Time information
+  timestamp     DateTime     @db.Timestamptz
+  collectedAt   DateTime     @default(now()) @map("collected_at") @db.Timestamptz
+
+  // Resource identification
+  resourceType  ResourceType @map("resource_type")
+  resourceId    String       @map("resource_id") @db.VarChar(255)
+  resourceName  String       @map("resource_name") @db.VarChar(255)
+
+  // Service/Team allocation
+  serviceName   String?      @map("service_name") @db.VarChar(100)
+  namespace     String?      @db.VarChar(100)
+  podName       String?      @map("pod_name") @db.VarChar(255)
+  containerName String?      @map("container_name") @db.VarChar(255)
+
+  // Usage metrics
+  usage         Float        @db.DoublePrecision // Current usage
+  capacity      Float?       @db.DoublePrecision // Total capacity
+  requested     Float?       @db.DoublePrecision // Requested amount
+  limit         Float?       @db.DoublePrecision // Limit
+  unit          String       @db.VarChar(50)
+
+  // Utilization percentage
+  utilizationPercent Float?   @map("utilization_percent") @db.DoublePrecision
+
+  // Peak tracking
+  isPeak        Boolean      @default(false) @map("is_peak")
+  peakTimestamp DateTime?    @map("peak_timestamp") @db.Timestamptz
+
+  // Tags and labels
+  tags          Json         @default("{}") @db.JsonB
+  labels        Json         @default("{}") @db.JsonB
+
+  // Metadata
+  metadata      Json         @default("{}") @db.JsonB
+
+  @@index([timestamp])
+  @@index([resourceType])
+  @@index([resourceId])
+  @@index([serviceName])
+  @@index([namespace])
+  @@index([podName])
+  @@index([isPeak])
+  @@index([serviceName, timestamp])
+  @@index([resourceId, timestamp])
+  @@map("resource_usage")
+}
+
+// ============================================================================
+// COST ALLOCATION
+// ============================================================================
+
+model CostAllocation {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Allocation period
+  periodStart   DateTime     @map("period_start") @db.Timestamptz
+  periodEnd     DateTime     @map("period_end") @db.Timestamptz
+  period        CostPeriod
+
+  // Allocation target
+  allocationType String      @map("allocation_type") @db.VarChar(50) // service, team, namespace, project
+  allocationKey  String      @map("allocation_key") @db.VarChar(255)
+  allocationName String      @map("allocation_name") @db.VarChar(255)
+
+  // Cost breakdown by category
+  computeCost     Float      @default(0) @map("compute_cost") @db.DoublePrecision
+  storageCost     Float      @default(0) @map("storage_cost") @db.DoublePrecision
+  networkCost     Float      @default(0) @map("network_cost") @db.DoublePrecision
+  databaseCost    Float      @default(0) @map("database_cost") @db.DoublePrecision
+  monitoringCost  Float      @default(0) @map("monitoring_cost") @db.DoublePrecision
+  loggingCost     Float      @default(0) @map("logging_cost") @db.DoublePrecision
+  securityCost    Float      @default(0) @map("security_cost") @db.DoublePrecision
+  cicdCost        Float      @default(0) @map("cicd_cost") @db.DoublePrecision
+  externalCost    Float      @default(0) @map("external_cost") @db.DoublePrecision
+  otherCost       Float      @default(0) @map("other_cost") @db.DoublePrecision
+
+  // Total
+  totalCost       Float      @map("total_cost") @db.DoublePrecision
+  currency        String     @default("USD") @db.VarChar(3)
+
+  // Budget comparison
+  budgetAmount    Float?     @map("budget_amount") @db.DoublePrecision
+  budgetVariance  Float?     @map("budget_variance") @db.DoublePrecision // totalCost - budgetAmount
+  budgetVariancePercent Float? @map("budget_variance_percent") @db.DoublePrecision
+
+  // Cost trends
+  previousPeriodCost Float?  @map("previous_period_cost") @db.DoublePrecision
+  costChange         Float?  @map("cost_change") @db.DoublePrecision
+  costChangePercent  Float?  @map("cost_change_percent") @db.DoublePrecision
+
+  // Metadata
+  metadata        Json       @default("{}") @db.JsonB
+  tags            Json       @default("{}") @db.JsonB
+
+  // Audit
+  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime   @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@unique([periodStart, periodEnd, allocationType, allocationKey])
+  @@index([periodStart, periodEnd])
+  @@index([allocationType])
+  @@index([allocationKey])
+  @@index([period])
+  @@index([totalCost])
+  @@map("cost_allocations")
+}
+
+// ============================================================================
+// COST BUDGETS
+// ============================================================================
+
+model CostBudget {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Budget identification
+  name          String       @db.VarChar(255)
+  description   String?      @db.Text
+
+  // Budget scope
+  budgetType    String       @map("budget_type") @db.VarChar(50) // service, team, namespace, global
+  budgetKey     String       @map("budget_key") @db.VarChar(255)
+  budgetName    String       @map("budget_name") @db.VarChar(255)
+
+  // Budget period
+  period        CostPeriod
+  startDate     DateTime     @map("start_date") @db.Timestamptz
+  endDate       DateTime?    @map("end_date") @db.Timestamptz // null for recurring budgets
+
+  // Budget amounts
+  amount        Float        @db.DoublePrecision
+  currency      String       @default("USD") @db.VarChar(3)
+
+  // Alert thresholds (percentage of budget)
+  warningThreshold   Float?   @default(80) @map("warning_threshold") @db.DoublePrecision
+  criticalThreshold  Float?   @default(95) @map("critical_threshold") @db.DoublePrecision
+
+  // Current status
+  isActive      Boolean      @default(true) @map("is_active")
+  currentSpend  Float        @default(0) @map("current_spend") @db.DoublePrecision
+  remainingBudget Float      @default(0) @map("remaining_budget") @db.DoublePrecision
+  spendPercent  Float        @default(0) @map("spend_percent") @db.DoublePrecision
+
+  // Notifications
+  notifyOnWarning   Boolean  @default(true) @map("notify_on_warning")
+  notifyOnCritical  Boolean  @default(true) @map("notify_on_critical")
+  notifyOnExceeded  Boolean  @default(true) @map("notify_on_exceeded")
+  notificationEmails String[] @map("notification_emails")
+  notificationSlack  String?  @map("notification_slack") @db.VarChar(255)
+
+  // Metadata
+  metadata      Json         @default("{}") @db.JsonB
+  tags          Json         @default("{}") @db.JsonB
+
+  // Owner
+  createdBy     String?      @map("created_by") @db.Uuid
+  updatedBy     String?      @map("updated_by") @db.Uuid
+
+  // Audit
+  createdAt     DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime     @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  alerts        CostAlert[]
+
+  @@index([budgetType])
+  @@index([budgetKey])
+  @@index([isActive])
+  @@index([period])
+  @@index([startDate, endDate])
+  @@index([spendPercent])
+  @@map("cost_budgets")
+}
+
+// ============================================================================
+// COST ALERTS
+// ============================================================================
+
+model CostAlert {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Alert identification
+  title         String       @db.VarChar(255)
+  description   String       @db.Text
+  alertType     String       @map("alert_type") @db.VarChar(50) // budget_warning, budget_exceeded, anomaly, etc.
+  severity      AlertSeverity
+  status        AlertStatus  @default(ACTIVE)
+
+  // Budget reference (if applicable)
+  budgetId      String?      @map("budget_id") @db.Uuid
+  budget        CostBudget?  @relation(fields: [budgetId], references: [id])
+
+  // Alert details
+  currentValue  Float        @map("current_value") @db.DoublePrecision
+  thresholdValue Float       @map("threshold_value") @db.DoublePrecision
+  variance      Float        @db.DoublePrecision
+  variancePercent Float      @map("variance_percent") @db.DoublePrecision
+
+  // Scope
+  serviceName   String?      @map("service_name") @db.VarChar(100)
+  namespace     String?      @db.VarChar(100)
+  team          String?      @db.VarChar(100)
+  environment   String?      @db.VarChar(50)
+
+  // Notification tracking
+  notifiedAt    DateTime?    @map("notified_at") @db.Timestamptz
+  notifiedTo    String[]     @map("notified_to")
+  notificationCount Int      @default(0) @map("notification_count")
+
+  // Resolution
+  acknowledgedAt DateTime?   @map("acknowledged_at") @db.Timestamptz
+  acknowledgedBy String?     @map("acknowledged_by") @db.Uuid
+  resolvedAt     DateTime?   @map("resolved_at") @db.Timestamptz
+  resolvedBy     String?     @map("resolved_by") @db.Uuid
+  resolutionNotes String?    @map("resolution_notes") @db.Text
+
+  // Auto-resolution
+  expiresAt     DateTime?    @map("expires_at") @db.Timestamptz
+
+  // Metadata
+  metadata      Json         @default("{}") @db.JsonB
+  tags          Json         @default("{}") @db.JsonB
+
+  // Audit
+  createdAt     DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime     @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([budgetId])
+  @@index([alertType])
+  @@index([severity])
+  @@index([status])
+  @@index([serviceName])
+  @@index([namespace])
+  @@index([team])
+  @@index([createdAt])
+  @@index([status, severity])
+  @@map("cost_alerts")
+}
+
+// ============================================================================
+// COST FORECASTS
+// ============================================================================
+
+model CostForecast {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Forecast period
+  forecastDate  DateTime     @map("forecast_date") @db.Timestamptz
+  periodStart   DateTime     @map("period_start") @db.Timestamptz
+  periodEnd     DateTime     @map("period_end") @db.Timestamptz
+  period        CostPeriod
+
+  // Forecast scope
+  forecastType  String       @map("forecast_type") @db.VarChar(50) // service, team, global
+  forecastKey   String?      @map("forecast_key") @db.VarChar(255)
+
+  // Forecast amounts
+  predictedCost Float        @map("predicted_cost") @db.DoublePrecision
+  lowerBound    Float        @map("lower_bound") @db.DoublePrecision // 95% confidence interval
+  upperBound    Float        @map("upper_bound") @db.DoublePrecision // 95% confidence interval
+  confidence    Float        @db.DoublePrecision // 0-1
+
+  // Historical comparison
+  actualCost    Float?       @map("actual_cost") @db.DoublePrecision // Filled in when period completes
+  accuracy      Float?       @db.DoublePrecision // How accurate was the forecast
+
+  // Forecast method
+  method        String       @db.VarChar(50) // linear_regression, arima, prophet, etc.
+  modelVersion  String?      @map("model_version") @db.VarChar(50)
+
+  // Metadata
+  metadata      Json         @default("{}") @db.JsonB
+
+  // Audit
+  createdAt     DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime     @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([forecastDate])
+  @@index([periodStart, periodEnd])
+  @@index([forecastType])
+  @@index([forecastKey])
+  @@map("cost_forecasts")
+}
+
+// ============================================================================
+// COST OPTIMIZATION RECOMMENDATIONS
+// ============================================================================
+
+model CostOptimization {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Recommendation details
+  title         String       @db.VarChar(255)
+  description   String       @db.Text
+  category      CostCategory
+
+  // Impact
+  potentialSavings Float      @map("potential_savings") @db.DoublePrecision
+  savingsPercent   Float      @map("savings_percent") @db.DoublePrecision
+  priority         Int        @default(1) // 1-5, 5 being highest
+
+  // Resource information
+  resourceType  ResourceType? @map("resource_type")
+  resourceId    String?       @map("resource_id") @db.VarChar(255)
+  resourceName  String?       @map("resource_name") @db.VarChar(255)
+  serviceName   String?       @map("service_name") @db.VarChar(100)
+  namespace     String?       @db.VarChar(100)
+
+  // Recommendation action
+  action        String       @db.VarChar(100) // right_size, terminate, consolidate, etc.
+  actionDetails Json         @map("action_details") @db.JsonB
+
+  // Implementation
+  isImplemented Boolean      @default(false) @map("is_implemented")
+  implementedAt DateTime?    @map("implemented_at") @db.Timestamptz
+  implementedBy String?      @map("implemented_by") @db.Uuid
+
+  // Dismissal
+  isDismissed   Boolean      @default(false) @map("is_dismissed")
+  dismissedAt   DateTime?    @map("dismissed_at") @db.Timestamptz
+  dismissedBy   String?      @map("dismissed_by") @db.Uuid
+  dismissReason String?      @map("dismiss_reason") @db.Text
+
+  // Validation
+  actualSavings Float?       @map("actual_savings") @db.DoublePrecision
+  validatedAt   DateTime?    @map("validated_at") @db.Timestamptz
+
+  // Metadata
+  metadata      Json         @default("{}") @db.JsonB
+  tags          Json         @default("{}") @db.JsonB
+
+  // Audit
+  createdAt     DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime     @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([category])
+  @@index([priority])
+  @@index([isImplemented])
+  @@index([isDismissed])
+  @@index([serviceName])
+  @@index([potentialSavings])
+  @@map("cost_optimizations")
+}

@@ -1,0 +1,65 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: notification-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: notification-service
+    app.kubernetes.io/component: destinationrule
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  host: notification-service.orion.svc.cluster.local
+
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 200 # Higher for WebSocket connections
+        connectTimeout: 30s
+        tcpKeepalive:
+          time: 600s # Shorter keepalive for WebSockets
+          interval: 30s
+      http:
+        http1MaxPendingRequests: 200
+        http2MaxRequests: 2000
+        maxRequestsPerConnection: 0 # Unlimited for long-lived connections
+        maxRetries: 2 # Fewer retries for async operations
+        idleTimeout: 7200s # Longer timeout for WebSocket
+
+    loadBalancer:
+      consistentHash:
+        httpHeaderName: "x-user-id" # Sticky sessions for WebSocket
+      localityLbSetting:
+        enabled: true
+
+    outlierDetection:
+      consecutiveErrors: 10 # More tolerant for async service
+      interval: 60s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50
+      minHealthPercent: 50
+      consecutiveGatewayErrors: 10
+
+    tls:
+      mode: ISTIO_MUTUAL
+      sni: notification-service.orion.svc.cluster.local
+
+  subsets:
+  - name: stable
+    labels:
+      version: stable
+
+  - name: canary
+    labels:
+      version: canary
+    trafficPolicy:
+      outlierDetection:
+        consecutiveErrors: 5
+        baseEjectionTime: 60s
+
+  - name: v1
+    labels:
+      version: v1
+
+  - name: v2
+    labels:
+      version: v2

@@ -1,0 +1,329 @@
+name: Performance Check
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'packages/**/*.ts'
+      - 'packages/**/package.json'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  performance-analysis:
+    name: Analyze Performance Impact
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build affected services
+        run: pnpm nx affected:build --base=origin/main --head=HEAD
+
+      - name: Run performance analysis (PR branch)
+        id: perf-pr
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          mkdir -p tmp/performance
+
+          # Analyze affected services
+          AFFECTED=$(pnpm nx show projects --affected --base=origin/main --head=HEAD)
+
+          echo "Affected services: $AFFECTED"
+          echo "affected=$AFFECTED" >> $GITHUB_OUTPUT
+
+          # Run performance analyzer on each affected service
+          for service in $AFFECTED; do
+            if [ -d "packages/$service" ]; then
+              echo "Analyzing $service..."
+              node -r ts-node/register tools/performance-analyzer/cli.ts \
+                --service="packages/$service" \
+                --profile \
+                --detect \
+                --format=json \
+                > "tmp/performance/${service}-pr.json" || true
+            fi
+          done
+
+      - name: Checkout base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
+          clean: false
+
+      - name: Install dependencies (base)
+        run: pnpm install --frozen-lockfile
+
+      - name: Build affected services (base)
+        run: pnpm nx affected:build --base=origin/main~1 --head=origin/main
+
+      - name: Run performance analysis (base branch)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          # Run performance analyzer on base branch
+          AFFECTED="${{ steps.perf-pr.outputs.affected }}"
+
+          for service in $AFFECTED; do
+            if [ -d "packages/$service" ]; then
+              echo "Analyzing $service (base)..."
+              node -r ts-node/register tools/performance-analyzer/cli.ts \
+                --service="packages/$service" \
+                --profile \
+                --detect \
+                --format=json \
+                > "tmp/performance/${service}-base.json" || true
+            fi
+          done
+
+      - name: Compare performance metrics
+        id: compare
+        run: |
+          node -r ts-node/register <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const affected = process.env.AFFECTED.split(/\s+/).filter(Boolean);
+          const results = [];
+
+          for (const service of affected) {
+            const prFile = `tmp/performance/${service}-pr.json`;
+            const baseFile = `tmp/performance/${service}-base.json`;
+
+            if (!fs.existsSync(prFile) || !fs.existsSync(baseFile)) {
+              continue;
+            }
+
+            const prData = JSON.parse(fs.readFileSync(prFile, 'utf-8'));
+            const baseData = JSON.parse(fs.readFileSync(baseFile, 'utf-8'));
+
+            // Compare metrics
+            const cpuDiff = prData.metrics.cpu - baseData.metrics.cpu;
+            const memDiff = prData.metrics.memory - baseData.metrics.memory;
+            const p95Diff = prData.metrics.responseTime.p95 - baseData.metrics.responseTime.p95;
+
+            const issuesDiff = prData.issues.length - baseData.issues.length;
+
+            results.push({
+              service,
+              cpu: { before: baseData.metrics.cpu, after: prData.metrics.cpu, diff: cpuDiff },
+              memory: { before: baseData.metrics.memory, after: prData.metrics.memory, diff: memDiff },
+              responseTime: { before: baseData.metrics.responseTime.p95, after: prData.metrics.responseTime.p95, diff: p95Diff },
+              issues: { before: baseData.issues.length, after: prData.issues.length, diff: issuesDiff },
+              newIssues: prData.issues.filter(i =>
+                !baseData.issues.some(bi => bi.type === i.type && bi.location === i.location)
+              ),
+            });
+          }
+
+          // Save results
+          fs.writeFileSync('tmp/performance/comparison.json', JSON.stringify(results, null, 2));
+
+          // Set output
+          console.log('comparison=' + JSON.stringify(results));
+          EOF
+        env:
+          AFFECTED: ${{ steps.perf-pr.outputs.affected }}
+
+      - name: Generate performance report
+        id: report
+        run: |
+          node -r ts-node/register <<'EOF'
+          const fs = require('fs');
+          const results = JSON.parse(fs.readFileSync('tmp/performance/comparison.json', 'utf-8'));
+
+          let report = '## 🚀 Performance Analysis Report\n\n';
+
+          if (results.length === 0) {
+            report += 'No performance data available for comparison.\n';
+          } else {
+            results.forEach(result => {
+              report += `### ${result.service}\n\n`;
+
+              // Metrics table
+              report += '| Metric | Before | After | Change |\n';
+              report += '|--------|--------|-------|--------|\n';
+
+              const cpuIcon = result.cpu.diff > 5 ? '⚠️' : result.cpu.diff < -5 ? '✅' : '➖';
+              report += `| CPU Usage | ${result.cpu.before.toFixed(2)}% | ${result.cpu.after.toFixed(2)}% | ${cpuIcon} ${result.cpu.diff > 0 ? '+' : ''}${result.cpu.diff.toFixed(2)}% |\n`;
+
+              const memIcon = result.memory.diff > 50 ? '⚠️' : result.memory.diff < -50 ? '✅' : '➖';
+              report += `| Memory | ${result.memory.before.toFixed(2)}MB | ${result.memory.after.toFixed(2)}MB | ${memIcon} ${result.memory.diff > 0 ? '+' : ''}${result.memory.diff.toFixed(2)}MB |\n`;
+
+              const p95Icon = result.responseTime.diff > 50 ? '⚠️' : result.responseTime.diff < -50 ? '✅' : '➖';
+              report += `| Response Time (P95) | ${result.responseTime.before.toFixed(2)}ms | ${result.responseTime.after.toFixed(2)}ms | ${p95Icon} ${result.responseTime.diff > 0 ? '+' : ''}${result.responseTime.diff.toFixed(2)}ms |\n`;
+
+              const issuesIcon = result.issues.diff > 0 ? '⚠️' : result.issues.diff < 0 ? '✅' : '➖';
+              report += `| Issues Detected | ${result.issues.before} | ${result.issues.after} | ${issuesIcon} ${result.issues.diff > 0 ? '+' : ''}${result.issues.diff} |\n`;
+
+              report += '\n';
+
+              // New issues
+              if (result.newIssues.length > 0) {
+                report += '#### 🔍 New Performance Issues\n\n';
+                result.newIssues.forEach(issue => {
+                  const severityIcon = issue.severity === 'critical' ? '🔴' :
+                                     issue.severity === 'high' ? '🟠' :
+                                     issue.severity === 'medium' ? '🟡' : '🟢';
+                  report += `- ${severityIcon} **${issue.type}** (${issue.severity})\n`;
+                  report += `  - Location: \`${issue.location}\`\n`;
+                  report += `  - ${issue.description}\n`;
+                });
+                report += '\n';
+              }
+            });
+
+            // Summary
+            const totalCpuDiff = results.reduce((sum, r) => sum + r.cpu.diff, 0) / results.length;
+            const totalMemDiff = results.reduce((sum, r) => sum + r.memory.diff, 0) / results.length;
+            const totalP95Diff = results.reduce((sum, r) => sum + r.responseTime.diff, 0) / results.length;
+            const totalNewIssues = results.reduce((sum, r) => sum + r.newIssues.length, 0);
+
+            report += '### 📊 Overall Impact\n\n';
+            report += `- Average CPU change: ${totalCpuDiff > 0 ? '+' : ''}${totalCpuDiff.toFixed(2)}%\n`;
+            report += `- Average Memory change: ${totalMemDiff > 0 ? '+' : ''}${totalMemDiff.toFixed(2)}MB\n`;
+            report += `- Average Response Time change: ${totalP95Diff > 0 ? '+' : ''}${totalP95Diff.toFixed(2)}ms\n`;
+            report += `- New performance issues: ${totalNewIssues}\n\n`;
+
+            // Recommendation
+            const hasRegressions = totalCpuDiff > 10 || totalMemDiff > 100 || totalP95Diff > 100 || totalNewIssues > 3;
+
+            if (hasRegressions) {
+              report += '### ⚠️ Recommendation\n\n';
+              report += 'This PR introduces performance regressions. Please review and optimize before merging.\n\n';
+              report += '**Actions to take:**\n';
+              report += '1. Review the performance issues listed above\n';
+              report += '2. Run `npm run perf:suggest` for optimization suggestions\n';
+              report += '3. Benchmark critical paths\n';
+              report += '4. Consider code review focused on performance\n';
+            } else {
+              report += '### ✅ Looks Good!\n\n';
+              report += 'No significant performance regressions detected.\n';
+            }
+          }
+
+          report += '\n---\n';
+          report += '*Performance analysis powered by AI optimization tools*\n';
+
+          // Save report
+          fs.writeFileSync('tmp/performance/report.md', report);
+
+          // Output for GitHub Actions
+          console.log('report<<EOF');
+          console.log(report);
+          console.log('EOF');
+          EOF
+
+      - name: Comment PR with performance report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('tmp/performance/report.md', 'utf-8');
+
+            // Find existing comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('Performance Analysis Report')
+            );
+
+            if (botComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: report,
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: report,
+              });
+            }
+
+      - name: Check performance thresholds
+        run: |
+          node -r ts-node/register <<'EOF'
+          const fs = require('fs');
+          const results = JSON.parse(fs.readFileSync('tmp/performance/comparison.json', 'utf-8'));
+
+          let failed = false;
+
+          results.forEach(result => {
+            // CPU regression threshold: 20%
+            if (result.cpu.diff > 20) {
+              console.error(`❌ ${result.service}: CPU usage increased by ${result.cpu.diff.toFixed(2)}% (threshold: 20%)`);
+              failed = true;
+            }
+
+            // Memory regression threshold: 200MB
+            if (result.memory.diff > 200) {
+              console.error(`❌ ${result.service}: Memory increased by ${result.memory.diff.toFixed(2)}MB (threshold: 200MB)`);
+              failed = true;
+            }
+
+            // Response time regression threshold: 200ms
+            if (result.responseTime.diff > 200) {
+              console.error(`❌ ${result.service}: Response time increased by ${result.responseTime.diff.toFixed(2)}ms (threshold: 200ms)`);
+              failed = true;
+            }
+
+            // Critical issues
+            const criticalIssues = result.newIssues.filter(i => i.severity === 'critical');
+            if (criticalIssues.length > 0) {
+              console.error(`❌ ${result.service}: ${criticalIssues.length} critical performance issues introduced`);
+              failed = true;
+            }
+          });
+
+          if (failed) {
+            console.error('\n⚠️ Performance check failed! See details above.');
+            process.exit(1);
+          } else {
+            console.log('✅ Performance check passed!');
+          }
+          EOF
+
+      - name: Upload performance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-reports
+          path: |
+            tmp/performance/*.json
+            tmp/performance/*.md
+          retention-days: 30

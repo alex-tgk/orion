@@ -1,0 +1,100 @@
+{
+  "title": "ORION Error Tracking",
+  "uid": "orion-error-tracking",
+  "tags": ["orion", "errors", "monitoring"],
+  "refresh": "30s",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Error Rate (5xx)",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 0},
+      "targets": [
+        {"expr": "sum(rate(http_server_requests_seconds_count{status=~\"5..\"}[5m]))"}
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Error Budget Remaining",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 0},
+      "targets": [
+        {"expr": "(1 - (sum(rate(http_server_requests_seconds_count{status=~\"5..\"}[30d])) / sum(rate(http_server_requests_seconds_count[30d])))) * 100"}
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Total Errors (1h)",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 0},
+      "targets": [
+        {"expr": "sum(increase(http_server_requests_seconds_count{status=~\"[45]..\"}[1h]))"}
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Error Percentage",
+      "type": "stat",
+      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 0},
+      "targets": [
+        {"expr": "sum(rate(http_server_requests_seconds_count{status=~\"[45]..\"}[5m])) / sum(rate(http_server_requests_seconds_count[5m])) * 100"}
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Error Rate Over Time",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
+      "targets": [
+        {"expr": "sum(rate(http_server_requests_seconds_count{status=~\"4..\"}[5m]))", "legendFormat": "4xx Errors"},
+        {"expr": "sum(rate(http_server_requests_seconds_count{status=~\"5..\"}[5m]))", "legendFormat": "5xx Errors"}
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Errors by Service",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
+      "targets": [
+        {"expr": "sum by (service) (rate(http_server_requests_seconds_count{status=~\"[45]..\"}[5m]))", "legendFormat": "{{service}}"}
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Top Error Endpoints",
+      "type": "table",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+      "targets": [
+        {"expr": "topk(20, sum by (uri, status) (increase(http_server_requests_seconds_count{status=~\"[45]..\"}[1h])))", "format": "table", "instant": true}
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Error Types Distribution",
+      "type": "piechart",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+      "targets": [
+        {"expr": "sum by (status) (increase(http_server_requests_seconds_count{status=~\"[45]..\"}[1h]))"}
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Application Exceptions",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 20},
+      "targets": [
+        {"expr": "sum by (exception_type) (rate(application_exceptions_total[5m]))", "legendFormat": "{{exception_type}}"}
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Recent Errors Log",
+      "type": "logs",
+      "datasource": "Loki",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 20},
+      "targets": [
+        {"expr": "{namespace=\"orion\"} |= \"error\" or \"ERROR\" or \"exception\""}
+      ]
+    }
+  ]
+}

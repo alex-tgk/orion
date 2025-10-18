@@ -1,0 +1,471 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: canary-deployment-alerts
+  namespace: orion
+  labels:
+    app: prometheus
+    role: alert-rules
+    deployment-strategy: canary
+spec:
+  groups:
+  - name: canary.error_rate
+    interval: 30s
+    rules:
+    # Canary error rate alerts
+    - alert: CanaryHighErrorRate
+      expr: |
+        (
+          sum(rate(http_requests_total{job=~".*-canary",status=~"5.."}[5m]))
+          /
+          sum(rate(http_requests_total{job=~".*-canary"}[5m]))
+        ) * 100 > 5
+      for: 2m
+      labels:
+        severity: critical
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary deployment has high error rate"
+        description: "{{ $labels.job }} canary version has error rate of {{ $value | humanize }}% (threshold: 5%)"
+        runbook_url: "https://docs.orion.io/runbooks/canary-high-error-rate"
+        dashboard_url: "https://grafana.orion.io/d/canary-deployment"
+
+    - alert: CanaryErrorRateHigherThanStable
+      expr: |
+        (
+          sum(rate(http_requests_total{job=~".*-canary",status=~"5.."}[5m])) by (service)
+          /
+          sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (service)
+        )
+        >
+        (
+          sum(rate(http_requests_total{job=~".*-stable",status=~"5.."}[5m])) by (service)
+          /
+          sum(rate(http_requests_total{job=~".*-stable"}[5m])) by (service)
+        ) * 2
+      for: 5m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary error rate significantly higher than stable"
+        description: "{{ $labels.service }} canary has 2x error rate compared to stable version"
+        runbook_url: "https://docs.orion.io/runbooks/canary-degraded-performance"
+
+  - name: canary.latency
+    interval: 30s
+    rules:
+    # Canary latency alerts
+    - alert: CanaryHighLatencyP95
+      expr: |
+        histogram_quantile(0.95,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-canary"}[5m])) by (le, job)
+        ) * 1000 > 500
+      for: 5m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary deployment has high P95 latency"
+        description: "{{ $labels.job }} canary P95 latency is {{ $value | humanize }}ms (threshold: 500ms)"
+        runbook_url: "https://docs.orion.io/runbooks/canary-high-latency"
+
+    - alert: CanaryHighLatencyP99
+      expr: |
+        histogram_quantile(0.99,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-canary"}[5m])) by (le, job)
+        ) * 1000 > 1000
+      for: 5m
+      labels:
+        severity: critical
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary deployment has critical P99 latency"
+        description: "{{ $labels.job }} canary P99 latency is {{ $value | humanize }}ms (threshold: 1000ms)"
+        runbook_url: "https://docs.orion.io/runbooks/canary-high-latency"
+
+    - alert: CanaryLatencyHigherThanStable
+      expr: |
+        histogram_quantile(0.95,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-canary"}[5m])) by (le, service)
+        )
+        >
+        histogram_quantile(0.95,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-stable"}[5m])) by (le, service)
+        ) * 1.5
+      for: 5m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary latency 50% higher than stable"
+        description: "{{ $labels.service }} canary P95 latency is 1.5x higher than stable version"
+        runbook_url: "https://docs.orion.io/runbooks/canary-degraded-performance"
+
+  - name: canary.availability
+    interval: 30s
+    rules:
+    # Canary availability alerts
+    - alert: CanaryLowSuccessRate
+      expr: |
+        (
+          sum(rate(http_requests_total{job=~".*-canary",status=~"2.."}[5m]))
+          /
+          sum(rate(http_requests_total{job=~".*-canary"}[5m]))
+        ) * 100 < 95
+      for: 5m
+      labels:
+        severity: critical
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary deployment has low success rate"
+        description: "{{ $labels.job }} canary success rate is {{ $value | humanize }}% (threshold: 95%)"
+        runbook_url: "https://docs.orion.io/runbooks/canary-low-success-rate"
+
+    - alert: CanaryPodsNotReady
+      expr: |
+        (
+          kube_deployment_status_replicas_ready{deployment=~".*-canary"}
+          /
+          kube_deployment_spec_replicas{deployment=~".*-canary"}
+        ) < 1
+      for: 5m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary pods not all ready"
+        description: "{{ $labels.deployment }} has {{ $value | humanize }} ready replicas out of desired count"
+        runbook_url: "https://docs.orion.io/runbooks/pods-not-ready"
+
+  - name: canary.resources
+    interval: 30s
+    rules:
+    # Canary resource utilization alerts
+    - alert: CanaryHighCPUUsage
+      expr: |
+        sum(rate(container_cpu_usage_seconds_total{pod=~".*-canary.*"}[5m])) by (pod)
+        /
+        sum(kube_pod_container_resource_limits{pod=~".*-canary.*",resource="cpu"}) by (pod)
+        * 100 > 80
+      for: 10m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary pod has high CPU usage"
+        description: "{{ $labels.pod }} CPU usage is {{ $value | humanize }}% of limit"
+        runbook_url: "https://docs.orion.io/runbooks/high-cpu-usage"
+
+    - alert: CanaryHighMemoryUsage
+      expr: |
+        sum(container_memory_working_set_bytes{pod=~".*-canary.*"}) by (pod)
+        /
+        sum(kube_pod_container_resource_limits{pod=~".*-canary.*",resource="memory"}) by (pod)
+        * 100 > 80
+      for: 10m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary pod has high memory usage"
+        description: "{{ $labels.pod }} memory usage is {{ $value | humanize }}% of limit"
+        runbook_url: "https://docs.orion.io/runbooks/high-memory-usage"
+
+    - alert: CanaryMemoryUsageHigherThanStable
+      expr: |
+        avg(container_memory_working_set_bytes{pod=~".*-canary.*"}) by (service)
+        >
+        avg(container_memory_working_set_bytes{pod=~".*-stable.*"}) by (service) * 1.5
+      for: 10m
+      labels:
+        severity: info
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary memory usage significantly higher than stable"
+        description: "{{ $labels.service }} canary uses 50% more memory than stable version"
+        runbook_url: "https://docs.orion.io/runbooks/canary-resource-comparison"
+
+  - name: canary.traffic
+    interval: 30s
+    rules:
+    # Traffic split monitoring
+    - alert: CanaryReceivingNoTraffic
+      expr: |
+        sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (job) == 0
+        and
+        kube_deployment_spec_replicas{deployment=~".*-canary"} > 0
+      for: 5m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary deployment receiving no traffic"
+        description: "{{ $labels.job }} canary is deployed but not receiving any requests"
+        runbook_url: "https://docs.orion.io/runbooks/canary-no-traffic"
+
+    - alert: CanaryTrafficSplitMisconfigured
+      expr: |
+        (
+          sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (service)
+          /
+          (
+            sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (service)
+            +
+            sum(rate(http_requests_total{job=~".*-stable"}[5m])) by (service)
+          )
+        ) * 100 > 50
+      for: 10m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary receiving more than 50% of traffic"
+        description: "{{ $labels.service }} canary is receiving {{ $value | humanize }}% of total traffic"
+        runbook_url: "https://docs.orion.io/runbooks/canary-traffic-split"
+
+  - name: canary.comparison
+    interval: 1m
+    rules:
+    # Comparative metrics between canary and stable
+    - alert: CanaryVersionDivergence
+      expr: |
+        count(
+          kube_pod_labels{label_version="canary"}
+          unless
+          kube_pod_labels{label_version="stable"}
+        ) by (label_app) > 0
+        and
+        count(
+          kube_pod_labels{label_version="stable"}
+        ) by (label_app) == 0
+      for: 30m
+      labels:
+        severity: info
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary version exists without stable baseline"
+        description: "{{ $labels.label_app }} has canary pods but no stable version for comparison"
+        runbook_url: "https://docs.orion.io/runbooks/canary-no-baseline"
+
+    - alert: CanaryStagnant
+      expr: |
+        (time() - kube_deployment_status_observed_generation{deployment=~".*-canary"}) / 3600 > 24
+        and
+        kube_deployment_spec_replicas{deployment=~".*-canary"} > 0
+      for: 1h
+      labels:
+        severity: info
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary deployment has been running for over 24 hours"
+        description: "{{ $labels.deployment }} canary should be promoted or rolled back"
+        runbook_url: "https://docs.orion.io/runbooks/canary-stagnant"
+
+  - name: canary.health_checks
+    interval: 30s
+    rules:
+    # Health check failures
+    - alert: CanaryPodCrashLooping
+      expr: |
+        rate(kube_pod_container_status_restarts_total{pod=~".*-canary.*"}[15m]) > 0
+      for: 5m
+      labels:
+        severity: critical
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary pod is crash looping"
+        description: "{{ $labels.pod }} is restarting frequently"
+        runbook_url: "https://docs.orion.io/runbooks/pod-crash-loop"
+
+    - alert: CanaryReadinessProbesFailing
+      expr: |
+        sum(kube_pod_status_ready{pod=~".*-canary.*",condition="false"}) by (pod) > 0
+      for: 5m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary pod readiness probes failing"
+        description: "{{ $labels.pod }} readiness probes are failing"
+        runbook_url: "https://docs.orion.io/runbooks/readiness-probe-failure"
+
+    - alert: CanaryLivenessProbesFailing
+      expr: |
+        sum(rate(prober_probe_total{probe_type="Liveness",result="failed",pod=~".*-canary.*"}[5m])) by (pod) > 0
+      for: 2m
+      labels:
+        severity: critical
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary pod liveness probes failing"
+        description: "{{ $labels.pod }} liveness probes are failing"
+        runbook_url: "https://docs.orion.io/runbooks/liveness-probe-failure"
+
+  - name: canary.progressive_delivery
+    interval: 1m
+    rules:
+    # Progressive delivery monitoring
+    - alert: CanaryRolloutStalled
+      expr: |
+        (
+          kube_deployment_status_replicas_updated{deployment=~".*-canary"}
+          /
+          kube_deployment_spec_replicas{deployment=~".*-canary"}
+        ) < 1
+      for: 15m
+      labels:
+        severity: warning
+        component: canary
+        strategy: deployment
+      annotations:
+        summary: "Canary rollout appears stalled"
+        description: "{{ $labels.deployment }} rollout is not progressing"
+        runbook_url: "https://docs.orion.io/runbooks/rollout-stalled"
+
+    - alert: CanaryAutomatedRollbackRecommended
+      expr: |
+        (
+          sum(rate(http_requests_total{job=~".*-canary",status=~"5.."}[5m]))
+          /
+          sum(rate(http_requests_total{job=~".*-canary"}[5m]))
+        ) * 100 > 10
+        or
+        histogram_quantile(0.95,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-canary"}[5m])) by (le, job)
+        ) * 1000 > 1000
+      for: 2m
+      labels:
+        severity: critical
+        component: canary
+        strategy: deployment
+        action: rollback
+      annotations:
+        summary: "Automated rollback recommended for canary deployment"
+        description: "{{ $labels.job }} canary has critical metrics violations - automated rollback recommended"
+        runbook_url: "https://docs.orion.io/runbooks/canary-automated-rollback"
+
+---
+# Recording rules for canary analysis
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: canary-recording-rules
+  namespace: orion
+  labels:
+    app: prometheus
+    role: recording-rules
+    deployment-strategy: canary
+spec:
+  groups:
+  - name: canary.recording
+    interval: 30s
+    rules:
+    # Error rates
+    - record: canary:error_rate:5m
+      expr: |
+        sum(rate(http_requests_total{job=~".*-canary",status=~"5.."}[5m])) by (job)
+        /
+        sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (job)
+        * 100
+
+    - record: stable:error_rate:5m
+      expr: |
+        sum(rate(http_requests_total{job=~".*-stable",status=~"5.."}[5m])) by (job)
+        /
+        sum(rate(http_requests_total{job=~".*-stable"}[5m])) by (job)
+        * 100
+
+    # Request rates
+    - record: canary:request_rate:5m
+      expr: |
+        sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (job)
+
+    - record: stable:request_rate:5m
+      expr: |
+        sum(rate(http_requests_total{job=~".*-stable"}[5m])) by (job)
+
+    # Latency percentiles
+    - record: canary:latency_p50:5m
+      expr: |
+        histogram_quantile(0.50,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-canary"}[5m])) by (le, job)
+        ) * 1000
+
+    - record: canary:latency_p95:5m
+      expr: |
+        histogram_quantile(0.95,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-canary"}[5m])) by (le, job)
+        ) * 1000
+
+    - record: canary:latency_p99:5m
+      expr: |
+        histogram_quantile(0.99,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-canary"}[5m])) by (le, job)
+        ) * 1000
+
+    - record: stable:latency_p95:5m
+      expr: |
+        histogram_quantile(0.95,
+          sum(rate(http_request_duration_seconds_bucket{job=~".*-stable"}[5m])) by (le, job)
+        ) * 1000
+
+    # Success rates
+    - record: canary:success_rate:5m
+      expr: |
+        sum(rate(http_requests_total{job=~".*-canary",status=~"2.."}[5m])) by (job)
+        /
+        sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (job)
+        * 100
+
+    - record: stable:success_rate:5m
+      expr: |
+        sum(rate(http_requests_total{job=~".*-stable",status=~"2.."}[5m])) by (job)
+        /
+        sum(rate(http_requests_total{job=~".*-stable"}[5m])) by (job)
+        * 100
+
+    # Traffic split percentage
+    - record: canary:traffic_percentage:5m
+      expr: |
+        sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (service)
+        /
+        (
+          sum(rate(http_requests_total{job=~".*-canary"}[5m])) by (service)
+          +
+          sum(rate(http_requests_total{job=~".*-stable"}[5m])) by (service)
+        )
+        * 100
+
+    # Resource utilization
+    - record: canary:cpu_usage:5m
+      expr: |
+        sum(rate(container_cpu_usage_seconds_total{pod=~".*-canary.*"}[5m])) by (pod)
+        /
+        sum(kube_pod_container_resource_limits{pod=~".*-canary.*",resource="cpu"}) by (pod)
+        * 100
+
+    - record: canary:memory_usage:5m
+      expr: |
+        sum(container_memory_working_set_bytes{pod=~".*-canary.*"}) by (pod)
+        /
+        sum(kube_pod_container_resource_limits{pod=~".*-canary.*",resource="memory"}) by (pod)
+        * 100

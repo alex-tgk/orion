@@ -48,13 +48,19 @@
     },
     "memory": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"]
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_STORAGE_PATH": "${HOME}/.claude/orion-memory",
+        "MEMORY_MAX_ENTITIES": "1000",
+        "MEMORY_AUTO_SAVE": "true"
+      }
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/acarroll/dev/projects/orion"],
       "env": {
-        "ALLOWED_DIRECTORIES": "/Users/acarroll/dev/projects/orion"
+        "FILESYSTEM_READ_ONLY": "false",
+        "FILESYSTEM_WATCH_CHANGES": "true"
       }
     }
   }

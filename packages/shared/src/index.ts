@@ -10,3 +10,4 @@ export * from './errors';
 export * from './automation';
 export * from './testing';
 export * from './middleware/correlation-id.middleware';
+export * from './ab-testing';

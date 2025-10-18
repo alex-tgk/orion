@@ -1,0 +1,133 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: orion-mtls
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: orion-mtls
+    app.kubernetes.io/component: security
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  mtls:
+    mode: STRICT # Enforce mTLS for all services
+
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: orion-staging-mtls
+  namespace: orion-staging
+  labels:
+    app.kubernetes.io/name: orion-mtls
+    app.kubernetes.io/component: security
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/environment: staging
+spec:
+  mtls:
+    mode: STRICT
+
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: istio-system
+  labels:
+    app.kubernetes.io/name: mesh-mtls
+    app.kubernetes.io/component: security
+spec:
+  mtls:
+    mode: PERMISSIVE # Allow both mTLS and plaintext for migration
+
+---
+# Authorization policy for auth service
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: auth-service-policy
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: auth-policy
+    app.kubernetes.io/component: security
+spec:
+  selector:
+    matchLabels:
+      app: auth-service
+  action: ALLOW
+  rules:
+  # Allow health checks from anywhere
+  - to:
+    - operation:
+        paths: ["/api/auth/health"]
+        methods: ["GET"]
+
+  # Allow login from gateway
+  - from:
+    - source:
+        principals: ["cluster.local/ns/orion/sa/gateway-service"]
+    to:
+    - operation:
+        paths: ["/api/auth/login", "/api/auth/register"]
+        methods: ["POST"]
+
+  # Allow token validation from all services
+  - from:
+    - source:
+        namespaces: ["orion", "orion-staging"]
+    to:
+    - operation:
+        paths: ["/api/auth/validate"]
+        methods: ["POST", "GET"]
+
+  # Allow monitoring
+  - from:
+    - source:
+        namespaces: ["monitoring", "istio-system"]
+    to:
+    - operation:
+        paths: ["/metrics", "/health"]
+        methods: ["GET"]
+
+---
+# Authorization policy for gateway
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: gateway-service-policy
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: gateway-policy
+    app.kubernetes.io/component: security
+spec:
+  selector:
+    matchLabels:
+      app: gateway-service
+  action: ALLOW
+  rules:
+  # Allow all ingress traffic (gateway handles authentication)
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+        principals: ["cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account"]
+
+  # Allow monitoring
+  - from:
+    - source:
+        namespaces: ["monitoring", "istio-system"]
+    to:
+    - operation:
+        paths: ["/metrics", "/health"]
+        methods: ["GET"]
+
+---
+# Deny all by default for sensitive services
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: deny-all
+    app.kubernetes.io/component: security
+spec:
+  {} # Empty spec means deny all - individual services must have explicit ALLOW policies

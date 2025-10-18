@@ -1,0 +1,76 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: user-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: user-service
+    app.kubernetes.io/component: destinationrule
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  host: user-service.orion.svc.cluster.local
+
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 150
+        connectTimeout: 30s
+        tcpKeepalive:
+          time: 7200s
+          interval: 75s
+      http:
+        http1MaxPendingRequests: 150
+        http2MaxRequests: 1500
+        maxRequestsPerConnection: 15
+        maxRetries: 3
+        idleTimeout: 1800s
+
+    loadBalancer:
+      simple: ROUND_ROBIN
+      localityLbSetting:
+        enabled: true
+        distribute:
+        - from: us-east-1/*
+          to:
+            "us-east-1/*": 90
+            "us-west-2/*": 10
+
+    outlierDetection:
+      consecutiveErrors: 5
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 40
+      minHealthPercent: 60
+      consecutiveGatewayErrors: 5
+
+    tls:
+      mode: ISTIO_MUTUAL
+      sni: user-service.orion.svc.cluster.local
+
+  subsets:
+  - name: stable
+    labels:
+      version: stable
+    trafficPolicy:
+      connectionPool:
+        http:
+          http2MaxRequests: 1500
+
+  - name: canary
+    labels:
+      version: canary
+    trafficPolicy:
+      connectionPool:
+        http:
+          http2MaxRequests: 150
+      outlierDetection:
+        consecutiveErrors: 3
+        baseEjectionTime: 60s
+
+  - name: v1
+    labels:
+      version: v1
+
+  - name: v2
+    labels:
+      version: v2

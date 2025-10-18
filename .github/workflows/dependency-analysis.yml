@@ -1,0 +1,361 @@
+name: Dependency Analysis
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'packages/**/package.json'
+      - 'packages/**/*.ts'
+      - '.dependency-cruiser.js'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    # Run weekly on Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+
+jobs:
+  analyze-dependencies:
+    name: Analyze Dependencies
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check for circular dependencies
+        id: circular
+        run: |
+          echo "Running circular dependency analysis..."
+          pnpm madge --circular --extensions ts --exclude '\.spec\.ts$|\.test\.ts$|node_modules' packages > circular-report.txt 2>&1 || true
+
+          if [ -s circular-report.txt ]; then
+            echo "circular_found=true" >> $GITHUB_OUTPUT
+            echo "Circular dependencies detected!"
+            cat circular-report.txt
+          else
+            echo "circular_found=false" >> $GITHUB_OUTPUT
+            echo "No circular dependencies found"
+            echo "✓ No circular dependencies detected" > circular-report.txt
+          fi
+
+      - name: Analyze TypeScript dependencies
+        id: typescript
+        run: |
+          echo "Running dependency-cruiser analysis..."
+          pnpm depcruise --config .dependency-cruiser.js --output-type err-long packages > depcruise-report.txt 2>&1 || true
+
+          if grep -q "error" depcruise-report.txt; then
+            echo "violations_found=true" >> $GITHUB_OUTPUT
+            echo "Dependency violations detected!"
+            cat depcruise-report.txt
+          else
+            echo "violations_found=false" >> $GITHUB_OUTPUT
+            echo "No dependency violations found"
+            echo "✓ All dependency rules passed" > depcruise-report.txt
+          fi
+
+      - name: Analyze package dependencies
+        id: packages
+        run: |
+          echo "Analyzing npm package dependencies..."
+
+          # Check for security vulnerabilities
+          pnpm audit --audit-level=moderate --json > audit-report.json 2>&1 || true
+
+          # Count vulnerabilities
+          vuln_count=$(jq -r '.metadata.vulnerabilities | to_entries | map(.value) | add // 0' audit-report.json 2>/dev/null || echo "0")
+          echo "vulnerability_count=$vuln_count" >> $GITHUB_OUTPUT
+
+          if [ "$vuln_count" -gt 0 ]; then
+            echo "⚠️ Found $vuln_count vulnerabilities"
+          else
+            echo "✓ No vulnerabilities found"
+          fi
+
+      - name: Check for forbidden dependencies
+        id: forbidden
+        run: |
+          echo "Checking for forbidden dependencies..."
+
+          # List of forbidden packages (example)
+          FORBIDDEN=(
+            "request"  # deprecated
+            "moment"   # prefer date-fns or dayjs
+          )
+
+          forbidden_found=false
+          for pkg in "${FORBIDDEN[@]}"; do
+            if grep -q "\"$pkg\"" package.json; then
+              echo "❌ Forbidden dependency found: $pkg"
+              forbidden_found=true
+            fi
+          done
+
+          if [ "$forbidden_found" = true ]; then
+            echo "forbidden_found=true" >> $GITHUB_OUTPUT
+            exit 1
+          else
+            echo "forbidden_found=false" >> $GITHUB_OUTPUT
+            echo "✓ No forbidden dependencies found"
+          fi
+
+      - name: Generate dependency graphs
+        run: |
+          echo "Generating dependency visualizations..."
+          chmod +x scripts/analysis/generate-dependency-graph.sh
+          ./scripts/analysis/generate-dependency-graph.sh || true
+
+          # Generate interactive graph data
+          npx ts-node tools/dependency-graph/generate.ts || true
+
+      - name: Upload dependency reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dependency-reports
+          path: |
+            circular-report.txt
+            depcruise-report.txt
+            audit-report.json
+            docs/architecture/dependencies/
+            tools/dependency-graph/dependency-graph.json
+          retention-days: 30
+
+      - name: Generate PR comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+
+            // Read reports
+            let circularReport = '';
+            let depCruiseReport = '';
+            let vulnerabilityCount = '${{ steps.packages.outputs.vulnerability_count }}';
+
+            try {
+              circularReport = fs.readFileSync('circular-report.txt', 'utf8');
+              depCruiseReport = fs.readFileSync('depcruise-report.txt', 'utf8');
+            } catch (error) {
+              console.log('Could not read report files:', error.message);
+            }
+
+            const circularFound = '${{ steps.circular.outputs.circular_found }}' === 'true';
+            const violationsFound = '${{ steps.typescript.outputs.violations_found }}' === 'true';
+            const forbiddenFound = '${{ steps.forbidden.outputs.forbidden_found }}' === 'true';
+
+            // Determine overall status
+            let status = '✅ All dependency checks passed!';
+            let statusIcon = '✅';
+
+            if (circularFound || violationsFound || forbiddenFound || vulnerabilityCount > 0) {
+              status = '⚠️ Dependency issues detected';
+              statusIcon = '⚠️';
+            }
+
+            // Build comment
+            let comment = `## ${statusIcon} Dependency Analysis Report\n\n`;
+            comment += `**Status:** ${status}\n\n`;
+
+            // Circular dependencies
+            comment += `### 🔄 Circular Dependencies\n\n`;
+            if (circularFound) {
+              comment += `❌ **Circular dependencies detected!**\n\n`;
+              comment += '```\n' + circularReport.substring(0, 1000) + '\n```\n\n';
+            } else {
+              comment += `✅ No circular dependencies found\n\n`;
+            }
+
+            // Dependency violations
+            comment += `### 📋 Dependency Rules\n\n`;
+            if (violationsFound) {
+              comment += `❌ **Dependency violations detected!**\n\n`;
+              comment += '```\n' + depCruiseReport.substring(0, 1000) + '\n```\n\n';
+            } else {
+              comment += `✅ All dependency rules passed\n\n`;
+            }
+
+            // Security vulnerabilities
+            comment += `### 🔒 Security Vulnerabilities\n\n`;
+            if (vulnerabilityCount > 0) {
+              comment += `⚠️ **${vulnerabilityCount} vulnerabilities found**\n\n`;
+              comment += `Run \`pnpm audit\` locally for details.\n\n`;
+            } else {
+              comment += `✅ No security vulnerabilities detected\n\n`;
+            }
+
+            // Forbidden dependencies
+            comment += `### 🚫 Forbidden Dependencies\n\n`;
+            if (forbiddenFound) {
+              comment += `❌ **Forbidden dependencies detected!** See job logs for details.\n\n`;
+            } else {
+              comment += `✅ No forbidden dependencies found\n\n`;
+            }
+
+            // Summary
+            comment += `### 📊 Summary\n\n`;
+            comment += `- **Circular Dependencies:** ${circularFound ? '❌' : '✅'}\n`;
+            comment += `- **Dependency Violations:** ${violationsFound ? '❌' : '✅'}\n`;
+            comment += `- **Security Issues:** ${vulnerabilityCount > 0 ? '⚠️' : '✅'}\n`;
+            comment += `- **Forbidden Packages:** ${forbiddenFound ? '❌' : '✅'}\n\n`;
+
+            comment += `---\n`;
+            comment += `📁 Full reports available in workflow artifacts\n`;
+            comment += `📊 View interactive dependency graph: \`tools/dependency-graph/index.html\`\n`;
+
+            // Post or update comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('Dependency Analysis Report')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: comment
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+            }
+
+      - name: Fail on critical issues
+        if: |
+          steps.circular.outputs.circular_found == 'true' ||
+          steps.typescript.outputs.violations_found == 'true' ||
+          steps.forbidden.outputs.forbidden_found == 'true'
+        run: |
+          echo "::error::Critical dependency issues detected!"
+          echo "Circular dependencies: ${{ steps.circular.outputs.circular_found }}"
+          echo "Dependency violations: ${{ steps.typescript.outputs.violations_found }}"
+          echo "Forbidden dependencies: ${{ steps.forbidden.outputs.forbidden_found }}"
+          exit 1
+
+      - name: Create issue for vulnerabilities
+        if: |
+          github.event_name == 'schedule' &&
+          steps.packages.outputs.vulnerability_count > 0
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const vulnerabilityCount = '${{ steps.packages.outputs.vulnerability_count }}';
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔒 Security: ${vulnerabilityCount} vulnerabilities detected`,
+              body: `## Security Vulnerabilities Detected\n\n` +
+                    `Automated security scan found **${vulnerabilityCount}** vulnerabilities.\n\n` +
+                    `### Action Required\n\n` +
+                    `1. Review the vulnerability report in the [latest workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId})\n` +
+                    `2. Run \`pnpm audit\` locally for details\n` +
+                    `3. Update affected packages\n` +
+                    `4. Test thoroughly after updates\n\n` +
+                    `### Resources\n\n` +
+                    `- [NPM Audit Documentation](https://docs.npmjs.com/cli/v10/commands/npm-audit)\n` +
+                    `- [ORION Security Guidelines](./docs/development/security.md)\n`,
+              labels: ['security', 'dependencies', 'automated']
+            });
+
+  dependency-graph-visualization:
+    name: Generate Dependency Graph Visualization
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: analyze-dependencies
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate dependency graphs
+        run: |
+          chmod +x scripts/analysis/generate-dependency-graph.sh
+          ./scripts/analysis/generate-dependency-graph.sh
+
+          npx ts-node tools/dependency-graph/generate.ts
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: success()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./tools/dependency-graph
+          destination_dir: dependency-graph
+          publish_branch: gh-pages
+          enable_jekyll: false
+
+      - name: Comment with visualization link
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const url = `https://${owner}.github.io/${repo}/dependency-graph/`;
+
+            console.log(`Dependency graph visualization available at: ${url}`);

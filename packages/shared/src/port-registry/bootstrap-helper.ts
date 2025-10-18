@@ -1,6 +1,7 @@
 import { INestApplication, Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { PortRegistryService } from './port-registry.service';
+import { setupSwagger, SwaggerOptions } from './swagger-helper';
 
 // Store heartbeat intervals for cleanup
 const heartbeatIntervals = new WeakMap<INestApplication, NodeJS.Timeout>();
@@ -11,6 +12,7 @@ export interface BootstrapOptions {
   corsOrigin?: string;
   globalPrefix?: string;
   enableShutdownHooks?: boolean;
+  swagger?: Partial<SwaggerOptions> | boolean;
 }
 
 /**
@@ -25,6 +27,7 @@ export async function bootstrapService(
     corsOrigin = process.env['CORS_ORIGIN'] || 'http://localhost:4200',
     globalPrefix = 'api',
     enableShutdownHooks = true,
+    swagger = true,
   } = options;
 
   const logger = new Logger('Bootstrap');
@@ -62,6 +65,12 @@ export async function bootstrapService(
 
   // Set global prefix
   app.setGlobalPrefix(globalPrefix);
+
+  // Setup Swagger documentation
+  if (swagger) {
+    const swaggerOptions = typeof swagger === 'object' ? swagger : {};
+    setupSwagger(app, serviceName, swaggerOptions);
+  }
 
   // Enable graceful shutdown
   if (enableShutdownHooks) {

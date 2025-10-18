@@ -1,0 +1,257 @@
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to review'
+        required: true
+        type: number
+      force_review:
+        description: 'Force full review even if cached'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  NODE_VERSION: '20.x'
+  PNPM_VERSION: '10.15.1'
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  ai-code-review:
+    name: AI-Powered Code Review
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build AI Review Tools
+        run: |
+          cd tools/ai-review
+          pnpm install
+          pnpm run build
+
+      - name: Get Changed Files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            **/*.ts
+            **/*.tsx
+            **/*.js
+            **/*.jsx
+            **/*.json
+            **/*.yml
+            **/*.yaml
+          separator: ','
+
+      - name: Run Security Analysis
+        id: security-check
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js analyze \
+            --type security \
+            --files "${{ steps.changed-files.outputs.all_changed_files }}" \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --output security-report.json
+
+      - name: Run Performance Analysis
+        id: performance-check
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js analyze \
+            --type performance \
+            --files "${{ steps.changed-files.outputs.all_changed_files }}" \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --output performance-report.json
+
+      - name: Run Quality Analysis
+        id: quality-check
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js analyze \
+            --type quality \
+            --files "${{ steps.changed-files.outputs.all_changed_files }}" \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --output quality-report.json
+
+      - name: Run Test Coverage Analysis
+        id: test-check
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js analyze \
+            --type test \
+            --files "${{ steps.changed-files.outputs.all_changed_files }}" \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --output test-report.json
+
+      - name: Run Documentation Analysis
+        id: docs-check
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js analyze \
+            --type documentation \
+            --files "${{ steps.changed-files.outputs.all_changed_files }}" \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --output documentation-report.json
+
+      - name: Generate Comprehensive Review
+        id: comprehensive-review
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js review \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --security-report security-report.json \
+            --performance-report performance-report.json \
+            --quality-report quality-report.json \
+            --test-report test-report.json \
+            --documentation-report documentation-report.json \
+            --output comprehensive-review.json
+
+      - name: Post Review Comments
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js post-review \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --review-file comprehensive-review.json
+
+      - name: Generate Review Summary
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js summary \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --review-file comprehensive-review.json \
+            --format markdown \
+            --output review-summary.md
+
+      - name: Post Review Summary
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const summary = fs.readFileSync('tools/ai-review/review-summary.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: summary
+            });
+
+      - name: Update Review Metrics
+        if: always()
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js metrics \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --review-file comprehensive-review.json \
+            --update
+
+      - name: Upload Review Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-review-reports-${{ github.event.pull_request.number }}
+          path: |
+            tools/ai-review/*-report.json
+            tools/ai-review/comprehensive-review.json
+            tools/ai-review/review-summary.md
+          retention-days: 30
+
+      - name: Check for Critical Issues
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          cd tools/ai-review
+          CRITICAL_COUNT=$(node dist/cli.js check-critical \
+            --review-file comprehensive-review.json)
+
+          if [ "$CRITICAL_COUNT" -gt 0 ]; then
+            echo "::error::Found $CRITICAL_COUNT critical issues. Please address them before merging."
+            exit 1
+          fi
+
+      - name: Generate Learning Data
+        if: always()
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          cd tools/ai-review
+          node dist/cli.js learn \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --review-file comprehensive-review.json \
+            --feedback-mode auto

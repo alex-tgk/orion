@@ -1,0 +1,227 @@
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: orion-telemetry
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: orion-telemetry
+    app.kubernetes.io/component: observability
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  # Access logging
+  accessLogging:
+  - providers:
+    - name: envoy
+    filter:
+      expression: response.code >= 400 # Log only errors
+    match:
+      mode: SERVER_AND_CLIENT
+
+  # Metrics configuration
+  metrics:
+  - providers:
+    - name: prometheus
+    overrides:
+    # Request metrics
+    - match:
+        metric: REQUEST_COUNT
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+        source_app:
+          value: source.labels["app"] | "unknown"
+        destination_app:
+          value: destination.labels["app"] | "unknown"
+        response_code:
+          value: response.code | 0
+        response_flags:
+          value: response.flags | "-"
+        request_protocol:
+          value: request.protocol | "unknown"
+        connection_security_policy:
+          value: connection.mtls | false
+
+    # Request duration metrics
+    - match:
+        metric: REQUEST_DURATION
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+        source_app:
+          value: source.labels["app"] | "unknown"
+        destination_app:
+          value: destination.labels["app"] | "unknown"
+
+    # Request size metrics
+    - match:
+        metric: REQUEST_SIZE
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+
+    # Response size metrics
+    - match:
+        metric: RESPONSE_SIZE
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+
+    # TCP metrics
+    - match:
+        metric: TCP_OPENED_CONNECTIONS
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+
+    - match:
+        metric: TCP_CLOSED_CONNECTIONS
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+
+    - match:
+        metric: TCP_SENT_BYTES
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+
+    - match:
+        metric: TCP_RECEIVED_BYTES
+        mode: CLIENT_AND_SERVER
+      tagOverrides:
+        destination_service:
+          value: destination.service.name
+
+  # Distributed tracing
+  tracing:
+  - providers:
+    - name: jaeger
+    randomSamplingPercentage: 10.0 # Sample 10% of requests
+    customTags:
+      environment:
+        literal:
+          value: production
+      version:
+        environment:
+          name: VERSION
+          defaultValue: unknown
+      user_id:
+        header:
+          name: x-user-id
+          defaultValue: anonymous
+      request_id:
+        header:
+          name: x-request-id
+      tenant_id:
+        header:
+          name: x-tenant-id
+          defaultValue: default
+
+---
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: orion-staging-telemetry
+  namespace: orion-staging
+  labels:
+    app.kubernetes.io/name: orion-telemetry
+    app.kubernetes.io/component: observability
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/environment: staging
+spec:
+  accessLogging:
+  - providers:
+    - name: envoy
+    filter:
+      expression: response.code >= 300 # Log warnings and errors in staging
+    match:
+      mode: SERVER_AND_CLIENT
+
+  metrics:
+  - providers:
+    - name: prometheus
+
+  tracing:
+  - providers:
+    - name: jaeger
+    randomSamplingPercentage: 50.0 # Higher sampling in staging
+    customTags:
+      environment:
+        literal:
+          value: staging
+      version:
+        environment:
+          name: VERSION
+          defaultValue: develop
+
+---
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: orion-debug-telemetry
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: orion-debug-telemetry
+    app.kubernetes.io/component: observability
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  # Namespace-wide selector for debug logging
+  selector:
+    matchLabels:
+      debug: "true"
+
+  accessLogging:
+  - providers:
+    - name: envoy
+    match:
+      mode: SERVER_AND_CLIENT # Log all traffic for debug
+
+  tracing:
+  - providers:
+    - name: jaeger
+    randomSamplingPercentage: 100.0 # Sample all requests when debugging
+    customTags:
+      debug_mode:
+        literal:
+          value: "true"
+
+---
+# Mesh-wide telemetry configuration
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: mesh-default
+  namespace: istio-system
+  labels:
+    app.kubernetes.io/name: mesh-telemetry
+    app.kubernetes.io/component: observability
+spec:
+  accessLogging:
+  - providers:
+    - name: envoy
+    filter:
+      expression: response.code >= 500 # Only log server errors by default
+
+  metrics:
+  - providers:
+    - name: prometheus
+    overrides:
+    - match:
+        metric: ALL_METRICS
+      disabled: false
+
+  tracing:
+  - providers:
+    - name: jaeger
+    randomSamplingPercentage: 1.0 # Low default sampling
+    customTags:
+      cluster_name:
+        literal:
+          value: orion-production

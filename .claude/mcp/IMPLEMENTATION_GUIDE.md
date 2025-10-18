@@ -278,6 +278,8 @@ Expected response: Prometheus query results (requires Prometheus running)
 
 Expected response: Memory storage and retrieval confirmation
 
+See detailed usage guide: [MEMORY_MCP_GUIDE.md](./MEMORY_MCP_GUIDE.md)
+
 #### 8. Test Filesystem MCP
 
 ```bash
@@ -288,6 +290,8 @@ Expected response: Memory storage and retrieval confirmation
 ```
 
 Expected response: File system operations (limited to allowed directories)
+
+See detailed usage guide: [FILESYSTEM_MCP_GUIDE.md](./FILESYSTEM_MCP_GUIDE.md)
 
 ---
 
@@ -675,6 +679,14 @@ After completing this setup:
 5. **Monitor MCP usage** and optimize as needed
 
 ## Resources
+
+### MCP Server Guides
+
+- [Memory MCP Server Guide](./MEMORY_MCP_GUIDE.md) - Persistent context and knowledge graph
+- [Filesystem MCP Server Guide](./FILESYSTEM_MCP_GUIDE.md) - Secure file operations
+- [Custom ORION Tools](./CUSTOM_TOOLS.md) - ORION-specific MCP tools
+
+### External Documentation
 
 - [MCP Documentation](https://modelcontextprotocol.io)
 - [MCP GitHub Repository](https://github.com/modelcontextprotocol)

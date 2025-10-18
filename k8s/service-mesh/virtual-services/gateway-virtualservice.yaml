@@ -1,0 +1,100 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: gateway-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: gateway-service
+    app.kubernetes.io/component: virtualservice
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  hosts:
+  - "api.orion.example.com"
+  - "gateway-service"
+  - "gateway-service.orion.svc.cluster.local"
+
+  gateways:
+  - orion-gateway
+  - mesh
+
+  http:
+  # Health check
+  - name: "health-check"
+    match:
+    - uri:
+        exact: /health
+    - uri:
+        exact: /api/health
+    route:
+    - destination:
+        host: gateway-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 5s
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+
+  # GraphQL endpoint
+  - name: "graphql"
+    match:
+    - uri:
+        prefix: /graphql
+    route:
+    - destination:
+        host: gateway-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 30s
+    retries:
+      attempts: 2
+      perTryTimeout: 15s
+      retryOn: 5xx,reset,connect-failure
+    corsPolicy:
+      allowOrigins:
+      - exact: "https://app.orion.example.com"
+      - prefix: "https://*.orion.example.com"
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      allowHeaders:
+      - content-type
+      - authorization
+      - x-request-id
+      allowCredentials: true
+      maxAge: 24h
+
+  # API routes with rate limiting
+  - name: "api-routes"
+    match:
+    - uri:
+        prefix: /api/
+    route:
+    - destination:
+        host: gateway-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 20s
+    retries:
+      attempts: 2
+      perTryTimeout: 10s
+      retryOn: 5xx,reset
+    fault:
+      delay:
+        percentage:
+          value: 0.1 # Inject delay in 0.1% of requests for chaos testing
+        fixedDelay: 5s
+
+  # Default route
+  - name: "default"
+    route:
+    - destination:
+        host: gateway-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 15s

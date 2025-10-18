@@ -1,0 +1,62 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: admin-ui-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: admin-ui-service
+    app.kubernetes.io/component: destinationrule
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  host: admin-ui-service.orion.svc.cluster.local
+
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 150
+        connectTimeout: 30s
+        tcpKeepalive:
+          time: 3600s
+          interval: 60s
+      http:
+        http1MaxPendingRequests: 150
+        http2MaxRequests: 1500
+        maxRequestsPerConnection: 10
+        maxRetries: 2
+        idleTimeout: 3600s
+
+    loadBalancer:
+      simple: ROUND_ROBIN
+      localityLbSetting:
+        enabled: true
+
+    outlierDetection:
+      consecutiveErrors: 5
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 40
+      minHealthPercent: 60
+
+    tls:
+      mode: ISTIO_MUTUAL
+      sni: admin-ui-service.orion.svc.cluster.local
+
+  subsets:
+  - name: stable
+    labels:
+      version: stable
+
+  - name: canary
+    labels:
+      version: canary
+    trafficPolicy:
+      outlierDetection:
+        consecutiveErrors: 3
+
+  - name: v1
+    labels:
+      version: v1
+
+  - name: v2
+    labels:
+      version: v2

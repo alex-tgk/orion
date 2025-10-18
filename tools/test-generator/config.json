@@ -1,0 +1,70 @@
+{
+  "testFramework": "jest",
+  "model": "claude-3-5-sonnet-20241022",
+  "maxTokens": 8000,
+  "temperature": 0.3,
+  "patterns": {
+    "controller": [
+      "**/*.controller.ts",
+      "!**/*.spec.ts"
+    ],
+    "service": [
+      "**/*.service.ts",
+      "!**/*.spec.ts"
+    ],
+    "resolver": [
+      "**/*.resolver.ts",
+      "!**/*.spec.ts"
+    ],
+    "repository": [
+      "**/*.repository.ts",
+      "!**/*.spec.ts"
+    ],
+    "utility": [
+      "**/utils/**/*.ts",
+      "**/helpers/**/*.ts",
+      "!**/*.spec.ts"
+    ],
+    "dto": [
+      "**/dto/**/*.ts",
+      "!**/*.spec.ts"
+    ]
+  },
+  "coverageThreshold": {
+    "global": {
+      "lines": 80,
+      "functions": 80,
+      "branches": 80,
+      "statements": 80
+    }
+  },
+  "testGenerationRules": {
+    "alwaysInclude": [
+      "happy-path scenarios",
+      "null/undefined checks",
+      "error handling",
+      "input validation"
+    ],
+    "mockingStrategy": "full",
+    "followArrangeActAssert": true,
+    "includeIntegrationTests": true,
+    "generateFixtures": true,
+    "maxTestsPerFile": 50
+  },
+  "qualityChecks": {
+    "mustCompile": true,
+    "mustPass": true,
+    "minCoverageIncrease": 5,
+    "requireDescriptiveNames": true,
+    "requireMockSetup": true
+  },
+  "excludePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.d.ts",
+    "**/main.ts",
+    "**/migrations/**"
+  ]
+}

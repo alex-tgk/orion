@@ -1,0 +1,105 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: admin-ui-service
+  namespace: orion
+  labels:
+    app.kubernetes.io/name: admin-ui-service
+    app.kubernetes.io/component: virtualservice
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  hosts:
+  - "admin.orion.example.com"
+  - "admin-ui-service"
+  - "admin-ui-service.orion.svc.cluster.local"
+
+  gateways:
+  - orion-gateway
+  - mesh
+
+  http:
+  # Health check
+  - name: "health-check"
+    match:
+    - uri:
+        exact: /health
+    - uri:
+        exact: /api/admin/health
+    route:
+    - destination:
+        host: admin-ui-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 5s
+
+  # WebSocket for real-time updates
+  - name: "websocket"
+    match:
+    - uri:
+        prefix: /socket.io
+    route:
+    - destination:
+        host: admin-ui-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 0s
+    websocketUpgrade: true
+
+  # API endpoints
+  - name: "api"
+    match:
+    - uri:
+        prefix: /api/admin/
+    route:
+    - destination:
+        host: admin-ui-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 15s
+    retries:
+      attempts: 2
+      perTryTimeout: 7s
+    headers:
+      request:
+        add:
+          x-admin-access: "true"
+
+  # Static assets (long cache)
+  - name: "static-assets"
+    match:
+    - uri:
+        prefix: /static/
+    - uri:
+        prefix: /assets/
+    - uri:
+        regex: ".*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf)$"
+    route:
+    - destination:
+        host: admin-ui-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 10s
+    headers:
+      response:
+        add:
+          Cache-Control: "public, max-age=31536000"
+          X-Content-Type-Options: "nosniff"
+
+  # Frontend routes (SPA)
+  - name: "frontend"
+    route:
+    - destination:
+        host: admin-ui-service
+        port:
+          number: 80
+        subset: stable
+    timeout: 10s
+    headers:
+      response:
+        add:
+          X-Frame-Options: "DENY"
+          X-XSS-Protection: "1; mode=block"

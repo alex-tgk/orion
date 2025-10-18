@@ -1,0 +1,48 @@
+# Migration Guide: {{fromVersion}} → {{toVersion}}
+
+{{#if description}}
+{{description}}
+{{/if}}
+
+## Breaking Changes
+
+{{#if breakingChanges}}
+{{#each breakingChanges}}
+- {{this}}
+{{/each}}
+{{else}}
+No breaking changes in this version.
+{{/if}}
+
+## Migration Steps
+
+{{#each steps}}
+### Step {{@index}}: {{title}}
+
+{{description}}
+
+{{#if before}}
+**Before:**
+```typescript
+{{before}}
+```
+{{/if}}
+
+{{#if after}}
+**After:**
+```typescript
+{{after}}
+```
+{{/if}}
+
+{{/each}}
+
+## Additional Resources
+
+{{#if resources}}
+{{#each resources}}
+- [{{title}}]({{url}})
+{{/each}}
+{{else}}
+- See main documentation for more details
+{{/if}}
