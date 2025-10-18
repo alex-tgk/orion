@@ -1,5 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { NotificationStatus, NotificationType } from '../entities/notification.entity';
+import {
+  NotificationStatus,
+  NotificationType,
+} from '../entities/notification.entity';
 
 export class NotificationResponseDto {
   @ApiProperty()

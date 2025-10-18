@@ -1,4 +1,10 @@
-import { Module, Global, OnModuleInit, OnModuleDestroy, Logger } from '@nestjs/common';
+import {
+  Module,
+  Global,
+  OnModuleInit,
+  OnModuleDestroy,
+  Logger,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as amqp from 'amqplib';
 import { Channel, Connection } from 'amqplib';
@@ -44,8 +50,12 @@ export const RABBITMQ_CHANNEL = 'RABBITMQ_CHANNEL';
         configService: ConfigService,
       ): Promise<Channel> => {
         const logger = new Logger('RabbitMQ');
-        const exchange = configService.get<string>('notification.rabbitmq.exchange');
-        const prefetch = configService.get<number>('notification.rabbitmq.prefetch');
+        const exchange = configService.get<string>(
+          'notification.rabbitmq.exchange',
+        );
+        const prefetch = configService.get<number>(
+          'notification.rabbitmq.prefetch',
+        );
 
         try {
           const channel = await connection.createChannel();
@@ -57,17 +67,45 @@ export const RABBITMQ_CHANNEL = 'RABBITMQ_CHANNEL';
           // Setup queues for user events
           const userQueue = 'notification.user-events';
           await channel.assertQueue(userQueue, { durable: true });
-          await channel.bindQueue(userQueue, exchange, USER_EVENT_PATTERNS.USER_CREATED);
-          await channel.bindQueue(userQueue, exchange, USER_EVENT_PATTERNS.USER_VERIFIED);
-          await channel.bindQueue(userQueue, exchange, USER_EVENT_PATTERNS.USER_UPDATED);
-          await channel.bindQueue(userQueue, exchange, USER_EVENT_PATTERNS.USER_DELETED);
+          await channel.bindQueue(
+            userQueue,
+            exchange,
+            USER_EVENT_PATTERNS.USER_CREATED,
+          );
+          await channel.bindQueue(
+            userQueue,
+            exchange,
+            USER_EVENT_PATTERNS.USER_VERIFIED,
+          );
+          await channel.bindQueue(
+            userQueue,
+            exchange,
+            USER_EVENT_PATTERNS.USER_UPDATED,
+          );
+          await channel.bindQueue(
+            userQueue,
+            exchange,
+            USER_EVENT_PATTERNS.USER_DELETED,
+          );
 
           // Setup queues for auth events
           const authQueue = 'notification.auth-events';
           await channel.assertQueue(authQueue, { durable: true });
-          await channel.bindQueue(authQueue, exchange, AUTH_EVENT_PATTERNS.PASSWORD_RESET_REQUESTED);
-          await channel.bindQueue(authQueue, exchange, AUTH_EVENT_PATTERNS.PASSWORD_CHANGED);
-          await channel.bindQueue(authQueue, exchange, AUTH_EVENT_PATTERNS.SUSPICIOUS_LOGIN);
+          await channel.bindQueue(
+            authQueue,
+            exchange,
+            AUTH_EVENT_PATTERNS.PASSWORD_RESET_REQUESTED,
+          );
+          await channel.bindQueue(
+            authQueue,
+            exchange,
+            AUTH_EVENT_PATTERNS.PASSWORD_CHANGED,
+          );
+          await channel.bindQueue(
+            authQueue,
+            exchange,
+            AUTH_EVENT_PATTERNS.SUSPICIOUS_LOGIN,
+          );
 
           // Setup dead letter queue
           const dlq = 'notification.dlq';

@@ -82,7 +82,9 @@ export class UserEventsConsumer implements OnModuleInit {
   private async handleUserCreated(event: UserCreatedEvent) {
     this.logger.log(`Sending welcome email to user ${event.userId}`);
 
-    const frontendUrl = this.configService.get<string>('notification.app.frontendUrl');
+    const frontendUrl = this.configService.get<string>(
+      'notification.app.frontendUrl',
+    );
 
     // Check if email notifications are enabled
     const enabled = await this.preferencesService.isEnabled(
@@ -114,9 +116,13 @@ export class UserEventsConsumer implements OnModuleInit {
    * Handle UserVerifiedEvent - Send verification confirmation
    */
   private async handleUserVerified(event: UserVerifiedEvent) {
-    this.logger.log(`Sending verification confirmation to user ${event.userId}`);
+    this.logger.log(
+      `Sending verification confirmation to user ${event.userId}`,
+    );
 
-    const frontendUrl = this.configService.get<string>('notification.app.frontendUrl');
+    const frontendUrl = this.configService.get<string>(
+      'notification.app.frontendUrl',
+    );
 
     const enabled = await this.preferencesService.isEnabled(
       event.userId,
@@ -125,7 +131,9 @@ export class UserEventsConsumer implements OnModuleInit {
     );
 
     if (!enabled) {
-      this.logger.debug(`Account update emails disabled for user ${event.userId}`);
+      this.logger.debug(
+        `Account update emails disabled for user ${event.userId}`,
+      );
       return;
     }
 
@@ -151,7 +159,9 @@ export class UserEventsConsumer implements OnModuleInit {
       return;
     }
 
-    this.logger.log(`Sending profile update confirmation to user ${event.userId}`);
+    this.logger.log(
+      `Sending profile update confirmation to user ${event.userId}`,
+    );
 
     const enabled = await this.preferencesService.isEnabled(
       event.userId,

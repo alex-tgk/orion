@@ -17,13 +17,18 @@ export class EmailService {
   private readonly replyTo: string;
 
   constructor(private readonly configService: ConfigService) {
-    const apiKey = this.configService.get<string>('notification.sendgrid.apiKey');
-    this.enabled = this.configService.get<boolean>('notification.sendgrid.enabled') ?? false;
+    const apiKey = this.configService.get<string>(
+      'notification.sendgrid.apiKey',
+    );
+    this.enabled =
+      this.configService.get<boolean>('notification.sendgrid.enabled') ?? false;
     this.from = this.configService.get('notification.sendgrid.from') || {
       email: 'noreply@orion.local',
-      name: 'ORION Notifications'
+      name: 'ORION Notifications',
     };
-    this.replyTo = this.configService.get<string>('notification.sendgrid.replyTo') || 'support@orion.local';
+    this.replyTo =
+      this.configService.get<string>('notification.sendgrid.replyTo') ||
+      'support@orion.local';
 
     if (this.enabled && apiKey) {
       sgMail.setApiKey(apiKey);
@@ -68,7 +73,9 @@ export class EmailService {
    */
   async sendBatch(emails: EmailOptions[]): Promise<void> {
     if (!this.enabled) {
-      this.logger.debug(`Email sending disabled. Would send ${emails.length} emails`);
+      this.logger.debug(
+        `Email sending disabled. Would send ${emails.length} emails`,
+      );
       return;
     }
 
@@ -86,7 +93,9 @@ export class EmailService {
       }));
 
       await sgMail.send(messages);
-      this.logger.log(`Batch email sent successfully to ${emails.length} recipients`);
+      this.logger.log(
+        `Batch email sent successfully to ${emails.length} recipients`,
+      );
     } catch (error) {
       this.logger.error('Failed to send batch email:', error);
       throw error;
@@ -97,7 +106,10 @@ export class EmailService {
    * Strip HTML tags from string
    */
   private stripHtml(html: string): string {
-    return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    return html
+      .replace(/<[^>]*>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   /**

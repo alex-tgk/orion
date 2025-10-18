@@ -1,0 +1,1336 @@
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/vector-db/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/vector-db/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/vector-db/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/vector-db/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/vector-db/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/vector-db/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/vector-db/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mcollection.service.spec.ts[22m
+  CollectionService
+    createCollection
+      [31m✕[39m [2mshould create a new collection successfully (19 ms)[22m
+      [31m✕[39m [2mshould throw ConflictException if collection already exists (4 ms)[22m
+    getCollection
+      [31m✕[39m [2mshould return a collection by name (4 ms)[22m
+      [31m✕[39m [2mshould throw NotFoundException if collection does not exist (3 ms)[22m
+    listCollections
+      [31m✕[39m [2mshould return all collections (2 ms)[22m
+      [31m✕[39m [2mshould return empty array when no collections exist (3 ms)[22m
+    deleteCollection
+      [31m✕[39m [2mshould delete a collection successfully (2 ms)[22m
+      [31m✕[39m [2mshould throw NotFoundException if collection does not exist (2 ms)[22m
+    getCollectionStats
+      [31m✕[39m [2mshould return collection statistics (3 ms)[22m
+      [31m✕[39m [2mshould throw NotFoundException for non-existent collection (3 ms)[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › createCollection › should create a new collection successfully[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › createCollection › should throw ConflictException if collection already exists[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › getCollection › should return a collection by name[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › getCollection › should throw NotFoundException if collection does not exist[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › listCollections › should return all collections[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › listCollections › should return empty array when no collections exist[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › deleteCollection › should delete a collection successfully[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › deleteCollection › should throw NotFoundException if collection does not exist[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › getCollectionStats › should return collection statistics[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCollectionService › getCollectionStats › should throw NotFoundException for non-existent collection[39m[22m
+
+    Nest can't resolve dependencies of the CollectionService (?). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 38 |[39m[22m
+[2m     [90m 39 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 40 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 41 |[39m       providers[33m:[39m [[22m
+[2m     [90m 42 |[39m         [33mCollectionService[39m[33m,[39m[22m
+[2m     [90m 43 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:40:35)[22m[2m[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mhealth.service.spec.ts[22m
+  HealthService
+    checkHealth
+      [31m✕[39m [2mshould return healthy status when provider is connected (24 ms)[22m
+      [31m✕[39m [2mshould return unhealthy status when provider is disconnected (4 ms)[22m
+      [31m✕[39m [2mshould handle errors gracefully (4 ms)[22m
+      [31m✕[39m [2mshould continue if collection stats fail (4 ms)[22m
+    getUptime
+      [31m✕[39m [2mshould return uptime in seconds (4 ms)[22m
+
+[1m[31m  [1m● [22m[1mHealthService › checkHealth › should return healthy status when provider is connected[39m[22m
+
+    Nest can't resolve dependencies of the HealthService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 31 |[39m[22m
+[2m     [90m 32 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 33 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 34 |[39m       providers[33m:[39m [[22m
+[2m     [90m 35 |[39m         [33mHealthService[39m[33m,[39m[22m
+[2m     [90m 36 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/health.service.spec.ts[39m[0m[2m:33:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mHealthService › checkHealth › should return unhealthy status when provider is disconnected[39m[22m
+
+    Nest can't resolve dependencies of the HealthService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 31 |[39m[22m
+[2m     [90m 32 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 33 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 34 |[39m       providers[33m:[39m [[22m
+[2m     [90m 35 |[39m         [33mHealthService[39m[33m,[39m[22m
+[2m     [90m 36 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/health.service.spec.ts[39m[0m[2m:33:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mHealthService › checkHealth › should handle errors gracefully[39m[22m
+
+    Nest can't resolve dependencies of the HealthService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 31 |[39m[22m
+[2m     [90m 32 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 33 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 34 |[39m       providers[33m:[39m [[22m
+[2m     [90m 35 |[39m         [33mHealthService[39m[33m,[39m[22m
+[2m     [90m 36 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/health.service.spec.ts[39m[0m[2m:33:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mHealthService › checkHealth › should continue if collection stats fail[39m[22m
+
+    Nest can't resolve dependencies of the HealthService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 31 |[39m[22m
+[2m     [90m 32 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 33 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 34 |[39m       providers[33m:[39m [[22m
+[2m     [90m 35 |[39m         [33mHealthService[39m[33m,[39m[22m
+[2m     [90m 36 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/health.service.spec.ts[39m[0m[2m:33:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mHealthService › getUptime › should return uptime in seconds[39m[22m
+
+    Nest can't resolve dependencies of the HealthService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 31 |[39m[22m
+[2m     [90m 32 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 33 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 34 |[39m       providers[33m:[39m [[22m
+[2m     [90m 35 |[39m         [33mHealthService[39m[33m,[39m[22m
+[2m     [90m 36 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/health.service.spec.ts[39m[0m[2m:33:35)[22m[2m[22m
+
+[32m[Nest] 77938  - [39m10/18/2025, 12:29:21 PM [32m    LOG[39m [38;5;3m[HealthController] [39m[32mHealth check requested[39m
+[32m[Nest] 77938  - [39m10/18/2025, 12:29:21 PM [32m    LOG[39m [38;5;3m[HealthController] [39m[32mHealth check requested[39m
+[32m[Nest] 77938  - [39m10/18/2025, 12:29:21 PM [32m    LOG[39m [38;5;3m[HealthController] [39m[32mHealth check requested[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mhealth.controller.spec.ts[22m
+  HealthController
+    checkHealth
+      [32m✓[39m [2mshould return healthy status when provider is connected (25 ms)[22m
+      [32m✓[39m [2mshould return unhealthy status when provider is disconnected (3 ms)[22m
+      [32m✓[39m [2mshould return degraded status when provider has issues (3 ms)[22m
+
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[31m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [31m  ERROR[39m [38;5;3m[PostgresVectorProvider] [39m[31mFailed to connect to PostgreSQL[39m
+[31m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [31m  ERROR[39m [38;5;3m[PostgresVectorProvider] [39m[31mError: Database URL not configured for PostgreSQL vector provider[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mDisconnected from PostgreSQL[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mDeleted collection: test-collection[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[31m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [31m  ERROR[39m [38;5;3m[PostgresVectorProvider] [39m[31mFailed to upsert vector in test-collection[39m
+[31m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [31m  ERROR[39m [38;5;3m[PostgresVectorProvider] [39m[31mError: Invalid embedding dimension. Expected 1536, got 768[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mpgvector extension verified[39m
+[32m[Nest] 77937  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[PostgresVectorProvider] [39m[32mConnected to PostgreSQL with pgvector[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/providers/__tests__/[22m[1mpostgres-vector.provider.spec.ts[22m
+  PostgresVectorProvider
+    connect
+      [32m✓[39m [2mshould connect to PostgreSQL successfully (22 ms)[22m
+      [32m✓[39m [2mshould throw error if database URL is not configured (23 ms)[22m
+    disconnect
+      [32m✓[39m [2mshould disconnect from PostgreSQL successfully (4 ms)[22m
+    isHealthy
+      [32m✓[39m [2mshould return true when connection is healthy (2 ms)[22m
+      [32m✓[39m [2mshould return false when connection fails (3 ms)[22m
+    createCollection
+      [32m✓[39m [2mshould create a collection successfully (4 ms)[22m
+    getCollection
+      [32m✓[39m [2mshould return a collection by name (3 ms)[22m
+      [32m✓[39m [2mshould return null if collection does not exist (2 ms)[22m
+    listCollections
+      [32m✓[39m [2mshould return all collections (4 ms)[22m
+    deleteCollection
+      [32m✓[39m [2mshould delete a collection successfully (3 ms)[22m
+    upsertVector
+      [32m✓[39m [2mshould upsert a vector successfully (3 ms)[22m
+      [32m✓[39m [2mshould throw error for invalid dimension (3 ms)[22m
+    searchSimilar
+      [32m✓[39m [2mshould search similar vectors successfully (4 ms)[22m
+    getTotalVectorCount
+      [32m✓[39m [2mshould return total vector count (3 ms)[22m
+
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mUpserting vector in collection: test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mUpserting vector in collection: non-existent[39m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mvector.service.spec.ts[22m
+  VectorService
+    upsertVector
+      [31m✕[39m [2mshould upsert a vector successfully (18 ms)[22m
+      [31m✕[39m [2mshould throw NotFoundException if collection does not exist (3 ms)[22m
+      [31m✕[39m [2mshould throw BadRequestException for invalid dimension (3 ms)[22m
+      [31m✕[39m [2mshould generate ID if not provided (2 ms)[22m
+    batchUpsert
+      [31m✕[39m [2mshould batch upsert vectors successfully (2 ms)[22m
+      [31m✕[39m [2mshould handle partial failures in batch upsert (2 ms)[22m
+      [31m✕[39m [2mshould throw NotFoundException for non-existent collection (2 ms)[22m
+    searchSimilar
+      [31m✕[39m [2mshould search similar vectors successfully (1 ms)[22m
+      [31m✕[39m [2mshould throw BadRequestException for invalid query vector dimension (2 ms)[22m
+      [31m✕[39m [2mshould return empty results when no matches found (2 ms)[22m
+      [31m✕[39m [2mshould apply metadata filters (1 ms)[22m
+    hybridSearch
+      [31m✕[39m [2mshould perform hybrid search successfully (2 ms)[22m
+    deleteVector
+      [31m✕[39m [2mshould delete a vector successfully (1 ms)[22m
+    batchDelete
+      [31m✕[39m [2mshould batch delete vectors successfully (1 ms)[22m
+
+[1m[31m  [1m● [22m[1mVectorService › upsertVector › should upsert a vector successfully[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › upsertVector › should throw NotFoundException if collection does not exist[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › upsertVector › should throw BadRequestException for invalid dimension[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › upsertVector › should generate ID if not provided[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › batchUpsert › should batch upsert vectors successfully[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › batchUpsert › should handle partial failures in batch upsert[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › batchUpsert › should throw NotFoundException for non-existent collection[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › searchSimilar › should search similar vectors successfully[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › searchSimilar › should throw BadRequestException for invalid query vector dimension[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › searchSimilar › should return empty results when no matches found[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › searchSimilar › should apply metadata filters[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › hybridSearch › should perform hybrid search successfully[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › deleteVector �� should delete a vector successfully[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mVectorService › batchDelete › should batch delete vectors successfully[39m[22m
+
+    Nest can't resolve dependencies of the VectorService (?, ConfigService). Please make sure that the argument Object at index [0] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If Object is a provider, is it part of the current RootTestModule?
+    - If Object is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing Object */ ]
+      })
+[2m[22m
+[2m    [0m [90m 45 |[39m[22m
+[2m     [90m 46 |[39m   beforeEach([36masync[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 47 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[22m
+[2m     [90m    |[39m                                   [31m[1m^[22m[2m[39m[22m
+[2m     [90m 48 |[39m       providers[33m:[39m [[22m
+[2m     [90m 49 |[39m         [33mVectorService[39m[33m,[39m[22m
+[2m     [90m 50 |[39m         {[0m[22m
+[2m[22m
+[2m      [2mat TestingInjector.lookupComponentInParentModules ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:286:19)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveComponentWrapper ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-injector.js[2m:19:45)[22m[2m[22m
+[2m      [2mat resolveParam ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:141:38)[22m[2m[22m
+[2m          at async Promise.all (index 0)[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:169:27)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:47:35)[22m[2m[22m
+
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mUpserting vector in collection: test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mBatch upserting 2 vectors in test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mBatch upserting 2 vectors in test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mSearching in collection: test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mSearching in collection: test-collection[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mCreating collection: test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mSearching in collection: test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mHybrid search in collection: test-collection with keywords: machine learning[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mCreating collection: existing-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mDeleting vector 550e8400-e29b-41d4-a716-446655440000 from test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mDeleting vector non-existent from test-collection[39m
+[32m[Nest] 77939  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[VectorController] [39m[32mBatch deleting 3 vectors from test-collection[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mListing all collections[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mvector.controller.spec.ts[22m
+  VectorController
+    upsertVector
+      [32m✓[39m [2mshould upsert a vector successfully (47 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException if collection does not exist (37 ms)[22m
+      [32m✓[39m [2mshould throw BadRequestException for invalid dimension (5 ms)[22m
+    batchUpsert
+      [32m✓[39m [2mshould batch upsert vectors successfully (3 ms)[22m
+      [32m✓[39m [2mshould handle partial failures in batch upsert (45 ms)[22m
+    searchSimilar
+      [32m✓[39m [2mshould search similar vectors successfully (4 ms)[22m
+      [32m✓[39m [2mshould throw BadRequestException for invalid query vector dimension (3 ms)[22m
+      [32m✓[39m [2mshould return empty results when no matches found (5 ms)[22m
+    hybridSearch
+      [32m✓[39m [2mshould perform hybrid search successfully (3 ms)[22m
+    deleteVector
+      [32m✓[39m [2mshould delete a vector successfully (3 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException if vector does not exist (5 ms)[22m
+    batchDelete
+      [32m✓[39m [2mshould batch delete vectors successfully (3 ms)[22m
+
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mListing all collections[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mGetting collection: test-collection[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mGetting collection: non-existent[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mGetting stats for collection: test-collection[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mGetting stats for collection: non-existent[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mDeleting collection: test-collection[39m
+[32m[Nest] 77940  - [39m10/18/2025, 12:29:22 PM [32m    LOG[39m [38;5;3m[CollectionController] [39m[32mDeleting collection: non-existent[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mcollection.controller.spec.ts[22m
+  CollectionController
+    createCollection
+      [32m✓[39m [2mshould create a new collection successfully (58 ms)[22m
+      [32m✓[39m [2mshould throw ConflictException if collection already exists (21 ms)[22m
+    listCollections
+      [32m✓[39m [2mshould return an array of collections (3 ms)[22m
+      [32m✓[39m [2mshould return empty array when no collections exist (4 ms)[22m
+    getCollection
+      [32m✓[39m [2mshould return a collection by name (3 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException if collection does not exist (15 ms)[22m
+    getCollectionStats
+      [32m✓[39m [2mshould return collection statistics (3 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException for non-existent collection (3 ms)[22m
+    deleteCollection
+      [32m✓[39m [2mshould delete a collection successfully (3 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException if collection does not exist (8 ms)[22m
+
+[1mTest Suites: [22m[1m[31m3 failed[39m[22m, [1m[32m4 passed[39m[22m, 7 total
+[1mTests:       [22m[1m[31m29 failed[39m[22m, [1m[32m39 passed[39m[22m, 68 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        5.297 s
+[2mRan all test suites[22m[2m.[22m

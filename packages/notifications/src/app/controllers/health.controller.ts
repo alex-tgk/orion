@@ -23,7 +23,9 @@ export class HealthController {
   }
 
   @Get('ready')
-  @ApiOperation({ summary: 'Readiness check (database, RabbitMQ, external services)' })
+  @ApiOperation({
+    summary: 'Readiness check (database, RabbitMQ, external services)',
+  })
   @ApiResponse({ status: 200, description: 'Service is ready' })
   @ApiResponse({ status: 503, description: 'Service is not ready' })
   async ready() {
@@ -46,13 +48,21 @@ export class HealthController {
     checks.rabbitmq = true; // If we got here, RabbitMQ connected during module init
 
     // Check SendGrid
-    const sendgridEnabled = this.configService.get<boolean>('notification.sendgrid.enabled');
-    const sendgridApiKey = this.configService.get<string>('notification.sendgrid.apiKey');
+    const sendgridEnabled = this.configService.get<boolean>(
+      'notification.sendgrid.enabled',
+    );
+    const sendgridApiKey = this.configService.get<string>(
+      'notification.sendgrid.apiKey',
+    );
     checks.sendgrid = !sendgridEnabled || !!sendgridApiKey;
 
     // Check Twilio
-    const twilioEnabled = this.configService.get<boolean>('notification.twilio.enabled');
-    const twilioSid = this.configService.get<string>('notification.twilio.accountSid');
+    const twilioEnabled = this.configService.get<boolean>(
+      'notification.twilio.enabled',
+    );
+    const twilioSid = this.configService.get<string>(
+      'notification.twilio.accountSid',
+    );
     checks.twilio = !twilioEnabled || !!twilioSid;
 
     const isReady = Object.values(checks).every((check) => check);

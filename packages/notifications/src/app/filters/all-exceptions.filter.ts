@@ -44,7 +44,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
     this.logger.error(
       `${request.method} ${request.url} - ${status} ${message}`,
-      stack
+      stack,
     );
 
     const errorResponse = {

@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  Patch,
-  Body,
-  Param,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Patch, Body, Param, UseGuards } from '@nestjs/common';
 import { PreferencesService } from '../services/preferences.service';
 
 /**
@@ -49,7 +42,7 @@ export class PreferencesController {
   @Patch(':userId')
   async updatePreferences(
     @Param('userId') userId: string,
-    @Body() dto: UpdatePreferencesDto
+    @Body() dto: UpdatePreferencesDto,
   ) {
     return this.preferencesService.updatePreferences(userId, dto);
   }

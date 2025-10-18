@@ -5,7 +5,9 @@ export default registerAs('notification', () => ({
   env: process.env.NODE_ENV || 'development',
 
   database: {
-    url: process.env.NOTIFICATION_DATABASE_URL || 'postgresql://orion:orion@localhost:5432/orion_notification',
+    url:
+      process.env.NOTIFICATION_DATABASE_URL ||
+      'postgresql://orion:orion@localhost:5432/orion_notification',
   },
 
   rabbitmq: {

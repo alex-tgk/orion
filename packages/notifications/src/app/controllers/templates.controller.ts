@@ -57,9 +57,10 @@ export class TemplatesController {
   @Get()
   async findAll(
     @Query('type') type?: NotificationType,
-    @Query('active') active?: string
+    @Query('active') active?: string,
   ) {
-    const isActive = active === 'true' ? true : active === 'false' ? false : undefined;
+    const isActive =
+      active === 'true' ? true : active === 'false' ? false : undefined;
     return this.templateService.findAll({ type, isActive });
   }
 

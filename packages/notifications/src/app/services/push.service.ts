@@ -52,12 +52,12 @@ export class PushService {
   constructor(private readonly configService: ConfigService) {
     this.enabled = this.configService.get<boolean>(
       'notification.push.enabled',
-      false
+      false,
     );
 
     if (!this.enabled) {
       this.logger.warn(
-        'Push notification service is DISABLED. Set PUSH_ENABLED=true to enable.'
+        'Push notification service is DISABLED. Set PUSH_ENABLED=true to enable.',
       );
     }
   }
@@ -65,10 +65,7 @@ export class PushService {
   /**
    * Send push notification to a single device token
    */
-  async sendToToken(
-    token: string,
-    payload: PushPayload
-  ): Promise<PushResult> {
+  async sendToToken(token: string, payload: PushPayload): Promise<PushResult> {
     if (!this.enabled) {
       this.logger.warn('Push notifications are disabled');
       return {
@@ -78,7 +75,9 @@ export class PushService {
     }
 
     try {
-      this.logger.log(`Sending push notification to token: ${this.maskToken(token)}`);
+      this.logger.log(
+        `Sending push notification to token: ${this.maskToken(token)}`,
+      );
       this.logger.debug(`Push payload: ${JSON.stringify(payload)}`);
 
       // TODO: Integrate with Firebase Cloud Messaging
@@ -130,9 +129,7 @@ export class PushService {
       // Simulated response for development
       const messageId = `push-${Date.now()}-${Math.random().toString(36).substring(7)}`;
 
-      this.logger.log(
-        `Push notification sent successfully: ${messageId}`
-      );
+      this.logger.log(`Push notification sent successfully: ${messageId}`);
 
       return {
         success: true,
@@ -141,7 +138,7 @@ export class PushService {
     } catch (error) {
       this.logger.error(
         `Failed to send push notification: ${error.message}`,
-        error.stack
+        error.stack,
       );
 
       return {
@@ -156,7 +153,7 @@ export class PushService {
    */
   async sendToMultipleTokens(
     tokens: string[],
-    payload: PushPayload
+    payload: PushPayload,
   ): Promise<PushResult> {
     if (!this.enabled) {
       return {
@@ -173,9 +170,7 @@ export class PushService {
     }
 
     try {
-      this.logger.log(
-        `Sending push notification to ${tokens.length} devices`
-      );
+      this.logger.log(`Sending push notification to ${tokens.length} devices`);
 
       // TODO: Integrate with Firebase Cloud Messaging multicast
       /*
@@ -197,7 +192,7 @@ export class PushService {
       const failureCount = 0;
 
       this.logger.log(
-        `Push notifications sent: ${successCount} succeeded, ${failureCount} failed`
+        `Push notifications sent: ${successCount} succeeded, ${failureCount} failed`,
       );
 
       return {
@@ -210,7 +205,7 @@ export class PushService {
     } catch (error) {
       this.logger.error(
         `Failed to send push notifications: ${error.message}`,
-        error.stack
+        error.stack,
       );
 
       return {
@@ -223,10 +218,7 @@ export class PushService {
   /**
    * Send push notification to a topic
    */
-  async sendToTopic(
-    topic: string,
-    payload: PushPayload
-  ): Promise<PushResult> {
+  async sendToTopic(topic: string, payload: PushPayload): Promise<PushResult> {
     if (!this.enabled) {
       return {
         success: false,
@@ -255,7 +247,7 @@ export class PushService {
       const messageId = `topic-${Date.now()}`;
 
       this.logger.log(
-        `Topic push notification sent successfully: ${messageId}`
+        `Topic push notification sent successfully: ${messageId}`,
       );
 
       return {
@@ -265,7 +257,7 @@ export class PushService {
     } catch (error) {
       this.logger.error(
         `Failed to send topic push notification: ${error.message}`,
-        error.stack
+        error.stack,
       );
 
       return {
@@ -278,10 +270,7 @@ export class PushService {
   /**
    * Subscribe token to a topic
    */
-  async subscribeToTopic(
-    tokens: string[],
-    topic: string
-  ): Promise<PushResult> {
+  async subscribeToTopic(tokens: string[], topic: string): Promise<PushResult> {
     if (!this.enabled) {
       return {
         success: false,
@@ -290,9 +279,7 @@ export class PushService {
     }
 
     try {
-      this.logger.log(
-        `Subscribing ${tokens.length} tokens to topic: ${topic}`
-      );
+      this.logger.log(`Subscribing ${tokens.length} tokens to topic: ${topic}`);
 
       // TODO: Integrate with Firebase Cloud Messaging
       /*
@@ -302,9 +289,7 @@ export class PushService {
         .subscribeToTopic(tokens, topic);
       */
 
-      this.logger.log(
-        `Successfully subscribed tokens to topic: ${topic}`
-      );
+      this.logger.log(`Successfully subscribed tokens to topic: ${topic}`);
 
       return {
         success: true,
@@ -312,7 +297,7 @@ export class PushService {
     } catch (error) {
       this.logger.error(
         `Failed to subscribe to topic: ${error.message}`,
-        error.stack
+        error.stack,
       );
 
       return {
@@ -327,7 +312,7 @@ export class PushService {
    */
   async unsubscribeFromTopic(
     tokens: string[],
-    topic: string
+    topic: string,
   ): Promise<PushResult> {
     if (!this.enabled) {
       return {
@@ -338,7 +323,7 @@ export class PushService {
 
     try {
       this.logger.log(
-        `Unsubscribing ${tokens.length} tokens from topic: ${topic}`
+        `Unsubscribing ${tokens.length} tokens from topic: ${topic}`,
       );
 
       // TODO: Integrate with Firebase Cloud Messaging
@@ -349,9 +334,7 @@ export class PushService {
         .unsubscribeFromTopic(tokens, topic);
       */
 
-      this.logger.log(
-        `Successfully unsubscribed tokens from topic: ${topic}`
-      );
+      this.logger.log(`Successfully unsubscribed tokens from topic: ${topic}`);
 
       return {
         success: true,
@@ -359,7 +342,7 @@ export class PushService {
     } catch (error) {
       this.logger.error(
         `Failed to unsubscribe from topic: ${error.message}`,
-        error.stack
+        error.stack,
       );
 
       return {

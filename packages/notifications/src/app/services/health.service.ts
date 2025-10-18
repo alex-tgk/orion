@@ -47,7 +47,7 @@ export class HealthService {
     private readonly configService: ConfigService,
     private readonly emailService: EmailService,
     private readonly smsService: SmsService,
-    private readonly pushService: PushService
+    private readonly pushService: PushService,
   ) {
     this.startTime = Date.now();
   }

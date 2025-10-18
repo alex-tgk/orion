@@ -12,12 +12,15 @@ export interface DeliveryStats {
   pending: number;
   deliveryRate: number;
   avgDeliveryTime: number; // in milliseconds
-  byType: Record<NotificationType, {
-    total: number;
-    delivered: number;
-    failed: number;
-    deliveryRate: number;
-  }>;
+  byType: Record<
+    NotificationType,
+    {
+      total: number;
+      delivered: number;
+      failed: number;
+      deliveryRate: number;
+    }
+  >;
 }
 
 /**
@@ -62,7 +65,7 @@ export class DeliveryTrackingService {
    */
   async markAsDelivered(
     notificationId: string,
-    metadata?: Record<string, any>
+    metadata?: Record<string, any>,
   ): Promise<void> {
     const notification = await this.prisma.notification.findUnique({
       where: { id: notificationId },
@@ -88,7 +91,7 @@ export class DeliveryTrackingService {
     });
 
     this.logger.log(
-      `Notification ${notificationId} delivered (${deliveryTime}ms)`
+      `Notification ${notificationId} delivered (${deliveryTime}ms)`,
     );
   }
 
@@ -98,7 +101,7 @@ export class DeliveryTrackingService {
   async markAsFailed(
     notificationId: string,
     error: string,
-    metadata?: Record<string, any>
+    metadata?: Record<string, any>,
   ): Promise<void> {
     await this.prisma.notification.update({
       where: { id: notificationId },
@@ -113,18 +116,13 @@ export class DeliveryTrackingService {
       },
     });
 
-    this.logger.error(
-      `Notification ${notificationId} failed: ${error}`
-    );
+    this.logger.error(`Notification ${notificationId} failed: ${error}`);
   }
 
   /**
    * Mark notification as bounced
    */
-  async markAsBounced(
-    notificationId: string,
-    reason: string
-  ): Promise<void> {
+  async markAsBounced(notificationId: string, reason: string): Promise<void> {
     await this.prisma.notification.update({
       where: { id: notificationId },
       data: {
@@ -137,9 +135,7 @@ export class DeliveryTrackingService {
       },
     });
 
-    this.logger.warn(
-      `Notification ${notificationId} bounced: ${reason}`
-    );
+    this.logger.warn(`Notification ${notificationId} bounced: ${reason}`);
   }
 
   /**
@@ -164,7 +160,7 @@ export class DeliveryTrackingService {
    */
   async getDeliveryStats(
     startDate?: Date,
-    endDate?: Date
+    endDate?: Date,
   ): Promise<DeliveryStats> {
     const whereClause: any = {};
 
@@ -250,7 +246,7 @@ export class DeliveryTrackingService {
    * Get statistics by notification type
    */
   private async getStatsByType(
-    whereClause: any
+    whereClause: any,
   ): Promise<DeliveryStats['byType']> {
     const types = [
       NotificationType.email,
@@ -298,7 +294,7 @@ export class DeliveryTrackingService {
   async getUserDeliveryHistory(
     userId: string,
     limit: number = 20,
-    offset: number = 0
+    offset: number = 0,
   ) {
     const notifications = await this.prisma.notification.findMany({
       where: { userId },

@@ -47,10 +47,14 @@ export class AuthEventsConsumer implements OnModuleInit {
                 );
                 break;
               case 'auth.password-changed':
-                await this.handlePasswordChanged(content as PasswordChangedEvent);
+                await this.handlePasswordChanged(
+                  content as PasswordChangedEvent,
+                );
                 break;
               case 'auth.suspicious-login':
-                await this.handleSuspiciousLogin(content as SuspiciousLoginEvent);
+                await this.handleSuspiciousLogin(
+                  content as SuspiciousLoginEvent,
+                );
                 break;
               default:
                 this.logger.warn(`Unknown auth event type: ${routingKey}`);
@@ -77,10 +81,14 @@ export class AuthEventsConsumer implements OnModuleInit {
   /**
    * Handle PasswordResetRequestedEvent - Send password reset email
    */
-  private async handlePasswordResetRequested(event: PasswordResetRequestedEvent) {
+  private async handlePasswordResetRequested(
+    event: PasswordResetRequestedEvent,
+  ) {
     this.logger.log(`Sending password reset email to user ${event.userId}`);
 
-    const frontendUrl = this.configService.get<string>('notification.app.frontendUrl');
+    const frontendUrl = this.configService.get<string>(
+      'notification.app.frontendUrl',
+    );
 
     const enabled = await this.preferencesService.isEnabled(
       event.userId,
@@ -89,14 +97,18 @@ export class AuthEventsConsumer implements OnModuleInit {
     );
 
     if (!enabled) {
-      this.logger.debug(`Password reset emails disabled for user ${event.userId}`);
+      this.logger.debug(
+        `Password reset emails disabled for user ${event.userId}`,
+      );
       return;
     }
 
     // Calculate expires in minutes
     const expiresAt = new Date(event.expiresAt);
     const now = new Date(event.requestedAt);
-    const expiresInMinutes = Math.round((expiresAt.getTime() - now.getTime()) / 60000);
+    const expiresInMinutes = Math.round(
+      (expiresAt.getTime() - now.getTime()) / 60000,
+    );
 
     await this.notificationService.send({
       userId: event.userId,
@@ -116,7 +128,9 @@ export class AuthEventsConsumer implements OnModuleInit {
    * Handle PasswordChangedEvent - Send security alert email and SMS
    */
   private async handlePasswordChanged(event: PasswordChangedEvent) {
-    this.logger.log(`Sending password changed notification to user ${event.userId}`);
+    this.logger.log(
+      `Sending password changed notification to user ${event.userId}`,
+    );
 
     // Send email notification
     const emailEnabled = await this.preferencesService.isEnabled(

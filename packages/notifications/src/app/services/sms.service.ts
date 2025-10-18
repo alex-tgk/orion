@@ -15,10 +15,17 @@ export class SmsService {
   private readonly from: string;
 
   constructor(private readonly configService: ConfigService) {
-    const accountSid = this.configService.get<string>('notification.twilio.accountSid');
-    const authToken = this.configService.get<string>('notification.twilio.authToken');
-    this.from = this.configService.get<string>('notification.twilio.from') || '+15555555555';
-    this.enabled = this.configService.get<boolean>('notification.twilio.enabled') ?? false;
+    const accountSid = this.configService.get<string>(
+      'notification.twilio.accountSid',
+    );
+    const authToken = this.configService.get<string>(
+      'notification.twilio.authToken',
+    );
+    this.from =
+      this.configService.get<string>('notification.twilio.from') ||
+      '+15555555555';
+    this.enabled =
+      this.configService.get<boolean>('notification.twilio.enabled') ?? false;
 
     if (this.enabled && accountSid && authToken) {
       this.client = new Twilio(accountSid, authToken);
@@ -65,14 +72,18 @@ export class SmsService {
    */
   async sendBatch(messages: SmsOptions[]): Promise<void> {
     if (!this.enabled || !this.client) {
-      this.logger.debug(`SMS sending disabled. Would send ${messages.length} messages`);
+      this.logger.debug(
+        `SMS sending disabled. Would send ${messages.length} messages`,
+      );
       return;
     }
 
     try {
       const promises = messages.map((msg) => this.send(msg));
       await Promise.all(promises);
-      this.logger.log(`Batch SMS sent successfully to ${messages.length} recipients`);
+      this.logger.log(
+        `Batch SMS sent successfully to ${messages.length} recipients`,
+      );
     } catch (error) {
       this.logger.error('Failed to send batch SMS:', error);
       throw error;
