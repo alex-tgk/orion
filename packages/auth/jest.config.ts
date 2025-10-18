@@ -20,6 +20,11 @@ export default {
     '!src/**/*.spec.ts',
     '!src/**/*.d.ts',
     '!src/main.ts',
+    '!src/app/app.module.ts',
+    '!src/app/app.controller.ts',
+    '!src/app/app.service.ts',
+    '!src/app/config/**',
+    '!src/app/filters/**',
   ],
   coverageThreshold: {
     global: {

@@ -1,13 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from './auth.controller';
 import { AuthService } from './services/auth.service';
-import { SessionService } from './services/session.service';
-import { LoginDto, RefreshTokenDto, LoginResponseDto, UserResponseDto } from './dto';
+import { HealthService, HealthStatus } from './services/health.service';
+import {
+  LoginDto,
+  RefreshTokenDto,
+  LoginResponseDto,
+  UserResponseDto,
+} from './dto';
 
 describe('AuthController', () => {
   let controller: AuthController;
   let authService: jest.Mocked<AuthService>;
-  let sessionService: jest.Mocked<SessionService>;
+  let healthService: jest.Mocked<HealthService>;
 
   const mockAuthService = {
     login: jest.fn(),
@@ -16,8 +21,10 @@ describe('AuthController', () => {
     validateUser: jest.fn(),
   };
 
-  const mockSessionService = {
-    getRedisStatus: jest.fn(),
+  const mockHealthService = {
+    getHealth: jest.fn(),
+    getLiveness: jest.fn(),
+    getReadiness: jest.fn(),
   };
 
   const mockLoginResponse: LoginResponseDto = {
@@ -39,18 +46,67 @@ describe('AuthController', () => {
     createdAt: new Date('2024-01-01'),
   };
 
+  const mockHealthyResponse: HealthStatus = {
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: 123.45,
+    version: '1.0.0',
+    environment: 'test',
+    services: {
+      database: {
+        status: 'connected',
+        latency: 5,
+      },
+      redis: {
+        status: 'connected',
+      },
+    },
+    metrics: {
+      memory: {
+        used: 100,
+        total: 500,
+        percentage: 20,
+      },
+    },
+  };
+
+  const mockDegradedResponse: HealthStatus = {
+    status: 'degraded',
+    timestamp: new Date().toISOString(),
+    uptime: 123.45,
+    version: '1.0.0',
+    environment: 'test',
+    services: {
+      database: {
+        status: 'connected',
+        latency: 5,
+      },
+      redis: {
+        status: 'disconnected',
+        error: 'Redis connection unavailable',
+      },
+    },
+    metrics: {
+      memory: {
+        used: 100,
+        total: 500,
+        percentage: 20,
+      },
+    },
+  };
+
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AuthController],
       providers: [
         { provide: AuthService, useValue: mockAuthService },
-        { provide: SessionService, useValue: mockSessionService },
+        { provide: HealthService, useValue: mockHealthService },
       ],
     }).compile();
 
     controller = module.get<AuthController>(AuthController);
     authService = module.get(AuthService);
-    sessionService = module.get(SessionService);
+    healthService = module.get(HealthService);
 
     jest.clearAllMocks();
   });
@@ -107,7 +163,9 @@ describe('AuthController', () => {
       const error = new Error('Invalid credentials');
       mockAuthService.login.mockRejectedValue(error);
 
-      await expect(controller.login(loginDto)).rejects.toThrow('Invalid credentials');
+      await expect(controller.login(loginDto)).rejects.toThrow(
+        'Invalid credentials',
+      );
     });
 
     it('should handle empty password', async () => {
@@ -137,7 +195,10 @@ describe('AuthController', () => {
 
       await controller.logout(req as any, authHeader);
 
-      expect(authService.logout).toHaveBeenCalledWith('user-123', 'access-token-xyz');
+      expect(authService.logout).toHaveBeenCalledWith(
+        'user-123',
+        'access-token-xyz',
+      );
       expect(authService.logout).toHaveBeenCalledTimes(1);
     });
 
@@ -149,7 +210,10 @@ describe('AuthController', () => {
 
       await controller.logout(req as any, authHeader);
 
-      expect(authService.logout).toHaveBeenCalledWith('user-123', 'my-access-token');
+      expect(authService.logout).toHaveBeenCalledWith(
+        'user-123',
+        'my-access-token',
+      );
     });
 
     it('should handle authorization header without Bearer prefix', async () => {
@@ -160,7 +224,10 @@ describe('AuthController', () => {
 
       await controller.logout(req as any, authHeader);
 
-      expect(authService.logout).toHaveBeenCalledWith('user-123', 'access-token-xyz');
+      expect(authService.logout).toHaveBeenCalledWith(
+        'user-123',
+        'access-token-xyz',
+      );
     });
 
     it('should handle missing authorization header', async () => {
@@ -181,7 +248,9 @@ describe('AuthController', () => {
 
       mockAuthService.logout.mockRejectedValue(error);
 
-      await expect(controller.logout(req as any, authHeader)).rejects.toThrow('Logout failed');
+      await expect(controller.logout(req as any, authHeader)).rejects.toThrow(
+        'Logout failed',
+      );
     });
   });
 
@@ -231,7 +300,7 @@ describe('AuthController', () => {
       mockAuthService.refreshTokens.mockRejectedValue(error);
 
       await expect(controller.refresh(refreshTokenDto)).rejects.toThrow(
-        'Invalid refresh token'
+        'Invalid refresh token',
       );
     });
   });
@@ -262,7 +331,10 @@ describe('AuthController', () => {
 
       for (const userId of userIds) {
         const req = { user: { id: userId } };
-        mockAuthService.validateUser.mockResolvedValue({ ...mockUserResponse, id: userId });
+        mockAuthService.validateUser.mockResolvedValue({
+          ...mockUserResponse,
+          id: userId,
+        });
 
         const result = await controller.getProfile(req as any);
 
@@ -277,7 +349,9 @@ describe('AuthController', () => {
 
       mockAuthService.validateUser.mockRejectedValue(error);
 
-      await expect(controller.getProfile(req as any)).rejects.toThrow('User not found');
+      await expect(controller.getProfile(req as any)).rejects.toThrow(
+        'User not found',
+      );
     });
   });
 
@@ -286,62 +360,63 @@ describe('AuthController', () => {
       expect(controller.getHealth).toBeDefined();
     });
 
-    it('should return "ok" status when Redis is connected', () => {
-      mockSessionService.getRedisStatus.mockReturnValue('connected');
+    it('should return "healthy" status when all services are connected', async () => {
+      mockHealthService.getHealth.mockResolvedValue(mockHealthyResponse);
 
-      const result = controller.getHealth();
+      const result = await controller.getHealth();
 
-      expect(sessionService.getRedisStatus).toHaveBeenCalled();
-      expect(result).toEqual({
-        status: 'ok',
-        redis: 'connected',
-        uptime: expect.any(Number),
-        timestamp: expect.any(String),
-      });
+      expect(healthService.getHealth).toHaveBeenCalled();
+      expect(result).toEqual(mockHealthyResponse);
+      expect(result.status).toBe('healthy');
+      expect(result.services.redis.status).toBe('connected');
+      expect(result.services.database.status).toBe('connected');
     });
 
-    it('should return "degraded" status when Redis is disconnected', () => {
-      mockSessionService.getRedisStatus.mockReturnValue('disconnected');
+    it('should return "degraded" status when Redis is disconnected', async () => {
+      mockHealthService.getHealth.mockResolvedValue(mockDegradedResponse);
 
-      const result = controller.getHealth();
+      const result = await controller.getHealth();
 
-      expect(result).toEqual({
-        status: 'degraded',
-        redis: 'disconnected',
-        uptime: expect.any(Number),
-        timestamp: expect.any(String),
-      });
+      expect(healthService.getHealth).toHaveBeenCalled();
+      expect(result).toEqual(mockDegradedResponse);
+      expect(result.status).toBe('degraded');
+      expect(result.services.redis.status).toBe('disconnected');
+      expect(result.services.redis.error).toBe('Redis connection unavailable');
     });
 
-    it('should include uptime in health response', () => {
-      mockSessionService.getRedisStatus.mockReturnValue('connected');
+    it('should include uptime in health response', async () => {
+      mockHealthService.getHealth.mockResolvedValue(mockHealthyResponse);
 
-      const result = controller.getHealth();
+      const result = await controller.getHealth();
 
-      expect(result.uptime).toBeGreaterThan(0);
+      expect(result.uptime).toBeDefined();
       expect(typeof result.uptime).toBe('number');
+      expect(result.uptime).toBeGreaterThan(0);
     });
 
-    it('should include valid ISO timestamp', () => {
-      mockSessionService.getRedisStatus.mockReturnValue('connected');
+    it('should include valid ISO timestamp', async () => {
+      mockHealthService.getHealth.mockResolvedValue(mockHealthyResponse);
 
-      const result = controller.getHealth();
+      const result = await controller.getHealth();
 
+      expect(result.timestamp).toBeDefined();
       expect(result.timestamp).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
       expect(() => new Date(result.timestamp)).not.toThrow();
     });
 
-    it('should handle rapid successive health checks', () => {
-      mockSessionService.getRedisStatus.mockReturnValue('connected');
+    it('should handle rapid successive health checks', async () => {
+      mockHealthService.getHealth.mockResolvedValue(mockHealthyResponse);
 
-      const results = Array.from({ length: 100 }, () => controller.getHealth());
+      const results = await Promise.all(
+        Array.from({ length: 100 }, () => controller.getHealth()),
+      );
 
       results.forEach((result) => {
-        expect(result.status).toBe('ok');
-        expect(result.redis).toBe('connected');
+        expect(result.status).toBe('healthy');
+        expect(result.services.redis.status).toBe('connected');
       });
 
-      expect(sessionService.getRedisStatus).toHaveBeenCalledTimes(100);
+      expect(healthService.getHealth).toHaveBeenCalledTimes(100);
     });
   });
 
@@ -371,7 +446,7 @@ describe('AuthController', () => {
       await controller.logout(req as any, authHeader);
       expect(authService.logout).toHaveBeenCalledWith(
         mockLoginResponse.user.id,
-        loginResult.accessToken
+        loginResult.accessToken,
       );
     });
 
