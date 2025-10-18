@@ -1,9 +1,9 @@
 import { Injectable, Logger, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { PrismaService } from '@orion/shared';
 import { Prisma } from '@prisma/user';
 import { UserPreferencesDto, UpdateUserPreferencesDto } from '../dto';
 import { CacheService } from './cache.service';
 import { EventPublisherService } from './event-publisher.service';
+import { UserPrismaService } from './user-prisma.service';
 
 @Injectable()
 export class PreferencesService {
@@ -11,7 +11,7 @@ export class PreferencesService {
   private readonly CACHE_TTL = 600; // 10 minutes
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: UserPrismaService,
     private readonly cache: CacheService,
     private readonly eventPublisher: EventPublisherService,
   ) {}

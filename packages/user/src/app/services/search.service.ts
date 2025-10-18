@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { PrismaService } from '@orion/shared';
 import { Prisma } from '@prisma/user';
 import { SearchUsersDto, SearchUsersResponseDto, UserSearchResultDto } from '../dto';
 import { CacheService } from './cache.service';
+import { UserPrismaService } from './user-prisma.service';
 
 @Injectable()
 export class SearchService {
@@ -10,7 +10,7 @@ export class SearchService {
   private readonly CACHE_TTL = 60; // 1 minute for search results
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: UserPrismaService,
     private readonly cache: CacheService,
   ) {}
 

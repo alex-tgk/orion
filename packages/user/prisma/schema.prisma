@@ -1,5 +1,5 @@
 // User Service Database Schema
-// Production-grade schema with RBAC and comprehensive user management
+// Production-grade schema for comprehensive user management
 
 generator client {
   provider = "prisma-client-js"
@@ -15,252 +15,207 @@ datasource db {
 // ENUMS
 // ============================================================================
 
-enum UserStatus {
-  ACTIVE
-  INACTIVE
-  SUSPENDED
-  PENDING_VERIFICATION
-  DELETED
-}
-
-enum SessionStatus {
-  ACTIVE
-  EXPIRED
-  REVOKED
-  LOGGED_OUT
-}
-
-enum AuditAction {
-  CREATE
-  UPDATE
-  DELETE
-  LOGIN
-  LOGOUT
-  PASSWORD_CHANGE
-  ROLE_ASSIGN
-  ROLE_REVOKE
-  PERMISSION_GRANT
-  PERMISSION_REVOKE
-  ACCOUNT_VERIFY
-  ACCOUNT_SUSPEND
-  ACCOUNT_REACTIVATE
-}
-
-enum PermissionScope {
-  GLOBAL    // System-wide permission
-  ORG       // Organization-level permission
-  TEAM      // Team-level permission
-  USER      // User-level permission
+enum DeviceType {
+  WEB
+  MOBILE_IOS
+  MOBILE_ANDROID
+  DESKTOP
+  TABLET
+  UNKNOWN
 }
 
 enum RoleType {
-  SYSTEM    // System-defined, cannot be modified
-  CUSTOM    // User-defined, can be modified
+  ADMIN
+  USER
+  MODERATOR
+  GUEST
 }
 
 // ============================================================================
-// USER MODELS
+// USER MODEL
 // ============================================================================
 
 model User {
-  id          String     @id @default(uuid()) @db.Uuid
-  email       String     @unique @db.VarChar(255)
-  username    String?    @unique @db.VarChar(100)
+  id          String    @id @default(uuid()) @db.Uuid
+  email       String    @unique @db.VarChar(255)
+  name        String    @db.VarChar(100)
+  password    String?   @db.VarChar(255) // Optional for OAuth users
 
-  // Profile information
-  firstName   String?    @map("first_name") @db.VarChar(100)
-  lastName    String?    @map("last_name") @db.VarChar(100)
-  displayName String?    @map("display_name") @db.VarChar(200)
-  avatar      String?    @db.VarChar(500)
-  bio         String?    @db.Text
+  // Profile fields
+  avatar      String?   @db.VarChar(500)
+  bio         String?   @db.Text
+  location    String?   @db.VarChar(100)
+  website     String?   @db.VarChar(500)
 
-  // Contact information
-  phone       String?    @db.VarChar(20)
-  location    String?    @db.VarChar(100)
-  timezone    String     @default("UTC") @db.VarChar(50)
-  locale      String     @default("en") @db.VarChar(10)
-  website     String?    @db.VarChar(500)
+  // Status
+  isActive    Boolean   @default(true) @map("is_active")
+  isVerified  Boolean   @default(false) @map("is_verified")
+  isSuspended Boolean   @default(false) @map("is_suspended")
 
-  // Social links
-  socialLinks Json       @default("{}") @map("social_links") @db.JsonB
+  // Activity tracking
+  lastLoginAt DateTime? @map("last_login_at") @db.Timestamptz
+  lastActiveAt DateTime? @map("last_active_at") @db.Timestamptz
 
-  // Account status
-  status      UserStatus @default(PENDING_VERIFICATION)
-  isVerified  Boolean    @default(false) @map("is_verified")
-  isActive    Boolean    @default(true) @map("is_active")
-
-  // Verification
-  emailVerifiedAt DateTime? @map("email_verified_at") @db.Timestamptz
-  phoneVerifiedAt DateTime? @map("phone_verified_at") @db.Timestamptz
-
-  // Login tracking
-  lastLoginAt     DateTime? @map("last_login_at") @db.Timestamptz
-  lastLoginIp     String?   @map("last_login_ip") @db.VarChar(45)
-  loginCount      Int       @default(0) @map("login_count")
-  failedLoginCount Int      @default(0) @map("failed_login_count")
-
-  // Account metadata
-  metadata    Json       @default("{}") @db.JsonB
-  tags        String[]   @default([])
+  // Security
+  passwordChangedAt DateTime? @map("password_changed_at") @db.Timestamptz
+  failedLoginAttempts Int     @default(0) @map("failed_login_attempts")
+  lockedUntil        DateTime? @map("locked_until") @db.Timestamptz
 
   // Audit fields
-  createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt   DateTime   @updatedAt @map("updated_at") @db.Timestamptz
-  deletedAt   DateTime?  @map("deleted_at") @db.Timestamptz
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+  deletedAt   DateTime? @map("deleted_at") @db.Timestamptz
+
+  // Metadata
+  metadata    Json      @default("{}") @db.JsonB
 
   // Relations
-  preferences        UserPreferences?
-  roles              UserRole[]
-  directPermissions  UserPermission[]
-  sessions           Session[]
-  auditLogs          AuditLog[]
-  apiKeys            ApiKey[]
-  twoFactorAuth      TwoFactorAuth?
-  emailVerifications EmailVerification[]
-  passwordResets     PasswordReset[]
+  preferences  UserPreferences?
+  sessions     Session[]
+  userRoles    UserRole[]
+  userPermissions UserPermission[]
 
   @@index([email])
-  @@index([username])
-  @@index([status])
   @@index([isActive])
   @@index([isVerified])
-  @@index([createdAt])
   @@index([deletedAt])
   @@index([lastLoginAt])
-  @@index([tags])
+  @@index([createdAt])
   @@map("users")
 }
 
 // ============================================================================
-// USER PREFERENCES
+// USER PREFERENCES MODEL
 // ============================================================================
 
 model UserPreferences {
-  id            String   @id @default(uuid()) @db.Uuid
-  userId        String   @unique @map("user_id") @db.Uuid
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @unique @db.Uuid @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // Notification preferences
-  notifications Json     @default("{\"email\": true, \"sms\": false, \"push\": true, \"inApp\": true}") @db.JsonB
+  notifications Json   @default("{}") @db.JsonB
 
   // Privacy settings
-  privacy       Json     @default("{\"profileVisibility\": \"public\", \"showEmail\": false, \"showPhone\": false, \"showLocation\": true}") @db.JsonB
+  privacy      Json   @default("{}") @db.JsonB
 
   // Display preferences
-  display       Json     @default("{\"theme\": \"auto\", \"language\": \"en\", \"dateFormat\": \"MM/DD/YYYY\", \"timeFormat\": \"12h\"}") @db.JsonB
+  display      Json   @default("{}") @db.JsonB
 
-  // Security preferences
-  security      Json     @default("{\"twoFactorEnabled\": false, \"sessionTimeout\": 3600, \"loginNotifications\": true}") @db.JsonB
+  // Locale and timezone
+  locale       String @default("en") @db.VarChar(10)
+  timezone     String @default("UTC") @db.VarChar(50)
 
-  // Communication preferences
-  communication Json     @default("{\"marketingEmails\": true, \"productUpdates\": true, \"newsletter\": false}") @db.JsonB
-
-  // Accessibility preferences
-  accessibility Json     @default("{\"highContrast\": false, \"fontSize\": \"medium\", \"screenReader\": false}") @db.JsonB
-
-  // Custom preferences
-  custom        Json     @default("{}") @db.JsonB
+  // Metadata
+  metadata     Json   @default("{}") @db.JsonB
 
   // Audit fields
-  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz
 
   @@index([userId])
   @@map("user_preferences")
 }
 
 // ============================================================================
-// RBAC MODELS
+// SESSION MODEL
+// ============================================================================
+
+model Session {
+  id              String     @id @default(uuid()) @db.Uuid
+  userId          String     @db.Uuid @map("user_id")
+  user            User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Token information
+  token           String     @unique @db.VarChar(500)
+  refreshToken    String     @unique @map("refresh_token") @db.VarChar(500)
+
+  // Device information
+  deviceName      String?    @map("device_name") @db.VarChar(100)
+  deviceType      String?    @map("device_type") @db.VarChar(50)
+  ipAddress       String?    @map("ip_address") @db.VarChar(45)
+  userAgent       String?    @map("user_agent") @db.Text
+
+  // Session status
+  isActive        Boolean    @default(true) @map("is_active")
+  lastActivityAt  DateTime   @default(now()) @map("last_activity_at") @db.Timestamptz
+  expiresAt       DateTime   @map("expires_at") @db.Timestamptz
+
+  // Audit fields
+  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime   @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Metadata
+  metadata        Json       @default("{}") @db.JsonB
+
+  @@index([userId])
+  @@index([token])
+  @@index([refreshToken])
+  @@index([isActive])
+  @@index([expiresAt])
+  @@index([userId, isActive])
+  @@map("sessions")
+}
+
+// ============================================================================
+// RBAC MODELS - Role-Based Access Control
 // ============================================================================
 
 model Role {
   id          String   @id @default(uuid()) @db.Uuid
-  name        String   @unique @db.VarChar(100)
-  displayName String   @map("display_name") @db.VarChar(255)
+  name        String   @unique @db.VarChar(50)
+  displayName String   @map("display_name") @db.VarChar(100)
   description String?  @db.Text
 
-  // Role configuration
-  type        RoleType @default(CUSTOM)
-  scope       PermissionScope @default(GLOBAL)
-
-  // Hierarchy
-  level       Int      @default(0) // 0 is highest priority
-  parentId    String?  @map("parent_id") @db.Uuid
-  parent      Role?    @relation("RoleHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
-  children    Role[]   @relation("RoleHierarchy")
-
   // Status
-  isActive    Boolean  @default(true) @map("is_active")
   isSystem    Boolean  @default(false) @map("is_system")
+  isActive    Boolean  @default(true) @map("is_active")
 
   // Metadata
   metadata    Json     @default("{}") @db.JsonB
-  tags        String[] @default([])
 
   // Audit fields
-  createdBy   String?  @map("created_by") @db.Uuid
-  updatedBy   String?  @map("updated_by") @db.Uuid
   createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz
-  deletedAt   DateTime? @map("deleted_at") @db.Timestamptz
 
   // Relations
-  userRoles       UserRole[]
-  rolePermissions RolePermission[]
+  userRoles    UserRole[]
+  permissions  RolePermission[]
 
   @@index([name])
-  @@index([type])
-  @@index([scope])
   @@index([isActive])
-  @@index([isSystem])
-  @@index([level])
-  @@index([deletedAt])
   @@map("roles")
 }
 
 model Permission {
-  id          String          @id @default(uuid()) @db.Uuid
-  name        String          @unique @db.VarChar(100)
-  displayName String          @map("display_name") @db.VarChar(255)
-  description String?         @db.Text
-
-  // Permission configuration
-  resource    String          @db.VarChar(100) // e.g., "users", "posts", "settings"
-  action      String          @db.VarChar(100) // e.g., "read", "write", "delete", "manage"
-  scope       PermissionScope @default(GLOBAL)
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @unique @db.VarChar(100)
+  displayName String   @map("display_name") @db.VarChar(100)
+  description String?  @db.Text
+  resource    String   @db.VarChar(100)
+  action      String   @db.VarChar(50)
 
   // Grouping
-  category    String          @db.VarChar(100) // e.g., "User Management", "Content Management"
+  category    String?  @db.VarChar(50)
 
   // Status
-  isActive    Boolean         @default(true) @map("is_active")
-  isSystem    Boolean         @default(false) @map("is_system")
+  isActive    Boolean  @default(true) @map("is_active")
 
   // Metadata
-  metadata    Json            @default("{}") @db.JsonB
-  tags        String[]        @default([])
+  metadata    Json     @default("{}") @db.JsonB
 
   // Audit fields
-  createdBy   String?         @map("created_by") @db.Uuid
-  updatedBy   String?         @map("updated_by") @db.Uuid
-  createdAt   DateTime        @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt   DateTime        @updatedAt @map("updated_at") @db.Timestamptz
-  deletedAt   DateTime?       @map("deleted_at") @db.Timestamptz
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz
 
   // Relations
   rolePermissions RolePermission[]
   userPermissions UserPermission[]
 
-  @@unique([resource, action, scope])
   @@index([name])
   @@index([resource])
   @@index([action])
   @@index([category])
-  @@index([scope])
-  @@index([isActive])
-  @@index([isSystem])
-  @@index([deletedAt])
   @@map("permissions")
 }
 
@@ -269,281 +224,66 @@ model Permission {
 // ============================================================================
 
 model UserRole {
-  id        String    @id @default(uuid()) @db.Uuid
-  userId    String    @map("user_id") @db.Uuid
-  roleId    String    @map("role_id") @db.Uuid
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid @map("user_id")
+  roleId    String   @db.Uuid @map("role_id")
 
-  // Assignment metadata
-  assignedBy String?  @map("assigned_by") @db.Uuid
-  assignedAt DateTime @default(now()) @map("assigned_at") @db.Timestamptz
-  expiresAt  DateTime? @map("expires_at") @db.Timestamptz
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
 
-  // Conditions
-  conditions Json     @default("{}") @db.JsonB // Optional conditions for role application
-  metadata   Json     @default("{}") @db.JsonB
+  // Metadata
+  assignedBy String? @map("assigned_by") @db.Uuid
+  metadata   Json    @default("{}") @db.JsonB
 
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  // Audit fields
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt  DateTime @updatedAt @map("updated_at") @db.Timestamptz
 
   @@unique([userId, roleId])
   @@index([userId])
   @@index([roleId])
-  @@index([assignedAt])
-  @@index([expiresAt])
   @@map("user_roles")
 }
 
 model RolePermission {
   id           String     @id @default(uuid()) @db.Uuid
-  roleId       String     @map("role_id") @db.Uuid
-  permissionId String     @map("permission_id") @db.Uuid
+  roleId       String     @db.Uuid @map("role_id")
+  permissionId String     @db.Uuid @map("permission_id")
 
-  // Grant metadata
-  grantedBy  String?    @map("granted_by") @db.Uuid
-  grantedAt  DateTime   @default(now()) @map("granted_at") @db.Timestamptz
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
 
-  // Conditions
-  conditions Json       @default("{}") @db.JsonB
-  metadata   Json       @default("{}") @db.JsonB
+  // Metadata
+  metadata     Json       @default("{}") @db.JsonB
 
-  // Relations
-  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
-  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  // Audit fields
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt    DateTime   @updatedAt @map("updated_at") @db.Timestamptz
 
   @@unique([roleId, permissionId])
   @@index([roleId])
   @@index([permissionId])
-  @@index([grantedAt])
   @@map("role_permissions")
 }
 
 model UserPermission {
   id           String     @id @default(uuid()) @db.Uuid
-  userId       String     @map("user_id") @db.Uuid
-  permissionId String     @map("permission_id") @db.Uuid
+  userId       String     @db.Uuid @map("user_id")
+  permissionId String     @db.Uuid @map("permission_id")
 
-  // Direct permission assignment (bypasses roles)
-  grantedBy  String?    @map("granted_by") @db.Uuid
-  grantedAt  DateTime   @default(now()) @map("granted_at") @db.Timestamptz
-  expiresAt  DateTime?  @map("expires_at") @db.Timestamptz
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
 
-  // Conditions
-  conditions Json       @default("{}") @db.JsonB
-  metadata   Json       @default("{}") @db.JsonB
+  // Metadata
+  assignedBy   String?    @map("assigned_by") @db.Uuid
+  metadata     Json       @default("{}") @db.JsonB
 
-  // Relations
-  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  // Audit fields
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt    DateTime   @updatedAt @map("updated_at") @db.Timestamptz
 
   @@unique([userId, permissionId])
   @@index([userId])
   @@index([permissionId])
-  @@index([grantedAt])
-  @@index([expiresAt])
   @@map("user_permissions")
-}
-
-// ============================================================================
-// SESSION MANAGEMENT
-// ============================================================================
-
-model Session {
-  id          String        @id @default(uuid()) @db.Uuid
-  userId      String        @map("user_id") @db.Uuid
-
-  // Session data
-  token       String        @unique @db.VarChar(500)
-  refreshToken String?      @unique @map("refresh_token") @db.VarChar(500)
-
-  // Device information
-  deviceId    String?       @map("device_id") @db.VarChar(255)
-  deviceName  String?       @map("device_name") @db.VarChar(255)
-  deviceType  String?       @map("device_type") @db.VarChar(50)
-  userAgent   String?       @map("user_agent") @db.Text
-
-  // Location
-  ipAddress   String        @map("ip_address") @db.VarChar(45)
-  location    String?       @db.VarChar(255)
-  country     String?       @db.VarChar(100)
-  city        String?       @db.VarChar(100)
-
-  // Status
-  status      SessionStatus @default(ACTIVE)
-
-  // Timing
-  lastActivityAt DateTime   @default(now()) @map("last_activity_at") @db.Timestamptz
-  expiresAt      DateTime   @map("expires_at") @db.Timestamptz
-  createdAt      DateTime   @default(now()) @map("created_at") @db.Timestamptz
-  revokedAt      DateTime?  @map("revoked_at") @db.Timestamptz
-
-  // Metadata
-  metadata    Json          @default("{}") @db.JsonB
-
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([token])
-  @@index([refreshToken])
-  @@index([status])
-  @@index([expiresAt])
-  @@index([lastActivityAt])
-  @@index([deviceId])
-  @@map("sessions")
-}
-
-// ============================================================================
-// SECURITY MODELS
-// ============================================================================
-
-model TwoFactorAuth {
-  id          String    @id @default(uuid()) @db.Uuid
-  userId      String    @unique @map("user_id") @db.Uuid
-  secret      String    @db.VarChar(100) // TOTP secret
-  isEnabled   Boolean   @default(false) @map("is_enabled")
-  backupCodes String[]  @map("backup_codes") // Encrypted backup codes
-  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@map("two_factor_auth")
-}
-
-model EmailVerification {
-  id        String    @id @default(uuid()) @db.Uuid
-  userId    String    @map("user_id") @db.Uuid
-  token     String    @unique @db.VarChar(100)
-  email     String    @db.VarChar(255) // New email to verify
-  expiresAt DateTime  @map("expires_at") @db.Timestamptz
-  usedAt    DateTime? @map("used_at") @db.Timestamptz
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([token])
-  @@index([expiresAt])
-  @@map("email_verifications")
-}
-
-model PasswordReset {
-  id        String    @id @default(uuid()) @db.Uuid
-  userId    String    @map("user_id") @db.Uuid
-  token     String    @unique @db.VarChar(100)
-  expiresAt DateTime  @map("expires_at") @db.Timestamptz
-  usedAt    DateTime? @map("used_at") @db.Timestamptz
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([token])
-  @@index([expiresAt])
-  @@map("password_resets")
-}
-
-// ============================================================================
-// AUDIT LOG
-// ============================================================================
-
-model AuditLog {
-  id          String      @id @default(uuid()) @db.Uuid
-  userId      String?     @map("user_id") @db.Uuid
-
-  // Action details
-  action      AuditAction
-  resource    String      @db.VarChar(100) // e.g., "user", "role", "permission"
-  resourceId  String?     @map("resource_id") @db.Uuid
-
-  // Description
-  description String      @db.Text
-
-  // Changes
-  oldValues   Json?       @map("old_values") @db.JsonB
-  newValues   Json?       @map("new_values") @db.JsonB
-  changes     Json?       @db.JsonB // Diff of changes
-
-  // Context
-  ipAddress   String?     @map("ip_address") @db.VarChar(45)
-  userAgent   String?     @map("user_agent") @db.Text
-  sessionId   String?     @map("session_id") @db.Uuid
-
-  // Status
-  success     Boolean     @default(true)
-  errorMessage String?    @map("error_message") @db.Text
-
-  // Metadata
-  metadata    Json        @default("{}") @db.JsonB
-  tags        String[]    @default([])
-
-  // Timing
-  timestamp   DateTime    @default(now()) @db.Timestamptz
-  duration    Int?        // milliseconds
-
-  // Relations
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
-
-  @@index([userId])
-  @@index([action])
-  @@index([resource])
-  @@index([resourceId])
-  @@index([timestamp])
-  @@index([success])
-  @@index([sessionId])
-  @@index([tags])
-  @@index([userId, action, timestamp]) // Composite for user activity tracking
-  @@index([resource, resourceId]) // Composite for resource history
-  @@map("audit_logs")
-}
-
-// ============================================================================
-// API KEYS (for service-to-service auth)
-// ============================================================================
-
-model ApiKey {
-  id          String    @id @default(uuid()) @db.Uuid
-  userId      String    @map("user_id") @db.Uuid
-
-  // Key information
-  name        String    @db.VarChar(255)
-  key         String    @unique @db.VarChar(500)
-  prefix      String    @db.VarChar(20) // First few characters for identification
-
-  // Permissions
-  scopes      String[]  @default([])
-  permissions Json      @default("[]") @db.JsonB
-
-  // Status
-  isActive    Boolean   @default(true) @map("is_active")
-
-  // Usage tracking
-  lastUsedAt  DateTime? @map("last_used_at") @db.Timestamptz
-  usageCount  Int       @default(0) @map("usage_count")
-
-  // Rate limiting
-  rateLimit   Int?      @map("rate_limit") // Requests per minute
-
-  // Expiration
-  expiresAt   DateTime? @map("expires_at") @db.Timestamptz
-
-  // Metadata
-  metadata    Json      @default("{}") @db.JsonB
-
-  // Audit fields
-  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz
-  revokedAt   DateTime? @map("revoked_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([key])
-  @@index([prefix])
-  @@index([isActive])
-  @@index([expiresAt])
-  @@index([lastUsedAt])
-  @@map("api_keys")
 }

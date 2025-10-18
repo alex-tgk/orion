@@ -6,16 +6,6 @@ import * as fs from 'fs/promises';
 
 jest.mock('fs/promises');
 
-// Type definition for Multer File
-interface MulterFile {
-  fieldname: string;
-  originalname: string;
-  encoding: string;
-  mimetype: string;
-  size: number;
-  buffer: Buffer;
-}
-
 describe('StorageService', () => {
   let service: StorageService;
 

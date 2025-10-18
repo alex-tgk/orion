@@ -4,7 +4,6 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { PrismaModule } from '@orion/shared';
 
 import { UsersController, HealthController } from './users.controller';
 import { UserService } from './services/user.service';
@@ -14,6 +13,7 @@ import { StorageService } from './services/storage.service';
 import { EventPublisherService } from './services/event-publisher.service';
 import { CacheService } from './services/cache.service';
 import { HealthService } from './services/health.service';
+import { UserPrismaService } from './services/user-prisma.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
@@ -47,12 +47,12 @@ import { configModules } from './config';
         },
       }),
     }),
-
-    // Database
-    PrismaModule,
   ],
   controllers: [UsersController, HealthController],
   providers: [
+    // Database
+    UserPrismaService,
+
     // Services
     UserService,
     PreferencesService,

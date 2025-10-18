@@ -5,8 +5,7 @@ import {
   ConflictException,
   BadRequestException,
 } from '@nestjs/common';
-import { PrismaService } from '@orion/shared';
-import { Permission } from '@prisma/client';
+import { Permission } from '@prisma/user';
 import {
   CreatePermissionDto,
   PermissionDto,
@@ -15,6 +14,7 @@ import {
 } from '../dto';
 import { CacheService } from './cache.service';
 import { EventPublisherService } from './event-publisher.service';
+import { UserPrismaService } from './user-prisma.service';
 
 @Injectable()
 export class PermissionService {
@@ -22,7 +22,7 @@ export class PermissionService {
   private readonly CACHE_TTL = 600; // 10 minutes
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: UserPrismaService,
     private readonly cache: CacheService,
     private readonly eventPublisher: EventPublisherService,
   ) {}
@@ -33,24 +33,19 @@ export class PermissionService {
   async create(createDto: CreatePermissionDto): Promise<PermissionDto> {
     this.logger.log(`Creating new permission: ${createDto.resource}:${createDto.action}`);
 
-    // Check if permission already exists for this resource+action combination
+    // Generate permission name
+    const name = `${createDto.resource}:${createDto.action}`;
+
+    // Check if permission already exists
     const existing = await this.prisma.permission.findUnique({
-      where: {
-        resource_action: {
-          resource: createDto.resource,
-          action: createDto.action,
-        },
-      },
+      where: { name },
     });
 
     if (existing) {
       throw new ConflictException(
-        `Permission '${createDto.resource}:${createDto.action}' already exists`
+        `Permission '${name}' already exists`
       );
     }
-
-    // Generate permission name
-    const name = `${createDto.resource}:${createDto.action}`;
 
     // Create permission
     const permission = await this.prisma.permission.create({
@@ -191,7 +186,7 @@ export class PermissionService {
     const permission = await this.prisma.permission.findUnique({
       where: { id: permissionId },
       include: {
-        roles: true,
+        rolePermissions: true,
       },
     });
 
@@ -200,9 +195,9 @@ export class PermissionService {
     }
 
     // Check if permission is assigned to any roles
-    if (permission.roles.length > 0) {
+    if (permission.rolePermissions.length > 0) {
       throw new BadRequestException(
-        `Cannot delete permission as it is assigned to ${permission.roles.length} role(s). Remove from all roles first.`
+        `Cannot delete permission as it is assigned to ${permission.rolePermissions.length} role(s). Remove from all roles first.`
       );
     }
 

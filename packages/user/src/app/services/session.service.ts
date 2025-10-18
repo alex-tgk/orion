@@ -5,11 +5,11 @@ import {
   UnauthorizedException,
   BadRequestException,
 } from '@nestjs/common';
-import { PrismaService } from '@orion/shared';
-import { Session } from '@prisma/client';
+import { Session } from '@prisma/user';
 import { CreateSessionDto, SessionDto, ListSessionsResponseDto, DeviceType } from '../dto';
 import { CacheService } from './cache.service';
 import { EventPublisherService } from './event-publisher.service';
+import { UserPrismaService } from './user-prisma.service';
 
 @Injectable()
 export class SessionService {
@@ -17,7 +17,7 @@ export class SessionService {
   private readonly CACHE_TTL = 300; // 5 minutes
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: UserPrismaService,
     private readonly cache: CacheService,
     private readonly eventPublisher: EventPublisherService,
   ) {}

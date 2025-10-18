@@ -5,8 +5,7 @@ import {
   ConflictException,
   BadRequestException,
 } from '@nestjs/common';
-import { PrismaService } from '@orion/shared';
-import { Role, RolePermission } from '@prisma/client';
+import { Role, RolePermission } from '@prisma/user';
 import {
   CreateRoleDto,
   UpdateRoleDto,
@@ -16,6 +15,7 @@ import {
 } from '../dto';
 import { CacheService } from './cache.service';
 import { EventPublisherService } from './event-publisher.service';
+import { UserPrismaService } from './user-prisma.service';
 
 @Injectable()
 export class RoleService {
@@ -23,7 +23,7 @@ export class RoleService {
   private readonly CACHE_TTL = 600; // 10 minutes - roles change infrequently
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: UserPrismaService,
     private readonly cache: CacheService,
     private readonly eventPublisher: EventPublisherService,
   ) {}
