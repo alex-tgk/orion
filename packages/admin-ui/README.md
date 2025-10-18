@@ -1,312 +1,158 @@
-# ORION Admin Dashboard
+# Admin UI Service
 
-A modern, extensible admin dashboard for the ORION microservices platform. Built with React 18, TypeScript, Tailwind CSS, and NestJS.
+**Status:** 🚧 Under Reconstruction
+**Version:** 2.0.0 (Rebuild)
+**Spec:** See [.specs/admin-ui.spec.md](../../.specs/admin-ui.spec.md)
 
-## Features
+## Overview
 
-- **Modern React Frontend** - Built with React 18+ and TypeScript
-- **Extensible Widget System** - Plugin architecture for easy widget addition
-- **Responsive Grid Layout** - 12-column grid system with customizable widgets
-- **Tailwind CSS** - Modern, utility-first styling
-- **NestJS Backend** - Serves the frontend and provides API endpoints
-- **Real-time Updates** - Widgets auto-refresh to show live data
-- **Professional UI** - Clean, modern design with sidebar navigation
+The Admin UI service provides a comprehensive administrative interface for the ORION platform with:
+
+- **REST API**: 13 observability endpoints for system monitoring
+- **WebSocket Gateway**: Real-time updates via Socket.IO
+- **React Frontend**: Modern dashboard with extensible widget system
+- **Plugin Architecture**: Dynamic widget registration and extension
+
+## Current Status
+
+This package is being rebuilt from scratch following GitHub Spec Kit methodology and TDD practices.
+
+### Completed
+- ✅ Specification defined
+- ✅ Directory structure created
+- ✅ Test infrastructure prepared
+
+### In Progress
+- 🚧 Core API endpoints (Phase 1)
+- 🚧 WebSocket gateway (Phase 1)
+- 🚧 DTO definitions (Phase 1)
+
+### Upcoming
+- ⏳ Frontend foundation (Phase 2)
+- ⏳ Widget system (Phase 3)
+- ⏳ Documentation & polish (Phase 4)
+
+## Quick Start
+
+### Prerequisites
+- Node.js 20+
+- pnpm 8+
+- Docker (for development dependencies)
+
+### Development
+```bash
+# Install dependencies (from monorepo root)
+pnpm install
+
+# Run in development mode
+pnpm nx serve admin-ui
+
+# Run tests
+pnpm nx test admin-ui
+
+# Run tests in watch mode
+pnpm nx test admin-ui --watch
+
+# Run e2e tests
+pnpm nx e2e admin-ui-e2e
+```
+
+### Building
+```bash
+# Build for production
+pnpm nx build admin-ui
+
+# Build Docker image
+docker build -f Dockerfile -t orion/admin-ui:latest .
+```
 
 ## Architecture
 
-### Frontend Structure
-
-```
-src/frontend/
-├── components/          # Reusable UI components
-│   ├── DashboardLayout.tsx    # Main layout wrapper
-│   ├── Header.tsx             # Top navigation header
-│   ├── Sidebar.tsx            # Side navigation
-│   └── WidgetGrid.tsx         # Grid layout for widgets
-├── widgets/             # Dashboard widgets
-│   ├── SystemOverviewWidget.tsx
-│   ├── RecentActivityWidget.tsx
-│   ├── QuickStatsWidget.tsx
-│   └── index.ts
-├── services/            # Business logic services
-│   ├── widget-registry.ts     # Widget plugin system
-│   └── api.ts                 # Backend API client
-├── types/               # TypeScript type definitions
-│   └── index.ts
-├── styles/              # Global styles
-│   └── globals.css
-├── App.tsx              # Main application component
-└── index.tsx            # Application entry point
-```
-
-### Backend Structure
-
+### Backend (NestJS)
 ```
 src/app/
-├── app.module.ts        # Main NestJS module
-├── app.controller.ts    # API controllers
-└── app.service.ts       # Business logic
+├── controllers/     # REST API endpoints
+├── services/        # Business logic
+├── gateways/        # WebSocket handlers
+├── dto/             # Data transfer objects
+├── guards/          # Auth guards
+├── config/          # Configuration
+├── plugins/         # Widget plugin system
+└── types/           # TypeScript types
 ```
 
-## Getting Started
+### Frontend (React)
+```
+src/frontend/
+├── components/      # Reusable UI components
+├── widgets/         # Dashboard widgets
+├── hooks/           # Custom React hooks
+├── services/        # API clients
+├── styles/          # Global styles
+└── types/           # TypeScript types
+```
 
-### Prerequisites
+## API Endpoints
 
-- Node.js 18+
-- pnpm package manager
-- Nx workspace (already configured)
+See [API Reference](../../.specs/admin-ui.spec.md#api-specification) for complete documentation.
 
-### Installation
+### System
+- `GET /health` - Health check
+- `GET /api/system/overview` - System overview
+- `GET /api/system/stats` - System statistics
 
-Dependencies are managed at the workspace root. The package includes:
+### Services
+- `GET /api/services` - List all services
+- `GET /api/services/:id` - Service details
+- `GET /api/services/:id/metrics` - Service metrics
+- `GET /api/services/:id/health` - Service health
 
-- React 18+
-- TypeScript
-- Tailwind CSS
-- NestJS
-- Webpack 5
+### Events
+- `GET /api/events` - List events
+- `GET /api/events/:id` - Event details
+- `POST /api/events/search` - Search events
 
-### Development
+### Observability
+- `GET /api/observability/alerts` - Active alerts
+- `GET /api/observability/metrics` - Platform metrics
+- `GET /api/observability/traces` - Distributed traces
 
-Build and run the dashboard:
+## WebSocket Events
+
+### Subscribe
+- `subscribe:system` - System updates
+- `subscribe:service` - Service updates
+- `subscribe:events` - Event stream
+
+### Receive
+- `system:update` - System stats (every 5s)
+- `service:health` - Service health changes
+- `event:created` - New events
+- `alert:triggered` - New alerts
+
+## Testing
+
+This project follows TDD (Test-Driven Development) practices with 100% coverage target.
 
 ```bash
-# From workspace root
-nx serve admin-ui
+# Run all tests
+pnpm nx test admin-ui
 
-# Or with specific configuration
-nx serve admin-ui --configuration=development
+# Run specific test suite
+pnpm nx test admin-ui --testFile=system.controller.spec.ts
+
+# Coverage report
+pnpm nx test admin-ui --coverage
 ```
-
-The dashboard will be available at `http://localhost:3000` (or configured port).
-
-### Production Build
-
-```bash
-nx build admin-ui --configuration=production
-```
-
-Built files will be in `dist/packages/admin-ui/`.
-
-## Widget System
-
-The dashboard uses an extensible widget plugin architecture. See [WIDGETS.md](./WIDGETS.md) for detailed documentation.
-
-### Quick Widget Creation
-
-1. **Create widget component** in `src/frontend/widgets/YourWidget.tsx`
-2. **Export widget** from `src/frontend/widgets/index.ts`
-3. **Register widget** in `src/frontend/App.tsx`
-4. **Add to dashboard** in the `defaultWidgets` array
-
-### Available Widgets
-
-- **System Overview** - System health and service status
-- **Recent Activity** - Event log and activity feed
-- **Quick Stats** - Key performance metrics
-
-## API Integration
-
-### API Service
-
-The `API` service in `src/frontend/services/api.ts` handles all backend communication:
-
-```typescript
-import { API } from '../services/api';
-
-// Example usage
-const data = await API.getSystemStatus();
-```
-
-### Adding New Endpoints
-
-1. Add method to `ApiService` class in `api.ts`
-2. Create corresponding backend endpoint in `app.controller.ts`
-3. Use in widgets via the `API` singleton
-
-## Customization
-
-### Styling
-
-Tailwind configuration is in `tailwind.config.js`. Custom colors and utilities are defined there.
-
-Global styles are in `src/frontend/styles/globals.css`.
-
-### Navigation
-
-Update navigation items in `App.tsx`:
-
-```typescript
-const defaultNavItems: NavItem[] = [
-  {
-    id: 'dashboard',
-    label: 'Dashboard',
-    icon: '📊',
-    path: '/',
-  },
-  // Add more items...
-];
-```
-
-### Layout
-
-The grid system is configured in `WidgetGrid.tsx`:
-
-- 12 columns by default
-- Responsive widget sizing
-- Customizable gap spacing
-
-## Development Workflow
-
-### Adding a New Feature
-
-1. Create components in `src/frontend/components/`
-2. Add types to `src/frontend/types/`
-3. Implement business logic in `src/frontend/services/`
-4. Create widgets in `src/frontend/widgets/`
-5. Update `App.tsx` to integrate
-
-### Code Quality
-
-- TypeScript strict mode enabled
-- ESLint configured (workspace level)
-- Follow React functional component patterns
-- Use TypeScript types for all components
-
-### Testing
-
-```bash
-nx test admin-ui
-```
-
-## Backend API
-
-### Health Endpoint
-
-```
-GET /health
-```
-
-Returns system health status.
-
-### Future Endpoints
-
-The backend is ready to be extended with additional API endpoints:
-
-- `/api/services` - Service management
-- `/api/analytics` - Analytics data
-- `/api/users` - User management
-- `/api/settings` - Configuration
-
-## Technology Stack
-
-### Frontend
-- **React 18.2+** - UI framework
-- **TypeScript 5+** - Type safety
-- **Tailwind CSS 4+** - Styling
-- **Webpack 5** - Module bundler
-
-### Backend
-- **NestJS 11+** - Backend framework
-- **Express** - HTTP server
-- **TypeScript** - Type safety
-
-### Build Tools
-- **Nx** - Monorepo build system
-- **Webpack** - Module bundling
-- **PostCSS** - CSS processing
-
-## File Structure
-
-```
-admin-ui/
-├── src/
-│   ├── app/              # NestJS backend
-│   └── frontend/         # React frontend
-├── dist/                 # Build output
-├── node_modules/         # Dependencies (workspace)
-├── webpack.config.js     # Webpack configuration
-├── tailwind.config.js    # Tailwind configuration
-├── postcss.config.js     # PostCSS configuration
-├── tsconfig.json         # TypeScript base config
-├── tsconfig.app.json     # Backend TypeScript config
-├── tsconfig.frontend.json # Frontend TypeScript config
-├── project.json          # Nx project configuration
-├── README.md             # This file
-└── WIDGETS.md            # Widget development guide
-```
-
-## Environment Variables
-
-Configure in `.env` or environment:
-
-- `PORT` - Server port (default: 3000)
-- `NODE_ENV` - Environment (development/production)
-
-## Troubleshooting
-
-### Build Issues
-
-```bash
-# Clean build cache
-nx reset
-
-# Rebuild
-nx build admin-ui --skip-nx-cache
-```
-
-### TypeScript Errors
-
-- Ensure `tsconfig.frontend.json` is used for frontend code
-- Check that all imports have proper types
-- Run `tsc --noEmit` to check for errors
-
-### Styling Not Applied
-
-- Verify Tailwind is configured in `tailwind.config.js`
-- Check that `globals.css` is imported in `index.tsx`
-- Ensure PostCSS is processing CSS files
-
-### Widgets Not Loading
-
-- Check widget is registered in `WidgetRegistry`
-- Verify widget component is exported
-- Check browser console for errors
 
 ## Contributing
 
-### Code Style
-
-- Use functional components with hooks
-- Prefer TypeScript interfaces over types
-- Use Tailwind utility classes
-- Keep components small and focused
-- Add JSDoc comments for public APIs
-
-### Component Guidelines
-
-- Props should be typed with interfaces
-- Use `React.FC<Props>` for components
-- Handle loading and error states
-- Make components reusable when possible
-
-## Future Enhancements
-
-- [ ] Drag-and-drop widget repositioning
-- [ ] Widget resize handles
-- [ ] User-customizable dashboards
-- [ ] Dark mode support
-- [ ] Export dashboard configurations
-- [ ] Widget marketplace/catalog
-- [ ] Real-time WebSocket updates
-- [ ] Advanced filtering and search
-- [ ] Mobile responsive improvements
-- [ ] Keyboard shortcuts
+See [GitHub Spec Kit Specification](../../.specs/admin-ui.spec.md) for:
+- Acceptance criteria
+- API contracts
+- Widget development guide
+- Testing requirements
 
 ## License
 
-Part of the ORION microservices platform.
-
-## Support
-
-For questions or issues, please refer to the main ORION documentation or create an issue in the repository.
+Proprietary - ORION Platform
