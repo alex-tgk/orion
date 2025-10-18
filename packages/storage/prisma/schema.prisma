@@ -1,0 +1,50 @@
+// This is your Prisma schema file for the Storage Service
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/storage-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("STORAGE_DATABASE_URL")
+}
+
+model File {
+  id        String   @id @default(uuid())
+  userId    String
+  filename  String
+  size      Int
+  mimeType  String
+  s3Key     String   @unique
+  s3Bucket  String
+  uploadedAt DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  deletedAt  DateTime?
+
+  metadata  FileMetadata?
+
+  @@index([userId])
+  @@index([s3Key])
+  @@index([uploadedAt])
+  @@map("files")
+}
+
+model FileMetadata {
+  id          String   @id @default(uuid())
+  fileId      String   @unique
+  file        File     @relation(fields: [fileId], references: [id], onDelete: Cascade)
+
+  description String?
+  tags        String[] @default([])
+  customData  Json?    @default("{}")
+
+  virusScanStatus String?  @default("pending") // pending, clean, infected, failed
+  virusScanDate   DateTime?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("file_metadata")
+}

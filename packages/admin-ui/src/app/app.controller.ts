@@ -171,7 +171,7 @@ export class AppController {
       duration: Math.floor(Math.random() * 200) + 10,
       endpoint: ['/api/users', '/api/auth', '/api/data', '/api/config', '/api/health'][Math.floor(Math.random() * 5)],
     });
-
+~
     // Keep only last 50 interactions
     if (this.interactions.length > 50) {
       this.interactions = this.interactions.slice(-50);

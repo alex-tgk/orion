@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { NotificationStatus } from '@prisma/notifications';
 
@@ -59,7 +59,7 @@ export class RetryService {
   private readonly circuitBreakers = new Map<string, boolean>();
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: NotificationPrismaService,
     private readonly configService: ConfigService
   ) {
     this.config = {

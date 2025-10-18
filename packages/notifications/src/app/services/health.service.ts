@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { EmailService } from './email.service';
 import { SmsService } from './sms.service';
 import { PushService } from './push.service';
@@ -43,7 +43,7 @@ export class HealthService {
   private readonly startTime: number;
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: NotificationPrismaService,
     private readonly configService: ConfigService,
     private readonly emailService: EmailService,
     private readonly smsService: SmsService,

@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { RetryService } from './retry.service';
 import { ConfigService } from '@nestjs/config';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from "./notification-prisma.service";
 
 describe('RetryService', () => {
   let service: RetryService;
@@ -17,7 +17,7 @@ describe('RetryService', () => {
           },
         },
         {
-          provide: PrismaService,
+          provide: NotificationPrismaService,
           useValue: {
             notification: {
               count: jest.fn(),

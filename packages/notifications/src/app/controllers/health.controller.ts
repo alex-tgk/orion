@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from '../services/notification-prisma.service';
 import { ConfigService } from '@nestjs/config';
 
 @ApiTags('health')
 @Controller('health')
 export class HealthController {
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: NotificationPrismaService,
     private readonly configService: ConfigService,
   ) {}
 

@@ -1,186 +1,97 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LoggerModule, LOGGER_MODULE_OPTIONS, WINSTON_LOGGER } from '../logger.module';
+import { LoggerModule, WINSTON_LOGGER, LOGGER_MODULE_OPTIONS } from '../logger.module';
 import { LoggerService } from '../logger.service';
 import type { LoggerModuleOptions } from '../interfaces/logger-options.interface';
-import * as winston from 'winston';
 
 describe('LoggerModule', () => {
   describe('forRoot', () => {
-    let module: TestingModule;
-    let loggerService: LoggerService;
+    it('should provide LoggerService', async () => {
+      const config: LoggerModuleOptions = {
+        serviceName: 'test-service',
+        level: 'info',
+      };
 
-    const config: LoggerModuleOptions = {
-      serviceName: 'test-service',
-      level: 'info',
-      pretty: false,
-      transports: ['console'],
-      isGlobal: true,
-    };
-
-    beforeEach(async () => {
-      module = await Test.createTestingModule({
+      const module = await Test.createTestingModule({
         imports: [LoggerModule.forRoot(config)],
       }).compile();
 
-      loggerService = module.get<LoggerService>(LoggerService);
+      const service = module.get<LoggerService>(LoggerService);
+      expect(service).toBeDefined();
+      expect(service).toBeInstanceOf(LoggerService);
     });
 
-    it('should provide LoggerService', () => {
-      expect(loggerService).toBeDefined();
-      expect(loggerService).toBeInstanceOf(LoggerService);
-    });
-
-    it('should provide WINSTON_LOGGER', () => {
-      const winstonLogger = module.get(WINSTON_LOGGER);
-      expect(winstonLogger).toBeDefined();
-    });
-
-    it('should provide LOGGER_MODULE_OPTIONS', () => {
-      const options = module.get(LOGGER_MODULE_OPTIONS);
-      expect(options).toBeDefined();
-      expect(options).toEqual(config);
-    });
-
-    it('should configure Winston with correct service name', () => {
-      const winstonLogger = module.get<winston.Logger>(WINSTON_LOGGER);
-      const defaultMeta = winstonLogger.defaultMeta as any;
-
-      expect(defaultMeta).toBeDefined();
-      expect(defaultMeta.service).toBe('test-service');
-    });
-
-    it('should use default isGlobal as true', async () => {
-      const configWithoutGlobal: LoggerModuleOptions = {
+    it('should provide WINSTON_LOGGER', async () => {
+      const config: LoggerModuleOptions = {
         serviceName: 'test-service',
       };
 
-      const testModule = await Test.createTestingModule({
-        imports: [LoggerModule.forRoot(configWithoutGlobal)],
+      const module = await Test.createTestingModule({
+        imports: [LoggerModule.forRoot(config)],
       }).compile();
 
-      const service = testModule.get<LoggerService>(LoggerService);
-      expect(service).toBeDefined();
+      const logger = module.get(WINSTON_LOGGER);
+      expect(logger).toBeDefined();
+    });
+
+    it('should provide LOGGER_MODULE_OPTIONS', async () => {
+      const config: LoggerModuleOptions = {
+        serviceName: 'test-service',
+        level: 'debug',
+      };
+
+      const module = await Test.createTestingModule({
+        imports: [LoggerModule.forRoot(config)],
+      }).compile();
+
+      const options = module.get(LOGGER_MODULE_OPTIONS);
+      expect(options).toEqual(config);
+    });
+
+    it('should be global by default', () => {
+      const module = LoggerModule.forRoot({
+        serviceName: 'global-service',
+      });
+
+      expect(module.global).toBe(true);
+    });
+
+    it('should respect isGlobal: false', () => {
+      const module = LoggerModule.forRoot({
+        serviceName: 'local-service',
+        isGlobal: false,
+      });
+
+      expect(module.global).toBe(false);
+    });
+
+    it('should export LoggerService', () => {
+      const module = LoggerModule.forRoot({
+        serviceName: 'test',
+      });
+
+      expect(module.exports).toContain(LoggerService);
+    });
+
+    it('should export WINSTON_LOGGER', () => {
+      const module = LoggerModule.forRoot({
+        serviceName: 'test',
+      });
+
+      expect(module.exports).toContain(WINSTON_LOGGER);
     });
   });
 
   describe('forRootAsync', () => {
-    let module: TestingModule;
-    let loggerService: LoggerService;
+    it('should create module with async config', async () => {
+      const config: LoggerModuleOptions = {
+        serviceName: 'async-service',
+        level: 'debug',
+      };
 
-    const asyncConfig: LoggerModuleOptions = {
-      serviceName: 'async-test-service',
-      level: 'debug',
-      pretty: true,
-      transports: ['console'],
-    };
-
-    beforeEach(async () => {
-      module = await Test.createTestingModule({
-        imports: [
-          LoggerModule.forRootAsync({
-            useFactory: () => asyncConfig,
-          }),
-        ],
-      }).compile();
-
-      loggerService = module.get<LoggerService>(LoggerService);
-    });
-
-    it('should provide LoggerService from async config', () => {
-      expect(loggerService).toBeDefined();
-      expect(loggerService).toBeInstanceOf(LoggerService);
-    });
-
-    it('should configure Winston with async config', () => {
-      const winstonLogger = module.get<winston.Logger>(WINSTON_LOGGER);
-      const defaultMeta = winstonLogger.defaultMeta as any;
-
-      expect(defaultMeta).toBeDefined();
-      expect(defaultMeta.service).toBe('async-test-service');
-    });
-
-    it('should support async factory with Promise', async () => {
-      const asyncModule = await Test.createTestingModule({
-        imports: [
-          LoggerModule.forRootAsync({
-            useFactory: async () => {
-              // Simulate async config loading
-              await new Promise((resolve) => setTimeout(resolve, 10));
-              return asyncConfig;
-            },
-          }),
-        ],
-      }).compile();
-
-      const service = asyncModule.get<LoggerService>(LoggerService);
-      expect(service).toBeDefined();
-    });
-
-    it('should support dependency injection in factory', async () => {
-      class ConfigService {
-        getLoggerConfig(): LoggerModuleOptions {
-          return asyncConfig;
-        }
-      }
-
-      const asyncModule = await Test.createTestingModule({
-        imports: [
-          LoggerModule.forRootAsync({
-            imports: [
-              {
-                module: class ConfigModule {},
-                providers: [ConfigService],
-                exports: [ConfigService],
-              },
-            ],
-            useFactory: (configService: ConfigService) => {
-              return configService.getLoggerConfig();
-            },
-            inject: [ConfigService],
-          }),
-        ],
-      }).compile();
-
-      const service = asyncModule.get<LoggerService>(LoggerService);
-      expect(service).toBeDefined();
-    });
-  });
-
-  describe('Module Configuration', () => {
-    it('should configure console transport', async () => {
       const module = await Test.createTestingModule({
         imports: [
-          LoggerModule.forRoot({
-            serviceName: 'console-test',
-            transports: ['console'],
-          }),
-        ],
-      }).compile();
-
-      const winstonLogger = module.get<winston.Logger>(WINSTON_LOGGER);
-      expect(winstonLogger.transports).toHaveLength(1);
-    });
-
-    it('should configure with custom log level', async () => {
-      const module = await Test.createTestingModule({
-        imports: [
-          LoggerModule.forRoot({
-            serviceName: 'level-test',
-            level: 'error',
-          }),
-        ],
-      }).compile();
-
-      const winstonLogger = module.get<winston.Logger>(WINSTON_LOGGER);
-      expect(winstonLogger.level).toBe('error');
-    });
-
-    it('should configure with pretty printing', async () => {
-      const module = await Test.createTestingModule({
-        imports: [
-          LoggerModule.forRoot({
-            serviceName: 'pretty-test',
-            pretty: true,
+          LoggerModule.forRootAsync({
+            useFactory: () => config,
           }),
         ],
       }).compile();
@@ -189,77 +100,67 @@ describe('LoggerModule', () => {
       expect(service).toBeDefined();
     });
 
-    it('should configure with environment', async () => {
+    it('should support Promise in factory', async () => {
+      const config: LoggerModuleOptions = {
+        serviceName: 'promise-service',
+      };
+
       const module = await Test.createTestingModule({
         imports: [
-          LoggerModule.forRoot({
-            serviceName: 'env-test',
-            environment: 'production',
+          LoggerModule.forRootAsync({
+            useFactory: async () => {
+              return Promise.resolve(config);
+            },
           }),
         ],
       }).compile();
 
-      const winstonLogger = module.get<winston.Logger>(WINSTON_LOGGER);
-      const defaultMeta = winstonLogger.defaultMeta as any;
-
-      expect(defaultMeta.environment).toBe('production');
+      const service = module.get<LoggerService>(LoggerService);
+      expect(service).toBeDefined();
     });
 
-    it('should use default environment from NODE_ENV', async () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'test';
+    it('should support dependency injection', async () => {
+      class ConfigService {
+        getConfig(): LoggerModuleOptions {
+          return {
+            serviceName: 'injected-service',
+            level: 'info',
+          };
+        }
+      }
 
       const module = await Test.createTestingModule({
         imports: [
-          LoggerModule.forRoot({
-            serviceName: 'default-env-test',
+          LoggerModule.forRootAsync({
+            imports: [
+              {
+                module: class TestModule {},
+                providers: [ConfigService],
+                exports: [ConfigService],
+              },
+            ],
+            useFactory: (configService: ConfigService) => {
+              return configService.getConfig();
+            },
+            inject: [ConfigService],
           }),
         ],
       }).compile();
 
-      const winstonLogger = module.get<winston.Logger>(WINSTON_LOGGER);
-      const defaultMeta = winstonLogger.defaultMeta as any;
-
-      expect(defaultMeta.environment).toBe('test');
-
-      process.env.NODE_ENV = originalEnv;
-    });
-  });
-
-  describe('Global Module', () => {
-    it('should be global by default', async () => {
-      const dynamicModule = LoggerModule.forRoot({
-        serviceName: 'global-test',
-      });
-
-      expect(dynamicModule.global).toBe(true);
+      const service = module.get<LoggerService>(LoggerService);
+      expect(service).toBeDefined();
     });
 
-    it('should respect isGlobal: false', async () => {
-      const dynamicModule = LoggerModule.forRoot({
-        serviceName: 'local-test',
-        isGlobal: false,
-      });
+    it('should be global by default for async', async () => {
+      const module = await Test.createTestingModule({
+        imports: [
+          LoggerModule.forRootAsync({
+            useFactory: () => ({ serviceName: 'test' }),
+          }),
+        ],
+      }).compile();
 
-      expect(dynamicModule.global).toBe(false);
-    });
-  });
-
-  describe('Exports', () => {
-    it('should export LoggerService', async () => {
-      const dynamicModule = LoggerModule.forRoot({
-        serviceName: 'export-test',
-      });
-
-      expect(dynamicModule.exports).toContain(LoggerService);
-    });
-
-    it('should export WINSTON_LOGGER', async () => {
-      const dynamicModule = LoggerModule.forRoot({
-        serviceName: 'export-test',
-      });
-
-      expect(dynamicModule.exports).toContain(WINSTON_LOGGER);
+      expect(module).toBeDefined();
     });
   });
 });

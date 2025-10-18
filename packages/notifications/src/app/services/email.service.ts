@@ -18,9 +18,12 @@ export class EmailService {
 
   constructor(private readonly configService: ConfigService) {
     const apiKey = this.configService.get<string>('notification.sendgrid.apiKey');
-    this.enabled = this.configService.get<boolean>('notification.sendgrid.enabled');
-    this.from = this.configService.get('notification.sendgrid.from');
-    this.replyTo = this.configService.get<string>('notification.sendgrid.replyTo');
+    this.enabled = this.configService.get<boolean>('notification.sendgrid.enabled') ?? false;
+    this.from = this.configService.get('notification.sendgrid.from') || {
+      email: 'noreply@orion.local',
+      name: 'ORION Notifications'
+    };
+    this.replyTo = this.configService.get<string>('notification.sendgrid.replyTo') || 'support@orion.local';
 
     if (this.enabled && apiKey) {
       sgMail.setApiKey(apiKey);
@@ -103,5 +106,12 @@ export class EmailService {
   validateEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  }
+
+  /**
+   * Check if email service is enabled
+   */
+  isEnabled(): boolean {
+    return this.enabled;
   }
 }

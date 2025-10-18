@@ -1,0 +1,408 @@
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/cache/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/cache/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/cache/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+ts-jest[config] (WARN) 
+    The "ts-jest" config option "isolatedModules" is deprecated and will be removed in v30.0.0. Please use "isolatedModules: true" in /Users/acarroll/dev/projects/orion/packages/cache/tsconfig.spec.json instead, see https://www.typescriptlang.org/tsconfig/#isolatedModules
+  
+[31m[Nest] 39523  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[StatsService] [39m[31mFailed to get cache statistics:[39m
+[31m[Nest] 39522  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed:[39m
+[31m[Nest] 39522  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[HealthService] [39mError: Connection error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/health.service.spec.ts:54:50[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39523  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[StatsService] [39mError: Cache service error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/stats.service.spec.ts:116:15[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:305:39
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:312:13[90m)[39m
+    at Object.mockConstructor [as getStats] [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:102:19[90m)[39m
+    at StatsService.getStats [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/stats.service.ts:17:27[90m)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/stats.service.spec.ts:119:28[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39523  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[StatsService] [39m[31mFailed to get stats for namespace tenant:acme:[39m
+[31m[Nest] 39523  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[StatsService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/stats.service.spec.ts:135:50[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m cache [39m[27m[0m [2mpackages/cache/src/app/services/[22m[1mstats.service.spec.ts[22m
+  StatsService
+    [32m✓[39m [2mshould be defined (37 ms)[22m
+    getStats
+      [32m✓[39m [2mshould return comprehensive cache statistics (8 ms)[22m
+      [32m✓[39m [2mshould handle zero requests correctly (5 ms)[22m
+      [32m✓[39m [2mshould format bytes correctly (5 ms)[22m
+      [32m✓[39m [2mshould throw error if cache service fails (25 ms)[22m
+    getNamespaceStats
+      [32m✓[39m [2mshould return stats for specific namespace (5 ms)[22m
+      [32m✓[39m [2mshould throw error if cache service fails (4 ms)[22m
+    resetStats
+      [32m✓[39m [2mshould reset cache statistics (2 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m cache [39m[27m[0m [2mpackages/cache/src/app/services/[22m[1mhealth.service.spec.ts[22m
+  HealthService
+    [32m✓[39m [2mshould be defined (36 ms)[22m
+    getHealth
+      [32m✓[39m [2mshould return healthy status when Redis is up (8 ms)[22m
+      [32m✓[39m [2mshould return degraded status when Redis is down (4 ms)[22m
+      [32m✓[39m [2mshould return down status on error (18 ms)[22m
+      [32m✓[39m [2mshould measure response time (57 ms)[22m
+    isReady
+      [32m✓[39m [2mshould return true when Redis is healthy (3 ms)[22m
+      [32m✓[39m [2mshould return false when Redis is unhealthy (2 ms)[22m
+      [32m✓[39m [2mshould return false on error (2 ms)[22m
+    isAlive
+      [32m✓[39m [2mshould always return true (3 ms)[22m
+
+[31m[Nest] 39520  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to set cache key key:[39m
+[31m[Nest] 39520  - [39m10/18/2025, 12:03:24 PM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/cache.service.spec.ts:202:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39520  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to get cache key key:[39m
+[31m[Nest] 39520  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/cache.service.spec.ts:243:43[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39m[31mError setting cache:[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.spec.ts:128:42[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39m[31mError getting cache key test-key:[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.spec.ts:179:49[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39m[31mError in batch set operation:[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.spec.ts:260:46[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39m[31mError in batch get operation:[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.spec.ts:309:46[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39m[31mError invalidating cache:[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.spec.ts:366:58[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39m[31mError resetting statistics:[39m
+[31m[Nest] 39521  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheController] [39mError: Reset failed
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.spec.ts:410:15[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:305:39
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:312:13[90m)[39m
+    at Object.mockConstructor [as resetStats] [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:102:19[90m)[39m
+    at CacheController.resetStats [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.ts:333:25[90m)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/cache.controller.spec.ts:413:33[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m cache [39m[27m[0m [2mpackages/cache/src/app/[22m[1mcache.controller.spec.ts[22m
+  CacheController
+    [32m✓[39m [2mshould be defined (24 ms)[22m
+    setCache
+      [32m✓[39m [2mshould set a cache value successfully (6 ms)[22m
+      [32m✓[39m [2mshould set cache with namespace and tags (5 ms)[22m
+      [32m✓[39m [2mshould return error if set fails (3 ms)[22m
+      [32m✓[39m [2mshould handle exceptions (27 ms)[22m
+    getCache
+      [32m✓[39m [2mshould get a cache value successfully (4 ms)[22m
+      [32m✓[39m [2mshould return not found for non-existent key (3 ms)[22m
+      [32m✓[39m [2mshould get cache with namespace (3 ms)[22m
+      [32m✓[39m [2mshould handle exceptions (5 ms)[22m
+    deleteCache
+      [32m✓[39m [2mshould delete a cache key successfully (5 ms)[22m
+      [32m✓[39m [2mshould return error if deletion fails (3 ms)[22m
+      [32m✓[39m [2mshould delete with namespace (3 ms)[22m
+    batchSet
+      [32m✓[39m [2mshould set multiple cache values (3 ms)[22m
+      [32m✓[39m [2mshould handle partial failures (4 ms)[22m
+      [32m✓[39m [2mshould handle exceptions (4 ms)[22m
+    batchGet
+      [32m✓[39m [2mshould get multiple cache values (5 ms)[22m
+      [32m✓[39m [2mshould return failure if all keys not found (3 ms)[22m
+      [32m✓[39m [2mshould handle exceptions (4 ms)[22m
+    invalidateCache
+      [32m✓[39m [2mshould invalidate by pattern (3 ms)[22m
+      [32m✓[39m [2mshould invalidate by tags (3 ms)[22m
+      [32m✓[39m [2mshould return error if neither pattern nor tags provided (2 ms)[22m
+      [32m✓[39m [2mshould handle exceptions (5 ms)[22m
+    getStats
+      [32m✓[39m [2mshould return cache statistics (4 ms)[22m
+    resetStats
+      [32m✓[39m [2mshould reset statistics (3 ms)[22m
+      [32m✓[39m [2mshould handle errors (18 ms)[22m
+    getHealth
+      [32m✓[39m [2mshould return health status (3 ms)[22m
+    getReadiness
+      [32m✓[39m [2mshould return ready status (4 ms)[22m
+      [32m✓[39m [2mshould return not ready status (3 ms)[22m
+    getLiveness
+      [32m✓[39m [2mshould return alive status (3 ms)[22m
+
+[31m[Nest] 39520  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mRedis health check failed:[39m
+[31m[Nest] 39520  - [39m10/18/2025, 12:03:25 PM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Connection failed
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/cache/src/app/services/cache.service.spec.ts:505:44[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m cache [39m[27m[0m [2mpackages/cache/src/app/services/[22m[1mcache.service.spec.ts[22m
+  CacheService
+    Module Lifecycle
+      [32m✓[39m [2mshould be defined (65 ms)[22m
+      [32m✓[39m [2mshould initialize Redis connection on module init (32 ms)[22m
+      [32m✓[39m [2mshould close Redis connection on module destroy (25 ms)[22m
+      [32m✓[39m [2mshould throw error if config is not found (73 ms)[22m
+    set
+      [32m✓[39m [2mshould set a value with default TTL (26 ms)[22m
+      [32m✓[39m [2mshould set a value with custom TTL (30 ms)[22m
+      [32m✓[39m [2mshould set a value with undefined TTL (uses default) (18 ms)[22m
+      [32m✓[39m [2mshould set a value with namespace (19 ms)[22m
+      [32m✓[39m [2mshould set a value with tags (24 ms)[22m
+      [32m✓[39m [2mshould return false on error (34 ms)[22m
+    get
+      [32m✓[39m [2mshould get a value from cache (30 ms)[22m
+      [32m✓[39m [2mshould return null for non-existent key (37 ms)[22m
+      [32m✓[39m [2mshould get a value with namespace (39 ms)[22m
+      [32m✓[39m [2mshould return null on error (54 ms)[22m
+    getWithTtl
+      [32m✓[39m [2mshould get value with TTL (64 ms)[22m
+      [32m✓[39m [2mshould return null value for non-existent key (34 ms)[22m
+    exists
+      [32m✓[39m [2mshould return true if key exists (23 ms)[22m
+      [32m✓[39m [2mshould return false if key does not exist (22 ms)[22m
+    delete
+      [32m✓[39m [2mshould delete a key (35 ms)[22m
+      [32m✓[39m [2mshould return false if key was not deleted (19 ms)[22m
+      [32m✓[39m [2mshould delete key with namespace (16 ms)[22m
+    deleteMany
+      [32m✓[39m [2mshould delete multiple keys (21 ms)[22m
+      [32m✓[39m [2mshould return 0 for empty array (22 ms)[22m
+    setMany
+      [32m✓[39m [2mshould set multiple values (22 ms)[22m
+      [32m✓[39m [2mshould return 0 for empty array (24 ms)[22m
+    getMany
+      [32m✓[39m [2mshould get multiple values (42 ms)[22m
+      [32m✓[39m [2mshould return nulls for non-existent keys (14 ms)[22m
+      [32m✓[39m [2mshould return empty array for empty input (13 ms)[22m
+    invalidateByPattern
+      [32m✓[39m [2mshould invalidate keys by pattern (14 ms)[22m
+      [32m✓[39m [2mshould return 0 if no keys match (16 ms)[22m
+    invalidateByTags
+      [32m✓[39m [2mshould invalidate keys by tags (14 ms)[22m
+      [32m✓[39m [2mshould return 0 for empty tags array (12 ms)[22m
+    getStats
+      [32m✓[39m [2mshould return cache statistics (15 ms)[22m
+    resetStats
+      [32m✓[39m [2mshould reset statistics (26 ms)[22m
+    getKeyCount
+      [32m✓[39m [2mshould return total key count (13 ms)[22m
+      [32m✓[39m [2mshould return key count for namespace (13 ms)[22m
+    flushAll
+      [32m✓[39m [2mshould flush all cache (13 ms)[22m
+    healthCheck
+      [32m✓[39m [2mshould return true if Redis is healthy (20 ms)[22m
+      [32m✓[39m [2mshould return false if Redis is unhealthy (14 ms)[22m
+
+--------------------------|---------|----------|---------|---------|------------------------------------------------------------------------------------------------------------------------------------
+File                      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                                                                                  
+--------------------------|---------|----------|---------|---------|------------------------------------------------------------------------------------------------------------------------------------
+[33;1mAll files                [0m | [33;1m  79.56[0m | [33;1m      64[0m | [33;1m  76.19[0m | [32;1m  80.18[0m | [31;1m                                                                                                                                  [0m 
+[32;1m app                     [0m | [32;1m  94.87[0m | [32;1m   74.48[0m | [32;1m    100[0m | [32;1m  94.59[0m | [31;1m                                                                                                                                  [0m 
+[32;1m  cache.controller.ts    [0m | [32;1m  94.87[0m | [32;1m   74.48[0m | [32;1m    100[0m | [32;1m  94.59[0m | [31;1m174-175,316-317                                                                                                                   [0m 
+[31;1m app/config              [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                                                                                                                                  [0m 
+[31;1m  cache.config.ts        [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-67                                                                                                                              [0m 
+[32;1m app/dto                 [0m | [32;1m  95.31[0m | [33;1m      50[0m | [31;1m      0[0m | [32;1m  95.31[0m | [31;1m                                                                                                                                  [0m 
+[32;1m  batch-operation.dto.ts [0m | [32;1m  93.33[0m | [32;1m     100[0m | [31;1m      0[0m | [32;1m  93.33[0m | [31;1m61                                                                                                                                [0m 
+[32;1m  cache-response.dto.ts  [0m | [32;1m    100[0m | [32;1m      75[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m52                                                                                                                                [0m 
+[32;1m  cache-stats.dto.ts     [0m | [32;1m    100[0m | [33;1m      50[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m44                                                                                                                                [0m 
+[32;1m  get-cache.dto.ts       [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                                                                                                                  [0m 
+[33;1m  invalidate-cache.dto.ts[0m | [33;1m     75[0m | [31;1m       0[0m | [31;1m      0[0m | [33;1m     75[0m | [31;1m20,31                                                                                                                             [0m 
+[32;1m  set-cache.dto.ts       [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                                                                                                                  [0m 
+[33;1m app/services            [0m | [33;1m  79.09[0m | [33;1m   65.34[0m | [33;1m  79.06[0m | [33;1m   78.3[0m | [31;1m                                                                                                                                  [0m 
+[33;1m  cache.service.ts       [0m | [33;1m  73.56[0m | [33;1m   62.68[0m | [33;1m  73.52[0m | [33;1m  72.81[0m | [31;1m45-50,59,63,67,71,75,82-83,128,200-202,215-216,231-232,249-250,275,280-284,296-297,320-326,348-349,379-380,430-459,474-475,488-489[0m 
+[32;1m  health.service.ts      [0m | [32;1m    100[0m | [32;1m      90[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m21                                                                                                                                [0m 
+[32;1m  stats.service.ts       [0m | [32;1m    100[0m | [33;1m    62.5[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m9,28-42                                                                                                                           [0m 
+--------------------------|---------|----------|---------|---------|------------------------------------------------------------------------------------------------------------------------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 79.56%[39m[22m
+[1m[31mJest: "global" coverage threshold for branches (70%) not met: 64%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 76.19%[39m[22m
+[1mTest Suites: [22m[1m[32m4 passed[39m[22m, 4 total
+[1mTests:       [22m[1m[32m85 passed[39m[22m, 85 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        [1m[33m10.61 s[39m[22m
+[2mRan all test suites[22m[2m.[22m

@@ -4,7 +4,7 @@ import { NotificationService } from './notification.service';
 import { EmailService } from './email.service';
 import { SmsService } from './sms.service';
 import { TemplateService } from './template.service';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { RABBITMQ_CHANNEL } from '../config/rabbitmq.module';
 import { NotificationType, NotificationStatus } from '../entities/notification.entity';
 
@@ -53,7 +53,7 @@ describe('NotificationService', () => {
       providers: [
         NotificationService,
         {
-          provide: PrismaService,
+          provide: NotificationPrismaService,
           useValue: mockPrismaService,
         },
         {

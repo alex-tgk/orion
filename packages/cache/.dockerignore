@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+*.spec.ts
+*.integration.spec.ts
+.nx
+.git
+.gitignore
+*.md
+tsconfig.spec.json
+jest.config.ts
+webpack.config.js

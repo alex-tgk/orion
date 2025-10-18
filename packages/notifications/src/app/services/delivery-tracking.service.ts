@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { NotificationStatus, NotificationType } from '@prisma/notifications';
 
 /**
@@ -36,7 +36,7 @@ export interface DeliveryStats {
 export class DeliveryTrackingService {
   private readonly logger = new Logger(DeliveryTrackingService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: NotificationPrismaService) {}
 
   /**
    * Mark notification as sent

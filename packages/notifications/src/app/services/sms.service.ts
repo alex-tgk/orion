@@ -17,8 +17,8 @@ export class SmsService {
   constructor(private readonly configService: ConfigService) {
     const accountSid = this.configService.get<string>('notification.twilio.accountSid');
     const authToken = this.configService.get<string>('notification.twilio.authToken');
-    this.from = this.configService.get<string>('notification.twilio.from');
-    this.enabled = this.configService.get<boolean>('notification.twilio.enabled');
+    this.from = this.configService.get<string>('notification.twilio.from') || '+15555555555';
+    this.enabled = this.configService.get<boolean>('notification.twilio.enabled') ?? false;
 
     if (this.enabled && accountSid && authToken) {
       this.client = new Twilio(accountSid, authToken);
@@ -111,5 +111,12 @@ export class SmsService {
     }
 
     return `+${cleaned}`;
+  }
+
+  /**
+   * Check if SMS service is enabled
+   */
+  isEnabled(): boolean {
+    return this.enabled;
   }
 }

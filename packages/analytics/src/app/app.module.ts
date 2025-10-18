@@ -1,11 +1,55 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { PortRegistryModule } from '@orion/shared';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import {
+  appConfig,
+  databaseConfig,
+  rabbitmqConfig,
+  redisConfig,
+} from './config';
+import {
+  PrismaService,
+  EventService,
+  MetricService,
+  AggregationService,
+  UserAnalyticsService,
+  DashboardService,
+  HealthService,
+} from './services';
+import { AnalyticsController } from './controllers/analytics.controller';
+import { EventConsumer } from './consumers/event.consumer';
 
 @Module({
-  imports: [PortRegistryModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [appConfig, databaseConfig, rabbitmqConfig, redisConfig],
+    }),
+    PortRegistryModule,
+  ],
+  controllers: [AnalyticsController],
+  providers: [
+    // Database
+    PrismaService,
+
+    // Services
+    EventService,
+    MetricService,
+    AggregationService,
+    UserAnalyticsService,
+    DashboardService,
+    HealthService,
+
+    // Consumers
+    EventConsumer,
+  ],
+  exports: [
+    PrismaService,
+    EventService,
+    MetricService,
+    AggregationService,
+    UserAnalyticsService,
+    DashboardService,
+  ],
 })
 export class AppModule {}

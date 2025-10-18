@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PreferencesService } from './preferences.service';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from "./notification-prisma.service";
 
 describe('PreferencesService', () => {
   let service: PreferencesService;
 
   const mockPrismaService = {
-    notificationPreferences: {
+    userPreference: {
       findUnique: jest.fn(),
       create: jest.fn(),
       update: jest.fn(),
@@ -19,7 +19,7 @@ describe('PreferencesService', () => {
       providers: [
         PreferencesService,
         {
-          provide: PrismaService,
+          provide: NotificationPrismaService,
           useValue: mockPrismaService,
         },
       ],
@@ -65,7 +65,7 @@ describe('PreferencesService', () => {
         },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(mockPreferences);
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(mockPreferences);
 
       const preferences = await service.getPreferences('user-123');
 
@@ -77,7 +77,7 @@ describe('PreferencesService', () => {
     });
 
     it('should create default preferences if none exist', async () => {
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(null);
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(null);
 
       const defaultPreferences = {
         id: 'new-pref-id',
@@ -109,11 +109,11 @@ describe('PreferencesService', () => {
         },
       };
 
-      mockPrismaService.notificationPreferences.create.mockResolvedValue(defaultPreferences);
+      mockPrismaService.userPreference.create.mockResolvedValue(defaultPreferences);
 
       const preferences = await service.getPreferences('user-123');
 
-      expect(mockPrismaService.notificationPreferences.create).toHaveBeenCalledWith({
+      expect(mockPrismaService.userPreference.create).toHaveBeenCalledWith({
         data: expect.objectContaining({
           userId: 'user-123',
           email: expect.any(Object),
@@ -170,8 +170,8 @@ describe('PreferencesService', () => {
         },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(existingPreferences);
-      mockPrismaService.notificationPreferences.update.mockResolvedValue({
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(existingPreferences);
+      mockPrismaService.userPreference.update.mockResolvedValue({
         ...existingPreferences,
         email: { ...existingPreferences.email, enabled: false },
         sms: { ...existingPreferences.sms, enabled: true },
@@ -179,7 +179,7 @@ describe('PreferencesService', () => {
 
       const updated = await service.updatePreferences('user-123', updates);
 
-      expect(mockPrismaService.notificationPreferences.update).toHaveBeenCalledWith({
+      expect(mockPrismaService.userPreference.update).toHaveBeenCalledWith({
         where: { userId: 'user-123' },
         data: expect.objectContaining({
           email: expect.objectContaining({ enabled: false }),
@@ -193,7 +193,7 @@ describe('PreferencesService', () => {
     });
 
     it('should create default preferences if none exist before updating', async () => {
-      mockPrismaService.notificationPreferences.findUnique
+      mockPrismaService.userPreference.findUnique
         .mockResolvedValueOnce(null)
         .mockResolvedValueOnce({
           id: 'new-id',
@@ -203,7 +203,7 @@ describe('PreferencesService', () => {
           push: { enabled: true, types: {} },
         });
 
-      mockPrismaService.notificationPreferences.create.mockResolvedValue({
+      mockPrismaService.userPreference.create.mockResolvedValue({
         id: 'new-id',
         userId: 'user-123',
         email: { enabled: true, types: {} },
@@ -211,7 +211,7 @@ describe('PreferencesService', () => {
         push: { enabled: true, types: {} },
       });
 
-      mockPrismaService.notificationPreferences.update.mockResolvedValue({
+      mockPrismaService.userPreference.update.mockResolvedValue({
         id: 'new-id',
         userId: 'user-123',
         email: { enabled: false, types: {} },
@@ -222,8 +222,8 @@ describe('PreferencesService', () => {
       const updates = { email: { enabled: false } };
       await service.updatePreferences('user-123', updates);
 
-      expect(mockPrismaService.notificationPreferences.create).toHaveBeenCalled();
-      expect(mockPrismaService.notificationPreferences.update).toHaveBeenCalled();
+      expect(mockPrismaService.userPreference.create).toHaveBeenCalled();
+      expect(mockPrismaService.userPreference.update).toHaveBeenCalled();
     });
 
     it('should merge notification types correctly', async () => {
@@ -251,8 +251,8 @@ describe('PreferencesService', () => {
         },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(existingPreferences);
-      mockPrismaService.notificationPreferences.update.mockResolvedValue({
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(existingPreferences);
+      mockPrismaService.userPreference.update.mockResolvedValue({
         ...existingPreferences,
         email: {
           enabled: true,
@@ -287,7 +287,7 @@ describe('PreferencesService', () => {
         push: { enabled: true, types: {} },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(mockPreferences);
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(mockPreferences);
 
       const enabled = await service.isEnabled('user-123', 'email', 'welcome');
 
@@ -306,7 +306,7 @@ describe('PreferencesService', () => {
         push: { enabled: true, types: {} },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(mockPreferences);
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(mockPreferences);
 
       const enabled = await service.isEnabled('user-123', 'email');
 
@@ -328,7 +328,7 @@ describe('PreferencesService', () => {
         push: { enabled: true, types: {} },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(mockPreferences);
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(mockPreferences);
 
       const enabled = await service.isEnabled('user-123', 'email', 'welcome');
 
@@ -347,7 +347,7 @@ describe('PreferencesService', () => {
         push: { enabled: true, types: {} },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(mockPreferences);
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(mockPreferences);
 
       const enabled = await service.isEnabled('user-123', 'email', 'someType');
 
@@ -368,7 +368,7 @@ describe('PreferencesService', () => {
         push: { enabled: true, types: {} },
       };
 
-      mockPrismaService.notificationPreferences.findUnique.mockResolvedValue(mockPreferences);
+      mockPrismaService.userPreference.findUnique.mockResolvedValue(mockPreferences);
 
       const enabled = await service.isEnabled('user-123', 'email', 'marketing');
 
@@ -378,20 +378,20 @@ describe('PreferencesService', () => {
 
   describe('deletePreferences', () => {
     it('should delete user preferences', async () => {
-      mockPrismaService.notificationPreferences.delete.mockResolvedValue({
+      mockPrismaService.userPreference.delete.mockResolvedValue({
         id: 'pref-id',
         userId: 'user-123',
       });
 
       await service.deletePreferences('user-123');
 
-      expect(mockPrismaService.notificationPreferences.delete).toHaveBeenCalledWith({
+      expect(mockPrismaService.userPreference.delete).toHaveBeenCalledWith({
         where: { userId: 'user-123' },
       });
     });
 
     it('should handle record not found gracefully', async () => {
-      mockPrismaService.notificationPreferences.delete.mockRejectedValue({
+      mockPrismaService.userPreference.delete.mockRejectedValue({
         code: 'P2025', // Prisma "Record not found" error
       });
 
@@ -399,7 +399,7 @@ describe('PreferencesService', () => {
     });
 
     it('should throw other errors', async () => {
-      mockPrismaService.notificationPreferences.delete.mockRejectedValue(
+      mockPrismaService.userPreference.delete.mockRejectedValue(
         new Error('Database error')
       );
 

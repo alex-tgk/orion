@@ -1,5 +1,5 @@
 import * as winston from 'winston';
-import * as DailyRotateFile from 'winston-daily-rotate-file';
+import DailyRotateFile from 'winston-daily-rotate-file';
 import { jsonFormatter } from '../formatters/json.formatter';
 import type { LoggerConfig } from '../interfaces/logger-options.interface';
 

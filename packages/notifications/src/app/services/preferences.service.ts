@@ -1,18 +1,18 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { UpdateNotificationPreferencesDto } from '../dto/notification-preferences.dto';
 
 @Injectable()
 export class PreferencesService {
   private readonly logger = new Logger(PreferencesService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: NotificationPrismaService) {}
 
   /**
    * Get user's notification preferences
    */
   async getPreferences(userId: string) {
-    let preferences = await this.prisma.notificationPreferences.findUnique({
+    let preferences = await this.prisma.userPreference.findUnique({
       where: { userId },
     });
 
@@ -22,9 +22,9 @@ export class PreferencesService {
     }
 
     return {
-      email: preferences.email as any,
-      sms: preferences.sms as any,
-      push: preferences.push as any,
+      email: preferences.emailPreferences as any,
+      sms: preferences.smsPreferences as any,
+      push: preferences.pushPreferences as any,
     };
   }
 
@@ -36,7 +36,7 @@ export class PreferencesService {
     updates: UpdateNotificationPreferencesDto,
   ) {
     // Get existing preferences or create defaults
-    let preferences = await this.prisma.notificationPreferences.findUnique({
+    let preferences = await this.prisma.userPreference.findUnique({
       where: { userId },
     });
 
@@ -45,17 +45,17 @@ export class PreferencesService {
     }
 
     // Merge updates with existing preferences
-    const email = this.mergePreferences(preferences.email as any, updates.email);
-    const sms = this.mergePreferences(preferences.sms as any, updates.sms);
-    const push = this.mergePreferences(preferences.push as any, updates.push);
+    const email = this.mergePreferences(preferences.emailPreferences as any, updates.email);
+    const sms = this.mergePreferences(preferences.smsPreferences as any, updates.sms);
+    const push = this.mergePreferences(preferences.pushPreferences as any, updates.push);
 
     // Update preferences
-    const updated = await this.prisma.notificationPreferences.update({
+    const updated = await this.prisma.userPreference.update({
       where: { userId },
       data: {
-        email,
-        sms,
-        push,
+        emailPreferences: email,
+        smsPreferences: sms,
+        pushPreferences: push,
         updatedAt: new Date(),
       },
     });
@@ -63,9 +63,9 @@ export class PreferencesService {
     this.logger.log(`Notification preferences updated for user ${userId}`);
 
     return {
-      email: updated.email as any,
-      sms: updated.sms as any,
-      push: updated.push as any,
+      email: updated.emailPreferences as any,
+      sms: updated.smsPreferences as any,
+      push: updated.pushPreferences as any,
     };
   }
 
@@ -97,10 +97,10 @@ export class PreferencesService {
    * Create default preferences for a new user
    */
   private async createDefaultPreferences(userId: string) {
-    return this.prisma.notificationPreferences.create({
+    return this.prisma.userPreference.create({
       data: {
         userId,
-        email: {
+        emailPreferences: {
           enabled: true,
           types: {
             welcome: true,
@@ -110,14 +110,14 @@ export class PreferencesService {
             marketing: false,
           },
         },
-        sms: {
+        smsPreferences: {
           enabled: false,
           types: {
             securityAlerts: true,
             marketing: false,
           },
         },
-        push: {
+        pushPreferences: {
           enabled: true,
           types: {
             realtime: true,
@@ -154,7 +154,7 @@ export class PreferencesService {
    */
   async deletePreferences(userId: string): Promise<void> {
     try {
-      await this.prisma.notificationPreferences.delete({
+      await this.prisma.userPreference.delete({
         where: { userId },
       });
       this.logger.log(`Notification preferences deleted for user ${userId}`);

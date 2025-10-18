@@ -17,6 +17,7 @@ import { TemplatesController } from './controllers/templates.controller';
 import { PreferencesController } from './controllers/preferences.controller';
 
 // Services
+import { NotificationPrismaService } from './services/notification-prisma.service';
 import { NotificationService } from './services/notification.service';
 import { EmailService } from './services/email.service';
 import { SmsService } from './services/sms.service';
@@ -63,6 +64,9 @@ import { AllExceptionsFilter } from './filters/all-exceptions.filter';
   ],
   providers: [
     AppService,
+
+    // Database
+    NotificationPrismaService,
 
     // Core Services
     NotificationService,

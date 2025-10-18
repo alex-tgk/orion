@@ -1,0 +1,740 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m analytics [39m[27m[0m [2mpackages/analytics/src/app/services/[22m[1mhealth.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/analytics/src/app/services/health.service.spec.ts[0m:[93m27[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty '$queryRaw' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m27[0m       (prisma.$queryRaw as jest.Mock).mockResolvedValue([{ '?column?': 1 }]);
+    [7m  [0m [91m              ~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/health.service.spec.ts[0m:[93m40[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty '$queryRaw' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m40[0m       (prisma.$queryRaw as jest.Mock).mockRejectedValue(dbError);
+    [7m  [0m [91m              ~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/health.service.spec.ts[0m:[93m52[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty '$queryRaw' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m52[0m       (prisma.$queryRaw as jest.Mock).mockResolvedValue([{ '?column?': 1 }]);
+    [7m  [0m [91m              ~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/health.service.spec.ts[0m:[93m62[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty '$queryRaw' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m62[0m       (prisma.$queryRaw as jest.Mock).mockRejectedValue(dbError);
+    [7m  [0m [91m              ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m analytics [39m[27m[0m [2mpackages/analytics/src/app/services/[22m[1mdashboard.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m44[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m44[0m       (prisma.event.count as jest.Mock)
+    [7m  [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m48[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m48[0m       (prisma.event.findMany as jest.Mock)
+    [7m  [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m60[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m60[0m       (prisma.event.groupBy as jest.Mock)
+    [7m  [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m70[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m70[0m       (prisma.event.findMany as jest.Mock).mockResolvedValueOnce([
+    [7m  [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m84[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'serviceMetrics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m84[0m       (prisma.serviceMetrics.findMany as jest.Mock).mockResolvedValue([
+    [7m  [0m [91m              ~~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m96[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'costMetric' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m96[0m       (prisma.costMetric.findMany as jest.Mock).mockResolvedValue([
+    [7m  [0m [91m              ~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m129[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m129[0m       (prisma.event.count as jest.Mock).mockResolvedValue(0);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m130[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m130[0m       (prisma.event.findMany as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m131[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m131[0m       (prisma.event.groupBy as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m132[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'serviceMetrics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m132[0m       (prisma.serviceMetrics.findMany as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/dashboard.service.spec.ts[0m:[93m133[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'costMetric' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m133[0m       (prisma.costMetric.findMany as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m analytics [39m[27m[0m [2mpackages/analytics/src/app/services/[22m[1muser-analytics.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m58[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m58[0m       (prisma.userAnalytics.findUnique as jest.Mock).mockResolvedValue(mockAnalytics);
+    [7m  [0m [91m              ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m62[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m62[0m       expect(prisma.userAnalytics.findUnique).toHaveBeenCalledWith({
+    [7m  [0m [91m                    ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m96[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m96[0m       (prisma.userAnalytics.findUnique as jest.Mock).mockResolvedValue(null);
+    [7m  [0m [91m              ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m97[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m97[0m       (prisma.userAnalytics.create as jest.Mock).mockResolvedValue(mockNewAnalytics);
+    [7m  [0m [91m              ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m101[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m101[0m       expect(prisma.userAnalytics.create).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m143[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m143[0m       (prisma.event.findMany as jest.Mock).mockResolvedValue(mockEvents);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m144[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m144[0m       (prisma.userAnalytics.upsert as jest.Mock).mockResolvedValue({});
+    [7m   [0m [91m              ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m148[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m148[0m       expect(prisma.event.findMany).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m153[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m153[0m       expect(prisma.userAnalytics.upsert).toHaveBeenCalled();
+    [7m   [0m [91m                    ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m154[0m:[93m34[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m154[0m       const upsertCall = (prisma.userAnalytics.upsert as jest.Mock).mock.calls[0][0];
+    [7m   [0m [91m                                 ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m164[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m164[0m       (prisma.event.findMany as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m168[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m168[0m       expect(prisma.userAnalytics.upsert).not.toHaveBeenCalled();
+    [7m   [0m [91m                    ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m221[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m221[0m       (prisma.userAnalytics.findUnique as jest.Mock).mockResolvedValue(mockAnalytics);
+    [7m   [0m [91m              ~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/user-analytics.service.spec.ts[0m:[93m222[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m222[0m       (prisma.event.findMany as jest.Mock)
+    [7m   [0m [91m              ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m analytics [39m[27m[0m [2mpackages/analytics/src/app/consumers/[22m[1mevent.consumer.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/analytics/src/app/consumers/event.consumer.spec.ts[0m:[93m4[0m:[93m39[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.
+
+    [7m4[0m import { EventType, MetricType } from '@prisma/analytics';
+    [7m [0m [91m                                      ~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m analytics [39m[27m[0m [2mpackages/analytics/src/app/services/[22m[1mevent.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m5[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.
+
+    [7m5[0m import { EventType as PrismaEventType } from '@prisma/analytics';
+    [7m [0m [91m                                             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m66[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m66[0m       (prisma.event.create as jest.Mock).mockResolvedValue(mockEvent);
+    [7m  [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m70[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m70[0m       expect(prisma.event.create).toHaveBeenCalledWith({
+    [7m  [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m130[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m130[0m       (prisma.event.create as jest.Mock).mockResolvedValue(mockEvent);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m218[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty '$transaction' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m218[0m       (prisma.$transaction as jest.Mock).mockResolvedValue(mockEvents);
+    [7m   [0m [91m              ~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m222[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty '$transaction' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m222[0m       expect(prisma.$transaction).toHaveBeenCalled();
+    [7m   [0m [91m                    ~~~~~~~~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m241[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m241[0m       (prisma.event.findMany as jest.Mock).mockResolvedValue(mockEvents);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m249[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m249[0m       expect(prisma.event.findMany).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m266[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m266[0m       (prisma.event.findMany as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m273[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m273[0m       expect(prisma.event.findMany).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m287[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m287[0m       (prisma.event.findMany as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m293[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m293[0m       expect(prisma.event.findMany).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m306[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m306[0m       (prisma.event.count as jest.Mock).mockResolvedValue(42);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m313[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m313[0m       expect(prisma.event.count).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m332[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m332[0m       (prisma.event.groupBy as jest.Mock).mockResolvedValue(mockGroupBy);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m336[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m336[0m       expect(prisma.event.groupBy).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m355[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m355[0m       (prisma.event.groupBy as jest.Mock).mockResolvedValue([]);
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m359[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m359[0m       expect(prisma.event.groupBy).toHaveBeenCalledWith({
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m377[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m377[0m       (prisma.event.deleteMany as jest.Mock).mockResolvedValue({ count: 1000 });
+    [7m   [0m [91m              ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m381[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m381[0m       expect(prisma.event.deleteMany).toHaveBeenCalled();
+    [7m   [0m [91m                    ~~~~~[0m
+    [96mpackages/analytics/src/app/services/event.service.spec.ts[0m:[93m382[0m:[93m32[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'Mocked<PrismaService>'.
+
+    [7m382[0m       const callArgs = (prisma.event.deleteMany as jest.Mock).mock.calls[0][0];
+    [7m   [0m [91m                               ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m analytics [39m[27m[0m [2mpackages/analytics/src/app/controllers/[22m[1manalytics.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/analytics/src/app/controllers/analytics.controller.spec.ts[0m:[93m459[0m:[93m51[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; latency: number; }; memory: { status: string; usage: {}; }; }; }' is not assignable to parameter of type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; latency: number; error?: undefined; }; memory: { status: string; usage: MemoryUsage; }; }; } | { ...; } | Promise<...>'.
+      Type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; latency: number; }; memory: { status: string; usage: {}; }; }; }' is not assignable to type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; error: string; latency?: undefined; }; memory: { status: string; usage: NodeJS.MemoryUsage; }; }; }'.
+        The types of 'checks.database' are incompatible between these types.
+          Property 'error' is missing in type '{ status: string; latency: number; }' but required in type '{ status: string; error: string; latency?: undefined; }'.
+
+    [7m459[0m         healthService.getHealth.mockResolvedValue(expectedResult);
+    [7m   [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+      [96mpackages/analytics/src/app/services/health.service.ts[0m:[93m51[0m:[93m13[0m
+        [7m51[0m             error: error instanceof Error ? error.message : 'Unknown error',
+        [7m  [0m [96m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+        'error' is declared here.
+    [96mpackages/analytics/src/app/controllers/analytics.controller.spec.ts[0m:[93m480[0m:[93m51[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; error: string; }; memory: { status: string; usage: {}; }; }; }' is not assignable to parameter of type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; latency: number; error?: undefined; }; memory: { status: string; usage: MemoryUsage; }; }; } | { ...; } | Promise<...>'.
+      Type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; error: string; }; memory: { status: string; usage: {}; }; }; }' is not assignable to type '{ status: string; service: string; uptime: number; timestamp: string; checks: { database: { status: string; error: string; latency?: undefined; }; memory: { status: string; usage: NodeJS.MemoryUsage; }; }; }'.
+        The types of 'checks.memory.usage' are incompatible between these types.
+          Type '{}' is missing the following properties from type 'MemoryUsage': rss, heapTotal, heapUsed, external, arrayBuffers
+
+    [7m480[0m         healthService.getHealth.mockResolvedValue(expectedResult);
+    [7m   [0m [91m                                                  ~~~~~~~~~~~~~~[0m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/dto/query-metrics.dto.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/dto/query-metrics.dto.ts[0m:[93m2[0m:[93m16[0m - [91merror[0m[90m TS6133: [0m'Transform' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m2[0m import { Type, Transform } from 'class-transformer';[39m
+[31m[7m [0m [91m               ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/services/prisma.service.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/services/prisma.service.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m2[0m import { PrismaClient } from '@prisma/analytics';[39m
+[31m[7m [0m [91m                             ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/prisma.service.ts[0m:[93m14[0m:[93m18[0m - [91merror[0m[90m TS2339: [0mProperty '$connect' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m14[0m       await this.$connect();[39m
+[31m[7m  [0m [91m                 ~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/prisma.service.ts[0m:[93m23[0m:[93m16[0m - [91merror[0m[90m TS2339: [0mProperty '$disconnect' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m23[0m     await this.$disconnect();[39m
+[31m[7m  [0m [91m               ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/prisma.service.ts[0m:[93m32[0m:[93m18[0m - [91merror[0m[90m TS2339: [0mProperty '$disconnect' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m32[0m       await this.$disconnect();[39m
+[31m[7m  [0m [91m                 ~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/services/health.service.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/services/health.service.ts[0m:[93m22[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty '$queryRaw' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m22[0m       await this.prisma.$queryRaw`SELECT 1`;[39m
+[31m[7m  [0m [91m                        ~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/health.service.ts[0m:[93m67[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty '$queryRaw' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m67[0m       await this.prisma.$queryRaw`SELECT 1`;[39m
+[31m[7m  [0m [91m                        ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/services/event.service.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/services/event.service.ts[0m:[93m4[0m:[93m42[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { Event, EventType, Prisma } from '@prisma/analytics';[39m
+[31m[7m [0m [91m                                         ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m21[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m21[0m       const event = await this.prisma.event.create({[39m
+[31m[7m  [0m [91m                                      ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m61[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty '$transaction' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m61[0m       const events = await this.prisma.$transaction([39m
+[31m[7m  [0m [91m                                       ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m63[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m63[0m           this.prisma.event.create({[39m
+[31m[7m  [0m [91m                      ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m87[0m:[93m26[0m - [91merror[0m[90m TS7006: [0mParameter 'event' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m87[0m       return events.map((event) => ({[39m
+[31m[7m  [0m [91m                         ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m135[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m135[0m     return this.prisma.event.findMany({[39m
+[31m[7m   [0m [91m                       ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m165[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m165[0m     return this.prisma.event.count({ where });[39m
+[31m[7m   [0m [91m                       ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m184[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m184[0m     const result = await this.prisma.event.groupBy({[39m
+[31m[7m   [0m [91m                                     ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m198[0m:[93m24[0m - [91merror[0m[90m TS7006: [0mParameter 'item' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m198[0m     return result.map((item) => ({[39m
+[31m[7m   [0m [91m                       ~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/event.service.ts[0m:[93m211[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m211[0m     const result = await this.prisma.event.deleteMany({[39m
+[31m[7m   [0m [91m                                     ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/services/aggregation.service.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m4[0m:[93m60[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { AggregationPeriod, AggregationType, Prisma } from '@prisma/analytics';[39m
+[31m[7m [0m [91m                                                           ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m39[0m:[93m45[0m - [91merror[0m[90m TS2339: [0mProperty 'aggregation' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m39[0m       const aggregation = await this.prisma.aggregation.upsert({[39m
+[31m[7m  [0m [91m                                            ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m112[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'aggregation' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m112[0m     const aggregations = await this.prisma.aggregation.findMany({[39m
+[31m[7m   [0m [91m                                           ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m118[0m:[93m30[0m - [91merror[0m[90m TS7006: [0mParameter 'agg' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m118[0m     return aggregations.map((agg) => ({[39m
+[31m[7m   [0m [91m                             ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m149[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'metric' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m149[0m       const metrics = await this.prisma.metric.findMany({[39m
+[31m[7m   [0m [91m                                        ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m165[0m:[93m35[0m - [91merror[0m[90m TS7006: [0mParameter 'm' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m165[0m       const values = metrics.map((m) => m.value);[39m
+[31m[7m   [0m [91m                                  ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m166[0m:[93m34[0m - [91merror[0m[90m TS7006: [0mParameter 'a' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m166[0m       const sum = values.reduce((a, b) => a + b, 0);[39m
+[31m[7m   [0m [91m                                 ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m166[0m:[93m37[0m - [91merror[0m[90m TS7006: [0mParameter 'b' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m166[0m       const sum = values.reduce((a, b) => a + b, 0);[39m
+[31m[7m   [0m [91m                                    ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m173[0m:[93m39[0m - [91merror[0m[90m TS7006: [0mParameter 'acc' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m173[0m       const variance = values.reduce((acc, val) => acc + Math.pow(val - avg, 2), 0) / count;[39m
+[31m[7m   [0m [91m                                      ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m173[0m:[93m44[0m - [91merror[0m[90m TS7006: [0mParameter 'val' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m173[0m       const variance = values.reduce((acc, val) => acc + Math.pow(val - avg, 2), 0) / count;[39m
+[31m[7m   [0m [91m                                           ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/aggregation.service.ts[0m:[93m265[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'aggregation' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m265[0m     const result = await this.prisma.aggregation.deleteMany({[39m
+[31m[7m   [0m [91m                                     ~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/services/metric.service.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/services/metric.service.ts[0m:[93m4[0m:[93m44[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { Metric, MetricType, Prisma } from '@prisma/analytics';[39m
+[31m[7m [0m [91m                                           ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/metric.service.ts[0m:[93m33[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'metric' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m33[0m       const metric = await this.prisma.metric.create({[39m
+[31m[7m  [0m [91m                                       ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/metric.service.ts[0m:[93m82[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'metric' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m82[0m     const metrics = await this.prisma.metric.findMany({[39m
+[31m[7m  [0m [91m                                      ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/metric.service.ts[0m:[93m89[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'metric' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m89[0m     return metrics.map((metric) => ({[39m
+[31m[7m  [0m [91m                        ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/metric.service.ts[0m:[93m125[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'metric' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m125[0m     const result = await this.prisma.metric.aggregate({[39m
+[31m[7m   [0m [91m                                     ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/metric.service.ts[0m:[93m150[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'metric' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m150[0m     const result = await this.prisma.metric.deleteMany({[39m
+[31m[7m   [0m [91m                                     ~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/services/dashboard.service.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m11[0m:[93m20[0m - [91merror[0m[90m TS6133: [0m'logger' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m11[0m   private readonly logger = new Logger(DashboardService.name);[39m
+[31m[7m  [0m [91m                   ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m42[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m42[0m       this.prisma.event.count({ where: baseWhere }),[39m
+[31m[7m  [0m [91m                  ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m43[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m43[0m       this.prisma.event.findMany({[39m
+[31m[7m  [0m [91m                  ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m48[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m48[0m       this.prisma.event.findMany({[39m
+[31m[7m  [0m [91m                  ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m53[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m53[0m       this.prisma.event.count({[39m
+[31m[7m  [0m [91m                  ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m56[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m56[0m       this.prisma.event.findMany({[39m
+[31m[7m  [0m [91m                  ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m65[0m:[93m44[0m - [91merror[0m[90m TS7006: [0mParameter 'u' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m65[0m     const totalUsers = uniqueUsers.filter((u) => u.userId).length;[39m
+[31m[7m  [0m [91m                                           ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m66[0m:[93m50[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m66[0m     const totalSessions = uniqueSessions.filter((s) => s.sessionId).length;[39m
+[31m[7m  [0m [91m                                                 ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m70[0m:[93m36[0m - [91merror[0m[90m TS7006: [0mParameter 'sum' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m70[0m       ? eventsWithDuration.reduce((sum, e) => sum + (e.duration || 0), 0) /[39m
+[31m[7m  [0m [91m                                   ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m70[0m:[93m41[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m70[0m       ? eventsWithDuration.reduce((sum, e) => sum + (e.duration || 0), 0) /[39m
+[31m[7m  [0m [91m                                        ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m143[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m143[0m       this.prisma.event.groupBy({[39m
+[31m[7m   [0m [91m                  ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m150[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m150[0m       this.prisma.event.groupBy({[39m
+[31m[7m   [0m [91m                  ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m158[0m:[93m27[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m158[0m       previousEvents.map((e) => [e.eventName, e._count.eventName])[39m
+[31m[7m   [0m [91m                          ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m161[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 'event' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m161[0m     return currentEvents.map((event) => {[39m
+[31m[7m   [0m [91m                              ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m164[0m:[93m21[0m - [91merror[0m[90m TS2365: [0mOperator '>' cannot be applied to types '{}' and 'number'.[39m
+[31m[39m
+[31m[7m164[0m       const trend = previousCount > 0 ? ((count - previousCount) / previousCount) * 100 : 0;[39m
+[31m[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m164[0m:[93m51[0m - [91merror[0m[90m TS2363: [0mThe right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.[39m
+[31m[39m
+[31m[7m164[0m       const trend = previousCount > 0 ? ((count - previousCount) / previousCount) * 100 : 0;[39m
+[31m[7m   [0m [91m                                                  ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m164[0m:[93m68[0m - [91merror[0m[90m TS2363: [0mThe right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.[39m
+[31m[39m
+[31m[7m164[0m       const trend = previousCount > 0 ? ((count - previousCount) / previousCount) * 100 : 0;[39m
+[31m[7m   [0m [91m                                                                   ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m190[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m190[0m     const events = await this.prisma.event.findMany({[39m
+[31m[7m   [0m [91m                                     ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m200[0m:[93m36[0m - [91merror[0m[90m TS7006: [0mParameter 'acc' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m200[0m     const grouped = events.reduce((acc, event) => {[39m
+[31m[7m   [0m [91m                                   ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m200[0m:[93m41[0m - [91merror[0m[90m TS7006: [0mParameter 'event' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m200[0m     const grouped = events.reduce((acc, event) => {[39m
+[31m[7m   [0m [91m                                        ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m241[0m:[93m46[0m - [91merror[0m[90m TS2339: [0mProperty 'serviceMetrics' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m241[0m     const serviceMetrics = await this.prisma.serviceMetrics.findMany({[39m
+[31m[7m   [0m [91m                                             ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m251[0m:[93m44[0m - [91merror[0m[90m TS7006: [0mParameter 'acc' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m251[0m     const grouped = serviceMetrics.reduce((acc, metric) => {[39m
+[31m[7m   [0m [91m                                           ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m251[0m:[93m49[0m - [91merror[0m[90m TS7006: [0mParameter 'metric' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m251[0m     const grouped = serviceMetrics.reduce((acc, metric) => {[39m
+[31m[7m   [0m [91m                                                ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m298[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'costMetric' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m298[0m     const costMetrics = await this.prisma.costMetric.findMany({[39m
+[31m[7m   [0m [91m                                          ~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m306[0m:[93m39[0m - [91merror[0m[90m TS7006: [0mParameter 'sum' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m306[0m     const total = costMetrics.reduce((sum, metric) => sum + metric.amount, 0);[39m
+[31m[7m   [0m [91m                                      ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m306[0m:[93m44[0m - [91merror[0m[90m TS7006: [0mParameter 'metric' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m306[0m     const total = costMetrics.reduce((sum, metric) => sum + metric.amount, 0);[39m
+[31m[7m   [0m [91m                                           ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m310[0m:[93m43[0m - [91merror[0m[90m TS7006: [0mParameter 'acc' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m310[0m     const breakdown = costMetrics.reduce((acc, metric) => {[39m
+[31m[7m   [0m [91m                                          ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m310[0m:[93m48[0m - [91merror[0m[90m TS7006: [0mParameter 'metric' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m310[0m     const breakdown = costMetrics.reduce((acc, metric) => {[39m
+[31m[7m   [0m [91m                                               ~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m311[0m:[93m34[0m - [91merror[0m[90m TS7006: [0mParameter 'item' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m311[0m       const existing = acc.find((item) => item.resourceType === metric.resourceType);[39m
+[31m[7m   [0m [91m                                 ~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m326[0m:[93m34[0m - [91merror[0m[90m TS7006: [0mParameter 'a' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m326[0m       breakdown: breakdown.sort((a, b) => b.amount - a.amount),[39m
+[31m[7m   [0m [91m                                 ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/dashboard.service.ts[0m:[93m326[0m:[93m37[0m - [91merror[0m[90m TS7006: [0mParameter 'b' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m326[0m       breakdown: breakdown.sort((a, b) => b.amount - a.amount),[39m
+[31m[7m   [0m [91m                                    ~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/consumers/event.consumer.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/consumers/event.consumer.ts[0m:[93m5[0m:[93m61[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m5[0m import { EventType as AnalyticsEventType, MetricType } from '@prisma/analytics';[39m
+[31m[7m [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/consumers/event.consumer.ts[0m:[93m230[0m:[93m9[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'errorStack' does not exist in type 'TrackEventDto'.[39m
+[31m[39m
+[31m[7m230[0m         errorStack: data.errorStack,[39m
+[31m[7m   [0m [91m        ~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/controllers/analytics.controller.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/controllers/analytics.controller.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'UseGuards' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m11[0m   UseGuards,[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/analytics/src/app/services/user-analytics.service.ts[39m
+[31mERROR: [96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m1[0m:[93m30[0m - [91merror[0m[90m TS6133: [0m'NotFoundException' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m1[0m import { Injectable, Logger, NotFoundException } from '@nestjs/common';[39m
+[31m[7m [0m [91m                             ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m9[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/analytics' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m9[0m import { Prisma } from '@prisma/analytics';[39m
+[31m[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m25[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m25[0m     let userAnalytics = await this.prisma.userAnalytics.findUnique({[39m
+[31m[7m  [0m [91m                                          ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m31[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m31[0m       userAnalytics = await this.prisma.userAnalytics.create({[39m
+[31m[7m  [0m [91m                                        ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m62[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m62[0m       const events = await this.prisma.event.findMany({[39m
+[31m[7m  [0m [91m                                       ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m77[0m:[93m21[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m77[0m         events.map((e) => e.timestamp.toISOString().split('T')[0])[39m
+[31m[7m  [0m [91m                    ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m88[0m:[93m35[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.[39m
+[31m  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.[39m
+[31m    Argument of type 'unknown' is not assignable to parameter of type 'string | number | Date'.[39m
+[31m  Overload 2 of 4, '(value: string | number): Date', gave the following error.[39m
+[31m    Argument of type 'unknown' is not assignable to parameter of type 'string | number'.[39m
+[31m[39m
+[31m[7m88[0m         const prevDate = new Date(sortedDays[i - 1]);[39m
+[31m[7m  [0m [91m                                  ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m89[0m:[93m35[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.[39m
+[31m  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.[39m
+[31m    Argument of type 'unknown' is not assignable to parameter of type 'string | number | Date'.[39m
+[31m  Overload 2 of 4, '(value: string | number): Date', gave the following error.[39m
+[31m    Argument of type 'unknown' is not assignable to parameter of type 'string | number'.[39m
+[31m[39m
+[31m[7m89[0m         const currDate = new Date(sortedDays[i]);[39m
+[31m[7m  [0m [91m                                  ~~~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m104[0m:[93m39[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.[39m
+[31m  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.[39m
+[31m    Argument of type 'unknown' is not assignable to parameter of type 'string | number | Date'.[39m
+[31m  Overload 2 of 4, '(value: string | number): Date', gave the following error.[39m
+[31m    Argument of type 'unknown' is not assignable to parameter of type 'string | number'.[39m
+[31m[39m
+[31m[7m104[0m       const lastActiveDate = new Date(sortedDays[sortedDays.length - 1]);[39m
+[31m[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m117[0m:[93m23[0m - [91merror[0m[90m TS7006: [0mParameter 'event' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m117[0m       events.forEach((event) => {[39m
+[31m[7m   [0m [91m                      ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m132[0m:[93m44[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m132[0m       const features = new Set(events.map((e) => e.eventName));[39m
+[31m[7m   [0m [91m                                           ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m137[0m:[93m23[0m - [91merror[0m[90m TS7006: [0mParameter 'event' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m137[0m       events.forEach((event) => {[39m
+[31m[7m   [0m [91m                      ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m147[0m:[93m42[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m147[0m       const errorEvents = events.filter((e) => !e.success);[39m
+[31m[7m   [0m [91m                                         ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m151[0m:[93m49[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m151[0m       const eventsWithDuration = events.filter((e) => e.duration !== null);[39m
+[31m[7m   [0m [91m                                                ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m154[0m:[93m40[0m - [91merror[0m[90m TS7006: [0mParameter 'sum' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m154[0m           ? eventsWithDuration.reduce((sum, e) => sum + (e.duration || 0), 0) /[39m
+[31m[7m   [0m [91m                                       ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m154[0m:[93m45[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m154[0m           ? eventsWithDuration.reduce((sum, e) => sum + (e.duration || 0), 0) /[39m
+[31m[7m   [0m [91m                                            ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m159[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'userAnalytics' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m159[0m       await this.prisma.userAnalytics.upsert({[39m
+[31m[7m   [0m [91m                        ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m220[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m220[0m     const events = await this.prisma.event.findMany({[39m
+[31m[7m   [0m [91m                                     ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m226[0m:[93m36[0m - [91merror[0m[90m TS7006: [0mParameter 'acc' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m226[0m     const grouped = events.reduce((acc, event) => {[39m
+[31m[7m   [0m [91m                                   ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m226[0m:[93m41[0m - [91merror[0m[90m TS7006: [0mParameter 'event' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m226[0m     const grouped = events.reduce((acc, event) => {[39m
+[31m[7m   [0m [91m                                        ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m254[0m:[93m13[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m254[0m       date: day.date,[39m
+[31m[7m   [0m [91m            ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m255[0m:[93m15[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m255[0m       events: day.events,[39m
+[31m[7m   [0m [91m              ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m256[0m:[93m17[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m256[0m       sessions: day.sessions.size,[39m
+[31m[7m   [0m [91m                ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m258[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m258[0m         day.durations.length > 0[39m
+[31m[7m   [0m [91m        ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m259[0m:[93m13[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m259[0m           ? day.durations.reduce((a, b) => a + b, 0) /[39m
+[31m[7m   [0m [91m            ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m259[0m:[93m35[0m - [91merror[0m[90m TS7006: [0mParameter 'a' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m259[0m           ? day.durations.reduce((a, b) => a + b, 0) /[39m
+[31m[7m   [0m [91m                                  ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m259[0m:[93m38[0m - [91merror[0m[90m TS7006: [0mParameter 'b' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m259[0m           ? day.durations.reduce((a, b) => a + b, 0) /[39m
+[31m[7m   [0m [91m                                     ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m260[0m:[93m13[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m260[0m             day.durations.length / 1000[39m
+[31m[7m   [0m [91m            ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m262[0m:[93m23[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m262[0m       uniqueFeatures: day.features.size,[39m
+[31m[7m   [0m [91m                      ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m263[0m:[93m15[0m - [91merror[0m[90m TS18046: [0m'day' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m263[0m       errors: day.errors,[39m
+[31m[7m   [0m [91m              ~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m275[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m275[0m     const recentEvents = await this.prisma.event.findMany({[39m
+[31m[7m   [0m [91m                                           ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m283[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m283[0m       recentEvents.map((e) => e.timestamp.toISOString().split('T')[0])[39m
+[31m[7m   [0m [91m                        ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m287[0m:[93m28[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m287[0m       recentEvents.filter((e) => e.sessionId).map((e) => e.sessionId)[39m
+[31m[7m   [0m [91m                           ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m287[0m:[93m52[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m287[0m       recentEvents.filter((e) => e.sessionId).map((e) => e.sessionId)[39m
+[31m[7m   [0m [91m                                                   ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m320[0m:[93m46[0m - [91merror[0m[90m TS2339: [0mProperty 'event' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m320[0m     const previousEvents = await this.prisma.event.findMany({[39m
+[31m[7m   [0m [91m                                             ~~~~~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m335[0m:[93m30[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m335[0m       previousEvents.filter((e) => e.sessionId).map((e) => e.sessionId)[39m
+[31m[7m   [0m [91m                             ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m335[0m:[93m54[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m335[0m       previousEvents.filter((e) => e.sessionId).map((e) => e.sessionId)[39m
+[31m[7m   [0m [91m                                                     ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m341[0m:[93m50[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m341[0m     const recentDurations = recentEvents.filter((e) => e.duration).map((e) => e.duration as number);[39m
+[31m[7m   [0m [91m                                                 ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m341[0m:[93m73[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m341[0m     const recentDurations = recentEvents.filter((e) => e.duration).map((e) => e.duration as number);[39m
+[31m[7m   [0m [91m                                                                        ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m342[0m:[93m54[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m342[0m     const previousDurations = previousEvents.filter((e) => e.duration).map((e) => e.duration as number);[39m
+[31m[7m   [0m [91m                                                     ~[0m[39m
+[31m[96mpackages/analytics/src/app/services/user-analytics.service.ts[0m:[93m342[0m:[93m77[0m - [91merror[0m[90m TS7006: [0mParameter 'e' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m342[0m     const previousDurations = previousEvents.filter((e) => e.duration).map((e) => e.duration as number);[39m
+[31m[7m   [0m [91m                                                                            ~[0m[39m
+[31mSTACK: [39m
+-----------------------|---------|----------|---------|---------|-------------------
+File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------|---------|----------|---------|---------|-------------------
+[31;1mAll files             [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m app                  [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  app.module.ts       [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-55             [0m 
+[31;1m app/dto              [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  index.ts            [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-3              [0m 
+[31;1m  track-event.dto.ts  [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-95             [0m 
+[31;1m  user-activity.dto.ts[0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-83             [0m 
+[31;1m app/services         [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  index.ts            [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-7              [0m 
+-----------------------|---------|----------|---------|---------|-------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for branches (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for lines (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 0%[39m[22m
+[1mTest Suites: [22m[1m[31m6 failed[39m[22m, 6 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        13.575 s
+[2mRan all test suites[22m[2m.[22m

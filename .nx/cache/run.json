@@ -1,18 +1,18 @@
 {
   "run": {
-    "command": "nx test user --coverage",
-    "startTime": "2025-10-18T12:11:24.621Z",
-    "endTime": "2025-10-18T12:11:47.293Z",
+    "command": "nx test logger --testPathPattern=transports.spec --no-coverage",
+    "startTime": "2025-10-18T16:03:36.288Z",
+    "endTime": "2025-10-18T16:03:41.281Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "user:test",
+      "taskId": "logger:test",
       "target": "test",
-      "projectName": "user",
-      "hash": "3119727100735509570",
-      "startTime": "2025-10-18T12:11:24.720Z",
-      "endTime": "2025-10-18T12:11:47.291Z",
+      "projectName": "logger",
+      "hash": "3332770763694325670",
+      "startTime": "2025-10-18T16:03:36.401Z",
+      "endTime": "2025-10-18T16:03:41.280Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

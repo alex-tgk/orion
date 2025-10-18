@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import { TemplateService } from './template.service';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { NotFoundException } from '@nestjs/common';
 
 describe('TemplateService', () => {
   let service: TemplateService;
 
   const mockPrismaService = {
-    notificationTemplate: {
+    template: {
       findUnique: jest.fn(),
       upsert: jest.fn(),
     },
@@ -23,7 +23,7 @@ describe('TemplateService', () => {
       providers: [
         TemplateService,
         {
-          provide: PrismaService,
+          provide: NotificationPrismaService,
           useValue: mockPrismaService,
         },
         {
@@ -54,7 +54,7 @@ describe('TemplateService', () => {
         isActive: true,
       };
 
-      mockPrismaService.notificationTemplate.findUnique.mockResolvedValue(mockTemplate);
+      mockPrismaService.template.findUnique.mockResolvedValue(mockTemplate);
 
       const result = await service.render('test-template', { name: 'John' });
 
@@ -65,7 +65,7 @@ describe('TemplateService', () => {
     });
 
     it('should handle missing template gracefully', async () => {
-      mockPrismaService.notificationTemplate.findUnique.mockResolvedValue(null);
+      mockPrismaService.template.findUnique.mockResolvedValue(null);
 
       await expect(
         service.render('non-existent', { name: 'John' }),
@@ -75,7 +75,7 @@ describe('TemplateService', () => {
 
   describe('createTemplate', () => {
     it('should create or update template', async () => {
-      mockPrismaService.notificationTemplate.upsert.mockResolvedValue({
+      mockPrismaService.template.upsert.mockResolvedValue({
         id: 'test-id',
         name: 'test-template',
         type: 'email',
@@ -93,7 +93,7 @@ describe('TemplateService', () => {
         [],
       );
 
-      expect(mockPrismaService.notificationTemplate.upsert).toHaveBeenCalledWith({
+      expect(mockPrismaService.template.upsert).toHaveBeenCalledWith({
         where: { name: 'test-template' },
         create: expect.any(Object),
         update: expect.any(Object),

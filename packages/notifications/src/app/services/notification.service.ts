@@ -1,6 +1,6 @@
 import { Injectable, Logger, Inject } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { Channel } from 'amqplib';
 import { RABBITMQ_CHANNEL } from '../config/rabbitmq.module';
 import { EmailService } from './email.service';
@@ -23,15 +23,15 @@ export class NotificationService {
   private readonly retryDelays: number[];
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: NotificationPrismaService,
     private readonly emailService: EmailService,
     private readonly smsService: SmsService,
     private readonly templateService: TemplateService,
     private readonly configService: ConfigService,
     @Inject(RABBITMQ_CHANNEL) private readonly channel: Channel,
   ) {
-    this.maxAttempts = this.configService.get<number>('notification.rabbitmq.maxAttempts');
-    this.retryDelays = this.configService.get<number[]>('notification.rabbitmq.retryDelay');
+    this.maxAttempts = this.configService.get<number>('notification.rabbitmq.maxAttempts') || 3;
+    this.retryDelays = this.configService.get<number[]>('notification.rabbitmq.retryDelay') || [1000, 5000, 30000];
   }
 
   /**
@@ -224,7 +224,7 @@ export class NotificationService {
    */
   private async sendToDLQ(notification: any, error: any): Promise<void> {
     try {
-      const exchange = this.configService.get<string>('notification.rabbitmq.exchange');
+      const exchange = this.configService.get<string>('notification.rabbitmq.exchange') || 'orion.notifications';
       const dlqMessage = {
         notificationId: notification.id,
         userId: notification.userId,

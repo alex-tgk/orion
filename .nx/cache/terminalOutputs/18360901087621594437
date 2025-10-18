@@ -1,0 +1,121 @@
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m ai-interface [39m[27m[0m [2mpackages/ai-interface/src/app/utils/[22m[1mcost-calculator.spec.ts[22m
+  CostCalculator
+    calculateOpenAICost
+      [32m✓[39m [2mshould calculate cost for GPT-4 (14 ms)[22m
+      [32m✓[39m [2mshould calculate cost for GPT-3.5-turbo[22m
+      [32m✓[39m [2mshould calculate cost for text-embedding-ada-002 (1 ms)[22m
+      [32m✓[39m [2mshould handle unknown models with default pricing (2 ms)[22m
+      [32m✓[39m [2mshould handle zero tokens (1 ms)[22m
+      [32m✓[39m [2mshould round to 6 decimal places (1 ms)[22m
+    calculateAnthropicCost
+      [32m✓[39m [2mshould calculate cost for Claude 3.5 Sonnet (8 ms)[22m
+      [32m✓[39m [2mshould calculate cost for Claude 3 Opus (1 ms)[22m
+      [32m✓[39m [2mshould calculate cost for Claude 3 Haiku (1 ms)[22m
+    calculateCost
+      [32m✓[39m [2mshould route to OpenAI calculator (1 ms)[22m
+      [32m✓[39m [2mshould route to Anthropic calculator (4 ms)[22m
+      [32m✓[39m [2mshould handle case insensitive provider names[22m
+      [32m✓[39m [2mshould default to OpenAI for unknown providers (1 ms)[22m
+    getPricing
+      [32m✓[39m [2mshould return OpenAI pricing (2 ms)[22m
+      [32m✓[39m [2mshould return Anthropic pricing (1 ms)[22m
+      [32m✓[39m [2mshould return null for unknown models[22m
+      [32m✓[39m [2mshould return null for unknown providers (1 ms)[22m
+    estimateCost
+      [32m✓[39m [2mshould estimate cost same as calculate cost[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m ai-interface [39m[27m[0m [2mpackages/ai-interface/src/app/services/[22m[1mcache.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/ai-interface/src/app/services/cache.service.spec.ts[0m:[93m7[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m7[0m   let configService: ConfigService;
+    [7m [0m [91m      ~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m ai-interface [39m[27m[0m [2mpackages/ai-interface/src/app/services/[22m[1mprompt.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m21[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m21[0m     const existing = await this.prisma.prompt.findUnique({
+    [7m  [0m [91m                                       ~~~~~~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m29[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m29[0m     const prompt = await this.prisma.prompt.create({
+    [7m  [0m [91m                                     ~~~~~~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m52[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m52[0m     const existing = await this.prisma.prompt.findUnique({
+    [7m  [0m [91m                                       ~~~~~~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m63[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m63[0m     const updated = await this.prisma.prompt.update({
+    [7m  [0m [91m                                      ~~~~~~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m81[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m81[0m     const prompt = await this.prisma.prompt.findUnique({
+    [7m  [0m [91m                                     ~~~~~~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m96[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m96[0m     const prompts = await this.prisma.prompt.findMany({
+    [7m  [0m [91m                                      ~~~~~~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m101[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'p' implicitly has an 'any' type.
+
+    [7m101[0m     return prompts.map((p) => this.toResponseDto(p));
+    [7m   [0m [91m                        ~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m110[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m110[0m     const existing = await this.prisma.prompt.findUnique({
+    [7m   [0m [91m                                       ~~~~~~[0m
+    [96mpackages/ai-interface/src/app/services/prompt.service.ts[0m:[93m118[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'prompt' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m118[0m     await this.prisma.prompt.delete({
+    [7m   [0m [91m                      ~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m ai-interface [39m[27m[0m [2mpackages/ai-interface/src/app/controllers/[22m[1mai.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/ai-interface/src/app/controllers/ai.controller.spec.ts[0m:[93m18[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'orchestrator' is declared but its value is never read.
+
+    [7m18[0m   let orchestrator: AIOrchestratorService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+    [96mpackages/ai-interface/src/app/controllers/ai.controller.spec.ts[0m:[93m19[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'promptService' is declared but its value is never read.
+
+    [7m19[0m   let promptService: PromptService;
+    [7m  [0m [91m      ~~~~~~~~~~~~~[0m
+    [96mpackages/ai-interface/src/app/controllers/ai.controller.spec.ts[0m:[93m20[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'usageService' is declared but its value is never read.
+
+    [7m20[0m   let usageService: UsageService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m ai-interface [39m[27m[0m [2mpackages/ai-interface/src/app/utils/[22m[1mcache-key.spec.ts[22m ([0m[1m[41m7.368 s[49m[22m[0m)
+  CacheKeyGenerator
+    forChat
+      [32m✓[39m [2mshould generate consistent cache keys for same inputs (8 ms)[22m
+      [32m✓[39m [2mshould generate different keys for different messages (1 ms)[22m
+      [32m✓[39m [2mshould generate different keys for different temperatures[22m
+      [32m✓[39m [2mshould generate different keys for different providers (1 ms)[22m
+      [32m✓[39m [2mshould generate different keys for different models (1 ms)[22m
+      [32m✓[39m [2mshould have ai:chat prefix (1 ms)[22m
+    forCompletion
+      [32m✓[39m [2mshould generate consistent cache keys for same inputs[22m
+      [32m✓[39m [2mshould generate different keys for different prompts[22m
+      [32m✓[39m [2mshould have ai:completion prefix (1 ms)[22m
+    forEmbedding
+      [32m✓[39m [2mshould generate consistent cache keys for same inputs (1 ms)[22m
+      [32m✓[39m [2mshould generate different keys for different texts (1 ms)[22m
+      [32m✓[39m [2mshould have ai:embedding prefix (1 ms)[22m
+    forUsage
+      [32m✓[39m [2mshould generate consistent cache keys for same date range (1 ms)[22m
+      [32m✓[39m [2mshould generate different keys for different users[22m
+      [32m✓[39m [2mshould include date range in key (1 ms)[22m
+    forConversation
+      [32m✓[39m [2mshould generate consistent cache keys[22m
+      [32m✓[39m [2mshould generate different keys for different conversations (1 ms)[22m
+      [32m✓[39m [2mshould have ai:conversation prefix[22m
+
+[1mTest Suites: [22m[1m[31m3 failed[39m[22m, [1m[32m2 passed[39m[22m, 5 total
+[1mTests:       [22m[1m[32m36 passed[39m[22m, 36 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        [1m[33m9.924 s[39m[22m
+[2mRan all test suites[22m[2m.[22m

@@ -1,7 +1,7 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as Handlebars from 'handlebars';
-import { PrismaService } from '@orion/shared';
+import { NotificationPrismaService } from './notification-prisma.service';
 import { NotificationType } from '../entities/notification.entity';
 import * as fs from 'fs/promises';
 import * as path from 'path';
@@ -12,7 +12,7 @@ export class TemplateService {
   private readonly templateCache = new Map<string, Handlebars.TemplateDelegate>();
 
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prisma: NotificationPrismaService,
     private readonly configService: ConfigService,
   ) {
     this.registerHelpers();
@@ -52,7 +52,7 @@ export class TemplateService {
   ): Promise<{ subject?: string; body: string }> {
     try {
       // Try to get template from database first
-      const dbTemplate = await this.prisma.notificationTemplate.findUnique({
+      const dbTemplate = await this.prisma.template.findUnique({
         where: { name: templateName },
       });
 
@@ -138,21 +138,22 @@ export class TemplateService {
     body: string,
     variables: string[],
   ): Promise<void> {
-    await this.prisma.notificationTemplate.upsert({
+    await this.prisma.template.upsert({
       where: { name },
       create: {
         name,
-        type,
+        displayName: name,
+        category: 'TRANSACTIONAL', // Default category
+        channel: 'EMAIL', // Default channel, should be passed as parameter
         subject,
         body,
-        variables,
+        variables: variables || [],
         isActive: true,
       },
       update: {
-        type,
         subject,
         body,
-        variables,
+        variables: variables || [],
         isActive: true,
         updatedAt: new Date(),
       },

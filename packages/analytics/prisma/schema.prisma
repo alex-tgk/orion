@@ -1,0 +1,346 @@
+// Analytics Service Database Schema
+// Comprehensive analytics and metrics tracking for ORION platform
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/analytics"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("ANALYTICS_DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum EventType {
+  USER_ACTION       // User-initiated actions
+  SYSTEM_EVENT      // System-generated events
+  BUSINESS_METRIC   // Business-related metrics
+  PERFORMANCE       // Performance metrics
+  ERROR             // Error events
+  CUSTOM            // Custom events
+}
+
+enum MetricType {
+  COUNTER           // Monotonically increasing values
+  GAUGE             // Values that can go up or down
+  HISTOGRAM         // Distribution of values
+  SUMMARY           // Statistical summary of values
+}
+
+enum AggregationPeriod {
+  HOURLY
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+enum AggregationType {
+  SUM
+  AVG
+  MIN
+  MAX
+  COUNT
+  PERCENTILE_50
+  PERCENTILE_95
+  PERCENTILE_99
+}
+
+// ============================================================================
+// EVENT TRACKING
+// ============================================================================
+
+model Event {
+  id          String    @id @default(uuid()) @db.Uuid
+
+  // Event identification
+  eventName   String    @map("event_name") @db.VarChar(255)
+  eventType   EventType @map("event_type") @default(USER_ACTION)
+  category    String?   @db.VarChar(100) // e.g., "authentication", "user_management"
+
+  // Source information
+  userId      String?   @map("user_id") @db.Uuid
+  sessionId   String?   @map("session_id") @db.Uuid
+  serviceId   String?   @map("service_id") @db.VarChar(100) // Which microservice
+
+  // Event data
+  properties  Json      @default("{}") @db.JsonB // Event-specific properties
+  metadata    Json      @default("{}") @db.JsonB // Additional metadata
+
+  // Context
+  ipAddress   String?   @map("ip_address") @db.VarChar(45)
+  userAgent   String?   @map("user_agent") @db.Text
+  location    String?   @db.VarChar(255)
+
+  // Performance tracking
+  duration    Int?      // milliseconds
+  success     Boolean   @default(true)
+  errorMessage String?  @map("error_message") @db.Text
+  errorStack  String?   @map("error_stack") @db.Text
+
+  // Timing
+  timestamp   DateTime  @default(now()) @db.Timestamptz
+  processingTime Int?   @map("processing_time") // Time to process the event
+
+  // Tags for filtering
+  tags        String[]  @default([])
+
+  // Audit
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
+
+  @@index([eventName])
+  @@index([eventType])
+  @@index([userId])
+  @@index([sessionId])
+  @@index([serviceId])
+  @@index([timestamp])
+  @@index([category])
+  @@index([tags])
+  @@index([userId, timestamp]) // User activity over time
+  @@index([eventName, timestamp]) // Event trends
+  @@index([serviceId, timestamp]) // Service-specific analytics
+  @@map("events")
+}
+
+// ============================================================================
+// METRICS
+// ============================================================================
+
+model Metric {
+  id          String     @id @default(uuid()) @db.Uuid
+
+  // Metric identification
+  name        String     @db.VarChar(255)
+  displayName String?    @map("display_name") @db.VarChar(255)
+  description String?    @db.Text
+  type        MetricType @default(COUNTER)
+
+  // Metric value
+  value       Float
+  unit        String?    @db.VarChar(50) // e.g., "requests", "bytes", "seconds"
+
+  // Dimensions (labels in Prometheus terminology)
+  labels      Json       @default("{}") @db.JsonB // key-value pairs for filtering
+
+  // Source
+  serviceId   String?    @map("service_id") @db.VarChar(100)
+  userId      String?    @map("user_id") @db.Uuid
+
+  // Context
+  metadata    Json       @default("{}") @db.JsonB
+  tags        String[]   @default([])
+
+  // Timing
+  timestamp   DateTime   @default(now()) @db.Timestamptz
+
+  // Audit
+  createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz
+
+  @@index([name])
+  @@index([type])
+  @@index([serviceId])
+  @@index([userId])
+  @@index([timestamp])
+  @@index([tags])
+  @@index([name, timestamp]) // Metric trends
+  @@index([serviceId, name, timestamp]) // Service-specific metrics
+  @@map("metrics")
+}
+
+// ============================================================================
+// AGGREGATED DATA (Pre-computed for performance)
+// ============================================================================
+
+model Aggregation {
+  id          String            @id @default(uuid()) @db.Uuid
+
+  // Aggregation definition
+  metricName  String            @map("metric_name") @db.VarChar(255)
+  period      AggregationPeriod
+  periodStart DateTime          @map("period_start") @db.Timestamptz
+  periodEnd   DateTime          @map("period_end") @db.Timestamptz
+
+  // Aggregation type and value
+  aggregationType AggregationType @map("aggregation_type")
+  value       Float
+
+  // Dimensions
+  dimensions  Json              @default("{}") @db.JsonB // Grouping dimensions
+
+  // Statistics
+  count       Int               @default(0) // Number of data points
+  min         Float?
+  max         Float?
+  avg         Float?
+  sum         Float?
+  stdDev      Float?            @map("std_dev")
+
+  // Distribution (for histograms)
+  buckets     Json?             @db.JsonB // Histogram buckets
+  percentiles Json?             @db.JsonB // P50, P95, P99, etc.
+
+  // Metadata
+  tags        String[]          @default([])
+  metadata    Json              @default("{}") @db.JsonB
+
+  // Audit
+  createdAt   DateTime          @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime          @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@unique([metricName, period, periodStart, aggregationType, dimensions])
+  @@index([metricName])
+  @@index([period])
+  @@index([periodStart])
+  @@index([periodEnd])
+  @@index([aggregationType])
+  @@index([metricName, period, periodStart]) // Querying aggregated data
+  @@map("aggregations")
+}
+
+// ============================================================================
+// USER ANALYTICS
+// ============================================================================
+
+model UserAnalytics {
+  id              String   @id @default(uuid()) @db.Uuid
+  userId          String   @unique @map("user_id") @db.Uuid
+
+  // Activity metrics
+  totalEvents     Int      @default(0) @map("total_events")
+  lastEventAt     DateTime? @map("last_event_at") @db.Timestamptz
+  firstEventAt    DateTime? @map("first_event_at") @db.Timestamptz
+
+  // Session metrics
+  totalSessions   Int      @default(0) @map("total_sessions")
+  avgSessionDuration Float? @map("avg_session_duration") // seconds
+  lastSessionAt   DateTime? @map("last_session_at") @db.Timestamptz
+
+  // Engagement metrics
+  daysActive      Int      @default(0) @map("days_active")
+  longestStreak   Int      @default(0) @map("longest_streak") // consecutive days
+  currentStreak   Int      @default(0) @map("current_streak")
+
+  // Feature usage
+  featuresUsed    String[] @map("features_used") @default([])
+  favoriteFeatures Json    @map("favorite_features") @default("[]") @db.JsonB
+
+  // Behavior patterns
+  peakUsageHour   Int?     @map("peak_usage_hour") // 0-23
+  peakUsageDay    Int?     @map("peak_usage_day") // 0-6 (Sunday-Saturday)
+
+  // Performance
+  avgLoadTime     Float?   @map("avg_load_time") // seconds
+  errorRate       Float?   @map("error_rate") // percentage
+
+  // Metadata
+  metadata        Json     @default("{}") @db.JsonB
+
+  // Audit
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([userId])
+  @@index([lastEventAt])
+  @@index([daysActive])
+  @@index([currentStreak])
+  @@map("user_analytics")
+}
+
+// ============================================================================
+// SERVICE PERFORMANCE METRICS
+// ============================================================================
+
+model ServiceMetrics {
+  id              String   @id @default(uuid()) @db.Uuid
+
+  // Service identification
+  serviceId       String   @map("service_id") @db.VarChar(100)
+  serviceName     String   @map("service_name") @db.VarChar(255)
+
+  // Request metrics
+  totalRequests   Int      @default(0) @map("total_requests")
+  successfulRequests Int   @default(0) @map("successful_requests")
+  failedRequests  Int      @default(0) @map("failed_requests")
+
+  // Latency metrics (milliseconds)
+  avgLatency      Float?   @map("avg_latency")
+  p50Latency      Float?   @map("p50_latency")
+  p95Latency      Float?   @map("p95_latency")
+  p99Latency      Float?   @map("p99_latency")
+  maxLatency      Float?   @map("max_latency")
+
+  // Throughput
+  requestsPerSecond Float? @map("requests_per_second")
+
+  // Error rate
+  errorRate       Float?   @map("error_rate") // percentage
+
+  // Resource usage
+  avgCpuUsage     Float?   @map("avg_cpu_usage") // percentage
+  avgMemoryUsage  Float?   @map("avg_memory_usage") // MB
+
+  // Time period
+  periodStart     DateTime @map("period_start") @db.Timestamptz
+  periodEnd       DateTime @map("period_end") @db.Timestamptz
+
+  // Metadata
+  metadata        Json     @default("{}") @db.JsonB
+
+  // Audit
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([serviceId])
+  @@index([periodStart])
+  @@index([periodEnd])
+  @@index([serviceId, periodStart])
+  @@map("service_metrics")
+}
+
+// ============================================================================
+// COST TRACKING
+// ============================================================================
+
+model CostMetric {
+  id          String   @id @default(uuid()) @db.Uuid
+
+  // Resource identification
+  resourceType String   @map("resource_type") @db.VarChar(100) // e.g., "compute", "storage", "api_call"
+  resourceId  String?  @map("resource_id") @db.VarChar(255)
+  serviceId   String?  @map("service_id") @db.VarChar(100)
+
+  // Cost details
+  amount      Float    // Cost amount
+  currency    String   @default("USD") @db.VarChar(3)
+  unit        String?  @db.VarChar(50) // e.g., "per_request", "per_gb", "per_hour"
+
+  // Usage metrics
+  quantity    Float?   // Amount of resource used
+
+  // Context
+  userId      String?  @map("user_id") @db.Uuid
+  projectId   String?  @map("project_id") @db.Uuid
+
+  // Time period
+  periodStart DateTime @map("period_start") @db.Timestamptz
+  periodEnd   DateTime @map("period_end") @db.Timestamptz
+
+  // Metadata
+  tags        String[] @default([])
+  metadata    Json     @default("{}") @db.JsonB
+
+  // Audit
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@index([resourceType])
+  @@index([serviceId])
+  @@index([userId])
+  @@index([periodStart])
+  @@index([periodEnd])
+  @@index([resourceType, periodStart])
+  @@map("cost_metrics")
+}
