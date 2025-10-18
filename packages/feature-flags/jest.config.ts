@@ -5,6 +5,9 @@ export default {
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
+  moduleNameMapper: {
+    '^uuid$': '<rootDir>/src/__mocks__/uuid.ts',
+  },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/feature-flags',
   collectCoverageFrom: [

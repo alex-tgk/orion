@@ -22,7 +22,7 @@ export class FlagAuditService {
     },
   ): Promise<void> {
     try {
-      await this.prisma.flagAuditLog.create({
+      await (this.prisma as any).flagAuditLog.create({
         data: {
           flagId,
           action,
@@ -44,7 +44,7 @@ export class FlagAuditService {
    * Get audit logs for a flag
    */
   async getLogsForFlag(flagId: string, limit = 100) {
-    return this.prisma.flagAuditLog.findMany({
+    return (this.prisma as any).flagAuditLog.findMany({
       where: { flagId },
       orderBy: { createdAt: 'desc' },
       take: limit,
@@ -55,7 +55,7 @@ export class FlagAuditService {
    * Get audit logs by user
    */
   async getLogsByUser(userId: string, limit = 100) {
-    return this.prisma.flagAuditLog.findMany({
+    return (this.prisma as any).flagAuditLog.findMany({
       where: { changedBy: userId },
       orderBy: { createdAt: 'desc' },
       take: limit,
@@ -74,7 +74,7 @@ export class FlagAuditService {
    * Get recent audit logs
    */
   async getRecentLogs(limit = 50) {
-    return this.prisma.flagAuditLog.findMany({
+    return (this.prisma as any).flagAuditLog.findMany({
       orderBy: { createdAt: 'desc' },
       take: limit,
       include: {

@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FeatureFlagsController } from '../app/controllers/feature-flags.controller';
 import { FeatureFlagsService } from '../app/services/feature-flags.service';
+import { FlagType } from '../app/interfaces/feature-flag.interface';
 
 describe('FeatureFlagsController', () => {
   let controller: FeatureFlagsController;
@@ -87,7 +88,7 @@ describe('FeatureFlagsController', () => {
         key: 'new-flag',
         name: 'New Flag',
         enabled: false,
-        type: 'BOOLEAN' as const,
+        type: FlagType.BOOLEAN,
         rolloutPercentage: 0,
       };
 

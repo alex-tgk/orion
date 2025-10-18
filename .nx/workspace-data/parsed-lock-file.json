@@ -1998,6 +1998,15 @@
         "hash": "sha512-03W6IhuhjqTlpzh/ojut/pDB2LPRygyWX8ExpgHtQA8H/3K7+1vKmcINx5UzeOX1se6YEsBsOHQ1CRzf3fOwTQ=="
       }
     },
+    "npm:@jest/create-cache-key-function": {
+      "type": "npm",
+      "name": "npm:@jest/create-cache-key-function",
+      "data": {
+        "version": "30.2.0",
+        "packageName": "@jest/create-cache-key-function",
+        "hash": "sha512-44F4l4Enf+MirJN8X/NhdGkl71k5rBYiwdVlo4HxOwbu0sHV8QKrGEedb1VUU4K3W7fBKE0HGfbn7eZm0Ti3zg=="
+      }
+    },
     "npm:@jest/diff-sequences": {
       "type": "npm",
       "name": "npm:@jest/diff-sequences",
@@ -4225,99 +4234,99 @@
       "type": "npm",
       "name": "npm:@swc/core-darwin-arm64",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-darwin-arm64",
-        "hash": "sha512-6F/sSxpHaq3nzg2ADv9FHLi4Fu2A8w8vP8Ich8gIl16D2htStlwnaPmCLjRswO+cFkzgVqy/l01gzNGWd4DFqA=="
+        "hash": "sha512-lKNv7SujeXvKn16gvQqUQI5DdyY8v7xcoO3k06/FJbHJS90zEwZdQiMNRiqpYw/orU543tPaWgz7cIYWhbopiQ=="
       }
     },
     "npm:@swc/core-darwin-x64": {
       "type": "npm",
       "name": "npm:@swc/core-darwin-x64",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-darwin-x64",
-        "hash": "sha512-rF/rXkvUOTdTIfoYbmszbSUGsCyvqACqy1VeP3nXONS+LxFl4bRmRcUTRrblL7IE5RTMCKUuPbqbQSE2hK7bqg=="
+        "hash": "sha512-ILd38Fg/w23vHb0yVjlWvQBoE37ZJTdlLHa8LRCFDdX4WKfnVBiblsCU9ar4QTMNdeTBEX9iUF4IrbNWhaF1Ng=="
       }
     },
     "npm:@swc/core-linux-arm-gnueabihf": {
       "type": "npm",
       "name": "npm:@swc/core-linux-arm-gnueabihf",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-linux-arm-gnueabihf",
-        "hash": "sha512-2OAPL8iWBsmmwkjGXqvuUhbmmoLxS1xNXiMq87EsnCNMAKohGc7wJkdAOUL6J/YFpean/vwMWg64rJD4pycBeg=="
+        "hash": "sha512-Q6eS3Pt8GLkXxqz9TAw+AUk9HpVJt8Uzm54MvPsqp2yuGmY0/sNaPPNVqctCX9fu/Nu8eaWUen0si6iEiCsazQ=="
       }
     },
     "npm:@swc/core-linux-arm64-gnu": {
       "type": "npm",
       "name": "npm:@swc/core-linux-arm64-gnu",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-linux-arm64-gnu",
-        "hash": "sha512-eH/Q9+8O5qhSxMestZnhuS1xqQMr6M7SolZYxiXJqxArXYILLCF+nq2R9SxuMl0CfjHSpb6+hHPk/HXy54eIRA=="
+        "hash": "sha512-aNDfeN+9af+y+M2MYfxCzCy/VDq7Z5YIbMqRI739o8Ganz6ST+27kjQFd8Y/57JN/hcnUEa9xqdS3XY7WaVtSw=="
       }
     },
     "npm:@swc/core-linux-arm64-musl": {
       "type": "npm",
       "name": "npm:@swc/core-linux-arm64-musl",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-linux-arm64-musl",
-        "hash": "sha512-TERh2OICAJz+SdDIK9+0GyTUwF6r4xDlFmpoiHKHrrD/Hh3u+6Zue0d7jQ/he/i80GDn4tJQkHlZys+RZL5UZg=="
+        "hash": "sha512-9+ZxFN5GJag4CnYnq6apKTnnezpfJhCumyz0504/JbHLo+Ue+ZtJnf3RhyA9W9TINtLE0bC4hKpWi8ZKoETyOQ=="
       }
     },
     "npm:@swc/core-linux-x64-gnu": {
       "type": "npm",
       "name": "npm:@swc/core-linux-x64-gnu",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-linux-x64-gnu",
-        "hash": "sha512-WMDPqU7Ji9dJpA+Llek2p9t7pcy7Bob8ggPUvgsIlv3R/eesF9DIzSbrgl6j3EAEPB9LFdSafsgf6kT/qnvqFg=="
+        "hash": "sha512-WD530qvHrki8Ywt/PloKUjaRKgstQqNGvmZl54g06kA+hqtSE2FTG9gngXr3UJxYu/cNAjJYiBifm7+w4nbHbA=="
       }
     },
     "npm:@swc/core-linux-x64-musl": {
       "type": "npm",
       "name": "npm:@swc/core-linux-x64-musl",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-linux-x64-musl",
-        "hash": "sha512-DO14glwpdKY4POSN0201OnGg1+ziaSVr6/RFzuSLggshwXeeyVORiHv3baj7NENhJhWhUy3NZlDsXLnRFkmhHQ=="
+        "hash": "sha512-Luj8y4OFYx4DHNQTWjdIuKTq2f5k6uSXICqx+FSabnXptaOBAbJHNbHT/06JZh6NRUouaf0mYXN0mcsqvkhd7Q=="
       }
     },
     "npm:@swc/core-win32-arm64-msvc": {
       "type": "npm",
       "name": "npm:@swc/core-win32-arm64-msvc",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-win32-arm64-msvc",
-        "hash": "sha512-V3Y1+a1zG1zpYXUMqPIHEMEOd+rHoVnIpO/KTyFwAmKVu8v+/xPEVx/AGoYE67x4vDAAvPQrKI3Aokilqa5yVg=="
+        "hash": "sha512-cZ6UpumhF9SDJvv4DA2fo9WIzlNFuKSkZpZmPG1c+4PFSEMy5DFOjBSllCvnqihCabzXzpn6ykCwBmHpy31vQw=="
       }
     },
     "npm:@swc/core-win32-ia32-msvc": {
       "type": "npm",
       "name": "npm:@swc/core-win32-ia32-msvc",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-win32-ia32-msvc",
-        "hash": "sha512-OrM6yfXw4wXhnVFosOJzarw0Fdz5Y0okgHfn9oFbTPJhoqxV5Rdmd6kXxWu2RiVKs6kGSJFZXHDeUq2w5rTIMg=="
+        "hash": "sha512-C5Yi/xIikrFUzZcyGj9L3RpKljFvKiDMtyDzPKzlsDrKIw2EYY+bF88gB6oGY5RGmv4DAX8dbnpRAqgFD0FMEw=="
       }
     },
     "npm:@swc/core-win32-x64-msvc": {
       "type": "npm",
       "name": "npm:@swc/core-win32-x64-msvc",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core-win32-x64-msvc",
-        "hash": "sha512-eD/gnxqKyZQQR0hR7TMkIlJ+nCF9dzYmVVNbYZWuA1Xy94aBPUsEk3Uw3oG7q6R3ErrEUPP0FNf2ztEnv+I+dw=="
+        "hash": "sha512-YrKdMVxbYmlfybCSbRtrilc6UA8GF5aPmGKBdPvjrarvsmf4i7ZHGCEnLtfOMd3Lwbs2WUZq3WdMbozYeLU93Q=="
       }
     },
     "npm:@swc/core": {
       "type": "npm",
       "name": "npm:@swc/core",
       "data": {
-        "version": "1.5.29",
+        "version": "1.13.5",
         "packageName": "@swc/core",
-        "hash": "sha512-nvTtHJI43DUSOAf3h9XsqYg8YXKc0/N4il9y4j0xAkO0ekgDNo+3+jbw6MInawjKJF9uulyr+f5bAutTsOKVlw=="
+        "hash": "sha512-WezcBo8a0Dg2rnR82zhwoR6aRNxeTGfK5QCD6TQ+kg3xx/zNT02s/0o+81h/3zhvFSB24NtqEr8FTw88O5W/JQ=="
       }
     },
     "npm:@swc/counter": {
@@ -4336,6 +4345,15 @@
         "version": "0.5.17",
         "packageName": "@swc/helpers",
         "hash": "sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A=="
+      }
+    },
+    "npm:@swc/jest": {
+      "type": "npm",
+      "name": "npm:@swc/jest",
+      "data": {
+        "version": "0.2.39",
+        "packageName": "@swc/jest",
+        "hash": "sha512-eyokjOwYd0Q8RnMHri+8/FS1HIrIUKK/sRrFp8c1dThUOfNeCWbLmBP1P5VsKdvmkd25JaH+OKYwEYiAYg9YAA=="
       }
     },
     "npm:@swc/types": {
@@ -22950,6 +22968,11 @@
       "type": "static"
     },
     {
+      "source": "npm:@jest/create-cache-key-function",
+      "target": "npm:@jest/types@30.2.0",
+      "type": "static"
+    },
+    {
       "source": "npm:@jest/environment-jsdom-abstract",
       "target": "npm:@jest/environment",
       "type": "static"
@@ -27162,6 +27185,26 @@
     {
       "source": "npm:@swc/helpers",
       "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@swc/jest",
+      "target": "npm:@jest/create-cache-key-function",
+      "type": "static"
+    },
+    {
+      "source": "npm:@swc/jest",
+      "target": "npm:@swc/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@swc/jest",
+      "target": "npm:@swc/counter",
+      "type": "static"
+    },
+    {
+      "source": "npm:@swc/jest",
+      "target": "npm:jsonc-parser@3.3.1",
       "type": "static"
     },
     {

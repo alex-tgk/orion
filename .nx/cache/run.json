@@ -1,18 +1,18 @@
 {
   "run": {
-    "command": "nx lint cache --fix",
-    "startTime": "2025-10-18T16:04:51.482Z",
-    "endTime": "2025-10-18T16:04:54.032Z",
+    "command": "nx test feature-flags --coverage --maxWorkers=2",
+    "startTime": "2025-10-18T16:23:59.319Z",
+    "endTime": "2025-10-18T16:24:19.502Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "cache:lint",
-      "target": "lint",
-      "projectName": "cache",
-      "hash": "6623997251360146936",
-      "startTime": "2025-10-18T16:04:51.561Z",
-      "endTime": "2025-10-18T16:04:54.030Z",
+      "taskId": "feature-flags:test",
+      "target": "test",
+      "projectName": "feature-flags",
+      "hash": "5574185759121437223",
+      "startTime": "2025-10-18T16:23:59.449Z",
+      "endTime": "2025-10-18T16:24:19.500Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

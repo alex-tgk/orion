@@ -26,6 +26,9 @@ module.exports = {
       },
     ],
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!(uuid|express-session)/)',
+  ],
   moduleNameMapper: {
     '^@orion/shared(.*)$': '<rootDir>/../../packages/shared/src$1',
   },

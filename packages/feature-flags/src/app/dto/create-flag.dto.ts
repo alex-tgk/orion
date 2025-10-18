@@ -22,7 +22,7 @@ export class CreateFlagDto {
   @Matches(/^[a-z0-9-]+$/, {
     message: 'Key must be lowercase alphanumeric with hyphens only',
   })
-  key: string;
+  key!: string;
 
   @ApiProperty({
     description: 'Human-readable name',
@@ -30,7 +30,7 @@ export class CreateFlagDto {
   })
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name!: string;
 
   @ApiPropertyOptional({
     description: 'Detailed description of the feature',

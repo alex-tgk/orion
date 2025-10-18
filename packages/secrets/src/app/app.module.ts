@@ -1,11 +1,42 @@
 import { Module } from '@nestjs/common';
-import { PortRegistryModule } from '@orion/shared';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { PrismaModule, PortRegistryModule } from '@orion/shared';
+import { secretsConfig } from './config';
+import { SecretsController } from './secrets.controller';
+import {
+  EncryptionService,
+  AuditService,
+  AccessControlService,
+  SecretsService,
+  RotationService,
+  HealthService,
+} from './services';
 
 @Module({
-  imports: [PortRegistryModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [secretsConfig],
+      envFilePath: ['.env', '.env.local'],
+    }),
+    PrismaModule,
+    PortRegistryModule,
+  ],
+  controllers: [SecretsController],
+  providers: [
+    EncryptionService,
+    AuditService,
+    AccessControlService,
+    SecretsService,
+    RotationService,
+    HealthService,
+  ],
+  exports: [
+    EncryptionService,
+    AuditService,
+    AccessControlService,
+    SecretsService,
+    RotationService,
+  ],
 })
 export class AppModule {}

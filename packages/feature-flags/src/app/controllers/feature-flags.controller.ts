@@ -7,13 +7,11 @@ import {
   Post,
   Put,
   Query,
-  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
   ApiOperation,
   ApiResponse,
-  ApiBearerAuth,
   ApiQuery,
 } from '@nestjs/swagger';
 import { FeatureFlagsService } from '../services/feature-flags.service';

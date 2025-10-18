@@ -29,7 +29,7 @@ export class FeatureFlagsService {
    * Get all feature flags
    */
   async findAll(includeDeleted = false): Promise<IFeatureFlag[]> {
-    const flags = await this.prisma.featureFlag.findMany({
+    const flags = await (this.prisma as any).featureFlag.findMany({
       where: includeDeleted ? {} : { deletedAt: null },
       include: {
         variants: true,
@@ -52,7 +52,7 @@ export class FeatureFlagsService {
     }
 
     // Fetch from database
-    const flag = await this.prisma.featureFlag.findUnique({
+    const flag = await (this.prisma as any).featureFlag.findUnique({
       where: { key },
       include: {
         variants: true,
@@ -77,7 +77,7 @@ export class FeatureFlagsService {
     dto: CreateFlagDto,
     userId?: string,
   ): Promise<IFeatureFlag> {
-    const flag = await this.prisma.featureFlag.create({
+    const flag = await (this.prisma as any).featureFlag.create({
       data: {
         key: dto.key,
         name: dto.name,
@@ -116,7 +116,7 @@ export class FeatureFlagsService {
   ): Promise<IFeatureFlag> {
     const existing = await this.findByKey(key);
 
-    const flag = await this.prisma.featureFlag.update({
+    const flag = await (this.prisma as any).featureFlag.update({
       where: { id: existing.id },
       data: {
         name: dto.name,
@@ -154,7 +154,7 @@ export class FeatureFlagsService {
     const existing = await this.findByKey(key);
     const newState = !existing.enabled;
 
-    const flag = await this.prisma.featureFlag.update({
+    const flag = await (this.prisma as any).featureFlag.update({
       where: { id: existing.id },
       data: {
         enabled: newState,
@@ -190,7 +190,7 @@ export class FeatureFlagsService {
   async delete(key: string, userId?: string): Promise<void> {
     const existing = await this.findByKey(key);
 
-    await this.prisma.featureFlag.update({
+    await (this.prisma as any).featureFlag.update({
       where: { id: existing.id },
       data: {
         deletedAt: new Date(),
@@ -218,7 +218,7 @@ export class FeatureFlagsService {
   ) {
     const flag = await this.findByKey(key);
 
-    const variant = await this.prisma.flagVariant.create({
+    const variant = await (this.prisma as any).flagVariant.create({
       data: {
         flagId: flag.id,
         key: dto.key,
@@ -252,7 +252,7 @@ export class FeatureFlagsService {
   ) {
     const flag = await this.findByKey(key);
 
-    const target = await this.prisma.flagTarget.create({
+    const target = await (this.prisma as any).flagTarget.create({
       data: {
         flagId: flag.id,
         targetType: dto.targetType,
@@ -294,7 +294,7 @@ export class FeatureFlagsService {
   async getAuditLogs(key: string, limit = 50) {
     const flag = await this.findByKey(key);
 
-    return this.prisma.flagAuditLog.findMany({
+    return (this.prisma as any).flagAuditLog.findMany({
       where: { flagId: flag.id },
       orderBy: { createdAt: 'desc' },
       take: limit,

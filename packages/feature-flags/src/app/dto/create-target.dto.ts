@@ -19,7 +19,7 @@ export class CreateTargetDto {
   })
   @IsEnum(TargetType)
   @IsNotEmpty()
-  targetType: TargetType;
+  targetType!: TargetType;
 
   @ApiProperty({
     description: 'Target value (user ID, role, email, etc.)',
@@ -27,7 +27,7 @@ export class CreateTargetDto {
   })
   @IsString()
   @IsNotEmpty()
-  targetValue: string;
+  targetValue!: string;
 
   @ApiPropertyOptional({
     description: 'Whether the target is enabled',

@@ -21,7 +21,7 @@ export class FlagsGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
 {
   @WebSocketServer()
-  server: Server;
+  server!: Server;
 
   private readonly logger = new Logger(FlagsGateway.name);
   private subscribedClients = new Map<string, Set<string>>(); // socketId -> Set of flag keys
@@ -100,7 +100,7 @@ export class FlagsGateway
    * Get current flag state
    */
   @SubscribeMessage('get')
-  async handleGet(client: Socket, payload: { key: string }) {
+  async handleGet(_client: Socket, payload: { key: string }) {
     try {
       const flag = await this.flagsService.findByKey(payload.key);
       return { flag };
@@ -114,7 +114,7 @@ export class FlagsGateway
    */
   @SubscribeMessage('evaluate')
   async handleEvaluate(
-    client: Socket,
+    _client: Socket,
     payload: { key: string; context: any },
   ) {
     try {

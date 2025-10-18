@@ -1,0 +1,228 @@
+// Webhooks Service Database Schema
+// Production-grade schema for webhook management and event delivery
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/webhooks"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("WEBHOOKS_DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum WebhookStatus {
+  ACTIVE      // Webhook is active and receiving events
+  PAUSED      // Webhook is temporarily paused
+  DISABLED    // Webhook is disabled
+  FAILED      // Webhook has failed too many times
+}
+
+enum DeliveryStatus {
+  PENDING     // Delivery is queued
+  DELIVERING  // Currently attempting delivery
+  DELIVERED   // Successfully delivered
+  FAILED      // Failed after all retries
+  CANCELLED   // Delivery was cancelled
+}
+
+enum WebhookAction {
+  CREATED
+  UPDATED
+  DELETED
+  PAUSED
+  RESUMED
+  TESTED
+  VERIFIED
+  FAILED_THRESHOLD
+}
+
+// ============================================================================
+// WEBHOOKS
+// ============================================================================
+
+model Webhook {
+  id          String        @id @default(uuid()) @db.Uuid
+  userId      String        @map("user_id") @db.Uuid
+
+  // Endpoint configuration
+  url         String        @db.VarChar(2048)
+  secret      String        @db.VarChar(255) // HMAC secret for signing
+  description String?       @db.VarChar(500)
+
+  // Event subscriptions
+  events      String[]      @default([]) // e.g., ["user.created", "order.completed"]
+
+  // Status and health
+  status      WebhookStatus @default(ACTIVE)
+  isActive    Boolean       @default(true) @map("is_active")
+
+  // Failure tracking
+  failureCount     Int      @default(0) @map("failure_count")
+  consecutiveFailures Int   @default(0) @map("consecutive_failures")
+  lastFailureAt    DateTime? @map("last_failure_at") @db.Timestamptz
+  lastFailureReason String? @map("last_failure_reason") @db.Text
+
+  // Success tracking
+  successCount     Int      @default(0) @map("success_count")
+  lastSuccessAt    DateTime? @map("last_success_at") @db.Timestamptz
+
+  // Rate limiting
+  rateLimit        Int?     @map("rate_limit") // Requests per minute
+  rateLimitWindow  Int?     @default(60) @map("rate_limit_window") // Window in seconds
+
+  // Configuration
+  timeout          Int      @default(10000) // Timeout in milliseconds
+  retryAttempts    Int      @default(3) @map("retry_attempts")
+
+  // Headers (for custom authentication, etc.)
+  headers          Json     @default("{}") @db.JsonB
+
+  // Metadata
+  metadata         Json     @default("{}") @db.JsonB
+  tags             String[] @default([])
+
+  // Audit fields
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  deliveries       WebhookDelivery[]
+  logs             WebhookLog[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([isActive])
+  @@index([userId, status]) // Composite for user webhook queries
+  @@index([events]) // GIN index for array queries
+  @@map("webhooks")
+}
+
+// ============================================================================
+// WEBHOOK DELIVERIES
+// ============================================================================
+
+model WebhookDelivery {
+  id          String         @id @default(uuid()) @db.Uuid
+  webhookId   String         @map("webhook_id") @db.Uuid
+
+  // Event information
+  eventId     String         @map("event_id") @db.VarChar(255)
+  eventType   String         @map("event_type") @db.VarChar(255)
+  eventTimestamp DateTime    @map("event_timestamp") @db.Timestamptz
+
+  // Payload
+  payload     Json           @db.JsonB
+  signature   String         @db.VarChar(255) // HMAC signature
+
+  // Delivery status
+  status      DeliveryStatus @default(PENDING)
+  attempts    Int            @default(0)
+  maxAttempts Int            @default(3) @map("max_attempts")
+
+  // Response tracking
+  responseStatus  Int?       @map("response_status")
+  responseBody    String?    @map("response_body") @db.Text
+  responseHeaders Json?      @map("response_headers") @db.JsonB
+  responseTime    Int?       @map("response_time") // milliseconds
+
+  // Error tracking
+  errorMessage    String?    @map("error_message") @db.Text
+  errorDetails    Json?      @map("error_details") @db.JsonB
+
+  // Retry tracking
+  nextRetryAt     DateTime?  @map("next_retry_at") @db.Timestamptz
+  lastAttemptAt   DateTime?  @map("last_attempt_at") @db.Timestamptz
+
+  // Timing
+  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  deliveredAt     DateTime?  @map("delivered_at") @db.Timestamptz
+
+  // Metadata
+  metadata        Json       @default("{}") @db.JsonB
+
+  // Relations
+  webhook         Webhook    @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@index([status])
+  @@index([eventType])
+  @@index([createdAt])
+  @@index([nextRetryAt])
+  @@index([webhookId, status]) // Composite for webhook delivery queries
+  @@index([eventId]) // For idempotency checks
+  @@map("webhook_deliveries")
+}
+
+// ============================================================================
+// WEBHOOK LOGS
+// ============================================================================
+
+model WebhookLog {
+  id          String        @id @default(uuid()) @db.Uuid
+  webhookId   String        @map("webhook_id") @db.Uuid
+
+  // Log details
+  action      WebhookAction
+  title       String        @db.VarChar(255)
+  description String?       @db.Text
+
+  // Context
+  userId      String?       @map("user_id") @db.Uuid
+  deliveryId  String?       @map("delivery_id") @db.Uuid
+
+  // Change tracking
+  changes     Json?         @db.JsonB // Before/after for updates
+
+  // Metadata
+  metadata    Json          @default("{}") @db.JsonB
+
+  // Timing
+  timestamp   DateTime      @default(now()) @db.Timestamptz
+
+  // Relations
+  webhook     Webhook       @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@index([action])
+  @@index([timestamp])
+  @@index([userId])
+  @@map("webhook_logs")
+}
+
+// ============================================================================
+// WEBHOOK EVENTS (Tracking all platform events)
+// ============================================================================
+
+model WebhookEvent {
+  id          String   @id @default(uuid()) @db.Uuid
+
+  // Event identification
+  eventId     String   @unique @map("event_id") @db.VarChar(255)
+  eventType   String   @map("event_type") @db.VarChar(255)
+  eventSource String?  @map("event_source") @db.VarChar(255) // Which service generated it
+
+  // Event data
+  payload     Json     @db.JsonB
+
+  // Processing status
+  processed      Boolean  @default(false)
+  deliveryCount  Int      @default(0) @map("delivery_count")
+
+  // Metadata
+  metadata    Json     @default("{}") @db.JsonB
+
+  // Timing
+  timestamp   DateTime @default(now()) @db.Timestamptz
+  processedAt DateTime? @map("processed_at") @db.Timestamptz
+
+  @@index([eventType])
+  @@index([processed])
+  @@index([timestamp])
+  @@index([eventId]) // For deduplication
+  @@map("webhook_events")
+}

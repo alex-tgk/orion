@@ -3,12 +3,11 @@ import { FeatureFlagsService } from '../app/services/feature-flags.service';
 import { FlagCacheService } from '../app/services/flag-cache.service';
 import { FlagEvaluationService } from '../app/services/flag-evaluation.service';
 import { FlagAuditService } from '../app/services/flag-audit.service';
+import { FlagType } from '../app/interfaces/feature-flag.interface';
 import { PrismaService } from '@orion/shared';
 
 describe('FeatureFlagsService', () => {
   let service: FeatureFlagsService;
-  let prisma: PrismaService;
-  let cache: FlagCacheService;
 
   const mockPrismaService = {
     featureFlag: {
@@ -66,8 +65,6 @@ describe('FeatureFlagsService', () => {
     }).compile();
 
     service = module.get<FeatureFlagsService>(FeatureFlagsService);
-    prisma = module.get<PrismaService>(PrismaService);
-    cache = module.get<FlagCacheService>(FlagCacheService);
   });
 
   afterEach(() => {
@@ -158,7 +155,7 @@ describe('FeatureFlagsService', () => {
         name: 'New Flag',
         description: 'Test description',
         enabled: false,
-        type: 'BOOLEAN' as const,
+        type: FlagType.BOOLEAN,
         rolloutPercentage: 0,
       };
 

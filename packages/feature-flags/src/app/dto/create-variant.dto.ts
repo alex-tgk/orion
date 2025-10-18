@@ -1,6 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
-  IsJSON,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -16,7 +15,7 @@ export class CreateVariantDto {
   })
   @IsString()
   @IsNotEmpty()
-  key: string;
+  key!: string;
 
   @ApiProperty({
     description: 'Human-readable name',
@@ -24,7 +23,7 @@ export class CreateVariantDto {
   })
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name!: string;
 
   @ApiPropertyOptional({
     description: 'Detailed description',
@@ -40,7 +39,7 @@ export class CreateVariantDto {
   })
   @IsString()
   @IsNotEmpty()
-  value: string;
+  value!: string;
 
   @ApiProperty({
     description: 'Distribution weight (0-100)',

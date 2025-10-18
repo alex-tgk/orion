@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { createHash } from 'crypto';
 import {
   IFeatureFlag,
@@ -10,7 +10,6 @@ import {
 
 @Injectable()
 export class FlagEvaluationService {
-  private readonly logger = new Logger(FlagEvaluationService.name);
 
   /**
    * Evaluate a feature flag for given context
