@@ -1,0 +1,1161 @@
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mflag-evaluation.service.spec.ts[22m
+  FlagEvaluationService
+    evaluate - basic flags
+      [32m✓[39m [2mshould return disabled if flag is globally disabled (19 ms)[22m
+      [32m✓[39m [2mshould return enabled for 100% rollout (3 ms)[22m
+      [32m✓[39m [2mshould return disabled for 0% rollout (2 ms)[22m
+    evaluate - targeting
+      [32m✓[39m [2mshould match user target (3 ms)[22m
+      [32m✓[39m [2mshould match role target (3 ms)[22m
+      [32m✓[39m [2mshould match email target (3 ms)[22m
+      [32m✓[39m [2mshould respect target priority (2 ms)[22m
+    evaluate - multivariate
+      [32m✓[39m [2mshould return a variant for multivariate flag (17 ms)[22m
+      [32m✓[39m [2mshould consistently assign same variant to same user (1 ms)[22m
+    evaluate - rollout percentage
+      [32m✓[39m [2mshould use consistent hashing for rollout (2 ms)[22m
+      [32m✓[39m [2mshould distribute users across rollout percentage (3 ms)[22m
+
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mCache get error for test-flag:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/feature-flags/src/__tests__/flag-cache.service.spec.ts:88:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mCache set error for test-flag:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/feature-flags/src/__tests__/flag-cache.service.spec.ts:110:47[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mCache invalidate error for test-flag:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/feature-flags/src/__tests__/flag-cache.service.spec.ts:126:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mCache clear all error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/feature-flags/src/__tests__/flag-cache.service.spec.ts:154:46[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mPublish invalidation error for test-flag:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/feature-flags/src/__tests__/flag-cache.service.spec.ts:173:49[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mflag-cache.service.spec.ts[22m
+  FlagCacheService
+    get
+      [32m✓[39m [2mshould return cached flag if exists (17 ms)[22m
+      [32m✓[39m [2mshould return null if flag not in cache (3 ms)[22m
+      [32m✓[39m [2mshould return null on error (11 ms)[22m
+    set
+      [32m✓[39m [2mshould cache flag with TTL (3 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (3 ms)[22m
+    invalidate
+      [32m✓[39m [2mshould remove flag from cache (2 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (3 ms)[22m
+    clearAll
+      [32m✓[39m [2mshould clear all cached flags (2 ms)[22m
+      [32m✓[39m [2mshould not call del if no keys found (2 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (2 ms)[22m
+    publishInvalidation
+      [32m✓[39m [2mshould publish invalidation event (1 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (2 ms)[22m
+    subscribeToInvalidations
+      [32m✓[39m [2mshould subscribe to invalidation events (2 ms)[22m
+      [32m✓[39m [2mshould call callback when message received (2 ms)[22m
+    onModuleDestroy
+      [32m✓[39m [2mshould quit Redis connection (1 ms)[22m
+
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:39 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72646  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagAuditService] [39m[31mFailed to create audit log:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72646  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagAuditService] [39mError: Database error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/feature-flags/src/__tests__/flag-audit.service.spec.ts:88:9[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mflag-audit.service.spec.ts[22m
+  FlagAuditService
+    log
+      [32m✓[39m [2mshould create audit log entry (15 ms)[22m
+      [32m✓[39m [2mshould create audit log without optional fields (2 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully and not throw (11 ms)[22m
+    getLogsForFlag
+      [32m✓[39m [2mshould return audit logs for a specific flag (2 ms)[22m
+      [32m✓[39m [2mshould respect custom limit (2 ms)[22m
+    getLogsByUser
+      [32m✓[39m [2mshould return audit logs for a specific user (2 ms)[22m
+      [32m✓[39m [2mshould respect custom limit (1 ms)[22m
+    getRecentLogs
+      [32m✓[39m [2mshould return recent audit logs (2 ms)[22m
+      [32m✓[39m [2mshould respect custom limit (2 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mfeature-flags.service.spec.ts[22m
+  FeatureFlagsService
+    findAll
+      [32m✓[39m [2mshould return all feature flags (14 ms)[22m
+    findByKey
+      [32m✓[39m [2mshould return flag from cache if available (3 ms)[22m
+      [32m✓[39m [2mshould fetch from database and cache if not in cache (2 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException if flag not found (12 ms)[22m
+    create
+      [32m✓[39m [2mshould create a new feature flag (2 ms)[22m
+    update
+      [32m✓[39m [2mshould update a feature flag (2 ms)[22m
+    toggle
+      [32m✓[39m [2mshould toggle flag from disabled to enabled (2 ms)[22m
+    delete
+      [32m✓[39m [2mshould soft delete a feature flag (1 ms)[22m
+    evaluate
+      [32m✓[39m [2mshould evaluate a feature flag (2 ms)[22m
+
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mfeature-flags.controller.spec.ts[22m
+  FeatureFlagsController
+    findAll
+      [32m✓[39m [2mshould return an array of flags (14 ms)[22m
+      [32m✓[39m [2mshould include deleted flags when requested (1 ms)[22m
+    findOne
+      [32m✓[39m [2mshould return a single flag (1 ms)[22m
+    create
+      [32m✓[39m [2mshould create a new flag (2 ms)[22m
+    update
+      [32m✓[39m [2mshould update a flag (2 ms)[22m
+    toggle
+      [32m✓[39m [2mshould toggle a flag (1 ms)[22m
+    delete
+      [32m✓[39m [2mshould delete a flag (2 ms)[22m
+    evaluate
+      [32m✓[39m [2mshould evaluate a flag (1 ms)[22m
+
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39m[31mRedis connection error:[39m
+[31m[Nest] 72644  - [39m10/18/2025, 12:23:40 PM [31m  ERROR[39m [38;5;3m[FlagCacheService] [39mError: connect ECONNREFUSED 127.0.0.1:6379
+[90m    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)[39m {
+  errno: [33m-61[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m6379[39m
+}
+[33mA worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.[39m
+[1mTest Suites: [22m[1m[32m5 passed[39m[22m, 5 total
+[1mTests:       [22m[1m[32m52 passed[39m[22m, 52 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        4.864 s, estimated 7 s
+[2mRan all test suites[22m[2m.[22m

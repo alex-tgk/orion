@@ -1,0 +1,338 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mhealth.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/vector-db/src/app/services/__tests__/health.service.spec.ts[0m:[93m8[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'vectorProvider' is declared but its value is never read.
+
+    [7m8[0m   let vectorProvider: jest.Mocked<IVectorProvider>;
+    [7m [0m [91m      ~~~~~~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/services/__tests__/health.service.spec.ts[0m:[93m9[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m9[0m   let configService: jest.Mocked<ConfigService>;
+    [7m [0m [91m      ~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mcollection.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/vector-db/src/app/services/__tests__/collection.service.spec.ts[0m:[93m139[0m:[93m43[0m - [91merror[0m[90m TS2554: [0mExpected 1 arguments, but got 0.
+
+    [7m139[0m       mockVectorProvider.deleteCollection.mockResolvedValue();
+    [7m   [0m [91m                                          ~~~~~~~~~~~~~~~~~[0m
+
+      [96mpackages/vector-db/node_modules/.pnpm/@types+jest@29.5.14/node_modules/@types/jest/index.d.ts[0m:[93m1439[0m:[93m27[0m
+        [7m1439[0m         mockResolvedValue(value: ResolvedValue<T>): this;
+        [7m    [0m [96m                          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+        An argument for 'value' was not provided.
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/providers/__tests__/[22m[1mpostgres-vector.provider.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/vector-db/src/app/providers/__tests__/postgres-vector.provider.spec.ts[0m:[93m34[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m34[0m   let configService: jest.Mocked<ConfigService>;
+    [7m  [0m [91m      ~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mvector.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/vector-db/src/app/services/__tests__/vector.service.spec.ts[0m:[93m12[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m12[0m   let configService: jest.Mocked<ConfigService>;
+    [7m  [0m [91m      ~~~~~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/services/__tests__/vector.service.spec.ts[0m:[93m339[0m:[93m39[0m - [91merror[0m[90m TS2554: [0mExpected 1 arguments, but got 0.
+
+    [7m339[0m       mockVectorProvider.deleteVector.mockResolvedValue();
+    [7m   [0m [91m                                      ~~~~~~~~~~~~~~~~~[0m
+
+      [96mpackages/vector-db/node_modules/.pnpm/@types+jest@29.5.14/node_modules/@types/jest/index.d.ts[0m:[93m1439[0m:[93m27[0m
+        [7m1439[0m         mockResolvedValue(value: ResolvedValue<T>): this;
+        [7m    [0m [96m                          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+        An argument for 'value' was not provided.
+    [96mpackages/vector-db/src/app/services/__tests__/vector.service.spec.ts[0m:[93m353[0m:[93m38[0m - [91merror[0m[90m TS2554: [0mExpected 1 arguments, but got 0.
+
+    [7m353[0m       mockVectorProvider.batchDelete.mockResolvedValue();
+    [7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~[0m
+
+      [96mpackages/vector-db/node_modules/.pnpm/@types+jest@29.5.14/node_modules/@types/jest/index.d.ts[0m:[93m1439[0m:[93m27[0m
+        [7m1439[0m         mockResolvedValue(value: ResolvedValue<T>): this;
+        [7m    [0m [96m                          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+        An argument for 'value' was not provided.
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mcollection.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/vector-db/src/app/dto/create-collection.dto.ts[0m:[93m13[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.
+
+    [7m13[0m   name: string;
+    [7m  [0m [91m  ~~~~[0m
+    [96mpackages/vector-db/src/app/dto/create-collection.dto.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'dimension' has no initializer and is not definitely assigned in the constructor.
+
+    [7m24[0m   dimension: number;
+    [7m  [0m [91m  ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mhealth.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.
+
+    [7m11[0m   id: string;
+    [7m  [0m [91m  ~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'score' has no initializer and is not definitely assigned in the constructor.
+
+    [7m17[0m   score: number;
+    [7m  [0m [91m  ~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m46[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'collectionName' has no initializer and is not definitely assigned in the constructor.
+
+    [7m46[0m   collectionName: string;
+    [7m  [0m [91m  ~~~~~~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m52[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'results' has no initializer and is not definitely assigned in the constructor.
+
+    [7m52[0m   results: VectorResultDto[];
+    [7m  [0m [91m  ~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m58[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'total' has no initializer and is not definitely assigned in the constructor.
+
+    [7m58[0m   total: number;
+    [7m  [0m [91m  ~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m64[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'queryTime' has no initializer and is not definitely assigned in the constructor.
+
+    [7m64[0m   queryTime: number;
+    [7m  [0m [91m  ~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m75[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.
+
+    [7m75[0m   id: string;
+    [7m  [0m [91m  ~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m81[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.
+
+    [7m81[0m   name: string;
+    [7m  [0m [91m  ~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m87[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'dimension' has no initializer and is not definitely assigned in the constructor.
+
+    [7m87[0m   dimension: number;
+    [7m  [0m [91m  ~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m105[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'vectorCount' has no initializer and is not definitely assigned in the constructor.
+
+    [7m105[0m   vectorCount: number;
+    [7m   [0m [91m  ~~~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m111[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'createdAt' has no initializer and is not definitely assigned in the constructor.
+
+    [7m111[0m   createdAt: Date;
+    [7m   [0m [91m  ~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m117[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'updatedAt' has no initializer and is not definitely assigned in the constructor.
+
+    [7m117[0m   updatedAt: Date;
+    [7m   [0m [91m  ~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m128[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'successCount' has no initializer and is not definitely assigned in the constructor.
+
+    [7m128[0m   successCount: number;
+    [7m   [0m [91m  ~~~~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m134[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'failureCount' has no initializer and is not definitely assigned in the constructor.
+
+    [7m134[0m   failureCount: number;
+    [7m   [0m [91m  ~~~~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m140[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'successfulIds' has no initializer and is not definitely assigned in the constructor.
+
+    [7m140[0m   successfulIds: string[];
+    [7m   [0m [91m  ~~~~~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m158[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'status' has no initializer and is not definitely assigned in the constructor.
+
+    [7m158[0m   status: 'healthy' | 'degraded' | 'unhealthy';
+    [7m   [0m [91m  ~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m164[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'provider' has no initializer and is not definitely assigned in the constructor.
+
+    [7m164[0m   provider: string;
+    [7m   [0m [91m  ~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m170[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'connected' has no initializer and is not definitely assigned in the constructor.
+
+    [7m170[0m   connected: boolean;
+    [7m   [0m [91m  ~~~~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m188[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'uptime' has no initializer and is not definitely assigned in the constructor.
+
+    [7m188[0m   uptime: number;
+    [7m   [0m [91m  ~~~~~~[0m
+    [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m194[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'timestamp' has no initializer and is not definitely assigned in the constructor.
+
+    [7m194[0m   timestamp: string;
+    [7m   [0m [91m  ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mvector.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/vector-db/src/app/controllers/vector.controller.ts[0m:[93m3[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'Get' is declared but its value is never read.
+
+    [7m3[0m   Get,
+    [7m [0m [91m  ~~~[0m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/vector-response.dto.ts[39m
+[31mERROR: [96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m11[0m   id: string;[39m
+[31m[7m  [0m [91m  ~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'score' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m17[0m   score: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m46[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'collectionName' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m46[0m   collectionName: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m52[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'results' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m52[0m   results: VectorResultDto[];[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m58[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'total' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m58[0m   total: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m64[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'queryTime' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m64[0m   queryTime: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m75[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m75[0m   id: string;[39m
+[31m[7m  [0m [91m  ~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m81[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m81[0m   name: string;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m87[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'dimension' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m87[0m   dimension: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m105[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'vectorCount' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m105[0m   vectorCount: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m111[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'createdAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m111[0m   createdAt: Date;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m117[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'updatedAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m117[0m   updatedAt: Date;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m128[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'successCount' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m128[0m   successCount: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m134[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'failureCount' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m134[0m   failureCount: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m140[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'successfulIds' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m140[0m   successfulIds: string[];[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m158[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'status' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m158[0m   status: 'healthy' | 'degraded' | 'unhealthy';[39m
+[31m[7m   [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m164[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'provider' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m164[0m   provider: string;[39m
+[31m[7m   [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m170[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'connected' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m170[0m   connected: boolean;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m188[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'uptime' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m188[0m   uptime: number;[39m
+[31m[7m   [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/vector-response.dto.ts[0m:[93m194[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'timestamp' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m194[0m   timestamp: string;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/create-collection.dto.ts[39m
+[31mERROR: [96mpackages/vector-db/src/app/dto/create-collection.dto.ts[0m:[93m13[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m13[0m   name: string;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/create-collection.dto.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'dimension' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m24[0m   dimension: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/upsert-vector.dto.ts[39m
+[31mERROR: [96mpackages/vector-db/src/app/dto/upsert-vector.dto.ts[0m:[93m21[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'collectionName' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m21[0m   collectionName: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/upsert-vector.dto.ts[0m:[93m32[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'embedding' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m32[0m   embedding: number[];[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/upsert-vector.dto.ts[0m:[93m60[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'collectionName' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m60[0m   collectionName: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/upsert-vector.dto.ts[0m:[93m68[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'vectors' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m68[0m   vectors: Omit<UpsertVectorDto, 'collectionName'>[];[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/search-vector.dto.ts[39m
+[31mERROR: [96mpackages/vector-db/src/app/dto/search-vector.dto.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'collectionName' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m14[0m   collectionName: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/search-vector.dto.ts[0m:[93m25[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'queryVector' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m25[0m   queryVector: number[];[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/dto/search-vector.dto.ts[0m:[93m87[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'keywords' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m87[0m   keywords: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/vector.controller.ts[39m
+[31mERROR: [96mpackages/vector-db/src/app/controllers/vector.controller.ts[0m:[93m3[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'Get' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m3[0m   Get,[39m
+[31m[7m [0m [91m  ~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/vector.service.ts[39m
+[31mERROR: [96mpackages/vector-db/src/app/services/vector.service.ts[0m:[93m27[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m27[0m     private readonly configService: ConfigService[39m
+[31m[7m  [0m [91m                     ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/services/vector.service.ts[0m:[93m160[0m:[93m33[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DistanceMetric'.[39m
+[31m[39m
+[31m[7m160[0m           metric: dto.metric || DistanceMetric.COSINE,[39m
+[31m[7m   [0m [91m                                ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/vector-db/src/app/services/vector.service.ts[0m:[93m194[0m:[93m33[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DistanceMetric'.[39m
+[31m[39m
+[31m[7m194[0m           metric: dto.metric || DistanceMetric.COSINE,[39m
+[31m[7m   [0m [91m                                ~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+---------------------------------|---------|----------|---------|---------|-------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------|---------|----------|---------|---------|-------------------
+[31;1mAll files                       [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m app                            [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  app.module.ts                 [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-46             [0m 
+[31;1m app/config                     [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  vector-db.config.ts           [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-107            [0m 
+[31;1m app/controllers                [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  collection.controller.ts      [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-141            [0m 
+[31;1m  health.controller.ts          [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-29             [0m 
+[31;1m app/dto                        [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  index.ts                      [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-4              [0m 
+[31;1m app/filters                    [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  http-exception.filter.ts      [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-47             [0m 
+[31;1m  validation-exception.filter.ts[0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-47             [0m 
+[31;1m app/providers                  [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  postgres-vector.provider.ts   [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-426            [0m 
+[31;1m app/services                   [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  collection.service.ts         [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-129            [0m 
+[31;1m  health.service.ts             [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-87             [0m 
+---------------------------------|---------|----------|---------|---------|-------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for branches (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for lines (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 0%[39m[22m
+[1mTest Suites: [22m[1m[31m7 failed[39m[22m, 7 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        11.447 s
+[2mRan all test suites[22m[2m.[22m

@@ -1,0 +1,44 @@
+// Vector Database Schema
+// Supports pgvector extension for PostgreSQL-based vector storage
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Collection represents a namespace for vectors with specific dimensions
+model Collection {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  dimension   Int      // Vector dimension (e.g., 768, 1536, 3072)
+  description String?
+  metadata    Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  vectors Vector[]
+
+  @@index([name])
+  @@map("collections")
+}
+
+/// Vector stores embeddings with metadata for similarity search
+model Vector {
+  id           String   @id @default(uuid())
+  collectionId String
+  embedding    Float[]  // Vector embedding array
+  text         String?  @db.Text // Original text (optional)
+  metadata     Json     @default("{}")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@index([collectionId])
+  @@index([collectionId, createdAt])
+  @@map("vectors")
+}

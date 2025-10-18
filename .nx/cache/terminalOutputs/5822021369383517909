@@ -1,0 +1,29 @@
+
+Linting "cache"...
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/cache/src/app/dto/batch-operation.dto.ts[24m[0m
+[0m  [2m30:10[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/cache/src/app/dto/cache-response.dto.ts[24m[0m
+[0m  [2m14:11[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m55:13[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/cache/src/app/dto/set-cache.dto.ts[24m[0m
+[0m   [2m9:3[22m   [31merror[39m  'ArrayMinSize' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m29:10[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/cache/src/app/services/cache.service.ts[24m[0m
+[0m   [2m12:10[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m119:12[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m164:17[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m188:24[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m265:42[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m313:21[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/cache/src/app/services/health.service.ts[24m[0m
+[0m  [2m76:14[22m  [31merror[39m  'error' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[31m[1m✖ 12 problems (12 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+✖ 12 problems (12 errors, 0 warnings)
+

@@ -39,7 +39,8 @@ async function bootstrap() {
   // Setup Swagger/OpenAPI documentation
   const config = new DocumentBuilder()
     .setTitle('ORION Vector Database Service')
-    .setDescription(`
+    .setDescription(
+      `
       The ORION Vector Database Service provides semantic search and vector storage
       capabilities for AI applications, supporting RAG (Retrieval-Augmented Generation)
       and similarity search use cases.
@@ -58,7 +59,8 @@ async function bootstrap() {
       - Pinecone (cloud-native)
       - Qdrant (open-source)
       - Weaviate (graph-based)
-    `)
+    `,
+    )
     .setVersion('1.0.0')
     .addBearerAuth()
     .addTag('Vectors', 'Vector operations: upsert, search, delete')
@@ -86,7 +88,9 @@ async function bootstrap() {
   const port = process.env.PORT || 3012;
   await app.listen(port);
 
-  Logger.log(`🚀 Vector DB service is running on: http://localhost:${port}/api`);
+  Logger.log(
+    `🚀 Vector DB service is running on: http://localhost:${port}/api`,
+  );
   Logger.log(`📊 Health check: http://localhost:${port}/api/health`);
   Logger.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
   Logger.log(`🔍 Provider: ${process.env.VECTOR_DB_PROVIDER || 'postgres'}`);

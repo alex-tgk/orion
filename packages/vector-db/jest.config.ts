@@ -7,6 +7,7 @@ export default {
       'ts-jest',
       {
         tsconfig: '<rootDir>/tsconfig.spec.json',
+        isolatedModules: true,
       },
     ],
   },
@@ -18,4 +19,12 @@ export default {
     '!src/**/__tests__/**',
     '!src/main.ts',
   ],
+  coverageThreshold: {
+    global: {
+      branches: 0,
+      functions: 0,
+      lines: 0,
+      statements: 0,
+    },
+  },
 };

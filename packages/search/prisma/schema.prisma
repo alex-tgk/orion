@@ -1,0 +1,104 @@
+// Search Service Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("SEARCH_DATABASE_URL")
+}
+
+// Main search index for all searchable entities
+model SearchIndex {
+  id             String   @id @default(uuid())
+  entityType     String   // User, File, Document, etc.
+  entityId       String   // ID of the entity being indexed
+  title          String   // Display title
+  content        String   @db.Text // Full content for indexing
+  searchableText String?  @db.Text // PostgreSQL tsvector (handled via raw SQL)
+  metadata       Json     @default("{}") // Additional searchable metadata
+  rank           Float    @default(0) // Relevance/popularity score
+  vectorId       String?  // Reference to vector embedding in Vector DB
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([entityType, entityId])
+  @@index([entityType])
+  @@index([entityId])
+  @@index([rank])
+  @@map("search_index")
+}
+
+// Track search queries for analytics and learning
+model SearchQuery {
+  id            String   @id @default(uuid())
+  query         String   // The search query text
+  userId        String?  // User who performed the search (optional)
+  resultsCount  Int      // Number of results returned
+  executionTime Int      // Query execution time in milliseconds
+  filters       Json     @default("{}") // Applied filters
+  entityType    String?  // Filter: entity type searched
+  hasResults    Boolean  @default(true) // Quick flag for zero-result queries
+
+  timestamp DateTime @default(now())
+
+  @@index([query])
+  @@index([userId])
+  @@index([hasResults])
+  @@index([timestamp])
+  @@map("search_queries")
+}
+
+// Auto-complete suggestions learned from queries
+model SearchSuggestion {
+  id         String   @id @default(uuid())
+  term       String   @unique // The suggestion term
+  frequency  Int      @default(1) // How often this term is searched
+  entityType String?  // Associated entity type (optional)
+  lastUsed   DateTime @default(now()) // Last time this was searched
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([term])
+  @@index([frequency])
+  @@index([entityType])
+  @@map("search_suggestions")
+}
+
+// Search result clicks for ranking optimization
+model SearchResultClick {
+  id            String   @id @default(uuid())
+  searchQueryId String   // Link to SearchQuery
+  entityType    String   // Type of clicked entity
+  entityId      String   // ID of clicked entity
+  position      Int      // Position in search results (1-based)
+  userId        String?  // User who clicked (optional)
+
+  clickedAt DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([searchQueryId])
+  @@index([userId])
+  @@map("search_result_clicks")
+}
+
+// Popular search terms aggregated for performance
+model PopularSearchTerm {
+  id          String   @id @default(uuid())
+  term        String   @unique
+  searchCount Int      @default(0)
+  period      String   // daily, weekly, monthly
+  periodStart DateTime
+  periodEnd   DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([period, periodStart])
+  @@index([searchCount])
+  @@map("popular_search_terms")
+}

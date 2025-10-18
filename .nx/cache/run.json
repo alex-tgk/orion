@@ -1,18 +1,18 @@
 {
   "run": {
-    "command": "nx test feature-flags --coverage --maxWorkers=2",
-    "startTime": "2025-10-18T16:23:59.319Z",
-    "endTime": "2025-10-18T16:24:19.502Z",
+    "command": "nx test vector-db --coverage",
+    "startTime": "2025-10-18T16:25:21.174Z",
+    "endTime": "2025-10-18T16:25:35.668Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "feature-flags:test",
+      "taskId": "vector-db:test",
       "target": "test",
-      "projectName": "feature-flags",
-      "hash": "5574185759121437223",
-      "startTime": "2025-10-18T16:23:59.449Z",
-      "endTime": "2025-10-18T16:24:19.500Z",
+      "projectName": "vector-db",
+      "hash": "6025511241267399402",
+      "startTime": "2025-10-18T16:25:21.234Z",
+      "endTime": "2025-10-18T16:25:35.667Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

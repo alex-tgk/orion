@@ -1,0 +1,60 @@
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mflag-evaluation.service.spec.ts[22m
+  FlagEvaluationService
+    evaluate - basic flags
+      [32m✓[39m [2mshould return disabled if flag is globally disabled (14 ms)[22m
+      [32m✓[39m [2mshould return enabled for 100% rollout (2 ms)[22m
+      [32m✓[39m [2mshould return disabled for 0% rollout (2 ms)[22m
+    evaluate - targeting
+      [32m✓[39m [2mshould match user target (2 ms)[22m
+      [32m✓[39m [2mshould match role target (2 ms)[22m
+      [32m✓[39m [2mshould match email target (1 ms)[22m
+      [32m✓[39m [2mshould respect target priority (1 ms)[22m
+    evaluate - multivariate
+      [32m✓[39m [2mshould return a variant for multivariate flag (2 ms)[22m
+      [32m✓[39m [2mshould consistently assign same variant to same user (2 ms)[22m
+    evaluate - rollout percentage
+      [32m✓[39m [2mshould use consistent hashing for rollout (1 ms)[22m
+      [32m✓[39m [2mshould distribute users across rollout percentage (2 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mfeature-flags.service.spec.ts[22m
+  FeatureFlagsService
+    findAll
+      [32m✓[39m [2mshould return all feature flags (15 ms)[22m
+    findByKey
+      [32m✓[39m [2mshould return flag from cache if available (3 ms)[22m
+      [32m✓[39m [2mshould fetch from database and cache if not in cache (2 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException if flag not found (11 ms)[22m
+    create
+      [32m✓[39m [2mshould create a new feature flag (3 ms)[22m
+    update
+      [32m✓[39m [2mshould update a feature flag (2 ms)[22m
+    toggle
+      [32m✓[39m [2mshould toggle flag from disabled to enabled (2 ms)[22m
+    delete
+      [32m✓[39m [2mshould soft delete a feature flag (2 ms)[22m
+    evaluate
+      [32m✓[39m [2mshould evaluate a feature flag (2 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mfeature-flags.controller.spec.ts[22m
+  FeatureFlagsController
+    findAll
+      [32m✓[39m [2mshould return an array of flags (14 ms)[22m
+      [32m✓[39m [2mshould include deleted flags when requested (2 ms)[22m
+    findOne
+      [32m✓[39m [2mshould return a single flag (1 ms)[22m
+    create
+      [32m✓[39m [2mshould create a new flag (2 ms)[22m
+    update
+      [32m✓[39m [2mshould update a flag (2 ms)[22m
+    toggle
+      [32m✓[39m [2mshould toggle a flag (1 ms)[22m
+    delete
+      [32m✓[39m [2mshould delete a flag (1 ms)[22m
+    evaluate
+      [32m✓[39m [2mshould evaluate a flag (1 ms)[22m
+
+[1mTest Suites: [22m[1m[32m3 passed[39m[22m, 3 total
+[1mTests:       [22m[1m[32m28 passed[39m[22m, 28 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        [1m[33m4.582 s[39m[22m
+[2mRan all test suites[22m[2m.[22m

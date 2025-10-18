@@ -1,0 +1,710 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mhealth.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/health.controller.ts:10:1]
+      7 |  * Health Controller
+      8 |  * Provides health check endpoints for monitoring
+      9 |  */
+     10 | @ApiTags('Health')
+        : ^
+     11 | @Controller('api/health')
+     12 | export class HealthController {
+     13 |   private readonly logger = new Logger(HealthController.name);
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m 4 |[39m [36mimport[39m { [33mVectorHealthResponseDto[39m } [36mfrom[39m [32m'../../dto/vector-response.dto'[39m[33m;[39m
+     [90m 5 |[39m
+    [31m[1m>[22m[39m[90m 6 |[39m describe([32m'HealthController'[39m[33m,[39m () [33m=>[39m {
+     [90m   |[39m                           [31m[1m^[22m[39m
+     [90m 7 |[39m   [36mlet[39m controller[33m:[39m [33mHealthController[39m[33m;[39m
+     [90m 8 |[39m   [36mlet[39m service[33m:[39m [33mHealthService[39m[33m;[39m
+     [90m 9 |[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/controllers/__tests__/health.controller.spec.ts[39m[0m[2m:6:27)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mvector.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/vector.controller.ts:32:1]
+     29 |  * Vector Controller
+     30 |  * Handles vector operations: upsert, search, delete
+     31 |  */
+     32 | @ApiTags('Vectors')
+        : ^
+     33 | @Controller('api/vectors')
+     34 | export class VectorController {
+     35 |   private readonly logger = new Logger(VectorController.name);
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  5 |[39m [36mimport[39m {
+     [90m  6 |[39m   [33mUpsertVectorDto[39m[33m,[39m
+    [31m[1m>[22m[39m[90m  7 |[39m   [33mBatchUpsertDto[39m[33m,[39m
+     [90m    |[39m                           [31m[1m^[22m[39m
+     [90m  8 |[39m   [33mSearchVectorDto[39m[33m,[39m
+     [90m  9 |[39m   [33mHybridSearchDto[39m[33m,[39m
+     [90m 10 |[39m   [33mSearchResponseDto[39m[33m,[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/controllers/__tests__/vector.controller.spec.ts[39m[0m[2m:7:27)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/controllers/__tests__/[22m[1mcollection.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/collection.controller.ts:25:1]
+     22 |  * Collection Controller
+     23 |  * Manages vector collections (namespaces)
+     24 |  */
+     25 | @ApiTags('Collections')
+        : ^
+     26 | @Controller('api/vectors/collections')
+     27 | export class CollectionController {
+     28 |   private readonly logger = new Logger(CollectionController.name);
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  5 |[39m [36mimport[39m { [33mCreateCollectionDto[39m[33m,[39m [33mCollectionResponseDto[39m } [36mfrom[39m [32m'../../dto'[39m[33m;[39m
+     [90m  6 |[39m
+    [31m[1m>[22m[39m[90m  7 |[39m describe([32m'CollectionController'[39m[33m,[39m () [33m=>[39m {
+     [90m    |[39m                               [31m[1m^[22m[39m
+     [90m  8 |[39m   [36mlet[39m controller[33m:[39m [33mCollectionController[39m[33m;[39m
+     [90m  9 |[39m   [36mlet[39m service[33m:[39m [33mCollectionService[39m[33m;[39m
+     [90m 10 |[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/controllers/__tests__/collection.controller.spec.ts[39m[0m[2m:7:31)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mcollection.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/collection.service.ts:10:1]
+      7 |  * Collection Service
+      8 |  * Manages vector collections (namespaces)
+      9 |  */
+     10 | @Injectable()
+        : ^
+     11 | export class CollectionService {
+     12 |   private readonly logger = new Logger(CollectionService.name);
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  5 |[39m [36mimport[39m { [33mCreateCollectionDto[39m } [36mfrom[39m [32m'../../dto/create-collection.dto'[39m[33m;[39m
+     [90m  6 |[39m
+    [31m[1m>[22m[39m[90m  7 |[39m describe([32m'CollectionService'[39m[33m,[39m () [33m=>[39m {
+     [90m    |[39m                            [31m[1m^[22m[39m
+     [90m  8 |[39m   [36mlet[39m service[33m:[39m [33mCollectionService[39m[33m;[39m
+     [90m  9 |[39m   [36mlet[39m vectorProvider[33m:[39m jest[33m.[39m[33mMocked[39m[33m<[39m[33mIVectorProvider[39m[33m>[39m[33m;[39m
+     [90m 10 |[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/__tests__/collection.service.spec.ts[39m[0m[2m:7:28)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/providers/__tests__/[22m[1mpostgres-vector.provider.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/providers/postgres-vector.provider.ts:18:1]
+     15 |  * PostgreSQL + pgvector implementation of the vector provider
+     16 |  * Uses Prisma for database operations and pgvector for similarity search
+     17 |  */
+     18 | @Injectable()
+        : ^
+     19 | export class PostgresVectorProvider
+     20 |   implements IVectorProvider, OnModuleInit, OnModuleDestroy
+     21 | {
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  8 |[39m   $connect[33m:[39m jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   $disconnect[33m:[39m jest[33m.[39mfn()[33m,[39m
+    [31m[1m>[22m[39m[90m 10 |[39m   $queryRaw[33m:[39m jest[33m.[39mfn()[33m,[39m
+     [90m    |[39m                                 [31m[1m^[22m[39m
+     [90m 11 |[39m   $queryRawUnsafe[33m:[39m jest[33m.[39mfn()[33m,[39m
+     [90m 12 |[39m   $executeRaw[33m:[39m jest[33m.[39mfn()[33m,[39m
+     [90m 13 |[39m   $transaction[33m:[39m jest[33m.[39mfn()[33m,[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/providers/__tests__/postgres-vector.provider.spec.ts[39m[0m[2m:10:33)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mvector.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/vector.service.ts:21:1]
+     18 |  * Vector Service
+     19 |  * Handles all vector operations including upsert, search, and deletion
+     20 |  */
+     21 | @Injectable()
+        : ^
+     22 | export class VectorService {
+     23 |   private readonly logger = new Logger(VectorService.name);
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  6 |[39m [36mimport[39m { [33mUpsertVectorDto[39m[33m,[39m [33mBatchUpsertDto[39m[33m,[39m [33mSearchVectorDto[39m[33m,[39m [33mHybridSearchDto[39m } [36mfrom[39m [32m'../../dto'[39m[33m;[39m
+     [90m  7 |[39m [36mimport[39m { [33mDistanceMetric[39m } [36mfrom[39m [32m'../../config/vector-db.config'[39m[33m;[39m
+    [31m[1m>[22m[39m[90m  8 |[39m
+     [90m    |[39m [31m[1m^[22m[39m
+     [90m  9 |[39m describe([32m'VectorService'[39m[33m,[39m () [33m=>[39m {
+     [90m 10 |[39m   [36mlet[39m service[33m:[39m [33mVectorService[39m[33m;[39m
+     [90m 11 |[39m   [36mlet[39m vectorProvider[33m:[39m jest[33m.[39m[33mMocked[39m[33m<[39m[33mIVectorProvider[39m[33m>[39m[33m;[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/__tests__/vector.service.spec.ts[39m[0m[2m:8:24)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m vector-db [39m[27m[0m [2mpackages/vector-db/src/app/services/__tests__/[22m[1mhealth.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/health.service.ts:10:1]
+      7 |  * Health Service
+      8 |  * Monitors the health and status of the vector database service
+      9 |  */
+     10 | @Injectable()
+        : ^
+     11 | export class HealthService {
+     12 |   private readonly logger = new Logger(HealthService.name);
+     13 |   private readonly startTime: number;
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m describe([32m'HealthService'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  7 |[39m   [36mlet[39m service[33m:[39m [33mHealthService[39m[33m;[39m
+     [90m    |[39m                        [31m[1m^[22m[39m
+     [90m  8 |[39m   [36mlet[39m vectorProvider[33m:[39m jest[33m.[39m[33mMocked[39m[33m<[39m[33mIVectorProvider[39m[33m>[39m[33m;[39m
+     [90m  9 |[39m   [36mlet[39m configService[33m:[39m jest[33m.[39m[33mMocked[39m[33m<[39m[33mConfigService[39m[33m>[39m[33m;[39m
+     [90m 10 |[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/__tests__/health.service.spec.ts[39m[0m[2m:7:24)[22m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/app.module.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/app.module.ts:16:1][39m
+[31m 13 |  * Vector Database Application Module[39m
+[31m 14 |  * Main module for the ORION Vector Database Service[39m
+[31m 15 |  */[39m
+[31m 16 | @Module({[39m
+[31m    : ^[39m
+[31m 17 |   imports: [[39m
+[31m 18 |     ConfigModule.forRoot({[39m
+[31m 19 |       load: [vectorDbConfig],[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/app.module.ts:16:1][39m
+[31m 13 |  * Vector Database Application Module[39m
+[31m 14 |  * Main module for the ORION Vector Database Service[39m
+[31m 15 |  */[39m
+[31m 16 | @Module({[39m
+[31m    : ^[39m
+[31m 17 |   imports: [[39m
+[31m 18 |     ConfigModule.forRoot({[39m
+[31m 19 |       load: [vectorDbConfig],[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/health.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/health.service.ts:10:1][39m
+[31m  7 |  * Health Service[39m
+[31m  8 |  * Monitors the health and status of the vector database service[39m
+[31m  9 |  */[39m
+[31m 10 | @Injectable()[39m
+[31m    : ^[39m
+[31m 11 | export class HealthService {[39m
+[31m 12 |   private readonly logger = new Logger(HealthService.name);[39m
+[31m 13 |   private readonly startTime: number;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/health.service.ts:10:1][39m
+[31m  7 |  * Health Service[39m
+[31m  8 |  * Monitors the health and status of the vector database service[39m
+[31m  9 |  */[39m
+[31m 10 | @Injectable()[39m
+[31m    : ^[39m
+[31m 11 | export class HealthService {[39m
+[31m 12 |   private readonly logger = new Logger(HealthService.name);[39m
+[31m 13 |   private readonly startTime: number;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/collection.controller.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/collection.controller.ts:25:1][39m
+[31m 22 |  * Collection Controller[39m
+[31m 23 |  * Manages vector collections (namespaces)[39m
+[31m 24 |  */[39m
+[31m 25 | @ApiTags('Collections')[39m
+[31m    : ^[39m
+[31m 26 | @Controller('api/vectors/collections')[39m
+[31m 27 | export class CollectionController {[39m
+[31m 28 |   private readonly logger = new Logger(CollectionController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/collection.controller.ts:25:1][39m
+[31m 22 |  * Collection Controller[39m
+[31m 23 |  * Manages vector collections (namespaces)[39m
+[31m 24 |  */[39m
+[31m 25 | @ApiTags('Collections')[39m
+[31m    : ^[39m
+[31m 26 | @Controller('api/vectors/collections')[39m
+[31m 27 | export class CollectionController {[39m
+[31m 28 |   private readonly logger = new Logger(CollectionController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/vector.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/vector.service.ts:21:1][39m
+[31m 18 |  * Vector Service[39m
+[31m 19 |  * Handles all vector operations including upsert, search, and deletion[39m
+[31m 20 |  */[39m
+[31m 21 | @Injectable()[39m
+[31m    : ^[39m
+[31m 22 | export class VectorService {[39m
+[31m 23 |   private readonly logger = new Logger(VectorService.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/vector.service.ts:21:1][39m
+[31m 18 |  * Vector Service[39m
+[31m 19 |  * Handles all vector operations including upsert, search, and deletion[39m
+[31m 20 |  */[39m
+[31m 21 | @Injectable()[39m
+[31m    : ^[39m
+[31m 22 | export class VectorService {[39m
+[31m 23 |   private readonly logger = new Logger(VectorService.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/config/vector-db.config.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/config/vector-db.config.ts:22:1][39m
+[31m 19 |  * Vector Database Configuration with validation[39m
+[31m 20 |  */[39m
+[31m 21 | export class VectorDbConfig {[39m
+[31m 22 |   @IsEnum(VectorDbProvider)[39m
+[31m    :   ^[39m
+[31m 23 |   provider: VectorDbProvider = VectorDbProvider.POSTGRES;[39m
+[31m 24 | [39m
+[31m 25 |   @IsString()[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/config/vector-db.config.ts:22:1][39m
+[31m 19 |  * Vector Database Configuration with validation[39m
+[31m 20 |  */[39m
+[31m 21 | export class VectorDbConfig {[39m
+[31m 22 |   @IsEnum(VectorDbProvider)[39m
+[31m    :   ^[39m
+[31m 23 |   provider: VectorDbProvider = VectorDbProvider.POSTGRES;[39m
+[31m 24 | [39m
+[31m 25 |   @IsString()[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/create-collection.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/create-collection.dto.ts:8:1][39m
+[31m  5 |  * DTO for creating a new vector collection[39m
+[31m  6 |  */[39m
+[31m  7 | export class CreateCollectionDto {[39m
+[31m  8 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m  9 |     description: 'Unique name for the collection',[39m
+[31m 10 |     example: 'documents',[39m
+[31m 11 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/create-collection.dto.ts:8:1][39m
+[31m  5 |  * DTO for creating a new vector collection[39m
+[31m  6 |  */[39m
+[31m  7 | export class CreateCollectionDto {[39m
+[31m  8 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m  9 |     description: 'Unique name for the collection',[39m
+[31m 10 |     example: 'documents',[39m
+[31m 11 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/health.controller.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/health.controller.ts:10:1][39m
+[31m  7 |  * Health Controller[39m
+[31m  8 |  * Provides health check endpoints for monitoring[39m
+[31m  9 |  */[39m
+[31m 10 | @ApiTags('Health')[39m
+[31m    : ^[39m
+[31m 11 | @Controller('api/health')[39m
+[31m 12 | export class HealthController {[39m
+[31m 13 |   private readonly logger = new Logger(HealthController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/health.controller.ts:10:1][39m
+[31m  7 |  * Health Controller[39m
+[31m  8 |  * Provides health check endpoints for monitoring[39m
+[31m  9 |  */[39m
+[31m 10 | @ApiTags('Health')[39m
+[31m    : ^[39m
+[31m 11 | @Controller('api/health')[39m
+[31m 12 | export class HealthController {[39m
+[31m 13 |   private readonly logger = new Logger(HealthController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/vector.controller.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/vector.controller.ts:32:1][39m
+[31m 29 |  * Vector Controller[39m
+[31m 30 |  * Handles vector operations: upsert, search, delete[39m
+[31m 31 |  */[39m
+[31m 32 | @ApiTags('Vectors')[39m
+[31m    : ^[39m
+[31m 33 | @Controller('api/vectors')[39m
+[31m 34 | export class VectorController {[39m
+[31m 35 |   private readonly logger = new Logger(VectorController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/controllers/vector.controller.ts:32:1][39m
+[31m 29 |  * Vector Controller[39m
+[31m 30 |  * Handles vector operations: upsert, search, delete[39m
+[31m 31 |  */[39m
+[31m 32 | @ApiTags('Vectors')[39m
+[31m    : ^[39m
+[31m 33 | @Controller('api/vectors')[39m
+[31m 34 | export class VectorController {[39m
+[31m 35 |   private readonly logger = new Logger(VectorController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/upsert-vector.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/upsert-vector.dto.ts:8:1][39m
+[31m  5 |  * DTO for upserting a single vector[39m
+[31m  6 |  */[39m
+[31m  7 | export class UpsertVectorDto {[39m
+[31m  8 |   @ApiPropertyOptional({[39m
+[31m    :   ^[39m
+[31m  9 |     description: 'Optional ID for the vector (generated if not provided)',[39m
+[31m 10 |     example: '550e8400-e29b-41d4-a716-446655440000',[39m
+[31m 11 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/upsert-vector.dto.ts:8:1][39m
+[31m  5 |  * DTO for upserting a single vector[39m
+[31m  6 |  */[39m
+[31m  7 | export class UpsertVectorDto {[39m
+[31m  8 |   @ApiPropertyOptional({[39m
+[31m    :   ^[39m
+[31m  9 |     description: 'Optional ID for the vector (generated if not provided)',[39m
+[31m 10 |     example: '550e8400-e29b-41d4-a716-446655440000',[39m
+[31m 11 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/search-vector.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/search-vector.dto.ts:9:1][39m
+[31m  6 |  * DTO for vector similarity search[39m
+[31m  7 |  */[39m
+[31m  8 | export class SearchVectorDto {[39m
+[31m  9 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 10 |     description: 'Collection name to search in',[39m
+[31m 11 |     example: 'documents',[39m
+[31m 12 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/search-vector.dto.ts:9:1][39m
+[31m  6 |  * DTO for vector similarity search[39m
+[31m  7 |  */[39m
+[31m  8 | export class SearchVectorDto {[39m
+[31m  9 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 10 |     description: 'Collection name to search in',[39m
+[31m 11 |     example: 'documents',[39m
+[31m 12 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/filters/validation-exception.filter.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/filters/validation-exception.filter.ts:14:1][39m
+[31m 11 |  * Validation exception filter[39m
+[31m 12 |  * Handles class-validator validation errors with detailed messages[39m
+[31m 13 |  */[39m
+[31m 14 | @Catch(BadRequestException)[39m
+[31m    : ^[39m
+[31m 15 | export class ValidationExceptionFilter implements ExceptionFilter {[39m
+[31m 16 |   private readonly logger = new Logger(ValidationExceptionFilter.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/filters/validation-exception.filter.ts:14:1][39m
+[31m 11 |  * Validation exception filter[39m
+[31m 12 |  * Handles class-validator validation errors with detailed messages[39m
+[31m 13 |  */[39m
+[31m 14 | @Catch(BadRequestException)[39m
+[31m    : ^[39m
+[31m 15 | export class ValidationExceptionFilter implements ExceptionFilter {[39m
+[31m 16 |   private readonly logger = new Logger(ValidationExceptionFilter.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/vector-response.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/vector-response.dto.ts:7:1][39m
+[31m  4 |  * Response DTO for a vector search result[39m
+[31m  5 |  */[39m
+[31m  6 | export class VectorResultDto {[39m
+[31m  7 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m  8 |     description: 'Vector ID',[39m
+[31m  9 |     example: '550e8400-e29b-41d4-a716-446655440000',[39m
+[31m 10 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/dto/vector-response.dto.ts:7:1][39m
+[31m  4 |  * Response DTO for a vector search result[39m
+[31m  5 |  */[39m
+[31m  6 | export class VectorResultDto {[39m
+[31m  7 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m  8 |     description: 'Vector ID',[39m
+[31m  9 |     example: '550e8400-e29b-41d4-a716-446655440000',[39m
+[31m 10 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/filters/http-exception.filter.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/filters/http-exception.filter.ts:15:1][39m
+[31m 12 |  * Global HTTP exception filter[39m
+[31m 13 |  * Provides consistent error response format[39m
+[31m 14 |  */[39m
+[31m 15 | @Catch(HttpException)[39m
+[31m    : ^[39m
+[31m 16 | export class HttpExceptionFilter implements ExceptionFilter {[39m
+[31m 17 |   private readonly logger = new Logger(HttpExceptionFilter.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/filters/http-exception.filter.ts:15:1][39m
+[31m 12 |  * Global HTTP exception filter[39m
+[31m 13 |  * Provides consistent error response format[39m
+[31m 14 |  */[39m
+[31m 15 | @Catch(HttpException)[39m
+[31m    : ^[39m
+[31m 16 | export class HttpExceptionFilter implements ExceptionFilter {[39m
+[31m 17 |   private readonly logger = new Logger(HttpExceptionFilter.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/providers/postgres-vector.provider.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/providers/postgres-vector.provider.ts:18:1][39m
+[31m 15 |  * PostgreSQL + pgvector implementation of the vector provider[39m
+[31m 16 |  * Uses Prisma for database operations and pgvector for similarity search[39m
+[31m 17 |  */[39m
+[31m 18 | @Injectable()[39m
+[31m    : ^[39m
+[31m 19 | export class PostgresVectorProvider[39m
+[31m 20 |   implements IVectorProvider, OnModuleInit, OnModuleDestroy[39m
+[31m 21 | {[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/providers/postgres-vector.provider.ts:18:1][39m
+[31m 15 |  * PostgreSQL + pgvector implementation of the vector provider[39m
+[31m 16 |  * Uses Prisma for database operations and pgvector for similarity search[39m
+[31m 17 |  */[39m
+[31m 18 | @Injectable()[39m
+[31m    : ^[39m
+[31m 19 | export class PostgresVectorProvider[39m
+[31m 20 |   implements IVectorProvider, OnModuleInit, OnModuleDestroy[39m
+[31m 21 | {[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/collection.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/collection.service.ts:10:1][39m
+[31m  7 |  * Collection Service[39m
+[31m  8 |  * Manages vector collections (namespaces)[39m
+[31m  9 |  */[39m
+[31m 10 | @Injectable()[39m
+[31m    : ^[39m
+[31m 11 | export class CollectionService {[39m
+[31m 12 |   private readonly logger = new Logger(CollectionService.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/vector-db/src/app/services/collection.service.ts:10:1][39m
+[31m  7 |  * Collection Service[39m
+[31m  8 |  * Manages vector collections (namespaces)[39m
+[31m  9 |  */[39m
+[31m 10 | @Injectable()[39m
+[31m    : ^[39m
+[31m 11 | export class CollectionService {[39m
+[31m 12 |   private readonly logger = new Logger(CollectionService.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |       0 |        0 |       0 |       0 | [31;1m                 [0m 
+----------|---------|----------|---------|---------|-------------------
+[1mTest Suites: [22m[1m[31m7 failed[39m[22m, 7 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        2.388 s
+[2mRan all test suites[22m[2m.[22m

@@ -21,11 +21,7 @@ import { HealthController } from './controllers/health.controller';
       cache: true,
     }),
   ],
-  controllers: [
-    VectorController,
-    CollectionController,
-    HealthController,
-  ],
+  controllers: [VectorController, CollectionController, HealthController],
   providers: [
     // Vector provider (can be swapped for Pinecone, Qdrant, etc.)
     PostgresVectorProvider,
@@ -37,10 +33,6 @@ import { HealthController } from './controllers/health.controller';
     CollectionService,
     HealthService,
   ],
-  exports: [
-    VectorService,
-    CollectionService,
-    HealthService,
-  ],
+  exports: [VectorService, CollectionService, HealthService],
 })
 export class AppModule {}

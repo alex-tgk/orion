@@ -1,0 +1,526 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m webhooks [39m[27m[0m [2mpackages/webhooks/src/app/services/__tests__/[22m[1mwebhook-delivery.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/webhooks/src/app/services/__tests__/webhook-delivery.service.spec.ts[0m:[93m6[0m:[93m73[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.
+
+    [7m6[0m import { Webhook, WebhookDelivery, DeliveryStatus, WebhookStatus } from '@prisma/client/webhooks';
+    [7m [0m [91m                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/webhooks/src/app/services/__tests__/webhook-delivery.service.spec.ts[0m:[93m16[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m16[0m   let configService: jest.Mocked<ConfigService>;
+    [7m  [0m [91m      ~~~~~~~~~~~~~[0m
+    [96mpackages/webhooks/src/app/services/__tests__/webhook-delivery.service.spec.ts[0m:[93m252[0m:[93m13[0m - [91merror[0m[90m TS6133: [0m'result' is declared but its value is never read.
+
+    [7m252[0m       const result = await service.retryDelivery('delivery-123');
+    [7m   [0m [91m            ~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m webhooks [39m[27m[0m [2mpackages/webhooks/src/app/[22m[1mwebhooks.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/webhooks/src/app/webhooks.controller.spec.ts[0m:[93m6[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.
+
+    [7m6[0m import { WebhookStatus } from '@prisma/client/webhooks';
+    [7m [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m webhooks [39m[27m[0m [2mpackages/webhooks/src/app/services/__tests__/[22m[1msignature.service.spec.ts[22m
+  SignatureService
+    [32m✓[39m [2mshould be defined (15 ms)[22m
+    generateSignature
+      [32m✓[39m [2mshould generate a valid HMAC-SHA256 signature (4 ms)[22m
+      [32m✓[39m [2mshould generate same signature for same payload and secret (2 ms)[22m
+      [32m✓[39m [2mshould generate different signatures for different payloads (1 ms)[22m
+      [32m✓[39m [2mshould generate different signatures for different secrets (2 ms)[22m
+    verifySignature
+      [32m✓[39m [2mshould verify valid signature (1 ms)[22m
+      [32m✓[39m [2mshould reject invalid signature (1 ms)[22m
+      [32m✓[39m [2mshould reject signature with wrong secret (2 ms)[22m
+      [32m✓[39m [2mshould reject signature with modified payload (1 ms)[22m
+      [32m✓[39m [2mshould handle empty payloads (1 ms)[22m
+      [32m✓[39m [2mshould handle complex nested payloads (1 ms)[22m
+    generateSecret
+      [32m✓[39m [2mshould generate a random secret (2 ms)[22m
+      [32m✓[39m [2mshould generate different secrets each time (6 ms)[22m
+      [32m✓[39m [2mshould generate secret of specified length (2 ms)[22m
+      [32m✓[39m [2mshould generate 64 character secret by default (1 ms)[22m
+    createWebhookPayload
+      [32m✓[39m [2mshould create properly formatted webhook payload (3 ms)[22m
+      [32m✓[39m [2mshould include valid ISO timestamp (1 ms)[22m
+      [32m✓[39m [2mshould handle empty data object (1 ms)[22m
+      [32m✓[39m [2mshould handle complex data object (1 ms)[22m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/filters/validation-exception.filter.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/filters/validation-exception.filter.ts[0m:[93m15[0m:[93m20[0m - [91merror[0m[90m TS6133: [0m'logger' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m15[0m   private readonly logger = new Logger(ValidationExceptionFilter.name);[39m
+[31m[7m  [0m [91m                   ~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/dto/delivery-response.dto.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m2[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m2[0m import { DeliveryStatus } from '@prisma/client/webhooks';[39m
+[31m[7m [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m12[0m   id: string;[39m
+[31m[7m  [0m [91m  ~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'webhookId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m18[0m   webhookId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'eventId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m24[0m   eventId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m30[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'eventType' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m30[0m   eventType: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m36[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'eventTimestamp' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m36[0m   eventTimestamp: Date;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m48[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'signature' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m48[0m   signature: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m61[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'attempts' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m61[0m   attempts: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m67[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'maxAttempts' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m67[0m   maxAttempts: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m109[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'createdAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m109[0m   createdAt: Date;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m126[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'deliveries' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m126[0m   deliveries: DeliveryResponseDto[];[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m132[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'total' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m132[0m   total: number;[39m
+[31m[7m   [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m138[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'page' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m138[0m   page: number;[39m
+[31m[7m   [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/delivery-response.dto.ts[0m:[93m144[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'limit' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m144[0m   limit: number;[39m
+[31m[7m   [0m [91m  ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/dto/webhook-response.dto.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m2[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m2[0m import { WebhookStatus } from '@prisma/client/webhooks';[39m
+[31m[7m [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m12[0m   id: string;[39m
+[31m[7m  [0m [91m  ~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'userId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m18[0m   userId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'url' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m24[0m   url: string;[39m
+[31m[7m  [0m [91m  ~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m31[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'events' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m31[0m   events: string[];[39m
+[31m[7m  [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m50[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'isActive' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m50[0m   isActive: boolean;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m56[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'failureCount' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m56[0m   failureCount: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m62[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'consecutiveFailures' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m62[0m   consecutiveFailures: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m80[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'successCount' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m80[0m   successCount: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m98[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'timeout' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m98[0m   timeout: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m104[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'retryAttempts' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m104[0m   retryAttempts: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m110[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'headers' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m110[0m   headers: Record<string, string>;[39m
+[31m[7m   [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m117[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'tags' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m117[0m   tags: string[];[39m
+[31m[7m   [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m123[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'metadata' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m123[0m   metadata: Record<string, any>;[39m
+[31m[7m   [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m129[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'createdAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m129[0m   createdAt: Date;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m135[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'updatedAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m135[0m   updatedAt: Date;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m146[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'webhooks' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m146[0m   webhooks: WebhookResponseDto[];[39m
+[31m[7m   [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m152[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'total' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m152[0m   total: number;[39m
+[31m[7m   [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m158[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'page' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m158[0m   page: number;[39m
+[31m[7m   [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/webhook-response.dto.ts[0m:[93m164[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'limit' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m164[0m   limit: number;[39m
+[31m[7m   [0m [91m  ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/dto/test-webhook.dto.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/dto/test-webhook.dto.ts[0m:[93m34[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'deliveryId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m34[0m   deliveryId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/test-webhook.dto.ts[0m:[93m40[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'eventId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m40[0m   eventId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/test-webhook.dto.ts[0m:[93m46[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'success' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m46[0m   success: boolean;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/test-webhook.dto.ts[0m:[93m52[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'message' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m52[0m   message: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/dto/update-webhook.dto.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/dto/update-webhook.dto.ts[0m:[93m16[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m16[0m import { WebhookStatus } from '@prisma/client/webhooks';[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/config/webhook.config.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m2[0m:[93m37[0m - [91merror[0m[90m TS6133: [0m'IsUrl' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m2[0m import { IsInt, IsString, Min, Max, IsUrl } from 'class-validator';[39m
+[31m[7m [0m [91m                                    ~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m13[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'maxRetryAttempts' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m13[0m   maxRetryAttempts: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'retryDelayMs' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m18[0m   retryDelayMs: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m23[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'retryMultiplier' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m23[0m   retryMultiplier: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m28[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'timeoutMs' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m28[0m   timeoutMs: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m33[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'maxWebhooksPerUser' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m33[0m   maxWebhooksPerUser: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m38[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'rateLimitPerMinute' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m38[0m   rateLimitPerMinute: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m41[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'rabbitmqUrl' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m41[0m   rabbitmqUrl: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m44[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'rabbitmqExchange' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m44[0m   rabbitmqExchange: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m47[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'rabbitmqQueue' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m47[0m   rabbitmqQueue: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m50[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'rabbitmqRoutingKey' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m50[0m   rabbitmqRoutingKey: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m53[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'databaseUrl' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m53[0m   databaseUrl: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m56[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'redisHost' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m56[0m   redisHost: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m61[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'redisPort' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m61[0m   redisPort: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/config/webhook.config.ts[0m:[93m66[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'redisDb' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m66[0m   redisDb: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/dto/create-webhook.dto.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/dto/create-webhook.dto.ts[0m:[93m27[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'url' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m27[0m   url: string;[39m
+[31m[7m  [0m [91m  ~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/dto/create-webhook.dto.ts[0m:[93m40[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'events' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m40[0m   events: string[];[39m
+[31m[7m  [0m [91m  ~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/dto/query-params.dto.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/dto/query-params.dto.ts[0m:[93m11[0m:[93m47[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m11[0m import { WebhookStatus, DeliveryStatus } from '@prisma/client/webhooks';[39m
+[31m[7m  [0m [91m                                              ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/webhooks.controller.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/webhooks.controller.ts[0m:[93m43[0m:[93m20[0m - [91merror[0m[90m TS6133: [0m'logger' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m43[0m   private readonly logger = new Logger(WebhooksController.name);[39m
+[31m[7m  [0m [91m                   ~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/services/webhook.repository.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m2[0m:[93m114[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m2[0m import { PrismaClient, Webhook, WebhookDelivery, WebhookLog, WebhookStatus, DeliveryStatus, WebhookAction } from '@prisma/client/webhooks';[39m
+[31m[7m [0m [91m                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m13[0m:[93m16[0m - [91merror[0m[90m TS2339: [0mProperty '$connect' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m13[0m     await this.$connect();[39m
+[31m[7m  [0m [91m               ~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m18[0m:[93m16[0m - [91merror[0m[90m TS2339: [0mProperty '$disconnect' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m18[0m     await this.$disconnect();[39m
+[31m[7m  [0m [91m               ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m38[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m38[0m     return this.webhook.create({[39m
+[31m[7m  [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m59[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m59[0m     return this.webhook.findFirst({[39m
+[31m[7m  [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m92[0m:[93m12[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m92[0m       this.webhook.findMany({[39m
+[31m[7m  [0m [91m           ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m98[0m:[93m12[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m98[0m       this.webhook.count({ where }),[39m
+[31m[7m  [0m [91m           ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m112[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m112[0m     return this.webhook.update({[39m
+[31m[7m   [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m122[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m122[0m     return this.webhook.delete({[39m
+[31m[7m   [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m131[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m131[0m     return this.webhook.findMany({[39m
+[31m[7m   [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m149[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m149[0m     return this.webhook.update({[39m
+[31m[7m   [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m164[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m164[0m     return this.webhook.update({[39m
+[31m[7m   [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m179[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhook' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m179[0m     return this.webhook.count({[39m
+[31m[7m   [0m [91m                ~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m196[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m196[0m     return this.webhookDelivery.create({[39m
+[31m[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m229[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m229[0m     return this.webhookDelivery.update({[39m
+[31m[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m239[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m239[0m     return this.webhookDelivery.findUnique({[39m
+[31m[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m267[0m:[93m12[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m267[0m       this.webhookDelivery.findMany({[39m
+[31m[7m   [0m [91m           ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m273[0m:[93m12[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m273[0m       this.webhookDelivery.count({ where }),[39m
+[31m[7m   [0m [91m           ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m283[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m283[0m     return this.webhookDelivery.findMany({[39m
+[31m[7m   [0m [91m                ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m287[0m:[93m20[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m287[0m           lt: this.webhookDelivery.fields.maxAttempts,[39m
+[31m[7m   [0m [91m                   ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m312[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookLog' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m312[0m     return this.webhookLog.create({[39m
+[31m[7m   [0m [91m                ~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook.repository.ts[0m:[93m330[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'webhookDelivery' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m330[0m     const count = await this.webhookDelivery.count({[39m
+[31m[7m   [0m [91m                             ~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/services/event-consumer.service.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m38[0m:[93m7[0m - [91merror[0m[90m TS2739: [0mType 'ChannelModel' is missing the following properties from type 'Connection': serverProperties, expectSocketClose, sentSinceLastCheck, recvSinceLastCheck, sendMessage[39m
+[31m[39m
+[31m[7m38[0m       this.connection = await amqp.connect(rabbitmqUrl);[39m
+[31m[7m  [0m [91m      ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m38[0m:[93m44[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string | Connect'.[39m
+[31m  Type 'undefined' is not assignable to type 'string | Connect'.[39m
+[31m[39m
+[31m[7m38[0m       this.connection = await amqp.connect(rabbitmqUrl);[39m
+[31m[7m  [0m [91m                                           ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m39[0m:[93m28[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m39[0m       this.channel = await this.connection.createChannel();[39m
+[31m[7m  [0m [91m                           ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m39[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'createChannel' does not exist on type 'Connection'.[39m
+[31m[39m
+[31m[7m39[0m       this.channel = await this.connection.createChannel();[39m
+[31m[7m  [0m [91m                                           ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m42[0m:[93m13[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m42[0m       await this.channel.assertExchange(exchange, 'topic', { durable: true });[39m
+[31m[7m  [0m [91m            ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m42[0m:[93m41[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.[39m
+[31m  Type 'undefined' is not assignable to type 'string'.[39m
+[31m[39m
+[31m[7m42[0m       await this.channel.assertExchange(exchange, 'topic', { durable: true });[39m
+[31m[7m  [0m [91m                                        ~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m45[0m:[93m13[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m45[0m       await this.channel.assertQueue(queue, { durable: true });[39m
+[31m[7m  [0m [91m            ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m45[0m:[93m38[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.[39m
+[31m  Type 'undefined' is not assignable to type 'string'.[39m
+[31m[39m
+[31m[7m45[0m       await this.channel.assertQueue(queue, { durable: true });[39m
+[31m[7m  [0m [91m                                     ~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m48[0m:[93m13[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m48[0m       await this.channel.bindQueue(queue, exchange, routingKey);[39m
+[31m[7m  [0m [91m            ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m48[0m:[93m36[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.[39m
+[31m  Type 'undefined' is not assignable to type 'string'.[39m
+[31m[39m
+[31m[7m48[0m       await this.channel.bindQueue(queue, exchange, routingKey);[39m
+[31m[7m  [0m [91m                                   ~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m51[0m:[93m13[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m51[0m       await this.channel.prefetch(10);[39m
+[31m[7m  [0m [91m            ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m58[0m:[93m13[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m58[0m       await this.channel.consume([39m
+[31m[7m  [0m [91m            ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m59[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.[39m
+[31m  Type 'undefined' is not assignable to type 'string'.[39m
+[31m[39m
+[31m[7m59[0m         queue,[39m
+[31m[7m  [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m71[0m:[93m7[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m71[0m       this.connection.on('error', (error) => {[39m
+[31m[7m  [0m [91m      ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m75[0m:[93m7[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.[39m
+[31m[39m
+[31m[7m75[0m       this.connection.on('close', () => {[39m
+[31m[7m  [0m [91m      ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/event-consumer.service.ts[0m:[93m148[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'close' does not exist on type 'Connection'.[39m
+[31m[39m
+[31m[7m148[0m       await this.connection?.close();[39m
+[31m[7m   [0m [91m                             ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/services/health.service.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/services/health.service.ts[0m:[93m49[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty '$queryRaw' does not exist on type 'WebhookRepository'.[39m
+[31m[39m
+[31m[7m49[0m       await this.repository.$queryRaw`SELECT 1`;[39m
+[31m[7m  [0m [91m                            ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/services/webhook-delivery.service.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/services/webhook-delivery.service.ts[0m:[93m3[0m:[93m73[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { Webhook, WebhookDelivery, DeliveryStatus, WebhookAction } from '@prisma/client/webhooks';[39m
+[31m[7m [0m [91m                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook-delivery.service.ts[0m:[93m14[0m:[93m20[0m - [91merror[0m[90m TS6133: [0m'maxRetryAttempts' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m14[0m   private readonly maxRetryAttempts: number;[39m
+[31m[7m  [0m [91m                   ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhook-delivery.service.ts[0m:[93m344[0m:[93m13[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m344[0m             error.message,[39m
+[31m[7m   [0m [91m            ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/webhooks/src/app/services/webhooks.service.ts[39m
+[31mERROR: [96mpackages/webhooks/src/app/services/webhooks.service.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'ForbiddenException' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m6[0m   ForbiddenException,[39m
+[31m[7m [0m [91m  ~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhooks.service.ts[0m:[93m9[0m:[93m55[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/client/webhooks' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m9[0m import { Webhook, WebhookStatus, WebhookAction } from '@prisma/client/webhooks';[39m
+[31m[7m [0m [91m                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/webhooks/src/app/services/webhooks.service.ts[0m:[93m274[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m274[0m         error: error.message,[39m
+[31m[7m   [0m [91m               ~~~~~[0m[39m
+[31mSTACK: [39m
+---------------------------|---------|----------|---------|---------|-------------------
+File                       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------|---------|----------|---------|---------|-------------------
+[31;1mAll files                 [0m | [31;1m     25[0m | [31;1m   27.27[0m | [31;1m  45.45[0m | [31;1m  26.31[0m | [31;1m                 [0m 
+[31;1m app                      [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  app.controller.ts       [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-10             [0m 
+[31;1m  app.module.ts           [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-34             [0m 
+[31;1m  app.service.ts          [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-6              [0m 
+[31;1m app/config               [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  index.ts                [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-2              [0m 
+[31;1m app/dto                  [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  index.ts                [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-6              [0m 
+[31;1m app/filters              [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  http-exception.filter.ts[0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-48             [0m 
+[33;1m app/services             [0m | [33;1m  73.91[0m | [32;1m     100[0m | [32;1m    100[0m | [33;1m  71.42[0m | [31;1m                 [0m 
+[31;1m  index.ts                [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-6              [0m 
+[32;1m  signature.service.ts    [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                 [0m 
+---------------------------|---------|----------|---------|---------|-------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 25%[39m[22m
+[1m[31mJest: "global" coverage threshold for branches (80%) not met: 27.27%[39m[22m
+[1m[31mJest: "global" coverage threshold for lines (80%) not met: 26.31%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 45.45%[39m[22m
+[1mTest Suites: [22m[1m[31m2 failed[39m[22m, [1m[32m1 passed[39m[22m, 3 total
+[1mTests:       [22m[1m[32m19 passed[39m[22m, 19 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        9.45 s
+[2mRan all test suites[22m[2m.[22m

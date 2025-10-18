@@ -1,0 +1,104 @@
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mflag-evaluation.service.spec.ts[22m
+  FlagEvaluationService
+    evaluate - basic flags
+      [32m✓[39m [2mshould return disabled if flag is globally disabled (11 ms)[22m
+      [32m✓[39m [2mshould return enabled for 100% rollout (2 ms)[22m
+      [32m✓[39m [2mshould return disabled for 0% rollout (2 ms)[22m
+    evaluate - targeting
+      [32m✓[39m [2mshould match user target (2 ms)[22m
+      [32m✓[39m [2mshould match role target (1 ms)[22m
+      [32m✓[39m [2mshould match email target (2 ms)[22m
+      [32m✓[39m [2mshould respect target priority (1 ms)[22m
+    evaluate - multivariate
+      [32m✓[39m [2mshould return a variant for multivariate flag (2 ms)[22m
+      [32m✓[39m [2mshould consistently assign same variant to same user (1 ms)[22m
+    evaluate - rollout percentage
+      [32m✓[39m [2mshould use consistent hashing for rollout (2 ms)[22m
+      [32m✓[39m [2mshould distribute users across rollout percentage (2 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mfeature-flags.service.spec.ts[22m
+  FeatureFlagsService
+    findAll
+      [32m✓[39m [2mshould return all feature flags (14 ms)[22m
+    findByKey
+      [32m✓[39m [2mshould return flag from cache if available (3 ms)[22m
+      [32m✓[39m [2mshould fetch from database and cache if not in cache (3 ms)[22m
+      [32m✓[39m [2mshould throw NotFoundException if flag not found (14 ms)[22m
+    create
+      [32m✓[39m [2mshould create a new feature flag (2 ms)[22m
+    update
+      [32m✓[39m [2mshould update a feature flag (2 ms)[22m
+    toggle
+      [32m✓[39m [2mshould toggle flag from disabled to enabled (1 ms)[22m
+    delete
+      [32m✓[39m [2mshould soft delete a feature flag (2 ms)[22m
+    evaluate
+      [32m✓[39m [2mshould evaluate a feature flag (2 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m feature-flags [39m[27m[0m [2mpackages/feature-flags/src/__tests__/[22m[1mfeature-flags.controller.spec.ts[22m
+  FeatureFlagsController
+    findAll
+      [32m✓[39m [2mshould return an array of flags (28 ms)[22m
+      [32m✓[39m [2mshould include deleted flags when requested (2 ms)[22m
+    findOne
+      [32m✓[39m [2mshould return a single flag (3 ms)[22m
+    create
+      [32m✓[39m [2mshould create a new flag (2 ms)[22m
+    update
+      [32m✓[39m [2mshould update a flag (2 ms)[22m
+    toggle
+      [32m✓[39m [2mshould toggle a flag (2 ms)[22m
+    delete
+      [32m✓[39m [2mshould delete a flag (2 ms)[22m
+    evaluate
+      [32m✓[39m [2mshould evaluate a flag (2 ms)[22m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/feature-flags/src/app/gateways/flags.gateway.ts[39m
+[31mERROR: [96mpackages/feature-flags/src/app/gateways/flags.gateway.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'server' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m24[0m   server: Server;[39m
+[31m[7m  [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/feature-flags/src/app/gateways/flags.gateway.ts[0m:[93m103[0m:[93m19[0m - [91merror[0m[90m TS6133: [0m'client' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m103[0m   async handleGet(client: Socket, payload: { key: string }) {[39m
+[31m[7m   [0m [91m                  ~~~~~~[0m[39m
+[31m[96mpackages/feature-flags/src/app/gateways/flags.gateway.ts[0m:[93m117[0m:[93m5[0m - [91merror[0m[90m TS6133: [0m'client' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m117[0m     client: Socket,[39m
+[31m[7m   [0m [91m    ~~~~~~[0m[39m
+[31mSTACK: [39m
+------------------------------|---------|----------|---------|---------|-------------------------------------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                               
+------------------------------|---------|----------|---------|---------|-------------------------------------------------
+[33;1mAll files                    [0m | [33;1m   58.4[0m | [31;1m   38.57[0m | [33;1m     50[0m | [33;1m  57.82[0m | [31;1m                                               [0m 
+[31;1m app                         [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                                               [0m 
+[31;1m  feature-flags.module.ts    [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-37                                           [0m 
+[32;1m app/controllers             [0m | [32;1m   90.9[0m | [32;1m     100[0m | [33;1m  72.72[0m | [32;1m  90.32[0m | [31;1m                                               [0m 
+[32;1m  feature-flags.controller.ts[0m | [32;1m   90.9[0m | [32;1m     100[0m | [33;1m  72.72[0m | [32;1m  90.32[0m | [31;1m86,97,120                                      [0m 
+[31;1m app/decorators              [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                                               [0m 
+[31;1m  feature-flag.decorator.ts  [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-46                                           [0m 
+[32;1m app/dto                     [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[32;1m  create-flag.dto.ts         [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[32;1m  create-target.dto.ts       [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[32;1m  create-variant.dto.ts      [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[32;1m  evaluate-flag.dto.ts       [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[32;1m  update-flag.dto.ts         [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[31;1m app/guards                  [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                                               [0m 
+[31;1m  feature-flag.guard.ts      [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-98                                           [0m 
+[32;1m app/interfaces              [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[32;1m  feature-flag.interface.ts  [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                                               [0m 
+[33;1m app/services                [0m | [33;1m  53.45[0m | [31;1m   43.63[0m | [31;1m  44.73[0m | [33;1m   51.2[0m | [31;1m                                               [0m 
+[33;1m  feature-flags.service.ts   [0m | [33;1m  77.77[0m | [33;1m      50[0m | [33;1m  72.72[0m | [33;1m  77.04[0m | [31;1m219-277,295-297                                [0m 
+[31;1m  flag-audit.service.ts      [0m | [31;1m  35.71[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m     25[0m | [31;1m7-77                                           [0m 
+[31;1m  flag-cache.service.ts      [0m | [31;1m  11.53[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      8[0m | [31;1m8-124                                          [0m 
+[33;1m  flag-evaluation.service.ts [0m | [33;1m  63.63[0m | [31;1m   49.27[0m | [32;1m    100[0m | [33;1m   61.9[0m | [31;1m61,68-73,86,107-122,177-201,216,227-240,266-286[0m 
+------------------------------|---------|----------|---------|---------|-------------------------------------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 58.4%[39m[22m
+[1m[31mJest: "global" coverage threshold for branches (80%) not met: 38.57%[39m[22m
+[1m[31mJest: "global" coverage threshold for lines (80%) not met: 57.82%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 50%[39m[22m
+[1mTest Suites: [22m[1m[32m3 passed[39m[22m, 3 total
+[1mTests:       [22m[1m[32m28 passed[39m[22m, 28 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        [1m[33m5.835 s[39m[22m
+[2mRan all test suites[22m[2m.[22m

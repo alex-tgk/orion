@@ -1,0 +1,748 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/providers/[22m[1mpostgres-search.provider.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/providers/postgres-search.provider.ts:14:1]
+     11 |  * PostgreSQL Full-Text Search Provider
+     12 |  * Uses PostgreSQL's tsvector and tsquery for full-text search
+     13 |  */
+     14 | @Injectable()
+        : ^
+     15 | export class PostgresSearchProvider implements ISearchProvider {
+     16 |   private readonly logger = new Logger(PostgresSearchProvider.name);
+     17 |   private prisma: PrismaClient;
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m 3 |[39m
+     [90m 4 |[39m describe([32m'PostgresSearchProvider'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 5 |[39m   [36mlet[39m provider[33m:[39m [33mPostgresSearchProvider[39m[33m;[39m
+     [90m   |[39m                                 [31m[1m^[22m[39m
+     [90m 6 |[39m
+     [90m 7 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+     [90m 8 |[39m     provider [33m=[39m [36mnew[39m [33mPostgresSearchProvider[39m()[33m;[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/providers/postgres-search.provider.spec.ts[39m[0m[2m:5:33)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1manalytics.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/analytics.service.ts:23:1]
+     20 | /**
+     21 |  * Search analytics and metrics service
+     22 |  */
+     23 | @Injectable()
+        : ^
+     24 | export class AnalyticsService {
+     25 |   private readonly logger = new Logger(AnalyticsService.name);
+     26 |   private prisma: PrismaClient;
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m 4 |[39m
+     [90m 5 |[39m describe([32m'AnalyticsService'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 6 |[39m   [36mlet[39m service[33m:[39m [33mAnalyticsService[39m[33m;[39m
+     [90m   |[39m                           [31m[1m^[22m[39m
+     [90m 7 |[39m
+     [90m 8 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+     [90m 9 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/analytics.service.spec.ts[39m[0m[2m:6:27)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1msuggestion.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/suggestion.service.ts:12:1]
+      9 | /**
+     10 |  * Auto-complete and suggestion service
+     11 |  */
+     12 | @Injectable()
+        : ^
+     13 | export class SuggestionService {
+     14 |   private readonly logger = new Logger(SuggestionService.name);
+     15 |   private prisma: PrismaClient;
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m 4 |[39m describe([32m'SuggestionService'[39m[33m,[39m () [33m=>[39m {
+     [90m 5 |[39m   [36mlet[39m service[33m:[39m [33mSuggestionService[39m[33m;[39m
+    [31m[1m>[22m[39m[90m 6 |[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 7 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+     [90m 8 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m 9 |[39m       providers[33m:[39m [[33mSuggestionService[39m][33m,[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/suggestion.service.spec.ts[39m[0m[2m:6:28)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/consumers/[22m[1mindex-event.consumer.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/consumers/index-event.consumer.ts:9:1]
+      6 |  * Event consumer for auto-indexing entities
+      7 |  * Listens to RabbitMQ events and updates search index
+      8 |  */
+      9 | @Injectable()
+        : ^
+     10 | export class IndexEventConsumer implements OnModuleInit {
+     11 |   private readonly logger = new Logger(IndexEventConsumer.name);
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m 4 |[39m
+     [90m 5 |[39m describe([32m'IndexEventConsumer'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 6 |[39m   [36mlet[39m consumer[33m:[39m [33mIndexEventConsumer[39m[33m;[39m
+     [90m   |[39m                             [31m[1m^[22m[39m
+     [90m 7 |[39m   [36mlet[39m searchService[33m:[39m jest[33m.[39m[33mMocked[39m[33m<[39m[33mSearchService[39m[33m>[39m[33m;[39m
+     [90m 8 |[39m
+     [90m 9 |[39m   beforeEach([36masync[39m () [33m=>[39m {[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/consumers/index-event.consumer.spec.ts[39m[0m[2m:6:29)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/controllers/[22m[1msearch.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/controllers/search.controller.ts:45:1]
+     42 | /**
+     43 |  * Search API Controller
+     44 |  */
+     45 | @ApiTags('search')
+        : ^
+     46 | @Controller('api/search')
+     47 | export class SearchController {
+     48 |   private readonly logger = new Logger(SearchController.name);
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m 4 |[39m [36mimport[39m { [33mSuggestionService[39m } [36mfrom[39m [32m'../services/suggestion.service'[39m[33m;[39m
+     [90m 5 |[39m [36mimport[39m { [33mAnalyticsService[39m } [36mfrom[39m [32m'../services/analytics.service'[39m[33m;[39m
+    [31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mSearchMode[39m } [36mfrom[39m [32m'../dto/search-request.dto'[39m[33m;[39m
+     [90m   |[39m                           [31m[1m^[22m[39m
+     [90m 7 |[39m
+     [90m 8 |[39m describe([32m'SearchController'[39m[33m,[39m () [33m=>[39m {
+     [90m 9 |[39m   [36mlet[39m controller[33m:[39m [33mSearchController[39m[33m;[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/controllers/search.controller.spec.ts[39m[0m[2m:6:27)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1mhealth.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/health.service.ts:28:1]
+     25 | /**
+     26 |  * Health check service for Search Service
+     27 |  */
+     28 | @Injectable()
+        : ^
+     29 | export class HealthService {
+     30 |   private readonly logger = new Logger(HealthService.name);
+     31 |   private readonly config: SearchConfiguration;
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  5 |[39m [36mimport[39m { [33mVectorSearchService[39m } [36mfrom[39m [32m'./vector-search.service'[39m[33m;[39m
+     [90m  6 |[39m
+    [31m[1m>[22m[39m[90m  7 |[39m describe([32m'HealthService'[39m[33m,[39m () [33m=>[39m {
+     [90m    |[39m                        [31m[1m^[22m[39m
+     [90m  8 |[39m   [36mlet[39m service[33m:[39m [33mHealthService[39m[33m;[39m
+     [90m  9 |[39m   [36mlet[39m searchProvider[33m:[39m jest[33m.[39m[33mMocked[39m[33m<[39m[33mISearchProvider[39m[33m>[39m[33m;[39m
+     [90m 10 |[39m   [36mlet[39m vectorSearchService[33m:[39m jest[33m.[39m[33mMocked[39m[33m<[39m[33mVectorSearchService[39m[33m>[39m[33m;[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/health.service.spec.ts[39m[0m[2m:7:24)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1msearch.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+      x Expression expected
+        ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/search.service.ts:20:1]
+     17 | /**
+     18 |  * Core search service orchestrating keyword and semantic search
+     19 |  */
+     20 | @Injectable()
+        : ^
+     21 | export class SearchService {
+     22 |   private readonly logger = new Logger(SearchService.name);
+     23 |   private readonly config: SearchConfiguration;
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+    [0m [90m  5 |[39m [36mimport[39m { [33mAnalyticsService[39m } [36mfrom[39m [32m'./analytics.service'[39m[33m;[39m
+     [90m  6 |[39m [36mimport[39m { [33mISearchProvider[39m } [36mfrom[39m [32m'../providers/search-provider.interface'[39m[33m;[39m
+    [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { [33mSearchMode[39m[33m,[39m [33mSortOrder[39m } [36mfrom[39m [32m'../dto/search-request.dto'[39m[33m;[39m
+     [90m    |[39m                        [31m[1m^[22m[39m
+     [90m  8 |[39m
+     [90m  9 |[39m describe([32m'SearchService'[39m[33m,[39m () [33m=>[39m {
+     [90m 10 |[39m   [36mlet[39m service[33m:[39m [33mSearchService[39m[33m;[39m[0m
+
+      [2mat Compiler.transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:249:29)[22m
+      [2mat transformSync ([22m../../node_modules/.pnpm/@swc+core@1.13.5_@swc+helpers@0.5.17/node_modules/@swc/core/index.js[2m:363:21)[22m
+      [2mat Object.process ([22m../../node_modules/.pnpm/@swc+jest@0.2.39_@swc+core@1.13.5_@swc+helpers@0.5.17_/node_modules/@swc/jest/index.js[2m:87:45)[22m
+      [2mat ScriptTransformer.transformSource ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:422:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:519:40)[22m
+      [2mat ScriptTransformer.transform ([22m../../node_modules/.pnpm/@jest+transform@30.2.0/node_modules/@jest/transform/build/index.js[2m:558:19)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/search.service.spec.ts[39m[0m[2m:7:24)[22m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/app.module.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/app.module.ts:18:1][39m
+[31m 15 | /**[39m
+[31m 16 |  * Search Service Application Module[39m
+[31m 17 |  */[39m
+[31m 18 | @Module({[39m
+[31m    : ^[39m
+[31m 19 |   imports: [[39m
+[31m 20 |     ConfigModule.forRoot({[39m
+[31m 21 |       isGlobal: true,[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/app.module.ts:18:1][39m
+[31m 15 | /**[39m
+[31m 16 |  * Search Service Application Module[39m
+[31m 17 |  */[39m
+[31m 18 | @Module({[39m
+[31m    : ^[39m
+[31m 19 |   imports: [[39m
+[31m 20 |     ConfigModule.forRoot({[39m
+[31m 21 |       isGlobal: true,[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/app.controller.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/app.controller.ts:8:1][39m
+[31m  5 | /**[39m
+[31m  6 |  * Root application controller[39m
+[31m  7 |  */[39m
+[31m  8 | @ApiTags('health')[39m
+[31m    : ^[39m
+[31m  9 | @Controller()[39m
+[31m 10 | export class AppController {[39m
+[31m 11 |   constructor(private readonly healthService: HealthService) {}[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/app.controller.ts:8:1][39m
+[31m  5 | /**[39m
+[31m  6 |  * Root application controller[39m
+[31m  7 |  */[39m
+[31m  8 | @ApiTags('health')[39m
+[31m    : ^[39m
+[31m  9 | @Controller()[39m
+[31m 10 | export class AppController {[39m
+[31m 11 |   constructor(private readonly healthService: HealthService) {}[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/config/search.config.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/config/search.config.ts:24:1][39m
+[31m 21 |  * Search service configuration with validation[39m
+[31m 22 |  */[39m
+[31m 23 | export class SearchConfiguration {[39m
+[31m 24 |   @IsEnum(SearchProvider)[39m
+[31m    :   ^[39m
+[31m 25 |   provider: SearchProvider = SearchProvider.POSTGRES;[39m
+[31m 26 | [39m
+[31m 27 |   @IsString()[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/config/search.config.ts:24:1][39m
+[31m 21 |  * Search service configuration with validation[39m
+[31m 22 |  */[39m
+[31m 23 | export class SearchConfiguration {[39m
+[31m 24 |   @IsEnum(SearchProvider)[39m
+[31m    :   ^[39m
+[31m 25 |   provider: SearchProvider = SearchProvider.POSTGRES;[39m
+[31m 26 | [39m
+[31m 27 |   @IsString()[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/controllers/search.controller.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/controllers/search.controller.ts:45:1][39m
+[31m 42 | /**[39m
+[31m 43 |  * Search API Controller[39m
+[31m 44 |  */[39m
+[31m 45 | @ApiTags('search')[39m
+[31m    : ^[39m
+[31m 46 | @Controller('api/search')[39m
+[31m 47 | export class SearchController {[39m
+[31m 48 |   private readonly logger = new Logger(SearchController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/controllers/search.controller.ts:45:1][39m
+[31m 42 | /**[39m
+[31m 43 |  * Search API Controller[39m
+[31m 44 |  */[39m
+[31m 45 | @ApiTags('search')[39m
+[31m    : ^[39m
+[31m 46 | @Controller('api/search')[39m
+[31m 47 | export class SearchController {[39m
+[31m 48 |   private readonly logger = new Logger(SearchController.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/suggestion.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/suggestion.dto.ts:9:1][39m
+[31m  6 |  * Request for search suggestions[39m
+[31m  7 |  */[39m
+[31m  8 | export class SuggestionRequestDto {[39m
+[31m  9 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 10 |     description: 'Partial query text for auto-complete',[39m
+[31m 11 |     example: 'micro',[39m
+[31m 12 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/suggestion.dto.ts:9:1][39m
+[31m  6 |  * Request for search suggestions[39m
+[31m  7 |  */[39m
+[31m  8 | export class SuggestionRequestDto {[39m
+[31m  9 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 10 |     description: 'Partial query text for auto-complete',[39m
+[31m 11 |     example: 'micro',[39m
+[31m 12 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/consumers/index-event.consumer.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/consumers/index-event.consumer.ts:9:1][39m
+[31m  6 |  * Event consumer for auto-indexing entities[39m
+[31m  7 |  * Listens to RabbitMQ events and updates search index[39m
+[31m  8 |  */[39m
+[31m  9 | @Injectable()[39m
+[31m    : ^[39m
+[31m 10 | export class IndexEventConsumer implements OnModuleInit {[39m
+[31m 11 |   private readonly logger = new Logger(IndexEventConsumer.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/consumers/index-event.consumer.ts:9:1][39m
+[31m  6 |  * Event consumer for auto-indexing entities[39m
+[31m  7 |  * Listens to RabbitMQ events and updates search index[39m
+[31m  8 |  */[39m
+[31m  9 | @Injectable()[39m
+[31m    : ^[39m
+[31m 10 | export class IndexEventConsumer implements OnModuleInit {[39m
+[31m 11 |   private readonly logger = new Logger(IndexEventConsumer.name);[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/suggestion.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/suggestion.service.ts:12:1][39m
+[31m  9 | /**[39m
+[31m 10 |  * Auto-complete and suggestion service[39m
+[31m 11 |  */[39m
+[31m 12 | @Injectable()[39m
+[31m    : ^[39m
+[31m 13 | export class SuggestionService {[39m
+[31m 14 |   private readonly logger = new Logger(SuggestionService.name);[39m
+[31m 15 |   private prisma: PrismaClient;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/suggestion.service.ts:12:1][39m
+[31m  9 | /**[39m
+[31m 10 |  * Auto-complete and suggestion service[39m
+[31m 11 |  */[39m
+[31m 12 | @Injectable()[39m
+[31m    : ^[39m
+[31m 13 | export class SuggestionService {[39m
+[31m 14 |   private readonly logger = new Logger(SuggestionService.name);[39m
+[31m 15 |   private prisma: PrismaClient;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/analytics.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/analytics.dto.ts:16:1][39m
+[31m 13 |  * Request for search analytics[39m
+[31m 14 |  */[39m
+[31m 15 | export class AnalyticsRequestDto {[39m
+[31m 16 |   @ApiPropertyOptional({[39m
+[31m    :   ^[39m
+[31m 17 |     description: 'Analytics period',[39m
+[31m 18 |     enum: AnalyticsPeriod,[39m
+[31m 19 |     example: AnalyticsPeriod.DAY,[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/analytics.dto.ts:16:1][39m
+[31m 13 |  * Request for search analytics[39m
+[31m 14 |  */[39m
+[31m 15 | export class AnalyticsRequestDto {[39m
+[31m 16 |   @ApiPropertyOptional({[39m
+[31m    :   ^[39m
+[31m 17 |     description: 'Analytics period',[39m
+[31m 18 |     enum: AnalyticsPeriod,[39m
+[31m 19 |     example: AnalyticsPeriod.DAY,[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/vector-search.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/vector-search.service.ts:28:1][39m
+[31m 25 |  * Vector DB integration for semantic search[39m
+[31m 26 |  * Communicates with the Vector DB microservice[39m
+[31m 27 |  */[39m
+[31m 28 | @Injectable()[39m
+[31m    : ^[39m
+[31m 29 | export class VectorSearchService {[39m
+[31m 30 |   private readonly logger = new Logger(VectorSearchService.name);[39m
+[31m 31 |   private readonly config: SearchConfiguration;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/vector-search.service.ts:28:1][39m
+[31m 25 |  * Vector DB integration for semantic search[39m
+[31m 26 |  * Communicates with the Vector DB microservice[39m
+[31m 27 |  */[39m
+[31m 28 | @Injectable()[39m
+[31m    : ^[39m
+[31m 29 | export class VectorSearchService {[39m
+[31m 30 |   private readonly logger = new Logger(VectorSearchService.name);[39m
+[31m 31 |   private readonly config: SearchConfiguration;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-request.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-request.dto.ts:32:1][39m
+[31m 29 |  * Main search request DTO[39m
+[31m 30 |  */[39m
+[31m 31 | export class SearchRequestDto {[39m
+[31m 32 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 33 |     description: 'Search query string',[39m
+[31m 34 |     example: 'microservices architecture',[39m
+[31m 35 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-request.dto.ts:32:1][39m
+[31m 29 |  * Main search request DTO[39m
+[31m 30 |  */[39m
+[31m 31 | export class SearchRequestDto {[39m
+[31m 32 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 33 |     description: 'Search query string',[39m
+[31m 34 |     example: 'microservices architecture',[39m
+[31m 35 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/health.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/health.service.ts:28:1][39m
+[31m 25 | /**[39m
+[31m 26 |  * Health check service for Search Service[39m
+[31m 27 |  */[39m
+[31m 28 | @Injectable()[39m
+[31m    : ^[39m
+[31m 29 | export class HealthService {[39m
+[31m 30 |   private readonly logger = new Logger(HealthService.name);[39m
+[31m 31 |   private readonly config: SearchConfiguration;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/health.service.ts:28:1][39m
+[31m 25 | /**[39m
+[31m 26 |  * Health check service for Search Service[39m
+[31m 27 |  */[39m
+[31m 28 | @Injectable()[39m
+[31m    : ^[39m
+[31m 29 | export class HealthService {[39m
+[31m 30 |   private readonly logger = new Logger(HealthService.name);[39m
+[31m 31 |   private readonly config: SearchConfiguration;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/index-document.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/index-document.dto.ts:15:1][39m
+[31m 12 |  * DTO for indexing a document[39m
+[31m 13 |  */[39m
+[31m 14 | export class IndexDocumentDto {[39m
+[31m 15 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 16 |     description: 'Entity type',[39m
+[31m 17 |     example: 'Document',[39m
+[31m 18 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/index-document.dto.ts:15:1][39m
+[31m 12 |  * DTO for indexing a document[39m
+[31m 13 |  */[39m
+[31m 14 | export class IndexDocumentDto {[39m
+[31m 15 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m 16 |     description: 'Entity type',[39m
+[31m 17 |     example: 'Document',[39m
+[31m 18 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/providers/postgres-search.provider.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/providers/postgres-search.provider.ts:14:1][39m
+[31m 11 |  * PostgreSQL Full-Text Search Provider[39m
+[31m 12 |  * Uses PostgreSQL's tsvector and tsquery for full-text search[39m
+[31m 13 |  */[39m
+[31m 14 | @Injectable()[39m
+[31m    : ^[39m
+[31m 15 | export class PostgresSearchProvider implements ISearchProvider {[39m
+[31m 16 |   private readonly logger = new Logger(PostgresSearchProvider.name);[39m
+[31m 17 |   private prisma: PrismaClient;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/providers/postgres-search.provider.ts:14:1][39m
+[31m 11 |  * PostgreSQL Full-Text Search Provider[39m
+[31m 12 |  * Uses PostgreSQL's tsvector and tsquery for full-text search[39m
+[31m 13 |  */[39m
+[31m 14 | @Injectable()[39m
+[31m    : ^[39m
+[31m 15 | export class PostgresSearchProvider implements ISearchProvider {[39m
+[31m 16 |   private readonly logger = new Logger(PostgresSearchProvider.name);[39m
+[31m 17 |   private prisma: PrismaClient;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-response.dto.ts[39m
+[31mERROR:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-response.dto.ts:7:1][39m
+[31m  4 |  * Individual search result[39m
+[31m  5 |  */[39m
+[31m  6 | export class SearchResultDto {[39m
+[31m  7 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m  8 |     description: 'Entity type',[39m
+[31m  9 |     example: 'Document',[39m
+[31m 10 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Unexpected token `@`. Expected identifier, string literal, numeric literal or [ for the computed key[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-response.dto.ts:7:1][39m
+[31m  4 |  * Individual search result[39m
+[31m  5 |  */[39m
+[31m  6 | export class SearchResultDto {[39m
+[31m  7 |   @ApiProperty({[39m
+[31m    :   ^[39m
+[31m  8 |     description: 'Entity type',[39m
+[31m  9 |     example: 'Document',[39m
+[31m 10 |   })[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/analytics.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/analytics.service.ts:23:1][39m
+[31m 20 | /**[39m
+[31m 21 |  * Search analytics and metrics service[39m
+[31m 22 |  */[39m
+[31m 23 | @Injectable()[39m
+[31m    : ^[39m
+[31m 24 | export class AnalyticsService {[39m
+[31m 25 |   private readonly logger = new Logger(AnalyticsService.name);[39m
+[31m 26 |   private prisma: PrismaClient;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/analytics.service.ts:23:1][39m
+[31m 20 | /**[39m
+[31m 21 |  * Search analytics and metrics service[39m
+[31m 22 |  */[39m
+[31m 23 | @Injectable()[39m
+[31m    : ^[39m
+[31m 24 | export class AnalyticsService {[39m
+[31m 25 |   private readonly logger = new Logger(AnalyticsService.name);[39m
+[31m 26 |   private prisma: PrismaClient;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/search.service.ts[39m
+[31mERROR:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/search.service.ts:20:1][39m
+[31m 17 | /**[39m
+[31m 18 |  * Core search service orchestrating keyword and semantic search[39m
+[31m 19 |  */[39m
+[31m 20 | @Injectable()[39m
+[31m    : ^[39m
+[31m 21 | export class SearchService {[39m
+[31m 22 |   private readonly logger = new Logger(SearchService.name);[39m
+[31m 23 |   private readonly config: SearchConfiguration;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+[31mSTACK: Error:   x Expression expected[39m
+[31m    ,-[/Users/acarroll/dev/projects/orion/packages/search/src/app/services/search.service.ts:20:1][39m
+[31m 17 | /**[39m
+[31m 18 |  * Core search service orchestrating keyword and semantic search[39m
+[31m 19 |  */[39m
+[31m 20 | @Injectable()[39m
+[31m    : ^[39m
+[31m 21 | export class SearchService {[39m
+[31m 22 |   private readonly logger = new Logger(SearchService.name);[39m
+[31m 23 |   private readonly config: SearchConfiguration;[39m
+[31m    `----[39m
+[31m[39m
+[31m[39m
+[31mCaused by:[39m
+[31m    Syntax Error[39m
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |       0 |        0 |       0 |       0 | [31;1m                 [0m 
+----------|---------|----------|---------|---------|-------------------
+[1mTest Suites: [22m[1m[31m7 failed[39m[22m, 7 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        2.18 s
+[2mRan all test suites[22m[2m.[22m

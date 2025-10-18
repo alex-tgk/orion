@@ -1,0 +1,842 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/providers/[22m[1mpostgres-search.provider.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/search/src/app/providers/postgres-search.provider.spec.ts[0m:[93m1[0m:[93m1[0m - [91merror[0m[90m TS6192: [0mAll imports in import declaration are unused.
+
+    [7m1[0m import { Test, TestingModule } from '@nestjs/testing';
+    [7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1mhealth.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/search/src/app/services/health.service.spec.ts[0m:[93m105[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'result.stats' is possibly 'undefined'.
+
+    [7m105[0m       expect(result.stats.totalIndexed).toBe(100);
+    [7m   [0m [91m             ~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1msearch.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/search/src/app/services/search.service.spec.ts[0m:[93m7[0m:[93m22[0m - [91merror[0m[90m TS6133: [0m'SortOrder' is declared but its value is never read.
+
+    [7m7[0m import { SearchMode, SortOrder } from '../dto/search-request.dto';
+    [7m [0m [91m                     ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/consumers/[22m[1mindex-event.consumer.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m53[0m:[93m45[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m53[0m         `Failed to index user from event: ${error.message}`,
+    [7m  [0m [91m                                            ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m54[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m54[0m         error.stack,
+    [7m  [0m [91m        ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m77[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m77[0m         `Failed to remove user from index: ${error.message}`,
+    [7m  [0m [91m                                             ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m78[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m78[0m         error.stack,
+    [7m  [0m [91m        ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m114[0m:[93m45[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m114[0m         `Failed to index file from event: ${error.message}`,
+    [7m   [0m [91m                                            ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m115[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m115[0m         error.stack,
+    [7m   [0m [91m        ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m137[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m137[0m         `Failed to remove file from index: ${error.message}`,
+    [7m   [0m [91m                                             ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m138[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m138[0m         error.stack,
+    [7m   [0m [91m        ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m166[0m:[93m49[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m166[0m         `Failed to index document from event: ${error.message}`,
+    [7m   [0m [91m                                                ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m167[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m167[0m         error.stack,
+    [7m   [0m [91m        ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m189[0m:[93m50[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m189[0m         `Failed to remove document from index: ${error.message}`,
+    [7m   [0m [91m                                                 ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m190[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m190[0m         error.stack,
+    [7m   [0m [91m        ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m222[0m:[93m67[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m222[0m         `Failed to handle ${eventType} event for ${entityType}: ${error.message}`,
+    [7m   [0m [91m                                                                  ~~~~~[0m
+    [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m223[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m223[0m         error.stack,
+    [7m   [0m [91m        ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/controllers/[22m[1msearch.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/search/src/app/controllers/search.controller.ts[0m:[93m25[0m:[93m3[0m - [91merror[0m[90m TS2305: [0mModule '"../dto/search-request.dto"' has no exported member 'SearchResponseDto'.
+
+    [7m25[0m   SearchResponseDto,
+    [7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/controllers/search.controller.ts[0m:[93m142[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m142[0m       this.logger.error(`Failed to index document: ${error.message}`);
+    [7m   [0m [91m                                                     ~~~~~[0m
+    [96mpackages/search/src/app/controllers/search.controller.ts[0m:[93m146[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m146[0m         error: error.message,
+    [7m   [0m [91m               ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1msuggestion.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m55[0m:[93m45[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m55[0m       const suggestions = await this.prisma.searchSuggestion.findMany({
+    [7m  [0m [91m                                            ~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m61[0m:[93m69[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.
+
+    [7m61[0m       const suggestionItems: SuggestionItemDto[] = suggestions.map((s) => ({
+    [7m  [0m [91m                                                                    ~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m74[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m74[0m         `Failed to get suggestions for "${query}": ${error.message}`,
+    [7m  [0m [91m                                                     ~~~~~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m93[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m93[0m       await this.prisma.searchSuggestion.upsert({
+    [7m  [0m [91m                        ~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m112[0m:[93m65[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m112[0m         `Failed to update suggestion frequency for "${term}": ${error.message}`,
+    [7m   [0m [91m                                                                ~~~~~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m142[0m:[93m45[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m142[0m       const suggestions = await this.prisma.searchSuggestion.findMany({
+    [7m   [0m [91m                                            ~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m148[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.
+
+    [7m148[0m       return suggestions.map((s) => ({
+    [7m   [0m [91m                              ~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m156[0m:[93m47[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m156[0m         `Failed to get popular suggestions: ${error.message}`,
+    [7m   [0m [91m                                              ~~~~~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m170[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m170[0m       const result = await this.prisma.searchSuggestion.deleteMany({
+    [7m   [0m [91m                                       ~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m184[0m:[93m63[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m184[0m       this.logger.error(`Failed to cleanup old suggestions: ${error.message}`);
+    [7m   [0m [91m                                                              ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m search [39m[27m[0m [2mpackages/search/src/app/services/[22m[1manalytics.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m60[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m60[0m       await this.prisma.searchQuery.create({
+    [7m  [0m [91m                        ~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m73[0m:[93m51[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m73[0m       this.logger.error(`Failed to track query: ${error.message}`);
+    [7m  [0m [91m                                                  ~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m88[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchResultClick' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m88[0m       await this.prisma.searchResultClick.create({
+    [7m  [0m [91m                        ~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m99[0m:[93m58[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m99[0m       this.logger.error(`Failed to track result click: ${error.message}`);
+    [7m  [0m [91m                                                         ~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m115[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m115[0m       const queries = await this.prisma.searchQuery.findMany({
+    [7m   [0m [91m                                        ~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m127[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'sum' implicitly has an 'any' type.
+
+    [7m127[0m         queries.reduce((sum, q) => sum + q.executionTime, 0) / totalSearches || 0;
+    [7m   [0m [91m                        ~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m127[0m:[93m30[0m - [91merror[0m[90m TS7006: [0mParameter 'q' implicitly has an 'any' type.
+
+    [7m127[0m         queries.reduce((sum, q) => sum + q.executionTime, 0) / totalSearches || 0;
+    [7m   [0m [91m                             ~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m128[0m:[93m47[0m - [91merror[0m[90m TS7006: [0mParameter 'q' implicitly has an 'any' type.
+
+    [7m128[0m       const zeroResultCount = queries.filter((q) => !q.hasResults).length;
+    [7m   [0m [91m                                              ~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m153[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m153[0m       this.logger.error(`Failed to get analytics: ${error.message}`);
+    [7m   [0m [91m                                                    ~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m166[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m166[0m     const results = await this.prisma.searchQuery.groupBy({
+    [7m   [0m [91m                                      ~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m188[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'r' implicitly has an 'any' type.
+
+    [7m188[0m     return results.map((r) => ({
+    [7m   [0m [91m                        ~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m203[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m203[0m     const results = await this.prisma.searchQuery.groupBy({
+    [7m   [0m [91m                                      ~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m226[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'r' implicitly has an 'any' type.
+
+    [7m226[0m     return results.map((r) => ({
+    [7m   [0m [91m                        ~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m308[0m:[93m27[0m - [91merror[0m[90m TS2339: [0mProperty 'popularSearchTerm' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m308[0m         await this.prisma.popularSearchTerm.upsert({
+    [7m   [0m [91m                          ~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m328[0m:[93m60[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m328[0m       this.logger.error(`Failed to update popular terms: ${error.message}`);
+    [7m   [0m [91m                                                           ~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m341[0m:[93m42[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m341[0m       const searches = await this.prisma.searchQuery.findMany({
+    [7m   [0m [91m                                         ~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m355[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'searchResultClick' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+
+    [7m355[0m       const clicks = await this.prisma.searchResultClick.count({
+    [7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m358[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.
+
+    [7m358[0m             in: searches.map((s) => s.id),
+    [7m   [0m [91m                              ~[0m
+    [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m365[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+    [7m365[0m       this.logger.error(`Failed to calculate CTR: ${error.message}`);
+    [7m   [0m [91m                                                    ~~~~~[0m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-response.dto.ts[39m
+[31mERROR: [96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'entityType' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m11[0m   entityType: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'entityId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m17[0m   entityId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m23[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'title' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m23[0m   title: string;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m35[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'score' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m35[0m   score: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m53[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'createdAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m53[0m   createdAt: Date;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m59[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'updatedAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m59[0m   updatedAt: Date;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m70[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'results' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m70[0m   results: SearchResultDto[];[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m76[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'total' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m76[0m   total: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m82[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'page' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m82[0m   page: number;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m88[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'limit' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m88[0m   limit: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m94[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'totalPages' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m94[0m   totalPages: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/search-response.dto.ts[0m:[93m100[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'executionTime' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m100[0m   executionTime: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/index-document.dto.ts[39m
+[31mERROR: [96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m20[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'entityType' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m20[0m   entityType: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m27[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'entityId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m27[0m   entityId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m34[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'title' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m34[0m   title: string;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m41[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'content' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m41[0m   content: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m72[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'documents' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m72[0m   documents: IndexDocumentDto[];[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m95[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'success' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m95[0m   success: boolean;[39m
+[31m[7m  [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m101[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'indexId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m101[0m   indexId: string;[39m
+[31m[7m   [0m [91m  ~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m113[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'processingTime' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m113[0m   processingTime: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m124[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'processed' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m124[0m   processed: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m130[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'successful' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m130[0m   successful: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m136[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'failed' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m136[0m   failed: number;[39m
+[31m[7m   [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/index-document.dto.ts[0m:[93m148[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'processingTime' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m148[0m   processingTime: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/analytics.dto.ts[39m
+[31mERROR: [96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m50[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'query' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m50[0m   query: string;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m56[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'count' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m56[0m   count: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m62[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'avgResults' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m62[0m   avgResults: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m73[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'query' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m73[0m   query: string;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m79[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'count' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m79[0m   count: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m85[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'lastOccurrence' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m85[0m   lastOccurrence: Date;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m96[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'totalSearches' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m96[0m   totalSearches: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m102[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'avgExecutionTime' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m102[0m   avgExecutionTime: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m108[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'zeroResultRate' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m108[0m   zeroResultRate: number;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m114[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'popularQueries' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m114[0m   popularQueries: PopularQueryDto[];[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m120[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'zeroResultQueries' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m120[0m   zeroResultQueries: ZeroResultQueryDto[];[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m126[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'entityTypeDistribution' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m126[0m   entityTypeDistribution: Record<string, number>;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/analytics.dto.ts[0m:[93m132[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'hourlyDistribution' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m132[0m   hourlyDistribution: Record<string, number>;[39m
+[31m[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/suggestion.dto.ts[39m
+[31mERROR: [96mpackages/search/src/app/dto/suggestion.dto.ts[0m:[93m14[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'query' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m14[0m   query: string;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/suggestion.dto.ts[0m:[93m46[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'term' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m46[0m   term: string;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/suggestion.dto.ts[0m:[93m52[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'score' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m52[0m   score: number;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/suggestion.dto.ts[0m:[93m64[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'frequency' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m64[0m   frequency: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/suggestion.dto.ts[0m:[93m75[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'suggestions' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m75[0m   suggestions: SuggestionItemDto[];[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/dto/suggestion.dto.ts[0m:[93m81[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'query' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m81[0m   query: string;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/dto/search-request.dto.ts[39m
+[31mERROR: [96mpackages/search/src/app/dto/search-request.dto.ts[0m:[93m37[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'query' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m37[0m   query: string;[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/config/search.config.ts[39m
+[31mERROR: [96mpackages/search/src/app/config/search.config.ts[0m:[93m28[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'databaseUrl' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m28[0m   databaseUrl: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/consumers/index-event.consumer.ts[39m
+[31mERROR: [96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m53[0m:[93m45[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m53[0m         `Failed to index user from event: ${error.message}`,[39m
+[31m[7m  [0m [91m                                            ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m54[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m54[0m         error.stack,[39m
+[31m[7m  [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m77[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m77[0m         `Failed to remove user from index: ${error.message}`,[39m
+[31m[7m  [0m [91m                                             ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m78[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m78[0m         error.stack,[39m
+[31m[7m  [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m114[0m:[93m45[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m114[0m         `Failed to index file from event: ${error.message}`,[39m
+[31m[7m   [0m [91m                                            ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m115[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m115[0m         error.stack,[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m137[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m137[0m         `Failed to remove file from index: ${error.message}`,[39m
+[31m[7m   [0m [91m                                             ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m138[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m138[0m         error.stack,[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m166[0m:[93m49[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m166[0m         `Failed to index document from event: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m167[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m167[0m         error.stack,[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m189[0m:[93m50[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m189[0m         `Failed to remove document from index: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                 ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m190[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m190[0m         error.stack,[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m222[0m:[93m67[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m222[0m         `Failed to handle ${eventType} event for ${entityType}: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                                  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/consumers/index-event.consumer.ts[0m:[93m223[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m223[0m         error.stack,[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/controllers/search.controller.ts[39m
+[31mERROR: [96mpackages/search/src/app/controllers/search.controller.ts[0m:[93m25[0m:[93m3[0m - [91merror[0m[90m TS2305: [0mModule '"../dto/search-request.dto"' has no exported member 'SearchResponseDto'.[39m
+[31m[39m
+[31m[7m25[0m   SearchResponseDto,[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/controllers/search.controller.ts[0m:[93m142[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m142[0m       this.logger.error(`Failed to index document: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                     ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/controllers/search.controller.ts[0m:[93m146[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m146[0m         error: error.message,[39m
+[31m[7m   [0m [91m               ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/providers/postgres-search.provider.ts[39m
+[31mERROR: [96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m106[0m:[93m43[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m106[0m       this.logger.error(`Search failed: ${error.message}`, error.stack);[39m
+[31m[7m   [0m [91m                                          ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m106[0m:[93m60[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m106[0m       this.logger.error(`Search failed: ${error.message}`, error.stack);[39m
+[31m[7m   [0m [91m                                                           ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m118[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'searchIndex' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m118[0m       const result = await this.prisma.searchIndex.upsert({[39m
+[31m[7m   [0m [91m                                       ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m148[0m:[93m64[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m148[0m         `Failed to index document ${entityType}/${entityId}: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                               ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m159[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchIndex' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m159[0m       await this.prisma.searchIndex.delete({[39m
+[31m[7m   [0m [91m                        ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m171[0m:[93m11[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m171[0m       if (error.code === 'P2025') {[39m
+[31m[7m   [0m [91m          ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m179[0m:[93m65[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m179[0m         `Failed to remove document ${entityType}/${entityId}: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                                ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m211[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m211[0m         this.logger.error(`Batch indexing failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                    ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m227[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchIndex' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m227[0m       await this.prisma.searchIndex.update({[39m
+[31m[7m   [0m [91m                        ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m242[0m:[93m65[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m242[0m         `Failed to update rank for ${entityType}/${entityId}: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                                ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m256[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'searchIndex' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m256[0m       const doc = await this.prisma.searchIndex.findUnique({[39m
+[31m[7m   [0m [91m                                    ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m281[0m:[93m62[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m281[0m         `Failed to get document ${entityType}/${entityId}: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                             ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m295[0m:[93m49[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m295[0m       this.logger.error(`Health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/providers/postgres-search.provider.ts[0m:[93m340[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m340[0m       this.logger.error(`Failed to create indexes: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                     ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/vector-search.service.ts[39m
+[31mERROR: [96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m32[0m:[93m20[0m - [91merror[0m[90m TS2564: [0mProperty 'client' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m32[0m   private readonly client: AxiosInstance;[39m
+[31m[7m  [0m [91m                   ~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m36[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'SearchConfiguration | undefined' is not assignable to type 'SearchConfiguration'.[39m
+[31m  Type 'undefined' is not assignable to type 'SearchConfiguration'.[39m
+[31m[39m
+[31m[7m36[0m     this.config = this.configService.get<SearchConfiguration>('search');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m82[0m:[93m51[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m82[0m         `Failed to index document in Vector DB: ${error.message}`,[39m
+[31m[7m  [0m [91m                                                  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m115[0m:[93m11[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m115[0m       if (error.code === 'ECONNREFUSED' || error.code === 'ETIMEDOUT') {[39m
+[31m[7m   [0m [91m          ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m115[0m:[93m44[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m115[0m       if (error.code === 'ECONNREFUSED' || error.code === 'ETIMEDOUT') {[39m
+[31m[7m   [0m [91m                                           ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m120[0m:[93m52[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m120[0m       this.logger.error(`Semantic search failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                   ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m138[0m:[93m11[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m138[0m       if (error.response?.status === 404) {[39m
+[31m[7m   [0m [91m          ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m144[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m144[0m         `Failed to remove document from Vector DB: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                     ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m171[0m:[93m63[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m171[0m       this.logger.error(`Bulk indexing failed in Vector DB: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                              ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m195[0m:[93m45[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m195[0m         `Failed to get similar documents: ${error.message}`,[39m
+[31m[7m   [0m [91m                                            ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m213[0m:[93m59[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m213[0m       this.logger.error(`Vector DB health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                          ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/vector-search.service.ts[0m:[93m234[0m:[93m59[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m234[0m       this.logger.error(`Failed to get Vector DB stats: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                          ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/health.service.ts[39m
+[31mERROR: [96mpackages/search/src/app/services/health.service.ts[0m:[93m39[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'SearchConfiguration | undefined' is not assignable to type 'SearchConfiguration'.[39m
+[31m  Type 'undefined' is not assignable to type 'SearchConfiguration'.[39m
+[31m[39m
+[31m[7m39[0m     this.config = this.configService.get<SearchConfiguration>('search');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/health.service.ts[0m:[93m96[0m:[93m58[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m96[0m       this.logger.error(`Database health check failed: ${error.message}`);[39m
+[31m[7m  [0m [91m                                                         ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/health.service.ts[0m:[93m108[0m:[93m65[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m108[0m       this.logger.error(`Search provider health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                                ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/health.service.ts[0m:[93m124[0m:[93m58[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m124[0m       this.logger.warn(`Vector DB health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                         ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/health.service.ts[0m:[93m135[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'searchIndex' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m135[0m         this.prisma.searchIndex.count(),[39m
+[31m[7m   [0m [91m                    ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/health.service.ts[0m:[93m136[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m136[0m         this.prisma.searchQuery.count(),[39m
+[31m[7m   [0m [91m                    ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/health.service.ts[0m:[93m145[0m:[93m49[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m145[0m       this.logger.error(`Failed to get stats: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/analytics.service.ts[39m
+[31mERROR: [96mpackages/search/src/app/services/analytics.service.ts[0m:[93m60[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m60[0m       await this.prisma.searchQuery.create({[39m
+[31m[7m  [0m [91m                        ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m73[0m:[93m51[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m73[0m       this.logger.error(`Failed to track query: ${error.message}`);[39m
+[31m[7m  [0m [91m                                                  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m88[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchResultClick' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m88[0m       await this.prisma.searchResultClick.create({[39m
+[31m[7m  [0m [91m                        ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m99[0m:[93m58[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m99[0m       this.logger.error(`Failed to track result click: ${error.message}`);[39m
+[31m[7m  [0m [91m                                                         ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m115[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m115[0m       const queries = await this.prisma.searchQuery.findMany({[39m
+[31m[7m   [0m [91m                                        ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m127[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'sum' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m127[0m         queries.reduce((sum, q) => sum + q.executionTime, 0) / totalSearches || 0;[39m
+[31m[7m   [0m [91m                        ~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m127[0m:[93m30[0m - [91merror[0m[90m TS7006: [0mParameter 'q' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m127[0m         queries.reduce((sum, q) => sum + q.executionTime, 0) / totalSearches || 0;[39m
+[31m[7m   [0m [91m                             ~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m128[0m:[93m47[0m - [91merror[0m[90m TS7006: [0mParameter 'q' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m128[0m       const zeroResultCount = queries.filter((q) => !q.hasResults).length;[39m
+[31m[7m   [0m [91m                                              ~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m153[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m153[0m       this.logger.error(`Failed to get analytics: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                    ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m166[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m166[0m     const results = await this.prisma.searchQuery.groupBy({[39m
+[31m[7m   [0m [91m                                      ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m188[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'r' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m188[0m     return results.map((r) => ({[39m
+[31m[7m   [0m [91m                        ~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m203[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m203[0m     const results = await this.prisma.searchQuery.groupBy({[39m
+[31m[7m   [0m [91m                                      ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m226[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'r' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m226[0m     return results.map((r) => ({[39m
+[31m[7m   [0m [91m                        ~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m308[0m:[93m27[0m - [91merror[0m[90m TS2339: [0mProperty 'popularSearchTerm' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m308[0m         await this.prisma.popularSearchTerm.upsert({[39m
+[31m[7m   [0m [91m                          ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m328[0m:[93m60[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m328[0m       this.logger.error(`Failed to update popular terms: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                           ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m341[0m:[93m42[0m - [91merror[0m[90m TS2339: [0mProperty 'searchQuery' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m341[0m       const searches = await this.prisma.searchQuery.findMany({[39m
+[31m[7m   [0m [91m                                         ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m355[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'searchResultClick' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m355[0m       const clicks = await this.prisma.searchResultClick.count({[39m
+[31m[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m358[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m358[0m             in: searches.map((s) => s.id),[39m
+[31m[7m   [0m [91m                              ~[0m[39m
+[31m[96mpackages/search/src/app/services/analytics.service.ts[0m:[93m365[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m365[0m       this.logger.error(`Failed to calculate CTR: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                    ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/search.service.ts[39m
+[31mERROR: [96mpackages/search/src/app/services/search.service.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS2305: [0mModule '"../dto/search-request.dto"' has no exported member 'SearchResponseDto'.[39m
+[31m[39m
+[31m[7m6[0m   SearchResponseDto,[39m
+[31m[7m [0m [91m  ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m7[0m:[93m3[0m - [91merror[0m[90m TS2724: [0m'"../dto/search-request.dto"' has no exported member named 'SearchResultDto'. Did you mean 'SearchRequestDto'?[39m
+[31m[39m
+[31m[7m7[0m   SearchResultDto,[39m
+[31m[7m [0m [91m  ~~~~~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mpackages/search/src/app/dto/search-request.dto.ts[0m:[93m31[0m:[93m14[0m[39m
+[31m    [7m31[0m export class SearchRequestDto {[39m
+[31m    [7m  [0m [96m             ~~~~~~~~~~~~~~~~[0m[39m
+[31m    'SearchRequestDto' is declared here.[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m32[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'SearchConfiguration | undefined' is not assignable to type 'SearchConfiguration'.[39m
+[31m  Type 'undefined' is not assignable to type 'SearchConfiguration'.[39m
+[31m[39m
+[31m[7m32[0m     this.config = this.configService.get<SearchConfiguration>('search');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m95[0m:[93m70[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m95[0m             `Semantic search failed, falling back to keyword only: ${error.message}`,[39m
+[31m[7m  [0m [91m                                                                     ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m142[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m142[0m       this.logger.error(`Search execution failed: ${error.message}`, error.stack);[39m
+[31m[7m   [0m [91m                                                    ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m142[0m:[93m70[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m142[0m       this.logger.error(`Search execution failed: ${error.message}`, error.stack);[39m
+[31m[7m   [0m [91m                                                                     ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m188[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'searchIndex' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m188[0m           await this.prisma.searchIndex.update({[39m
+[31m[7m   [0m [91m                            ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m194[0m:[93m101[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m194[0m             `Failed to generate vector embedding for ${document.entityType}/${document.entityId}: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                                                                    ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m207[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m207[0m       this.logger.error(`Failed to index document: ${error.message}`, error.stack);[39m
+[31m[7m   [0m [91m                                                     ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m207[0m:[93m71[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m207[0m       this.logger.error(`Failed to index document: ${error.message}`, error.stack);[39m
+[31m[7m   [0m [91m                                                                      ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m232[0m:[93m51[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m232[0m             `Failed to remove vector embedding: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                  ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m240[0m:[93m65[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m240[0m         `Failed to remove document ${entityType}/${entityId}: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                                ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m315[0m:[93m5[0m - [91merror[0m[90m TS6133: [0m'offset' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m315[0m     offset: number,[39m
+[31m[7m   [0m [91m    ~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m329[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'searchIndex' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m329[0m       const doc = await this.prisma.searchIndex.findFirst({[39m
+[31m[7m   [0m [91m                                    ~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m358[0m:[93m5[0m - [91merror[0m[90m TS6133: [0m'request' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m358[0m     request: SearchRequestDto,[39m
+[31m[7m   [0m [91m    ~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m435[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m435[0m     const suggestions = await this.prisma.searchSuggestion.findMany({[39m
+[31m[7m   [0m [91m                                          ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/search.service.ts[0m:[93m448[0m:[93m29[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m448[0m     return suggestions.map((s) => s.term);[39m
+[31m[7m   [0m [91m                            ~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/search/src/app/services/suggestion.service.ts[39m
+[31mERROR: [96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m55[0m:[93m45[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m55[0m       const suggestions = await this.prisma.searchSuggestion.findMany({[39m
+[31m[7m  [0m [91m                                            ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m61[0m:[93m69[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m61[0m       const suggestionItems: SuggestionItemDto[] = suggestions.map((s) => ({[39m
+[31m[7m  [0m [91m                                                                    ~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m74[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m74[0m         `Failed to get suggestions for "${query}": ${error.message}`,[39m
+[31m[7m  [0m [91m                                                     ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m93[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m93[0m       await this.prisma.searchSuggestion.upsert({[39m
+[31m[7m  [0m [91m                        ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m112[0m:[93m65[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m112[0m         `Failed to update suggestion frequency for "${term}": ${error.message}`,[39m
+[31m[7m   [0m [91m                                                                ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m142[0m:[93m45[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m142[0m       const suggestions = await this.prisma.searchSuggestion.findMany({[39m
+[31m[7m   [0m [91m                                            ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m148[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m148[0m       return suggestions.map((s) => ({[39m
+[31m[7m   [0m [91m                              ~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m156[0m:[93m47[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m156[0m         `Failed to get popular suggestions: ${error.message}`,[39m
+[31m[7m   [0m [91m                                              ~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m170[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'searchSuggestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.[39m
+[31m[39m
+[31m[7m170[0m       const result = await this.prisma.searchSuggestion.deleteMany({[39m
+[31m[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/search/src/app/services/suggestion.service.ts[0m:[93m184[0m:[93m63[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m184[0m       this.logger.error(`Failed to cleanup old suggestions: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                              ~~~~~[0m[39m
+[31mSTACK: [39m
+-------------------------------|---------|----------|---------|---------|-------------------
+File                           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------------------|---------|----------|---------|---------|-------------------
+[31;1mAll files                     [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m app                          [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  app.controller.ts           [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-48             [0m 
+[31;1m  app.module.ts               [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-52             [0m 
+[31;1m app/providers                [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  search-provider.interface.ts[0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m35               [0m 
+-------------------------------|---------|----------|---------|---------|-------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for lines (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 0%[39m[22m
+[1mTest Suites: [22m[1m[31m7 failed[39m[22m, 7 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        25.625 s
+[2mRan all test suites[22m[2m.[22m
