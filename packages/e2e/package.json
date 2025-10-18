@@ -1,0 +1,27 @@
+{
+  "name": "@orion/e2e",
+  "version": "1.0.0",
+  "description": "End-to-End testing suite for ORION microservices",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:auth": "jest auth.e2e-spec",
+    "test:gateway": "jest gateway.e2e-spec",
+    "test:notifications": "jest notifications.e2e-spec"
+  },
+  "dependencies": {
+    "@nestjs/testing": "^11.1.6",
+    "@orion/shared": "*"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5",
+    "typescript": "^5.9.3"
+  }
+}

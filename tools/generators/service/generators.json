@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "service": {
+      "factory": "./generator",
+      "schema": "./schema.json",
+      "description": "Generate a complete NestJS microservice with all required files following ORION architecture patterns"
+    }
+  }
+}

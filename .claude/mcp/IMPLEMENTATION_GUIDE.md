@@ -82,7 +82,24 @@ echo $POSTGRES_URL
 
 ## MCP Server Installation
 
-### 1. Install Critical MCP Servers
+### 1. Install All MCP Servers (Automated)
+
+```bash
+# Run the automated installation script
+./.claude/scripts/install-mcp-servers.sh
+
+# This will install:
+# - GitHub MCP server
+# - PostgreSQL MCP server
+# - Docker MCP server
+# - Kubernetes MCP server
+# - Prometheus MCP server (optional)
+# - Memory MCP server
+# - Filesystem MCP server
+# - Build ORION local MCP server
+```
+
+### 1a. Manual Installation (Alternative)
 
 ```bash
 # Install GitHub MCP server
@@ -97,11 +114,17 @@ npm install -g @modelcontextprotocol/server-docker
 # Install Kubernetes MCP server
 npm install -g @modelcontextprotocol/server-kubernetes
 
+# Install Prometheus MCP server (optional)
+npm install -g @modelcontextprotocol/server-prometheus
+
+# Install Memory MCP server
+npm install -g @modelcontextprotocol/server-memory
+
+# Install Filesystem MCP server
+npm install -g @modelcontextprotocol/server-filesystem
+
 # Verify installations
-which mcp-server-github
-which mcp-server-postgres
-which mcp-server-docker
-which mcp-server-kubernetes
+npm list -g | grep @modelcontextprotocol
 ```
 
 ### 2. Build ORION Local MCP Server
@@ -114,7 +137,7 @@ cd /Users/acarroll/dev/projects/orion
 pnpm nx build mcp-server
 
 # Verify the build
-ls -la dist/packages/mcp-server/src/main.js
+ls -la dist/packages/mcp-server/src/mcp-main.js
 ```
 
 ### 3. Verify MCP Configuration
@@ -123,17 +146,34 @@ ls -la dist/packages/mcp-server/src/main.js
 # Check configuration file exists and is valid JSON
 cat .claude/mcp/config.json | jq .
 
-# Should show 5 MCP servers configured:
-# - orion-local
+# Should show 8 MCP servers configured:
+# - orion-local (custom tools)
 # - github
 # - postgres
 # - docker
 # - kubernetes
+# - prometheus
+# - memory
+# - filesystem
 ```
 
 ---
 
 ## Testing Connections
+
+### Quick Health Check
+
+```bash
+# Run the quick health check script
+./.claude/scripts/mcp-health-check.sh
+```
+
+### Comprehensive Connection Test
+
+```bash
+# Run the comprehensive test script
+./.claude/scripts/test-mcp-connections.sh
+```
 
 ### Start Local Services
 
@@ -201,9 +241,53 @@ Expected response: Kubernetes resource information
 # - "Validate the auth service spec"
 # - "Check health of all ORION services"
 # - "Get affected projects for current changes"
+# - "Generate a new service from spec"
+# - "Sync the user service spec with implementation"
 ```
 
 Expected response: ORION-specific tool responses
+
+Custom ORION tools available:
+- `validate_spec` - Validate service specifications
+- `check_service_health` - Health check for services
+- `nx_affected` - Get affected projects
+- `generate_service_from_spec` - Generate services from specs
+- `sync_spec` - Sync specs with implementation
+
+See `.claude/mcp/CUSTOM_TOOLS.md` for detailed documentation.
+
+#### 6. Test Prometheus MCP
+
+```bash
+# In Claude Code, try:
+# - "Query Prometheus for service metrics"
+# - "Show CPU usage for ORION services"
+# - "Get response time metrics"
+```
+
+Expected response: Prometheus query results (requires Prometheus running)
+
+#### 7. Test Memory MCP
+
+```bash
+# In Claude Code, try:
+# - "Store a note about the auth service"
+# - "Retrieve notes about auth service"
+# - "List all stored memories"
+```
+
+Expected response: Memory storage and retrieval confirmation
+
+#### 8. Test Filesystem MCP
+
+```bash
+# In Claude Code, try:
+# - "List files in packages/auth"
+# - "Read the auth service main.ts file"
+# - "Search for TODO comments in the codebase"
+```
+
+Expected response: File system operations (limited to allowed directories)
 
 ---
 

@@ -1,0 +1,114 @@
+name: Container Security
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'packages/**/Dockerfile'
+      - '.github/workflows/container-security.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'packages/**/Dockerfile'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  hadolint:
+    name: Dockerfile Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: "packages/*/Dockerfile"
+          failure-threshold: warning
+          format: sarif
+          output-file: hadolint-results.sarif
+
+      - name: Upload Hadolint results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: hadolint-results.sarif
+
+  dockle:
+    name: Docker Image Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker images
+        run: |
+          docker build -t orion/auth-service:latest -f packages/auth/Dockerfile .
+          docker build -t orion/gateway-service:latest -f packages/gateway/Dockerfile .
+
+      - name: Run Dockle - Auth Service
+        uses: erzz/dockle-action@v1
+        with:
+          image: 'orion/auth-service:latest'
+          exit-code: '1'
+          exit-level: 'warn'
+
+      - name: Run Dockle - Gateway Service
+        uses: erzz/dockle-action@v1
+        with:
+          image: 'orion/gateway-service:latest'
+          exit-code: '1'
+          exit-level: 'warn'
+
+  grype:
+    name: Grype Vulnerability Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker images
+        run: |
+          docker build -t orion/auth-service:latest -f packages/auth/Dockerfile .
+
+      - name: Run Grype vulnerability scanner
+        uses: anchore/scan-action@v3
+        with:
+          image: 'orion/auth-service:latest'
+          fail-build: true
+          severity-cutoff: high
+          output-format: sarif
+
+      - name: Upload Grype results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
+
+  syft-sbom:
+    name: Generate SBOM with Syft
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker images
+        run: |
+          docker build -t orion/auth-service:latest -f packages/auth/Dockerfile .
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          image: 'orion/auth-service:latest'
+          format: 'spdx-json'
+          output-file: 'sbom.spdx.json'
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.spdx.json

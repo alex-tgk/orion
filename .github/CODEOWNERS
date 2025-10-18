@@ -1,0 +1,240 @@
+# CODEOWNERS - Code Ownership and Review Assignments
+#
+# This file defines code ownership for the ORION project.
+# Each line is a file pattern followed by one or more owners.
+#
+# Documentation: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Pattern Syntax:
+# - * matches any string of characters
+# - ** matches zero or more directories
+# - ? matches a single character
+# - [abc] matches any character in the brackets
+#
+# Order matters: Later matches take precedence
+
+# ==============================================================================
+# GLOBAL OWNERSHIP
+# ==============================================================================
+
+# Default owners for all files in the repository
+* @orion-team
+
+# ==============================================================================
+# SERVICE OWNERSHIP
+# ==============================================================================
+
+# Authentication Service
+/packages/auth/ @auth-team @backend-team
+/packages/auth/src/**/*.spec.ts @auth-team @qa-team
+
+# Gateway Service
+/packages/gateway/ @gateway-team @backend-team
+/packages/gateway/src/**/*.spec.ts @gateway-team @qa-team
+
+# User Service
+/packages/user/ @user-team @backend-team
+/packages/user/src/**/*.spec.ts @user-team @qa-team
+
+# Notification Service
+/packages/notifications/ @notifications-team @backend-team
+/packages/notifications/src/**/*.spec.ts @notifications-team @qa-team
+
+# Admin UI
+/packages/admin-ui/ @frontend-team @admin-team
+/packages/admin-ui/src/frontend/ @frontend-team
+/packages/admin-ui/src/app/ @backend-team @admin-team
+
+# ==============================================================================
+# SHARED PACKAGES
+# ==============================================================================
+
+# Shared utilities and libraries
+/packages/shared/ @platform-team @backend-team
+/packages/logger/ @observability-team @platform-team
+/packages/audit/ @security-team @compliance-team
+/packages/mcp-server/ @ai-team @platform-team
+
+# ==============================================================================
+# INFRASTRUCTURE & DEVOPS
+# ==============================================================================
+
+# Kubernetes manifests
+/k8s/ @devops-team @sre-team
+/k8s/base/ @devops-team @sre-team
+/k8s/overlays/staging/ @devops-team
+/k8s/overlays/production/ @devops-team @sre-team @security-team
+
+# Helm charts
+/charts/ @devops-team @sre-team
+
+# Docker configurations
+/docker-compose*.yml @devops-team
+/packages/*/Dockerfile @devops-team @backend-team
+/.dockerignore @devops-team
+
+# CI/CD workflows
+/.github/workflows/ @devops-team @platform-team
+/.github/workflows/ci.yml @devops-team @qa-team
+/.github/workflows/dependency-update.yml @devops-team @security-team
+
+# ==============================================================================
+# CONFIGURATION & TOOLING
+# ==============================================================================
+
+# Root configuration files
+/package.json @platform-team
+/pnpm-lock.yaml @platform-team
+/pnpm-workspace.yaml @platform-team
+/nx.json @platform-team
+/tsconfig*.json @platform-team
+
+# Linting and formatting
+/eslint.config.js @platform-team
+/.prettierrc @platform-team
+/.prettierignore @platform-team
+
+# Git hooks
+/.husky/ @platform-team @devops-team
+/commitlint.config.js @platform-team
+
+# Environment configuration
+/.env.example @devops-team @security-team
+/.env*.example @devops-team @security-team
+
+# ==============================================================================
+# CLAUDE CODE & AI INTEGRATION
+# ==============================================================================
+
+# Claude Code configuration
+/.claude/ @ai-team @platform-team
+/.claude/agents/ @ai-team
+/.claude/commands/ @ai-team @platform-team
+/.claude/mcp/ @ai-team @platform-team
+/.claude/specs/ @ai-team @product-team
+/.claude/memory/ @ai-team
+
+# GitHub Spec Kit specifications
+/.claude/specs/*-service.md @ai-team @product-team @backend-team
+
+# ==============================================================================
+# DOCUMENTATION
+# ==============================================================================
+
+# Root documentation
+/README.md @platform-team @docs-team
+/CONTRIBUTING.md @platform-team @docs-team
+/CHANGELOG.md @platform-team
+/LICENSE @legal-team
+
+# Service documentation
+/packages/*/README.md @docs-team
+/packages/*/IMPLEMENTATION_SUMMARY.md @docs-team
+
+# Architecture and design docs
+/docs/ @architecture-team @docs-team
+/.claude/reports/ @platform-team @docs-team
+
+# ==============================================================================
+# SECURITY & COMPLIANCE
+# ==============================================================================
+
+# Security-sensitive files
+/.github/dependabot.yml @security-team @devops-team
+/packages/*/src/**/auth*.* @security-team @auth-team
+/packages/*/src/**/security*.* @security-team
+/packages/audit/ @security-team @compliance-team
+
+# Secret management
+/k8s/**/secrets*.* @security-team @devops-team
+
+# ==============================================================================
+# DATABASE & MIGRATIONS
+# ==============================================================================
+
+# Prisma schemas
+/packages/*/prisma/schema.prisma @database-team @backend-team
+/packages/*/prisma/migrations/ @database-team @backend-team
+
+# Database migrations
+/packages/*/src/migrations/ @database-team @backend-team
+
+# ==============================================================================
+# TESTING
+# ==============================================================================
+
+# Test configuration
+/jest.preset.js @qa-team @platform-team
+/packages/*/jest.config.ts @qa-team
+
+# E2E tests
+/packages/*-e2e/ @qa-team
+
+# Test utilities
+/packages/shared/src/testing/ @qa-team @platform-team
+
+# ==============================================================================
+# FRONTEND SPECIFIC
+# ==============================================================================
+
+# Frontend assets
+/packages/admin-ui/src/frontend/styles/ @frontend-team @design-team
+/packages/admin-ui/src/frontend/components/ @frontend-team
+/packages/admin-ui/src/frontend/public/ @frontend-team
+
+# Frontend configuration
+/packages/admin-ui/tsconfig.frontend.json @frontend-team
+/packages/admin-ui/webpack.config.js @frontend-team @platform-team
+
+# ==============================================================================
+# MONITORING & OBSERVABILITY
+# ==============================================================================
+
+# Monitoring configuration
+/k8s/**/servicemonitor.yaml @observability-team @sre-team
+/packages/logger/ @observability-team
+
+# ==============================================================================
+# SPECIAL PATTERNS
+# ==============================================================================
+
+# Package manifests require platform team review
+/packages/*/package.json @platform-team
+
+# Webpack configs require platform team review
+/packages/*/webpack.config.js @platform-team @devops-team
+
+# Any changes to .github require DevOps review
+/.github/ @devops-team
+
+# ==============================================================================
+# NOTES
+# ==============================================================================
+#
+# Team Aliases (configure in GitHub organization settings):
+# - @orion-team - All team members
+# - @platform-team - Platform/infrastructure engineers
+# - @backend-team - Backend developers
+# - @frontend-team - Frontend developers
+# - @devops-team - DevOps/SRE engineers
+# - @sre-team - Site Reliability Engineers
+# - @security-team - Security engineers
+# - @qa-team - QA/Test engineers
+# - @ai-team - AI/ML engineers
+# - @docs-team - Documentation writers
+# - @architecture-team - Solution architects
+# - @database-team - Database administrators
+# - @observability-team - Monitoring/logging engineers
+# - @compliance-team - Compliance/legal team
+# - @legal-team - Legal team
+# - @design-team - UI/UX designers
+# - @product-team - Product managers
+#
+# Specific Service Teams:
+# - @auth-team - Authentication service owners
+# - @gateway-team - API Gateway service owners
+# - @user-team - User service owners
+# - @notifications-team - Notification service owners
+# - @admin-team - Admin UI owners
+#
+# ==============================================================================

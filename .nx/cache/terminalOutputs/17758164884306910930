@@ -1,0 +1,7 @@
+> k6 run scenarios/load-test.js --coverage --silent
+
+/bin/sh: k6: command not found
+> k6 run scenarios/load-test.js --coverage --silent
+
+/bin/sh: k6: command not found
+Warning: command "k6 run scenarios/load-test.js --coverage --silent" exited with non-zero status code

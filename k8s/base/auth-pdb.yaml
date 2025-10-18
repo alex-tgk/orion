@@ -1,0 +1,32 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: auth-service-pdb
+  namespace: orion
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-service-pdb
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/component: backend
+spec:
+  # Minimum number of pods that must be available during disruptions
+  # With HPA min=3, this allows up to 2 pods to be disrupted simultaneously
+  # while maintaining service availability
+  minAvailable: 1
+
+  # Alternative: maxUnavailable: 2
+  # Both approaches achieve the same result with 3 replicas
+  # minAvailable is preferred for critical services
+
+  # Selector to match auth-service pods
+  selector:
+    matchLabels:
+      app: auth-service
+
+  # Unhealthy pod eviction policy
+  # Available in Kubernetes 1.26+
+  # Determines how unhealthy pods are handled during eviction
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+  # Options:
+  # - IfHealthyBudget (default): Only evict unhealthy pods if budget allows
+  # - AlwaysAllow: Always allow eviction of unhealthy pods

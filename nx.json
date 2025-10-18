@@ -39,6 +39,12 @@
       "inputs": ["production", "^production"]
     }
   },
+  "generators": {
+    "@orion/service": {
+      "implementation": "./tools/generators/service/generator.ts",
+      "schema": "./tools/generators/service/schema.json"
+    }
+  },
   "nxCloudAccessToken": null,
   "parallel": 3,
   "cacheDirectory": ".nx/cache",

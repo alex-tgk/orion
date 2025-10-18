@@ -1,0 +1,51 @@
+{
+  "name": "performance",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/performance",
+  "projectType": "application",
+  "tags": ["scope:testing", "type:performance"],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "k6 run scenarios/load-test.js",
+        "cwd": "packages/performance"
+      }
+    },
+    "test:load": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "k6 run scenarios/load-test.js",
+        "cwd": "packages/performance"
+      }
+    },
+    "test:stress": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "k6 run scenarios/stress-test.js",
+        "cwd": "packages/performance"
+      }
+    },
+    "test:spike": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "k6 run scenarios/spike-test.js",
+        "cwd": "packages/performance"
+      }
+    },
+    "test:soak": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "k6 run scenarios/soak-test.js",
+        "cwd": "packages/performance"
+      }
+    },
+    "report": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/generate-report.js",
+        "cwd": "packages/performance"
+      }
+    }
+  }
+}

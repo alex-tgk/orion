@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-ingress
+  namespace: orion-prod
+  annotations:
+    # Use production issuer for certificate provisioning
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # Stricter rate limiting in production
+    nginx.ingress.kubernetes.io/limit-rps: "200"
+    nginx.ingress.kubernetes.io/limit-connections: "20"
+spec:
+  tls:
+  - hosts:
+    - auth.orion.example.com
+    secretName: auth-tls-secret
+  rules:
+  - host: auth.orion.example.com
+    http:
+      paths:
+      - path: /api/auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              name: http
+      - path: /health
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              name: http

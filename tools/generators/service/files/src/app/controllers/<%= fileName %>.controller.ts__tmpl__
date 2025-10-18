@@ -1,0 +1,88 @@
+<% if (withCRUD) { %>import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Body,
+  Param,
+  Query,
+  HttpCode,
+  HttpStatus,
+  UseGuards,
+} from '@nestjs/common';
+<% if (withSwagger) { %>import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+  ApiQuery,
+  ApiParam,
+} from '@nestjs/swagger';
+<% } %>import { ThrottlerGuard } from '@nestjs/throttler';
+import { <%= className %>Service } from '../services/<%= fileName %>.service';
+import { Create<%= className %>Dto, Update<%= className %>Dto } from '../dto';
+
+@Controller()
+<% if (withSwagger) { %>@ApiTags('<%= fileName %>')
+@ApiBearerAuth()
+<% } %>@UseGuards(ThrottlerGuard)
+export class <%= className %>Controller {
+  constructor(private readonly <%= propertyName %>Service: <%= className %>Service) {}
+
+  <% if (withSwagger) { %>@ApiOperation({ summary: 'Create a new <%= fileName %>' })
+  @ApiResponse({ status: 201, description: '<%= className %> created successfully' })
+  @ApiResponse({ status: 400, description: 'Invalid input' })
+  <% } %>@Post()
+  @HttpCode(HttpStatus.CREATED)
+  async create(@Body() createDto: Create<%= className %>Dto) {
+    return this.<%= propertyName %>Service.create(createDto);
+  }
+
+  <% if (withSwagger) { %>@ApiOperation({ summary: 'Get all <%= fileName %>s' })
+  @ApiQuery({ name: 'page', required: false, type: Number })
+  @ApiQuery({ name: 'limit', required: false, type: Number })
+  @ApiResponse({ status: 200, description: 'List of <%= fileName %>s' })
+  <% } %>@Get()
+  async findAll(
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10'
+  ) {
+    return this.<%= propertyName %>Service.findAll({
+      page: parseInt(page, 10),
+      limit: parseInt(limit, 10),
+    });
+  }
+
+  <% if (withSwagger) { %>@ApiOperation({ summary: 'Get <%= fileName %> by ID' })
+  @ApiParam({ name: 'id', description: '<%= className %> ID' })
+  @ApiResponse({ status: 200, description: '<%= className %> found' })
+  @ApiResponse({ status: 404, description: '<%= className %> not found' })
+  <% } %>@Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.<%= propertyName %>Service.findOne(id);
+  }
+
+  <% if (withSwagger) { %>@ApiOperation({ summary: 'Update <%= fileName %>' })
+  @ApiParam({ name: 'id', description: '<%= className %> ID' })
+  @ApiResponse({ status: 200, description: '<%= className %> updated successfully' })
+  @ApiResponse({ status: 404, description: '<%= className %> not found' })
+  <% } %>@Patch(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() updateDto: Update<%= className %>Dto
+  ) {
+    return this.<%= propertyName %>Service.update(id, updateDto);
+  }
+
+  <% if (withSwagger) { %>@ApiOperation({ summary: 'Delete <%= fileName %>' })
+  @ApiParam({ name: 'id', description: '<%= className %> ID' })
+  @ApiResponse({ status: 204, description: '<%= className %> deleted successfully' })
+  @ApiResponse({ status: 404, description: '<%= className %> not found' })
+  <% } %>@Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async remove(@Param('id') id: string) {
+    return this.<%= propertyName %>Service.remove(id);
+  }
+}
+<% } %>

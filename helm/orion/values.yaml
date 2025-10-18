@@ -1,0 +1,309 @@
+# Default values for ORION microservices platform
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  environment: production
+  domain: orion.example.com
+  imagePullPolicy: IfNotPresent
+  imageRegistry: docker.io/orion
+  storageClass: standard
+
+# Gateway Service
+gateway:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: orion/gateway
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 3000
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  config:
+    nodeEnv: production
+    corsOrigin: "https://orion.example.com"
+    rateLimitTtl: "60"
+    rateLimitMax: "100"
+
+# Authentication Service
+auth:
+  enabled: true
+  replicaCount: 3
+  image:
+    repository: orion/auth
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 3001
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  config:
+    nodeEnv: production
+    jwtAccessExpiry: 15m
+    jwtRefreshExpiry: 7d
+    corsOrigin: "https://orion.example.com"
+  secrets:
+    jwtSecret: "" # Set via --set or external secrets
+
+# User Service
+user:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: orion/user
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 3002
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: ""
+  config:
+    nodeEnv: production
+    corsOrigin: "https://orion.example.com"
+
+# Notification Service
+notifications:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: orion/notifications
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 3003
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  config:
+    nodeEnv: production
+    emailFrom: "noreply@orion.example.com"
+  secrets:
+    smtpHost: ""
+    smtpPort: ""
+    smtpUser: ""
+    smtpPass: ""
+
+# Admin UI Service
+adminUi:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: orion/admin-ui
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 3004
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  config:
+    nodeEnv: production
+    corsOrigin: "https://orion.example.com"
+
+# PostgreSQL Database
+postgresql:
+  enabled: true
+  image:
+    repository: postgres
+    tag: 16-alpine
+  persistence:
+    enabled: true
+    size: 20Gi
+    storageClass: ""
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+  auth:
+    username: orion
+    password: "" # Set via --set or external secrets
+    database: orion_prod
+  metrics:
+    enabled: true
+
+# Redis Cache
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: 7-alpine
+  persistence:
+    enabled: true
+    size: 5Gi
+    storageClass: ""
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  config:
+    maxmemory: 256mb
+    maxmemoryPolicy: allkeys-lru
+  metrics:
+    enabled: true
+
+# RabbitMQ Message Broker
+rabbitmq:
+  enabled: true
+  image:
+    repository: rabbitmq
+    tag: 3.12-management-alpine
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: ""
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+  auth:
+    username: orion
+    password: "" # Set via --set or external secrets
+  metrics:
+    enabled: true
+
+# Ingress Configuration
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  tls:
+    enabled: true
+    secretName: orion-tls
+  hosts:
+    - host: orion.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: gateway
+          port: 3000
+    - host: api.orion.example.com
+      paths:
+        - path: /auth
+          pathType: Prefix
+          service: auth
+          port: 3001
+        - path: /user
+          pathType: Prefix
+          service: user
+          port: 3002
+        - path: /notifications
+          pathType: Prefix
+          service: notifications
+          port: 3003
+    - host: admin.orion.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: admin-ui
+          port: 3004
+
+# Service Mesh (Istio) Configuration
+serviceMesh:
+  enabled: false
+  istio:
+    enabled: false
+
+# Monitoring and Observability
+monitoring:
+  enabled: true
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      interval: 30s
+  grafana:
+    enabled: true
+    dashboards:
+      enabled: true
+
+# Security
+security:
+  networkPolicies:
+    enabled: true
+  podSecurityPolicy:
+    enabled: true
+  podSecurityStandards:
+    enforce: restricted
+
+# External Secrets Operator
+externalSecrets:
+  enabled: false
+  provider: vault
+  vaultUrl: ""
+  vaultPath: ""

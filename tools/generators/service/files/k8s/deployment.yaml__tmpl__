@@ -1,0 +1,148 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <%= fileName %>-service
+  namespace: orion
+  labels:
+    app: <%= fileName %>
+    service: <%= fileName %>
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: <%= fileName %>
+  template:
+    metadata:
+      labels:
+        app: <%= fileName %>
+        service: <%= fileName %>
+        version: v1
+    spec:
+      containers:
+      - name: <%= fileName %>
+        image: <%= fileName %>-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: <%= port %>
+          name: http
+          protocol: TCP
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "<%= port %>"
+        <% if (withDatabase) { %>- name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: <%= fileName %>-secrets
+              key: database-url
+        <% } %><% if (withRedis) { %>- name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: <%= fileName %>-secrets
+              key: redis-url
+        <% } %>- name: CORS_ORIGIN
+          valueFrom:
+            configMapKeyRef:
+              name: <%= fileName %>-config
+              key: cors-origin
+        - name: RATE_LIMIT_TTL
+          valueFrom:
+            configMapKeyRef:
+              name: <%= fileName %>-config
+              key: rate-limit-ttl
+        - name: RATE_LIMIT_MAX
+          valueFrom:
+            configMapKeyRef:
+              name: <%= fileName %>-config
+              key: rate-limit-max
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        livenessProbe:
+          httpGet:
+            path: /api/<%= fileName %>/health
+            port: <%= port %>
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/<%= fileName %>/health
+            port: <%= port %>
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: <%= fileName %>-service
+  namespace: orion
+  labels:
+    app: <%= fileName %>
+    service: <%= fileName %>
+spec:
+  type: ClusterIP
+  ports:
+  - port: <%= port %>
+    targetPort: <%= port %>
+    protocol: TCP
+    name: http
+  selector:
+    app: <%= fileName %>
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: <%= fileName %>-config
+  namespace: orion
+data:
+  cors-origin: "http://localhost:4200"
+  rate-limit-ttl: "60"
+  rate-limit-max: "100"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <%= fileName %>-secrets
+  namespace: orion
+type: Opaque
+stringData:
+  <% if (withDatabase) { %>database-url: "postgresql://orion:changeme@postgres:5432/orion"
+  <% } %><% if (withRedis) { %>redis-url: "redis://redis:6379"
+  <% } %>
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: <%= fileName %>-hpa
+  namespace: orion
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: <%= fileName %>-service
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

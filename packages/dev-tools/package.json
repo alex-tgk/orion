@@ -1,0 +1,28 @@
+{
+  "name": "@orion/dev-tools",
+  "version": "1.0.0",
+  "description": "Development tools for ORION platform",
+  "main": "src/main.ts",
+  "bin": {
+    "spec-validator": "./dist/cli/spec-validator.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.cli.json",
+    "spec:validate": "node dist/cli/spec-validator.js validate",
+    "spec:coverage": "node dist/cli/spec-validator.js coverage",
+    "spec:generate": "node dist/cli/spec-validator.js generate"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/core": "^11.1.6",
+    "commander": "^12.0.0",
+    "chalk": "^4.1.2",
+    "glob": "^10.3.10",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "typescript": "^5.9.3"
+  }
+}

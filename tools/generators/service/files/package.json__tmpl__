@@ -1,0 +1,13 @@
+{
+  "name": "@orion/<%= fileName %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

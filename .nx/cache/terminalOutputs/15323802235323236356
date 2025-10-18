@@ -1,0 +1,90 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m13[0m:[93m32[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m13[0m   constructor(private readonly configService: ConfigService) {[39m[22m
+[1m[31m[7m  [0m [91m                               ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/middleware/correlation-id.middleware.ts[0m:[93m4[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '@orion/logger' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m import { LoggerService } from '@orion/logger';[39m[22m
+[1m[31m[7m [0m [91m                              ~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m2[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module './rbac.service' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import { RbacService } from './rbac.service';[39m[22m
+[1m[31m[7m [0m [91m                            ~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m3[0m:[93m27[0m - [91merror[0m[90m TS2307: [0mCannot find module './guards/role.guard' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m import { RoleGuard } from './guards/role.guard';[39m[22m
+[1m[31m[7m [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m4[0m:[93m33[0m - [91merror[0m[90m TS2307: [0mCannot find module './guards/permission.guard' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m import { PermissionGuard } from './guards/permission.guard';[39m[22m
+[1m[31m[7m [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m5[0m:[93m28[0m - [91merror[0m[90m TS2307: [0mCannot find module './interfaces/rbac.interface' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m5[0m import { RbacConfig } from './interfaces/rbac.interface';[39m[22m
+[1m[31m[7m [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m6[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module './rbac.constants' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m6[0m import { RBAC_CONFIG } from './rbac.constants';[39m[22m
+[1m[31m[7m [0m [91m                            ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/secrets-rotation.service.ts[0m:[93m103[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m103[0m         error: error.message,[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/secrets.module.ts[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m TS6133: [0m'ConfigService' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import { ConfigModule, ConfigService } from '@nestjs/config';[39m[22m
+[1m[31m[7m [0m [91m                       ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m9[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'client' has no initializer and is not definitely assigned in the constructor.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m   private client: AxiosInstance;[39m[22m
+[1m[31m[7m [0m [91m          ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m10[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'token' has no initializer and is not definitely assigned in the constructor.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m10[0m   private token: string;[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m11[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'tokenRenewalInterval' has no initializer and is not definitely assigned in the constructor.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m11[0m   private tokenRenewalInterval: NodeJS.Timeout;[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m25[0m:[93m29[0m - [91merror[0m[90m TS6133: [0m'authMethod' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m25[0m     const { url, namespace, authMethod } = this.options.vault;[39m[22m
+[1m[31m[7m  [0m [91m                            ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m47[0m:[93m13[0m - [91merror[0m[90m TS2339: [0mProperty 'authMethod' does not exist on type 'VaultOptions | undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m47[0m     const { authMethod } = this.options.vault;[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m115[0m:[93m21[0m - [91merror[0m[90m TS2532: [0mObject is possibly 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m115[0m       const mount = this.options.vault.mount || 'secret';[39m[22m
+[1m[31m[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m139[0m:[93m21[0m - [91merror[0m[90m TS2532: [0mObject is possibly 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m139[0m       const mount = this.options.vault.mount || 'secret';[39m[22m
+[1m[31m[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m166[0m:[93m21[0m - [91merror[0m[90m TS2532: [0mObject is possibly 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m166[0m       const mount = this.options.vault.mount || 'secret';[39m[22m
+[1m[31m[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m179[0m:[93m21[0m - [91merror[0m[90m TS2532: [0mObject is possibly 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m179[0m       const mount = this.options.vault.mount || 'secret';[39m[22m
+[1m[31m[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m197[0m:[93m21[0m - [91merror[0m[90m TS2532: [0mObject is possibly 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m197[0m       const mount = this.options.vault.mount || 'secret';[39m[22m
+[1m[31m[7m   [0m [91m                    ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m221[0m:[93m13[0m - [91merror[0m[90m TS6133: [0m'response' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m221[0m       const response = await this.client.post('/v1/auth/token/renew-self');[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m234[0m:[93m29[0m - [91merror[0m[90m TS2532: [0mObject is possibly 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m234[0m     const renewalInterval = this.options.vault.tokenRenewalInterval || 3600000; // 1 hour default[39m[22m
+[1m[31m[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/cors.service.ts[0m:[93m45[0m:[93m29[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m45[0m     const env = process.env.NODE_ENV || 'development';[39m[22m
+[1m[31m[7m
+[2m../../dist/packages/shared/README.md[22m

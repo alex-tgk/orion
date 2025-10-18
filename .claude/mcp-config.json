@@ -1,0 +1,81 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "FILESYSTEM_READ_PATHS": "/Users/acarroll/dev/projects/orion",
+        "FILESYSTEM_WRITE_PATHS": "/Users/acarroll/dev/projects/orion"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_STORE_PATH": "/Users/acarroll/dev/projects/orion/.claude/memory/store.json"
+      }
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "env": {}
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "env": {}
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "env": {}
+    }
+  },
+  "projectSettings": {
+    "name": "Orion",
+    "type": "monorepo",
+    "framework": "NestJS",
+    "packageManager": "pnpm",
+    "methodology": "GitHub Spec Kit",
+    "aiAssistants": {
+      "serena": {
+        "enabled": true,
+        "role": "Code analysis and refactoring specialist",
+        "autoActivate": true
+      },
+      "persistentCache": {
+        "enabled": true,
+        "role": "Conversation and context persistence",
+        "autoActivate": true
+      }
+    }
+  },
+  "workflowAutomation": {
+    "autoCommit": {
+      "enabled": true,
+      "interval": "30m",
+      "minChanges": 5
+    },
+    "autoSpec": {
+      "enabled": true,
+      "requireForFeatures": true
+    },
+    "autoDocument": {
+      "enabled": true,
+      "updateOnCommit": true
+    }
+  },
+  "safeguards": {
+    "preventDataLoss": true,
+    "autoBackup": true,
+    "requireTests": true,
+    "enforceSpecs": true
+  }
+}

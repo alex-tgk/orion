@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "generators": {
+    "@nx/workspace": {
+      "service": {
+        "implementation": "./tools/generators/service/generator.ts",
+        "schema": "./tools/generators/service/schema.json"
+      }
+    }
+  }
+}

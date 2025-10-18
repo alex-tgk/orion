@@ -10,6 +10,15 @@ resources:
 - auth-service.yaml
 - auth-hpa.yaml
 - auth-networkpolicy.yaml
+# Monitoring and Observability
+- auth-servicemonitor.yaml
+# High Availability
+- auth-pdb.yaml
+# TLS Certificate Management
+- issuer.yaml
+- certificate.yaml
+# External Access
+- auth-ingress.yaml
 
 commonLabels:
   app.kubernetes.io/managed-by: kustomize

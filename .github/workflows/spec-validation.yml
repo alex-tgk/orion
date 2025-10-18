@@ -1,0 +1,174 @@
+name: Spec Validation
+
+on:
+  pull_request:
+    paths:
+      - '.claude/specs/**'
+      - 'packages/**'
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-specs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build spec validator CLI
+        run: pnpm nx build:cli dev-tools
+
+      - name: Validate specs
+        id: validate
+        run: |
+          pnpm spec:validate --format json > validation-results.json
+          cat validation-results.json
+        continue-on-error: true
+
+      - name: Generate coverage report
+        run: |
+          pnpm spec:coverage --format html --output spec-coverage.html
+          pnpm spec:coverage --format markdown --output spec-coverage.md
+          pnpm spec:coverage --format json --output spec-coverage.json
+
+      - name: Upload validation results
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-results
+          path: validation-results.json
+
+      - name: Upload coverage HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-coverage-html
+          path: spec-coverage.html
+
+      - name: Upload coverage JSON report
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-coverage-json
+          path: spec-coverage.json
+
+      - name: Check coverage threshold
+        run: |
+          COVERAGE=$(jq '.coveragePercentage' spec-coverage.json)
+          echo "📊 Spec Coverage: $COVERAGE%"
+
+          if [ "$COVERAGE" -lt 80 ]; then
+            echo "❌ Spec coverage is below 80%: $COVERAGE%"
+            echo "::warning::Spec coverage is below threshold (80%). Current: $COVERAGE%"
+            # Don't fail the build, just warn
+          else
+            echo "✅ Spec coverage meets threshold: $COVERAGE%"
+          fi
+
+      - name: Comment PR with coverage
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const coverage = JSON.parse(fs.readFileSync('spec-coverage.json', 'utf8'));
+            const validation = JSON.parse(fs.readFileSync('validation-results.json', 'utf8'));
+
+            const validSpecs = validation.filter(v => v.valid).length;
+            const totalSpecs = validation.length;
+            const avgScore = Math.round(
+              validation.reduce((sum, v) => sum + v.score, 0) / totalSpecs
+            );
+
+            let comment = `## 📊 Spec Validation Report
+
+            ### Summary
+            - **Coverage:** ${coverage.coveragePercentage}%
+            - **Valid Specs:** ${validSpecs}/${totalSpecs}
+            - **Average Score:** ${avgScore}%
+
+            ### Spec Files
+
+            | File | Status | Score | Issues |
+            |------|--------|-------|--------|
+            `;
+
+            validation.forEach(v => {
+              const status = v.valid ? '✅' : '❌';
+              const issues = v.errors.length + v.warnings.length;
+              const fileName = v.file.split('/').pop();
+              comment += `| ${fileName} | ${status} | ${v.score}% | ${issues} |\n`;
+            });
+
+            if (coverage.missingSpecs.length > 0) {
+              comment += `\n### ⚠️ Missing Specs\n\n`;
+              coverage.missingSpecs.forEach(spec => {
+                comment += `- \`${spec}\`\n`;
+              });
+            }
+
+            if (coverage.orphanedImplementations.length > 0) {
+              comment += `\n### ⚠️ Specs Without Implementation\n\n`;
+              coverage.orphanedImplementations.forEach(impl => {
+                comment += `- \`${impl}\`\n`;
+              });
+            }
+
+            const errors = validation.filter(v => !v.valid);
+            if (errors.length > 0) {
+              comment += `\n### ❌ Validation Errors\n\n`;
+              errors.forEach(v => {
+                comment += `**${v.file}**\n\n`;
+                v.errors.forEach(err => {
+                  comment += `- **${err.section}:** ${err.message}\n`;
+                });
+                if (v.warnings.length > 0) {
+                  comment += `\nWarnings:\n`;
+                  v.warnings.forEach(warn => {
+                    comment += `- ${warn.section}: ${warn.message}\n`;
+                  });
+                }
+                comment += `\n`;
+              });
+            }
+
+            comment += `\n---\n📄 [View detailed coverage report](${context.payload.pull_request.html_url}/checks)`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: Fail if validation failed
+        if: steps.validate.outcome == 'failure'
+        run: |
+          echo "❌ Spec validation failed. Please fix the issues."
+          exit 1

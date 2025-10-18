@@ -1,0 +1,50 @@
+import { NestFactory } from '@nestjs/core';
+import { ValidationPipe, Logger } from '@nestjs/common';
+<% if (withSwagger) { %>import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';<% } %>
+import { AppModule } from './app/app.module';
+
+async function bootstrap() {
+  const logger = new Logger('Bootstrap');
+  const app = await NestFactory.create(AppModule);
+
+  // Global prefix
+  app.setGlobalPrefix('api/<%= fileName %>');
+
+  // CORS configuration
+  app.enableCors({
+    origin: process.env.CORS_ORIGIN || 'http://localhost:4200',
+    credentials: true,
+  });
+
+  // Global validation pipe
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
+    })
+  );
+<% if (withSwagger) { %>
+  // Swagger documentation
+  const config = new DocumentBuilder()
+    .setTitle('<%= className %> API')
+    .setDescription('<%= description %>')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .addTag('<%= fileName %>')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/docs', app, document);
+<% } %>
+  const port = process.env.PORT || <%= port %>;
+  await app.listen(port);
+
+  logger.log(`🚀 <%= className %> Service is running on: http://localhost:${port}/api/<%= fileName %>`);
+  logger.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
+  logger.log(`🏥 Health Check: http://localhost:${port}/api/<%= fileName %>/health`);
+}
+
+bootstrap();

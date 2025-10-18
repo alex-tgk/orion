@@ -1,0 +1,127 @@
+<% if (withCRUD) { %>import { Injectable, NotFoundException } from '@nestjs/common';
+<% if (withDatabase) { %>import { PrismaService } from '@orion/shared/prisma';
+<% } %>import { Create<%= className %>Dto, Update<%= className %>Dto } from '../dto';
+
+@Injectable()
+export class <%= className %>Service {
+  <% if (withDatabase) { %>constructor(private readonly prisma: PrismaService) {}
+
+  async create(createDto: Create<%= className %>Dto) {
+    return this.prisma.<%= propertyName %>.create({
+      data: createDto,
+    });
+  }
+
+  async findAll(options: { page: number; limit: number }) {
+    const { page, limit } = options;
+    const skip = (page - 1) * limit;
+
+    const [data, total] = await Promise.all([
+      this.prisma.<%= propertyName %>.findMany({
+        skip,
+        take: limit,
+        orderBy: { createdAt: 'desc' },
+      }),
+      this.prisma.<%= propertyName %>.count(),
+    ]);
+
+    return {
+      data,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
+  }
+
+  async findOne(id: string) {
+    const <%= propertyName %> = await this.prisma.<%= propertyName %>.findUnique({
+      where: { id },
+    });
+
+    if (!<%= propertyName %>) {
+      throw new NotFoundException(`<%= className %> with ID ${id} not found`);
+    }
+
+    return <%= propertyName %>;
+  }
+
+  async update(id: string, updateDto: Update<%= className %>Dto) {
+    await this.findOne(id); // Check existence
+
+    return this.prisma.<%= propertyName %>.update({
+      where: { id },
+      data: updateDto,
+    });
+  }
+
+  async remove(id: string) {
+    await this.findOne(id); // Check existence
+
+    await this.prisma.<%= propertyName %>.delete({
+      where: { id },
+    });
+  }
+  <% } else { %>// In-memory storage (replace with database in production)
+  private <%= propertyName %>s: any[] = [];
+
+  async create(createDto: Create<%= className %>Dto) {
+    const <%= propertyName %> = {
+      id: Math.random().toString(36).substring(7),
+      ...createDto,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    this.<%= propertyName %>s.push(<%= propertyName %>);
+    return <%= propertyName %>;
+  }
+
+  async findAll(options: { page: number; limit: number }) {
+    const { page, limit } = options;
+    const skip = (page - 1) * limit;
+    const data = this.<%= propertyName %>s.slice(skip, skip + limit);
+    const total = this.<%= propertyName %>s.length;
+
+    return {
+      data,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
+  }
+
+  async findOne(id: string) {
+    const <%= propertyName %> = this.<%= propertyName %>s.find(u => u.id === id);
+    if (!<%= propertyName %>) {
+      throw new NotFoundException(`<%= className %> with ID ${id} not found`);
+    }
+    return <%= propertyName %>;
+  }
+
+  async update(id: string, updateDto: Update<%= className %>Dto) {
+    const index = this.<%= propertyName %>s.findIndex(u => u.id === id);
+    if (index === -1) {
+      throw new NotFoundException(`<%= className %> with ID ${id} not found`);
+    }
+    this.<%= propertyName %>s[index] = {
+      ...this.<%= propertyName %>s[index],
+      ...updateDto,
+      updatedAt: new Date(),
+    };
+    return this.<%= propertyName %>s[index];
+  }
+
+  async remove(id: string) {
+    const index = this.<%= propertyName %>s.findIndex(u => u.id === id);
+    if (index === -1) {
+      throw new NotFoundException(`<%= className %> with ID ${id} not found`);
+    }
+    this.<%= propertyName %>s.splice(index, 1);
+  }
+  <% } %>}
+<% } %>

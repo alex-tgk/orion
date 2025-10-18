@@ -1,0 +1,167 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-ingress
+  namespace: orion
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-ingress
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/component: ingress
+  annotations:
+    # cert-manager annotations
+    # Automatically provisions TLS certificate using the specified issuer
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    # Alternative: Use namespaced issuer
+    # cert-manager.io/issuer: letsencrypt-staging
+
+    # NGINX Ingress Controller annotations
+    # SSL redirect - Force HTTPS
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    # Force SSL even for non-TLS requests
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Backend protocol
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+
+    # Rate limiting (requests per second per IP)
+    nginx.ingress.kubernetes.io/limit-rps: "100"
+    # Connection limit per IP
+    nginx.ingress.kubernetes.io/limit-connections: "10"
+
+    # CORS configuration (if needed)
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+
+    # Request/response buffer sizes
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+
+    # Timeouts
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+
+    # Security headers
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Frame-Options: DENY";
+      more_set_headers "X-Content-Type-Options: nosniff";
+      more_set_headers "X-XSS-Protection: 1; mode=block";
+      more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
+      more_set_headers "Permissions-Policy: geolocation=(), microphone=(), camera=()";
+
+    # Enable HSTS (HTTP Strict Transport Security)
+    # Forces browsers to always use HTTPS
+    nginx.ingress.kubernetes.io/hsts: "true"
+    nginx.ingress.kubernetes.io/hsts-max-age: "31536000"
+    nginx.ingress.kubernetes.io/hsts-include-subdomains: "true"
+    nginx.ingress.kubernetes.io/hsts-preload: "true"
+
+    # Client certificate authentication (optional, commented out)
+    # nginx.ingress.kubernetes.io/auth-tls-verify-client: "optional"
+    # nginx.ingress.kubernetes.io/auth-tls-secret: "orion/client-ca"
+
+    # IP whitelist (optional, commented out)
+    # nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12"
+
+    # Custom error pages (optional)
+    # nginx.ingress.kubernetes.io/custom-http-errors: "404,503"
+    # nginx.ingress.kubernetes.io/default-backend: custom-error-pages
+
+    # Monitoring annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "10254"
+
+spec:
+  # Ingress class name - uses NGINX ingress controller
+  ingressClassName: nginx
+
+  # TLS configuration
+  tls:
+  - hosts:
+    # List all hostnames that should use TLS
+    - auth.orion.example.com
+    # Secret name where cert-manager stores the certificate
+    # This matches the secretName in the Certificate resource
+    secretName: auth-tls-secret
+
+  # Routing rules
+  rules:
+  # Rule for auth service domain
+  - host: auth.orion.example.com
+    http:
+      paths:
+      # Route all API paths to auth service
+      - path: /api/auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              # Reference the service port by name
+              name: http
+
+      # Health check endpoints (may want separate routing)
+      - path: /health
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              name: http
+
+      # Metrics endpoint (optional, usually internal only)
+      # Uncomment if you want to expose metrics externally
+      # - path: /metrics
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: auth-service
+      #       port:
+      #         name: http
+
+  # Additional host rules can be added here
+  # Example: staging environment
+  # - host: auth-staging.orion.example.com
+  #   http:
+  #     paths:
+  #     - path: /
+  #       pathType: Prefix
+  #       backend:
+  #         service:
+  #           name: auth-service
+  #           port:
+  #             name: http
+
+---
+# Optional: Separate ingress for internal access (no TLS)
+# Use for internal cluster communication or health checks
+# Uncomment if needed
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: auth-internal-ingress
+#   namespace: orion
+#   labels:
+#     app: auth-service
+#     environment: internal
+#   annotations:
+#     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+#     # Only allow internal traffic
+#     nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: auth-internal.orion.local
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: auth-service
+#             port:
+#               name: http

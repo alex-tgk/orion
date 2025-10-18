@@ -1,0 +1,26 @@
+#!/bin/bash
+# Pre-checkout hook to prevent branch switching
+# This enforces staying on the main branch for all development
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+TARGET_BRANCH=$1
+
+# Allow initial checkout and operations on main/master
+if [[ "$TARGET_BRANCH" == "main" ]] || [[ "$TARGET_BRANCH" == "master" ]] || [[ -z "$TARGET_BRANCH" ]]; then
+    exit 0
+fi
+
+# Check if trying to switch away from main
+if [[ "$CURRENT_BRANCH" == "main" ]] || [[ "$CURRENT_BRANCH" == "master" ]]; then
+    echo "❌ ERROR: Branch switching is disabled!"
+    echo "📋 All development must happen on the main branch following GitHub Spec Kit methodology."
+    echo "💡 Use feature flags and proper git commits instead of branches."
+    echo ""
+    echo "If you absolutely need to switch branches (not recommended), use:"
+    echo "  git checkout --no-verify <branch-name>"
+    echo ""
+    echo "For help with GitHub Spec Kit methodology, see: .specs/METHODOLOGY.md"
+    exit 1
+fi
+
+exit 0

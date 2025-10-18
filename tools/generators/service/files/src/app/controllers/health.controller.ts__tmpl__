@@ -1,0 +1,18 @@
+import { Controller, Get } from '@nestjs/common';
+<% if (withSwagger) { %>import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+<% } %>
+@Controller('health')
+<% if (withSwagger) { %>@ApiTags('health')
+<% } %>export class HealthController {
+  <% if (withSwagger) { %>@ApiOperation({ summary: 'Health check endpoint' })
+  @ApiResponse({ status: 200, description: 'Service is healthy' })
+  <% } %>@Get()
+  check() {
+    return {
+      status: 'ok',
+      service: '<%= fileName %>',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+    };
+  }
+}

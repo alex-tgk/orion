@@ -1,0 +1,38 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { ThrottlerModule } from '@nestjs/throttler';
+<% if (withDatabase) { %>import { PrismaModule } from '@orion/shared/prisma';
+<% } %><% if (withRedis) { %>import { RedisModule } from '@orion/shared/redis';
+<% } %><% if (withRabbitMQ) { %>import { RabbitMQModule } from '@orion/shared/rabbitmq';
+<% } %>import { HealthController } from './controllers/health.controller';
+<% if (withCRUD) { %>import { <%= className %>Controller } from './controllers/<%= fileName %>.controller';
+import { <%= className %>Service } from './services/<%= fileName %>.service';
+<% } %><% if (withWebSocket) { %>import { <%= className %>Gateway } from './gateways/<%= fileName %>.gateway';
+<% } %>import { appConfig, databaseConfig, redisConfig } from './config';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [appConfig<% if (withDatabase) { %>, databaseConfig<% } %><% if (withRedis) { %>, redisConfig<% } %>],
+    }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: parseInt(process.env.RATE_LIMIT_TTL || '60', 10) * 1000,
+        limit: parseInt(process.env.RATE_LIMIT_MAX || '100', 10),
+      },
+    ]),
+<% if (withDatabase) { %>    PrismaModule,
+<% } %><% if (withRedis) { %>    RedisModule,
+<% } %><% if (withRabbitMQ) { %>    RabbitMQModule,
+<% } %>  ],
+  controllers: [
+    HealthController,
+<% if (withCRUD) { %>    <%= className %>Controller,
+<% } %>  ],
+  providers: [
+<% if (withCRUD) { %>    <%= className %>Service,
+<% } %><% if (withWebSocket) { %>    <%= className %>Gateway,
+<% } %>  ],
+})
+export class AppModule {}

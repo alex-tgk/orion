@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "static": {
+    "baseUrl": "/",
+    "include": "**/*.html",
+    "exclude": [],
+    "cleanUrls": false
+  },
+  "snapshot": {
+    "widths": [375, 768, 1280, 1920],
+    "minHeight": 1024,
+    "percyCSS": ""
+  },
+  "discovery": {
+    "allowedHostnames": ["localhost"],
+    "disableCache": false
+  }
+}

@@ -1,0 +1,80 @@
+#!/bin/bash
+# Post-commit hook - Auto-documentation and caching
+
+set -e
+
+# Colors
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+ROOT_DIR=$(git rev-parse --show-toplevel)
+
+echo -e "${BLUE}[Post-commit Hook] Updating documentation and cache...${NC}"
+
+# 1. Update commit count
+COMMIT_COUNT_FILE="$ROOT_DIR/.claude/cache/commit-count.txt"
+mkdir -p "$(dirname "$COMMIT_COUNT_FILE")"
+
+if [ -f "$COMMIT_COUNT_FILE" ]; then
+    COUNT=$(cat "$COMMIT_COUNT_FILE")
+    COUNT=$((COUNT + 1))
+else
+    COUNT=1
+fi
+
+echo "$COUNT" > "$COMMIT_COUNT_FILE"
+
+# 2. Generate activity report
+ACTIVITY_FILE="$ROOT_DIR/.claude/reports/daily-activity-$(date +%Y-%m-%d).md"
+mkdir -p "$(dirname "$ACTIVITY_FILE")"
+
+COMMIT_HASH=$(git rev-parse HEAD)
+COMMIT_MSG=$(git log -1 --pretty=%B)
+COMMIT_AUTHOR=$(git log -1 --pretty=%an)
+COMMIT_TIME=$(git log -1 --pretty=%ad --date=format:'%Y-%m-%d %H:%M:%S')
+
+if [ ! -f "$ACTIVITY_FILE" ]; then
+    cat > "$ACTIVITY_FILE" << EOF
+# Daily Activity Report - $(date +%Y-%m-%d)
+
+## Commits
+
+EOF
+fi
+
+cat >> "$ACTIVITY_FILE" << EOF
+### $COMMIT_TIME
+- **Hash**: \`$COMMIT_HASH\`
+- **Author**: $COMMIT_AUTHOR
+- **Message**: $COMMIT_MSG
+
+EOF
+
+# 3. Update project statistics
+STATS_FILE="$ROOT_DIR/.claude/cache/project-stats.json"
+cat > "$STATS_FILE" << EOF
+{
+  "lastCommit": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "totalCommits": $COUNT,
+  "mainBranch": "$(git rev-parse --abbrev-ref HEAD)",
+  "filesChanged": $(git diff HEAD~1 --name-only | wc -l),
+  "linesAdded": $(git diff HEAD~1 --stat | grep -E "[0-9]+ insertion" | grep -oE "[0-9]+" | head -1 || echo 0),
+  "linesDeleted": $(git diff HEAD~1 --stat | grep -E "[0-9]+ deletion" | grep -oE "[0-9]+" | head -1 || echo 0)
+}
+EOF
+
+# 4. Trigger auto-backup if configured
+if [ -x "$ROOT_DIR/.claude/tools/auto-backup.sh" ]; then
+    "$ROOT_DIR/.claude/tools/auto-backup.sh" incremental &
+fi
+
+echo -e "${GREEN}✅ Documentation and cache updated${NC}"
+echo -e "${BLUE}📊 Total commits in this session: $COUNT${NC}"
+
+# Check if it's time for a break (every 10 commits)
+if [ $((COUNT % 10)) -eq 0 ]; then
+    echo -e "${BLUE}☕ You've made $COUNT commits! Consider taking a short break.${NC}"
+fi
+
+exit 0

@@ -1,0 +1,269 @@
+# GitLab CI/CD Pipeline for ORION Platform
+
+variables:
+  NODE_VERSION: "20"
+  PNPM_VERSION: "10.15.1"
+  POSTGRES_VERSION: "16"
+  REDIS_VERSION: "7"
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+
+stages:
+  - setup
+  - quality
+  - test
+  - build
+  - security
+  - deploy
+
+# Cache configuration
+.cache_template: &cache_template
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - node_modules/
+      - packages/*/node_modules/
+      - .pnpm-store/
+      - .nx/cache/
+
+# Setup job
+setup:
+  stage: setup
+  image: node:${NODE_VERSION}
+  <<: *cache_template
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm install --frozen-lockfile
+    - pnpm nx run-many --target=build --all
+  artifacts:
+    paths:
+      - node_modules/
+      - packages/*/node_modules/
+      - dist/
+    expire_in: 1 hour
+
+# Code quality checks
+code-quality:
+  stage: quality
+  image: node:${NODE_VERSION}
+  <<: *cache_template
+  dependencies:
+    - setup
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm format:check
+    - pnpm lint
+    - pnpm type-check
+  only:
+    - merge_requests
+    - main
+    - develop
+
+# Unit tests
+.test_template: &test_template
+  stage: test
+  image: node:${NODE_VERSION}
+  <<: *cache_template
+  dependencies:
+    - setup
+  services:
+    - postgres:${POSTGRES_VERSION}
+    - redis:${REDIS_VERSION}
+  variables:
+    POSTGRES_DB: orion_test
+    POSTGRES_USER: orion
+    POSTGRES_PASSWORD: orion_test
+    DATABASE_URL: postgresql://orion:orion_test@postgres:5432/orion_test
+    REDIS_URL: redis://redis:6379
+  coverage: '/Coverage: \d+\.\d+/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+    paths:
+      - coverage/
+    expire_in: 7 days
+
+test:auth:
+  <<: *test_template
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm nx test auth --coverage
+
+test:gateway:
+  <<: *test_template
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm nx test gateway --coverage
+
+test:notifications:
+  <<: *test_template
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm nx test notifications --coverage
+
+test:user:
+  <<: *test_template
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm nx test user --coverage
+
+# Integration tests
+integration-tests:
+  stage: test
+  image: node:${NODE_VERSION}
+  <<: *cache_template
+  dependencies:
+    - setup
+  services:
+    - postgres:${POSTGRES_VERSION}
+    - redis:${REDIS_VERSION}
+  variables:
+    POSTGRES_DB: orion_test
+    POSTGRES_USER: orion
+    POSTGRES_PASSWORD: orion_test
+    DATABASE_URL: postgresql://orion:orion_test@postgres:5432/orion_test
+    REDIS_URL: redis://redis:6379
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm test:integration
+
+# Build Docker images
+.docker_build_template: &docker_build_template
+  stage: build
+  image: docker:24
+  services:
+    - docker:24-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  after_script:
+    - docker logout $CI_REGISTRY
+
+build:auth:
+  <<: *docker_build_template
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/auth:$CI_COMMIT_SHA -f packages/auth/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE/auth:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE/auth:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/auth:latest
+    - docker push $CI_REGISTRY_IMAGE/auth:latest
+  only:
+    - main
+    - develop
+
+build:gateway:
+  <<: *docker_build_template
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/gateway:$CI_COMMIT_SHA -f packages/gateway/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE/gateway:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE/gateway:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/gateway:latest
+    - docker push $CI_REGISTRY_IMAGE/gateway:latest
+  only:
+    - main
+    - develop
+
+build:notifications:
+  <<: *docker_build_template
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/notifications:$CI_COMMIT_SHA -f packages/notifications/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE/notifications:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE/notifications:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/notifications:latest
+    - docker push $CI_REGISTRY_IMAGE/notifications:latest
+  only:
+    - main
+    - develop
+
+build:user:
+  <<: *docker_build_template
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/user:$CI_COMMIT_SHA -f packages/user/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE/user:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE/user:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/user:latest
+    - docker push $CI_REGISTRY_IMAGE/user:latest
+  only:
+    - main
+    - develop
+
+# Security scanning
+security:trivy:
+  stage: security
+  image: aquasec/trivy:latest
+  script:
+    - trivy fs --exit-code 0 --no-progress --format table .
+    - trivy fs --exit-code 1 --severity HIGH,CRITICAL --no-progress .
+  allow_failure: true
+  only:
+    - merge_requests
+    - main
+    - develop
+
+security:dependency-scan:
+  stage: security
+  image: node:${NODE_VERSION}
+  script:
+    - npm install -g pnpm@${PNPM_VERSION}
+    - pnpm audit --audit-level=moderate
+  allow_failure: true
+  only:
+    - merge_requests
+    - main
+    - develop
+
+# Deploy to development
+deploy:dev:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  script:
+    - kubectl config use-context orion/dev-cluster:dev-agent
+    - kubectl apply -k k8s/overlays/development/
+    - kubectl rollout status deployment -n orion-dev --timeout=5m
+  environment:
+    name: development
+    url: https://dev.orion.example.com
+  only:
+    - develop
+
+# Deploy to staging
+deploy:staging:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  script:
+    - kubectl config use-context orion/staging-cluster:staging-agent
+    - bash scripts/deploy-staging.sh
+  environment:
+    name: staging
+    url: https://staging.orion.example.com
+    on_stop: stop:staging
+  only:
+    - staging
+  when: manual
+
+stop:staging:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  script:
+    - kubectl config use-context orion/staging-cluster:staging-agent
+    - kubectl delete -k k8s/overlays/staging/
+  environment:
+    name: staging
+    action: stop
+  only:
+    - staging
+  when: manual
+
+# Deploy to production
+deploy:production:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  script:
+    - kubectl config use-context orion/prod-cluster:prod-agent
+    - bash scripts/deploy-production.sh
+  environment:
+    name: production
+    url: https://orion.example.com
+  only:
+    - main
+    - tags
+  when: manual

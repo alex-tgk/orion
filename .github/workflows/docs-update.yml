@@ -1,0 +1,266 @@
+name: Auto-Documentation Update
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'packages/**/src/**/*.ts'
+      - 'packages/**/README.md'
+      - '.github/workflows/docs-update.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/**/src/**/*.ts'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  generate-documentation:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate TypeDoc documentation
+        run: |
+          pnpm add -g typedoc typedoc-plugin-markdown
+          mkdir -p docs/api
+
+          # Generate API docs for each package
+          for package in packages/*/; do
+            package_name=$(basename "$package")
+            if [ -f "$package/tsconfig.json" ]; then
+              echo "Generating TypeDoc for $package_name..."
+              typedoc \
+                --entryPoints "$package/src" \
+                --out "docs/api/$package_name" \
+                --plugin typedoc-plugin-markdown \
+                --readme none \
+                --excludePrivate \
+                --excludeInternal
+            fi
+          done
+
+      - name: Generate Compodoc for NestJS services
+        run: |
+          pnpm add -g @compodoc/compodoc
+
+          # Generate Compodoc for NestJS packages
+          for package in packages/*/; do
+            package_name=$(basename "$package")
+            if [ -f "$package/tsconfig.app.json" ]; then
+              echo "Generating Compodoc for $package_name..."
+              compodoc \
+                -p "$package/tsconfig.app.json" \
+                -d "docs/compodoc/$package_name" \
+                --theme material \
+                --hideGenerator \
+                --disableCoverage
+            fi
+          done
+
+      - name: Generate README for packages
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const packages = fs.readdirSync('packages').filter(p =>
+            fs.statSync(path.join('packages', p)).isDirectory()
+          );
+
+          for (const pkg of packages) {
+            const readmePath = path.join('packages', pkg, 'README.md');
+            const packageJsonPath = path.join('packages', pkg, 'package.json');
+
+            if (fs.existsSync(packageJsonPath)) {
+              const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+              // Generate basic README if it doesn't exist
+              if (!fs.existsSync(readmePath)) {
+                const readme = \`# \${packageJson.name || pkg}
+
+## Description
+\${packageJson.description || 'No description available'}
+
+## Installation
+\\\`\\\`\\\`bash
+pnpm install
+\\\`\\\`\\\`
+
+## Usage
+See [API Documentation](../../docs/api/\${pkg}/README.md) for detailed usage.
+
+## Features
+- Feature 1
+- Feature 2
+
+## API Reference
+- [TypeDoc API Reference](../../docs/api/\${pkg})
+- [Compodoc Documentation](../../docs/compodoc/\${pkg})
+
+## Testing
+\\\`\\\`\\\`bash
+pnpm test
+\\\`\\\`\\\`
+
+## License
+MIT
+\`;
+                fs.writeFileSync(readmePath, readme);
+                console.log(\`Generated README for \${pkg}\`);
+              }
+            }
+          }
+          "
+
+      - name: Update main README
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const packages = fs.readdirSync('packages').filter(p =>
+            fs.statSync(path.join('packages', p)).isDirectory()
+          );
+
+          let servicesList = '## Services\\n\\n';
+          for (const pkg of packages) {
+            const packageJsonPath = path.join('packages', pkg, 'package.json');
+            if (fs.existsSync(packageJsonPath)) {
+              const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+              servicesList += \`### [\${packageJson.name || pkg}](./packages/\${pkg}/README.md)\\n\`;
+              servicesList += \`\${packageJson.description || 'No description'}\\n\\n\`;
+            }
+          }
+
+          // Read current README
+          let readme = fs.readFileSync('README.md', 'utf-8');
+
+          // Replace or append services section
+          const servicesRegex = /## Services[\\s\\S]*?(?=##|$)/;
+          if (servicesRegex.test(readme)) {
+            readme = readme.replace(servicesRegex, servicesList);
+          } else {
+            readme += '\\n\\n' + servicesList;
+          }
+
+          fs.writeFileSync('README.md', readme);
+          console.log('Updated main README');
+          "
+
+      - name: Generate documentation index
+        run: |
+          cat > docs/INDEX.md << 'EOF'
+          # ORION Documentation Index
+
+          ## Generated Documentation
+          Last updated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+
+          ## API Documentation
+
+          - [TypeDoc API Reference](./api/README.md)
+          - [Compodoc NestJS Documentation](./compodoc/README.md)
+
+          ## Service Documentation
+
+          EOF
+
+          # Add links to each service
+          for package in packages/*/; do
+            package_name=$(basename "$package")
+            echo "- [$package_name](./api/$package_name/README.md)" >> docs/INDEX.md
+          done
+
+          cat >> docs/INDEX.md << 'EOF'
+
+          ## Architecture
+
+          - [System Architecture](./architecture/README.md)
+          - [API Design](./api-design.md)
+          - [Database Schema](./database-schema.md)
+
+          ## Guides
+
+          - [Getting Started](../README.md)
+          - [Development Guide](./development.md)
+          - [Deployment Guide](./deployment.md)
+          EOF
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --exit-code || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true' && github.event_name == 'push'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'docs: auto-update documentation'
+          title: 'docs: Auto-generated documentation update'
+          body: |
+            ## Auto-Documentation Update
+
+            This PR contains automatically generated documentation updates:
+
+            - ✅ TypeDoc API documentation
+            - ✅ Compodoc NestJS documentation
+            - ✅ Auto-generated README files
+            - ✅ Updated documentation index
+
+            ### Changes Made
+            - Generated API documentation from source code
+            - Updated service READMEs
+            - Refreshed main README service listings
+            - Updated documentation index
+
+            ### Review Notes
+            - Review generated documentation for accuracy
+            - Ensure all services are properly documented
+            - Verify links are working
+
+            ---
+            *This PR was automatically created by the docs-update workflow*
+          branch: docs/auto-update-${{ github.run_number }}
+          delete-branch: true
+          labels: |
+            documentation
+            automated
+
+      - name: Comment on PR (if triggered by PR)
+        if: github.event_name == 'pull_request' && steps.check_changes.outputs.has_changes == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '📚 **Documentation Update Available**\n\nThis PR will trigger automatic documentation updates when merged. The following will be regenerated:\n- TypeDoc API documentation\n- Compodoc NestJS documentation\n- README files\n\nA separate documentation PR will be created after merge.'
+            })

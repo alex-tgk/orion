@@ -1,0 +1,168 @@
+<% if (withCRUD) { %>import { Test, TestingModule } from '@nestjs/testing';
+import { NotFoundException } from '@nestjs/common';
+import { <%= className %>Service } from './<%= fileName %>.service';
+<% if (withDatabase) { %>import { PrismaService } from '@orion/shared/prisma';
+
+describe('<%= className %>Service', () => {
+  let service: <%= className %>Service;
+  let prisma: PrismaService;
+
+  const mockPrismaService = {
+    <%= propertyName %>: {
+      create: jest.fn(),
+      findMany: jest.fn(),
+      findUnique: jest.fn(),
+      update: jest.fn(),
+      delete: jest.fn(),
+      count: jest.fn(),
+    },
+  };
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [
+        <%= className %>Service,
+        {
+          provide: PrismaService,
+          useValue: mockPrismaService,
+        },
+      ],
+    }).compile();
+
+    service = module.get<<%= className %>Service>(<%= className %>Service);
+    prisma = module.get<PrismaService>(PrismaService);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
+  describe('create', () => {
+    it('should create a <%= fileName %>', async () => {
+      const createDto = { name: 'Test', description: 'Test description' };
+      const expected = { id: '1', ...createDto, createdAt: new Date(), updatedAt: new Date() };
+
+      mockPrismaService.<%= propertyName %>.create.mockResolvedValue(expected);
+
+      const result = await service.create(createDto);
+
+      expect(result).toEqual(expected);
+      expect(prisma.<%= propertyName %>.create).toHaveBeenCalledWith({
+        data: createDto,
+      });
+    });
+  });
+
+  describe('findAll', () => {
+    it('should return paginated <%= fileName %>s', async () => {
+      const mockData = [{ id: '1', name: 'Test' }];
+      const mockCount = 1;
+
+      mockPrismaService.<%= propertyName %>.findMany.mockResolvedValue(mockData);
+      mockPrismaService.<%= propertyName %>.count.mockResolvedValue(mockCount);
+
+      const result = await service.findAll({ page: 1, limit: 10 });
+
+      expect(result).toEqual({
+        data: mockData,
+        meta: {
+          page: 1,
+          limit: 10,
+          total: mockCount,
+          totalPages: 1,
+        },
+      });
+    });
+  });
+
+  describe('findOne', () => {
+    it('should return a <%= fileName %> by id', async () => {
+      const expected = { id: '1', name: 'Test' };
+
+      mockPrismaService.<%= propertyName %>.findUnique.mockResolvedValue(expected);
+
+      const result = await service.findOne('1');
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should throw NotFoundException if <%= fileName %> not found', async () => {
+      mockPrismaService.<%= propertyName %>.findUnique.mockResolvedValue(null);
+
+      await expect(service.findOne('1')).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('update', () => {
+    it('should update a <%= fileName %>', async () => {
+      const updateDto = { name: 'Updated' };
+      const existing = { id: '1', name: 'Test' };
+      const expected = { ...existing, ...updateDto };
+
+      mockPrismaService.<%= propertyName %>.findUnique.mockResolvedValue(existing);
+      mockPrismaService.<%= propertyName %>.update.mockResolvedValue(expected);
+
+      const result = await service.update('1', updateDto);
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('remove', () => {
+    it('should remove a <%= fileName %>', async () => {
+      const existing = { id: '1', name: 'Test' };
+
+      mockPrismaService.<%= propertyName %>.findUnique.mockResolvedValue(existing);
+      mockPrismaService.<%= propertyName %>.delete.mockResolvedValue(existing);
+
+      await service.remove('1');
+
+      expect(prisma.<%= propertyName %>.delete).toHaveBeenCalledWith({
+        where: { id: '1' },
+      });
+    });
+  });
+});
+<% } else { %>
+describe('<%= className %>Service', () => {
+  let service: <%= className %>Service;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [<%= className %>Service],
+    }).compile();
+
+    service = module.get<<%= className %>Service>(<%= className %>Service);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
+  describe('create', () => {
+    it('should create a <%= fileName %>', async () => {
+      const createDto = { name: 'Test', description: 'Test description' };
+      const result = await service.create(createDto);
+
+      expect(result).toHaveProperty('id');
+      expect(result.name).toBe(createDto.name);
+    });
+  });
+
+  describe('findAll', () => {
+    it('should return paginated <%= fileName %>s', async () => {
+      await service.create({ name: 'Test 1' });
+      await service.create({ name: 'Test 2' });
+
+      const result = await service.findAll({ page: 1, limit: 10 });
+
+      expect(result.data).toHaveLength(2);
+      expect(result.meta.total).toBe(2);
+    });
+  });
+});
+<% } %><% } %>

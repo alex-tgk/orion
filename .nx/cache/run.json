@@ -1,142 +1,21 @@
 {
   "run": {
-    "command": "nx affected:lint --fix",
-    "startTime": "2025-10-18T03:50:09.426Z",
-    "endTime": "2025-10-18T03:50:16.038Z",
+    "command": "nx build shared",
+    "startTime": "2025-10-18T05:52:20.220Z",
+    "endTime": "2025-10-18T05:52:23.018Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "webhooks:lint",
-      "target": "lint",
-      "projectName": "webhooks",
-      "hash": "629155930161461769",
-      "startTime": "2025-10-18T03:50:09.513Z",
-      "endTime": "2025-10-18T03:50:11.395Z",
+      "taskId": "shared:build",
+      "target": "build",
+      "projectName": "shared",
+      "hash": "8803139040967509424",
+      "startTime": "2025-10-18T05:52:20.275Z",
+      "endTime": "2025-10-18T05:52:23.017Z",
       "params": "",
       "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "secrets:lint",
-      "target": "lint",
-      "projectName": "secrets",
-      "hash": "17944152317695881786",
-      "startTime": "2025-10-18T03:50:09.524Z",
-      "endTime": "2025-10-18T03:50:11.413Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "auth:lint",
-      "target": "lint",
-      "projectName": "auth",
-      "hash": "119944403603962301",
-      "startTime": "2025-10-18T03:50:09.500Z",
-      "endTime": "2025-10-18T03:50:11.634Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "vector-db:lint",
-      "target": "lint",
-      "projectName": "vector-db",
-      "hash": "8344418113938229130",
-      "startTime": "2025-10-18T03:50:11.434Z",
-      "endTime": "2025-10-18T03:50:12.927Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "ai-interface:lint",
-      "target": "lint",
-      "projectName": "ai-interface",
-      "hash": "15946736461247212813",
-      "startTime": "2025-10-18T03:50:11.452Z",
-      "endTime": "2025-10-18T03:50:12.936Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "audit:lint",
-      "target": "lint",
-      "projectName": "audit",
-      "hash": "9951912503089035301",
-      "startTime": "2025-10-18T03:50:11.635Z",
-      "endTime": "2025-10-18T03:50:13.111Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "logger:lint",
-      "target": "lint",
-      "projectName": "logger",
-      "hash": "137815157460044235",
-      "startTime": "2025-10-18T03:50:12.938Z",
-      "endTime": "2025-10-18T03:50:14.391Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "config:lint",
-      "target": "lint",
-      "projectName": "config",
-      "hash": "17322888922752385939",
-      "startTime": "2025-10-18T03:50:12.929Z",
-      "endTime": "2025-10-18T03:50:14.396Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "analytics:lint",
-      "target": "lint",
-      "projectName": "analytics",
-      "hash": "2785738609815890262",
-      "startTime": "2025-10-18T03:50:13.113Z",
-      "endTime": "2025-10-18T03:50:14.568Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "search:lint",
-      "target": "lint",
-      "projectName": "search",
-      "hash": "6168893028359745752",
-      "startTime": "2025-10-18T03:50:14.393Z",
-      "endTime": "2025-10-18T03:50:15.864Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "cache:lint",
-      "target": "lint",
-      "projectName": "cache",
-      "hash": "10738104229919700032",
-      "startTime": "2025-10-18T03:50:14.397Z",
-      "endTime": "2025-10-18T03:50:15.864Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "gateway:lint",
-      "target": "lint",
-      "projectName": "gateway",
-      "hash": "2172241595951524839",
-      "startTime": "2025-10-18T03:50:14.570Z",
-      "endTime": "2025-10-18T03:50:16.036Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
+      "status": 1
     }
   ]
 }

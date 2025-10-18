@@ -1,0 +1,4 @@
+export * from './app.config';
+<% if (withDatabase) { %>export * from './database.config';
+<% } %><% if (withRedis) { %>export * from './redis.config';
+<% } %>

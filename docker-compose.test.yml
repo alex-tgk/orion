@@ -1,0 +1,202 @@
+# Docker Compose configuration for integration and E2E testing
+# This creates isolated test environments separate from development services
+
+services:
+  # PostgreSQL Test Database
+  postgres-test:
+    image: postgres:16-alpine
+    container_name: orion-postgres-test
+    environment:
+      POSTGRES_USER: orion_test
+      POSTGRES_PASSWORD: orion_test_password
+      POSTGRES_DB: orion_test
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=en_US.utf8 --lc-ctype=en_US.utf8"
+    ports:
+      - "5433:5432"  # Different port to avoid conflicts with dev DB
+    tmpfs:
+      # Use tmpfs for faster tests and automatic cleanup
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orion_test"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - orion-test-network
+
+  # Redis Test Cache
+  redis-test:
+    image: redis:7-alpine
+    container_name: orion-redis-test
+    command: redis-server --appendonly no --maxmemory 128mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6380:6379"  # Different port to avoid conflicts with dev Redis
+    tmpfs:
+      # Use tmpfs for faster tests and automatic cleanup
+      - /data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - orion-test-network
+
+  # RabbitMQ Test Message Broker
+  rabbitmq-test:
+    image: rabbitmq:3.12-management-alpine
+    container_name: orion-rabbitmq-test
+    environment:
+      RABBITMQ_DEFAULT_USER: orion_test
+      RABBITMQ_DEFAULT_PASS: orion_test_password
+      RABBITMQ_DEFAULT_VHOST: /test
+    ports:
+      - "5673:5672"   # Different port to avoid conflicts with dev RabbitMQ
+      - "15673:15672" # Management UI on different port
+    tmpfs:
+      # Use tmpfs for faster tests and automatic cleanup
+      - /var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - orion-test-network
+
+  # Gateway Service - Test
+  gateway-test:
+    build:
+      context: .
+      dockerfile: packages/gateway/Dockerfile
+      target: runtime
+    container_name: orion-gateway-test
+    environment:
+      NODE_ENV: test
+      PORT: 3000
+      DATABASE_URL: postgresql://orion_test:orion_test_password@postgres-test:5432/orion_test
+      REDIS_URL: redis://redis-test:6379
+      REDIS_ENABLED: "true"
+      AUTH_SERVICE_URL: http://auth-test:3001
+      USER_SERVICE_URL: http://user-test:3002
+      NOTIFICATION_SERVICE_URL: http://notifications-test:3003
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+      redis-test:
+        condition: service_healthy
+      rabbitmq-test:
+        condition: service_healthy
+    networks:
+      - orion-test-network
+
+  # Auth Service - Test
+  auth-test:
+    build:
+      context: .
+      dockerfile: packages/auth/Dockerfile
+      target: runtime
+    container_name: orion-auth-test
+    environment:
+      NODE_ENV: test
+      PORT: 3001
+      DATABASE_URL: postgresql://orion_test:orion_test_password@postgres-test:5432/orion_test
+      REDIS_URL: redis://redis-test:6379
+      REDIS_ENABLED: "true"
+      JWT_SECRET: test-secret-key-for-testing-only
+      JWT_ACCESS_EXPIRY: 15m
+      JWT_REFRESH_EXPIRY: 7d
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+      redis-test:
+        condition: service_healthy
+    networks:
+      - orion-test-network
+
+  # User Service - Test
+  user-test:
+    build:
+      context: .
+      dockerfile: packages/user/Dockerfile
+      target: runtime
+    container_name: orion-user-test
+    environment:
+      NODE_ENV: test
+      PORT: 3002
+      DATABASE_URL: postgresql://orion_test:orion_test_password@postgres-test:5432/orion_test
+      REDIS_URL: redis://redis-test:6379
+      REDIS_ENABLED: "true"
+      RABBITMQ_URL: amqp://orion_test:orion_test_password@rabbitmq-test:5672/test
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+      redis-test:
+        condition: service_healthy
+      rabbitmq-test:
+        condition: service_healthy
+    networks:
+      - orion-test-network
+
+  # Notification Service - Test
+  notifications-test:
+    build:
+      context: .
+      dockerfile: packages/notifications/Dockerfile
+      target: runtime
+    container_name: orion-notifications-test
+    environment:
+      NODE_ENV: test
+      PORT: 3003
+      DATABASE_URL: postgresql://orion_test:orion_test_password@postgres-test:5432/orion_test
+      REDIS_URL: redis://redis-test:6379
+      REDIS_ENABLED: "true"
+      RABBITMQ_URL: amqp://orion_test:orion_test_password@rabbitmq-test:5672/test
+      SMTP_HOST: smtp.mailtrap.io
+      SMTP_PORT: 2525
+      EMAIL_FROM: test@orion.test
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+      redis-test:
+        condition: service_healthy
+      rabbitmq-test:
+        condition: service_healthy
+    networks:
+      - orion-test-network
+
+  # Admin UI Service - Test
+  admin-ui-test:
+    build:
+      context: .
+      dockerfile: packages/admin-ui/Dockerfile
+      target: runtime
+    container_name: orion-admin-ui-test
+    environment:
+      NODE_ENV: test
+      PORT: 3004
+      GATEWAY_URL: http://gateway-test:3000
+      AUTH_SERVICE_URL: http://auth-test:3001
+      USER_SERVICE_URL: http://user-test:3002
+      NOTIFICATION_SERVICE_URL: http://notifications-test:3003
+      DATABASE_URL: postgresql://orion_test:orion_test_password@postgres-test:5432/orion_test
+      REDIS_URL: redis://redis-test:6379
+      REDIS_ENABLED: "true"
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+      redis-test:
+        condition: service_healthy
+      gateway-test:
+        condition: service_started
+    networks:
+      - orion-test-network
+
+networks:
+  orion-test-network:
+    driver: bridge
+    name: orion-test-network
+    # Isolated network ensures no interference with dev services
+
+# Note: No volumes are defined - all data is ephemeral using tmpfs
+# This ensures clean state for each test run and faster performance

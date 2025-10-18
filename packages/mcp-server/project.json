@@ -5,16 +5,13 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "command": "webpack-cli build",
-        "args": ["--node-env=production"],
-        "cwd": "packages/mcp-server"
-      },
-      "configurations": {
-        "development": {
-          "args": ["--node-env=development"]
-        }
+        "outputPath": "dist/packages/mcp-server",
+        "main": "packages/mcp-server/src/mcp-main.ts",
+        "tsConfig": "packages/mcp-server/tsconfig.app.json",
+        "assets": ["packages/mcp-server/*.md"]
       }
     },
     "serve": {

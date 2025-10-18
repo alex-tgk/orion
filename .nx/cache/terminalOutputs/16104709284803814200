@@ -1,0 +1,8 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/port-registry/ports.ts[0m:[93m43[0m:[93m28[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m43[0m   const host = process.env.NODE_ENV === 'production'[39m[22m
+[1m[31m[7m  [0m [91m                           ~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+
+[2m../../dist/packages/shared/README.md[22m

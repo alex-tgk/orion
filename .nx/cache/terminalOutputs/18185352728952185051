@@ -1,0 +1,81 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m13[0m:[93m32[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m13[0m   constructor(private readonly configService: ConfigService) {[39m[22m
+[1m[31m[7m  [0m [91m                               ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m148[0m:[93m38[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m148[0m     const isProduction = process.env.NODE_ENV === 'production';[39m[22m
+[1m[31m[7m   [0m [91m                                     ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m153[0m:[93m33[0m - [91merror[0m[90m TS4111: [0mProperty 'JWT_ACCESS_EXPIRY' comes from an index signature, so it must be accessed with ['JWT_ACCESS_EXPIRY'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m153[0m       accessExpiry: process.env.JWT_ACCESS_EXPIRY || '15m',[39m[22m
+[1m[31m[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m154[0m:[93m34[0m - [91merror[0m[90m TS4111: [0mProperty 'JWT_REFRESH_EXPIRY' comes from an index signature, so it must be accessed with ['JWT_REFRESH_EXPIRY'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m154[0m       refreshExpiry: process.env.JWT_REFRESH_EXPIRY || '7d',[39m[22m
+[1m[31m[7m   [0m [91m                                 ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m155[0m:[93m27[0m - [91merror[0m[90m TS4111: [0mProperty 'JWT_ISSUER' comes from an index signature, so it must be accessed with ['JWT_ISSUER'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m155[0m       issuer: process.env.JWT_ISSUER || 'orion-auth',[39m[22m
+[1m[31m[7m   [0m [91m                          ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m156[0m:[93m29[0m - [91merror[0m[90m TS4111: [0mProperty 'JWT_AUDIENCE' comes from an index signature, so it must be accessed with ['JWT_AUDIENCE'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m156[0m       audience: process.env.JWT_AUDIENCE || 'orion-services',[39m[22m
+[1m[31m[7m   [0m [91m                            ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m162[0m:[93m29[0m - [91merror[0m[90m TS4111: [0mProperty 'JWT_ISSUER' comes from an index signature, so it must be accessed with ['JWT_ISSUER'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m162[0m         issuer: process.env.JWT_ISSUER || 'orion-auth',[39m[22m
+[1m[31m[7m   [0m [91m                            ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m163[0m:[93m31[0m - [91merror[0m[90m TS4111: [0mProperty 'JWT_AUDIENCE' comes from an index signature, so it must be accessed with ['JWT_AUDIENCE'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m163[0m         audience: process.env.JWT_AUDIENCE || 'orion-services',[39m[22m
+[1m[31m[7m   [0m [91m                              ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m174[0m:[93m38[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m174[0m     const isProduction = process.env.NODE_ENV === 'production';[39m[22m
+[1m[31m[7m   [0m [91m                                     ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m187[0m:[93m27[0m - [91merror[0m[90m TS4111: [0mProperty 'DB_SSL_CA' comes from an index signature, so it must be accessed with ['DB_SSL_CA'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m187[0m           ca: process.env.DB_SSL_CA,[39m[22m
+[1m[31m[7m   [0m [91m                          ~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m199[0m:[93m25[0m - [91merror[0m[90m TS4111: [0mProperty 'DB_HOST' comes from an index signature, so it must be accessed with ['DB_HOST'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m199[0m       host: process.env.DB_HOST || 'localhost',[39m[22m
+[1m[31m[7m   [0m [91m                        ~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m200[0m:[93m34[0m - [91merror[0m[90m TS4111: [0mProperty 'DB_PORT' comes from an index signature, so it must be accessed with ['DB_PORT'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m200[0m       port: parseInt(process.env.DB_PORT || '5432', 10),[39m[22m
+[1m[31m[7m   [0m [91m                                 ~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m203[0m:[93m29[0m - [91merror[0m[90m TS4111: [0mProperty 'DB_NAME' comes from an index signature, so it must be accessed with ['DB_NAME'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m203[0m       database: process.env.DB_NAME || 'orion_dev',[39m[22m
+[1m[31m[7m   [0m [91m                            ~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m205[0m:[93m28[0m - [91merror[0m[90m TS4111: [0mProperty 'DB_LOGGING' comes from an index signature, so it must be accessed with ['DB_LOGGING'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m205[0m       logging: process.env.DB_LOGGING === 'true',[39m[22m
+[1m[31m[7m   [0m [91m                           ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m216[0m:[93m38[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m216[0m     const isProduction = process.env.NODE_ENV === 'production';[39m[22m
+[1m[31m[7m   [0m [91m                                     ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m219[0m:[93m25[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_HOST' comes from an index signature, so it must be accessed with ['REDIS_HOST'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m219[0m       host: process.env.REDIS_HOST || 'localhost',[39m[22m
+[1m[31m[7m   [0m [91m                        ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m220[0m:[93m34[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_PORT' comes from an index signature, so it must be accessed with ['REDIS_PORT'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m220[0m       port: parseInt(process.env.REDIS_PORT || '6379', 10),[39m[22m
+[1m[31m[7m   [0m [91m                                 ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m221[0m:[93m29[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_PASSWORD' comes from an index signature, so it must be accessed with ['REDIS_PASSWORD'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m221[0m       password: process.env.REDIS_PASSWORD || undefined,[39m[22m
+[1m[31m[7m   [0m [91m                            ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m222[0m:[93m32[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_DB' comes from an index signature, so it must be accessed with ['REDIS_DB'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m222[0m       db: parseInt(process.env.REDIS_DB || '0', 10),[39m[22m
+[1m[31m[7m   [0m [91m                               ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m282[0m:[93m36[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m
+[2m../../dist/packages/shared/README.md[22m

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: admin-ui-config
+  namespace: orion
+  labels:
+    app: admin-ui
+data:
+  CORS_ORIGIN: "https://orion.example.com"
+  RATE_LIMIT_TTL: "60"
+  RATE_LIMIT_MAX: "100"
+  LOG_LEVEL: "info"

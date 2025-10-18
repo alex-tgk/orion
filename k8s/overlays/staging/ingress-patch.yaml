@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-ingress
+  namespace: orion-staging
+  annotations:
+    # Use staging issuer for certificate provisioning
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  tls:
+  - hosts:
+    - auth-staging.orion.example.com
+    secretName: auth-tls-secret
+  rules:
+  - host: auth-staging.orion.example.com
+    http:
+      paths:
+      - path: /api/auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              name: http
+      - path: /health
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              name: http

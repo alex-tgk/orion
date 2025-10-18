@@ -1,0 +1,52 @@
+# Example security context to be added to deployment manifests
+# This file serves as a reference for security best practices
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: security-context-reference
+  namespace: default
+data:
+  pod-security-context.yaml: |
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 3000
+      fsGroup: 2000
+      seccompProfile:
+        type: RuntimeDefault
+
+  container-security-context.yaml: |
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      capabilities:
+        drop:
+          - ALL
+        add:
+          - NET_BIND_SERVICE  # Only if needed for binding to ports < 1024
+
+  volume-mounts.yaml: |
+    volumeMounts:
+      - name: tmp
+        mountPath: /tmp
+      - name: cache
+        mountPath: /app/cache
+
+  volumes.yaml: |
+    volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
+
+  resource-limits.yaml: |
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi

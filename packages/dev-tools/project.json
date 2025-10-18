@@ -17,6 +17,37 @@
         }
       }
     },
+    "build:cli": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/dev-tools",
+        "tsConfig": "packages/dev-tools/tsconfig.cli.json",
+        "main": "packages/dev-tools/src/cli/spec-validator.ts",
+        "assets": []
+      }
+    },
+    "validate-specs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node dist/packages/dev-tools/cli/spec-validator.js validate"
+      },
+      "dependsOn": ["build:cli"]
+    },
+    "spec-coverage": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node dist/packages/dev-tools/cli/spec-validator.js coverage"
+      },
+      "dependsOn": ["build:cli"]
+    },
+    "generate-spec": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node dist/packages/dev-tools/cli/spec-validator.js generate"
+      },
+      "dependsOn": ["build:cli"]
+    },
     "serve": {
       "continuous": true,
       "executor": "@nx/js:node",

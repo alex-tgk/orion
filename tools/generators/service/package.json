@@ -1,0 +1,6 @@
+{
+  "name": "service-generator",
+  "version": "1.0.0",
+  "main": "./generator.ts",
+  "generators": "./generators.json"
+}

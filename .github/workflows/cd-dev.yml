@@ -1,0 +1,104 @@
+name: Deploy to Development
+
+on:
+  push:
+    branches: [develop, feature/**]
+  workflow_dispatch:
+
+env:
+  ENVIRONMENT: development
+  NAMESPACE: orion-dev
+  REGISTRY: ghcr.io
+
+jobs:
+  deploy:
+    name: Deploy to Development
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+      url: https://dev.orion.example.com
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.28.0'
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: 'v3.13.0'
+
+      - name: Configure kubectl
+        run: |
+          echo "${{ secrets.KUBE_CONFIG_DEV }}" | base64 -d > kubeconfig
+          export KUBECONFIG=./kubeconfig
+          kubectl cluster-info
+          kubectl get nodes
+
+      - name: Create namespace
+        run: |
+          export KUBECONFIG=./kubeconfig
+          kubectl create namespace ${{ env.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Deploy with Helm
+        run: |
+          export KUBECONFIG=./kubeconfig
+          helm upgrade --install orion ./k8s/helm/orion \
+            --namespace ${{ env.NAMESPACE }} \
+            --set environment=${{ env.ENVIRONMENT }} \
+            --set image.registry=${{ env.REGISTRY }} \
+            --set image.tag=${{ github.sha }} \
+            --set auth.replicas=1 \
+            --set gateway.replicas=1 \
+            --set notifications.replicas=1 \
+            --set user.replicas=1 \
+            --wait --timeout=10m
+
+      - name: Run database migrations
+        run: |
+          export KUBECONFIG=./kubeconfig
+          kubectl apply -f k8s/jobs/migrations.yaml -n ${{ env.NAMESPACE }}
+          kubectl wait --for=condition=complete job/migrations -n ${{ env.NAMESPACE }} --timeout=5m
+
+      - name: Verify deployment
+        run: |
+          export KUBECONFIG=./kubeconfig
+          kubectl rollout status deployment/auth-service -n ${{ env.NAMESPACE }} --timeout=5m
+          kubectl rollout status deployment/gateway-service -n ${{ env.NAMESPACE }} --timeout=5m
+          kubectl rollout status deployment/notification-service -n ${{ env.NAMESPACE }} --timeout=5m
+          kubectl rollout status deployment/user-service -n ${{ env.NAMESPACE }} --timeout=5m
+
+      - name: Run smoke tests
+        run: |
+          bash scripts/smoke-tests.sh development
+        env:
+          API_URL: https://dev-api.orion.example.com
+
+      - name: Get deployment status
+        if: always()
+        run: |
+          export KUBECONFIG=./kubeconfig
+          kubectl get all -n ${{ env.NAMESPACE }}
+          kubectl get pods -n ${{ env.NAMESPACE }} -o wide
+
+      - name: Send notification
+        if: always()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: |
+            Development deployment ${{ job.status }}
+            Environment: ${{ env.ENVIRONMENT }}
+            Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Cleanup
+        if: always()
+        run: rm -f kubeconfig

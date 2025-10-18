@@ -1,0 +1,76 @@
+# Staging environment values
+global:
+  environment: staging
+  domain: staging.orion.com
+  imagePullPolicy: IfNotPresent
+
+gateway:
+  replicaCount: 2
+  autoscaling:
+    minReplicas: 2
+    maxReplicas: 5
+
+auth:
+  replicaCount: 2
+  autoscaling:
+    minReplicas: 2
+    maxReplicas: 5
+
+user:
+  replicaCount: 2
+  autoscaling:
+    minReplicas: 2
+    maxReplicas: 5
+  persistence:
+    size: 5Gi
+
+notifications:
+  replicaCount: 2
+  autoscaling:
+    minReplicas: 2
+    maxReplicas: 5
+
+adminUi:
+  replicaCount: 2
+  autoscaling:
+    minReplicas: 2
+    maxReplicas: 5
+
+postgresql:
+  persistence:
+    size: 10Gi
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+redis:
+  persistence:
+    size: 2Gi
+
+rabbitmq:
+  persistence:
+    size: 5Gi
+
+ingress:
+  enabled: true
+  tls:
+    enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+
+monitoring:
+  enabled: true
+  prometheus:
+    enabled: true
+  grafana:
+    enabled: true
+
+security:
+  networkPolicies:
+    enabled: true
+  podSecurityPolicy:
+    enabled: true

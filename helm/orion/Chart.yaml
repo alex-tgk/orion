@@ -1,0 +1,18 @@
+apiVersion: v2
+name: orion
+description: ORION - A revolutionary microservices platform with CLI-based AI integration
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - microservices
+  - nestjs
+  - ai
+  - observable
+maintainers:
+  - name: ORION Team
+    email: team@orion.dev
+sources:
+  - https://github.com/orion/orion
+icon: https://orion.dev/icon.png
+dependencies: []

@@ -1,24 +1,25 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, feature/**, fix/**]
   pull_request:
     branches: [main, develop]
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '20'
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  NODE_VERSION: '20.x'
+  PNPM_VERSION: '10.15.1'
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
-  # Code Quality Checks
-  quality:
-    name: Code Quality
+  setup:
+    name: Setup & Cache
     runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-keys.outputs.node-modules }}
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -27,31 +28,167 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup cache keys
+        id: cache-keys
+        run: |
+          echo "node-modules=node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ steps.cache-keys.outputs.node-modules }}
+          restore-keys: |
+            node-modules-
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
-      - name: Run linter
-        run: npm run lint
+      - name: Cache Nx
+        uses: actions/cache@v4
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-
 
-      - name: Type check
-        run: npm run type-check
-
-      - name: Check formatting
-        run: npm run format:check
-
-  # Unit Tests
-  test:
-    name: Unit Tests
+  code-quality:
+    name: Code Quality Checks
     runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Restore Nx cache
+        uses: actions/cache@v4
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-
+
+      - name: Prettier check
+        run: pnpm format:check
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: TypeScript type check
+        run: pnpm type-check
+
+  test:
+    name: Test - ${{ matrix.service }}
+    runs-on: ubuntu-latest
+    needs: setup
+    strategy:
+      matrix:
+        service:
+          - auth
+          - gateway
+          - notifications
+          - user
+          - shared
+          - admin-ui
+          - mcp-server
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Restore Nx cache
+        uses: actions/cache@v4
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-
+
+      - name: Run tests
+        run: pnpm nx test ${{ matrix.service }} --coverage --maxWorkers=2
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/packages/${{ matrix.service }}/lcov.info
+          flags: ${{ matrix.service }}
+          name: ${{ matrix.service }}-coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
+        continue-on-error: true
+
+  test-integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: setup
     services:
       postgres:
         image: postgres:16-alpine
         env:
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
-          POSTGRES_DB: test
+          POSTGRES_USER: orion
+          POSTGRES_PASSWORD: orion_test
+          POSTGRES_DB: orion_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -71,79 +208,181 @@ jobs:
           - 6379:6379
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
-      - name: Run unit tests
-        run: npm run test:ci
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Restore Nx cache
+        uses: actions/cache@v4
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-
+
+      - name: Setup test database
         env:
-          DATABASE_URL: postgresql://test:test@localhost:5432/test
+          DATABASE_URL: postgresql://orion:orion_test@localhost:5432/orion_test
+        run: |
+          pnpm nx run auth:prisma:migrate:deploy || true
+          pnpm nx run notifications:prisma:migrate:deploy || true
+          pnpm nx run user:prisma:migrate:deploy || true
+
+      - name: Run integration tests
+        env:
+          DATABASE_URL: postgresql://orion:orion_test@localhost:5432/orion_test
           REDIS_URL: redis://localhost:6379
-          JWT_SECRET: test-jwt-secret
-          NODE_ENV: test
+        run: pnpm test:integration
 
-      - name: Upload coverage
-        uses: codecov/codecov-action@v3
-        with:
-          files: ./coverage/lcov.info
-          flags: unittests
-          name: codecov-umbrella
-
-  # Security Scan
-  security:
-    name: Security Scan
+  test-e2e:
+    name: E2E Tests
     runs-on: ubuntu-latest
+    needs: setup
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+          fetch-depth: 0
 
-      - name: Upload Trivy results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Restore Nx cache
+        uses: actions/cache@v4
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-
+
+      - name: Setup Docker Compose
+        run: docker compose -f docker-compose.test.yml up -d
+
+      - name: Wait for services
+        run: |
+          timeout 60 bash -c 'until docker compose -f docker-compose.test.yml ps | grep healthy; do sleep 2; done'
+
+      - name: Run E2E tests
+        run: pnpm test:e2e
+
+      - name: Cleanup
         if: always()
-        with:
-          sarif_file: 'trivy-results.sarif'
+        run: docker compose -f docker-compose.test.yml down -v
 
-      - name: Audit npm packages
-        run: npm audit --audit-level=moderate
-
-  # Build Docker Image
   build:
-    name: Build Docker Image
+    name: Build - ${{ matrix.service }}
     runs-on: ubuntu-latest
-    needs: [quality, test]
-    if: github.event_name == 'push'
-    permissions:
-      contents: read
-      packages: write
-
+    needs: setup
+    strategy:
+      matrix:
+        service:
+          - auth
+          - gateway
+          - notifications
+          - user
+          - admin-ui
+          - mcp-server
+      fail-fast: false
     steps:
-      - name: Checkout code
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Restore Nx cache
+        uses: actions/cache@v4
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-
+
+      - name: Build
+        run: pnpm nx build ${{ matrix.service }} --prod
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.service }}
+          path: dist/packages/${{ matrix.service }}
+          retention-days: 7
+
+  docker-build:
+    name: Docker Build & Scan - ${{ matrix.service }}
+    runs-on: ubuntu-latest
+    needs: [code-quality, test]
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    strategy:
+      matrix:
+        service:
+          - auth
+          - gateway
+          - notifications
+          - user
+      fail-fast: false
+    steps:
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to GitHub Container Registry
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -151,101 +390,149 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/auth
+          images: ghcr.io/${{ github.repository }}/${{ matrix.service }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=sha,prefix={{branch}}-
-            type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./packages/auth/Dockerfile
+          file: packages/${{ matrix.service }}/Dockerfile
+          push: false
+          load: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+          format: 'sarif'
+          output: 'trivy-results-${{ matrix.service }}.sarif'
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results-${{ matrix.service }}.sarif'
+          category: 'trivy-${{ matrix.service }}'
+
+      - name: Push Docker image
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: packages/${{ matrix.service }}/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          platforms: linux/amd64,linux/arm64
 
-  # Integration Tests
-  integration:
-    name: Integration Tests
+  sonarqube:
+    name: SonarQube Analysis
     runs-on: ubuntu-latest
-    needs: [build]
-    if: github.event_name == 'push'
-
+    needs: [test]
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Docker Compose
-        run: |
-          docker compose version
-          docker compose config
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
-      - name: Start services
-        run: |
-          docker compose up -d
-          docker compose ps
-          sleep 10
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
-      - name: Check service health
-        run: |
-          curl -f http://localhost:3001/api/auth/health || exit 1
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ needs.setup.outputs.cache-key }}
 
-      - name: Run integration tests
-        run: |
-          npm run test:integration
+      - name: Download coverage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: coverage-*
+          path: coverage/
+          merge-multiple: true
+        continue-on-error: true
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@master
         env:
-          AUTH_BASE_URL: http://localhost:3001
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=orion
+            -Dsonar.sources=packages
+            -Dsonar.tests=packages
+            -Dsonar.test.inclusions=**/*.spec.ts
+            -Dsonar.javascript.lcov.reportPaths=coverage/**/lcov.info
+            -Dsonar.typescript.lcov.reportPaths=coverage/**/lcov.info
 
-      - name: Collect logs on failure
-        if: failure()
-        run: |
-          docker compose logs
-          docker compose down
+      - name: SonarQube Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        continue-on-error: true
 
-      - name: Cleanup
-        if: always()
-        run: docker compose down -v
-
-  # Deploy to Staging
-  deploy-staging:
-    name: Deploy to Staging
+  summary:
+    name: CI Summary
     runs-on: ubuntu-latest
-    needs: [build, integration]
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
-    environment: staging
-
+    needs: [code-quality, test, test-integration, build, docker-build]
+    if: always()
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to staging
+      - name: Check job results
         run: |
-          echo "Deploying to staging environment..."
-          # Add your staging deployment commands here
-          # e.g., kubectl apply -f k8s/staging/
+          echo "Code Quality: ${{ needs.code-quality.result }}"
+          echo "Tests: ${{ needs.test.result }}"
+          echo "Integration Tests: ${{ needs.test-integration.result }}"
+          echo "Build: ${{ needs.build.result }}"
+          echo "Docker Build: ${{ needs.docker-build.result }}"
 
-  # Deploy to Production
-  deploy-production:
-    name: Deploy to Production
+      - name: Set final status
+        if: |
+          needs.code-quality.result == 'failure' ||
+          needs.test.result == 'failure' ||
+          needs.test-integration.result == 'failure' ||
+          needs.build.result == 'failure' ||
+          needs.docker-build.result == 'failure'
+        run: exit 1
+
+  notify:
+    name: Notify Results
     runs-on: ubuntu-latest
-    needs: [build, integration]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment: production
-
+    needs: [summary]
+    if: always() && (github.event_name == 'push' || github.event_name == 'pull_request')
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to production
-        run: |
-          echo "Deploying to production environment..."
-          # Add your production deployment commands here
-          # e.g., kubectl apply -f k8s/production/
+      - name: Send Slack notification
+        uses: 8398a7/action-slack@v3
+        if: env.SLACK_WEBHOOK_URL != ''
+        with:
+          status: ${{ needs.summary.result }}
+          text: |
+            CI Pipeline ${{ needs.summary.result }} for ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

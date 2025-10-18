@@ -1,0 +1,13 @@
+#!/bin/bash
+# Orion CLI - Main entry point for workflow optimization
+
+TOOLS_DIR="/Users/acarroll/dev/projects/orion/.claude/tools"
+
+# Check if tools directory exists
+if [ ! -d "$TOOLS_DIR" ]; then
+    echo "Error: Orion tools not found at $TOOLS_DIR"
+    exit 1
+fi
+
+# Delegate to workflow optimizer
+exec "$TOOLS_DIR/workflow-optimizer.sh" "$@"

@@ -64,6 +64,58 @@ services:
     networks:
       - orion-network
 
+  # Gateway Service
+  gateway:
+    build:
+      context: .
+      dockerfile: packages/gateway/Dockerfile
+      args:
+        - NODE_ENV=development
+    container_name: orion-gateway
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: ${GATEWAY_PORT:-3000}
+
+      # Service URLs
+      AUTH_SERVICE_URL: http://auth:3001
+      USER_SERVICE_URL: http://user:3002
+      NOTIFICATION_SERVICE_URL: http://notifications:3003
+
+      # Database
+      DATABASE_URL: postgresql://${DB_USER:-orion}:${DB_PASSWORD:-orion_dev}@postgres:5432/${DB_NAME:-orion_dev}
+
+      # Redis
+      REDIS_URL: redis://redis:6379
+      REDIS_ENABLED: ${REDIS_ENABLED:-true}
+
+      # CORS
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:4200}
+
+      # Rate Limiting
+      RATE_LIMIT_TTL: ${RATE_LIMIT_TTL:-60}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-100}
+    ports:
+      - "${GATEWAY_PORT:-3000}:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - ./packages/gateway:/app/packages/gateway:ro
+      - ./packages/shared:/app/packages/shared:ro
+    networks:
+      - orion-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => {r.statusCode === 200 ? process.exit(0) : process.exit(1)}).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
   # Authentication Service
   auth:
     build:
@@ -114,6 +166,163 @@ services:
       retries: 3
       start_period: 40s
 
+  # User Service
+  user:
+    build:
+      context: .
+      dockerfile: packages/user/Dockerfile
+      args:
+        - NODE_ENV=development
+    container_name: orion-user
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: ${USER_PORT:-3002}
+
+      # Database
+      DATABASE_URL: postgresql://${DB_USER:-orion}:${DB_PASSWORD:-orion_dev}@postgres:5432/${DB_NAME:-orion_dev}
+
+      # Redis
+      REDIS_URL: redis://redis:6379
+      REDIS_ENABLED: ${REDIS_ENABLED:-true}
+
+      # RabbitMQ
+      RABBITMQ_URL: amqp://${RABBITMQ_USER:-orion}:${RABBITMQ_PASSWORD:-orion_dev}@rabbitmq:5672
+
+      # CORS
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:4200}
+
+      # Rate Limiting
+      RATE_LIMIT_TTL: ${RATE_LIMIT_TTL:-60}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-100}
+    ports:
+      - "${USER_PORT:-3002}:3002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - ./packages/user:/app/packages/user:ro
+      - ./packages/shared:/app/packages/shared:ro
+      - user_uploads:/app/uploads
+    networks:
+      - orion-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3002/api/user/health', (r) => {r.statusCode === 200 ? process.exit(0) : process.exit(1)}).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Notification Service
+  notifications:
+    build:
+      context: .
+      dockerfile: packages/notifications/Dockerfile
+      args:
+        - NODE_ENV=development
+    container_name: orion-notifications
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: ${NOTIFICATION_PORT:-3003}
+
+      # Database
+      DATABASE_URL: postgresql://${DB_USER:-orion}:${DB_PASSWORD:-orion_dev}@postgres:5432/${DB_NAME:-orion_dev}
+
+      # Redis
+      REDIS_URL: redis://redis:6379
+      REDIS_ENABLED: ${REDIS_ENABLED:-true}
+
+      # RabbitMQ
+      RABBITMQ_URL: amqp://${RABBITMQ_USER:-orion}:${RABBITMQ_PASSWORD:-orion_dev}@rabbitmq:5672
+
+      # Email Configuration
+      SMTP_HOST: ${SMTP_HOST:-smtp.mailtrap.io}
+      SMTP_PORT: ${SMTP_PORT:-2525}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      EMAIL_FROM: ${EMAIL_FROM:-noreply@orion.dev}
+
+      # CORS
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:4200}
+
+      # Rate Limiting
+      RATE_LIMIT_TTL: ${RATE_LIMIT_TTL:-60}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-100}
+    ports:
+      - "${NOTIFICATION_PORT:-3003}:3003"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - ./packages/notifications:/app/packages/notifications:ro
+      - ./packages/shared:/app/packages/shared:ro
+    networks:
+      - orion-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3003/api/v1/health', (r) => {r.statusCode === 200 ? process.exit(0) : process.exit(1)}).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Admin UI Service
+  admin-ui:
+    build:
+      context: .
+      dockerfile: packages/admin-ui/Dockerfile
+      args:
+        - NODE_ENV=development
+    container_name: orion-admin-ui
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: ${ADMIN_UI_PORT:-3004}
+
+      # Service URLs
+      GATEWAY_URL: http://gateway:3000
+      AUTH_SERVICE_URL: http://auth:3001
+      USER_SERVICE_URL: http://user:3002
+      NOTIFICATION_SERVICE_URL: http://notifications:3003
+
+      # Database (if needed)
+      DATABASE_URL: postgresql://${DB_USER:-orion}:${DB_PASSWORD:-orion_dev}@postgres:5432/${DB_NAME:-orion_dev}
+
+      # Redis
+      REDIS_URL: redis://redis:6379
+      REDIS_ENABLED: ${REDIS_ENABLED:-true}
+
+      # CORS
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:4200}
+    ports:
+      - "${ADMIN_UI_PORT:-3004}:3004"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      gateway:
+        condition: service_healthy
+    volumes:
+      - ./packages/admin-ui:/app/packages/admin-ui:ro
+      - ./packages/shared:/app/packages/shared:ro
+    networks:
+      - orion-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3004/health', (r) => {r.statusCode === 200 ? process.exit(0) : process.exit(1)}).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
   # Adminer - Database Management UI
   adminer:
     image: adminer:latest
@@ -156,4 +365,6 @@ volumes:
   redis_data:
     driver: local
   rabbitmq_data:
+    driver: local
+  user_uploads:
     driver: local

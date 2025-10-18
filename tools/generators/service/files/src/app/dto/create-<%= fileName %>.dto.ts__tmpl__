@@ -1,0 +1,16 @@
+import { IsString, IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
+<% if (withSwagger) { %>import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+<% } %>
+export class Create<%= className %>Dto {
+  <% if (withSwagger) { %>@ApiProperty({ description: 'Name of the <%= fileName %>', example: 'Example Name' })
+  <% } %>@IsString()
+  @IsNotEmpty()
+  @MaxLength(255)
+  name: string;
+
+  <% if (withSwagger) { %>@ApiPropertyOptional({ description: 'Description of the <%= fileName %>' })
+  <% } %>@IsString()
+  @IsOptional()
+  @MaxLength(1000)
+  description?: string;
+}

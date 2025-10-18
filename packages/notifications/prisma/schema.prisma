@@ -1,0 +1,341 @@
+// Notification Service Database Schema
+// Production-grade schema with comprehensive notification management
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/notifications"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("NOTIFICATION_DATABASE_URL")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum NotificationType {
+  EMAIL
+  SMS
+  PUSH
+  IN_APP
+  WEBHOOK
+}
+
+enum NotificationChannel {
+  EMAIL       // Email delivery
+  SMS         // SMS/Text message
+  PUSH        // Mobile push notification
+  IN_APP      // In-application notification
+  WEBHOOK     // HTTP webhook callback
+  SLACK       // Slack integration
+  DISCORD     // Discord integration
+}
+
+enum NotificationStatus {
+  QUEUED      // Queued for processing
+  PROCESSING  // Currently being processed
+  SENT        // Successfully sent
+  DELIVERED   // Confirmed delivery
+  FAILED      // Failed to send
+  BOUNCED     // Email bounced
+  REJECTED    // Rejected by provider
+  CANCELLED   // Cancelled before sending
+  EXPIRED     // Expired before delivery
+}
+
+enum DeliveryAttemptStatus {
+  PENDING
+  SUCCESS
+  FAILURE
+  TIMEOUT
+  RATE_LIMITED
+}
+
+enum NotificationPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum TemplateCategory {
+  TRANSACTIONAL  // Transaction confirmations, receipts
+  MARKETING      // Promotional, newsletters
+  SECURITY       // Security alerts, password resets
+  SYSTEM         // System notifications, updates
+  ACCOUNT        // Account-related notifications
+  SOCIAL         // Social interactions, mentions
+}
+
+// ============================================================================
+// NOTIFICATION MODELS
+// ============================================================================
+
+model Notification {
+  id          String               @id @default(uuid()) @db.Uuid
+  userId      String               @db.Uuid
+  type        NotificationType
+  channel     NotificationChannel
+  priority    NotificationPriority @default(NORMAL)
+
+  // Template information
+  templateId  String?              @db.Uuid
+  template    Template?            @relation(fields: [templateId], references: [id], onDelete: SetNull)
+
+  // Content
+  subject     String?              @db.VarChar(500)
+  content     String               @db.Text
+  htmlContent String?              @map("html_content") @db.Text
+
+  // Recipient information
+  recipient   String               @db.VarChar(255)
+  recipientName String?            @map("recipient_name") @db.VarChar(255)
+
+  // Status tracking
+  status      NotificationStatus   @default(QUEUED)
+
+  // Delivery tracking
+  attempts    Int                  @default(0)
+  maxAttempts Int                  @default(3) @map("max_attempts")
+  lastAttemptAt DateTime?          @map("last_attempt_at") @db.Timestamptz
+
+  // Timestamps
+  queuedAt    DateTime             @default(now()) @map("queued_at") @db.Timestamptz
+  sentAt      DateTime?            @map("sent_at") @db.Timestamptz
+  deliveredAt DateTime?            @map("delivered_at") @db.Timestamptz
+  failedAt    DateTime?            @map("failed_at") @db.Timestamptz
+  cancelledAt DateTime?            @map("cancelled_at") @db.Timestamptz
+  expiresAt   DateTime?            @map("expires_at") @db.Timestamptz
+
+  // Error handling
+  errorMessage String?             @map("error_message") @db.Text
+  errorCode    String?             @map("error_code") @db.VarChar(50)
+
+  // Provider information
+  provider    String?              @db.VarChar(100)
+  providerId  String?              @map("provider_id") @db.VarChar(255)
+  providerResponse Json?           @map("provider_response") @db.JsonB
+
+  // Additional data
+  metadata    Json                 @default("{}") @db.JsonB
+  variables   Json                 @default("{}") @db.JsonB // Template variables
+  tags        String[]             @default([])
+
+  // Audit fields
+  createdAt   DateTime             @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime             @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  deliveryAttempts DeliveryAttempt[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([channel])
+  @@index([type])
+  @@index([priority])
+  @@index([queuedAt])
+  @@index([sentAt])
+  @@index([expiresAt])
+  @@index([templateId])
+  @@index([tags])
+  @@index([status, priority, queuedAt]) // Composite for queue processing
+  @@index([userId, status]) // Composite for user queries
+  @@map("notifications")
+}
+
+// ============================================================================
+// TEMPLATE MODELS
+// ============================================================================
+
+model Template {
+  id          String             @id @default(uuid()) @db.Uuid
+  name        String             @unique @db.VarChar(100)
+  displayName String             @map("display_name") @db.VarChar(255)
+  description String?            @db.Text
+
+  // Template configuration
+  category    TemplateCategory
+  channel     NotificationChannel
+  priority    NotificationPriority @default(NORMAL)
+
+  // Content templates
+  subject     String?            @db.VarChar(500)
+  body        String             @db.Text
+  htmlBody    String?            @map("html_body") @db.Text
+
+  // Template variables
+  variables   Json               @default("[]") @db.JsonB // Array of variable definitions
+  schema      Json?              @db.JsonB // JSON schema for validation
+
+  // Localization
+  locale      String             @default("en") @db.VarChar(10)
+  translations Json              @default("{}") @db.JsonB
+
+  // Status
+  isActive    Boolean            @default(true) @map("is_active")
+  isPublic    Boolean            @default(false) @map("is_public")
+
+  // Versioning
+  version     Int                @default(1)
+  parentId    String?            @map("parent_id") @db.Uuid
+  parent      Template?          @relation("TemplateVersions", fields: [parentId], references: [id], onDelete: SetNull)
+  versions    Template[]         @relation("TemplateVersions")
+
+  // Metadata
+  tags        String[]           @default([])
+  metadata    Json               @default("{}") @db.JsonB
+
+  // Audit fields
+  createdBy   String?            @map("created_by") @db.Uuid
+  updatedBy   String?            @map("updated_by") @db.Uuid
+  createdAt   DateTime           @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime           @updatedAt @map("updated_at") @db.Timestamptz
+  deletedAt   DateTime?          @map("deleted_at") @db.Timestamptz
+
+  // Relations
+  notifications Notification[]
+
+  @@index([name])
+  @@index([category])
+  @@index([channel])
+  @@index([isActive])
+  @@index([locale])
+  @@index([tags])
+  @@index([deletedAt])
+  @@map("templates")
+}
+
+// ============================================================================
+// DELIVERY TRACKING
+// ============================================================================
+
+model DeliveryAttempt {
+  id             String                @id @default(uuid()) @db.Uuid
+  notificationId String                @map("notification_id") @db.Uuid
+  notification   Notification          @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+
+  attemptNumber  Int                   @map("attempt_number")
+  status         DeliveryAttemptStatus
+
+  // Provider information
+  provider       String                @db.VarChar(100)
+  providerId     String?               @map("provider_id") @db.VarChar(255)
+
+  // Response tracking
+  statusCode     Int?                  @map("status_code")
+  responseTime   Int?                  @map("response_time") // milliseconds
+  response       Json?                 @db.JsonB
+
+  // Error information
+  errorMessage   String?               @map("error_message") @db.Text
+  errorCode      String?               @map("error_code") @db.VarChar(50)
+  errorDetails   Json?                 @map("error_details") @db.JsonB
+
+  // Timing
+  attemptedAt    DateTime              @default(now()) @map("attempted_at") @db.Timestamptz
+  completedAt    DateTime?             @map("completed_at") @db.Timestamptz
+
+  // Metadata
+  metadata       Json                  @default("{}") @db.JsonB
+
+  @@index([notificationId])
+  @@index([status])
+  @@index([attemptedAt])
+  @@index([provider])
+  @@map("delivery_attempts")
+}
+
+// ============================================================================
+// USER PREFERENCES
+// ============================================================================
+
+model UserPreference {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @unique @db.Uuid @map("user_id")
+
+  // Channel preferences
+  emailEnabled     Boolean @default(true) @map("email_enabled")
+  smsEnabled       Boolean @default(false) @map("sms_enabled")
+  pushEnabled      Boolean @default(true) @map("push_enabled")
+  inAppEnabled     Boolean @default(true) @map("in_app_enabled")
+  webhookEnabled   Boolean @default(false) @map("webhook_enabled")
+
+  // Category preferences (JSON structure for flexibility)
+  emailPreferences  Json    @default("{}") @map("email_preferences") @db.JsonB
+  smsPreferences    Json    @default("{}") @map("sms_preferences") @db.JsonB
+  pushPreferences   Json    @default("{}") @map("push_preferences") @db.JsonB
+  inAppPreferences  Json    @default("{}") @map("in_app_preferences") @db.JsonB
+
+  // Quiet hours
+  quietHoursEnabled Boolean  @default(false) @map("quiet_hours_enabled")
+  quietHoursStart   String?  @map("quiet_hours_start") @db.VarChar(5) // HH:MM format
+  quietHoursEnd     String?  @map("quiet_hours_end") @db.VarChar(5)
+  quietHoursTimezone String? @map("quiet_hours_timezone") @db.VarChar(50)
+
+  // Contact information
+  emailAddress      String?  @map("email_address") @db.VarChar(255)
+  phoneNumber       String?  @map("phone_number") @db.VarChar(20)
+  pushTokens        Json     @default("[]") @map("push_tokens") @db.JsonB
+  webhookUrl        String?  @map("webhook_url") @db.VarChar(500)
+
+  // Locale preferences
+  locale            String   @default("en") @db.VarChar(10)
+  timezone          String   @default("UTC") @db.VarChar(50)
+
+  // Metadata
+  metadata          Json     @default("{}") @db.JsonB
+
+  // Audit fields
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([userId])
+  @@index([emailAddress])
+  @@index([phoneNumber])
+  @@map("user_preferences")
+}
+
+// ============================================================================
+// NOTIFICATION BATCHES (for bulk operations)
+// ============================================================================
+
+model NotificationBatch {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+
+  // Batch configuration
+  templateId  String   @db.Uuid
+  channel     NotificationChannel
+  priority    NotificationPriority @default(NORMAL)
+
+  // Recipients
+  recipientCount Int   @default(0) @map("recipient_count")
+  recipients     Json  @default("[]") @db.JsonB // Array of recipient configurations
+
+  // Status tracking
+  status         String @db.VarChar(50)
+  totalSent      Int    @default(0) @map("total_sent")
+  totalFailed    Int    @default(0) @map("total_failed")
+  totalDelivered Int    @default(0) @map("total_delivered")
+
+  // Schedule
+  scheduledAt    DateTime? @map("scheduled_at") @db.Timestamptz
+  startedAt      DateTime? @map("started_at") @db.Timestamptz
+  completedAt    DateTime? @map("completed_at") @db.Timestamptz
+
+  // Metadata
+  metadata       Json   @default("{}") @db.JsonB
+
+  // Audit fields
+  createdBy      String @map("created_by") @db.Uuid
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([status])
+  @@index([scheduledAt])
+  @@index([createdBy])
+  @@map("notification_batches")
+}

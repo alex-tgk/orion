@@ -6,7 +6,8 @@
       "env": {
         "DATABASE_URL": "postgresql://orion:orion_dev@localhost:5432/orion_dev",
         "REDIS_URL": "redis://localhost:6379",
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "NX_WORKSPACE_ROOT": "/Users/acarroll/dev/projects/orion"
       }
     },
     "github": {
@@ -25,13 +26,35 @@
     },
     "docker": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-docker"]
+      "args": ["-y", "@modelcontextprotocol/server-docker"],
+      "env": {
+        "DOCKER_HOST": "unix:///var/run/docker.sock"
+      }
     },
     "kubernetes": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-kubernetes"],
       "env": {
-        "KUBECONFIG": "${HOME}/.kube/config"
+        "KUBECONFIG": "${HOME}/.kube/config",
+        "K8S_NAMESPACE": "orion"
+      }
+    },
+    "prometheus": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-prometheus"],
+      "env": {
+        "PROMETHEUS_URL": "http://localhost:9090"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "ALLOWED_DIRECTORIES": "/Users/acarroll/dev/projects/orion"
       }
     }
   }

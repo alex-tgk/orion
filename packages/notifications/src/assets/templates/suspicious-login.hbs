@@ -1,0 +1,71 @@
+{{!-- SUBJECT: Suspicious Login Attempt Detected --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suspicious Login</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .alert {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    .details {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #dc2626;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 10px 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="alert">
+    <h2>⚠️ Suspicious Login Attempt Detected</h2>
+  </div>
+  <p>We detected a suspicious login attempt on your ORION account (<strong>{{email}}</strong>).</p>
+  <div class="details">
+    <h3>Login Details:</h3>
+    <ul>
+      <li><strong>Time:</strong> {{formatDate timestamp}} at {{formatTime timestamp}}</li>
+      <li><strong>Location:</strong> {{location}}</li>
+      <li><strong>IP Address:</strong> {{ipAddress}}</li>
+      <li><strong>Device:</strong> {{userAgent}}</li>
+      <li><strong>Reason:</strong> {{reason}}</li>
+    </ul>
+  </div>
+  <p><strong>If this was you:</strong></p>
+  <p>You can safely ignore this email. However, if you're logging in from a new location or device, we recommend reviewing your security settings.</p>
+  <p><strong>If this was NOT you:</strong></p>
+  <ol>
+    <li>Change your password immediately</li>
+    <li>Review your recent account activity</li>
+    <li>Enable two-factor authentication</li>
+    <li>Check for unauthorized access</li>
+  </ol>
+  <div style="text-align: center;">
+    <a href="{{securityUrl}}" class="button">Review Security</a>
+    <a href="{{supportUrl}}" class="button" style="background: #3b82f6;">Contact Support</a>
+  </div>
+  <p>We take security seriously and are here to help protect your account.</p>
+  <p>Best regards,<br>The ORION Security Team</p>
+</body>
+</html>

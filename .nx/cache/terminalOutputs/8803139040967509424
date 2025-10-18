@@ -1,0 +1,648 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/sentry/interfaces/sentry-config.interface.ts[0m:[93m54[0m:[93m25[0m - [91merror[0m[90m TS2724: [0m'"/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@sentry+node@10.20.0/node_modules/@sentry/node/build/types/index"' has no exported member named 'Integration'. Did you mean 'fsIntegration'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m54[0m   integrations?: Sentry.Integration[];[39m[22m
+[1m[31m[7m  [0m [91m                        ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m31[0m:[93m22[0m - [91merror[0m[90m TS2551: [0mProperty 'Integrations' does not exist on type 'typeof import("/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@sentry+node@10.20.0/node_modules/@sentry/node/build/types/index")'. Did you mean 'fsIntegration'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m31[0m           new Sentry.Integrations.Http({ tracing: true }),[39m[22m
+[1m[31m[7m  [0m [91m                     ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType '(event: Event, hint?: EventHint | undefined) => Event | null' is not assignable to type '(event: ErrorEvent, hint: EventHint) => ErrorEvent | PromiseLike<ErrorEvent | null> | null'.[39m[22m
+[1m[31m  Type 'Event | null' is not assignable to type 'ErrorEvent | PromiseLike<ErrorEvent | null> | null'.[39m[22m
+[1m[31m    Type 'Event' is not assignable to type 'ErrorEvent | PromiseLike<ErrorEvent | null> | null'.[39m[22m
+[1m[31m      Type 'Event' is not assignable to type 'ErrorEvent'.[39m[22m
+[1m[31m        Types of property 'type' are incompatible.[39m[22m
+[1m[31m          Type 'EventType' is not assignable to type 'undefined'.[39m[22m
+[1m[31m            Type '"transaction"' is not assignable to type 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m33[0m         beforeSend: options.beforeSend || this.defaultBeforeSend,[39m[22m
+[1m[31m[7m  [0m [91m        ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m78[0m:[93m26[0m - [91merror[0m[90m TS2551: [0mProperty 'Integrations' does not exist on type 'typeof import("/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@sentry+node@10.20.0/node_modules/@sentry/node/build/types/index")'. Did you mean 'fsIntegration'?[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m78[0m               new Sentry.Integrations.Http({ tracing: true }),[39m[22m
+[1m[31m[7m  [0m [91m                         ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m80[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType '(event: Event, hint?: EventHint | undefined) => Event | null' is not assignable to type '(event: ErrorEvent, hint: EventHint) => ErrorEvent | PromiseLike<ErrorEvent | null> | null'.[39m[22m
+[1m[31m  Type 'Event | null' is not assignable to type 'ErrorEvent | PromiseLike<ErrorEvent | null> | null'.[39m[22m
+[1m[31m    Type 'Event' is not assignable to type 'ErrorEvent | PromiseLike<ErrorEvent | null> | null'.[39m[22m
+[1m[31m      Type 'Event' is not assignable to type 'ErrorEvent'.[39m[22m
+[1m[31m        Types of property 'type' are incompatible.[39m[22m
+[1m[31m          Type 'EventType' is not assignable to type 'undefined'.[39m[22m
+[1m[31m            Type '"transaction"' is not assignable to type 'undefined'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m80[0m             beforeSend: config.beforeSend || SentryModule.defaultBeforeSend,[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.service.ts[0m:[93m104[0m:[93m54[0m - [91merror[0m[90m TS2694: [0mNamespace '"/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@sentry+node@10.20.0/node_modules/@sentry/node/build/types/index"' has no exported member 'Transaction'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m104[0m   startTransaction(name: string, op: string): Sentry.Transaction {[39m[22m
+[1m[31m[7m   [0m [91m                                                     ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.service.ts[0m:[93m105[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'startTransaction' does not exist on type 'typeof import("/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@sentry+node@10.20.0/node_modules/@sentry/node/build/types/index")'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m105[0m     return Sentry.startTransaction({ name, op });[39m[22m
+[1m[31m[7m   [0m [91m                  ~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m152[0m:[93m11[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m152[0m   status: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m153[0m:[93m9[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m153[0m   json: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m154[0m:[93m9[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m154[0m   send: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m155[0m:[93m15[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m155[0m   sendStatus: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m              ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m156[0m:[93m8[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m156[0m   set: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m       ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m157[0m:[93m8[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m157[0m   get: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m       ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m162[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m162[0m     status: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m163[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m163[0m     json: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m164[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m164[0m     send: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m165[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m165[0m     sendStatus: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m166[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m166[0m     set: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m167[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m167[0m     get: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m198[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m198[0m     $executeRaw: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m199[0m:[93m24[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m199[0m     $executeRawUnsafe: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                       ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m200[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m200[0m     $queryRaw: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m201[0m:[93m22[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m201[0m     $queryRawUnsafe: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                     ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m202[0m:[93m19[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m202[0m     $transaction: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                  ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/jwt-token.factory.ts[0m:[93m1[0m:[93m22[0m - [91merror[0m[90m TS2307: [0mCannot find module 'jsonwebtoken' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m1[0m import { sign } from 'jsonwebtoken';[39m[22m
+[1m[31m[7m [0m [91m                     ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m190[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m190[0m       progress: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m191[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m191[0m       log: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m192[0m:[93m15[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m192[0m       remove: jest.fn().mockResolvedValue(undefined),[39m[22m
+[1m[31m[7m   [0m [91m              ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m193[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m193[0m       retry: jest.fn().mockResolvedValue(undefined),[39m[22m
+[1m[31m[7m   [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m194[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m194[0m       discard: jest.fn().mockResolvedValue(undefined),[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m195[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m195[0m       promote: jest.fn().mockResolvedValue(undefined),[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m198[0m:[93m20[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m198[0m       isCompleted: jest.fn().mockResolvedValue(job.status === 'completed'),[39m[22m
+[1m[31m[7m   [0m [91m                   ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m199[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m199[0m       isFailed: jest.fn().mockResolvedValue(job.status === 'failed'),[39m[22m
+[1m[31m[7m   [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m200[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m200[0m       isActive: jest.fn().mockResolvedValue(job.status === 'active'),[39m[22m
+[1m[31m[7m   [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mocks/queue.mock.ts[0m:[93m201[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m201[0m       isWaiting: jest.fn().mockResolvedValue(job.status === 'waiting'),[39m[22m
+[1m[31m[7m   [0m [91m                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m8[0m:[93m28[0m - [91merror[0m[90m TS2307: [0mCannot find module 'typeorm' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m8[0m import { Repository } from 'typeorm';[39m[22m
+[1m[31m[7m [0m [91m                           ~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m15[0m:[93m50[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m15[0m export function createMockRepository<T = any>(): jest.Mocked<Repository<T>> {[39m[22m
+[1m[31m[7m  [0m [91m                                                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m17[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m17[0m     find: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m18[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m18[0m     findOne: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m19[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m19[0m     findOneBy: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m20[0m:[93m19[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m20[0m     findAndCount: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m                  ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m21[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m21[0m     findBy: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m22[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m22[0m     save: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m23[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m23[0m     create: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m24[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m24[0m     update: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m25[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m25[0m     delete: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m26[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m26[0m     remove: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m27[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m27[0m     count: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m28[0m     increment: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m29[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m29[0m     decrement: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m30[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m30[0m     query: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m31[0m:[93m25[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m31[0m     createQueryBuilder: jest.fn(() => ({[39m[22m
+[1m[31m[7m  [0m [91m                        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m32[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m32[0m       where: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m33[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m33[0m       andWhere: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m34[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m34[0m       orWhere: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m35[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m35[0m       orderBy: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m36[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m36[0m       skip: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m37[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m37[0m       take: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m38[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m38[0m       leftJoin: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m39[0m:[93m26[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m39[0m       leftJoinAndSelect: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m                         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m40[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m40[0m       innerJoin: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m41[0m:[93m27[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m41[0m       innerJoinAndSelect: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m                          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m42[0m:[93m15[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m42[0m       select: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m              ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m43[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m43[0m       addSelect: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m  [0m [91m                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m44[0m:[93m15[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m44[0m       getOne: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m              ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m45[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m45[0m       getMany: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m46[0m:[93m24[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m46[0m       getManyAndCount: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m                       ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m47[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m47[0m       execute: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m56[0m:[93m36[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m56[0m export function createMockRedis(): jest.Mocked<Redis> {[39m[22m
+[1m[31m[7m  [0m [91m                                   ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m58[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m58[0m     get: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m59[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m59[0m     set: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m60[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m60[0m     setex: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m61[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m61[0m     del: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m62[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m62[0m     exists: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m63[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m63[0m     expire: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m64[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m64[0m     ttl: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m65[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m65[0m     keys: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m66[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m66[0m     scan: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m67[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m67[0m     mget: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m68[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m68[0m     mset: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m69[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m69[0m     incr: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m70[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m70[0m     decr: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m71[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m71[0m     incrby: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m72[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m72[0m     decrby: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m73[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m73[0m     lpush: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m74[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m74[0m     rpush: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m75[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m75[0m     lpop: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m76[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m76[0m     rpop: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m77[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m77[0m     lrange: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m78[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m78[0m     llen: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m79[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m79[0m     sadd: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m80[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m80[0m     srem: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m81[0m:[93m15[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m81[0m     smembers: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m              ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m82[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m82[0m     sismember: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m83[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m83[0m     zadd: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m84[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m84[0m     zrem: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m85[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m85[0m     zrange: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m86[0m:[93m20[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m86[0m     zrangebyscore: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m                   ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m87[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m87[0m     zcard: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m88[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m88[0m     hset: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m89[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m89[0m     hget: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m90[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m90[0m     hgetall: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m91[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m91[0m     hdel: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m92[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m92[0m     hkeys: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m93[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m93[0m     hvals: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m94[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m94[0m     publish: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m95[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m95[0m     subscribe: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m96[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m96[0m     unsubscribe: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m97[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m97[0m     quit: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m98[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m98[0m     disconnect: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m99[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m99[0m     flushdb: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m100[0m:[93m15[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m100[0m     flushall: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m              ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m121[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m121[0m     log: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m122[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m122[0m     error: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m123[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m123[0m     warn: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m124[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m124[0m     debug: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m125[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m125[0m     verbose: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m135[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m135[0m     get: jest.fn((key: string, defaultValue?: any) => {[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m138[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m138[0m     getOrThrow: jest.fn((key: string) => {[39m[22m
+[1m[31m[7m   [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m153[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m153[0m     sign: jest.fn((payload: any) => `mock-jwt-token-${JSON.stringify(payload)}`),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m154[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m154[0m     signAsync: jest.fn(async (payload: any) => `mock-jwt-token-${JSON.stringify(payload)}`),[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m155[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m155[0m     verify: jest.fn((token: string) => ({ userId: '123', email: 'test@example.com' })),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m156[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m156[0m     verifyAsync: jest.fn(async (token: string) => ({ userId: '123', email: 'test@example.com' })),[39m[22m
+[1m[31m[7m   [0m [91m                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m157[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m157[0m     decode: jest.fn((token: string) => ({ userId: '123', email: 'test@example.com' })),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m167[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m167[0m     emit: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m168[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m168[0m     emitAsync: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m169[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m169[0m     on: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m170[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m170[0m     once: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m171[0m:[93m21[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m171[0m     removeListener: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                    ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m172[0m:[93m25[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m172[0m     removeAllListeners: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m173[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m173[0m     listeners: jest.fn(() => []),[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m174[0m:[93m20[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m174[0m     listenerCount: jest.fn(() => 0),[39m[22m
+[1m[31m[7m   [0m [91m                   ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m184[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m184[0m     get: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m185[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m185[0m     post: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m186[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m186[0m     put: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m187[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m187[0m     patch: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m188[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m188[0m     delete: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m189[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m189[0m     head: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m190[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m190[0m     options: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m200[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m200[0m     add: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m201[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m201[0m     process: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m202[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m202[0m     on: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m203[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m203[0m     getJob: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m204[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m204[0m     getJobs: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m205[0m:[93m19[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m205[0m     getJobCounts: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                  ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m206[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m206[0m     clean: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m207[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m207[0m     pause: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m208[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m208[0m     resume: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m209[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m209[0m     close: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m220[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m220[0m       emit: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m221[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m221[0m       to: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m222[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m222[0m       in: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m224[0m:[93m23[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m224[0m     handleConnection: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                      ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m225[0m:[93m23[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m225[0m     handleDisconnect: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                      ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m250[0m:[93m4[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m250[0m ): jest.MockedFunction<T> {[39m[22m
+[1m[31m[7m   [0m [91m   ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m251[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m251[0m   return jest.fn(implementation) as jest.MockedFunction<T>;[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m251[0m:[93m37[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m251[0m   return jest.fn(implementation) as jest.MockedFunction<T>;[39m[22m
+[1m[31m[7m   [0m [91m                                    ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/websocket/test-websocket-client.ts[0m:[93m1[0m:[93m28[0m - [91merror[0m[90m TS2307: [0mCannot find module 'socket.io-client' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m1[0m import { io, Socket } from 'socket.io-client';[39m[22m
+[1m[31m[7m [0m [91m                           ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+
+[2m../../dist/packages/shared/README.md[22m

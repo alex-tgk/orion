@@ -1,209 +1,205 @@
 #!/bin/bash
 
-# ORION Deployment Script
-# Usage: ./deploy.sh [environment] [action]
-# Environments: local, staging, production
-# Actions: deploy, rollback, status, logs
+################################################################################
+# Generic Deployment Script
+#
+# Purpose: Deploy ORION services to specified environment
+#
+# Usage: ./deploy.sh [environment] [options]
+#
+# Arguments:
+#   environment - Target environment (development|staging|production)
+#
+# Options:
+#   --service <name>     Deploy specific service only
+#   --skip-migrations    Skip database migrations
+#   --skip-tests         Skip smoke tests
+#   --dry-run           Show what would be deployed
+################################################################################
 
-set -e
-
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+set -euo pipefail
 
 # Configuration
-ENVIRONMENT=${1:-local}
-ACTION=${2:-deploy}
-NAMESPACE="orion-${ENVIRONMENT}"
-CHART_PATH="./charts/orion-auth"
-K8S_PATH="./k8s"
+readonly ENVIRONMENT="${1:-development}"
+readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+readonly NAMESPACE="orion-${ENVIRONMENT}"
 
-# Functions
+# Parse options
+SPECIFIC_SERVICE=""
+SKIP_MIGRATIONS=false
+SKIP_TESTS=false
+DRY_RUN=false
+
+shift || true
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --service)
+            SPECIFIC_SERVICE="$2"
+            shift 2
+            ;;
+        --skip-migrations)
+            SKIP_MIGRATIONS=true
+            shift
+            ;;
+        --skip-tests)
+            SKIP_TESTS=true
+            shift
+            ;;
+        --dry-run)
+            DRY_RUN=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Color codes
+readonly GREEN='\033[0;32m'
+readonly RED='\033[0;31m'
+readonly YELLOW='\033[1;33m'
+readonly BLUE='\033[0;34m'
+readonly NC='\033[0m'
+
 log_info() {
-    echo -e "${GREEN}[INFO]${NC} $1"
+    echo -e "${GREEN}[INFO]${NC} $(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 
 log_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-    exit 1
+    echo -e "${RED}[ERROR]${NC} $(date '+%Y-%m-%d %H:%M:%S') - $1" >&2
 }
 
 log_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
+    echo -e "${YELLOW}[WARN]${NC} $(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 
-# Check prerequisites
-check_prerequisites() {
-    log_info "Checking prerequisites..."
-
-    if ! command -v kubectl &> /dev/null; then
-        log_error "kubectl is not installed"
-    fi
-
-    if ! command -v docker &> /dev/null; then
-        log_error "docker is not installed"
-    fi
-
-    if [[ "$ENVIRONMENT" != "local" ]]; then
-        if ! command -v helm &> /dev/null; then
-            log_error "helm is not installed"
-        fi
-    fi
-
-    log_info "All prerequisites met"
+log_section() {
+    echo -e "\n${BLUE}===================================================${NC}"
+    echo -e "${BLUE}$1${NC}"
+    echo -e "${BLUE}===================================================${NC}\n"
 }
 
-# Local deployment using docker-compose
-deploy_local() {
-    log_info "Deploying to local environment..."
-
-    # Create .env file if it doesn't exist
-    if [ ! -f .env ]; then
-        log_info "Creating .env file from template..."
-        cp .env.example .env
-    fi
-
-    # Build and start services
-    log_info "Building Docker images..."
-    docker compose build
-
-    log_info "Starting services..."
-    docker compose up -d
-
-    # Wait for services to be healthy
-    log_info "Waiting for services to be healthy..."
-    sleep 10
-
-    # Check health
-    if curl -f http://localhost:3001/api/auth/health > /dev/null 2>&1; then
-        log_info "Auth service is healthy"
-        echo -e "\n${GREEN}Local deployment successful!${NC}"
-        echo -e "Auth service: http://localhost:3001/api/auth"
-        echo -e "API Docs: http://localhost:3001/api/docs"
-        echo -e "Adminer: http://localhost:8080"
-        echo -e "Redis Commander: http://localhost:8081"
-    else
-        log_error "Auth service health check failed"
-    fi
-}
-
-# Kubernetes deployment
-deploy_kubernetes() {
-    log_info "Deploying to $ENVIRONMENT environment..."
-
-    # Check cluster connection
-    if ! kubectl cluster-info &> /dev/null; then
-        log_error "Cannot connect to Kubernetes cluster"
-    fi
-
-    # Apply Kustomize overlays
-    if [ "$ENVIRONMENT" == "staging" ] || [ "$ENVIRONMENT" == "production" ]; then
-        OVERLAY_PATH="${K8S_PATH}/overlays/${ENVIRONMENT}"
-
-        if [ ! -f "${OVERLAY_PATH}/secrets.env" ]; then
-            log_error "Please create ${OVERLAY_PATH}/secrets.env from the template"
-        fi
-
-        log_info "Applying Kustomize overlay for $ENVIRONMENT..."
-        kubectl apply -k "${OVERLAY_PATH}"
-
-        # Wait for deployment
-        log_info "Waiting for deployment to be ready..."
-        kubectl rollout status deployment/${ENVIRONMENT}-auth-service -n "${NAMESPACE}" --timeout=5m
-
-        log_info "Deployment successful!"
-        kubectl get pods -n "${NAMESPACE}" -l app=auth-service
-    fi
-}
-
-# Rollback deployment
-rollback() {
-    if [ "$ENVIRONMENT" == "local" ]; then
-        log_info "Rolling back local deployment..."
-        docker compose down
-        docker compose up -d
-    else
-        log_info "Rolling back Kubernetes deployment..."
-        kubectl rollout undo deployment/${ENVIRONMENT}-auth-service -n "${NAMESPACE}"
-        kubectl rollout status deployment/${ENVIRONMENT}-auth-service -n "${NAMESPACE}"
-    fi
-}
-
-# Show status
-show_status() {
-    if [ "$ENVIRONMENT" == "local" ]; then
-        log_info "Local environment status:"
-        docker compose ps
-    else
-        log_info "$ENVIRONMENT environment status:"
-        kubectl get all -n "${NAMESPACE}" -l app=auth-service
-        echo ""
-        log_info "Pod details:"
-        kubectl get pods -n "${NAMESPACE}" -l app=auth-service -o wide
-    fi
-}
-
-# Show logs
-show_logs() {
-    if [ "$ENVIRONMENT" == "local" ]; then
-        log_info "Showing local logs..."
-        docker compose logs -f auth
-    else
-        log_info "Showing $ENVIRONMENT logs..."
-        kubectl logs -f -n "${NAMESPACE}" -l app=auth-service --tail=100
-    fi
-}
-
-# Clean up
-cleanup() {
-    if [ "$ENVIRONMENT" == "local" ]; then
-        log_warning "Cleaning up local environment..."
-        docker compose down -v
-        log_info "Local environment cleaned up"
-    else
-        log_warning "Cleaning up $ENVIRONMENT environment..."
-        kubectl delete namespace "${NAMESPACE}"
-        log_info "$ENVIRONMENT environment cleaned up"
-    fi
-}
-
-# Main execution
-main() {
-    echo -e "${GREEN}ORION Deployment Script${NC}"
-    echo "========================="
-    echo "Environment: $ENVIRONMENT"
-    echo "Action: $ACTION"
-    echo ""
-
-    check_prerequisites
-
-    case $ACTION in
-        deploy)
-            if [ "$ENVIRONMENT" == "local" ]; then
-                deploy_local
-            else
-                deploy_kubernetes
-            fi
+# Determine deployment method based on environment
+get_deployment_method() {
+    case "${ENVIRONMENT}" in
+        development)
+            echo "kubectl"
             ;;
-        rollback)
-            rollback
-            ;;
-        status)
-            show_status
-            ;;
-        logs)
-            show_logs
-            ;;
-        cleanup)
-            cleanup
+        staging|production)
+            echo "helm"
             ;;
         *)
-            log_error "Unknown action: $ACTION. Use: deploy, rollback, status, logs, or cleanup"
+            log_error "Invalid environment: ${ENVIRONMENT}"
+            exit 1
             ;;
     esac
 }
 
-# Run main function
-main
+# Deploy using kubectl
+deploy_kubectl() {
+    log_section "Deploying with kubectl"
+
+    if [ "${DRY_RUN}" = true ]; then
+        kubectl apply -k "k8s/overlays/${ENVIRONMENT}" --dry-run=client
+        return 0
+    fi
+
+    kubectl apply -k "k8s/overlays/${ENVIRONMENT}"
+    
+    # Wait for rollout
+    kubectl rollout status deployment -n "${NAMESPACE}" --timeout=10m
+}
+
+# Deploy using Helm
+deploy_helm() {
+    log_section "Deploying with Helm"
+
+    local release_name="orion"
+    local chart_path="./k8s/helm/orion"
+
+    if [ "${DRY_RUN}" = true ]; then
+        helm upgrade --install "${release_name}" "${chart_path}" \
+            --namespace "${NAMESPACE}" \
+            --set environment="${ENVIRONMENT}" \
+            --dry-run --debug
+        return 0
+    fi
+
+    helm upgrade --install "${release_name}" "${chart_path}" \
+        --namespace "${NAMESPACE}" \
+        --create-namespace \
+        --set environment="${ENVIRONMENT}" \
+        --set image.tag="${IMAGE_TAG:-latest}" \
+        --wait --timeout=15m
+}
+
+# Run database migrations
+run_migrations() {
+    if [ "${SKIP_MIGRATIONS}" = true ]; then
+        log_warning "Skipping database migrations"
+        return 0
+    fi
+
+    log_section "Running Database Migrations"
+
+    kubectl apply -f k8s/jobs/migrations.yaml -n "${NAMESPACE}"
+    kubectl wait --for=condition=complete job/migrations -n "${NAMESPACE}" --timeout=10m
+
+    log_info "Migrations completed"
+}
+
+# Run smoke tests
+run_smoke_tests() {
+    if [ "${SKIP_TESTS}" = true ]; then
+        log_warning "Skipping smoke tests"
+        return 0
+    fi
+
+    log_section "Running Smoke Tests"
+
+    if [ -f "${SCRIPT_DIR}/smoke-tests.sh" ]; then
+        bash "${SCRIPT_DIR}/smoke-tests.sh" "${ENVIRONMENT}"
+    else
+        log_warning "Smoke test script not found"
+    fi
+}
+
+# Main deployment
+main() {
+    log_section "ORION Deployment - ${ENVIRONMENT}"
+    log_info "Starting deployment at $(date)"
+
+    # Setup CI environment
+    if [ -f "${SCRIPT_DIR}/ci-setup.sh" ]; then
+        bash "${SCRIPT_DIR}/ci-setup.sh" "${ENVIRONMENT}"
+    fi
+
+    # Determine deployment method
+    local deployment_method
+    deployment_method=$(get_deployment_method)
+    log_info "Using deployment method: ${deployment_method}"
+
+    # Deploy
+    case "${deployment_method}" in
+        kubectl)
+            deploy_kubectl
+            ;;
+        helm)
+            deploy_helm
+            ;;
+    esac
+
+    # Run migrations
+    run_migrations
+
+    # Run smoke tests
+    run_smoke_tests
+
+    log_section "Deployment Successful"
+    log_info "Deployment completed at $(date)"
+}
+
+main "$@"

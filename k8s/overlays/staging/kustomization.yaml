@@ -19,6 +19,8 @@ replicas:
 
 patchesStrategicMerge:
 - auth-deployment-patch.yaml
+- certificate-patch.yaml
+- ingress-patch.yaml
 
 configMapGenerator:
 - name: auth-config

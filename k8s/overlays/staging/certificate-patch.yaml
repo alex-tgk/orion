@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: auth-tls-cert
+  namespace: orion-staging
+spec:
+  # Use staging issuer for testing
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+    group: cert-manager.io
+  # Staging domain
+  commonName: auth-staging.orion.example.com
+  dnsNames:
+  - auth-staging.orion.example.com

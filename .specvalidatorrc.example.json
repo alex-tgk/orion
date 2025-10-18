@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Spec Validator Configuration",
+  "description": "Configuration for the spec validator CLI tool",
+  "type": "object",
+  "properties": {
+    "specsDir": {
+      "type": "string",
+      "description": "Directory containing specification files",
+      "default": ".claude/specs"
+    },
+    "packagesDir": {
+      "type": "string",
+      "description": "Directory containing service packages",
+      "default": "packages"
+    },
+    "excludePackages": {
+      "type": "array",
+      "description": "Package names to exclude from coverage analysis",
+      "items": {
+        "type": "string"
+      },
+      "default": ["shared", "dev-tools", "mcp-server"]
+    },
+    "requiredSections": {
+      "type": "array",
+      "description": "Sections that must be present in all specs",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "Overview",
+        "Service Details",
+        "API Contract",
+        "Data Model",
+        "Dependencies"
+      ]
+    },
+    "recommendedSections": {
+      "type": "array",
+      "description": "Sections that should be present but are not required",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "Implementation Plan",
+        "Testing",
+        "Monitoring",
+        "Performance Targets",
+        "Security"
+      ]
+    },
+    "coverageThreshold": {
+      "type": "number",
+      "description": "Minimum coverage percentage required",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 80
+    },
+    "autoFix": {
+      "type": "boolean",
+      "description": "Automatically fix issues when validating",
+      "default": false
+    },
+    "apiEndpointPattern": {
+      "type": "string",
+      "description": "Regex pattern for API endpoint validation",
+      "default": "```typescript\\n(GET|POST|PUT|PATCH|DELETE)\\s+\\/[^\\n]+"
+    },
+    "dataModelPattern": {
+      "type": "string",
+      "description": "Regex pattern for data model validation",
+      "default": "```(prisma|typescript)\\nmodel\\s+\\w+"
+    },
+    "metadataFields": {
+      "type": "array",
+      "description": "Required metadata fields in spec header",
+      "items": {
+        "type": "string"
+      },
+      "default": ["Version", "Status", "Owner", "Dependencies"]
+    },
+    "outputFormat": {
+      "type": "string",
+      "description": "Default output format for reports",
+      "enum": ["table", "json", "html", "markdown"],
+      "default": "table"
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Enable verbose logging",
+      "default": false
+    }
+  }
+}

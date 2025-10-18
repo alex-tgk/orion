@@ -1,0 +1,84 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/config/security.config.ts[0m:[93m13[0m:[93m32[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m13[0m   constructor(private readonly configService: ConfigService) {[39m[22m
+[1m[31m[7m  [0m [91m                               ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/middleware/correlation-id.middleware.ts[0m:[93m4[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '@orion/logger' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m import { LoggerService } from '@orion/logger';[39m[22m
+[1m[31m[7m [0m [91m                              ~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m2[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module './rbac.service' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import { RbacService } from './rbac.service';[39m[22m
+[1m[31m[7m [0m [91m                            ~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m3[0m:[93m27[0m - [91merror[0m[90m TS2307: [0mCannot find module './guards/role.guard' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m3[0m import { RoleGuard } from './guards/role.guard';[39m[22m
+[1m[31m[7m [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m4[0m:[93m33[0m - [91merror[0m[90m TS2307: [0mCannot find module './guards/permission.guard' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m4[0m import { PermissionGuard } from './guards/permission.guard';[39m[22m
+[1m[31m[7m [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m5[0m:[93m28[0m - [91merror[0m[90m TS2307: [0mCannot find module './interfaces/rbac.interface' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m5[0m import { RbacConfig } from './interfaces/rbac.interface';[39m[22m
+[1m[31m[7m [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/rbac/rbac.module.ts[0m:[93m6[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module './rbac.constants' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m6[0m import { RBAC_CONFIG } from './rbac.constants';[39m[22m
+[1m[31m[7m [0m [91m                            ~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/secrets-rotation.service.ts[0m:[93m103[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m103[0m         error: error.message,[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/secrets.module.ts[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m TS6133: [0m'ConfigService' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import { ConfigModule, ConfigService } from '@nestjs/config';[39m[22m
+[1m[31m[7m [0m [91m                       ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m9[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'client' has no initializer and is not definitely assigned in the constructor.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m9[0m   private client: AxiosInstance;[39m[22m
+[1m[31m[7m [0m [91m          ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m10[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'token' has no initializer and is not definitely assigned in the constructor.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m10[0m   private token: string;[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m11[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'tokenRenewalInterval' has no initializer and is not definitely assigned in the constructor.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m11[0m   private tokenRenewalInterval: NodeJS.Timeout;[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m28[0m:[93m29[0m - [91merror[0m[90m TS6133: [0m'authMethod' is declared but its value is never read.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m28[0m     const { url, namespace, authMethod } = this.options.vault;[39m[22m
+[1m[31m[7m  [0m [91m                            ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/secrets/vault.service.ts[0m:[93m58[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.[39m[22m
+[1m[31m  Type 'undefined' is not assignable to type 'string'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m58[0m           this.token = authMethod.token;[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m10[0m:[93m19[0m - [91merror[0m[90m TS2416: [0mProperty 'handleRequest' in type 'CustomRateLimitGuard' is not assignable to the same property in base type 'ThrottlerGuard'.[39m[22m
+[1m[31m  Type '(context: ExecutionContext, limit: number, ttl: number, throttler: any) => Promise<boolean>' is not assignable to type '(requestProps: ThrottlerRequest) => Promise<boolean>'.[39m[22m
+[1m[31m    Target signature provides too few arguments. Expected 4 or more, but got 1.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m10[0m   protected async handleRequest([39m[22m
+[1m[31m[7m  [0m [91m                  ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m10[0m:[93m19[0m - [91merror[0m[90m TS4114: [0mThis member must have an 'override' modifier because it overrides a member in the base class 'ThrottlerGuard'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m10[0m   protected async handleRequest([39m[22m
+[1m[31m[7m  [0m [91m                  ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m34[0m:[93m41[0m - [91merror[0m[90m TS2554: [0mExpected 1 arguments, but got 4.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m34[0m     return super.handleRequest(context, limit, ttl, throttler);[39m[22m
+[1m[31m[7m  [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m54[0m:[93m35[0m - [91merror[0m[90m TS4111: [0mProperty 'RATE_LIMIT_WHITELIST' comes from an index signature, so it must be accessed with ['RATE_LIMIT_WHITELIST'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m54[0m     const whitelist = process.env.RATE_LIMIT_WHITELIST?.split(',') || [];[39m[22m
+[1m[31m[7m  [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m76[0m:[93m13[0m - [91merror[0m[90m TS2416: [0mProperty 'throwThrottlingException' in type 'CustomRateLimitGuard' is not assignable to the same property in base type 'ThrottlerGuard'.[39m[22m
+[1m[31m  Type '() => void' is not assignable to type '(context: ExecutionContext, throttlerLimitDetail: ThrottlerLimitDetail) => Promise<void>'.[39m[22m
+[1m[31m    Type 'void' is not assignable to type 'Promise<void>'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m76[0m   protected throwThrottlingException(): void {[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m76[0m:[93m13[0m - [91merror[0m[90m TS4114: [0mThi
+[2m../../dist/packages/shared/README.md[22m

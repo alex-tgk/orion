@@ -1,0 +1,108 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: auth-tls-cert
+  namespace: orion
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-tls-cert
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/component: certificate
+spec:
+  # Name of the Kubernetes Secret to store the certificate
+  # This secret will be referenced by the Ingress resource
+  secretName: auth-tls-secret
+
+  # Certificate duration (default: 90 days)
+  # Let's Encrypt certificates are valid for 90 days
+  duration: 2160h # 90 days
+
+  # Renew certificate when this much time is left before expiry
+  # cert-manager will automatically renew 30 days before expiry
+  renewBefore: 720h # 30 days
+
+  # Certificate subject configuration
+  subject:
+    organizations:
+    - ORION Platform
+
+  # Common name (primary domain)
+  # Update this to your actual domain
+  commonName: auth.orion.example.com
+
+  # Subject Alternative Names (SANs)
+  # List all domains this certificate should be valid for
+  dnsNames:
+  - auth.orion.example.com
+  # Add additional domains if needed:
+  # - auth-api.orion.example.com
+  # - authentication.orion.example.com
+
+  # Reference to the ClusterIssuer
+  # Use staging issuer by default for testing
+  # Override to production in overlay patches
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+    group: cert-manager.io
+
+  # Private key configuration
+  privateKey:
+    # Algorithm: RSA or ECDSA
+    algorithm: RSA
+    # Key size for RSA (2048 or 4096)
+    # 2048 is sufficient for most use cases
+    size: 2048
+    # Encoding: PKCS1 or PKCS8
+    encoding: PKCS1
+    # Rotation policy: Never or Always
+    # Never: Reuse existing private key on renewal (recommended)
+    # Always: Generate new private key on renewal
+    rotationPolicy: Never
+
+  # Key usages
+  usages:
+  - digital signature
+  - key encipherment
+  - server auth
+
+  # Additional certificate request configuration
+  # Email addresses to be included in the certificate
+  # emailAddresses:
+  # - security@orion.example.com
+
+  # IP SANs (if needed for IP-based access)
+  # ipAddresses:
+  # - 192.168.1.100
+
+  # URI SANs (if needed)
+  # uris:
+  # - https://auth.orion.example.com
+
+---
+# Optional: Certificate for additional environments
+# Example: Development environment certificate
+# Uncomment and customize as needed
+
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: auth-dev-tls-cert
+#   namespace: orion
+#   labels:
+#     app: auth-service
+#     environment: development
+# spec:
+#   secretName: auth-dev-tls-secret
+#   duration: 2160h
+#   renewBefore: 720h
+#   commonName: auth-dev.orion.example.com
+#   dnsNames:
+#   - auth-dev.orion.example.com
+#   issuerRef:
+#     name: letsencrypt-staging
+#     kind: ClusterIssuer
+#   privateKey:
+#     algorithm: RSA
+#     size: 2048
+#     rotationPolicy: Never

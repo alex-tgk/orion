@@ -1,0 +1,118 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m admin-ui [39m[27m[0m [2mpackages/admin-ui/src/app/listeners/[22m[1madmin-event.listener.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/admin-ui/src/app/listeners/admin-event.listener.spec.ts[0m:[93m3[0m:[93m36[0m - [91merror[0m[90m TS2307: [0mCannot find module './admin-event.listener' or its corresponding type declarations.
+
+    [7m3[0m import { AdminEventListener } from './admin-event.listener';
+    [7m [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/admin-ui/src/app/listeners/admin-event.listener.spec.ts[0m:[93m4[0m:[93m36[0m - [91merror[0m[90m TS2307: [0mCannot find module '../gateways/admin-events.gateway' or its corresponding type declarations.
+
+    [7m4[0m import { AdminEventsGateway } from '../gateways/admin-events.gateway';
+    [7m [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/admin-ui/src/app/listeners/admin-event.listener.spec.ts[0m:[93m14[0m:[93m8[0m - [91merror[0m[90m TS2307: [0mCannot find module '../types/websocket-events.types' or its corresponding type declarations.
+
+    [7m14[0m } from '../types/websocket-events.types';
+    [7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m admin-ui [39m[27m[0m [2mpackages/admin-ui/src/app/controllers/[22m[1mevents.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/admin-ui/src/app/controllers/events.controller.spec.ts[0m:[93m3[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/events.service' or its corresponding type declarations.
+
+    [7m3[0m import { EventsService } from '../services/events.service';
+    [7m [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/admin-ui/src/app/controllers/events.controller.spec.ts[0m:[93m4[0m:[93m43[0m - [91merror[0m[90m TS2307: [0mCannot find module '../dto/system-events.dto' or its corresponding type declarations.
+
+    [7m4[0m import { EventLevel, EventCategory } from '../dto/system-events.dto';
+    [7m [0m [91m                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m admin-ui [39m[27m[0m [2mpackages/admin-ui/src/app/controllers/[22m[1mservices.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/admin-ui/src/app/controllers/services.controller.spec.ts[0m:[93m3[0m:[93m38[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/observability.service' or its corresponding type declarations.
+
+    [7m3[0m import { ObservabilityService } from '../services/observability.service';
+    [7m [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/admin-ui/src/app/controllers/services.controller.spec.ts[0m:[93m4[0m:[93m42[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/health-aggregation.service' or its corresponding type declarations.
+
+    [7m4[0m import { HealthAggregationService } from '../services/health-aggregation.service';
+    [7m [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/admin-ui/src/app/controllers/services.controller.spec.ts[0m:[93m6[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '../dto/service-health.dto' or its corresponding type declarations.
+
+    [7m6[0m import { ServiceStatus } from '../dto/service-health.dto';
+    [7m [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/admin-ui/src/app/controllers/system.controller.ts[39m
+[31mERROR: [96mpackages/admin-ui/src/app/controllers/system.controller.ts[0m:[93m3[0m:[93m42[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/health-aggregation.service' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { HealthAggregationService } from '../services/health-aggregation.service';[39m
+[31m[7m [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/controllers/system.controller.ts[0m:[93m4[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/stats.service' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { StatsService } from '../services/stats.service';[39m
+[31m[7m [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/controllers/system.controller.ts[0m:[93m5[0m:[93m51[0m - [91merror[0m[90m TS2307: [0mCannot find module '../dto' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m5[0m import { SystemOverviewDto, SystemStatsDto } from '../dto';[39m
+[31m[7m [0m [91m                                                  ~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/admin-ui/src/app/controllers/events.controller.ts[39m
+[31mERROR: [96mpackages/admin-ui/src/app/controllers/events.controller.ts[0m:[93m3[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/events.service' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { EventsService } from '../services/events.service';[39m
+[31m[7m [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/controllers/events.controller.ts[0m:[93m4[0m:[93m67[0m - [91merror[0m[90m TS2307: [0mCannot find module '../dto/system-events.dto' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { EventsQueryDto, EventsResponseDto, SystemEventDto } from '../dto/system-events.dto';[39m
+[31m[7m [0m [91m                                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/admin-ui/src/app/services/metrics.service.ts[39m
+[31mERROR: [96mpackages/admin-ui/src/app/services/metrics.service.ts[0m:[93m3[0m:[93m41[0m - [91merror[0m[90m TS2307: [0mCannot find module './service-discovery.service' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { ServiceDiscoveryService } from './service-discovery.service';[39m
+[31m[7m [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/services/metrics.service.ts[0m:[93m4[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './cache.service' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { CacheService } from './cache.service';[39m
+[31m[7m [0m [91m                             ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/services/metrics.service.ts[0m:[93m5[0m:[93m35[0m - [91merror[0m[90m TS2307: [0mCannot find module '../dto/service-metrics.dto' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m5[0m import { ServiceMetricsDto } from '../dto/service-metrics.dto';[39m
+[31m[7m [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/services/metrics.service.ts[0m:[93m68[0m:[93m43[0m - [91merror[0m[90m TS7006: [0mParameter 'service' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m68[0m     const metricsPromises = services.map((service) =>[39m
+[31m[7m  [0m [91m                                          ~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/services/metrics.service.ts[0m:[93m73[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 'm' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m73[0m     return allMetrics.filter((m) => m !== null);[39m
+[31m[7m  [0m [91m                              ~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/admin-ui/src/app/controllers/services.controller.ts[39m
+[31mERROR: [96mpackages/admin-ui/src/app/controllers/services.controller.ts[0m:[93m3[0m:[93m38[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/observability.service' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { ObservabilityService } from '../services/observability.service';[39m
+[31m[7m [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/controllers/services.controller.ts[0m:[93m4[0m:[93m42[0m - [91merror[0m[90m TS2307: [0mCannot find module '../services/health-aggregation.service' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { HealthAggregationService } from '../services/health-aggregation.service';[39m
+[31m[7m [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/controllers/services.controller.ts[0m:[93m10[0m:[93m8[0m - [91merror[0m[90m TS2307: [0mCannot find module '../dto/service-health.dto' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m10[0m } from '../dto/service-health.dto';[39m
+[31m[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/admin-ui/src/app/controllers/services.controller.ts[0m:[93m11[0m:[93m35[0m - [91merror[0m[90m TS2307: [0mCannot find module '../dto/service-metrics.dto' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m11[0m import { ServiceMetricsDto } from '../dto/service-metrics.dto';[39m
+[31m[7m  [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |       0 |        0 |       0 |       0 | [31;1m                 [0m 
+----------|---------|----------|---------|---------|-------------------
+[1mTest Suites: [22m[1m[31m3 failed[39m[22m, 3 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        12.104 s
+[2mRan all test suites[22m[2m.[22m

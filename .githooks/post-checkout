@@ -1,0 +1,12 @@
+#!/bin/bash
+# Post-checkout hook to warn about being off main branch
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ "$CURRENT_BRANCH" != "main" ]] && [[ "$CURRENT_BRANCH" != "master" ]]; then
+    echo "⚠️  WARNING: You are on branch '$CURRENT_BRANCH' instead of main!"
+    echo "📋 GitHub Spec Kit methodology requires all development on main branch."
+    echo "🔄 To return to main branch: git checkout main"
+    echo ""
+    echo "This warning will appear every time you perform git operations off main."
+fi

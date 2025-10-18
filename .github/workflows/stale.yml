@@ -1,0 +1,283 @@
+name: Stale PR/Issue Management
+
+on:
+  schedule:
+    # Run every day at 1 AM UTC
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Mark Stale Items
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stale PR and Issue Handler
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Days before marking as stale
+          days-before-stale: 30
+          days-before-close: 7
+
+          # Stale PR configuration
+          days-before-pr-stale: 30
+          days-before-pr-close: 7
+
+          # Stale issue configuration
+          days-before-issue-stale: 60
+          days-before-issue-close: 14
+
+          # Stale PR message
+          stale-pr-message: |
+            👋 **This pull request has been automatically marked as stale** because it has not had recent activity.
+
+            ### What happens next?
+            - This PR will be **closed in 7 days** if no further activity occurs
+            - To keep it open, add a comment or push new commits
+            - If you need more time, add the `keep-alive` label
+
+            ### Questions?
+            - Need help finishing this PR? Comment and tag a maintainer
+            - Is this blocked by something? Update the PR description
+            - Ready to close? Comment "/close" and we'll close it for you
+
+            ---
+            *This is an automated message. If you believe this is a mistake, please add a comment.*
+
+          # Close PR message
+          close-pr-message: |
+            🔒 **This pull request has been automatically closed** due to inactivity.
+
+            ### Why was this closed?
+            - No activity for 30 days
+            - No response after stale warning (7 days ago)
+
+            ### Want to reopen?
+            You can reopen this PR at any time by:
+            1. Commenting on the PR
+            2. Pushing new commits
+            3. Contacting a maintainer
+
+            We appreciate your contribution! Feel free to reopen when you're ready to continue.
+
+            ---
+            *This is an automated closure. The PR can be reopened if needed.*
+
+          # Stale issue message
+          stale-issue-message: |
+            👋 **This issue has been automatically marked as stale** because it has not had recent activity.
+
+            ### What happens next?
+            - This issue will be **closed in 14 days** if no further activity occurs
+            - To keep it open, add a comment or update the issue
+            - If you need more time, add the `keep-alive` label
+
+            ### Is this still relevant?
+            - Still experiencing this issue? Add a comment with details
+            - Found a workaround? Share it with the community
+            - Fixed in another PR? Reference the PR that fixed it
+
+            ---
+            *This is an automated message. If you believe this is a mistake, please add a comment.*
+
+          # Close issue message
+          close-issue-message: |
+            🔒 **This issue has been automatically closed** due to inactivity.
+
+            ### Why was this closed?
+            - No activity for 60 days
+            - No response after stale warning (14 days ago)
+
+            ### Still relevant?
+            You can reopen this issue at any time by:
+            1. Adding a comment with updated information
+            2. Creating a new issue referencing this one
+            3. Contacting a maintainer
+
+            Thank you for reporting this issue!
+
+            ---
+            *This is an automated closure. The issue can be reopened if needed.*
+
+          # Labels
+          stale-pr-label: 'stale'
+          stale-issue-label: 'stale'
+          close-pr-label: 'auto-closed'
+          close-issue-label: 'auto-closed'
+
+          # Exempt labels - items with these labels won't be marked stale
+          exempt-pr-labels: 'keep-alive,in-progress,blocked,security,critical'
+          exempt-issue-labels: 'keep-alive,in-progress,blocked,security,critical,bug,enhancement'
+
+          # Exempt milestones
+          exempt-milestones: true
+          exempt-all-milestones: false
+
+          # Exempt assignees
+          exempt-assignees: true
+          exempt-all-assignees: false
+
+          # Exempt draft PRs
+          exempt-draft-pr: true
+
+          # Operations per run (rate limiting)
+          operations-per-run: 100
+
+          # Enable debug output
+          debug-only: false
+
+          # Remove stale label when updated
+          remove-stale-when-updated: true
+          remove-pr-stale-when-updated: true
+          remove-issue-stale-when-updated: true
+
+          # Ascending order (oldest first)
+          ascending: true
+
+          # Delete branch after closing PR
+          delete-branch: false
+
+          # Start date (ISO 8601)
+          # Only process items created after this date
+          # start-date: '2024-01-01T00:00:00Z'
+
+          # Enable statistics
+          enable-statistics: true
+
+  notify-reviewers:
+    name: Notify Reviewers of Stale PRs
+    runs-on: ubuntu-latest
+    needs: stale
+    steps:
+      - name: Find stale PRs needing review
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              sort: 'updated',
+              direction: 'asc',
+              per_page: 100
+            });
+
+            const now = new Date();
+            const staleDays = 30;
+            const warningDays = 25; // Warn reviewers 5 days before marking stale
+
+            for (const pr of pullRequests) {
+              const updatedAt = new Date(pr.updated_at);
+              const daysSinceUpdate = Math.floor((now - updatedAt) / (1000 * 60 * 60 * 24));
+
+              // Skip draft PRs and PRs with exempt labels
+              if (pr.draft) continue;
+
+              const { data: labels } = await github.rest.issues.listLabelsOnIssue({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number
+              });
+
+              const labelNames = labels.map(l => l.name);
+              const exemptLabels = ['keep-alive', 'in-progress', 'blocked', 'security', 'critical'];
+
+              if (labelNames.some(label => exemptLabels.includes(label))) {
+                continue;
+              }
+
+              // Notify reviewers if approaching stale threshold
+              if (daysSinceUpdate >= warningDays && daysSinceUpdate < staleDays) {
+                const { data: requestedReviewers } = await github.rest.pulls.listRequestedReviewers({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: pr.number
+                });
+
+                if (requestedReviewers.users.length > 0) {
+                  const reviewerMentions = requestedReviewers.users.map(u => `@${u.login}`).join(' ');
+
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pr.number,
+                    body: `⏰ **Review Reminder**
+
+            ${reviewerMentions}
+
+            This PR has been waiting for review for ${daysSinceUpdate} days and will be marked as stale in ${staleDays - daysSinceUpdate} days.
+
+            Please review when you have a chance, or add the \`keep-alive\` label if more time is needed.`
+                  });
+                }
+              }
+            }
+
+  cleanup-closed-branches:
+    name: Cleanup Closed PR Branches
+    runs-on: ubuntu-latest
+    needs: stale
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Delete merged branches
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: branches } = await github.rest.repos.listBranches({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per_page: 100
+            });
+
+            const protectedBranches = ['main', 'develop', 'staging', 'production'];
+
+            for (const branch of branches) {
+              // Skip protected branches
+              if (protectedBranches.includes(branch.name)) {
+                continue;
+              }
+
+              // Skip branches that don't look like PR branches
+              if (!branch.name.match(/^(feature|bugfix|hotfix|docs|security)\//)) {
+                continue;
+              }
+
+              try {
+                // Find PRs for this branch
+                const { data: prs } = await github.rest.pulls.list({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  head: `${context.repo.owner}:${branch.name}`,
+                  state: 'closed'
+                });
+
+                // Delete branch if PR was merged
+                if (prs.length > 0 && prs[0].merged_at) {
+                  const mergedAt = new Date(prs[0].merged_at);
+                  const daysSinceMerge = Math.floor((new Date() - mergedAt) / (1000 * 60 * 60 * 24));
+
+                  // Delete if merged more than 7 days ago
+                  if (daysSinceMerge > 7) {
+                    console.log(`Deleting merged branch: ${branch.name} (merged ${daysSinceMerge} days ago)`);
+
+                    await github.rest.git.deleteRef({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      ref: `heads/${branch.name}`
+                    });
+                  }
+                }
+              } catch (error) {
+                console.log(`Error processing branch ${branch.name}:`, error.message);
+              }
+            }

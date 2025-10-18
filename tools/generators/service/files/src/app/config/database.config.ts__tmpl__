@@ -1,0 +1,6 @@
+<% if (withDatabase) { %>import { registerAs } from '@nestjs/config';
+
+export const databaseConfig = registerAs('database', () => ({
+  url: process.env.DATABASE_URL || 'postgresql://orion:orion_dev@localhost:5432/orion_dev',
+}));
+<% } %>

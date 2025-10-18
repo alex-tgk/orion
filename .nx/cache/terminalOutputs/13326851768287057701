@@ -1,0 +1,5 @@
+> webpack-cli build --node-env=production
+
+chunk (runtime: frontend) [1m[32mfrontend.js[39m[22m (frontend) 72.8 KiB (javascript) 972 bytes (runtime) [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 233 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (adc1364266cf23b0)

@@ -1,0 +1,75 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m10[0m:[93m13[0m - [91merror[0m[90m TS4114: [0mThis member must have an 'override' modifier because it overrides a member in the base class 'ThrottlerGuard'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m10[0m   protected getTracker(req: Request): Promise<string> {[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m TS4114: [0mThis member must have an 'override' modifier because it overrides a member in the base class 'ThrottlerGuard'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m23[0m   async canActivate(context: ExecutionContext): Promise<boolean> {[39m[22m
+[1m[31m[7m  [0m [91m        ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/guards/rate-limit.guard.ts[0m:[93m51[0m:[93m19[0m - [91merror[0m[90m TS4114: [0mThis member must have an 'override' modifier because it overrides a member in the base class 'ThrottlerGuard'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m51[0m   protected async throwThrottlingException(context: ExecutionContext): Promise<void> {[39m[22m
+[1m[31m[7m  [0m [91m                  ~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/helmet.service.ts[0m:[93m45[0m:[93m7[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'expectCt' does not exist in type 'Readonly<{ contentSecurityPolicy?: boolean | ContentSecurityPolicyOptions | undefined; crossOriginEmbedderPolicy?: boolean | CrossOriginEmbedderPolicyOptions | undefined; crossOriginOpenerPolicy?: boolean | ... 1 more ... | undefined; crossOriginResourcePolicy?: boolean | ... 1 more ... | undefined; originAgentClust...'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m45[0m       expectCt: {[39m[22m
+[1m[31m[7m  [0m [91m      ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/security/security-config.service.ts[0m:[93m36[0m:[93m24[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m36[0m     return process.env.NODE_ENV === 'production';[39m[22m
+[1m[31m[7m  [0m [91m                       ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/interceptors/sentry.interceptor.ts[0m:[93m35[0m:[93m28[0m - [91merror[0m[90m TS4111: [0mProperty 'SERVICE_NAME' comes from an index signature, so it must be accessed with ['SERVICE_NAME'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m35[0m       service: process.env.SERVICE_NAME || 'unknown',[39m[22m
+[1m[31m[7m  [0m [91m                           ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/interceptors/sentry.interceptor.ts[0m:[93m36[0m:[93m32[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m36[0m       environment: process.env.NODE_ENV || 'development',[39m[22m
+[1m[31m[7m  [0m [91m                               ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/interfaces/sentry-config.interface.ts[0m:[93m1[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module '@sentry/node' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m1[0m import type * as Sentry from '@sentry/node';[39m[22m
+[1m[31m[7m [0m [91m                             ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m2[0m:[93m25[0m - [91merror[0m[90m TS2307: [0mCannot find module '@sentry/node' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import * as Sentry from '@sentry/node';[39m[22m
+[1m[31m[7m [0m [91m                        ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m24[0m:[93m57[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m24[0m         environment: options.environment || process.env.NODE_ENV || 'development',[39m[22m
+[1m[31m[7m  [0m [91m                                                        ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m25[0m:[93m49[0m - [91merror[0m[90m TS4111: [0mProperty 'GIT_COMMIT_SHA' comes from an index signature, so it must be accessed with ['GIT_COMMIT_SHA'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m25[0m         release: options.release || process.env.GIT_COMMIT_SHA,[39m[22m
+[1m[31m[7m  [0m [91m                                                ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m71[0m:[93m60[0m - [91merror[0m[90m TS4111: [0mProperty 'NODE_ENV' comes from an index signature, so it must be accessed with ['NODE_ENV'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m71[0m             environment: config.environment || process.env.NODE_ENV || 'development',[39m[22m
+[1m[31m[7m  [0m [91m                                                           ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.module.ts[0m:[93m72[0m:[93m52[0m - [91merror[0m[90m TS4111: [0mProperty 'GIT_COMMIT_SHA' comes from an index signature, so it must be accessed with ['GIT_COMMIT_SHA'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m72[0m             release: config.release || process.env.GIT_COMMIT_SHA,[39m[22m
+[1m[31m[7m  [0m [91m                                                   ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/sentry/sentry.service.ts[0m:[93m2[0m:[93m25[0m - [91merror[0m[90m TS2307: [0mCannot find module '@sentry/node' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import * as Sentry from '@sentry/node';[39m[22m
+[1m[31m[7m [0m [91m                        ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/database/test-database.ts[0m:[93m17[0m:[93m30[0m - [91merror[0m[90m TS4111: [0mProperty 'DATABASE_URL' comes from an index signature, so it must be accessed with ['DATABASE_URL'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m17[0m             url: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/orion_test',[39m[22m
+[1m[31m[7m  [0m [91m                             ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/integration-setup.ts[0m:[93m23[0m:[93m26[0m - [91merror[0m[90m TS4111: [0mProperty 'TEST_DATABASE_URL' comes from an index signature, so it must be accessed with ['TEST_DATABASE_URL'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m23[0m         url: process.env.TEST_DATABASE_URL || process.env.DATABASE_URL,[39m[22m
+[1m[31m[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/integration-setup.ts[0m:[93m23[0m:[93m59[0m - [91merror[0m[90m TS4111: [0mProperty 'DATABASE_URL' comes from an index signature, so it must be accessed with ['DATABASE_URL'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m23[0m         url: process.env.TEST_DATABASE_URL || process.env.DATABASE_URL,[39m[22m
+[1m[31m[7m  [0m [91m                                                          ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/integration-setup.ts[0m:[93m32[0m:[93m23[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_HOST' comes from an index signature, so it must be accessed with ['REDIS_HOST'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m32[0m     host: process.env.REDIS_HOST || 'localhost',[39m[22m
+[1m[31m[7m  [0m [91m                      ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/integration-setup.ts[0m:[93m33[0m:[93m32[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_PORT' comes from an index s
+[2m../../dist/packages/shared/README.md[22m

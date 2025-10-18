@@ -1,0 +1,146 @@
+# <%= className %> Service
+
+<%= description %>
+
+## Overview
+
+This service is part of the ORION microservices platform and was generated using the ORION service generator.
+
+## Quick Start
+
+### Development
+
+```bash
+# Start the service
+nx serve <%= projectName %>
+
+# Run tests
+nx test <%= projectName %>
+
+# Run E2E tests
+nx e2e <%= projectName %>-e2e
+
+# Build for production
+nx build <%= projectName %>
+```
+
+### Docker
+
+```bash
+# Build Docker image
+docker compose build <%= fileName %>
+
+# Run service with Docker Compose
+docker compose up <%= fileName %>
+
+# View logs
+docker compose logs -f <%= fileName %>
+```
+
+## Configuration
+
+Environment variables:
+
+```env
+# Application
+PORT=<%= port %>
+NODE_ENV=development
+CORS_ORIGIN=http://localhost:4200
+
+# Rate Limiting
+RATE_LIMIT_TTL=60
+RATE_LIMIT_MAX=100
+<% if (withDatabase) { %>
+# Database
+DATABASE_URL=postgresql://orion:orion_dev@localhost:5432/orion_dev
+<% } %><% if (withRedis) { %>
+# Redis
+REDIS_URL=redis://localhost:6379
+REDIS_ENABLED=true
+<% } %><% if (withRabbitMQ) { %>
+# RabbitMQ
+RABBITMQ_URL=amqp://orion:orion_dev@localhost:5672
+<% } %>
+```
+
+## API Documentation
+
+- **Health Check:** `http://localhost:<%= port %>/api/<%= fileName %>/health`
+<% if (withSwagger) { %>- **Swagger UI:** `http://localhost:<%= port %>/api/docs`
+<% } %>- **Spec File:** `.claude/specs/<%= fileName %>-service.md`
+
+## Architecture
+
+```
+<%= className %> Service
+├── src/
+│   ├── app/
+│   │   ├── controllers/      # HTTP controllers
+│   │   ├── services/         # Business logic
+│   │   ├── dto/              # Data transfer objects
+│   │   ├── config/           # Configuration files
+│   │   ├── guards/           # Auth guards
+│   │   ├── filters/          # Exception filters
+│   │   ├── middleware/       # Custom middleware
+<% if (withWebSocket) { %>│   │   ├── gateways/         # WebSocket gateways
+<% } %>│   │   └── app.module.ts   # Main module
+│   ├── test/                 # E2E tests
+│   └── main.ts               # Application entry point
+<% if (withDatabase) { %>├── prisma/                  # Database schema
+<% } %>├── k8s/                      # Kubernetes manifests
+├── Dockerfile
+└── package.json
+```
+
+## Testing
+
+```bash
+# Unit tests
+nx test <%= projectName %>
+
+# Unit tests with coverage
+nx test <%= projectName %> --coverage
+
+# E2E tests
+nx e2e <%= projectName %>-e2e
+
+# Watch mode
+nx test <%= projectName %> --watch
+```
+
+## Deployment
+
+### Kubernetes
+
+```bash
+# Apply manifests
+kubectl apply -f <%= projectRoot %>/k8s/
+
+# Check deployment status
+kubectl get deployments -n orion
+
+# Check pod status
+kubectl get pods -n orion -l app=<%= fileName %>
+
+# View logs
+kubectl logs -n orion -l app=<%= fileName %> -f
+```
+
+### Docker Compose
+
+Already configured in the main `docker-compose.yml` file.
+
+## Dependencies
+
+<% if (withDatabase) { %>- PostgreSQL (via Prisma)
+<% } %><% if (withRedis) { %>- Redis
+<% } %><% if (withRabbitMQ) { %>- RabbitMQ
+<% } %>- @orion/shared (shared utilities)
+
+## Related Services
+
+See `.claude/specs/<%= fileName %>-service.md` for detailed API specifications and integration details.
+
+## License
+
+MIT

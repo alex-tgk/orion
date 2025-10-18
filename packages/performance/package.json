@@ -1,0 +1,21 @@
+{
+  "name": "@orion/performance",
+  "version": "1.0.0",
+  "description": "Performance testing suite using k6",
+  "private": true,
+  "scripts": {
+    "test": "npm run test:load",
+    "test:load": "k6 run scenarios/load-test.js",
+    "test:stress": "k6 run scenarios/stress-test.js",
+    "test:spike": "k6 run scenarios/spike-test.js",
+    "test:soak": "k6 run scenarios/soak-test.js",
+    "test:auth": "k6 run scenarios/auth-performance.js",
+    "test:gateway": "k6 run scenarios/gateway-performance.js",
+    "test:all": "npm run test:load && npm run test:stress && npm run test:spike",
+    "report": "node scripts/generate-report.js",
+    "clean": "rm -rf reports/*"
+  },
+  "devDependencies": {
+    "k6": "^0.0.0"
+  }
+}

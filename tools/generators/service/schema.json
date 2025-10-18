@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "OrionServiceGenerator",
+  "title": "ORION Service Generator",
+  "description": "Generate a complete NestJS microservice with all required files following ORION architecture patterns",
+  "type": "object",
+  "cli": "nx",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the service (e.g., 'payment', 'user', 'notification')",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the name of the service?"
+    },
+    "port": {
+      "type": "number",
+      "description": "Port number for the service (default: auto-assigned)",
+      "default": 3000,
+      "x-prompt": "What port should the service use?"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the service",
+      "x-prompt": "Provide a brief description of the service:"
+    },
+    "withDatabase": {
+      "type": "boolean",
+      "description": "Include Prisma database configuration",
+      "default": true,
+      "x-prompt": "Include database configuration?"
+    },
+    "withRedis": {
+      "type": "boolean",
+      "description": "Include Redis cache configuration",
+      "default": true,
+      "x-prompt": "Include Redis cache?"
+    },
+    "withRabbitMQ": {
+      "type": "boolean",
+      "description": "Include RabbitMQ message queue",
+      "default": false,
+      "x-prompt": "Include RabbitMQ messaging?"
+    },
+    "withWebSocket": {
+      "type": "boolean",
+      "description": "Include WebSocket gateway",
+      "default": false,
+      "x-prompt": "Include WebSocket support?"
+    },
+    "withCRUD": {
+      "type": "boolean",
+      "description": "Generate CRUD controller and service",
+      "default": true,
+      "x-prompt": "Generate CRUD endpoints?"
+    },
+    "withSwagger": {
+      "type": "boolean",
+      "description": "Include Swagger API documentation",
+      "default": true,
+      "x-prompt": "Include Swagger documentation?"
+    },
+    "withE2E": {
+      "type": "boolean",
+      "description": "Generate E2E test project",
+      "default": true,
+      "x-prompt": "Generate E2E tests?"
+    },
+    "withDocker": {
+      "type": "boolean",
+      "description": "Generate Dockerfile and docker-compose configuration",
+      "default": true,
+      "x-prompt": "Generate Docker configuration?"
+    },
+    "withKubernetes": {
+      "type": "boolean",
+      "description": "Generate Kubernetes manifests",
+      "default": true,
+      "x-prompt": "Generate Kubernetes manifests?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "The directory within packages/ to create the service",
+      "default": ""
+    },
+    "tags": {
+      "type": "string",
+      "description": "Comma-separated tags for the service (e.g., 'scope:auth,type:app')",
+      "default": ""
+    }
+  },
+  "required": ["name"]
+}

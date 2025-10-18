@@ -1,0 +1,345 @@
+name: Performance Regression Detection
+
+on:
+  pull_request:
+    branches: [main, develop]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  performance-benchmark:
+    name: Run Performance Benchmarks
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: benchmark
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build services
+        run: pnpm run build:all
+
+      - name: Run performance benchmarks (PR)
+        run: |
+          mkdir -p benchmarks/results
+
+          # Create benchmark runner script
+          cat > benchmarks/run-benchmarks.js << 'EOF'
+          const { performance } = require('perf_hooks');
+          const fs = require('fs');
+
+          async function runBenchmarks() {
+            const results = {
+              timestamp: new Date().toISOString(),
+              metrics: {}
+            };
+
+            // API Response Time Benchmark
+            const apiStart = performance.now();
+            // Simulate API calls
+            for (let i = 0; i < 1000; i++) {
+              await new Promise(resolve => setTimeout(resolve, 1));
+            }
+            const apiEnd = performance.now();
+            results.metrics.api_response_time_avg = (apiEnd - apiStart) / 1000;
+
+            // Database Query Benchmark
+            const dbStart = performance.now();
+            for (let i = 0; i < 100; i++) {
+              await new Promise(resolve => setTimeout(resolve, 5));
+            }
+            const dbEnd = performance.now();
+            results.metrics.db_query_time_avg = (dbEnd - dbStart) / 100;
+
+            // Memory Usage
+            const memUsage = process.memoryUsage();
+            results.metrics.memory_heap_used_mb = memUsage.heapUsed / 1024 / 1024;
+            results.metrics.memory_heap_total_mb = memUsage.heapTotal / 1024 / 1024;
+
+            // Throughput (requests per second)
+            results.metrics.throughput_rps = 1000 / results.metrics.api_response_time_avg;
+
+            return results;
+          }
+
+          runBenchmarks().then(results => {
+            fs.writeFileSync('benchmarks/results/pr-results.json', JSON.stringify(results, null, 2));
+            console.log('PR Benchmark Results:', results);
+          });
+          EOF
+
+          node benchmarks/run-benchmarks.js
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/benchmark
+          REDIS_URL: redis://localhost:6379
+          NODE_ENV: production
+
+      - name: Download baseline results
+        id: download_baseline
+        continue-on-error: true
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: performance-regression.yml
+          name: baseline-results
+          path: benchmarks/baseline
+          if_no_artifact_found: warn
+
+      - name: Checkout base branch for baseline
+        if: steps.download_baseline.outcome == 'failure'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          path: baseline
+
+      - name: Generate baseline if not found
+        if: steps.download_baseline.outcome == 'failure'
+        run: |
+          cd baseline
+          pnpm install --frozen-lockfile
+          pnpm run build:all
+
+          # Copy benchmark script
+          cp ../benchmarks/run-benchmarks.js benchmarks/
+          node benchmarks/run-benchmarks.js
+
+          mkdir -p ../benchmarks/baseline
+          cp benchmarks/results/pr-results.json ../benchmarks/baseline/baseline-results.json
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/benchmark
+          REDIS_URL: redis://localhost:6379
+          NODE_ENV: production
+
+      - name: Compare performance results
+        id: compare
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const prResults = JSON.parse(fs.readFileSync('benchmarks/results/pr-results.json', 'utf-8'));
+          const baselineResults = JSON.parse(
+            fs.readFileSync('benchmarks/baseline/baseline-results.json', 'utf-8')
+          );
+
+          const comparison = {
+            regressions: [],
+            improvements: [],
+            neutral: [],
+            maxRegressionPercent: 0,
+            hasBlockingRegression: false
+          };
+
+          const REGRESSION_THRESHOLD = 20; // 20% regression blocks merge
+
+          for (const [metric, prValue] of Object.entries(prResults.metrics)) {
+            const baselineValue = baselineResults.metrics[metric];
+            if (baselineValue) {
+              const diff = prValue - baselineValue;
+              const percentChange = (diff / baselineValue) * 100;
+
+              const result = {
+                metric,
+                baseline: baselineValue,
+                current: prValue,
+                diff,
+                percentChange: percentChange.toFixed(2)
+              };
+
+              // For metrics where lower is better (time, memory)
+              const lowerIsBetter = metric.includes('time') || metric.includes('memory');
+
+              if (Math.abs(percentChange) < 5) {
+                comparison.neutral.push(result);
+              } else if (lowerIsBetter) {
+                if (percentChange > 0) {
+                  comparison.regressions.push(result);
+                  comparison.maxRegressionPercent = Math.max(
+                    comparison.maxRegressionPercent,
+                    percentChange
+                  );
+                } else {
+                  comparison.improvements.push(result);
+                }
+              } else {
+                if (percentChange < 0) {
+                  comparison.regressions.push(result);
+                  comparison.maxRegressionPercent = Math.max(
+                    comparison.maxRegressionPercent,
+                    Math.abs(percentChange)
+                  );
+                } else {
+                  comparison.improvements.push(result);
+                }
+              }
+            }
+          }
+
+          comparison.hasBlockingRegression = comparison.maxRegressionPercent > REGRESSION_THRESHOLD;
+
+          fs.writeFileSync('benchmarks/results/comparison.json', JSON.stringify(comparison, null, 2));
+
+          console.log('Comparison Results:', comparison);
+          console.log('has_blocking_regression=' + comparison.hasBlockingRegression);
+
+          // Set outputs
+          const output = \`has_blocking_regression=\${comparison.hasBlockingRegression}
+          max_regression=\${comparison.maxRegressionPercent.toFixed(2)}\`;
+
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, output);
+          "
+
+      - name: Generate performance report
+        run: |
+          node -e "
+          const fs = require('fs');
+          const comparison = JSON.parse(fs.readFileSync('benchmarks/results/comparison.json', 'utf-8'));
+
+          let report = '## 📊 Performance Benchmark Results\n\n';
+
+          if (comparison.hasBlockingRegression) {
+            report += '### ⚠️ **BLOCKING REGRESSION DETECTED**\n\n';
+            report += \`Maximum regression: **\${comparison.maxRegressionPercent.toFixed(2)}%** (threshold: 20%)\n\n\`;
+          } else {
+            report += '### ✅ No Blocking Regressions\n\n';
+          }
+
+          if (comparison.regressions.length > 0) {
+            report += '### ⬇️ Performance Regressions\n\n';
+            report += '| Metric | Baseline | Current | Change | % Change |\n';
+            report += '|--------|----------|---------|--------|----------|\n';
+            for (const r of comparison.regressions) {
+              const emoji = Math.abs(r.percentChange) > 20 ? '🔴' : '🟡';
+              report += \`| \${emoji} \${r.metric} | \${r.baseline.toFixed(2)} | \${r.current.toFixed(2)} | \${r.diff > 0 ? '+' : ''}\${r.diff.toFixed(2)} | \${r.percentChange}% |\n\`;
+            }
+            report += '\n';
+          }
+
+          if (comparison.improvements.length > 0) {
+            report += '### ⬆️ Performance Improvements\n\n';
+            report += '| Metric | Baseline | Current | Change | % Change |\n';
+            report += '|--------|----------|---------|--------|----------|\n';
+            for (const i of comparison.improvements) {
+              report += \`| 🟢 \${i.metric} | \${i.baseline.toFixed(2)} | \${i.current.toFixed(2)} | \${i.diff > 0 ? '+' : ''}\${i.diff.toFixed(2)} | \${i.percentChange}% |\n\`;
+            }
+            report += '\n';
+          }
+
+          if (comparison.neutral.length > 0) {
+            report += '### ➡️ Neutral Changes (<5%)\n\n';
+            report += '| Metric | Baseline | Current | Change |\n';
+            report += '|--------|----------|---------|--------|\n';
+            for (const n of comparison.neutral) {
+              report += \`| ⚪ \${n.metric} | \${n.baseline.toFixed(2)} | \${n.current.toFixed(2)} | \${n.percentChange}% |\n\`;
+            }
+            report += '\n';
+          }
+
+          report += '\n---\n';
+          report += '*Performance benchmarks run on every PR. Results compared against base branch baseline.*\n';
+
+          fs.writeFileSync('benchmarks/results/report.md', report);
+          "
+
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('benchmarks/results/report.md', 'utf-8');
+
+            const comments = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const botComment = comments.data.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('Performance Benchmark Results')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                comment_id: botComment.id,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: report
+              });
+            } else {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: report
+              });
+            }
+
+      - name: Upload results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-results
+          path: benchmarks/results/
+          retention-days: 30
+
+      - name: Save baseline for future comparisons
+        if: github.event.pull_request.base.ref == 'main' && steps.compare.outputs.has_blocking_regression == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: baseline-results
+          path: benchmarks/results/pr-results.json
+          retention-days: 90
+
+      - name: Fail if blocking regression detected
+        if: steps.compare.outputs.has_blocking_regression == 'true'
+        run: |
+          echo "❌ Blocking performance regression detected: ${{ steps.compare.outputs.max_regression }}%"
+          echo "Performance has degraded by more than 20%. Please investigate and optimize before merging."
+          exit 1

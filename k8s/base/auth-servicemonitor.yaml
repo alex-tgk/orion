@@ -1,0 +1,78 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: auth-service-monitor
+  namespace: orion
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-service-monitor
+    app.kubernetes.io/part-of: orion-platform
+    app.kubernetes.io/component: monitoring
+    prometheus: kube-prometheus
+spec:
+  # Selector to match the auth-service Service
+  selector:
+    matchLabels:
+      app: auth-service
+
+  # Namespace where the service is located
+  namespaceSelector:
+    matchNames:
+    - orion
+
+  # Endpoints configuration for metrics scraping
+  endpoints:
+  - port: http
+    # Metrics endpoint path
+    path: /metrics
+    # Scrape interval
+    interval: 30s
+    # Scrape timeout
+    scrapeTimeout: 10s
+    # Honor labels from the scraped target
+    honorLabels: false
+    # Relabeling configuration
+    relabelings:
+    # Add namespace label
+    - sourceLabels: [__meta_kubernetes_namespace]
+      targetLabel: namespace
+    # Add pod label
+    - sourceLabels: [__meta_kubernetes_pod_name]
+      targetLabel: pod
+    # Add service label
+    - sourceLabels: [__meta_kubernetes_service_name]
+      targetLabel: service
+    # Add container label
+    - sourceLabels: [__meta_kubernetes_pod_container_name]
+      targetLabel: container
+    # Add node label
+    - sourceLabels: [__meta_kubernetes_pod_node_name]
+      targetLabel: node
+
+    # Metric relabeling (applied after scraping)
+    metricRelabelings:
+    # Drop high-cardinality metrics if needed
+    - sourceLabels: [__name__]
+      regex: 'go_gc_.*'
+      action: drop
+    # Add environment label
+    - targetLabel: environment
+      replacement: 'production'
+    - targetLabel: platform
+      replacement: 'orion'
+
+  # Job label for Prometheus
+  jobLabel: app.kubernetes.io/name
+
+  # Target labels to add to scraped metrics
+  targetLabels:
+  - app
+  - version
+  - app.kubernetes.io/name
+  - app.kubernetes.io/part-of
+  - app.kubernetes.io/component
+
+  # Pod target labels
+  podTargetLabels:
+  - app
+  - version

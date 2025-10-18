@@ -1,0 +1,375 @@
+name: Release Automation
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+      - '.github/**'
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      prerelease:
+        description: 'Create prerelease'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+
+env:
+  NODE_VERSION: '20'
+  REGISTRY: ghcr.io
+
+jobs:
+  prepare-release:
+    name: Prepare Release
+    runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.version.outputs.new_version }}
+      release_created: ${{ steps.version.outputs.release_created }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Determine version bump
+        id: version
+        run: |
+          # Install semantic-release tools
+          pnpm add -D semantic-release @semantic-release/changelog @semantic-release/git conventional-changelog-conventionalcommits
+
+          # Get current version
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+
+          # Determine release type from commits
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            RELEASE_TYPE="${{ github.event.inputs.release_type }}"
+          else
+            # Analyze commits for semantic versioning
+            COMMITS=$(git log --pretty=format:"%s" $(git describe --tags --abbrev=0)..HEAD 2>/dev/null || git log --pretty=format:"%s")
+
+            if echo "$COMMITS" | grep -qE "^(feat|feature)(\(.+\))?!:|^BREAKING CHANGE:"; then
+              RELEASE_TYPE="major"
+            elif echo "$COMMITS" | grep -qE "^(feat|feature)(\(.+\))?:"; then
+              RELEASE_TYPE="minor"
+            elif echo "$COMMITS" | grep -qE "^(fix|bugfix|perf|refactor)(\(.+\))?:"; then
+              RELEASE_TYPE="patch"
+            else
+              RELEASE_TYPE="none"
+            fi
+          fi
+
+          echo "Release type: $RELEASE_TYPE"
+
+          if [ "$RELEASE_TYPE" == "none" ]; then
+            echo "release_created=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Calculate new version
+          IFS='.' read -r -a VERSION_PARTS <<< "$CURRENT_VERSION"
+          MAJOR="${VERSION_PARTS[0]}"
+          MINOR="${VERSION_PARTS[1]}"
+          PATCH="${VERSION_PARTS[2]}"
+
+          case $RELEASE_TYPE in
+            major)
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            minor)
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            patch)
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+
+          if [ "${{ github.event.inputs.prerelease }}" == "true" ]; then
+            NEW_VERSION="$NEW_VERSION-rc.$(date +%Y%m%d%H%M%S)"
+          fi
+
+          echo "New version: $NEW_VERSION"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "release_created=true" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        if: steps.version.outputs.release_created == 'true'
+        run: |
+          node -e "
+          const { execSync } = require('child_process');
+          const fs = require('fs');
+
+          const version = '${{ steps.version.outputs.new_version }}';
+          const previousTag = execSync('git describe --tags --abbrev=0 2>/dev/null || echo v0.0.0').toString().trim();
+
+          console.log(\`Generating changelog from \${previousTag} to current\`);
+
+          // Get commits since last tag
+          const commits = execSync(\`git log \${previousTag}..HEAD --pretty=format:'%h|%s|%an|%ad' --date=short\`)
+            .toString()
+            .trim()
+            .split('\\n')
+            .filter(line => line);
+
+          const categories = {
+            '✨ Features': [],
+            '🐛 Bug Fixes': [],
+            '⚡ Performance': [],
+            '♻️  Refactoring': [],
+            '📚 Documentation': [],
+            '🔧 Chores': [],
+            '🔒 Security': [],
+            '💥 Breaking Changes': []
+          };
+
+          for (const commit of commits) {
+            const [hash, message, author, date] = commit.split('|');
+            const entry = \`- \${message} ([\${hash}](../../commit/\${hash})) - @\${author}\`;
+
+            if (message.match(/^(feat|feature)(\(.+\))?!/)) {
+              categories['💥 Breaking Changes'].push(entry);
+            } else if (message.match(/^(feat|feature)(\(.+\))?:/)) {
+              categories['✨ Features'].push(entry);
+            } else if (message.match(/^(fix|bugfix)(\(.+\))?:/)) {
+              categories['🐛 Bug Fixes'].push(entry);
+            } else if (message.match(/^perf(\(.+\))?:/)) {
+              categories['⚡ Performance'].push(entry);
+            } else if (message.match(/^refactor(\(.+\))?:/)) {
+              categories['♻️  Refactoring'].push(entry);
+            } else if (message.match(/^docs(\(.+\))?:/)) {
+              categories['📚 Documentation'].push(entry);
+            } else if (message.match(/^(security|sec)(\(.+\))?:/)) {
+              categories['🔒 Security'].push(entry);
+            } else if (message.match(/^(chore|build|ci|style|test)(\(.+\))?:/)) {
+              categories['🔧 Chores'].push(entry);
+            }
+          }
+
+          let changelog = \`# Changelog\\n\\n## [v\${version}](../../releases/tag/v\${version}) (\${new Date().toISOString().split('T')[0]})\\n\\n\`;
+
+          for (const [category, entries] of Object.entries(categories)) {
+            if (entries.length > 0) {
+              changelog += \`### \${category}\\n\\n\`;
+              changelog += entries.join('\\n') + '\\n\\n';
+            }
+          }
+
+          // Read existing changelog if it exists
+          let existingChangelog = '';
+          if (fs.existsSync('CHANGELOG.md')) {
+            existingChangelog = fs.readFileSync('CHANGELOG.md', 'utf-8');
+            // Remove the header
+            existingChangelog = existingChangelog.replace(/^# Changelog\\n\\n/, '');
+          }
+
+          // Write new changelog
+          fs.writeFileSync('CHANGELOG.md', changelog + existingChangelog);
+
+          console.log('Changelog generated successfully');
+          "
+
+      - name: Update version in package.json
+        if: steps.version.outputs.release_created == 'true'
+        run: |
+          node -e "
+          const fs = require('fs');
+          const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+          packageJson.version = '${{ steps.version.outputs.new_version }}';
+          fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2) + '\n');
+          "
+
+          # Update all package versions
+          for package in packages/*/package.json; do
+            node -e "
+            const fs = require('fs');
+            const packageJson = JSON.parse(fs.readFileSync('$package', 'utf-8'));
+            packageJson.version = '${{ steps.version.outputs.new_version }}';
+            fs.writeFileSync('$package', JSON.stringify(packageJson, null, 2) + '\n');
+            "
+          done
+
+      - name: Commit version bump
+        if: steps.version.outputs.release_created == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add package.json packages/*/package.json CHANGELOG.md
+          git commit -m "chore(release): v${{ steps.version.outputs.new_version }}"
+          git push
+
+  build-and-publish:
+    name: Build and Publish
+    runs-on: ubuntu-latest
+    needs: prepare-release
+    if: needs.prepare-release.outputs.release_created == 'true'
+    strategy:
+      matrix:
+        service: [auth, gateway, notifications, user]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service }}
+          tags: |
+            type=semver,pattern={{version}},value=v${{ needs.prepare-release.outputs.new_version }}
+            type=semver,pattern={{major}}.{{minor}},value=v${{ needs.prepare-release.outputs.new_version }}
+            type=semver,pattern={{major}},value=v${{ needs.prepare-release.outputs.new_version }}
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix=sha-
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./packages/${{ matrix.service }}/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            VERSION=${{ needs.prepare-release.outputs.new_version }}
+            BUILD_DATE=${{ github.event.head_commit.timestamp }}
+            VCS_REF=${{ github.sha }}
+
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: [prepare-release, build-and-publish]
+    if: needs.prepare-release.outputs.release_created == 'true'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Create Git tag
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git tag -a "v${{ needs.prepare-release.outputs.new_version }}" -m "Release v${{ needs.prepare-release.outputs.new_version }}"
+          git push origin "v${{ needs.prepare-release.outputs.new_version }}"
+
+      - name: Extract release notes
+        id: release_notes
+        run: |
+          # Extract the latest version's changelog
+          node -e "
+          const fs = require('fs');
+          const changelog = fs.readFileSync('CHANGELOG.md', 'utf-8');
+          const versionRegex = /## \[v${{ needs.prepare-release.outputs.new_version }}\][\s\S]*?(?=## \[v|$)/;
+          const match = changelog.match(versionRegex);
+          const notes = match ? match[0] : 'No release notes available';
+          fs.writeFileSync('release-notes.md', notes);
+          "
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.prepare-release.outputs.new_version }}
+          name: Release v${{ needs.prepare-release.outputs.new_version }}
+          body_path: release-notes.md
+          draft: false
+          prerelease: ${{ github.event.inputs.prerelease == 'true' }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify-slack:
+    name: Notify Team
+    runs-on: ubuntu-latest
+    needs: [prepare-release, create-release]
+    if: needs.prepare-release.outputs.release_created == 'true' && always()
+    steps:
+      - name: Send Slack notification
+        if: env.SLACK_WEBHOOK_URL != ''
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "🚀 New Release: v${{ needs.prepare-release.outputs.new_version }}",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🚀 New Release Published"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Version:*\nv${{ needs.prepare-release.outputs.new_version }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Repository:*\n${{ github.repository }}"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.server_url }}/${{ github.repository }}/releases/tag/v${{ needs.prepare-release.outputs.new_version }}|View Release Notes>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

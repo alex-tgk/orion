@@ -1,0 +1,14 @@
+node_modules
+dist
+coverage
+.nx
+*.log
+.env
+.env.local
+.DS_Store
+README.md
+*.md
+.git
+.gitignore
+Dockerfile
+.dockerignore

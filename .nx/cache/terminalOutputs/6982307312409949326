@@ -1,0 +1,91 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m1[0m:[93m1[0m - [91merror[0m[90m TS6192: [0mAll imports in import declaration are unused.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m1[0m import { Test, TestingModule } from '@nestjs/testing';[39m[22m
+[1m[31m[7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m7[0m:[93m1[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m7[0m jest.mock('axios');[39m[22m
+[1m[31m[7m [0m [91m~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m8[0m:[93m30[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m8[0m const mockedAxios = axios as jest.Mocked<typeof axios>;[39m[22m
+[1m[31m[7m [0m [91m                             ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m10[0m:[93m1[0m - [91merror[0m[90m TS2593: [0mCannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m10[0m describe('ErrorToIssueService', () => {[39m[22m
+[1m[31m[7m  [0m [91m~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m22[0m:[93m3[0m - [91merror[0m[90m TS2304: [0mCannot find name 'beforeEach'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m22[0m   beforeEach(() => {[39m[22m
+[1m[31m[7m  [0m [91m  ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m33[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m33[0m       post: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m34[0m:[93m12[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m34[0m       get: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m37[0m:[93m26[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m37[0m     mockedAxios.create = jest.fn().mockReturnValue(mockAxiosInstance);[39m[22m
+[1m[31m[7m  [0m [91m                         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m42[0m:[93m3[0m - [91merror[0m[90m TS2304: [0mCannot find name 'afterEach'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m42[0m   afterEach(() => {[39m[22m
+[1m[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m43[0m:[93m5[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m43[0m     jest.clearAllMocks();[39m[22m
+[1m[31m[7m  [0m [91m    ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m46[0m:[93m3[0m - [91merror[0m[90m TS2593: [0mCannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m46[0m   describe('processError', () => {[39m[22m
+[1m[31m[7m  [0m [91m  ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m47[0m:[93m5[0m - [91merror[0m[90m TS2593: [0mCannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m47[0m     it('should skip processing if service is disabled', async () => {[39m[22m
+[1m[31m[7m  [0m [91m    ~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m59[0m:[93m7[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m59[0m       expect(result).toBeNull();[39m[22m
+[1m[31m[7m  [0m [91m      ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m62[0m:[93m5[0m - [91merror[0m[90m TS2593: [0mCannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m62[0m     it('should skip processing if error should not create issue', async () => {[39m[22m
+[1m[31m[7m  [0m [91m    ~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m72[0m:[93m7[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m72[0m       expect(result).toBeNull();[39m[22m
+[1m[31m[7m  [0m [91m      ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m75[0m:[93m5[0m - [91merror[0m[90m TS2593: [0mCannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m75[0m     it('should create GitHub issue for CRITICAL errors', async () => {[39m[22m
+[1m[31m[7m  [0m [91m    ~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m102[0m:[93m7[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m102[0m       expect(result).toBeDefined();[39m[22m
+[1m[31m[7m   [0m [91m      ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m103[0m:[93m7[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m103[0m       expect(result?.number).toBe(123);[39m[22m
+[1m[31m[7m   [0m [91m      ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m104[0m:[93m7[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m104[0m       expect(mockAxiosInstance.post).toHaveBeenCalledWith([39m[22m
+[1m[31m[7m   [0m [91m      ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m106[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m106[0m         expect.objectContaining({[39m[22m
+[1m[31m[7m   [0m [91m        ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m107[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m107[0m           title: expect.stringContaining('CRITICAL'),[39m[22m
+[1m[31m[7m   [0m [91m                 ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec.ts[0m:[93m108[0m:[93m19[0m - [91merror[0m[90m TS2304: [0mCannot find name 'expect'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m108[0m           labels: expect.arrayContaining(['bug', 'critical']),[39m[22m
+[1m[31m[7m   [0m [91m                  ~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/automation/error-to-issue.service.spec
+[2m../../dist/packages/shared/README.md[22m
