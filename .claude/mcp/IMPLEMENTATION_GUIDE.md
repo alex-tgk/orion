@@ -18,11 +18,17 @@ This guide provides comprehensive instructions for setting up and using Model Co
 
 The ORION project uses MCP to enhance development workflows with:
 
-- **orion-local**: Custom MCP server for ORION-specific operations
-- **github**: GitHub API integration for issue/PR management
-- **postgres**: PostgreSQL database schema and query tools
-- **docker**: Docker container and image management
-- **kubernetes**: Kubernetes cluster and deployment management
+- **orion-local**: Custom ORION automation tools (spec validation, health checks, Nx helpers)
+- **github**: GitHub API integration for issues, PRs, and workflows
+- **postgres**: PostgreSQL schema inspection and data querying
+- **docker**: Container and image management for local services
+- **kubernetes**: Cluster introspection and deployment management
+- **prometheus**: Metrics queries for observability workflows
+- **memory**: Persistent in-chat memory for Claude Code
+- **filesystem**: Restricted access to `/Users/acarroll/dev/projects/orion`
+- **sequential-thinking**: Structured, multi-step reasoning assistance
+- **context7**: Live documentation retrieval for frameworks and libraries
+- **serena**: Semantic code navigation and editing tools
 
 ---
 
@@ -47,7 +53,19 @@ export KUBECONFIG="${HOME}/.kube/config"
 # Database credentials for ORION services
 export DATABASE_URL="postgresql://orion:orion_dev@localhost:5432/orion_dev"
 export REDIS_URL="redis://localhost:6379"
+
+# Context7 API key (optional, increases rate limits)
+export CONTEXT7_API_KEY="ctx7_your_api_key_here"
+
+# Serena defaults (optional quality-of-life tweaks)
+export SERENA_DISABLE_DASHBOARD="true"
 ```
+
+### Tooling Prerequisites
+
+- **Node.js ≥ 18** (already required for the workspace)
+- **pnpm** for building the local MCP server
+- **uv** CLI (`brew install uv` or see [uv docs](https://docs.astral.sh/uv/)) for the Serena MCP server
 
 ### Apply Environment Variables
 
@@ -95,7 +113,10 @@ echo $POSTGRES_URL
 # - Kubernetes MCP server
 # - Prometheus MCP server (optional)
 # - Memory MCP server
-# - Filesystem MCP server
+# - Sequential Thinking MCP server
+# - Filesystem MCP server scoped to the ORION workspace
+# - Context7 MCP server (documentation retrieval)
+# - Cache Serena MCP tooling via uv
 # - Build ORION local MCP server
 ```
 
@@ -109,22 +130,33 @@ npm install -g @modelcontextprotocol/server-github
 npm install -g @modelcontextprotocol/server-postgres
 
 # Install Docker MCP server
-npm install -g @modelcontextprotocol/server-docker
+npm install -g docker-mcp
 
 # Install Kubernetes MCP server
-npm install -g @modelcontextprotocol/server-kubernetes
+npm install -g mcp-server-kubernetes
 
 # Install Prometheus MCP server (optional)
-npm install -g @modelcontextprotocol/server-prometheus
+npm install -g prometheus-mcp
 
 # Install Memory MCP server
 npm install -g @modelcontextprotocol/server-memory
 
+# Install Sequential Thinking MCP server
+npm install -g @modelcontextprotocol/server-sequential-thinking
+
 # Install Filesystem MCP server
 npm install -g @modelcontextprotocol/server-filesystem
 
+# Install Context7 MCP server
+npm install -g @upstash/context7-mcp
+
+# (Optional) Pre-install Serena MCP tooling via uv
+uv tool install --from git+https://github.com/oraios/serena serena-agent
+
 # Verify installations
 npm list -g | grep @modelcontextprotocol
+npm list -g docker-mcp || true
+npm list -g @upstash/context7-mcp || true
 ```
 
 ### 2. Build ORION Local MCP Server
@@ -146,7 +178,7 @@ ls -la dist/packages/mcp-server/src/mcp-main.js
 # Check configuration file exists and is valid JSON
 cat .claude/mcp/config.json | jq .
 
-# Should show 8 MCP servers configured:
+# Should show 11 MCP servers configured:
 # - orion-local (custom tools)
 # - github
 # - postgres
@@ -154,7 +186,10 @@ cat .claude/mcp/config.json | jq .
 # - kubernetes
 # - prometheus
 # - memory
-# - filesystem
+# - filesystem (workspace-scoped)
+# - sequential-thinking
+# - context7
+# - serena
 ```
 
 ---
@@ -292,6 +327,43 @@ See detailed usage guide: [MEMORY_MCP_GUIDE.md](./MEMORY_MCP_GUIDE.md)
 Expected response: File system operations (limited to allowed directories)
 
 See detailed usage guide: [FILESYSTEM_MCP_GUIDE.md](./FILESYSTEM_MCP_GUIDE.md)
+
+#### 9. Test Sequential Thinking MCP
+
+```bash
+# In Claude Code, try:
+# - "Use sequential thinking to plan migrating the cache service to Redis Cluster."
+# - "Think step-by-step about risks when refactoring auth token rotation."
+```
+
+Expected response: Structured multi-step reasoning with numbered thoughts.
+
+Tip: Set `DISABLE_THOUGHT_LOGGING=true` in the MCP config if you prefer quieter logs.
+
+#### 10. Test Context7 MCP
+
+```bash
+# In Claude Code, try:
+# - "use context7 Explain how NestJS interceptors work in v11."
+# - "use context7 Show example code for Prisma optimistic concurrency control."
+```
+
+Expected response: Fresh documentation excerpts and code snippets pulled from upstream sources.
+
+Configure `CONTEXT7_API_KEY` to raise rate limits and unlock private docs.
+
+#### 11. Test Serena MCP
+
+```bash
+# In Claude Code, try:
+# - "Activate the project /Users/acarroll/dev/projects/orion with Serena."
+# - "Use Serena to find the bootstrapService symbol definition."
+# - "Use Serena to insert a TODO after the Logger import in packages/auth/src/main.ts."
+```
+
+Expected response: Serena prompts Claude to activate the workspace, then performs semantic navigation or edits.
+
+First run may take a few minutes while Serena indexes the repository. Use `SERENA_DISABLE_DASHBOARD=true` to prevent the UI from opening automatically.
 
 ---
 
@@ -634,8 +706,13 @@ Optimize MCP server performance:
 # Check all MCP servers are installed
 npm list -g @modelcontextprotocol/server-github
 npm list -g @modelcontextprotocol/server-postgres
-npm list -g @modelcontextprotocol/server-docker
-npm list -g @modelcontextprotocol/server-kubernetes
+npm list -g docker-mcp
+npm list -g mcp-server-kubernetes
+npm list -g prometheus-mcp
+npm list -g @modelcontextprotocol/server-memory
+npm list -g @modelcontextprotocol/server-filesystem
+npm list -g @modelcontextprotocol/server-sequential-thinking
+npm list -g @upstash/context7-mcp
 
 # Verify local services are running
 docker ps | grep -E "postgres|redis|rabbitmq"

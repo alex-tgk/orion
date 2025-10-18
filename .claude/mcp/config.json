@@ -26,14 +26,20 @@
     },
     "docker": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-docker"],
+      "args": [
+        "-y",
+        "docker-mcp"
+      ],
       "env": {
-        "DOCKER_HOST": "unix:///var/run/docker.sock"
+        "DOCKER_HOST": "unix:///var/run/docker.sock",
+        "DOCKER_MCP_LOCAL": "true"
       }
     },
     "kubernetes": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-kubernetes"],
+      "args": [
+        "mcp-server-kubernetes"
+      ],
       "env": {
         "KUBECONFIG": "${HOME}/.kube/config",
         "K8S_NAMESPACE": "orion"
@@ -41,7 +47,10 @@
     },
     "prometheus": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-prometheus"],
+      "args": [
+        "prometheus-mcp@latest",
+        "stdio"
+      ],
       "env": {
         "PROMETHEUS_URL": "http://localhost:9090"
       }
@@ -57,10 +66,49 @@
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/acarroll/dev/projects/orion"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/acarroll/dev/projects/orion"
+      ],
       "env": {
         "FILESYSTEM_READ_ONLY": "false",
         "FILESYSTEM_WATCH_CHANGES": "true"
+      }
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      }
+    },
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--transport",
+        "stdio",
+        "--context",
+        "codex",
+        "--project",
+        "/Users/acarroll/dev/projects/orion"
+      ],
+      "env": {
+        "SERENA_DISABLE_DASHBOARD": "true"
       }
     }
   }

@@ -1,0 +1,779 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1msms.service.spec.ts[22m
+  SmsService
+    [31m✕[39m [2mshould be defined (34 ms)[22m
+    validatePhoneNumber
+      [31m✕[39m [2mshould validate correct E.164 phone numbers (8 ms)[22m
+      [31m✕[39m [2mshould reject invalid phone numbers (6 ms)[22m
+    formatPhoneNumber
+      [31m✕[39m [2mshould format phone number to E.164 (5 ms)[22m
+      [31m✕[39m [2mshould use custom country code (4 ms)[22m
+    send
+      [31m✕[39m [2mshould send SMS successfully (4 ms)[22m
+      [31m✕[39m [2mshould reject invalid phone numbers (11 ms)[22m
+
+[1m[31m  [1m● [22m[1mSmsService › should be defined[39m[22m
+
+    TypeError: twilio_1.Twilio is not a constructor
+[2m[22m
+[2m    [0m [90m 29 |[39m[22m
+[2m     [90m 30 |[39m     [36mif[39m ([36mthis[39m[33m.[39menabled [33m&&[39m accountSid [33m&&[39m authToken) {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 31 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnew[39m [33mTwilio[39m(accountSid[33m,[39m authToken)[33m;[39m[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 32 |[39m       [36mthis[39m[33m.[39mlogger[33m.[39mlog([32m'Twilio SMS service initialized'[39m)[33m;[39m[22m
+[2m     [90m 33 |[39m     } [36melse[39m {[22m
+[2m     [90m 34 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnull[39m[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat new SmsService ([22m[2msrc/app/services/sms.service.ts[2m:31:21)[22m[2m[22m
+[2m      [2mat TestingInjector.instantiateClass ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:418:19)[22m[2m[22m
+[2m      [2mat callback ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:70:45)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:170:24)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:30:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mSmsService › validatePhoneNumber › should validate correct E.164 phone numbers[39m[22m
+
+    TypeError: twilio_1.Twilio is not a constructor
+[2m[22m
+[2m    [0m [90m 29 |[39m[22m
+[2m     [90m 30 |[39m     [36mif[39m ([36mthis[39m[33m.[39menabled [33m&&[39m accountSid [33m&&[39m authToken) {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 31 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnew[39m [33mTwilio[39m(accountSid[33m,[39m authToken)[33m;[39m[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 32 |[39m       [36mthis[39m[33m.[39mlogger[33m.[39mlog([32m'Twilio SMS service initialized'[39m)[33m;[39m[22m
+[2m     [90m 33 |[39m     } [36melse[39m {[22m
+[2m     [90m 34 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnull[39m[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat new SmsService ([22m[2msrc/app/services/sms.service.ts[2m:31:21)[22m[2m[22m
+[2m      [2mat TestingInjector.instantiateClass ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:418:19)[22m[2m[22m
+[2m      [2mat callback ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:70:45)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:170:24)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:30:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mSmsService › validatePhoneNumber › should reject invalid phone numbers[39m[22m
+
+    TypeError: twilio_1.Twilio is not a constructor
+[2m[22m
+[2m    [0m [90m 29 |[39m[22m
+[2m     [90m 30 |[39m     [36mif[39m ([36mthis[39m[33m.[39menabled [33m&&[39m accountSid [33m&&[39m authToken) {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 31 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnew[39m [33mTwilio[39m(accountSid[33m,[39m authToken)[33m;[39m[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 32 |[39m       [36mthis[39m[33m.[39mlogger[33m.[39mlog([32m'Twilio SMS service initialized'[39m)[33m;[39m[22m
+[2m     [90m 33 |[39m     } [36melse[39m {[22m
+[2m     [90m 34 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnull[39m[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat new SmsService ([22m[2msrc/app/services/sms.service.ts[2m:31:21)[22m[2m[22m
+[2m      [2mat TestingInjector.instantiateClass ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:418:19)[22m[2m[22m
+[2m      [2mat callback ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:70:45)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:170:24)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:30:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mSmsService › formatPhoneNumber › should format phone number to E.164[39m[22m
+
+    TypeError: twilio_1.Twilio is not a constructor
+[2m[22m
+[2m    [0m [90m 29 |[39m[22m
+[2m     [90m 30 |[39m     [36mif[39m ([36mthis[39m[33m.[39menabled [33m&&[39m accountSid [33m&&[39m authToken) {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 31 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnew[39m [33mTwilio[39m(accountSid[33m,[39m authToken)[33m;[39m[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 32 |[39m       [36mthis[39m[33m.[39mlogger[33m.[39mlog([32m'Twilio SMS service initialized'[39m)[33m;[39m[22m
+[2m     [90m 33 |[39m     } [36melse[39m {[22m
+[2m     [90m 34 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnull[39m[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat new SmsService ([22m[2msrc/app/services/sms.service.ts[2m:31:21)[22m[2m[22m
+[2m      [2mat TestingInjector.instantiateClass ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:418:19)[22m[2m[22m
+[2m      [2mat callback ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:70:45)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:170:24)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:30:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mSmsService › formatPhoneNumber › should use custom country code[39m[22m
+
+    TypeError: twilio_1.Twilio is not a constructor
+[2m[22m
+[2m    [0m [90m 29 |[39m[22m
+[2m     [90m 30 |[39m     [36mif[39m ([36mthis[39m[33m.[39menabled [33m&&[39m accountSid [33m&&[39m authToken) {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 31 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnew[39m [33mTwilio[39m(accountSid[33m,[39m authToken)[33m;[39m[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 32 |[39m       [36mthis[39m[33m.[39mlogger[33m.[39mlog([32m'Twilio SMS service initialized'[39m)[33m;[39m[22m
+[2m     [90m 33 |[39m     } [36melse[39m {[22m
+[2m     [90m 34 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnull[39m[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat new SmsService ([22m[2msrc/app/services/sms.service.ts[2m:31:21)[22m[2m[22m
+[2m      [2mat TestingInjector.instantiateClass ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:418:19)[22m[2m[22m
+[2m      [2mat callback ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:70:45)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:170:24)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:30:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mSmsService › send › should send SMS successfully[39m[22m
+
+    TypeError: twilio_1.Twilio is not a constructor
+[2m[22m
+[2m    [0m [90m 29 |[39m[22m
+[2m     [90m 30 |[39m     [36mif[39m ([36mthis[39m[33m.[39menabled [33m&&[39m accountSid [33m&&[39m authToken) {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 31 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnew[39m [33mTwilio[39m(accountSid[33m,[39m authToken)[33m;[39m[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 32 |[39m       [36mthis[39m[33m.[39mlogger[33m.[39mlog([32m'Twilio SMS service initialized'[39m)[33m;[39m[22m
+[2m     [90m 33 |[39m     } [36melse[39m {[22m
+[2m     [90m 34 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnull[39m[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat new SmsService ([22m[2msrc/app/services/sms.service.ts[2m:31:21)[22m[2m[22m
+[2m      [2mat TestingInjector.instantiateClass ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:418:19)[22m[2m[22m
+[2m      [2mat callback ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:70:45)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:170:24)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:30:35)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mSmsService › send › should reject invalid phone numbers[39m[22m
+
+    TypeError: twilio_1.Twilio is not a constructor
+[2m[22m
+[2m    [0m [90m 29 |[39m[22m
+[2m     [90m 30 |[39m     [36mif[39m ([36mthis[39m[33m.[39menabled [33m&&[39m accountSid [33m&&[39m authToken) {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 31 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnew[39m [33mTwilio[39m(accountSid[33m,[39m authToken)[33m;[39m[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 32 |[39m       [36mthis[39m[33m.[39mlogger[33m.[39mlog([32m'Twilio SMS service initialized'[39m)[33m;[39m[22m
+[2m     [90m 33 |[39m     } [36melse[39m {[22m
+[2m     [90m 34 |[39m       [36mthis[39m[33m.[39mclient [33m=[39m [36mnull[39m[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat new SmsService ([22m[2msrc/app/services/sms.service.ts[2m:31:21)[22m[2m[22m
+[2m      [2mat TestingInjector.instantiateClass ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:418:19)[22m[2m[22m
+[2m      [2mat callback ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:70:45)[22m[2m[22m
+[2m      [2mat TestingInjector.resolveConstructorParams ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:170:24)[22m[2m[22m
+[2m      [2mat TestingInjector.loadInstance ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:75:13)[22m[2m[22m
+[2m      [2mat TestingInjector.loadProvider ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/injector.js[2m:103:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:56:13[22m[2m[22m
+[2m          at async Promise.all (index 3)[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfProviders ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:55:9)[22m[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:40:13[22m[2m[22m
+[2m          at async Promise.all (index 1)[22m
+[2m      [2mat TestingInstanceLoader.createInstances ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:39:9)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+core@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0.14._eee9c3e244596ac016a0e95477e40580/node_modules/@nestjs/core/injector/instance-loader.js[2m:22:13)[22m[2m[22m
+[2m      [2mat TestingInstanceLoader.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-instance-loader.js[2m:9:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.createInstancesOfDependencies ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:118:9)[22m[2m[22m
+[2m      [2mat TestingModuleBuilder.compile ([22m[2m../../node_modules/.pnpm/@nestjs+testing@11.1.6_@nestjs+common@11.1.6_class-transformer@0.5.1_class-validator@0._4c74e21d168b77223d525be10e870e1b/node_modules/@nestjs/testing/testing-module.builder.js[2m:74:9)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:30:35)[22m[2m[22m
+
+[31m[Nest] 3879  - [39m10/18/2025, 2:45:16 PM [31m  ERROR[39m [38;5;3m[TemplateService] [39m[31mFailed to load template file non-existent:[39m
+[31m[Nest] 3879  - [39m10/18/2025, 2:45:16 PM [31m  ERROR[39m [38;5;3m[TemplateService] [39m[Error: ENOENT: no such file or directory, open '/Users/acarroll/dev/projects/orion/packages/notifications/src/assets/templates/non-existent.hbs'] {
+  errno: [33m-2[39m,
+  code: [32m'ENOENT'[39m,
+  syscall: [32m'open'[39m,
+  path: [32m'/Users/acarroll/dev/projects/orion/packages/notifications/src/assets/templates/non-existent.hbs'[39m
+}
+[31m[Nest] 3879  - [39m10/18/2025, 2:45:16 PM [31m  ERROR[39m [38;5;3m[TemplateService] [39m[31mFailed to render template non-existent:[39m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mpreferences.service.spec.ts[22m
+  PreferencesService
+    [32m✓[39m [2mshould be defined (36 ms)[22m
+    getPreferences
+      [31m✕[39m [2mshould return existing preferences (25 ms)[22m
+      [31m✕[39m [2mshould create default preferences if none exist (16 ms)[22m
+    updatePreferences
+      [31m✕[39m [2mshould update existing preferences (5 ms)[22m
+      [31m✕[39m [2mshould create default preferences if none exist before updating (6 ms)[22m
+      [31m✕[39m [2mshould merge notification types correctly (5 ms)[22m
+    isEnabled
+      [31m✕[39m [2mshould return false if channel is disabled (4 ms)[22m
+      [31m✕[39m [2mshould return true if channel is enabled and type is not specified (9 ms)[22m
+      [31m✕[39m [2mshould return true if specific type is enabled (5 ms)[22m
+      [31m✕[39m [2mshould return true by default if type is not explicitly set (5 ms)[22m
+      [31m✕[39m [2mshould return false if specific type is explicitly disabled (4 ms)[22m
+    deletePreferences
+      [32m✓[39m [2mshould delete user preferences (3 ms)[22m
+      [32m✓[39m [2mshould handle record not found gracefully (2 ms)[22m
+      [32m✓[39m [2mshould throw other errors (3 ms)[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › getPreferences › should return existing preferences[39m[22m
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 24[39m
+    [31m+ Received  +  3[39m
+
+    [2m  Object {[22m
+    [32m-   "email": Object {[39m
+    [32m-     "enabled": true,[39m
+    [32m-     "types": Object {[39m
+    [32m-       "accountUpdates": true,[39m
+    [32m-       "marketing": false,[39m
+    [32m-       "passwordReset": true,[39m
+    [32m-       "welcome": true,[39m
+    [32m-     },[39m
+    [32m-   },[39m
+    [32m-   "push": Object {[39m
+    [32m-     "enabled": true,[39m
+    [32m-     "types": Object {[39m
+    [32m-       "daily": true,[39m
+    [32m-       "marketing": false,[39m
+    [32m-       "realtime": true,[39m
+    [32m-     },[39m
+    [32m-   },[39m
+    [32m-   "sms": Object {[39m
+    [32m-     "enabled": false,[39m
+    [32m-     "types": Object {[39m
+    [32m-       "marketing": false,[39m
+    [32m-       "securityAlerts": true,[39m
+    [32m-     },[39m
+    [32m-   },[39m
+    [31m+   "email": undefined,[39m
+    [31m+   "push": undefined,[39m
+    [31m+   "sms": undefined,[39m
+    [2m  }[22m
+[2m[22m
+[2m    [0m [90m 70 |[39m       [36mconst[39m preferences [33m=[39m [36mawait[39m service[33m.[39mgetPreferences([32m'user-123'[39m)[33m;[39m[22m
+[2m     [90m 71 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 72 |[39m       expect(preferences)[33m.[39mtoEqual({[22m
+[2m     [90m    |[39m                           [31m[1m^[22m[2m[39m[22m
+[2m     [90m 73 |[39m         email[33m:[39m mockPreferences[33m.[39memail[33m,[39m[22m
+[2m     [90m 74 |[39m         sms[33m:[39m mockPreferences[33m.[39msms[33m,[39m[22m
+[2m     [90m 75 |[39m         push[33m:[39m mockPreferences[33m.[39mpush[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:72:27)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › getPreferences › should create default preferences if none exist[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    [32m- Expected[39m
+    [31m+ Received[39m
+
+    [2m  Object {[22m
+    [32m-   "data": ObjectContaining {[39m
+    [32m-     "email": Any<Object>,[39m
+    [32m-     "push": Any<Object>,[39m
+    [32m-     "sms": Any<Object>,[39m
+    [31m+   "data": Object {[39m
+    [31m+     "emailPreferences": Object {[39m
+    [31m+       "enabled": true,[39m
+    [31m+       "types": Object {[39m
+    [31m+         "accountUpdates": true,[39m
+    [31m+         "marketing": false,[39m
+    [31m+         "passwordReset": true,[39m
+    [31m+         "securityAlerts": true,[39m
+    [31m+         "welcome": true,[39m
+    [31m+       },[39m
+    [31m+     },[39m
+    [31m+     "pushPreferences": Object {[39m
+    [31m+       "enabled": true,[39m
+    [31m+       "types": Object {[39m
+    [31m+         "daily": true,[39m
+    [31m+         "marketing": false,[39m
+    [31m+         "realtime": true,[39m
+    [31m+       },[39m
+    [31m+     },[39m
+    [31m+     "smsPreferences": Object {[39m
+    [31m+       "enabled": false,[39m
+    [31m+       "types": Object {[39m
+    [31m+         "marketing": false,[39m
+    [31m+         "securityAlerts": true,[39m
+    [31m+       },[39m
+    [31m+     },[39m
+    [2m      "userId": "user-123",[22m
+    [2m    },[22m
+    [2m  }[22m,
+
+    Number of calls: [31m1[39m
+[2m[22m
+[2m    [0m [90m 114 |[39m       [36mconst[39m preferences [33m=[39m [36mawait[39m service[33m.[39mgetPreferences([32m'user-123'[39m)[33m;[39m[22m
+[2m     [90m 115 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 116 |[39m       expect(mockPrismaService[33m.[39muserPreference[33m.[39mcreate)[33m.[39mtoHaveBeenCalledWith({[22m
+[2m     [90m     |[39m                                                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 117 |[39m         data[33m:[39m expect[33m.[39mobjectContaining({[22m
+[2m     [90m 118 |[39m           userId[33m:[39m [32m'user-123'[39m[33m,[39m[22m
+[2m     [90m 119 |[39m           email[33m:[39m expect[33m.[39many([33mObject[39m)[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:116:55)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › updatePreferences › should update existing preferences[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'types')
+[2m[22m
+[2m    [0m [90m 181 |[39m         updates[33m.[39menabled [33m!==[39m undefined [33m?[39m updates[33m.[39menabled [33m:[39m existing[33m.[39menabled[33m,[39m[22m
+[2m     [90m 182 |[39m       types[33m:[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 183 |[39m         [33m...[39mexisting[33m.[39mtypes[33m,[39m[22m
+[2m     [90m     |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 184 |[39m         [33m...[39m(updates[33m.[39mtypes [33m||[39m {})[33m,[39m[22m
+[2m     [90m 185 |[39m       }[33m,[39m[22m
+[2m     [90m 186 |[39m     }[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.mergePreferences ([22m[2msrc/app/services/preferences.service.ts[2m:183:21)[22m[2m[22m
+[2m      [2mat PreferencesService.updatePreferences ([22m[2msrc/app/services/preferences.service.ts[2m:57:24)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:180:23)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › updatePreferences › should create default preferences if none exist before updating[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'types')
+[2m[22m
+[2m    [0m [90m 181 |[39m         updates[33m.[39menabled [33m!==[39m undefined [33m?[39m updates[33m.[39menabled [33m:[39m existing[33m.[39menabled[33m,[39m[22m
+[2m     [90m 182 |[39m       types[33m:[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 183 |[39m         [33m...[39mexisting[33m.[39mtypes[33m,[39m[22m
+[2m     [90m     |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 184 |[39m         [33m...[39m(updates[33m.[39mtypes [33m||[39m {})[33m,[39m[22m
+[2m     [90m 185 |[39m       }[33m,[39m[22m
+[2m     [90m 186 |[39m     }[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.mergePreferences ([22m[2msrc/app/services/preferences.service.ts[2m:183:21)[22m[2m[22m
+[2m      [2mat PreferencesService.updatePreferences ([22m[2msrc/app/services/preferences.service.ts[2m:57:24)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:223:7)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › updatePreferences › should merge notification types correctly[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'enabled')
+[2m[22m
+[2m    [0m [90m 179 |[39m     [36mreturn[39m {[22m
+[2m     [90m 180 |[39m       enabled[33m:[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 181 |[39m         updates[33m.[39menabled [33m!==[39m undefined [33m?[39m updates[33m.[39menabled [33m:[39m existing[33m.[39menabled[33m,[39m[22m
+[2m     [90m     |[39m                                                                    [31m[1m^[22m[2m[39m[22m
+[2m     [90m 182 |[39m       types[33m:[39m {[22m
+[2m     [90m 183 |[39m         [33m...[39mexisting[33m.[39mtypes[33m,[39m[22m
+[2m     [90m 184 |[39m         [33m...[39m(updates[33m.[39mtypes [33m||[39m {})[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.mergePreferences ([22m[2msrc/app/services/preferences.service.ts[2m:181:68)[22m[2m[22m
+[2m      [2mat PreferencesService.updatePreferences ([22m[2msrc/app/services/preferences.service.ts[2m:57:24)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:268:23)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › isEnabled › should return false if channel is disabled[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'enabled')
+[2m[22m
+[2m    [0m [90m 117 |[39m     [36mconst[39m channelPrefs [33m=[39m preferences[channel][33m;[39m[22m
+[2m     [90m 118 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 119 |[39m     [36mif[39m ([33m![39mchannelPrefs[33m.[39menabled) {[22m
+[2m     [90m     |[39m                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 120 |[39m       [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m     [90m 121 |[39m     }[22m
+[2m     [90m 122 |[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.isEnabled ([22m[2msrc/app/services/preferences.service.ts[2m:119:23)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:292:23)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › isEnabled › should return true if channel is enabled and type is not specified[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'enabled')
+[2m[22m
+[2m    [0m [90m 117 |[39m     [36mconst[39m channelPrefs [33m=[39m preferences[channel][33m;[39m[22m
+[2m     [90m 118 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 119 |[39m     [36mif[39m ([33m![39mchannelPrefs[33m.[39menabled) {[22m
+[2m     [90m     |[39m                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 120 |[39m       [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m     [90m 121 |[39m     }[22m
+[2m     [90m 122 |[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.isEnabled ([22m[2msrc/app/services/preferences.service.ts[2m:119:23)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:311:23)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › isEnabled › should return true if specific type is enabled[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'enabled')
+[2m[22m
+[2m    [0m [90m 117 |[39m     [36mconst[39m channelPrefs [33m=[39m preferences[channel][33m;[39m[22m
+[2m     [90m 118 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 119 |[39m     [36mif[39m ([33m![39mchannelPrefs[33m.[39menabled) {[22m
+[2m     [90m     |[39m                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 120 |[39m       [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m     [90m 121 |[39m     }[22m
+[2m     [90m 122 |[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.isEnabled ([22m[2msrc/app/services/preferences.service.ts[2m:119:23)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:333:23)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › isEnabled › should return true by default if type is not explicitly set[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'enabled')
+[2m[22m
+[2m    [0m [90m 117 |[39m     [36mconst[39m channelPrefs [33m=[39m preferences[channel][33m;[39m[22m
+[2m     [90m 118 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 119 |[39m     [36mif[39m ([33m![39mchannelPrefs[33m.[39menabled) {[22m
+[2m     [90m     |[39m                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 120 |[39m       [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m     [90m 121 |[39m     }[22m
+[2m     [90m 122 |[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.isEnabled ([22m[2msrc/app/services/preferences.service.ts[2m:119:23)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:352:23)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mPreferencesService › isEnabled › should return false if specific type is explicitly disabled[39m[22m
+
+    TypeError: Cannot read properties of undefined (reading 'enabled')
+[2m[22m
+[2m    [0m [90m 117 |[39m     [36mconst[39m channelPrefs [33m=[39m preferences[channel][33m;[39m[22m
+[2m     [90m 118 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 119 |[39m     [36mif[39m ([33m![39mchannelPrefs[33m.[39menabled) {[22m
+[2m     [90m     |[39m                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 120 |[39m       [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m     [90m 121 |[39m     }[22m
+[2m     [90m 122 |[39m[0m[22m
+[2m[22m
+[2m      [2mat PreferencesService.isEnabled ([22m[2msrc/app/services/preferences.service.ts[2m:119:23)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/preferences.service.spec.ts[39m[0m[2m:373:23)[22m[2m[22m
+
+[31m[Nest] 3879  - [39m10/18/2025, 2:45:16 PM [31m  ERROR[39m [38;5;3m[TemplateService] [39mNotFoundException: Template file non-existent.hbs not found
+    at TemplateService.loadTemplate [90m(/Users/acarroll/dev/projects/orion/[39mpackages/notifications/src/app/services/template.service.ts:107:13[90m)[39m
+    at TemplateService.render [90m(/Users/acarroll/dev/projects/orion/[39mpackages/notifications/src/app/services/template.service.ts:70:24[90m)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/notifications/src/app/services/template.service.spec.ts:70:7[90m)[39m {
+  response: {
+    message: [32m'Template file non-existent.hbs not found'[39m,
+    error: [32m'Not Found'[39m,
+    statusCode: [33m404[39m
+  },
+  status: [33m404[39m,
+  options: {}
+}
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mtemplate.service.spec.ts[22m
+  TemplateService
+    [32m✓[39m [2mshould be defined (52 ms)[22m
+    render
+      [32m✓[39m [2mshould render template from database (61 ms)[22m
+      [32m✓[39m [2mshould handle missing template gracefully (70 ms)[22m
+    createTemplate
+      [32m✓[39m [2mshould create or update template (6 ms)[22m
+    validateData
+      [32m✓[39m [2mshould validate required variables are present (6 ms)[22m
+      [32m✓[39m [2mshould reject when required variables are missing (5 ms)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1memail.service.spec.ts[22m
+  EmailService
+    [32m✓[39m [2mshould be defined (76 ms)[22m
+    send
+      [31m✕[39m [2mshould send email successfully (24 ms)[22m
+      [31m✕[39m [2mshould handle send failure (7 ms)[22m
+      [31m✕[39m [2mshould not send when disabled (28 ms)[22m
+    validateEmail
+      [31m✕[39m [2mshould validate correct email addresses (20 ms)[22m
+      [31m✕[39m [2mshould reject invalid email addresses (17 ms)[22m
+
+[1m[31m  [1m● [22m[1mEmailService › send › should send email successfully[39m[22m
+
+    TypeError: Cannot set property send of [object Object] which has only a getter
+[2m[22m
+[2m    [0m [90m 49 |[39m     it([32m'should send email successfully'[39m[33m,[39m [36masync[39m () [33m=>[39m {[22m
+[2m     [90m 50 |[39m       [36mconst[39m mockSend [33m=[39m jest[33m.[39mfn()[33m.[39mmockResolvedValue([{ statusCode[33m:[39m [35m202[39m }])[33m;[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 51 |[39m       (sgMail[33m.[39msend [36mas[39m jest[33m.[39m[33mMock[39m) [33m=[39m mockSend[33m;[39m[22m
+[2m     [90m    |[39m                                 [31m[1m^[22m[2m[39m[22m
+[2m     [90m 52 |[39m[22m
+[2m     [90m 53 |[39m       [36mawait[39m service[33m.[39msend({[22m
+[2m     [90m 54 |[39m         to[33m:[39m [32m'test@example.com'[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:51:33)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mEmailService › send › should handle send failure[39m[22m
+
+    TypeError: Cannot set property send of [object Object] which has only a getter
+[2m[22m
+[2m    [0m [90m 68 |[39m     it([32m'should handle send failure'[39m[33m,[39m [36masync[39m () [33m=>[39m {[22m
+[2m     [90m 69 |[39m       [36mconst[39m mockSend [33m=[39m jest[33m.[39mfn()[33m.[39mmockRejectedValue([36mnew[39m [33mError[39m([32m'SendGrid error'[39m))[33m;[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 70 |[39m       (sgMail[33m.[39msend [36mas[39m jest[33m.[39m[33mMock[39m) [33m=[39m mockSend[33m;[39m[22m
+[2m     [90m    |[39m                                 [31m[1m^[22m[2m[39m[22m
+[2m     [90m 71 |[39m[22m
+[2m     [90m 72 |[39m       [36mawait[39m expect([22m
+[2m     [90m 73 |[39m         service[33m.[39msend({[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:70:33)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mEmailService › send › should not send when disabled[39m[22m
+
+    RangeError: Maximum call stack size exceeded
+        at WeakMap.get (<anonymous>)
+[2m[22m
+[2m    [0m [90m 82 |[39m       mockConfigService[33m.[39m[36mget[39m[33m.[39mmockImplementation((key[33m:[39m string) [33m=>[39m {[22m
+[2m     [90m 83 |[39m         [36mif[39m (key [33m===[39m [32m'notification.sendgrid.enabled'[39m) [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 84 |[39m         [36mreturn[39m mockConfigService[33m.[39m[36mget[39m(key)[33m;[39m[22m
+[2m     [90m    |[39m                                  [31m[1m^[22m[2m[39m[22m
+[2m     [90m 85 |[39m       })[33m;[39m[22m
+[2m     [90m 86 |[39m[22m
+[2m     [90m 87 |[39m       [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[0m[22m
+[2m[22m
+[2m      [2mat ModuleMocker._ensureMockState ([22m[2m../../node_modules/.pnpm/jest-mock@30.2.0/node_modules/jest-mock/build/index.js[2m:202:33)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mEmailService › validateEmail › should validate correct email addresses[39m[22m
+
+    RangeError: Maximum call stack size exceeded
+        at WeakMap.get (<anonymous>)
+[2m[22m
+[2m    [0m [90m 82 |[39m       mockConfigService[33m.[39m[36mget[39m[33m.[39mmockImplementation((key[33m:[39m string) [33m=>[39m {[22m
+[2m     [90m 83 |[39m         [36mif[39m (key [33m===[39m [32m'notification.sendgrid.enabled'[39m) [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 84 |[39m         [36mreturn[39m mockConfigService[33m.[39m[36mget[39m(key)[33m;[39m[22m
+[2m     [90m    |[39m                                  [31m[1m^[22m[2m[39m[22m
+[2m     [90m 85 |[39m       })[33m;[39m[22m
+[2m     [90m 86 |[39m[22m
+[2m     [90m 87 |[39m       [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[0m[22m
+[2m[22m
+[2m      [2mat ModuleMocker._ensureMockState ([22m[2m../../node_modules/.pnpm/jest-mock@30.2.0/node_modules/jest-mock/build/index.js[2m:202:33)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mEmailService › validateEmail › should reject invalid email addresses[39m[22m
+
+    RangeError: Maximum call stack size exceeded
+[2m[22m
+[2m    [0m [90m 82 |[39m       mockConfigService[33m.[39m[36mget[39m[33m.[39mmockImplementation((key[33m:[39m string) [33m=>[39m {[22m
+[2m     [90m 83 |[39m         [36mif[39m (key [33m===[39m [32m'notification.sendgrid.enabled'[39m) [36mreturn[39m [36mfalse[39m[33m;[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 84 |[39m         [36mreturn[39m mockConfigService[33m.[39m[36mget[39m(key)[33m;[39m[22m
+[2m     [90m    |[39m                                  [31m[1m^[22m[2m[39m[22m
+[2m     [90m 85 |[39m       })[33m;[39m[22m
+[2m     [90m 86 |[39m[22m
+[2m     [90m 87 |[39m       [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[0m[22m
+[2m[22m
+[2m      [2mat [22m[2m../../node_modules/.pnpm/jest-mock@30.2.0/node_modules/jest-mock/build/index.js[2m:277:13[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/email.service.spec.ts[39m[0m[2m:84:34)[22m[2m[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mretry.service.spec.ts[22m
+  RetryService
+    retry logic
+      [32m✓[39m [2mshould execute function successfully on first attempt (44 ms)[22m
+      [32m✓[39m [2mshould retry on failure and eventually succeed (36 ms)[22m
+      [32m✓[39m [2mshould throw error after max attempts exceeded (91 ms)[22m
+      [32m✓[39m [2mshould use exponential backoff (308 ms)[22m
+      [32m✓[39m [2mshould respect custom retry condition (19 ms)[22m
+      [31m✕[39m [2mshould call onRetry callback (16 ms)[22m
+    circuit breaker integration
+      [32m✓[39m [2mshould track failures and open circuit (3 ms)[22m
+      [32m✓[39m [2mshould fail fast when circuit is open (15 ms)[22m
+    retry statistics
+      [32m✓[39m [2mshould track successful retries (15 ms)[22m
+      [32m✓[39m [2mshould reset statistics (3 ms)[22m
+
+[1m[31m  [1m● [22m[1mRetryService › retry logic › should call onRetry callback[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32mAny<Error>[39m, [32m1[39m
+    Received: [2m[Error: Error][22m, [31m0[39m
+
+    Number of calls: [31m1[39m
+[2m[22m
+[2m    [0m [90m 137 |[39m       [90m// Assert[39m[22m
+[2m     [90m 138 |[39m       expect(onRetrySpy)[33m.[39mtoHaveBeenCalledTimes([35m1[39m)[33m;[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 139 |[39m       expect(onRetrySpy)[33m.[39mtoHaveBeenCalledWith(expect[33m.[39many([33mError[39m)[33m,[39m [35m1[39m)[33m;[39m[22m
+[2m     [90m     |[39m                          [31m[1m^[22m[2m[39m[22m
+[2m     [90m 140 |[39m     })[33m;[39m[22m
+[2m     [90m 141 |[39m   })[33m;[39m[22m
+[2m     [90m 142 |[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/retry.service.spec.ts[39m[0m[2m:139:26)[22m[2m[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/consumers/[22m[1muser-events.consumer.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/config/rabbitmq.module.ts[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'OnModuleInit' is declared but its value is never read.
+
+    [7m4[0m   OnModuleInit,
+    [7m [0m [91m  ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/config/rabbitmq.module.ts[0m:[93m27[0m:[93m49[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string | Connect'.
+      Type 'undefined' is not assignable to type 'string | Connect'.
+
+    [7m27[0m           const connection = await amqp.connect(url);
+    [7m  [0m [91m                                                ~~~[0m
+    [96mpackages/notifications/src/app/config/rabbitmq.module.ts[0m:[93m38[0m:[93m11[0m - [91merror[0m[90m TS2739: [0mType 'ChannelModel' is missing the following properties from type 'Connection': serverProperties, expectSocketClose, sentSinceLastCheck, recvSinceLastCheck, sendMessage
+
+    [7m38[0m           return connection;
+    [7m  [0m [91m          ~~~~~~[0m
+    [96mpackages/notifications/src/app/config/rabbitmq.module.ts[0m:[93m61[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'createChannel' does not exist on type 'Connection'.
+
+    [7m61[0m           const channel = await connection.createChannel();
+    [7m  [0m [91m                                           ~~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/config/rabbitmq.module.ts[0m:[93m137[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'close' does not exist on type 'Connection'.
+
+    [7m137[0m       await this.connection.close();
+    [7m   [0m [91m                            ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/consumers/[22m[1mauth-events.consumer.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/consumers/auth-events.consumer.spec.ts[0m:[93m325[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m325[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mnotification.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m62[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'Record<string, unknown>' is not assignable to type 'JsonNull | InputJsonValue | undefined'.
+      Type 'Record<string, unknown>' is missing the following properties from type 'readonly (InputJsonValue | null)[]': length, concat, join, slice, and 19 more.
+
+    [7m62[0m           metadata: options.data,
+    [7m  [0m [91m          ~~~~~~~~[0m
+
+      [96mnode_modules/.prisma/notifications/index.d.ts[0m:[93m9093[0m:[93m5[0m
+        [7m9093[0m     metadata?: JsonNullValueInput | InputJsonValue
+        [7m    [0m [96m    ~~~~~~~~[0m
+        The expected type comes from property 'metadata' which is declared here on type '(Without<NotificationCreateInput, NotificationUncheckedCreateInput> & NotificationUncheckedCreateInput) | (Without<...> & NotificationCreateInput)'
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m140[0m:[93m46[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Error'.
+
+    [7m140[0m       await this.handleFailure(notification, error);
+    [7m   [0m [91m                                             ~~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m212[0m:[93m46[0m - [91merror[0m[90m TS2339: [0mProperty 'code' does not exist on type 'Error'.
+
+    [7m212[0m     if (retryableErrors.some((code) => error.code === code)) {
+    [7m   [0m [91m                                             ~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m217[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'response' does not exist on type 'Error'.
+
+    [7m217[0m     if (error.response?.status >= 500) {
+    [7m   [0m [91m              ~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m222[0m:[93m15[0m - [91merror[0m[90m TS2339: [0mProperty 'response' does not exist on type 'Error'.
+
+    [7m222[0m     if (error.response?.status === 429) {
+    [7m   [0m [91m              ~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m242[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'userId' does not exist on type '{ id: string; }'.
+
+    [7m242[0m         userId: notification.userId,
+    [7m   [0m [91m                             ~~~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m243[0m:[93m28[0m - [91merror[0m[90m TS2339: [0mProperty 'type' does not exist on type '{ id: string; }'.
+
+    [7m243[0m         type: notification.type,
+    [7m   [0m [91m                           ~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m244[0m:[93m32[0m - [91merror[0m[90m TS2339: [0mProperty 'template' does not exist on type '{ id: string; }'.
+
+    [7m244[0m         template: notification.template,
+    [7m   [0m [91m                               ~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m245[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'recipient' does not exist on type '{ id: string; }'.
+
+    [7m245[0m         recipient: notification.recipient,
+    [7m   [0m [91m                                ~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m246[0m:[93m32[0m - [91merror[0m[90m TS2339: [0mProperty 'attempts' does not exist on type '{ id: string; }'.
+
+    [7m246[0m         attempts: notification.attempts,
+    [7m   [0m [91m                               ~~~~~~~~[0m
+
+[1mTest Suites: [22m[1m[31m7 failed[39m[22m, [1m[32m1 passed[39m[22m, 8 total
+[1mTests:       [22m[1m[31m23 failed[39m[22m, [1m[32m20 passed[39m[22m, 43 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        7.765 s, estimated 8 s
+[2mRan all test suites[22m[2m.[22m

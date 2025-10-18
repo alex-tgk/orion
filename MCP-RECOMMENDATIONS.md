@@ -210,8 +210,8 @@ Sequential Thinking MCP is built into Claude Code. Enable it by using the `mcp__
 
 **Installation:**
 ```bash
-# Official Docker MCP Server
-npm install -g @modelcontextprotocol/server-docker
+# Community Docker MCP Server (dockerode-based)
+npm install -g docker-mcp
 ```
 
 **Configuration:**
@@ -220,7 +220,11 @@ npm install -g @modelcontextprotocol/server-docker
   "mcpServers": {
     "docker": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-docker"]
+      "args": ["-y", "docker-mcp"],
+      "env": {
+        "DOCKER_MCP_LOCAL": "true",
+        "DOCKER_HOST": "unix:///var/run/docker.sock"
+      }
     }
   }
 }
@@ -258,11 +262,7 @@ npm install -g @modelcontextprotocol/server-docker
 
 **Installation:**
 ```bash
-# Official Kubernetes MCP (Go-based, no kubectl dependency)
-npm install -g @modelcontextprotocol/server-kubernetes
-
-# Or community version
-npm install -g kubernetes-mcp-server
+npm install -g mcp-server-kubernetes
 ```
 
 **Configuration:**
@@ -271,9 +271,10 @@ npm install -g kubernetes-mcp-server
   "mcpServers": {
     "kubernetes": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-kubernetes"],
+      "args": ["mcp-server-kubernetes"],
       "env": {
-        "KUBECONFIG": "${HOME}/.kube/config"
+        "KUBECONFIG": "${HOME}/.kube/config",
+        "K8S_NAMESPACE": "orion"
       }
     }
   }
@@ -357,7 +358,7 @@ Puppeteer MCP is already available in your Claude Code setup. Access via:
 
 **Installation:**
 ```bash
-npm install -g context7-mcp-server
+npm install -g @upstash/context7-mcp
 ```
 
 **Configuration:**
@@ -366,7 +367,7 @@ npm install -g context7-mcp-server
   "mcpServers": {
     "context7": {
       "command": "npx",
-      "args": ["-y", "context7-mcp-server"],
+      "args": ["-y", "@upstash/context7-mcp"],
       "env": {
         "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
       }
@@ -383,7 +384,62 @@ npm install -g context7-mcp-server
 
 ---
 
-### 8. File System MCP ⭐⭐⭐
+### 8. Serena MCP ⭐⭐⭐⭐
+
+**Why Useful for ORION:**
+- Turns Claude Code into an IDE-grade agent with semantic search/edit tools
+- Handles large repositories by indexing symbols and caching AST metadata
+- Provides precise operations (`find_symbol`, `insert_after_symbol`, `replace_symbol`)
+- Dramatically reduces token usage for refactors in NestJS/TypeScript services
+
+**Requirements:**
+- `uv` CLI installed (`brew install uv` or see https://docs.astral.sh/uv/)
+- Language servers for the languages in the repo (Serena bootstraps most automatically)
+
+**Installation:**
+```bash
+uv tool install --from git+https://github.com/oraios/serena serena-agent
+```
+
+**Configuration Example (Codex CLI / Claude Code):**
+```json
+{
+  "mcpServers": {
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--transport",
+        "stdio",
+        "--context",
+        "codex",
+        "--project",
+        "/Users/acarroll/dev/projects/orion"
+      ],
+      "env": {
+        "SERENA_DISABLE_DASHBOARD": "true"
+      }
+    }
+  }
+}
+```
+
+**First-Run Checklist:**
+1. "Activate the project /Users/acarroll/dev/projects/orion with Serena."
+2. Optional: `uvx --from git+https://github.com/oraios/serena serena project index`.
+3. Confirm tools like `mcp__serena__find_symbol` appear in Claude Code.
+
+**Use Cases for ORION:**
+1. "Use Serena to locate all references to PortRegistryService."
+2. "Insert a new logger initialization after the import block in packages/auth/src/main.ts."
+3. "Find symbols defining bootstrapService and summarize their responsibilities."
+
+---
+
+### 9. File System MCP ⭐⭐⭐
 
 **Why Useful for ORION:**
 - Advanced file operations
@@ -403,7 +459,7 @@ npm install -g context7-mcp-server
 
 ---
 
-### 9. Sentry MCP (When Available) ⭐⭐⭐⭐
+### 10. Sentry MCP (When Available) ⭐⭐⭐⭐
 
 **Why Important for ORION:**
 - Monitor production errors from Claude Code
@@ -430,7 +486,7 @@ curl "https://sentry.io/api/0/projects/{org}/{project}/issues/" \
 
 ---
 
-### 10. Prometheus MCP (When Available) ⭐⭐⭐⭐
+### 11. Prometheus MCP (When Available) ⭐⭐⭐⭐
 
 **Why Important for ORION:**
 - Query metrics from Claude Code
@@ -523,10 +579,10 @@ Restart Claude Code and verify MCP servers are loaded:
 
 ```bash
 # Docker MCP
-npm install -g @modelcontextprotocol/server-docker
+npm install -g docker-mcp
 
 # Kubernetes MCP
-npm install -g @modelcontextprotocol/server-kubernetes
+npm install -g mcp-server-kubernetes
 ```
 
 ---

@@ -20,6 +20,9 @@ This document summarizes the comprehensive MCP (Model Context Protocol) enhancem
 - **Prometheus MCP** - Metrics and monitoring integration
 - **Memory MCP** - Persistent memory storage across sessions
 - **Filesystem MCP** - Safe file system operations
+- **Sequential Thinking MCP** - Guided multi-step reasoning
+- **Context7 MCP** - Up-to-date framework documentation retrieval
+- **Serena MCP** - Semantic code navigation and editing toolkit
 
 **Enhanced Configuration:**
 - Added `NX_WORKSPACE_ROOT` environment variable
@@ -28,7 +31,7 @@ This document summarizes the comprehensive MCP (Model Context Protocol) enhancem
 - Added `PROMETHEUS_URL` for metrics
 - Added `ALLOWED_DIRECTORIES` for filesystem access
 
-**Total MCP Servers:** 8 (was 5)
+**Total MCP Servers:** 11 (was 5)
 
 ---
 

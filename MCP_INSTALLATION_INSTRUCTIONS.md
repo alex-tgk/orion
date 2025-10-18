@@ -10,9 +10,12 @@
 ```
 
 This script will:
-- Install 7 global MCP servers (GitHub, PostgreSQL, Docker, Kubernetes, Prometheus, Memory, Filesystem)
+- Install 9 MCP servers (GitHub, PostgreSQL, Docker, Kubernetes, Prometheus, Memory, Sequential Thinking, Filesystem, Context7)
+- Pre-cache the Serena MCP tooling via `uv`
 - Build the ORION local MCP server with custom tools
 - Verify all installations
+
+> **Note:** If `/usr/local` is not writable, the script installs packages into `~/.local/share/npm`. Add `~/.local/share/npm/bin` to your `PATH` if it is not already present.
 
 ### 2. Set Environment Variables
 
@@ -27,6 +30,8 @@ export DATABASE_URL="postgresql://orion:orion_dev@localhost:5432/orion_dev"
 export REDIS_URL="redis://localhost:6379"
 export KUBECONFIG="${HOME}/.kube/config"
 export PROMETHEUS_URL="http://localhost:9090"
+export CONTEXT7_API_KEY="your_context7_key"  # optional, raises rate limits
+export SERENA_DISABLE_DASHBOARD="true"       # optional, keeps Serena headless
 ```
 
 Reload your shell:
@@ -52,28 +57,30 @@ Close and reopen Claude Code to load all MCP servers.
 
 ## What's Included
 
-### MCP Servers (8 Total)
+### MCP Servers (11 Total)
 
-1. **orion-local** - Custom ORION tools
-   - validate_spec
-   - check_service_health
-   - nx_affected
-   - generate_service_from_spec
-   - sync_spec
+1. **orion-local** – Custom ORION automation tools  
+   • validate_spec · check_service_health · nx_affected · generate_service_from_spec · sync_spec
 
-2. **github** - GitHub API integration
+2. **github** – GitHub API integration (issues, PRs, workflows)
 
-3. **postgres** - PostgreSQL database tools
+3. **postgres** – PostgreSQL schema + data inspector
 
-4. **docker** - Docker container management
+4. **docker** – Docker container management via `docker-mcp`
 
-5. **kubernetes** - Kubernetes cluster management
+5. **kubernetes** – Cluster and deployment operations
 
-6. **prometheus** - Metrics and monitoring
+6. **prometheus** – Metrics and alert queries
 
-7. **memory** - Persistent memory storage
+7. **memory** – Persistent Claude Code memory store
 
-8. **filesystem** - Safe file system operations
+8. **filesystem** – Safe workspace-scoped file operations
+
+9. **sequential-thinking** – Multi-step reasoning toolchain
+
+10. **context7** – Live documentation / code examples
+
+11. **serena** – Semantic code navigation and edits
 
 ### Custom ORION Tools
 
