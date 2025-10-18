@@ -1,158 +1,107 @@
-# Admin UI Service
+# ORION Admin Dashboard
 
-**Status:** 🚧 Under Reconstruction
-**Version:** 2.0.0 (Rebuild)
-**Spec:** See [.specs/admin-ui.spec.md](../../.specs/admin-ui.spec.md)
+Modern, responsive admin dashboard for the ORION microservices platform.
 
-## Overview
+## Features
 
-The Admin UI service provides a comprehensive administrative interface for the ORION platform with:
+- Modern UI built with React 18 + TypeScript
+- Fast development with Vite
+- Styled with Tailwind CSS + shadcn/ui
+- State management with Zustand
+- Data fetching with TanStack Query
+- Authentication & authorization
+- Real-time updates via WebSockets
+- Comprehensive analytics & monitoring
 
-- **REST API**: 13 observability endpoints for system monitoring
-- **WebSocket Gateway**: Real-time updates via Socket.IO
-- **React Frontend**: Modern dashboard with extensible widget system
-- **Plugin Architecture**: Dynamic widget registration and extension
+## Tech Stack
 
-## Current Status
+- **Framework**: React 18.2.0 + TypeScript 5.3.3
+- **Build Tool**: Vite 5.0.0
+- **Styling**: Tailwind CSS 3.4.0 + shadcn/ui
+- **State Management**: Zustand 4.4.0
+- **Data Fetching**: TanStack Query 5.0.0
+- **Routing**: React Router 6.20.0
+- **Charts**: Recharts 2.10.0 + Tremor 3.13.0
+- **Icons**: Lucide React
 
-This package is being rebuilt from scratch following GitHub Spec Kit methodology and TDD practices.
-
-### Completed
-- ✅ Specification defined
-- ✅ Directory structure created
-- ✅ Test infrastructure prepared
-
-### In Progress
-- 🚧 Core API endpoints (Phase 1)
-- 🚧 WebSocket gateway (Phase 1)
-- 🚧 DTO definitions (Phase 1)
-
-### Upcoming
-- ⏳ Frontend foundation (Phase 2)
-- ⏳ Widget system (Phase 3)
-- ⏳ Documentation & polish (Phase 4)
-
-## Quick Start
+## Getting Started
 
 ### Prerequisites
-- Node.js 20+
-- pnpm 8+
-- Docker (for development dependencies)
 
-### Development
+- Node.js 20.x or later
+- pnpm 8.x or later
+
+### Installation
+
 ```bash
-# Install dependencies (from monorepo root)
+# Install dependencies
 pnpm install
 
-# Run in development mode
-pnpm nx serve admin-ui
+# Start development server
+pnpm dev
 
-# Run tests
-pnpm nx test admin-ui
-
-# Run tests in watch mode
-pnpm nx test admin-ui --watch
-
-# Run e2e tests
-pnpm nx e2e admin-ui-e2e
-```
-
-### Building
-```bash
 # Build for production
-pnpm nx build admin-ui
+pnpm build
 
-# Build Docker image
-docker build -f Dockerfile -t orion/admin-ui:latest .
+# Preview production build
+pnpm preview
 ```
 
-## Architecture
+### Environment Variables
 
-### Backend (NestJS)
-```
-src/app/
-├── controllers/     # REST API endpoints
-├── services/        # Business logic
-├── gateways/        # WebSocket handlers
-├── dto/             # Data transfer objects
-├── guards/          # Auth guards
-├── config/          # Configuration
-├── plugins/         # Widget plugin system
-└── types/           # TypeScript types
+Create a `.env` file based on `.env.example`:
+
+```env
+VITE_API_URL=http://localhost:3100
+VITE_WS_URL=ws://localhost:3100
 ```
 
-### Frontend (React)
+## Project Structure
+
 ```
-src/frontend/
-├── components/      # Reusable UI components
-├── widgets/         # Dashboard widgets
-├── hooks/           # Custom React hooks
-├── services/        # API clients
-├── styles/          # Global styles
-└── types/           # TypeScript types
-```
-
-## API Endpoints
-
-See [API Reference](../../.specs/admin-ui.spec.md#api-specification) for complete documentation.
-
-### System
-- `GET /health` - Health check
-- `GET /api/system/overview` - System overview
-- `GET /api/system/stats` - System statistics
-
-### Services
-- `GET /api/services` - List all services
-- `GET /api/services/:id` - Service details
-- `GET /api/services/:id/metrics` - Service metrics
-- `GET /api/services/:id/health` - Service health
-
-### Events
-- `GET /api/events` - List events
-- `GET /api/events/:id` - Event details
-- `POST /api/events/search` - Search events
-
-### Observability
-- `GET /api/observability/alerts` - Active alerts
-- `GET /api/observability/metrics` - Platform metrics
-- `GET /api/observability/traces` - Distributed traces
-
-## WebSocket Events
-
-### Subscribe
-- `subscribe:system` - System updates
-- `subscribe:service` - Service updates
-- `subscribe:events` - Event stream
-
-### Receive
-- `system:update` - System stats (every 5s)
-- `service:health` - Service health changes
-- `event:created` - New events
-- `alert:triggered` - New alerts
-
-## Testing
-
-This project follows TDD (Test-Driven Development) practices with 100% coverage target.
-
-```bash
-# Run all tests
-pnpm nx test admin-ui
-
-# Run specific test suite
-pnpm nx test admin-ui --testFile=system.controller.spec.ts
-
-# Coverage report
-pnpm nx test admin-ui --coverage
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   ├── layout/         # Layout components (Header, Sidebar)
+│   └── features/       # Feature-specific components
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+├── services/           # API services
+├── store/              # Zustand stores
+├── styles/             # Global styles
+└── types/              # TypeScript type definitions
 ```
 
-## Contributing
+## Available Pages
 
-See [GitHub Spec Kit Specification](../../.specs/admin-ui.spec.md) for:
-- Acceptance criteria
-- API contracts
-- Widget development guide
-- Testing requirements
+- **Dashboard** - Overview with key metrics and recent activity
+- **Services** - Microservices management and monitoring
+- **Users** - User management and authentication
+- **Feature Flags** - Feature flag configuration
+- **Webhooks** - Webhook management and delivery logs
+- **Analytics** - Usage analytics and insights
+- **Logs** - System logs and debugging
+- **Settings** - Application settings and configuration
+
+## Development
+
+### Code Style
+
+- ESLint for code linting
+- TypeScript for type safety
+- Prettier for code formatting
+
+### Best Practices
+
+- Use TypeScript for all new files
+- Follow React best practices and hooks guidelines
+- Keep components small and focused
+- Use TanStack Query for server state
+- Use Zustand for client state
+- Implement proper error handling
+- Write accessible HTML (ARIA attributes)
 
 ## License
 
-Proprietary - ORION Platform
+MIT

@@ -3,50 +3,43 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/admin-ui/src",
   "projectType": "application",
+  "tags": ["type:app", "platform:frontend"],
   "targets": {
-    "build": {
+    "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "webpack-cli build",
-        "args": ["--node-env=production"],
+        "command": "vite",
         "cwd": "packages/admin-ui"
-      },
-      "configurations": {
-        "development": {
-          "args": ["--node-env=development"]
-        }
       }
     },
-    "serve": {
-      "continuous": true,
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
-      "dependsOn": ["build"],
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
       "options": {
-        "buildTarget": "admin-ui:build",
-        "runBuildTargetDependencies": false
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "admin-ui:build:development"
-        },
-        "production": {
-          "buildTarget": "admin-ui:build:production"
-        }
+        "command": "pnpm run build",
+        "cwd": "packages/admin-ui"
       }
     },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/admin-ui"],
+    "preview": {
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/admin-ui/jest.config.ts",
-        "passWithNoTests": true
+        "command": "vite preview",
+        "cwd": "packages/admin-ui"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm run lint",
+        "cwd": "packages/admin-ui"
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm run type-check",
+        "cwd": "packages/admin-ui"
+      }
     }
-  },
-  "tags": ["scope:admin-ui", "type:app"]
+  }
 }
