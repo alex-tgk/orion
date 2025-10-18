@@ -1,4 +1,4 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { NotificationPrismaService } from './notification-prisma.service';
 import { UpdateNotificationPreferencesDto } from '../dto/notification-preferences.dto';
 
@@ -22,9 +22,18 @@ export class PreferencesService {
     }
 
     return {
-      email: preferences.emailPreferences as any,
-      sms: preferences.smsPreferences as any,
-      push: preferences.pushPreferences as any,
+      email: preferences.emailPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
+      sms: preferences.smsPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
+      push: preferences.pushPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
     };
   }
 
@@ -45,9 +54,27 @@ export class PreferencesService {
     }
 
     // Merge updates with existing preferences
-    const email = this.mergePreferences(preferences.emailPreferences as any, updates.email);
-    const sms = this.mergePreferences(preferences.smsPreferences as any, updates.sms);
-    const push = this.mergePreferences(preferences.pushPreferences as any, updates.push);
+    const email = this.mergePreferences(
+      preferences.emailPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
+      updates.email,
+    );
+    const sms = this.mergePreferences(
+      preferences.smsPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
+      updates.sms,
+    );
+    const push = this.mergePreferences(
+      preferences.pushPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
+      updates.push,
+    );
 
     // Update preferences
     const updated = await this.prisma.userPreference.update({
@@ -63,9 +90,18 @@ export class PreferencesService {
     this.logger.log(`Notification preferences updated for user ${userId}`);
 
     return {
-      email: updated.emailPreferences as any,
-      sms: updated.smsPreferences as any,
-      push: updated.pushPreferences as any,
+      email: updated.emailPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
+      sms: updated.smsPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
+      push: updated.pushPreferences as {
+        enabled: boolean;
+        types: Record<string, boolean>;
+      },
     };
   }
 
@@ -141,7 +177,8 @@ export class PreferencesService {
     }
 
     return {
-      enabled: updates.enabled !== undefined ? updates.enabled : existing.enabled,
+      enabled:
+        updates.enabled !== undefined ? updates.enabled : existing.enabled,
       types: {
         ...existing.types,
         ...(updates.types || {}),
@@ -159,7 +196,7 @@ export class PreferencesService {
       });
       this.logger.log(`Notification preferences deleted for user ${userId}`);
     } catch (error) {
-      if (error.code === 'P2025') {
+      if ((error as { code?: string }).code === 'P2025') {
         // Record not found - that's fine
         return;
       }

@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NotificationPrismaService } from './notification-prisma.service';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { NotificationStatus } from '@prisma/notifications';
+import { NotificationStatus } from '.prisma/notifications';
 
 /**
  * Retry Configuration
@@ -60,19 +60,19 @@ export class RetryService {
 
   constructor(
     private readonly prisma: NotificationPrismaService,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
   ) {
     this.config = {
       maxAttempts: this.configService.get<number>(
         'notification.retry.maxAttempts',
-        3
+        3,
       ),
       delays: [
         1000, // 1 second
         5000, // 5 seconds
         30000, // 30 seconds
       ],
-      retryableStatuses: [NotificationStatus.failed],
+      retryableStatuses: [NotificationStatus.FAILED],
     };
   }
 
@@ -81,7 +81,7 @@ export class RetryService {
    */
   async executeWithRetry<T>(
     fn: () => Promise<T>,
-    options: RetryOptions = {}
+    options: RetryOptions = {},
   ): Promise<T> {
     const {
       maxAttempts = 3,
@@ -196,7 +196,7 @@ export class RetryService {
   shouldRetry(
     status: NotificationStatus,
     attempts: number,
-    error?: string
+    error?: string,
   ): boolean {
     // Don't retry if max attempts exceeded
     if (attempts >= this.config.maxAttempts) {
@@ -235,9 +235,7 @@ export class RetryService {
     ];
 
     const lowerError = error.toLowerCase();
-    return nonRetryablePatterns.some((pattern) =>
-      lowerError.includes(pattern)
-    );
+    return nonRetryablePatterns.some((pattern) => lowerError.includes(pattern));
   }
 
   /**
@@ -253,9 +251,15 @@ export class RetryService {
       return;
     }
 
-    if (!this.shouldRetry(notification.status, notification.attempts, notification.error || undefined)) {
+    if (
+      !this.shouldRetry(
+        notification.status,
+        notification.attempts,
+        notification.errorMessage || undefined,
+      )
+    ) {
       this.logger.warn(
-        `Notification ${notificationId} should not be retried (attempts: ${notification.attempts}, status: ${notification.status})`
+        `Notification ${notificationId} should not be retried (attempts: ${notification.attempts}, status: ${notification.status})`,
       );
       return;
     }
@@ -267,17 +271,17 @@ export class RetryService {
     await this.prisma.notification.update({
       where: { id: notificationId },
       data: {
-        status: NotificationStatus.queued,
-        lastAttempt: new Date(),
+        status: NotificationStatus.QUEUED,
+        lastAttemptAt: new Date(),
         metadata: {
-          ...(notification.metadata as any),
+          ...(notification.metadata as Record<string, unknown>),
           nextRetry: nextRetry.toISOString(),
         },
       },
     });
 
     this.logger.log(
-      `Notification ${notificationId} queued for retry at ${nextRetry.toISOString()} (attempt ${notification.attempts + 1}/${this.config.maxAttempts})`
+      `Notification ${notificationId} queued for retry at ${nextRetry.toISOString()} (attempt ${notification.attempts + 1}/${this.config.maxAttempts})`,
     );
   }
 
@@ -288,9 +292,9 @@ export class RetryService {
     await this.prisma.notification.update({
       where: { id: notificationId },
       data: {
-        status: NotificationStatus.failed,
+        status: NotificationStatus.FAILED,
         failedAt: new Date(),
-        error: reason,
+        errorMessage: reason,
         metadata: {
           dlq: true,
           dlqReason: reason,
@@ -299,9 +303,7 @@ export class RetryService {
       },
     });
 
-    this.logger.error(
-      `Notification ${notificationId} moved to DLQ: ${reason}`
-    );
+    this.logger.error(`Notification ${notificationId} moved to DLQ: ${reason}`);
   }
 
   /**
@@ -314,7 +316,7 @@ export class RetryService {
       // Find notifications that are queued and ready for retry
       const notifications = await this.prisma.notification.findMany({
         where: {
-          status: NotificationStatus.queued,
+          status: NotificationStatus.QUEUED,
           attempts: {
             gte: 1, // Has been attempted at least once
             lt: this.config.maxAttempts,
@@ -328,7 +330,7 @@ export class RetryService {
       }
 
       this.logger.log(
-        `Processing ${notifications.length} notifications in retry queue`
+        `Processing ${notifications.length} notifications in retry queue`,
       );
 
       const now = Date.now();
@@ -336,9 +338,9 @@ export class RetryService {
 
       for (const notification of notifications) {
         // Check if it's time to retry
-        const metadata = notification.metadata as any;
+        const metadata = notification.metadata as Record<string, unknown>;
         const nextRetry = metadata?.nextRetry
-          ? new Date(metadata.nextRetry).getTime()
+          ? new Date(metadata.nextRetry as string).getTime()
           : 0;
 
         if (nextRetry && now < nextRetry) {
@@ -353,12 +355,12 @@ export class RetryService {
           !this.shouldRetry(
             notification.status,
             notification.attempts,
-            notification.error || undefined
+            notification.errorMessage || undefined,
           )
         ) {
           await this.moveToDLQ(
             notification.id,
-            `Max retry attempts exceeded (${notification.attempts}/${this.config.maxAttempts})`
+            `Max retry attempts exceeded (${notification.attempts}/${this.config.maxAttempts})`,
           );
           continue;
         }
@@ -366,20 +368,18 @@ export class RetryService {
         // Ready for retry - emit event or call notification service
         // This would typically publish to message queue or call the notification service
         this.logger.log(
-          `Notification ${notification.id} ready for retry (attempt ${notification.attempts + 1})`
+          `Notification ${notification.id} ready for retry (attempt ${notification.attempts + 1})`,
         );
       }
 
       if (readyCount > 0) {
-        this.logger.log(
-          `Found ${readyCount} notifications ready for retry`
-        );
+        this.logger.log(`Found ${readyCount} notifications ready for retry`);
       }
     } catch (error) {
       const err = error as Error;
       this.logger.error(
         `Error processing retry queue: ${err.message}`,
-        err.stack
+        err.stack,
       );
     }
   }
@@ -395,13 +395,13 @@ export class RetryService {
     const [pending, retrying, dlq] = await Promise.all([
       this.prisma.notification.count({
         where: {
-          status: NotificationStatus.queued,
+          status: NotificationStatus.QUEUED,
           attempts: { gte: 1 },
         },
       }),
       this.prisma.notification.count({
         where: {
-          status: NotificationStatus.sending,
+          status: NotificationStatus.PROCESSING,
           attempts: { gte: 1 },
         },
       }),
@@ -430,20 +430,18 @@ export class RetryService {
       throw new Error(`Notification not found: ${notificationId}`);
     }
 
-    const metadata = notification.metadata as any;
+    const metadata = notification.metadata as Record<string, unknown>;
     if (!metadata?.dlq) {
-      throw new Error(
-        `Notification ${notificationId} is not in DLQ`
-      );
+      throw new Error(`Notification ${notificationId} is not in DLQ`);
     }
 
     // Reset notification for retry
     await this.prisma.notification.update({
       where: { id: notificationId },
       data: {
-        status: NotificationStatus.queued,
+        status: NotificationStatus.QUEUED,
         attempts: 0,
-        error: null,
+        errorMessage: null,
         failedAt: null,
         metadata: {
           ...metadata,
@@ -455,7 +453,7 @@ export class RetryService {
     });
 
     this.logger.log(
-      `Notification ${notificationId} manually removed from DLQ and queued for retry`
+      `Notification ${notificationId} manually removed from DLQ and queued for retry`,
     );
   }
 }

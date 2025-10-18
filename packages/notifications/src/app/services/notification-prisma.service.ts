@@ -1,5 +1,10 @@
-import { Injectable, OnModuleInit, OnModuleDestroy, Logger } from '@nestjs/common';
-import { PrismaClient } from '@prisma/notifications';
+import {
+  Injectable,
+  OnModuleInit,
+  OnModuleDestroy,
+  Logger,
+} from '@nestjs/common';
+import { PrismaClient } from '.prisma/notifications';
 
 /**
  * Notification-Specific Prisma Service
@@ -43,7 +48,10 @@ export class NotificationPrismaService
       await this.$disconnect();
       this.logger.log('Notification database connection closed');
     } catch (error) {
-      this.logger.error('Failed to disconnect from notification database:', error);
+      this.logger.error(
+        'Failed to disconnect from notification database:',
+        error,
+      );
       throw error;
     }
   }
@@ -52,10 +60,13 @@ export class NotificationPrismaService
    * Enable query logging in development
    */
   enableQueryLogging(): void {
-    this.$on('query' as never, (e: any) => {
-      this.logger.debug(`Query: ${e.query}`);
-      this.logger.debug(`Params: ${e.params}`);
-      this.logger.debug(`Duration: ${e.duration}ms`);
-    });
+    this.$on(
+      'query' as never,
+      (e: { query: string; params: string; duration: number }) => {
+        this.logger.debug(`Query: ${e.query}`);
+        this.logger.debug(`Params: ${e.params}`);
+        this.logger.debug(`Duration: ${e.duration}ms`);
+      },
+    );
   }
 }

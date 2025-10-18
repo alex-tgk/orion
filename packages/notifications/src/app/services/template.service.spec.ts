@@ -87,7 +87,6 @@ describe('TemplateService', () => {
 
       await service.createTemplate(
         'test-template',
-        'email' as any,
         'Test Subject',
         'Test Body',
         [],
@@ -103,11 +102,18 @@ describe('TemplateService', () => {
 
   describe('validateData', () => {
     it('should validate required variables are present', () => {
-      expect(service.validateData(['name', 'email'], { name: 'John', email: 'john@example.com' })).toBe(true);
+      expect(
+        service.validateData(['name', 'email'], {
+          name: 'John',
+          email: 'john@example.com',
+        }),
+      ).toBe(true);
     });
 
     it('should reject when required variables are missing', () => {
-      expect(service.validateData(['name', 'email'], { name: 'John' })).toBe(false);
+      expect(service.validateData(['name', 'email'], { name: 'John' })).toBe(
+        false,
+      );
     });
   });
 });

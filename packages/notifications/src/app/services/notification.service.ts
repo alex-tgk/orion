@@ -6,14 +6,14 @@ import { RABBITMQ_CHANNEL } from '../config/rabbitmq.module';
 import { EmailService } from './email.service';
 import { SmsService } from './sms.service';
 import { TemplateService } from './template.service';
-import { NotificationType, NotificationStatus } from '../entities/notification.entity';
+import { NotificationType } from '../entities/notification.entity';
 
 export interface SendNotificationOptions {
   userId: string;
   type: NotificationType;
   template: string;
   recipient: string;
-  data: Record<string, any>;
+  data: Record<string, unknown>;
 }
 
 @Injectable()
@@ -30,8 +30,11 @@ export class NotificationService {
     private readonly configService: ConfigService,
     @Inject(RABBITMQ_CHANNEL) private readonly channel: Channel,
   ) {
-    this.maxAttempts = this.configService.get<number>('notification.rabbitmq.maxAttempts') || 3;
-    this.retryDelays = this.configService.get<number[]>('notification.rabbitmq.retryDelay') || [1000, 5000, 30000];
+    this.maxAttempts =
+      this.configService.get<number>('notification.rabbitmq.maxAttempts') || 3;
+    this.retryDelays = this.configService.get<number[]>(
+      'notification.rabbitmq.retryDelay',
+    ) || [1000, 5000, 30000];
   }
 
   /**
@@ -49,12 +52,13 @@ export class NotificationService {
       const notification = await this.prisma.notification.create({
         data: {
           userId: options.userId,
-          type: options.type,
-          template: options.template,
+          type: options.type as never, // Map from local enum to Prisma enum
+          channel: options.type as never, // Use type as channel for now
+          content: body,
+          htmlContent: body,
           subject,
-          body,
           recipient: options.recipient,
-          status: NotificationStatus.QUEUED,
+          status: 'QUEUED',
           metadata: options.data,
         },
       });
@@ -92,30 +96,30 @@ export class NotificationService {
       await this.prisma.notification.update({
         where: { id: notificationId },
         data: {
-          status: NotificationStatus.SENDING,
-          lastAttempt: new Date(),
+          status: 'PROCESSING',
+          lastAttemptAt: new Date(),
           attempts: { increment: 1 },
         },
       });
 
       // Send based on type
       switch (notification.type) {
-        case NotificationType.EMAIL:
+        case 'EMAIL':
           await this.emailService.send({
             to: notification.recipient,
             subject: notification.subject || 'Notification',
-            html: notification.body,
+            html: notification.content,
           });
           break;
 
-        case NotificationType.SMS:
+        case 'SMS':
           await this.smsService.send({
             to: notification.recipient,
-            body: notification.body,
+            body: notification.content,
           });
           break;
 
-        case NotificationType.PUSH:
+        case 'PUSH':
           // TODO: Implement push notification
           this.logger.warn('Push notifications not implemented yet');
           break;
@@ -125,7 +129,7 @@ export class NotificationService {
       await this.prisma.notification.update({
         where: { id: notificationId },
         data: {
-          status: NotificationStatus.DELIVERED,
+          status: 'DELIVERED',
           deliveredAt: new Date(),
           sentAt: new Date(),
         },
@@ -141,14 +145,17 @@ export class NotificationService {
    * Handle notification failure with retry logic
    */
   private async handleFailure(
-    notification: any,
-    error: any,
+    notification: { id: string; attempts: number },
+    error: Error,
   ): Promise<void> {
     const attempts = notification.attempts + 1;
-    const shouldRetry = attempts < this.maxAttempts && this.isRetryableError(error);
+    const shouldRetry =
+      attempts < this.maxAttempts && this.isRetryableError(error);
 
     if (shouldRetry) {
-      const delay = this.retryDelays[attempts - 1] || this.retryDelays[this.retryDelays.length - 1];
+      const delay =
+        this.retryDelays[attempts - 1] ||
+        this.retryDelays[this.retryDelays.length - 1];
 
       this.logger.warn(
         `Notification ${notification.id} failed (attempt ${attempts}/${this.maxAttempts}). Retrying in ${delay}ms...`,
@@ -158,9 +165,9 @@ export class NotificationService {
       await this.prisma.notification.update({
         where: { id: notification.id },
         data: {
-          status: NotificationStatus.QUEUED,
-          error: error.message,
-          lastAttempt: new Date(),
+          status: 'QUEUED',
+          errorMessage: error.message,
+          lastAttemptAt: new Date(),
         },
       });
 
@@ -179,9 +186,9 @@ export class NotificationService {
       await this.prisma.notification.update({
         where: { id: notification.id },
         data: {
-          status: NotificationStatus.FAILED,
+          status: 'FAILED',
           failedAt: new Date(),
-          error: error.message,
+          errorMessage: error.message,
         },
       });
 
@@ -193,7 +200,7 @@ export class NotificationService {
   /**
    * Check if error is retryable
    */
-  private isRetryableError(error: any): boolean {
+  private isRetryableError(error: Error): boolean {
     // Network errors, timeouts, and 5xx errors are retryable
     const retryableErrors = [
       'ECONNREFUSED',
@@ -222,9 +229,14 @@ export class NotificationService {
   /**
    * Send failed notification to Dead Letter Queue
    */
-  private async sendToDLQ(notification: any, error: any): Promise<void> {
+  private async sendToDLQ(
+    notification: { id: string },
+    error: Error,
+  ): Promise<void> {
     try {
-      const exchange = this.configService.get<string>('notification.rabbitmq.exchange') || 'orion.notifications';
+      const exchange =
+        this.configService.get<string>('notification.rabbitmq.exchange') ||
+        'orion.notifications';
       const dlqMessage = {
         notificationId: notification.id,
         userId: notification.userId,
@@ -263,9 +275,9 @@ export class NotificationService {
         status: true,
         type: true,
         attempts: true,
-        lastAttempt: true,
+        lastAttemptAt: true,
         deliveredAt: true,
-        error: true,
+        errorMessage: true,
       },
     });
   }
@@ -273,11 +285,7 @@ export class NotificationService {
   /**
    * Get notification history for a user
    */
-  async getHistory(
-    userId: string,
-    page: number = 1,
-    limit: number = 20,
-  ) {
+  async getHistory(userId: string, page: number = 1, limit: number = 20) {
     const skip = (page - 1) * limit;
 
     const [data, total] = await Promise.all([

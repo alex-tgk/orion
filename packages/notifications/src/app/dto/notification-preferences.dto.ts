@@ -1,4 +1,9 @@
-import { IsBoolean, IsObject, IsOptional, ValidateNested } from 'class-validator';
+import {
+  IsBoolean,
+  IsObject,
+  IsOptional,
+  ValidateNested,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -36,19 +41,19 @@ export class UpdateNotificationPreferencesDto {
 
 export class NotificationPreferencesResponseDto {
   @ApiProperty()
-  email: {
+  email!: {
     enabled: boolean;
     types: Record<string, boolean>;
   };
 
   @ApiProperty()
-  sms: {
+  sms!: {
     enabled: boolean;
     types: Record<string, boolean>;
   };
 
   @ApiProperty()
-  push: {
+  push!: {
     enabled: boolean;
     types: Record<string, boolean>;
   };

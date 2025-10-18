@@ -1,17 +1,11 @@
-export enum NotificationType {
-  EMAIL = 'email',
-  SMS = 'sms',
-  PUSH = 'push',
-}
+// Re-export Prisma types for backward compatibility
+import {
+  NotificationType,
+  NotificationStatus,
+  NotificationChannel,
+} from '.prisma/notifications';
 
-export enum NotificationStatus {
-  QUEUED = 'queued',
-  SENDING = 'sending',
-  DELIVERED = 'delivered',
-  FAILED = 'failed',
-  BOUNCED = 'bounced',
-  SPAM = 'spam',
-}
+export { NotificationType, NotificationStatus, NotificationChannel };
 
 export interface Notification {
   id: string;
@@ -28,7 +22,7 @@ export interface Notification {
   deliveredAt?: Date;
   failedAt?: Date;
   error?: string;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
   createdAt: Date;
 }
 

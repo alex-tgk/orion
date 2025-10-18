@@ -1,20 +1,18 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import * as Handlebars from 'handlebars';
 import { NotificationPrismaService } from './notification-prisma.service';
-import { NotificationType } from '../entities/notification.entity';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 
 @Injectable()
 export class TemplateService {
   private readonly logger = new Logger(TemplateService.name);
-  private readonly templateCache = new Map<string, Handlebars.TemplateDelegate>();
+  private readonly templateCache = new Map<
+    string,
+    Handlebars.TemplateDelegate
+  >();
 
-  constructor(
-    private readonly prisma: NotificationPrismaService,
-    private readonly configService: ConfigService,
-  ) {
+  constructor(private readonly prisma: NotificationPrismaService) {
     this.registerHelpers();
   }
 
@@ -22,23 +20,23 @@ export class TemplateService {
    * Register Handlebars helpers
    */
   private registerHelpers(): void {
-    Handlebars.registerHelper('formatDate', (date: Date) => {
-      return new Date(date).toLocaleDateString('en-US', {
+    Handlebars.registerHelper('formatDate', (date: Date) =>
+      new Date(date).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-      });
-    });
+      }),
+    );
 
-    Handlebars.registerHelper('formatTime', (date: Date) => {
-      return new Date(date).toLocaleTimeString('en-US', {
+    Handlebars.registerHelper('formatTime', (date: Date) =>
+      new Date(date).toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
-      });
-    });
+      }),
+    );
 
-    Handlebars.registerHelper('eq', (a: any, b: any) => a === b);
-    Handlebars.registerHelper('ne', (a: any, b: any) => a !== b);
+    Handlebars.registerHelper('eq', (a: unknown, b: unknown) => a === b);
+    Handlebars.registerHelper('ne', (a: unknown, b: unknown) => a !== b);
     Handlebars.registerHelper('gt', (a: number, b: number) => a > b);
     Handlebars.registerHelper('lt', (a: number, b: number) => a < b);
   }
@@ -48,7 +46,7 @@ export class TemplateService {
    */
   async render(
     templateName: string,
-    data: Record<string, any>,
+    data: Record<string, unknown>,
   ): Promise<{ subject?: string; body: string }> {
     try {
       // Try to get template from database first
@@ -90,12 +88,7 @@ export class TemplateService {
   private async loadTemplate(
     name: string,
   ): Promise<{ subject?: string; body: string }> {
-    const templatesDir = path.join(
-      __dirname,
-      '../..',
-      'assets',
-      'templates',
-    );
+    const templatesDir = path.join(__dirname, '../..', 'assets', 'templates');
     const filePath = path.join(templatesDir, `${name}.hbs`);
 
     try {
@@ -118,9 +111,13 @@ export class TemplateService {
   /**
    * Compile and cache template
    */
-  private compileTemplate(name: string, template: string): Handlebars.TemplateDelegate {
-    if (this.templateCache.has(name)) {
-      return this.templateCache.get(name);
+  private compileTemplate(
+    name: string,
+    template: string,
+  ): Handlebars.TemplateDelegate {
+    const cached = this.templateCache.get(name);
+    if (cached) {
+      return cached;
     }
 
     const compiled = Handlebars.compile(template);
@@ -133,7 +130,6 @@ export class TemplateService {
    */
   async createTemplate(
     name: string,
-    type: NotificationType,
     subject: string | null,
     body: string,
     variables: string[],
@@ -167,7 +163,10 @@ export class TemplateService {
   /**
    * Validate template variables
    */
-  validateData(requiredVars: string[], providedData: Record<string, any>): boolean {
+  validateData(
+    requiredVars: string[],
+    providedData: Record<string, unknown>,
+  ): boolean {
     return requiredVars.every((varName) => providedData[varName] !== undefined);
   }
 }
