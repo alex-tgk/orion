@@ -448,7 +448,7 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
   /**
    * Get Redis info
    */
-  async getRedisInfo(): Promise<any> {
+  async getRedisInfo(): Promise<Record<string, Record<string, string>> | null> {
     try {
       const info = await this.redis.info();
       return this.parseRedisInfo(info);
@@ -461,9 +461,9 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
   /**
    * Parse Redis INFO command output
    */
-  private parseRedisInfo(info: string): Record<string, any> {
+  private parseRedisInfo(info: string): Record<string, Record<string, string>> {
     const lines = info.split('\r\n');
-    const parsed: Record<string, any> = {};
+    const parsed: Record<string, Record<string, string>> = {};
     let section = 'general';
 
     for (const line of lines) {

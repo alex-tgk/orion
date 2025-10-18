@@ -49,7 +49,10 @@ export class HealthService {
 
       return status;
     } catch (error) {
-      this.logger.error('Health check failed:', error);
+      this.logger.error(
+        'Health check failed:',
+        error instanceof Error ? error.message : 'Unknown error',
+      );
       return {
         status: 'down',
         service: 'cache',

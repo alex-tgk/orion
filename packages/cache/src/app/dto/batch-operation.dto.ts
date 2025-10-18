@@ -4,7 +4,6 @@ import {
   IsNotEmpty,
   IsOptional,
   IsArray,
-  ArrayMinSize,
   ValidateNested,
   MaxLength,
   IsInt,
@@ -53,10 +52,8 @@ export class BatchOperationDto {
   @ApiProperty({
     description: 'List of cache operations',
     type: [BatchSetItem],
-    minItems: 1,
   })
   @IsArray()
-  @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => BatchSetItem)
   operations: BatchSetItem[];
@@ -76,11 +73,9 @@ export class BatchGetDto {
   @ApiProperty({
     description: 'List of keys to retrieve',
     example: ['user:123', 'user:456'],
-    minItems: 1,
     type: [String],
   })
   @IsArray()
-  @ArrayMinSize(1)
   @IsString({ each: true })
   keys: string[];
 
