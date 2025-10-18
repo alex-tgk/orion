@@ -9,12 +9,14 @@
    - JWT authentication, sessions, health checks
    - Docker + K8s ready
 
-2. **User Service** - 95% Complete ✅
+2. **User Service** - 98% Complete ✅
    - 36/38 tests passing
    - 91.91% coverage
+   - Prisma schema complete with RBAC ✅
+   - UserPrismaService integrated ✅
    - CRUD, search, avatar, preferences
    - Event publishing
-   - **Minor**: 2 tests need Prisma schema fixes
+   - **Minor**: 2 tests need mock updates (Redis)
 
 3. **API Gateway** - 100% Complete ✅
    - 53 tests passing
