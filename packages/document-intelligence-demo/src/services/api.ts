@@ -12,18 +12,38 @@ const mockDocuments: Document[] = [
     title: 'Q3 2025 Sales Report',
     filename: 'q3-sales-report.pdf',
     type: 'report',
-    summary: 'Quarterly sales report showing 12% revenue growth year-over-year.',
+    summary: 'Quarterly sales report showing 12% revenue growth year-over-year. Strong performance in enterprise segment with key wins in financial services and healthcare sectors. Total revenue reached $1.2M with enterprise contributing $890K.',
     entities: {
-      people: ['John Doe', 'Jane Smith'],
-      organizations: ['Acme Corp'],
-      dates: ['2025-09-30'],
-      amounts: ['$1.2M'],
+      people: ['John Doe', 'Jane Smith', 'Michael Chen', 'Sarah Williams'],
+      organizations: ['Acme Corp', 'TechStart Inc', 'Global Finance Ltd'],
+      dates: ['2025-09-30', '2025-07-01'],
+      amounts: ['$1.2M', '$890K', '$310K'],
     },
     metadata: {
       pages: 24,
       fileSize: 2048000,
       uploadedAt: '2025-10-15T10:30:00Z',
       uploadedBy: 'admin@example.com',
+    },
+    status: 'completed',
+  },
+  {
+    id: 'doc2',
+    title: 'SaaS Service Agreement',
+    filename: 'saas-agreement.pdf',
+    type: 'contract',
+    summary: 'Standard SaaS subscription agreement with 24-month term. Payment terms Net-30 days from invoice date. Annual contract value: $50,000 plus $25,000 setup fee. Includes automatic renewal clause with 60-day notice period for cancellation.',
+    entities: {
+      people: ['Robert Johnson', 'Sarah Lee'],
+      organizations: ['CloudServices LLC', 'Enterprise Solutions Inc'],
+      dates: ['2025-01-01', '2027-01-01'],
+      amounts: ['$50,000', '$25,000'],
+    },
+    metadata: {
+      pages: 12,
+      fileSize: 512000,
+      uploadedAt: '2025-10-14T14:20:00Z',
+      uploadedBy: 'legal@example.com',
     },
     status: 'completed',
   },
@@ -55,20 +75,73 @@ export const documentsApi = {
 export const chatApi = {
   async askQuestion(documentId: string, question: string) {
     await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    const doc = mockDocuments.find((d) => d.id === documentId);
+    const lowerQ = question.toLowerCase();
+
+    // Smart responses based on document and question
+    if (documentId === 'doc1') {
+      if (lowerQ.includes('revenue') || lowerQ.includes('sales')) {
+        return {
+          answer: 'Based on the Q3 2025 Sales Report, the total revenue was $1.2M, representing a 12% year-over-year growth. The enterprise segment contributed $890K to this total, while the SMB segment contributed $310K. [1][2]',
+          sources: [
+            { chunkId: 'chunk1', text: 'Total Q3 2025 revenue: $1,200,000 (12% YoY growth). Enterprise segment led performance with $890,000 in closed deals.', page: 3, relevanceScore: 0.95 },
+            { chunkId: 'chunk2', text: 'SMB segment revenue: $310,000. Key growth drivers included new product launches and expanded market presence.', page: 5, relevanceScore: 0.88 }
+          ],
+          model: 'gpt-4', tokensUsed: 520, cost: 0.0052, cached: false
+        };
+      }
+      if (lowerQ.includes('growth') || lowerQ.includes('sector') || lowerQ.includes('segment')) {
+        return {
+          answer: 'The strongest growth came from the enterprise segment, particularly in financial services and healthcare sectors. Key wins included partnerships with Acme Corp and Global Finance Ltd, contributing significantly to the $890K enterprise revenue. [1][2]',
+          sources: [
+            { chunkId: 'chunk3', text: 'Enterprise segment performance: Financial services sector +15%, Healthcare sector +18%. Major deals: Acme Corp ($250K), Global Finance Ltd ($180K).', page: 7, relevanceScore: 0.93 },
+            { chunkId: 'chunk4', text: 'Sector analysis shows healthcare and financial services as primary growth drivers, with TechStart Inc partnership expanding our reach.', page: 9, relevanceScore: 0.87 }
+          ],
+          model: 'gpt-4', tokensUsed: 485, cost: 0.0049, cached: false
+        };
+      }
+      if (lowerQ.includes('stakeholder') || lowerQ.includes('people') || lowerQ.includes('who')) {
+        return {
+          answer: 'The key stakeholders mentioned in the report include John Doe (VP of Sales), Jane Smith (Director of Enterprise), Michael Chen (Strategic Partnerships), and Sarah Williams (Customer Success Lead). [1]',
+          sources: [
+            { chunkId: 'chunk5', text: 'Report compiled by John Doe (VP Sales) with contributions from Jane Smith (Enterprise Director), Michael Chen (Partnerships), and Sarah Williams (Customer Success).', page: 2, relevanceScore: 0.91 }
+          ],
+          model: 'gpt-4', tokensUsed: 410, cost: 0.0041, cached: false
+        };
+      }
+    }
+
+    if (documentId === 'doc2') {
+      if (lowerQ.includes('payment') || lowerQ.includes('terms')) {
+        return {
+          answer: 'The payment terms are Net-30 days from invoice date. The annual contract value is $50,000, with a one-time $25,000 setup fee. Invoices will be sent quarterly at $12,500 per quarter. [1][2]',
+          sources: [
+            { chunkId: 'chunk1', text: 'Payment Terms: Net-30 days from invoice date. Annual fee: $50,000 USD payable quarterly ($12,500 per quarter). Setup fee: $25,000 USD due upon contract execution.', page: 3, relevanceScore: 0.97 },
+            { chunkId: 'chunk2', text: 'All payments shall be made via wire transfer or ACH. Late payments subject to 1.5% monthly interest charge.', page: 4, relevanceScore: 0.82 }
+          ],
+          model: 'gpt-4', tokensUsed: 495, cost: 0.005, cached: false
+        };
+      }
+      if (lowerQ.includes('renewal') || lowerQ.includes('term') || lowerQ.includes('expire')) {
+        return {
+          answer: 'The contract has a 24-month initial term, starting January 1, 2025 and expiring January 1, 2027. It includes an automatic renewal clause for successive 12-month periods unless either party provides written notice of non-renewal at least 60 days prior to the expiration date. [1][2]',
+          sources: [
+            { chunkId: 'chunk3', text: 'Term: Initial period of twenty-four (24) months commencing January 1, 2025. Automatic renewal for successive twelve (12) month periods.', page: 2, relevanceScore: 0.96 },
+            { chunkId: 'chunk4', text: 'Either party may terminate by providing written notice at least sixty (60) days prior to the end of the then-current term.', page: 8, relevanceScore: 0.89 }
+          ],
+          model: 'gpt-4', tokensUsed: 510, cost: 0.0051, cached: false
+        };
+      }
+    }
+
+    // Default response
     return {
-      answer: 'Based on the document, the revenue was $1.2M in Q3 2025. [1]',
+      answer: `Based on the document "${doc?.title}", I found relevant information to answer your question. The document contains details about ${doc?.entities?.organizations.join(', ')} and mentions key amounts including ${doc?.entities?.amounts.join(', ')}. [1]`,
       sources: [
-        {
-          chunkId: 'chunk1',
-          text: 'Q3 revenue: $1.2M',
-          page: 3,
-          relevanceScore: 0.92,
-        },
+        { chunkId: 'chunk1', text: doc?.summary || 'Document summary not available', page: 1, relevanceScore: 0.85 }
       ],
-      model: 'gpt-4',
-      tokensUsed: 450,
-      cost: 0.0045,
-      cached: false,
+      model: 'gpt-4', tokensUsed: 420, cost: 0.0042, cached: false
     };
   },
 };
