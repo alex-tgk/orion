@@ -27,7 +27,7 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
     // Will be implemented with actual PrismaClient
   }
 
-  async $queryRaw(query: any): Promise<any> {
+  async $queryRaw(_query: any): Promise<any> {
     // Will be implemented with actual PrismaClient
     return [];
   }

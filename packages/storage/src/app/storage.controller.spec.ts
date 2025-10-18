@@ -19,7 +19,7 @@ describe('StorageController', () => {
     s3Bucket: 'test-bucket',
     uploadedAt: new Date(),
     updatedAt: new Date(),
-    deletedAt: null,
+    deletedAt: undefined,
     metadata: {
       id: 'metadata-123',
       description: 'Test file',

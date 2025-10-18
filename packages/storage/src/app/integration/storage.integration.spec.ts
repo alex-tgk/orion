@@ -1,7 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import * as request from 'supertest';
 import { AppModule } from '../app.module';
 import { DatabaseService } from '../services/database.service';

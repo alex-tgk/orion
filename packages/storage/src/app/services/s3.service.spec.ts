@@ -17,7 +17,6 @@ jest.mock('@aws-sdk/s3-request-presigner');
 
 describe('S3Service', () => {
   let service: S3Service;
-  let configService: ConfigService;
   let mockS3Client: jest.Mocked<S3Client>;
 
   const mockConfig = {
@@ -33,7 +32,7 @@ describe('S3Service', () => {
   beforeEach(async () => {
     // Create mock S3 client
     mockS3Client = {
-      send: jest.fn(),
+      send: jest.fn().mockResolvedValue({}),
     } as any;
 
     (S3Client as jest.MockedClass<typeof S3Client>).mockImplementation(() => mockS3Client);
@@ -44,14 +43,13 @@ describe('S3Service', () => {
         {
           provide: ConfigService,
           useValue: {
-            get: jest.fn((key: string) => mockConfig[key]),
+            get: jest.fn((key: string) => mockConfig[key as keyof typeof mockConfig]),
           },
         },
       ],
     }).compile();
 
     service = module.get<S3Service>(S3Service);
-    configService = module.get<ConfigService>(ConfigService);
   });
 
   afterEach(() => {
