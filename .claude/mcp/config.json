@@ -1,5 +1,14 @@
 {
   "mcpServers": {
+    "orion-local": {
+      "command": "node",
+      "args": ["dist/packages/mcp-server/src/main.js"],
+      "env": {
+        "DATABASE_URL": "postgresql://orion:orion_dev@localhost:5432/orion_dev",
+        "REDIS_URL": "redis://localhost:6379",
+        "NODE_ENV": "development"
+      }
+    },
     "github": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
@@ -12,6 +21,17 @@
       "args": ["-y", "@modelcontextprotocol/server-postgres"],
       "env": {
         "POSTGRES_URL": "postgresql://orion:orion_dev@localhost:5432/orion_dev"
+      }
+    },
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-docker"]
+    },
+    "kubernetes": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-kubernetes"],
+      "env": {
+        "KUBECONFIG": "${HOME}/.kube/config"
       }
     }
   }
