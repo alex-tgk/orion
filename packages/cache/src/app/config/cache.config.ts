@@ -1,5 +1,11 @@
 import { registerAs } from '@nestjs/config';
-import { IsInt, IsOptional, IsString, Min, validateSync } from 'class-validator';
+import {
+  IsInt,
+  IsOptional,
+  IsString,
+  Min,
+  validateSync,
+} from 'class-validator';
 import { plainToClass } from 'class-transformer';
 
 export class CacheConfig {
@@ -45,15 +51,25 @@ export class CacheConfig {
 export default registerAs('cache', () => {
   const config = plainToClass(CacheConfig, {
     REDIS_HOST: process.env.REDIS_HOST,
-    REDIS_PORT: process.env.REDIS_PORT ? parseInt(process.env.REDIS_PORT, 10) : undefined,
+    REDIS_PORT: process.env.REDIS_PORT
+      ? parseInt(process.env.REDIS_PORT, 10)
+      : undefined,
     REDIS_PASSWORD: process.env.REDIS_PASSWORD,
-    REDIS_DB: process.env.REDIS_DB ? parseInt(process.env.REDIS_DB, 10) : undefined,
-    DEFAULT_TTL: process.env.DEFAULT_TTL ? parseInt(process.env.DEFAULT_TTL, 10) : undefined,
-    MAX_CACHE_SIZE: process.env.MAX_CACHE_SIZE ? parseInt(process.env.MAX_CACHE_SIZE, 10) : undefined,
+    REDIS_DB: process.env.REDIS_DB
+      ? parseInt(process.env.REDIS_DB, 10)
+      : undefined,
+    DEFAULT_TTL: process.env.DEFAULT_TTL
+      ? parseInt(process.env.DEFAULT_TTL, 10)
+      : undefined,
+    MAX_CACHE_SIZE: process.env.MAX_CACHE_SIZE
+      ? parseInt(process.env.MAX_CACHE_SIZE, 10)
+      : undefined,
     CONNECTION_TIMEOUT: process.env.CONNECTION_TIMEOUT
       ? parseInt(process.env.CONNECTION_TIMEOUT, 10)
       : undefined,
-    MAX_RETRIES: process.env.MAX_RETRIES ? parseInt(process.env.MAX_RETRIES, 10) : undefined,
+    MAX_RETRIES: process.env.MAX_RETRIES
+      ? parseInt(process.env.MAX_RETRIES, 10)
+      : undefined,
   });
 
   const errors = validateSync(config, { skipMissingProperties: false });

@@ -1,4 +1,9 @@
-import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Redis from 'ioredis';
 import { CacheConfig } from '../config/cache.config';
@@ -143,7 +148,9 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
       }
 
       this.stats.sets++;
-      this.logger.debug(`Cache set: ${fullKey} (TTL: ${effectiveTtl || 'none'})`);
+      this.logger.debug(
+        `Cache set: ${fullKey} (TTL: ${effectiveTtl || 'none'})`,
+      );
       return true;
     } catch (error) {
       this.logger.error(`Failed to set cache key ${key}:`, error);
@@ -290,7 +297,9 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
       const results = await pipeline.exec();
       const successCount = results?.filter((r) => r[0] === null).length || 0;
       this.stats.sets += successCount;
-      this.logger.debug(`Cache set many: ${successCount}/${entries.length} successful`);
+      this.logger.debug(
+        `Cache set many: ${successCount}/${entries.length} successful`,
+      );
       return successCount;
     } catch (error) {
       this.logger.error('Failed to set multiple cache keys:', error);
@@ -301,7 +310,10 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
   /**
    * Get multiple values
    */
-  async getMany<T = any>(keys: string[], namespace?: string): Promise<Array<T | null>> {
+  async getMany<T = any>(
+    keys: string[],
+    namespace?: string,
+  ): Promise<Array<T | null>> {
     if (keys.length === 0) return [];
 
     try {
@@ -317,7 +329,10 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
         try {
           return JSON.parse(value) as T;
         } catch (error) {
-          this.logger.error(`Failed to parse value for key ${keys[index]}:`, error);
+          this.logger.error(
+            `Failed to parse value for key ${keys[index]}:`,
+            error,
+          );
           return null;
         }
       });
@@ -330,7 +345,10 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
   /**
    * Invalidate cache by pattern (supports wildcards)
    */
-  async invalidateByPattern(pattern: string, namespace?: string): Promise<number> {
+  async invalidateByPattern(
+    pattern: string,
+    namespace?: string,
+  ): Promise<number> {
     try {
       const fullPattern = this.buildKey(pattern, namespace);
       const keys = await this.scanKeys(fullPattern);
@@ -342,7 +360,9 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
 
       const result = await this.redis.del(...keys);
       this.stats.deletes += result;
-      this.logger.log(`Invalidated ${result} keys matching pattern: ${fullPattern}`);
+      this.logger.log(
+        `Invalidated ${result} keys matching pattern: ${fullPattern}`,
+      );
       return result;
     } catch (error) {
       this.logger.error(`Failed to invalidate by pattern ${pattern}:`, error);
@@ -373,7 +393,9 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
       }
 
       this.stats.deletes += totalDeleted;
-      this.logger.log(`Invalidated ${totalDeleted} keys for tags: ${tags.join(', ')}`);
+      this.logger.log(
+        `Invalidated ${totalDeleted} keys for tags: ${tags.join(', ')}`,
+      );
       return totalDeleted;
     } catch (error) {
       this.logger.error(`Failed to invalidate by tags ${tags}:`, error);

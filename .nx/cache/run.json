@@ -1,18 +1,18 @@
 {
   "run": {
-    "command": "nx test logger --testPathPattern=transports.spec --no-coverage",
-    "startTime": "2025-10-18T16:03:36.288Z",
-    "endTime": "2025-10-18T16:03:41.281Z",
+    "command": "nx lint cache --fix",
+    "startTime": "2025-10-18T16:04:51.482Z",
+    "endTime": "2025-10-18T16:04:54.032Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "logger:test",
-      "target": "test",
-      "projectName": "logger",
-      "hash": "3332770763694325670",
-      "startTime": "2025-10-18T16:03:36.401Z",
-      "endTime": "2025-10-18T16:03:41.280Z",
+      "taskId": "cache:lint",
+      "target": "lint",
+      "projectName": "cache",
+      "hash": "6623997251360146936",
+      "startTime": "2025-10-18T16:04:51.561Z",
+      "endTime": "2025-10-18T16:04:54.030Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

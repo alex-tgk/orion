@@ -194,14 +194,20 @@ export class CacheController {
     status: HttpStatus.BAD_REQUEST,
     description: 'Invalid request data',
   })
-  async batchSet(@Body() dto: BatchOperationDto): Promise<BatchCacheResponseDto> {
+  async batchSet(
+    @Body() dto: BatchOperationDto,
+  ): Promise<BatchCacheResponseDto> {
     try {
-      const count = await this.cacheService.setMany(dto.operations, dto.namespace);
+      const count = await this.cacheService.setMany(
+        dto.operations,
+        dto.namespace,
+      );
 
       return {
         success: count === dto.operations.length,
         count,
-        error: count < dto.operations.length ? 'Some operations failed' : undefined,
+        error:
+          count < dto.operations.length ? 'Some operations failed' : undefined,
       };
     } catch (error) {
       this.logger.error('Error in batch set operation:', error);
@@ -274,9 +280,15 @@ export class CacheController {
       let count = 0;
 
       if (dto.pattern) {
-        count = await this.cacheService.invalidateByPattern(dto.pattern, dto.namespace);
+        count = await this.cacheService.invalidateByPattern(
+          dto.pattern,
+          dto.namespace,
+        );
       } else if (dto.tags && dto.tags.length > 0) {
-        count = await this.cacheService.invalidateByTags(dto.tags, dto.namespace);
+        count = await this.cacheService.invalidateByTags(
+          dto.tags,
+          dto.namespace,
+        );
       } else {
         return {
           success: false,
@@ -347,7 +359,8 @@ export class CacheController {
   @Get('health')
   @ApiOperation({
     summary: 'Health check',
-    description: 'Check the health status of the cache service and Redis connection',
+    description:
+      'Check the health status of the cache service and Redis connection',
   })
   @ApiResponse({
     status: HttpStatus.OK,

@@ -28,7 +28,9 @@ export class CacheInvalidationListener {
   @OnEvent(USER_EVENT_PATTERNS.USER_UPDATED)
   async handleUserUpdated(event: UserUpdatedEvent): Promise<void> {
     try {
-      this.logger.log(`Handling user.updated event for userId: ${event.userId}`);
+      this.logger.log(
+        `Handling user.updated event for userId: ${event.userId}`,
+      );
 
       // Invalidate user cache by pattern
       const pattern = `user:${event.userId}:*`;
@@ -42,7 +44,10 @@ export class CacheInvalidationListener {
         `Invalidated ${count + tagCount} cache entries for user ${event.userId}`,
       );
     } catch (error) {
-      this.logger.error(`Failed to invalidate cache for user.updated event:`, error);
+      this.logger.error(
+        `Failed to invalidate cache for user.updated event:`,
+        error,
+      );
     }
   }
 
@@ -53,7 +58,9 @@ export class CacheInvalidationListener {
   @OnEvent(USER_EVENT_PATTERNS.USER_DELETED)
   async handleUserDeleted(event: UserDeletedEvent): Promise<void> {
     try {
-      this.logger.log(`Handling user.deleted event for userId: ${event.userId}`);
+      this.logger.log(
+        `Handling user.deleted event for userId: ${event.userId}`,
+      );
 
       // Invalidate all user-related cache
       const pattern = `user:${event.userId}:*`;
@@ -67,7 +74,10 @@ export class CacheInvalidationListener {
         `Invalidated ${count + tagCount} cache entries for deleted user ${event.userId}`,
       );
     } catch (error) {
-      this.logger.error(`Failed to invalidate cache for user.deleted event:`, error);
+      this.logger.error(
+        `Failed to invalidate cache for user.deleted event:`,
+        error,
+      );
     }
   }
 
@@ -127,7 +137,9 @@ export class CacheInvalidationListener {
         totalInvalidated += count;
       }
 
-      this.logger.log(`Cache invalidation completed: ${totalInvalidated} entries removed`);
+      this.logger.log(
+        `Cache invalidation completed: ${totalInvalidated} entries removed`,
+      );
     } catch (error) {
       this.logger.error(`Failed to invalidate cache:`, error);
     }

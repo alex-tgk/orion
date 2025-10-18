@@ -35,11 +35,17 @@ export class StatsService {
 
       // Extract clients info
       const clientsSection = redisInfo?.clients || {};
-      const connectedClients = parseInt(clientsSection.connected_clients || '0', 10);
+      const connectedClients = parseInt(
+        clientsSection.connected_clients || '0',
+        10,
+      );
 
       // Extract stats info
       const statsSection = redisInfo?.stats || {};
-      const totalCommands = parseInt(statsSection.total_commands_processed || '0', 10);
+      const totalCommands = parseInt(
+        statsSection.total_commands_processed || '0',
+        10,
+      );
 
       return {
         totalKeys: keyCount,
@@ -71,7 +77,10 @@ export class StatsService {
         timestamp: new Date().toISOString(),
       };
     } catch (error) {
-      this.logger.error(`Failed to get stats for namespace ${namespace}:`, error);
+      this.logger.error(
+        `Failed to get stats for namespace ${namespace}:`,
+        error,
+      );
       throw error;
     }
   }

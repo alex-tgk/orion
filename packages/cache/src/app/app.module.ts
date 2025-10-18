@@ -25,7 +25,12 @@ import { CacheInvalidationListener } from './listeners';
     }),
   ],
   controllers: [CacheController],
-  providers: [CacheService, StatsService, HealthService, CacheInvalidationListener],
+  providers: [
+    CacheService,
+    StatsService,
+    HealthService,
+    CacheInvalidationListener,
+  ],
   exports: [CacheService], // Export for potential use by other modules
 })
 export class AppModule {}

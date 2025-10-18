@@ -146,7 +146,7 @@ describe('LoggerService Additional Tests', () => {
       expect(logs).toHaveLength(1);
       expect(logs[0].level).toBe('http');
       expect(logs[0].message).toBe('GET /api/users');
-      expect(logs[0].statusCode).toBe(200);
+      expect(logs[0].metadata).toEqual({ statusCode: 200, duration: 45 });
     });
   });
 
