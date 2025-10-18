@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+      - name: auth-service
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        env:
+        - name: NODE_ENV
+          value: "staging"
+        - name: LOG_LEVEL
+          value: "debug"
+        - name: DATABASE_POOL_SIZE
+          value: "10"

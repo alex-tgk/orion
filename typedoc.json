@@ -1,0 +1,51 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "packages/auth/src",
+    "packages/shared/src"
+  ],
+  "entryPointStrategy": "packages",
+  "out": "docs/generated/api",
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.e2e-spec.ts",
+    "**/test/**",
+    "**/node_modules/**"
+  ],
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "theme": "default",
+  "name": "ORION API Documentation",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeExternals": true,
+  "readme": "README.md",
+  "categorizeByGroup": true,
+  "defaultCategory": "Other",
+  "categoryOrder": [
+    "Controllers",
+    "Services",
+    "DTOs",
+    "Entities",
+    "Utilities",
+    "*"
+  ],
+  "sort": [
+    "source-order"
+  ],
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": false
+  },
+  "excludeNotDocumented": false,
+  "searchInComments": true,
+  "visibilityFilters": {
+    "protected": true,
+    "private": false,
+    "inherited": true,
+    "external": false
+  }
+}

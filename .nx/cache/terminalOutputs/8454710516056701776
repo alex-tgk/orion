@@ -1,0 +1,7 @@
+
+[0m[7m[1m[31m NX [39m[22m[27m[0m  [31mJest: Failed to parse the TypeScript config file /Users/acarroll/dev/projects/orion/packages/auth/jest.config.ts[39m
+
+  Error: Jest: 'ts-node' is required for the TypeScript configuration files. Make sure it is installed
+Error: Cannot find package 'ts-node' imported from /Users/acarroll/dev/projects/orion/node_modules/.pnpm/jest-config@30.2.0_@types+node@24.8.1_babel-plugin-macros@3.1.0/node_modules/jest-config/build/index.js
+Pass --verbose to see the stacktrace.
+

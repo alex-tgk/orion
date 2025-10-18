@@ -118,7 +118,8 @@ export class AuthService {
 
       this.logger.log(`Logout successful for user ${userId}`);
     } catch (error) {
-      this.logger.error(`Logout error: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Logout error: ${err.message}`);
       throw error;
     }
   }

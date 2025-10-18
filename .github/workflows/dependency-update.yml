@@ -1,0 +1,72 @@
+name: Dependency Updates
+
+on:
+  schedule:
+    # Run every Monday at 9am UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  update-dependencies:
+    name: Update Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Update npm dependencies
+        run: |
+          npm update
+          npm audit fix
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          if [[ -n $(git status -s) ]]; then
+            echo "modified=true" >> $GITHUB_OUTPUT
+          else
+            echo "modified=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.git-check.outputs.modified == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(deps): update npm dependencies'
+          title: 'chore(deps): Weekly dependency updates'
+          body: |
+            ## Weekly Dependency Updates
+
+            This PR contains automatic dependency updates for the week.
+
+            ### Changes
+            - Updated npm dependencies to latest versions
+            - Ran `npm audit fix` for security patches
+
+            ### Checklist
+            - [ ] All tests passing
+            - [ ] No breaking changes identified
+            - [ ] Security vulnerabilities resolved
+
+            ---
+            *This PR was automatically created by the dependency update workflow.*
+          branch: deps/weekly-update
+          delete-branch: true
+          labels: |
+            dependencies
+            automated
+          assignees: ${{ github.actor }}
+          reviewers: ${{ github.actor }}

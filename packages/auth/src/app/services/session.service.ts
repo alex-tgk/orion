@@ -40,16 +40,19 @@ export class SessionService {
       });
 
       this.redis.on('connect', () => {
-        (this as { isRedisAvailable: boolean }).isRedisAvailable = true;
+        (this as unknown as { isRedisAvailable: boolean }).isRedisAvailable =
+          true;
         this.logger.log('Redis connected successfully');
       });
 
       this.redis.on('error', (err) => {
-        (this as { isRedisAvailable: boolean }).isRedisAvailable = false;
+        (this as unknown as { isRedisAvailable: boolean }).isRedisAvailable =
+          false;
         this.logger.error(`Redis error: ${err.message}`);
       });
     } catch (error) {
-      this.logger.error(`Failed to initialize Redis: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to initialize Redis: ${err.message}`);
     }
   }
 
@@ -66,7 +69,8 @@ export class SessionService {
       await this.redis.setex(key, ttl, JSON.stringify(sessionData));
       this.logger.log(`Session created for user ${sessionData.userId}`);
     } catch (error) {
-      this.logger.error(`Failed to create session: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to create session: ${err.message}`);
     }
   }
 
@@ -86,7 +90,8 @@ export class SessionService {
 
       return JSON.parse(data);
     } catch (error) {
-      this.logger.error(`Failed to get session: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to get session: ${err.message}`);
       return null;
     }
   }
@@ -102,7 +107,8 @@ export class SessionService {
       await this.redis.del(key);
       this.logger.log(`Session deleted for user ${userId}`);
     } catch (error) {
-      this.logger.error(`Failed to delete session: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to delete session: ${err.message}`);
     }
   }
 
@@ -117,7 +123,8 @@ export class SessionService {
       await this.redis.setex(key, expiresIn, 'revoked');
       this.logger.log(`Token ${tokenId} blacklisted`);
     } catch (error) {
-      this.logger.error(`Failed to blacklist token: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to blacklist token: ${err.message}`);
     }
   }
 
@@ -132,7 +139,8 @@ export class SessionService {
       const result = await this.redis.get(key);
       return result !== null;
     } catch (error) {
-      this.logger.error(`Failed to check blacklist: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to check blacklist: ${err.message}`);
       return false;
     }
   }

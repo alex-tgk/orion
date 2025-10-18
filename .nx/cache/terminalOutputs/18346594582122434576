@@ -1,0 +1,141 @@
+
+Linting "auth"...
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/auth.controller.ts[24m[0m
+[0m   [2m19:3[22m   [31merror[39m  'ApiHeader' is defined but never used                                                                                                                                                                          [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m49:18[22m  [31merror[39m  Replace `·summary:·'User·login',·description:·'Authenticate·user·with·email·and·password'` with `⏎····summary:·'User·login',⏎····description:·'Authenticate·user·with·email·and·password',⏎·`                  [2mprettier/prettier[22m[0m
+[0m   [2m50:17[22m  [31merror[39m  Replace `·status:·200,·description:·'Login·successful',·type:·LoginResponseDto` with `⏎····status:·200,⏎····description:·'Login·successful',⏎····type:·LoginResponseDto,⏎·`                                    [2mprettier/prettier[22m[0m
+[0m   [2m62:18[22m  [31merror[39m  Replace `·summary:·'User·logout',·description:·'Invalidate·user·session·and·tokens'` with `⏎····summary:·'User·logout',⏎····description:·'Invalidate·user·session·and·tokens',⏎·`                              [2mprettier/prettier[22m[0m
+[0m   [2m76:18[22m  [31merror[39m  Replace `·summary:·'Refresh·tokens',·description:·'Get·new·access·and·refresh·tokens'` with `⏎····summary:·'Refresh·tokens',⏎····description:·'Get·new·access·and·refresh·tokens',⏎·`                          [2mprettier/prettier[22m[0m
+[0m   [2m77:17[22m  [31merror[39m  Replace `·status:·200,·description:·'Tokens·refreshed',·type:·LoginResponseDto` with `⏎····status:·200,⏎····description:·'Tokens·refreshed',⏎····type:·LoginResponseDto,⏎·`                                    [2mprettier/prettier[22m[0m
+[0m   [2m90:18[22m  [31merror[39m  Replace `·summary:·'Get·user·profile',·description:·'Get·current·authenticated·user·information'` with `⏎····summary:·'Get·user·profile',⏎····description:·'Get·current·authenticated·user·information',⏎·`    [2mprettier/prettier[22m[0m
+[0m   [2m91:17[22m  [31merror[39m  Replace `·status:·200,·description:·'User·profile',·type:·UserResponseDto` with `⏎····status:·200,⏎····description:·'User·profile',⏎····type:·UserResponseDto,⏎·`                                              [2mprettier/prettier[22m[0m
+[0m  [2m101:18[22m  [31merror[39m  Replace `·summary:·'Health·check',·description:·'Get·service·health·status'` with `⏎····summary:·'Health·check',⏎····description:·'Get·service·health·status',⏎·`                                              [2mprettier/prettier[22m[0m
+[0m  [2m109:18[22m  [31merror[39m  Replace `·summary:·'Liveness·probe',·description:·'Check·if·service·is·alive'` with `⏎····summary:·'Liveness·probe',⏎····description:·'Check·if·service·is·alive',⏎·`                                          [2mprettier/prettier[22m[0m
+[0m  [2m117:18[22m  [31merror[39m  Replace `·summary:·'Readiness·probe',·description:·'Check·if·service·is·ready·to·accept·requests'` with `⏎····summary:·'Readiness·probe',⏎····description:·'Check·if·service·is·ready·to·accept·requests',⏎·`  [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/config/app.config.ts[24m[0m
+[0m  [2m20:3[22m  [31merror[39m  Insert `⏎`  [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/config/database.config.ts[24m[0m
+[0m  [2m15:27[22m  [31merror[39m  Replace `⏎··'database',⏎·` with `'database',`                                                                                                                                                                         [2mprettier/prettier[22m[0m
+[0m  [2m18:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m20:3[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m21:3[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m22:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m23:5[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m24:7[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m25:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m26:1[22m   [31merror[39m  Replace `········` with `······`                                                                                                                                                                                      [2mprettier/prettier[22m[0m
+[0m  [2m27:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m28:7[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m29:1[22m   [31merror[39m  Replace `········` with `······`                                                                                                                                                                                      [2mprettier/prettier[22m[0m
+[0m  [2m30:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m31:1[22m   [31merror[39m  Replace `········` with `······`                                                                                                                                                                                      [2mprettier/prettier[22m[0m
+[0m  [2m32:1[22m   [31merror[39m  Replace `········connectionTimeout:·parseInt(process.env.DATABASE_CONNECTION_TIMEOUT·||·'5000',·10)` with `······connectionTimeout:·parseInt(⏎········process.env.DATABASE_CONNECTION_TIMEOUT·||·'5000',⏎········10`  [2mprettier/prettier[22m[0m
+[0m  [2m33:7[22m   [31merror[39m  Replace `};` with `),`                                                                                                                                                                                                [2mprettier/prettier[22m[0m
+[0m  [2m34:6[22m   [31merror[39m  Replace `⏎` with `;`                                                                                                                                                                                                  [2mprettier/prettier[22m[0m
+[0m  [2m36:3[22m   [31merror[39m  Insert `}⏎⏎`                                                                                                                                                                                                          [2mprettier/prettier[22m[0m
+[0m  [2m37:3[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m38:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m39:5[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m40:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m41:5[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m42:1[22m   [31merror[39m  Replace `······` with `····`                                                                                                                                                                                          [2mprettier/prettier[22m[0m
+[0m  [2m43:1[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m44:5[22m   [31merror[39m  Delete `··`                                                                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m45:1[22m   [31merror[39m  Replace `······` with `····`                                                                                                                                                                                          [2mprettier/prettier[22m[0m
+[0m  [2m46:5[22m   [31merror[39m  Replace `··connectionTimeout:·parseInt(process.env.DATABASE_CONNECTION_TIMEOUT·||·'5000',·10)` with `connectionTimeout:·parseInt(⏎······process.env.DATABASE_CONNECTION_TIMEOUT·||·'5000',⏎······10`                  [2mprettier/prettier[22m[0m
+[0m  [2m47:5[22m   [31merror[39m  Replace `};` with `),`                                                                                                                                                                                                [2mprettier/prettier[22m[0m
+[0m  [2m48:4[22m   [31merror[39m  Replace `,` with `;`                                                                                                                                                                                                  [2mprettier/prettier[22m[0m
+[0m  [2m49:1[22m   [31merror[39m  Replace `);` with `});⏎`                                                                                                                                                                                              [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/config/index.ts[24m[0m
+[0m  [2m17:31[22m  [31merror[39m  Replace `appConfig,·databaseConfig,·redisConfig,·jwtConfig` with `⏎··appConfig,⏎··databaseConfig,⏎··redisConfig,⏎··jwtConfig,⏎`  [2mprettier/prettier[22m[0m
+[0m  [2m25:3[22m   [31merror[39m  Insert `⏎`                                                                                                                       [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/config/jwt.config.ts[24m[0m
+[0m  [2m20:3[22m  [31merror[39m  Insert `⏎`  [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/config/rate-limit.config.ts[24m[0m
+[0m   [2m3:65[22m  [31merror[39m  Unexpected block statement surrounding arrow body; move the returned value immediately after the `=>`  [2marrow-body-style[22m[0m
+[0m  [2m37:12[22m  [31merror[39m  Insert `⏎`                                                                                             [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/config/redis.config.ts[24m[0m
+[0m  [2m17:27[22m  [31merror[39m  Replace `⏎··'redis',⏎·` with `'redis',`  [2mprettier/prettier[22m[0m
+[0m  [2m20:3[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m21:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m23:1[22m   [31merror[39m  Replace `····` with `··`                 [2mprettier/prettier[22m[0m
+[0m  [2m24:3[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m25:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m26:5[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m27:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m28:7[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m29:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m30:1[22m   [31merror[39m  Replace `········` with `······`         [2mprettier/prettier[22m[0m
+[0m  [2m31:7[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m32:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m33:7[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m34:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m35:1[22m   [31merror[39m  Replace `········` with `······`         [2mprettier/prettier[22m[0m
+[0m  [2m36:7[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m37:1[22m   [31merror[39m  Replace `········` with `······`         [2mprettier/prettier[22m[0m
+[0m  [2m38:5[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m39:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m41:3[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m42:3[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m43:1[22m   [31merror[39m  Replace `······` with `····`             [2mprettier/prettier[22m[0m
+[0m  [2m44:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m45:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m46:5[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m47:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m48:5[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m49:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m50:1[22m   [31merror[39m  Replace `······` with `····`             [2mprettier/prettier[22m[0m
+[0m  [2m51:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m52:1[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m53:5[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m54:3[22m   [31merror[39m  Delete `··`                              [2mprettier/prettier[22m[0m
+[0m  [2m55:1[22m   [31merror[39m  Replace `··},⏎);` with `});⏎`            [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/filters/http-exception.filter.ts[24m[0m
+[0m   [2m32:26[22m  [31merror[39m  Replace `·request.headers['x-correlation-id']·as·string` with `⏎······(request.headers['x-correlation-id']·as·string)`  [2mprettier/prettier[22m[0m
+[0m   [2m47:50[22m  [31merror[39m  Unexpected any. Specify a different type                                                                                [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m69:69[22m  [31merror[39m  Insert `,`                                                                                                              [2mprettier/prettier[22m[0m
+[0m   [2m79:69[22m  [31merror[39m  Insert `,`                                                                                                              [2mprettier/prettier[22m[0m
+[0m   [2m85:24[22m  [31merror[39m  Replace `⏎········`HTTP·Exception:·${status}·-·${error}`,⏎·······` with ``HTTP·Exception:·${status}·-·${error}`,`       [2mprettier/prettier[22m[0m
+[0m   [2m88:1[22m   [31merror[39m  Delete `··`                                                                                                             [2mprettier/prettier[22m[0m
+[0m   [2m89:9[22m   [31merror[39m  Delete `··`                                                                                                             [2mprettier/prettier[22m[0m
+[0m   [2m90:1[22m   [31merror[39m  Delete `··`                                                                                                             [2mprettier/prettier[22m[0m
+[0m   [2m91:1[22m   [31merror[39m  Replace `··········` with `········`                                                                                    [2mprettier/prettier[22m[0m
+[0m   [2m92:1[22m   [31merror[39m  Delete `··`                                                                                                             [2mprettier/prettier[22m[0m
+[0m   [2m93:1[22m   [31merror[39m  Delete `··`                                                                                                             [2mprettier/prettier[22m[0m
+[0m   [2m94:7[22m   [31merror[39m  Replace `··}⏎······` with `}`                                                                                           [2mprettier/prettier[22m[0m
+[0m  [2m113:2[22m   [31merror[39m  Insert `⏎`                                                                                                              [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/filters/validation-exception.filter.ts[24m[0m
+[0m   [2m13:11[22m  [31merror[39m  Unexpected any. Specify a different type                                                                                                                               [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m35:58[22m  [31merror[39m  Unexpected any. Specify a different type                                                                                                                               [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m44:34[22m  [31merror[39m  Insert `,`                                                                                                                                                             [2mprettier/prettier[22m[0m
+[0m   [2m99:30[22m  [31merror[39m  Unexpected any. Specify a different type                                                                                                                               [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m99:36[22m  [31merror[39m  Unexpected any. Specify a different type                                                                                                                               [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m105:30[22m  [31merror[39m  Replace `'password',·'token',·'secret',·'apiKey',·'refreshToken'` with `⏎······'password',⏎······'token',⏎······'secret',⏎······'apiKey',⏎······'refreshToken',⏎····`  [2mprettier/prettier[22m[0m
+[0m  [2m115:2[22m   [31merror[39m  Insert `⏎`                                                                                                                                                             [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/app/services/health.service.ts[24m[0m
+[0m   [2m52:55[22m  [31merror[39m  Replace `databaseStatus,·redisStatus` with `⏎······databaseStatus,⏎······redisStatus,⏎····`                                                                          [2mprettier/prettier[22m[0m
+[0m  [2m113:29[22m  [31merror[39m  Replace `(process.cpuUsage().user·+·process.cpuUsage().system)·/·1000` with `⏎············(process.cpuUsage().user·+·process.cpuUsage().system)·/·1000,⏎··········`  [2mprettier/prettier[22m[0m
+[0m  [2m175:14[22m  [31merror[39m  'error' is defined but never used                                                                                                                                    [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m184:2[22m   [31merror[39m  Insert `⏎`                                                                                                                                                           [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/auth/src/main.ts[24m[0m
+[0m  [2m45:21[22m  [31merror[39m  Insert `⏎······`  [2mprettier/prettier[22m[0m
+[0m  [2m61:6[22m   [31merror[39m  Insert `,⏎····`   [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[31m[1m✖ 109 problems (109 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  102 errors and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+✖ 109 problems (109 errors, 0 warnings)
+
+  102 errors and 0 warnings are potentially fixable with the `--fix` option.
+

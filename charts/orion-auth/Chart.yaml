@@ -1,0 +1,26 @@
+apiVersion: v2
+name: orion-auth
+description: Authentication service for the ORION platform
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+
+keywords:
+- authentication
+- jwt
+- microservices
+- nestjs
+
+home: https://github.com/orion/orion
+sources:
+- https://github.com/orion/orion
+
+maintainers:
+- name: ORION Team
+  email: team@orion.com
+
+dependencies: []
+
+annotations:
+  category: Authentication
+  licenses: MIT

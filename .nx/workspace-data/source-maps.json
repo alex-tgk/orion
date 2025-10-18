@@ -1,4 +1,1324 @@
 {
+  "packages/admin-ui": {
+    "root": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/admin-ui/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:admin-ui": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/admin-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/ai-interface": {
+    "root": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/ai-interface/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:ai-interface": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/ai-interface/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/analytics": {
+    "root": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/analytics/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:analytics": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/analytics/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/audit": {
+    "root": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/audit/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:audit": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/audit/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
   "packages/auth": {
     "root": [
       "packages/auth/project.json",
@@ -324,6 +1644,42 @@
       "packages/auth/project.json",
       "nx/core/project-json"
     ],
+    "targets.test": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/auth/project.json",
+      "nx/core/project-json"
+    ],
     "targets.build.parallelism": [
       "nx.json",
       "nx/target-defaults"
@@ -333,6 +1689,4980 @@
       "nx/target-defaults"
     ],
     "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/cache": {
+    "root": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/cache/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:cache": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/cache/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/config": {
+    "root": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/config/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:config": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/config/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/dev-tools": {
+    "root": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/dev-tools/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:dev-tools": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/dev-tools/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/gateway": {
+    "root": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/gateway/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:gateway": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/gateway/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/logger": {
+    "root": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/logger/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:logger": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/logger/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/mcp-server": {
+    "root": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/mcp-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:mcp-server": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/mcp-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/migrations": {
+    "root": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/migrations/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:migrations": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/migrations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/notifications": {
+    "root": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/notifications/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:notifications": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/notifications/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/orchestrator": {
+    "root": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/orchestrator/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:orchestrator": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/orchestrator/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/scheduler": {
+    "root": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/scheduler/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:scheduler": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/scheduler/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/search": {
+    "root": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/search/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:search": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/search/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/secrets": {
+    "root": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/secrets/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:secrets": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/secrets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/storage": {
+    "root": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/storage/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:storage": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/storage/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/vector-db": {
+    "root": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/vector-db/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:vector-db": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/vector-db/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/webhooks": {
+    "root": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.args": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.metadata.technologies": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "packages/webhooks/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "name": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:webhooks": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:app": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.args": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "packages/webhooks/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.serve.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
       "nx.json",
       "nx/target-defaults"
     ]

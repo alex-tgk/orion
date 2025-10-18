@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: orion
+  labels:
+    app.kubernetes.io/name: orion
+    app.kubernetes.io/part-of: orion-platform

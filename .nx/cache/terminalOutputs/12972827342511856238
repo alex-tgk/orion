@@ -1,0 +1,13 @@
+
+Linting "ai-interface"...
+[0m[0m
+[0m[4m/Users/acarroll/dev/projects/orion/packages/ai-interface/src/main.ts[24m[0m
+[0m  [2m29:14[22m  [31merror[39m  Replace ``🚀·ai-interface·service·is·running·on:·http://localhost:${port}/api`` with `⏎····`🚀·ai-interface·service·is·running·on:·http://localhost:${port}/api`,⏎··`  [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[31m[1m✖ 1 problem (1 error, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  1 error and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+✖ 1 problem (1 error, 0 warnings)
+
+  1 error and 0 warnings are potentially fixable with the `--fix` option.
+

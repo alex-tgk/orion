@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+  namespace: orion
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-config
+    app.kubernetes.io/part-of: orion-platform
+data:
+  jwt.access.expiry: "15m"
+  jwt.refresh.expiry: "7d"
+  jwt.issuer: "orion-auth"
+  jwt.audience: "orion-services"
+  cors.origin: "https://orion.com"
+  rate.limit.ttl: "60"
+  rate.limit.max: "100"
+  redis.enabled: "true"
+  redis.ttl: "3600"

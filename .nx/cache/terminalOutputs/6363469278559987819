@@ -1,0 +1,76 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/port-registry/bootstrap-helper.ts[0m:[93m22[0m:[93m30[0m - [91merror[0m[90m TS4111: [0mProperty 'CORS_ORIGIN' comes from an index signature, so it must be accessed with ['CORS_ORIGIN'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m22[0m     corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:4200',[39m[22m
+[1m[31m[7m  [0m [91m                             ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/bootstrap-helper.ts[0m:[93m40[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m40[0m     logger.error(`Failed to allocate port: ${error.message}`);[39m[22m
+[1m[31m[7m  [0m [91m                                             ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/bootstrap-helper.ts[0m:[93m128[0m:[93m44[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m128[0m     logger.error(`Error during shutdown: ${error.message}`);[39m[22m
+[1m[31m[7m   [0m [91m                                           ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m32[0m:[93m27[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_HOST' comes from an index signature, so it must be accessed with ['REDIS_HOST'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m32[0m         host: process.env.REDIS_HOST || 'localhost',[39m[22m
+[1m[31m[7m  [0m [91m                          ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m33[0m:[93m36[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_PORT' comes from an index signature, so it must be accessed with ['REDIS_PORT'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m33[0m         port: parseInt(process.env.REDIS_PORT || '6379', 10),[39m[22m
+[1m[31m[7m  [0m [91m                                   ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m34[0m:[93m31[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_PASSWORD' comes from an index signature, so it must be accessed with ['REDIS_PASSWORD'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m34[0m         password: process.env.REDIS_PASSWORD,[39m[22m
+[1m[31m[7m  [0m [91m                              ~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m35[0m:[93m34[0m - [91merror[0m[90m TS4111: [0mProperty 'REDIS_DB' comes from an index signature, so it must be accessed with ['REDIS_DB'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m35[0m         db: parseInt(process.env.REDIS_DB || '0', 10),[39m[22m
+[1m[31m[7m  [0m [91m                                 ~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m46[0m:[93m10[0m - [91merror[0m[90m TS2352: [0mConversion of type 'this' to type '{ isRedisAvailable: boolean; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.[39m[22m
+[1m[31m  Type 'PortRegistryService' is not comparable to type '{ isRedisAvailable: boolean; }'.[39m[22m
+[1m[31m    Property 'isRedisAvailable' is private in type 'PortRegistryService' but not in type '{ isRedisAvailable: boolean; }'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m46[0m         (this as { isRedisAvailable: boolean }).isRedisAvailable = true;[39m[22m
+[1m[31m[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m51[0m:[93m10[0m - [91merror[0m[90m TS2352: [0mConversion of type 'this' to type '{ isRedisAvailable: boolean; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.[39m[22m
+[1m[31m  Type 'PortRegistryService' is not comparable to type '{ isRedisAvailable: boolean; }'.[39m[22m
+[1m[31m    Property 'isRedisAvailable' is private in type 'PortRegistryService' but not in type '{ isRedisAvailable: boolean; }'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m51[0m         (this as { isRedisAvailable: boolean }).isRedisAvailable = false;[39m[22m
+[1m[31m[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m55[0m:[93m56[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m55[0m       this.logger.error(`Failed to initialize Redis: ${error.message}`);[39m[22m
+[1m[31m[7m  [0m [91m                                                       ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m89[0m:[93m44[0m - [91merror[0m[90m TS4111: [0mProperty 'PORT' comes from an index signature, so it must be accessed with ['PORT'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m89[0m       const envPort = parseInt(process.env.PORT || '0', 10);[39m[22m
+[1m[31m[7m  [0m [91m                                           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m174[0m:[93m56[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m174[0m       this.logger.error(`Failed to register service: ${error.message}`);[39m[22m
+[1m[31m[7m   [0m [91m                                                       ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m196[0m:[93m56[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m196[0m       this.logger.error(`Failed to get service port: ${error.message}`);[39m[22m
+[1m[31m[7m   [0m [91m                                                       ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m220[0m:[93m56[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m220[0m       this.logger.error(`Failed to get service info: ${error.message}`);[39m[22m
+[1m[31m[7m   [0m [91m                                                       ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m238[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m238[0m       this.logger.error(`Failed to list services: ${error.message}`);[39m[22m
+[1m[31m[7m   [0m [91m                                                    ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m262[0m:[93m58[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m262[0m       this.logger.error(`Failed to unregister service: ${error.message}`);[39m[22m
+[1m[31m[7m   [0m [91m                                                         ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/port-registry.service.ts[0m:[93m280[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m280[0m       this.logger.error(`Heartbeat failed: ${error.message}`);[39m[22m
+[1m[31m[7m   [0m [91m                                             ~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+
+[2m../../dist/packages/shared/README.md[22m

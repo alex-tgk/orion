@@ -59,6 +59,18 @@
           "buildTarget": "auth:build:production"
         }
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/auth"],
+      "options": {
+        "jestConfig": "packages/auth/jest.config.ts",
+        "passWithNoTests": false
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": ["scope:auth", "type:app"]

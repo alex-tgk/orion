@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: orion-prod
+
+bases:
+- ../../base
+
+namePrefix: prod-
+nameSuffix: ""
+
+commonLabels:
+  environment: production
+  app.kubernetes.io/instance: production
+
+replicas:
+- name: auth-service
+  count: 5
+
+patchesStrategicMerge:
+- auth-deployment-patch.yaml
+
+configMapGenerator:
+- name: auth-config
+  behavior: merge
+  literals:
+  - NODE_ENV=production
+  - LOG_LEVEL=info
+  - CORS_ORIGIN=https://api.orion.com
+
+secretGenerator:
+- name: auth-secrets
+  env: secrets.env
+  type: Opaque
+
+images:
+- name: ghcr.io/orion/auth
+  newTag: v1.0.0

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  namespace: orion
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-service
+    app.kubernetes.io/part-of: orion-platform
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: auth-service
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: auth-service
+  namespace: orion
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-service
+    app.kubernetes.io/part-of: orion-platform
