@@ -1,0 +1,24 @@
+{
+  "name": "document-intelligence-demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/document-intelligence-demo/src",
+  "projectType": "application",
+  "tags": ["type:demo", "platform:frontend"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vite",
+        "cwd": "packages/document-intelligence-demo"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "command": "pnpm run build",
+        "cwd": "packages/document-intelligence-demo"
+      }
+    }
+  }
+}
