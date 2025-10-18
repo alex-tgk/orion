@@ -126,12 +126,14 @@
     "@types/bcrypt": "^6.0.0",
     "@types/d3": "^7.4.3",
     "@types/express": "^5.0.3",
+    "@types/handlebars": "^4.1.0",
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.20",
     "@types/node": "^24.8.1",
     "@types/passport-jwt": "^4.0.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "@types/sendgrid": "^4.3.0",
     "@types/supertest": "^6.0.3",
     "@types/uuid": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
@@ -185,6 +187,7 @@
     "@nestjs/throttler": "^6.4.0",
     "@nestjs/websockets": "^11.1.6",
     "@prisma/client": "^6.17.1",
+    "@sendgrid/mail": "^8.1.6",
     "@sentry/node": "^10.20.0",
     "axios": "^1.6.0",
     "bcrypt": "^6.0.0",
@@ -192,6 +195,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
     "fp-ts": "^2.16.11",
+    "handlebars": "^4.7.8",
     "helmet": "^8.0.0",
     "ioredis": "^5.8.1",
     "lodash": "^4.17.21",
@@ -201,6 +205,7 @@
     "rxjs": "^7.8.2",
     "socket.io": "^4.8.1",
     "swagger-ui-express": "^5.0.1",
+    "twilio": "^5.10.3",
     "uuid": "^13.0.0"
   }
 }

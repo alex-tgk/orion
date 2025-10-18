@@ -1,0 +1,919 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mstorage.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/storage.service.spec.ts[0m:[93m10[0m:[93m11[0m - [91merror[0m[90m TS6196: [0m'MulterFile' is declared but never used.
+
+    [7m10[0m interface MulterFile {
+    [7m  [0m [91m          ~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mevent-publisher.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/event-publisher.service.spec.ts[0m:[93m4[0m:[93m23[0m - [91merror[0m[90m TS2307: [0mCannot find module 'amqplib' or its corresponding type declarations.
+
+    [7m4[0m import * as amqp from 'amqplib';
+    [7m [0m [91m                      ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1muser.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/user.service.spec.ts[0m:[93m7[0m:[93m22[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.
+
+    [7m7[0m import { User } from '@prisma/user';
+    [7m [0m [91m                     ~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/[22m[1musers.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m55[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'healthService' is declared but its value is never read.
+
+    [7m55[0m     private readonly healthService: HealthService,
+    [7m  [0m [91m                     ~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m75[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 50; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m75[0m   @Throttle(CUSTOM_RATE_LIMITS.SEARCH)
+    [7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m98[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 20; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m98[0m   @Throttle(CUSTOM_RATE_LIMITS.UPDATE_PROFILE)
+    [7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m115[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 5; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m115[0m   @Throttle(CUSTOM_RATE_LIMITS.DELETE_PROFILE)
+    [7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m136[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 10; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m136[0m   @Throttle(CUSTOM_RATE_LIMITS.UPLOAD_AVATAR)
+    [7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m149[0m:[93m19[0m - [91merror[0m[90m TS2694: [0mNamespace 'global.Express' has no exported member 'Multer'.
+
+    [7m149[0m     file: Express.Multer.File,
+    [7m   [0m [91m                  ~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m193[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 20; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m193[0m   @Throttle(CUSTOM_RATE_LIMITS.UPDATE_PROFILE)
+    [7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to get key test-key[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mSyntaxError: Unexpected token 'i', "invalid-json" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at CacheService.parse [as get] [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.ts:64:19[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:97:22[90m)[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to set key test-key[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:138:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to delete key test-key[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:168:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mpreferences.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.
+
+    [7m3[0m import { Prisma } from '@prisma/user';
+    [7m [0m [91m                       ~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m37[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.
+
+    [7m37[0m     const preferences = await this.prisma.userPreferences.findUnique({
+    [7m  [0m [91m                                          ~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m67[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.
+
+    [7m67[0m     const existing = await this.prisma.userPreferences.findUnique({
+    [7m  [0m [91m                                       ~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m103[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.
+
+    [7m103[0m     const updated = await this.prisma.userPreferences.update({
+    [7m   [0m [91m                                      ~~~~~~~~~~~~~~~[0m
+
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to delete pattern user:*[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:211:46[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to check existence of key test-key[39m
+[31m[Nest] 7486  - [39m10/18/2025, 8:11:36 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:236:48[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1msearch.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.
+
+    [7m3[0m import { Prisma } from '@prisma/user';
+    [7m [0m [91m                       ~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m61[0m:[93m11[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'avatar' does not exist in type 'UserSelect<DefaultArgs>'.
+
+    [7m61[0m           avatar: true,
+    [7m  [0m [91m          ~~~~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m76[0m:[93m20[0m - [91merror[0m[90m TS2339: [0mProperty 'avatar' does not exist on type '{ name: string; id: string; email: string; password: string; isActive: boolean; createdAt: Date; updatedAt: Date; lastLoginAt: Date | null; }'.
+
+    [7m76[0m       avatar: user.avatar || undefined,
+    [7m  [0m [91m                   ~~~~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m77[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'bio' does not exist on type '{ name: string; id: string; email: string; password: string; isActive: boolean; createdAt: Date; updatedAt: Date; lastLoginAt: Date | null; }'.
+
+    [7m77[0m       bio: user.bio || undefined,
+    [7m  [0m [91m                ~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m78[0m:[93m22[0m - [91merror[0m[90m TS2339: [0mProperty 'location' does not exist on type '{ name: string; id: string; email: string; password: string; isActive: boolean; createdAt: Date; updatedAt: Date; lastLoginAt: Date | null; }'.
+
+    [7m78[0m       location: user.location || undefined,
+    [7m  [0m [91m                     ~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mcache.service.spec.ts[22m ([0m[1m[41m5.314 s[49m[22m[0m)
+  CacheService
+    [32m✓[39m [2mshould be defined (42 ms)[22m
+    onModuleInit
+      [31m✕[39m [2mshould connect to Redis on module initialization (22 ms)[22m
+      [31m✕[39m [2mshould register event listeners (30 ms)[22m
+    get
+      [32m✓[39m [2mshould retrieve and parse cached value (19 ms)[22m
+      [32m✓[39m [2mshould return null if key does not exist (17 ms)[22m
+      [32m✓[39m [2mshould handle JSON parse errors gracefully (31 ms)[22m
+      [32m✓[39m [2mshould return null if Redis client is not connected (20 ms)[22m
+    set
+      [32m✓[39m [2mshould set value without TTL (19 ms)[22m
+      [32m✓[39m [2mshould set value with TTL (36 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (14 ms)[22m
+      [32m✓[39m [2mshould do nothing if Redis client is not connected (13 ms)[22m
+    delete
+      [32m✓[39m [2mshould delete a key (12 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (13 ms)[22m
+      [32m✓[39m [2mshould do nothing if Redis client is not connected (13 ms)[22m
+    deletePattern
+      [32m✓[39m [2mshould delete keys matching pattern (12 ms)[22m
+      [32m✓[39m [2mshould do nothing if no keys match pattern (12 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (13 ms)[22m
+    exists
+      [32m✓[39m [2mshould return true if key exists (22 ms)[22m
+      [32m✓[39m [2mshould return false if key does not exist (15 ms)[22m
+      [32m✓[39m [2mshould return false on error (12 ms)[22m
+    isConnected
+      [32m✓[39m [2mshould return true when Redis client is connected (12 ms)[22m
+      [32m✓[39m [2mshould return false when Redis client is not connected (11 ms)[22m
+      [32m✓[39m [2mshould return false when Redis status is not ready (10 ms)[22m
+    disabled cache
+      [32m✓[39m [2mshould skip Redis initialization when disabled (11 ms)[22m
+
+[1m[31m  [1m● [22m[1mCacheService › onModuleInit › should connect to Redis on module initialization[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32m{"db": 0, "host": "localhost", "password": "test-password", "port": 6379, "retryStrategy": Any<Function>}[39m
+
+    Number of calls: [31m0[39m
+[2m[22m
+[2m    [0m [90m 58 |[39m   describe([32m'onModuleInit'[39m[33m,[39m () [33m=>[39m {[22m
+[2m     [90m 59 |[39m     it([32m'should connect to Redis on module initialization'[39m[33m,[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 60 |[39m       expect([33mRedis[39m)[33m.[39mtoHaveBeenCalledWith({[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 61 |[39m         host[33m:[39m [32m'localhost'[39m[33m,[39m[22m
+[2m     [90m 62 |[39m         port[33m:[39m [35m6379[39m[33m,[39m[22m
+[2m     [90m 63 |[39m         password[33m:[39m [32m'test-password'[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:60:21)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCacheService › onModuleInit › should register event listeners[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32m"connect"[39m, [32mAny<Function>[39m
+
+    Number of calls: [31m0[39m
+[2m[22m
+[2m    [0m [90m 68 |[39m[22m
+[2m     [90m 69 |[39m     it([32m'should register event listeners'[39m[33m,[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 70 |[39m       expect(mockRedisClient[33m.[39mon)[33m.[39mtoHaveBeenCalledWith([32m'connect'[39m[33m,[39m expect[33m.[39many([33mFunction[39m))[33m;[39m[22m
+[2m     [90m    |[39m                                  [31m[1m^[22m[2m[39m[22m
+[2m     [90m 71 |[39m       expect(mockRedisClient[33m.[39mon)[33m.[39mtoHaveBeenCalledWith([32m'error'[39m[33m,[39m expect[33m.[39many([33mFunction[39m))[33m;[39m[22m
+[2m     [90m 72 |[39m     })[33m;[39m[22m
+[2m     [90m 73 |[39m   })[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:70:34)[22m[2m[22m
+
+[31m[Nest] 7485  - [39m10/18/2025, 8:11:37 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mDatabase health check failed[39m
+[31m[Nest] 7485  - [39m10/18/2025, 8:11:37 AM [31m  ERROR[39m [38;5;3m[HealthService] [39mError: Database connection failed
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:97:53[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 7485  - [39m10/18/2025, 8:11:37 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mDatabase health check failed[39m
+[31m[Nest] 7485  - [39m10/18/2025, 8:11:37 AM [31m  ERROR[39m [38;5;3m[HealthService] [39mError: DB error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:121:53[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 7485  - [39m10/18/2025, 8:11:37 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mCache health check failed[39m
+[31m[Nest] 7485  - [39m10/18/2025, 8:11:37 AM [31m  ERROR[39m [38;5;3m[HealthService] [39mError: Cache error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:134:15[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:305:39
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:312:13[90m)[39m
+    at Object.mockConstructor [as isConnected] [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:102:19[90m)[39m
+    at HealthService.isConnected [as checkCache] [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.ts:101:38[90m)[39m
+    at HealthService.checkCache [as getReadiness] [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.ts:65:25[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:137:22[90m)[39m
+[31m[Nest] 7485  - [39m10/18/2025, 8:11:37 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mDatabase health check failed[39m
+Unknown error
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mhealth.service.spec.ts[22m ([0m[1m[41m5.736 s[49m[22m[0m)
+  HealthService
+    [32m✓[39m [2mshould be defined (18 ms)[22m
+    getHealth
+      [32m✓[39m [2mshould return basic health status (4 ms)[22m
+      [32m✓[39m [2mshould return timestamp in ISO format (3 ms)[22m
+    getLiveness
+      [32m✓[39m [2mshould return liveness status (2 ms)[22m
+      [32m✓[39m [2mshould always return ok status for liveness (2 ms)[22m
+    getReadiness
+      [32m✓[39m [2mshould return ok status when all checks pass (2 ms)[22m
+      [32m✓[39m [2mshould return degraded status when database check fails (13 ms)[22m
+      [32m✓[39m [2mshould return degraded status when cache check fails (2 ms)[22m
+      [32m✓[39m [2mshould return degraded status when both checks fail (3 ms)[22m
+      [32m✓[39m [2mshould handle cache check throwing error (6 ms)[22m
+      [32m✓[39m [2mshould handle non-Error exceptions in database check (2 ms)[22m
+      [32m✓[39m [2mshould include service metadata in readiness response (2 ms)[22m
+    service name configuration
+      [32m✓[39m [2mshould use configured service name (1 ms)[22m
+      [32m✓[39m [2mshould use default service name if not configured (3 ms)[22m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/decorators/permissions.decorator.ts[39m
+[31mERROR: [96mpackages/user/src/app/decorators/permissions.decorator.ts[0m:[93m27[0m:[93m47[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Object'.[39m
+[31m[39m
+[31m[7m27[0m     SetMetadata(PERMISSIONS_KEY, permissions)(target, propertyKey, descriptor);[39m
+[31m[7m  [0m [91m                                              ~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/decorators/permissions.decorator.ts[0m:[93m28[0m:[93m66[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Object'.[39m
+[31m[39m
+[31m[7m28[0m     SetMetadata(REQUIRE_ALL_PERMISSIONS_KEY, options.requireAll)(target, propertyKey, descriptor);[39m
+[31m[7m  [0m [91m                                                                 ~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/config/rate-limit.config.ts[39m
+[31mERROR: [96mpackages/user/src/app/config/rate-limit.config.ts[0m:[93m3[0m:[93m42[0m - [91merror[0m[90m TS2312: [0mAn interface can only extend an object type or intersection of object types with statically known members.[39m
+[31m[39m
+[31m[7m3[0m export interface RateLimitConfig extends ThrottlerModuleOptions {[39m
+[31m[7m [0m [91m                                         ~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/decorators/current-user.decorator.ts[39m
+[31mERROR: [96mpackages/user/src/app/decorators/current-user.decorator.ts[0m:[93m8[0m:[93m4[0m - [91merror[0m[90m TS6133: [0m'data' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m8[0m   (data: unknown, ctx: ExecutionContext): AuthenticatedUser => {[39m
+[31m[7m [0m [91m   ~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/app.module.ts[39m
+[31mERROR: [96mpackages/user/src/app/app.module.ts[0m:[93m34[0m:[93m29[0m - [91merror[0m[90m TS2345: [0mArgument of type 'RateLimitConfig' is not assignable to parameter of type 'ThrottlerModuleOptions | undefined'.[39m
+[31m[39m
+[31m[7m34[0m     ThrottlerModule.forRoot(getRateLimitConfig()),[39m
+[31m[7m  [0m [91m                            ~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/users.controller.ts[39m
+[31mERROR: [96mpackages/user/src/app/users.controller.ts[0m:[93m55[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'healthService' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m55[0m     private readonly healthService: HealthService,[39m
+[31m[7m  [0m [91m                     ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/users.controller.ts[0m:[93m75[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 50; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.[39m
+[31m  Property 'ttl' is incompatible with index signature.[39m
+[31m    Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.[39m
+[31m[39m
+[31m[7m75[0m   @Throttle(CUSTOM_RATE_LIMITS.SEARCH)[39m
+[31m[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/users.controller.ts[0m:[93m98[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 20; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.[39m
+[31m  Property 'ttl' is incompatible with index signature.[39m
+[31m    Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.[39m
+[31m[39m
+[31m[7m98[0m   @Throttle(CUSTOM_RATE_LIMITS.UPDATE_PROFILE)[39m
+[31m[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/users.controller.ts[0m:[93m115[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 5; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.[39m
+[31m  Property 'ttl' is incompatible with index signature.[39m
+[31m    Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.[39m
+[31m[39m
+[31m[7m115[0m   @Throttle(CUSTOM_RATE_LIMITS.DELETE_PROFILE)[39m
+[31m[7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/users.controller.ts[0m:[93m136[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 10; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.[39m
+[31m  Property 'ttl' is incompatible with index signature.[39m
+[31m    Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.[39m
+[31m[39m
+[31m[7m136[0m   @Throttle(CUSTOM_RATE_LIMITS.UPLOAD_AVATAR)[39m
+[31m[7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/users.controller.ts[0m:[93m149[0m:[93m19[0m - [91merror[0m[90m TS2694: [0mNamespace 'global.Express' has no exported member 'Multer'.[39m
+[31m[39m
+[31m[7m149[0m     file: Express.Multer.File,[39m
+[31m[7m   [0m [91m                  ~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/users.controller.ts[0m:[93m193[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 20; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.[39m
+[31m  Property 'ttl' is incompatible with index signature.[39m
+[31m    Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.[39m
+[31m[39m
+[31m[7m193[0m   @Throttle(CUSTOM_RATE_LIMITS.UPDATE_PROFILE)[39m
+[31m[7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/storage.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/storage.service.ts[0m:[93m23[0m:[93m30[0m - [91merror[0m[90m TS2694: [0mNamespace 'global.Express' has no exported member 'Multer'.[39m
+[31m[39m
+[31m[7m23[0m   validateFile(file: Express.Multer.File): void {[39m
+[31m[7m  [0m [91m                             ~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/storage.service.ts[0m:[93m44[0m:[93m34[0m - [91merror[0m[90m TS2694: [0mNamespace 'global.Express' has no exported member 'Multer'.[39m
+[31m[39m
+[31m[7m44[0m   async saveAvatar(file: Express.Multer.File, userId: string): Promise<string> {[39m
+[31m[7m  [0m [91m                                 ~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/search.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/search.service.ts[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { Prisma } from '@prisma/user';[39m
+[31m[7m [0m [91m                       ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/search.service.ts[0m:[93m61[0m:[93m11[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'avatar' does not exist in type 'UserSelect<DefaultArgs>'.[39m
+[31m[39m
+[31m[7m61[0m           avatar: true,[39m
+[31m[7m  [0m [91m          ~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/search.service.ts[0m:[93m76[0m:[93m20[0m - [91merror[0m[90m TS2339: [0mProperty 'avatar' does not exist on type '{ name: string; id: string; email: string; password: string; isActive: boolean; createdAt: Date; updatedAt: Date; lastLoginAt: Date | null; }'.[39m
+[31m[39m
+[31m[7m76[0m       avatar: user.avatar || undefined,[39m
+[31m[7m  [0m [91m                   ~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/search.service.ts[0m:[93m77[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'bio' does not exist on type '{ name: string; id: string; email: string; password: string; isActive: boolean; createdAt: Date; updatedAt: Date; lastLoginAt: Date | null; }'.[39m
+[31m[39m
+[31m[7m77[0m       bio: user.bio || undefined,[39m
+[31m[7m  [0m [91m                ~~~[0m[39m
+[31m[96mpackages/user/src/app/services/search.service.ts[0m:[93m78[0m:[93m22[0m - [91merror[0m[90m TS2339: [0mProperty 'location' does not exist on type '{ name: string; id: string; email: string; password: string; isActive: boolean; createdAt: Date; updatedAt: Date; lastLoginAt: Date | null; }'.[39m
+[31m[39m
+[31m[7m78[0m       location: user.location || undefined,[39m
+[31m[7m  [0m [91m                     ~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/event-publisher.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/event-publisher.service.ts[0m:[93m3[0m:[93m23[0m - [91merror[0m[90m TS2307: [0mCannot find module 'amqplib' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import * as amqp from 'amqplib';[39m
+[31m[7m [0m [91m                      ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/preferences.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { Prisma } from '@prisma/user';[39m
+[31m[7m [0m [91m                       ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/preferences.service.ts[0m:[93m37[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m37[0m     const preferences = await this.prisma.userPreferences.findUnique({[39m
+[31m[7m  [0m [91m                                          ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/preferences.service.ts[0m:[93m67[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m67[0m     const existing = await this.prisma.userPreferences.findUnique({[39m
+[31m[7m  [0m [91m                                       ~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/preferences.service.ts[0m:[93m103[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m103[0m     const updated = await this.prisma.userPreferences.update({[39m
+[31m[7m   [0m [91m                                      ~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/role.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/role.service.ts[0m:[93m9[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Role'.[39m
+[31m[39m
+[31m[7m9[0m import { Role, RolePermission } from '@prisma/client';[39m
+[31m[7m [0m [91m         ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m9[0m:[93m16[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'RolePermission'.[39m
+[31m[39m
+[31m[7m9[0m import { Role, RolePermission } from '@prisma/client';[39m
+[31m[7m [0m [91m               ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m38[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m38[0m     const existingRole = await this.prisma.role.findUnique({[39m
+[31m[7m  [0m [91m                                           ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m52[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m52[0m     const role = await this.prisma.role.create({[39m
+[31m[7m  [0m [91m                                   ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m77[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m77[0m     await this.eventPublisher.publish('role.created', {[39m
+[31m[7m  [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m98[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m98[0m     const role = await this.prisma.role.findUnique({[39m
+[31m[7m  [0m [91m                                   ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m123[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m123[0m     const role = await this.prisma.role.findUnique({[39m
+[31m[7m   [0m [91m                                   ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m148[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m148[0m       this.prisma.role.findMany({[39m
+[31m[7m   [0m [91m                  ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m162[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m162[0m       this.prisma.role.count(),[39m
+[31m[7m   [0m [91m                  ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m166[0m:[93m25[0m - [91merror[0m[90m TS7006: [0mParameter 'role' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m166[0m       roles: roles.map((role) => this.mapToDto(role)),[39m
+[31m[7m   [0m [91m                        ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m180[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m180[0m     const existingRole = await this.prisma.role.findUnique({[39m
+[31m[7m   [0m [91m                                           ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m194[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m194[0m     const updatedRole = await this.prisma.role.update({[39m
+[31m[7m   [0m [91m                                          ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m212[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m212[0m     await this.eventPublisher.publish('role.updated', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m228[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m228[0m     const role = await this.prisma.role.findUnique({[39m
+[31m[7m   [0m [91m                                   ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m252[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m252[0m     await this.prisma.role.delete({[39m
+[31m[7m   [0m [91m                      ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m260[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m260[0m     await this.eventPublisher.publish('role.deleted', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m275[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m275[0m     const role = await this.prisma.role.findUnique({[39m
+[31m[7m   [0m [91m                                   ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m293[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'rolePermission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m293[0m       this.prisma.rolePermission.deleteMany({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m296[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'rolePermission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m296[0m       this.prisma.rolePermission.createMany({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m309[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m309[0m     await this.eventPublisher.publish('role.permissions.updated', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m325[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'role' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m325[0m     const role = await this.prisma.role.findUnique({[39m
+[31m[7m   [0m [91m                                   ~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m339[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'rolePermission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m339[0m     await this.prisma.rolePermission.deleteMany({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m350[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m350[0m     await this.eventPublisher.publish('role.permission.removed', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m363[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'userRole' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m363[0m     const userRoles = await this.prisma.userRole.findMany({[39m
+[31m[7m   [0m [91m                                        ~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m378[0m:[93m27[0m - [91merror[0m[90m TS7006: [0mParameter 'ur' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m378[0m     return userRoles.map((ur) => this.mapToDto(ur.role));[39m
+[31m[7m   [0m [91m                          ~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m385[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'userRole' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m385[0m     const userRole = await this.prisma.userRole.findFirst({[39m
+[31m[7m   [0m [91m                                       ~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m401[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'userRole' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m401[0m     const userRole = await this.prisma.userRole.findFirst({[39m
+[31m[7m   [0m [91m                                       ~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m419[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m419[0m     const permissions = await this.prisma.permission.findMany({[39m
+[31m[7m   [0m [91m                                          ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m428[0m:[93m41[0m - [91merror[0m[90m TS7006: [0mParameter 'p' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m428[0m       const foundIds = permissions.map((p) => p.id);[39m
+[31m[7m   [0m [91m                                        ~[0m[39m
+[31m[96mpackages/user/src/app/services/role.service.ts[0m:[93m450[0m:[93m44[0m - [91merror[0m[90m TS7006: [0mParameter 'rp' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m450[0m       permissionIds: role.permissions.map((rp) => rp.permission.id),[39m
+[31m[7m   [0m [91m                                           ~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/permission.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/permission.service.ts[0m:[93m9[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Permission'.[39m
+[31m[39m
+[31m[7m9[0m import { Permission } from '@prisma/client';[39m
+[31m[7m [0m [91m         ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m37[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m37[0m     const existing = await this.prisma.permission.findUnique({[39m
+[31m[7m  [0m [91m                                       ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m56[0m:[93m42[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m56[0m     const permission = await this.prisma.permission.create({[39m
+[31m[7m  [0m [91m                                         ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m69[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m69[0m     await this.eventPublisher.publish('permission.created', {[39m
+[31m[7m  [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m89[0m:[93m42[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m89[0m     const permission = await this.prisma.permission.findUnique({[39m
+[31m[7m  [0m [91m                                         ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m107[0m:[93m42[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m107[0m     const permission = await this.prisma.permission.findUnique({[39m
+[31m[7m   [0m [91m                                         ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m125[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m125[0m       this.prisma.permission.findMany({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m130[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m130[0m       this.prisma.permission.count(),[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m134[0m:[93m37[0m - [91merror[0m[90m TS7006: [0mParameter 'p' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m134[0m       permissions: permissions.map((p) => this.mapToDto(p)),[39m
+[31m[7m   [0m [91m                                    ~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m145[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m145[0m     const permissions = await this.prisma.permission.findMany({[39m
+[31m[7m   [0m [91m                                          ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m150[0m:[93m29[0m - [91merror[0m[90m TS7006: [0mParameter 'p' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m150[0m     return permissions.map((p) => this.mapToDto(p));[39m
+[31m[7m   [0m [91m                            ~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m163[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m163[0m     const permissions = await this.prisma.permission.findMany({[39m
+[31m[7m   [0m [91m                                          ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m168[0m:[93m41[0m - [91merror[0m[90m TS7006: [0mParameter 'acc' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m168[0m     const grouped = permissions.reduce((acc, permission) => {[39m
+[31m[7m   [0m [91m                                        ~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m168[0m:[93m46[0m - [91merror[0m[90m TS7006: [0mParameter 'permission' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m168[0m     const grouped = permissions.reduce((acc, permission) => {[39m
+[31m[7m   [0m [91m                                             ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m169[0m:[93m34[0m - [91merror[0m[90m TS7006: [0mParameter 'g' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m169[0m       const existing = acc.find((g) => g.resource === permission.resource);[39m
+[31m[7m   [0m [91m                                 ~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m191[0m:[93m42[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m191[0m     const permission = await this.prisma.permission.findUnique({[39m
+[31m[7m   [0m [91m                                         ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m210[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'permission' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m210[0m     await this.prisma.permission.delete({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m219[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m219[0m     await this.eventPublisher.publish('permission.deleted', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m239[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'userRole' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m239[0m     const userRoles = await this.prisma.userRole.findMany({[39m
+[31m[7m   [0m [91m                                        ~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m256[0m:[93m24[0m - [91merror[0m[90m TS7006: [0mParameter 'userRole' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m256[0m     userRoles.forEach((userRole) => {[39m
+[31m[7m   [0m [91m                       ~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/permission.service.ts[0m:[93m257[0m:[93m42[0m - [91merror[0m[90m TS7006: [0mParameter 'rolePermission' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m257[0m       userRole.role.permissions.forEach((rolePermission) => {[39m
+[31m[7m   [0m [91m                                         ~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/session.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/session.service.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'BadRequestException' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m6[0m   BadRequestException,[39m
+[31m[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m9[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Session'.[39m
+[31m[39m
+[31m[7m9[0m import { Session } from '@prisma/client';[39m
+[31m[7m [0m [91m         ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m34[0m:[93m38[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'deletedAt' does not exist in type 'UserWhereUniqueInput'.[39m
+[31m[39m
+[31m[7m34[0m       where: { id: createDto.userId, deletedAt: null },[39m
+[31m[7m  [0m [91m                                     ~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1686[0m:[93m5[0m[39m
+[31m    [7m1686[0m     where: UserWhereUniqueInput[39m
+[31m    [7m    [0m [96m    ~~~~~[0m[39m
+[31m    The expected type comes from property 'where' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; where: UserWhereUniqueInput; }'[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m42[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m42[0m     const session = await this.prisma.session.create({[39m
+[31m[7m  [0m [91m                                      ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m63[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m63[0m     await this.eventPublisher.publish('session.created', {[39m
+[31m[7m  [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m78[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m78[0m     const session = await this.prisma.session.findUnique({[39m
+[31m[7m  [0m [91m                                      ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m93[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m93[0m     const session = await this.prisma.session.findUnique({[39m
+[31m[7m  [0m [91m                                      ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m108[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m108[0m       await this.prisma.session.update({[39m
+[31m[7m   [0m [91m                        ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m129[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m129[0m     const sessions = await this.prisma.session.findMany({[39m
+[31m[7m   [0m [91m                                       ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m140[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m140[0m       sessions: sessions.map((s) => this.mapToDto(s)),[39m
+[31m[7m   [0m [91m                              ~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m153[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m153[0m     await this.prisma.session.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m172[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m172[0m     const session = await this.prisma.session.findUnique({[39m
+[31m[7m   [0m [91m                                      ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m185[0m:[93m46[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m185[0m     const updatedSession = await this.prisma.session.update({[39m
+[31m[7m   [0m [91m                                             ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m199[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m199[0m     await this.eventPublisher.publish('session.refreshed', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m213[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m213[0m     const session = await this.prisma.session.findUnique({[39m
+[31m[7m   [0m [91m                                      ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m227[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m227[0m     await this.prisma.session.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m237[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m237[0m     await this.eventPublisher.publish('session.terminated', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m251[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m251[0m     const result = await this.prisma.session.updateMany({[39m
+[31m[7m   [0m [91m                                     ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m265[0m:[93m31[0m - [91merror[0m[90m TS2341: [0mProperty 'publish' is private and only accessible within class 'EventPublisherService'.[39m
+[31m[39m
+[31m[7m265[0m     await this.eventPublisher.publish('session.terminatedAll', {[39m
+[31m[7m   [0m [91m                              ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m281[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m281[0m     const result = await this.prisma.session.updateMany({[39m
+[31m[7m   [0m [91m                                     ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m313[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'session' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m313[0m     const sessions = await this.prisma.session.findMany({[39m
+[31m[7m   [0m [91m                                       ~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m317[0m:[93m37[0m - [91merror[0m[90m TS7006: [0mParameter 's' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m317[0m     const active = sessions.filter((s) => s.isActive && s.expiresAt > new Date()).length;[39m
+[31m[7m   [0m [91m                                    ~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m319[0m:[93m43[0m - [91merror[0m[90m TS7006: [0mParameter 'acc' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m319[0m     const byDeviceType = sessions.reduce((acc, session) => {[39m
+[31m[7m   [0m [91m                                          ~~~[0m[39m
+[31m[96mpackages/user/src/app/services/session.service.ts[0m:[93m319[0m:[93m48[0m - [91merror[0m[90m TS7006: [0mParameter 'session' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m319[0m     const byDeviceType = sessions.reduce((acc, session) => {[39m
+[31m[7m   [0m [91m                                               ~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/strategies/jwt.strategy.ts[39m
+[31mERROR: [96mpackages/user/src/app/strategies/jwt.strategy.ts[0m:[93m23[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m23[0m     private readonly configService: ConfigService,[39m
+[31m[7m  [0m [91m                     ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/strategies/jwt.strategy.ts[0m:[93m26[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | undefined; issuer: string | undefined; audience: string | undefined; }]' is not assignable to parameter of type '[opt: StrategyOptionsWithRequest] | [opt: StrategyOptionsWithoutRequest]'.[39m
+[31m  Type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | undefined; issuer: string | undefined; audience: string | undefined; }]' is not assignable to type '[opt: StrategyOptionsWithoutRequest]'.[39m
+[31m    Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | undefined; issuer: string | undefined; audience: string | undefined; }' is not assignable to type 'StrategyOptionsWithoutRequest'.[39m
+[31m      Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | undefined; issuer: string | undefined; audience: string | undefined; }' is not assignable to type 'Omit<WithSecretOrKey, "secretOrKeyProvider"> & { passReqToCallback?: false | undefined; }'.[39m
+[31m        Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | undefined; issuer: string | undefined; audience: string | undefined; }' is not assignable to type 'Omit<WithSecretOrKey, "secretOrKeyProvider">'.[39m
+[31m          Types of property 'secretOrKey' are incompatible.[39m
+[31m            Type 'string | undefined' is not assignable to type 'string | Buffer<ArrayBufferLike>'.[39m
+[31m              Type 'undefined' is not assignable to type 'string | Buffer<ArrayBufferLike>'.[39m
+[31m[39m
+[31m[7m 26[0m     super({[39m
+[31m[7m   [0m [91m          ~[0m[39m
+[31m[7m 27[0m       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),[39m
+[31m[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[7m...[0m [39m
+[31m[7m 31[0m       audience: configService.get<string>('jwt.audience'),[39m
+[31m[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[7m 32[0m     });[39m
+[31m[7m   [0m [91m~~~~~[0m[39m
+[31m[96mpackages/user/src/app/strategies/jwt.strategy.ts[0m:[93m38[0m:[93m33[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'deletedAt' does not exist in type 'UserWhereUniqueInput'.[39m
+[31m[39m
+[31m[7m38[0m       where: { id: payload.sub, deletedAt: null },[39m
+[31m[7m  [0m [91m                                ~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1686[0m:[93m5[0m[39m
+[31m    [7m1686[0m     where: UserWhereUniqueInput[39m
+[31m    [7m    [0m [96m    ~~~~~[0m[39m
+[31m    The expected type comes from property 'where' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; where: UserWhereUniqueInput; }'[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/user/src/app/services/user.service.ts[39m
+[31mERROR: [96mpackages/user/src/app/services/user.service.ts[0m:[93m3[0m:[93m22[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { User } from '@prisma/user';[39m
+[31m[7m [0m [91m                     ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m34[0m:[93m28[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'deletedAt' does not exist in type 'UserWhereUniqueInput'.[39m
+[31m[39m
+[31m[7m34[0m       where: { id: userId, deletedAt: null },[39m
+[31m[7m  [0m [91m                           ~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1686[0m:[93m5[0m[39m
+[31m    [7m1686[0m     where: UserWhereUniqueInput[39m
+[31m    [7m    [0m [96m    ~~~~~[0m[39m
+[31m    The expected type comes from property 'where' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; where: UserWhereUniqueInput; }'[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m54[0m:[93m23[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'deletedAt' does not exist in type 'UserWhereUniqueInput'.[39m
+[31m[39m
+[31m[7m54[0m       where: { email, deletedAt: null },[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1686[0m:[93m5[0m[39m
+[31m    [7m1686[0m     where: UserWhereUniqueInput[39m
+[31m    [7m    [0m [96m    ~~~~~[0m[39m
+[31m    The expected type comes from property 'where' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; where: UserWhereUniqueInput; }'[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m75[0m:[93m9[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'preferences' does not exist in type '(Without<UserCreateInput, UserUncheckedCreateInput> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput)'.[39m
+[31m[39m
+[31m[7m75[0m         preferences: {[39m
+[31m[7m  [0m [91m        ~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1881[0m:[93m5[0m[39m
+[31m    [7m1881[0m     data: XOR<UserCreateInput, UserUncheckedCreateInput>[39m
+[31m    [7m    [0m [96m    ~~~~[0m[39m
+[31m    The expected type comes from property 'data' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; data: (Without<...> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput); }'[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m95[0m:[93m9[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'preferences' does not exist in type 'UserInclude<DefaultArgs>'.[39m
+[31m[39m
+[31m[7m95[0m         preferences: true,[39m
+[31m[7m  [0m [91m        ~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1877[0m:[93m5[0m[39m
+[31m    [7m1877[0m     include?: UserInclude<ExtArgs> | null[39m
+[31m    [7m    [0m [96m    ~~~~~~~[0m[39m
+[31m    The expected type comes from property 'include' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; data: (Without<...> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput); }'[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m124[0m:[93m28[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'deletedAt' does not exist in type 'UserWhereUniqueInput'.[39m
+[31m[39m
+[31m[7m124[0m       where: { id: userId, deletedAt: null },[39m
+[31m[7m   [0m [91m                           ~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1686[0m:[93m5[0m[39m
+[31m    [7m1686[0m     where: UserWhereUniqueInput[39m
+[31m    [7m    [0m [96m    ~~~~~[0m[39m
+[31m    The expected type comes from property 'where' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; where: UserWhereUniqueInput; }'[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m162[0m:[93m28[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'deletedAt' does not exist in type 'UserWhereUniqueInput'.[39m
+[31m[39m
+[31m[7m162[0m       where: { id: userId, deletedAt: null },[39m
+[31m[7m   [0m [91m                           ~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1686[0m:[93m5[0m[39m
+[31m    [7m1686[0m     where: UserWhereUniqueInput[39m
+[31m    [7m    [0m [96m    ~~~~~[0m[39m
+[31m    The expected type comes from property 'where' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; where: UserWhereUniqueInput; }'[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m172[0m:[93m15[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'deletedAt' does not exist in type '(Without<UserUpdateInput, UserUncheckedUpdateInput> & UserUncheckedUpdateInput) | (Without<...> & UserUpdateInput)'.[39m
+[31m[39m
+[31m[7m172[0m       data: { deletedAt: new Date() },[39m
+[31m[7m   [0m [91m              ~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1933[0m:[93m5[0m[39m
+[31m    [7m1933[0m     data: XOR<UserUpdateInput, UserUncheckedUpdateInput>[39m
+[31m    [7m    [0m [96m    ~~~~[0m[39m
+[31m    The expected type comes from property 'data' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; data: (Without<...> & UserUncheckedUpdateInput) | (Without<...> & UserUpdateInput); where: UserWhereUniqueInput; }'[39m
+[31m[96mpackages/user/src/app/services/user.service.ts[0m:[93m191[0m:[93m15[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'avatar' does not exist in type '(Without<UserUpdateInput, UserUncheckedUpdateInput> & UserUncheckedUpdateInput) | (Without<...> & UserUpdateInput)'.[39m
+[31m[39m
+[31m[7m191[0m       data: { avatar: avatarUrl },[39m
+[31m[7m   [0m [91m              ~~~~~~[0m[39m
+[31m[39m
+[31m  [96mnode_modules/.pnpm/@prisma+client@6.17.1_prisma@6.17.1_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client/index.d.ts[0m:[93m1933[0m:[93m5[0m[39m
+[31m    [7m1933[0m     data: XOR<UserUpdateInput, UserUncheckedUpdateInput>[39m
+[31m    [7m    [0m [96m    ~~~~[0m[39m
+[31m    The expected type comes from property 'data' which is declared here on type '{ select?: UserSelect<DefaultArgs> | null | undefined; omit?: UserOmit<DefaultArgs> | null | undefined; include?: UserInclude<DefaultArgs> | null | undefined; data: (Without<...> & UserUncheckedUpdateInput) | (Without<...> & UserUpdateInput); where: UserWhereUniqueInput; }'[39m
+[31mSTACK: [39m
+---------------------------------|---------|----------|---------|---------|-------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------|---------|----------|---------|---------|-------------------
+[31;1mAll files                       [0m | [31;1m  28.52[0m | [31;1m   15.97[0m | [31;1m  35.55[0m | [31;1m  28.08[0m | [31;1m                 [0m 
+[31;1m config                         [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  app.config.ts                 [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-14             [0m 
+[31;1m  database.config.ts            [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-12             [0m 
+[31;1m  index.ts                      [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-26             [0m 
+[31;1m  jwt.config.ts                 [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-13             [0m 
+[31;1m  rabbitmq.config.ts            [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-14             [0m 
+[31;1m  redis.config.ts               [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-42             [0m 
+[31;1m  storage.config.ts             [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-12             [0m 
+[31;1m controllers                    [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  roles.controller.ts           [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-148            [0m 
+[31;1m decorators                     [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  public.decorator.ts           [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-7              [0m 
+[31;1m  roles.decorator.ts            [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-12             [0m 
+[31;1m dto                            [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  index.ts                      [0m | [31;1m      0[0m | [32;1m     100[0m | [32;1m    100[0m | [31;1m      0[0m | [31;1m1-9              [0m 
+[31;1m filters                        [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  http-exception.filter.ts      [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-134            [0m 
+[31;1m  validation-exception.filter.ts[0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-59             [0m 
+[31;1m guards                         [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  jwt-auth.guard.ts             [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-25             [0m 
+[31;1m  permissions.guard.ts          [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-59             [0m 
+[31;1m  roles.guard.ts                [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-49             [0m 
+[32;1m services                       [0m | [32;1m  91.91[0m | [32;1m   84.37[0m | [32;1m  84.21[0m | [32;1m  93.18[0m | [31;1m                 [0m 
+[32;1m  cache.service.ts              [0m | [32;1m  88.05[0m | [32;1m   83.33[0m | [33;1m     75[0m | [32;1m  89.83[0m | [31;1m33-34,39,43-47   [0m 
+[32;1m  health.service.ts             [0m | [32;1m    100[0m | [32;1m    87.5[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m113              [0m 
+---------------------------------|---------|----------|---------|---------|-------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 28.52%[39m[22m
+[1m[31mJest: "global" coverage threshold for branches (80%) not met: 15.97%[39m[22m
+[1m[31mJest: "global" coverage threshold for lines (80%) not met: 28.08%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 35.55%[39m[22m
+[1mTest Suites: [22m[1m[31m7 failed[39m[22m, [1m[32m1 passed[39m[22m, 8 total
+[1mTests:       [22m[1m[31m2 failed[39m[22m, [1m[32m36 passed[39m[22m, 38 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        [1m[33m18.862 s[39m[22m
+[2mRan all test suites[22m[2m.[22m

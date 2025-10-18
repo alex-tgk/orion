@@ -1,0 +1,16 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/ab-testing/client.ts[0m:[93m82[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'unknown' is not assignable to type 'VariantAssignment'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m82[0m     const assignment: VariantAssignment = await response.json();[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/ab-testing/client.ts[0m:[93m276[0m:[93m49[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'React'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m276[0m   return function <P extends object>(Component: React.ComponentType<P>) {[39m[22m
+[1m[31m[7m   [0m [91m                                                ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/lib/metrics/metrics.service.ts[0m:[93m2[0m:[93m62[0m - [91merror[0m[90m TS2307: [0mCannot find module 'prom-client' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import { register, Counter, Histogram, Gauge, Summary } from 'prom-client';[39m[22m
+[1m[31m[7m [0m [91m                                                             ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[39m[22m
+
+[2m../../dist/packages/shared/README.md[22m

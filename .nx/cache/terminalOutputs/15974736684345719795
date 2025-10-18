@@ -1,0 +1,313 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mlogging.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/logging.middleware.spec.ts[0m:[93m35[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'correlationId' does not exist on type 'Partial<Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>>'.
+
+    [7m35[0m     expect(mockRequest.correlationId).toBeDefined();
+    [7m  [0m [91m                       ~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/logging.middleware.spec.ts[0m:[93m36[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'correlationId' does not exist on type 'Partial<Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>>'.
+
+    [7m36[0m     expect(typeof mockRequest.correlationId).toBe('string');
+    [7m  [0m [91m                              ~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/logging.middleware.spec.ts[0m:[93m57[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'startTime' does not exist on type 'Partial<Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>>'.
+
+    [7m57[0m     expect(mockRequest.startTime).toBeDefined();
+    [7m  [0m [91m                       ~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/logging.middleware.spec.ts[0m:[93m58[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'startTime' does not exist on type 'Partial<Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>>'.
+
+    [7m58[0m     expect(typeof mockRequest.startTime).toBe('number');
+    [7m  [0m [91m                              ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mload-balancer.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/load-balancer.service.spec.ts[0m:[93m9[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType '{ id: string; host: string; port: number; healthy: true; metadata: {}; }[]' is not assignable to type 'ServiceInstance[]'.
+      Type '{ id: string; host: string; port: number; healthy: true; metadata: {}; }' is missing the following properties from type 'ServiceInstance': name, url, lastHealthCheck
+
+    [7m9[0m     return Array.from({ length: count }, (_, i) => ({
+    [7m [0m [91m    ~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/[22m[1mapp.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/app.controller.spec.ts[0m:[93m2[0m:[93m25[0m - [91merror[0m[90m TS6133: [0m'HttpStatus' is declared but its value is never read.
+
+    [7m2[0m import { HttpException, HttpStatus } from '@nestjs/common';
+    [7m [0m [91m                        ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/app.controller.spec.ts[0m:[93m13[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'healthService' is declared but its value is never read.
+
+    [7m13[0m   let healthService: HealthService;
+    [7m  [0m [91m      ~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/app.controller.spec.ts[0m:[93m14[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'proxyService' is declared but its value is never read.
+
+    [7m14[0m   let proxyService: ProxyService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/app.controller.spec.ts[0m:[93m81[0m:[93m20[0m - [91merror[0m[90m TS2339: [0mProperty 'proxyRequest' does not exist on type 'AppController'.
+
+    [7m81[0m         controller.proxyRequest(mockRequest, mockResponse)
+    [7m  [0m [91m                   ~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/app.controller.spec.ts[0m:[93m107[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'mockResolvedValue' does not exist on type 'Mocked<AxiosStatic>'.
+
+    [7m107[0m       mockedAxios.mockResolvedValue({
+    [7m   [0m [91m                  ~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/app.controller.spec.ts[0m:[93m113[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'proxyRequest' does not exist on type 'AppController'.
+
+    [7m113[0m       await controller.proxyRequest(mockRequest, mockResponse);
+    [7m   [0m [91m                       ~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mrequest-transform.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m40[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m40[0m       expect(mockRequest.headers['x-correlation-id']).toBe(correlationId);
+    [7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m60[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m60[0m       expect(mockRequest.headers['x-correlation-id']).toBeUndefined();
+    [7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m86[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m86[0m       expect(mockRequest.headers['x-user-id']).toBe('123e4567-e89b-12d3-a456-426614174000');
+    [7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m87[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m87[0m       expect(mockRequest.headers['x-user-email']).toBe('user@example.com');
+    [7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m107[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m107[0m       expect(mockRequest.headers['x-user-id']).toBeUndefined();
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m108[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m108[0m       expect(mockRequest.headers['x-user-email']).toBeUndefined();
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m130[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m130[0m       expect(mockRequest.headers['x-gateway-forwarded']).toBe('true');
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m141[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type 'string[]'.
+
+    [7m141[0m           'set-cookie': 'test=value',
+    [7m   [0m [91m          ~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m158[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m158[0m       expect(mockRequest.headers.cookie).toBeUndefined();
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m159[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m159[0m       expect(mockRequest.headers['set-cookie']).toBeUndefined();
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m160[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m160[0m       expect(mockRequest.headers['x-real-ip']).toBeUndefined();
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m161[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m161[0m       expect(mockRequest.headers['x-forwarded-for']).toBeUndefined();
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m162[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m162[0m       expect(mockRequest.headers['content-type']).toBe('application/json'); // Should not be removed
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m193[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m193[0m       expect(mockRequest.headers['x-correlation-id']).toBe(correlationId);
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m194[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m194[0m       expect(mockRequest.headers['x-user-id']).toBe('123e4567-e89b-12d3-a456-426614174000');
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m195[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m195[0m       expect(mockRequest.headers['x-user-email']).toBe('user@example.com');
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m196[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m196[0m       expect(mockRequest.headers['x-gateway-forwarded']).toBe('true');
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m197[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m197[0m       expect(mockRequest.headers.cookie).toBeUndefined();
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.spec.ts[0m:[93m198[0m:[93m14[0m - [91merror[0m[90m TS18048: [0m'mockRequest.headers' is possibly 'undefined'.
+
+    [7m198[0m       expect(mockRequest.headers['content-type']).toBe('application/json');
+    [7m   [0m [91m             ~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mcircuit-breaker.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/circuit-breaker.service.spec.ts[0m:[93m7[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m7[0m   let configService: ConfigService;
+    [7m [0m [91m      ~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/circuit-breaker.service.spec.ts[0m:[93m16[0m:[93m27[0m - [91merror[0m[90m TS6133: [0m'key' is declared but its value is never read.
+
+    [7m16[0m             get: jest.fn((key: string, defaultValue: any) => defaultValue),
+    [7m  [0m [91m                          ~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mservice-discovery.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m3[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module '@nestjs/axios' or its corresponding type declarations.
+
+    [7m3[0m import { HttpService } from '@nestjs/axios';
+    [7m [0m [91m                            ~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m10[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m10[0m   let configService: ConfigService;
+    [7m  [0m [91m      ~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mrate-limit.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/rate-limit.middleware.spec.ts[0m:[93m2[0m:[93m25[0m - [91merror[0m[90m TS6133: [0m'HttpStatus' is declared but its value is never read.
+
+    [7m2[0m import { HttpException, HttpStatus } from '@nestjs/common';
+    [7m [0m [91m                        ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/rate-limit.middleware.spec.ts[0m:[93m7[0m:[93m1[0m - [91merror[0m[90m TS6133: [0m'Response' is declared but its value is never read.
+
+    [7m7[0m import { Response } from 'express';
+    [7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/rate-limit.middleware.spec.ts[0m:[93m11[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'redisService' is declared but its value is never read.
+
+    [7m11[0m   let redisService: RedisService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/rate-limit.middleware.spec.ts[0m:[93m12[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'proxyService' is declared but its value is never read.
+
+    [7m12[0m   let proxyService: ProxyService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mjwt-cache.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/jwt-cache.service.spec.ts[0m:[93m13[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'redisService' is declared but its value is never read.
+
+    [7m13[0m   let redisService: RedisService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mauth.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/auth.middleware.spec.ts[0m:[93m2[0m:[93m48[0m - [91merror[0m[90m TS6133: [0m'HttpStatus' is declared but its value is never read.
+
+    [7m2[0m import { UnauthorizedException, HttpException, HttpStatus } from '@nestjs/common';
+    [7m [0m [91m                                               ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/auth.middleware.spec.ts[0m:[93m11[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'jwtCacheService' is declared but its value is never read.
+
+    [7m11[0m   let jwtCacheService: JwtCacheService;
+    [7m  [0m [91m      ~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/auth.middleware.spec.ts[0m:[93m12[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'proxyService' is declared but its value is never read.
+
+    [7m12[0m   let proxyService: ProxyService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/webhooks/[22m[1merror-webhook.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/webhooks/error-webhook.controller.spec.ts[0m:[93m5[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module '@orion/shared/errors' or its corresponding type declarations.
+
+    [7m5[0m import { ErrorSeverity, ErrorCategory } from '@orion/shared/errors';
+    [7m [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/webhooks/[22m[1merror-webhook.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/webhooks/error-webhook.service.spec.ts[0m:[93m6[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module '@orion/shared/errors' or its corresponding type declarations.
+
+    [7m6[0m import { ErrorSeverity, ErrorCategory } from '@orion/shared/errors';
+    [7m [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mredis.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/redis.service.spec.ts[0m:[93m7[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'configService' is declared but its value is never read.
+
+    [7m7[0m   let configService: ConfigService;
+    [7m [0m [91m      ~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mresponse-transform.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/response-transform.middleware.ts[0m:[93m2[0m:[93m10[0m - [91merror[0m[90m TS6133: [0m'Request' is declared but its value is never read.
+
+    [7m2[0m import { Request, Response, NextFunction } from 'express';
+    [7m [0m [91m         ~~~~~~~[0m
+    [96mpackages/gateway/src/app/middleware/response-transform.middleware.ts[0m:[93m7[0m:[93m20[0m - [91merror[0m[90m TS6133: [0m'logger' is declared but its value is never read.
+
+    [7m7[0m   private readonly logger = new Logger(ResponseTransformMiddleware.name);
+    [7m [0m [91m                   ~~~~~~[0m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mcors.middleware.spec.ts[22m ([0m[1m[41m7.281 s[49m[22m[0m)
+  CorsMiddleware
+    [32m✓[39m [2mshould be defined (15 ms)[22m
+    CORS headers
+      [32m✓[39m [2mshould set all required CORS headers (4 ms)[22m
+      [32m✓[39m [2mshould call next() for non-OPTIONS requests (1 ms)[22m
+    preflight requests
+      [32m✓[39m [2mshould handle OPTIONS preflight requests (1 ms)[22m
+    configuration
+      [32m✓[39m [2mshould use configured origin (3 ms)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mproxy.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/proxy.service.ts[0m:[93m79[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+
+    [7m79[0m         target: authServiceUrl,
+    [7m  [0m [91m        ~~~~~~[0m
+
+      [96mpackages/gateway/src/app/interfaces/route-config.interface.ts[0m:[93m2[0m:[93m3[0m
+        [7m2[0m   target: string;
+        [7m [0m [96m  ~~~~~~[0m
+        The expected type comes from property 'target' which is declared here on type 'RouteConfig'
+    [96mpackages/gateway/src/app/services/proxy.service.ts[0m:[93m88[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+
+    [7m88[0m         target: authServiceUrl,
+    [7m  [0m [91m        ~~~~~~[0m
+
+      [96mpackages/gateway/src/app/interfaces/route-config.interface.ts[0m:[93m2[0m:[93m3[0m
+        [7m2[0m   target: string;
+        [7m [0m [96m  ~~~~~~[0m
+        The expected type comes from property 'target' which is declared here on type 'RouteConfig'
+    [96mpackages/gateway/src/app/services/proxy.service.ts[0m:[93m97[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+
+    [7m97[0m         target: userServiceUrl,
+    [7m  [0m [91m        ~~~~~~[0m
+
+      [96mpackages/gateway/src/app/interfaces/route-config.interface.ts[0m:[93m2[0m:[93m3[0m
+        [7m2[0m   target: string;
+        [7m [0m [96m  ~~~~~~[0m
+        The expected type comes from property 'target' which is declared here on type 'RouteConfig'
+    [96mpackages/gateway/src/app/services/proxy.service.ts[0m:[93m106[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+
+    [7m106[0m         target: notificationServiceUrl,
+    [7m   [0m [91m        ~~~~~~[0m
+
+      [96mpackages/gateway/src/app/interfaces/route-config.interface.ts[0m:[93m2[0m:[93m3[0m
+        [7m2[0m   target: string;
+        [7m [0m [96m  ~~~~~~[0m
+        The expected type comes from property 'target' which is declared here on type 'RouteConfig'
+
+[31m[Nest] 96880  - [39m10/18/2025, 8:05:46 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for user: Connection refused[39m
+[31m[Nest] 96880  - [39m10/18/2025, 8:05:46 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for auth: Connection refused[39m
+[31m[Nest] 96880  - [39m10/18/2025, 8:05:46 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for user: Connection refused[39m
+[31m[Nest] 96880  - [39m10/18/2025, 8:05:46 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for notification: Connection refused[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mhealth.service.spec.ts[22m ([0m[1m[41m7.388 s[49m[22m[0m)
+  HealthService
+    [32m✓[39m [2mshould be defined (14 ms)[22m
+    checkHealth
+      [32m✓[39m [2mshould return healthy status when all services are up (3 ms)[22m
+      [32m✓[39m [2mshould return degraded status when some services are down (3 ms)[22m
+      [32m✓[39m [2mshould return unhealthy status when all services are down (2 ms)[22m
+
+[1mTest Suites: [22m[1m[31m14 failed[39m[22m, [1m[32m2 passed[39m[22m, 16 total
+[1mTests:       [22m[1m[32m9 passed[39m[22m, 9 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        10.089 s
+[2mRan all test suites[22m[2m.[22m

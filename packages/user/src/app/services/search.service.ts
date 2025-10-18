@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '@orion/shared';
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/user';
 import { SearchUsersDto, SearchUsersResponseDto, UserSearchResultDto } from '../dto';
 import { CacheService } from './cache.service';
 

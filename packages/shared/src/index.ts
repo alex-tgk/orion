@@ -8,6 +8,6 @@ export * from './secrets';
 export * from './security';
 export * from './errors';
 export * from './automation';
-export * from './testing';
+// export * from './testing'; // Removed - test utilities only
 export * from './middleware/correlation-id.middleware';
-export * from './ab-testing';
+// export * from './ab-testing'; // Excluded - has React dependency

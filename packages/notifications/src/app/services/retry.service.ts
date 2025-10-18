@@ -14,6 +14,27 @@ interface RetryConfig {
 }
 
 /**
+ * Retry Options for executeWithRetry
+ */
+interface RetryOptions {
+  maxAttempts?: number;
+  delay?: number;
+  backoffMultiplier?: number;
+  shouldRetry?: (error: Error) => boolean;
+  onRetry?: (error: Error, attempt: number) => void;
+  operationId?: string;
+}
+
+/**
+ * Retry Statistics
+ */
+interface RetryStats {
+  totalAttempts: number;
+  totalFailures: number;
+  successfulRetries: number;
+}
+
+/**
  * Retry Service
  *
  * Implements exponential backoff retry logic for failed notifications.
@@ -24,11 +45,18 @@ interface RetryConfig {
  * - Dead Letter Queue (DLQ) for max retries exceeded
  * - Scheduled retry processor
  * - Retryable error detection
+ * - Generic retry mechanism with circuit breaker
  */
 @Injectable()
 export class RetryService {
   private readonly logger = new Logger(RetryService.name);
   private readonly config: RetryConfig;
+  private readonly stats: RetryStats = {
+    totalAttempts: 0,
+    totalFailures: 0,
+    successfulRetries: 0,
+  };
+  private readonly circuitBreakers = new Map<string, boolean>();
 
   constructor(
     private readonly prisma: PrismaService,
@@ -46,6 +74,105 @@ export class RetryService {
       ],
       retryableStatuses: [NotificationStatus.failed],
     };
+  }
+
+  /**
+   * Execute a function with retry logic
+   */
+  async executeWithRetry<T>(
+    fn: () => Promise<T>,
+    options: RetryOptions = {}
+  ): Promise<T> {
+    const {
+      maxAttempts = 3,
+      delay = 1000,
+      backoffMultiplier = 1,
+      shouldRetry,
+      onRetry,
+      operationId,
+    } = options;
+
+    // Check circuit breaker
+    if (operationId && this.circuitBreakers.get(operationId)) {
+      throw new Error('Circuit is open');
+    }
+
+    let lastError: Error | undefined;
+
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      try {
+        this.stats.totalAttempts++;
+        const result = await fn();
+
+        // Track successful retry if this wasn't the first attempt
+        if (attempt > 0) {
+          this.stats.successfulRetries++;
+        }
+
+        return result;
+      } catch (error) {
+        lastError = error as Error;
+        this.stats.totalFailures++;
+
+        // Check if we should retry
+        const isLastAttempt = attempt === maxAttempts - 1;
+        const shouldRetryError = shouldRetry ? shouldRetry(lastError) : true;
+
+        if (isLastAttempt || !shouldRetryError) {
+          throw lastError;
+        }
+
+        // Call onRetry callback
+        if (onRetry) {
+          onRetry(lastError, attempt);
+        }
+
+        // Wait before retrying with exponential backoff
+        const waitTime = delay * Math.pow(backoffMultiplier, attempt);
+        await this.sleep(waitTime);
+      }
+    }
+
+    throw lastError!;
+  }
+
+  /**
+   * Sleep for specified milliseconds
+   */
+  private sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  /**
+   * Open circuit for a specific operation
+   */
+  openCircuit(operationId: string): void {
+    this.circuitBreakers.set(operationId, true);
+    this.logger.warn(`Circuit opened for operation: ${operationId}`);
+  }
+
+  /**
+   * Close circuit for a specific operation
+   */
+  closeCircuit(operationId: string): void {
+    this.circuitBreakers.delete(operationId);
+    this.logger.log(`Circuit closed for operation: ${operationId}`);
+  }
+
+  /**
+   * Get retry statistics
+   */
+  getRetryStats(): RetryStats {
+    return { ...this.stats };
+  }
+
+  /**
+   * Reset retry statistics
+   */
+  resetStats(): void {
+    this.stats.totalAttempts = 0;
+    this.stats.totalFailures = 0;
+    this.stats.successfulRetries = 0;
   }
 
   /**
@@ -249,17 +376,18 @@ export class RetryService {
         );
       }
     } catch (error) {
+      const err = error as Error;
       this.logger.error(
-        `Error processing retry queue: ${error.message}`,
-        error.stack
+        `Error processing retry queue: ${err.message}`,
+        err.stack
       );
     }
   }
 
   /**
-   * Get retry statistics
+   * Get database retry statistics (notifications)
    */
-  async getRetryStats(): Promise<{
+  async getDbRetryStats(): Promise<{
     pending: number;
     retrying: number;
     dlq: number;

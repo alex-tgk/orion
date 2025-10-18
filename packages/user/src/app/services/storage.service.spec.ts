@@ -6,6 +6,16 @@ import * as fs from 'fs/promises';
 
 jest.mock('fs/promises');
 
+// Type definition for Multer File
+interface MulterFile {
+  fieldname: string;
+  originalname: string;
+  encoding: string;
+  mimetype: string;
+  size: number;
+  buffer: Buffer;
+}
+
 describe('StorageService', () => {
   let service: StorageService;
 
@@ -41,7 +51,7 @@ describe('StorageService', () => {
       const file = {
         size: 1024 * 1024, // 1MB
         mimetype: 'image/jpeg',
-      } as Express.Multer.File;
+      } as any;
 
       expect(() => service.validateFile(file)).not.toThrow();
     });
@@ -50,7 +60,7 @@ describe('StorageService', () => {
       const file = {
         size: 10 * 1024 * 1024, // 10MB
         mimetype: 'image/jpeg',
-      } as Express.Multer.File;
+      } as any;
 
       expect(() => service.validateFile(file)).toThrow(BadRequestException);
     });
@@ -59,7 +69,7 @@ describe('StorageService', () => {
       const file = {
         size: 1024 * 1024,
         mimetype: 'application/pdf',
-      } as Express.Multer.File;
+      } as any;
 
       expect(() => service.validateFile(file)).toThrow(BadRequestException);
     });
@@ -72,7 +82,7 @@ describe('StorageService', () => {
         mimetype: 'image/jpeg',
         originalname: 'avatar.jpg',
         buffer: Buffer.from('test'),
-      } as Express.Multer.File;
+      } as any;
 
       (fs.mkdir as jest.Mock).mockResolvedValue(undefined);
       (fs.writeFile as jest.Mock).mockResolvedValue(undefined);

@@ -1,0 +1,28 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/ab-testing/client.ts[0m:[93m82[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'unknown' is not assignable to type 'VariantAssignment'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m82[0m     const assignment: VariantAssignment = await response.json();[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/ab-testing/client.ts[0m:[93m276[0m:[93m49[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'React'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m276[0m   return function <P extends object>(Component: React.ComponentType<P>) {[39m[22m
+[1m[31m[7m   [0m [91m                                                ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/index.ts[0m:[93m11[0m:[93m15[0m - [91merror[0m[90m TS2307: [0mCannot find module './testing' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m11[0m export * from './testing';[39m[22m
+[1m[31m[7m  [0m [91m              ~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/lib/metrics/metrics.interceptor.ts[0m:[93m42[0m:[93m33[0m - [91merror[0m[90m TS4111: [0mProperty 'SERVICE_NAME' comes from an index signature, so it must be accessed with ['SERVICE_NAME'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m42[0m     const service = process.env.SERVICE_NAME || 'unknown';[39m[22m
+[1m[31m[7m  [0m [91m                                ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/lib/metrics/metrics.service.ts[0m:[93m2[0m:[93m62[0m - [91merror[0m[90m TS2307: [0mCannot find module 'prom-client' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import { register, Counter, Histogram, Gauge, Summary } from 'prom-client';[39m[22m
+[1m[31m[7m [0m [91m                                                             ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/swagger-helper.ts[0m:[93m22[0m:[93m28[0m - [91merror[0m[90m TS4111: [0mProperty 'PORT' comes from an index signature, so it must be accessed with ['PORT'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m22[0m   const port = process.env.PORT || '3000';[39m[22m
+[1m[31m[7m  [0m [91m                           ~~~~[0m[39m[22m
+[1m[31m[39m[22m
+
+[2m../../dist/packages/shared/README.md[22m

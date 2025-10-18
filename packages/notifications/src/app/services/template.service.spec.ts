@@ -6,7 +6,6 @@ import { NotFoundException } from '@nestjs/common';
 
 describe('TemplateService', () => {
   let service: TemplateService;
-  let prismaService: PrismaService;
 
   const mockPrismaService = {
     notificationTemplate: {
@@ -35,7 +34,6 @@ describe('TemplateService', () => {
     }).compile();
 
     service = module.get<TemplateService>(TemplateService);
-    prismaService = module.get<PrismaService>(PrismaService);
 
     jest.clearAllMocks();
   });

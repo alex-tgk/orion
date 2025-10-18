@@ -1,0 +1,103 @@
+Compiling TypeScript files for project "shared"...
+[1m[31m[96mpackages/shared/src/ab-testing/client.ts[0m:[93m82[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'unknown' is not assignable to type 'VariantAssignment'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m82[0m     const assignment: VariantAssignment = await response.json();[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/ab-testing/client.ts[0m:[93m276[0m:[93m49[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'React'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m276[0m   return function <P extends object>(Component: React.ComponentType<P>) {[39m[22m
+[1m[31m[7m   [0m [91m                                                ~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/lib/metrics/metrics.interceptor.ts[0m:[93m42[0m:[93m33[0m - [91merror[0m[90m TS4111: [0mProperty 'SERVICE_NAME' comes from an index signature, so it must be accessed with ['SERVICE_NAME'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m42[0m     const service = process.env.SERVICE_NAME || 'unknown';[39m[22m
+[1m[31m[7m  [0m [91m                                ~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/lib/metrics/metrics.service.ts[0m:[93m2[0m:[93m62[0m - [91merror[0m[90m TS2307: [0mCannot find module 'prom-client' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m2[0m import { register, Counter, Histogram, Gauge, Summary } from 'prom-client';[39m[22m
+[1m[31m[7m [0m [91m                                                             ~~~~~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/port-registry/swagger-helper.ts[0m:[93m22[0m:[93m28[0m - [91merror[0m[90m TS4111: [0mProperty 'PORT' comes from an index signature, so it must be accessed with ['PORT'].[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m22[0m   const port = process.env.PORT || '3000';[39m[22m
+[1m[31m[7m  [0m [91m                           ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m152[0m:[93m11[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m152[0m   status: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m153[0m:[93m9[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m153[0m   json: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m154[0m:[93m9[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m154[0m   send: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m        ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m155[0m:[93m15[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m155[0m   sendStatus: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m              ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m156[0m:[93m8[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m156[0m   set: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m       ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m157[0m:[93m8[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m157[0m   get: jest.Mock;[39m[22m
+[1m[31m[7m   [0m [91m       ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m162[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m162[0m     status: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m            ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m163[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m163[0m     json: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m164[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m164[0m     send: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m165[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m165[0m     sendStatus: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m                ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m166[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m166[0m     set: jest.fn().mockReturnThis(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m167[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m167[0m     get: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m         ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m198[0m:[93m18[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m198[0m     $executeRaw: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m199[0m:[93m24[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m199[0m     $executeRawUnsafe: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                       ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m200[0m:[93m16[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m200[0m     $queryRaw: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m               ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m201[0m:[93m22[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m201[0m     $queryRawUnsafe: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                     ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/mock-factories.ts[0m:[93m202[0m:[93m19[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m202[0m     $transaction: jest.fn(),[39m[22m
+[1m[31m[7m   [0m [91m                  ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m8[0m:[93m28[0m - [91merror[0m[90m TS2307: [0mCannot find module 'typeorm' or its corresponding type declarations.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m8[0m import { Repository } from 'typeorm';[39m[22m
+[1m[31m[7m [0m [91m                           ~~~~~~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m15[0m:[93m50[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m15[0m export function createMockRepository<T = any>(): jest.Mocked<Repository<T>> {[39m[22m
+[1m[31m[7m  [0m [91m                                                 ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m17[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'jest'.[39m[22m
+[1m[31m[39m[22m
+[1m[31m[7m17[0m     find: jest.fn(),[39m[22m
+[1m[31m[7m  [0m [91m          ~~~~[0m[39m[22m
+[1m[31m[96mpackages/shared/src/testing/test-utils.ts[0m:[93m18[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCann
+[2m../../dist/packages/shared/README.md[22m

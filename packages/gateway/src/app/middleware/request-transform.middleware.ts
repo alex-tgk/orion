@@ -1,11 +1,9 @@
-import { Injectable, Logger, NestMiddleware } from '@nestjs/common';
+import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import { RequestContext } from '../interfaces/request-context.interface';
 
 @Injectable()
 export class RequestTransformMiddleware implements NestMiddleware {
-  private readonly logger = new Logger(RequestTransformMiddleware.name);
-
   use(req: RequestContext, res: Response, next: NextFunction): void {
     // Add correlation ID to forwarded headers
     if (req.correlationId) {

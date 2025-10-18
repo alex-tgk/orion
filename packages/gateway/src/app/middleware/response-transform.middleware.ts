@@ -1,11 +1,9 @@
-import { Injectable, Logger, NestMiddleware } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Response, NextFunction } from 'express';
 import { RequestContext } from '../interfaces/request-context.interface';
 
 @Injectable()
 export class ResponseTransformMiddleware implements NestMiddleware {
-  private readonly logger = new Logger(ResponseTransformMiddleware.name);
-
   use(req: RequestContext, res: Response, next: NextFunction): void {
     // Store original send function
     const originalSend = res.send.bind(res);

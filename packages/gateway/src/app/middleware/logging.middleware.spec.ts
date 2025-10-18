@@ -1,9 +1,10 @@
 import { LoggingMiddleware } from './logging.middleware';
-import { Request, Response } from 'express';
+import { Response } from 'express';
+import { RequestContext } from '../interfaces/request-context.interface';
 
 describe('LoggingMiddleware', () => {
   let middleware: LoggingMiddleware;
-  let mockRequest: Partial<Request>;
+  let mockRequest: Partial<RequestContext>;
   let mockResponse: Partial<Response>;
   let nextFunction: jest.Mock;
 
@@ -30,14 +31,14 @@ describe('LoggingMiddleware', () => {
   });
 
   it('should add correlation ID to request', () => {
-    middleware.use(mockRequest as any, mockResponse as Response, nextFunction);
+    middleware.use(mockRequest as RequestContext, mockResponse as Response, nextFunction);
 
     expect(mockRequest.correlationId).toBeDefined();
     expect(typeof mockRequest.correlationId).toBe('string');
   });
 
   it('should add correlation ID to response headers', () => {
-    middleware.use(mockRequest as any, mockResponse as Response, nextFunction);
+    middleware.use(mockRequest as RequestContext, mockResponse as Response, nextFunction);
 
     expect(mockResponse.setHeader).toHaveBeenCalledWith(
       'X-Correlation-ID',
@@ -46,13 +47,13 @@ describe('LoggingMiddleware', () => {
   });
 
   it('should call next function', () => {
-    middleware.use(mockRequest as any, mockResponse as Response, nextFunction);
+    middleware.use(mockRequest as RequestContext, mockResponse as Response, nextFunction);
 
     expect(nextFunction).toHaveBeenCalled();
   });
 
   it('should set start time on request', () => {
-    middleware.use(mockRequest as any, mockResponse as Response, nextFunction);
+    middleware.use(mockRequest as RequestContext, mockResponse as Response, nextFunction);
 
     expect(mockRequest.startTime).toBeDefined();
     expect(typeof mockRequest.startTime).toBe('number');

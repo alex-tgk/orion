@@ -1,5 +1,5 @@
 import { Injectable, Logger, NestMiddleware } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { RequestContext } from '../interfaces/request-context.interface';
 
@@ -28,7 +28,7 @@ export class LoggingMiddleware implements NestMiddleware {
 
     // Hook into response finish
     res.on('finish', () => {
-      const duration = Date.now() - req.startTime;
+      const duration = Date.now() - (req.startTime || Date.now());
       const logLevel = res.statusCode >= 400 ? 'error' : 'log';
 
       this.logger[logLevel](

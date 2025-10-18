@@ -4,7 +4,6 @@ import { RedisService } from './redis.service';
 
 describe('RedisService', () => {
   let service: RedisService;
-  let configService: ConfigService;
 
   const mockConfigService = {
     get: jest.fn((key: string, defaultValue?: any) => {
@@ -29,7 +28,6 @@ describe('RedisService', () => {
     }).compile();
 
     service = module.get<RedisService>(RedisService);
-    configService = module.get<ConfigService>(ConfigService);
   });
 
   it('should be defined', () => {

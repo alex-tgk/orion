@@ -1,13 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
-import { HttpService } from '@nestjs/axios';
 import { ServiceDiscoveryService } from './service-discovery.service';
-import { of, throwError } from 'rxjs';
+import { HttpService } from '@nestjs/axios';
+import { of } from 'rxjs';
 
 describe('ServiceDiscoveryService', () => {
   let service: ServiceDiscoveryService;
   let httpService: HttpService;
-  let configService: ConfigService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -33,7 +32,6 @@ describe('ServiceDiscoveryService', () => {
 
     service = module.get<ServiceDiscoveryService>(ServiceDiscoveryService);
     httpService = module.get<HttpService>(HttpService);
-    configService = module.get<ConfigService>(ConfigService);
 
     // Prevent automatic initialization
     jest.spyOn(service, 'onModuleInit').mockResolvedValue(undefined);

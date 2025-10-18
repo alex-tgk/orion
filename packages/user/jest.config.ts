@@ -2,10 +2,15 @@ export default {
   displayName: 'user',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
+  moduleNameMapper: {
+    '^@orion/shared$': '<rootDir>/../shared/src/index.ts',
+    '^@prisma/user$': '<rootDir>/../../node_modules/.prisma/user',
+  },
   coverageDirectory: '../../coverage/packages/user',
   coverageReporters: ['text', 'lcov', 'html'],
   collectCoverageFrom: [

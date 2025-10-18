@@ -1,0 +1,740 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1memail.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/services/email.service.spec.ts[0m:[93m4[0m:[93m25[0m - [91merror[0m[90m TS2307: [0mCannot find module '@sendgrid/mail' or its corresponding type declarations.
+
+    [7m4[0m import * as sgMail from '@sendgrid/mail';
+    [7m [0m [91m                        ~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1msms.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    Cannot find module 'twilio' from 'src/app/services/sms.service.spec.ts'
+
+    [0m [90m 4 |[39m
+     [90m 5 |[39m [90m// Mock Twilio[39m
+    [31m[1m>[22m[39m[90m 6 |[39m jest[33m.[39mmock([32m'twilio'[39m[33m,[39m () [33m=>[39m {
+     [90m   |[39m      [31m[1m^[22m[39m
+     [90m 7 |[39m   [36mreturn[39m jest[33m.[39mfn()[33m.[39mmockImplementation(() [33m=>[39m ({
+     [90m 8 |[39m     messages[33m:[39m {
+     [90m 9 |[39m       create[33m:[39m jest[33m.[39mfn()[33m.[39mmockResolvedValue({ sid[33m:[39m [32m'test-sid'[39m })[33m,[39m[0m
+
+      [2mat Resolver._throwModNotFoundError ([22m../../node_modules/.pnpm/jest-resolve@30.2.0/node_modules/jest-resolve/build/index.js[2m:863:11)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/sms.service.spec.ts[39m[0m[2m:6:6)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mnotification.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/services/notification.service.spec.ts[0m:[93m47[0m:[93m14[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ 'notification.rabbitmq.maxAttempts': number; 'notification.rabbitmq.retryDelay': number[]; 'notification.rabbitmq.exchange': string; }'.
+      No index signature with a parameter of type 'string' was found on type '{ 'notification.rabbitmq.maxAttempts': number; 'notification.rabbitmq.retryDelay': number[]; 'notification.rabbitmq.exchange': string; }'.
+
+    [7m47[0m       return config[key];
+    [7m  [0m [91m             ~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/consumers/[22m[1mauth-events.consumer.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/consumers/auth-events.consumer.spec.ts[0m:[93m278[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m278[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+    [96mpackages/notifications/src/app/consumers/auth-events.consumer.spec.ts[0m:[93m303[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m303[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+    [96mpackages/notifications/src/app/consumers/auth-events.consumer.spec.ts[0m:[93m325[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m325[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mpreferences.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/services/preferences.service.spec.ts[0m:[93m4[0m:[93m1[0m - [91merror[0m[90m TS6133: [0m'NotFoundException' is declared but its value is never read.
+
+    [7m4[0m import { NotFoundException } from '@nestjs/common';
+    [7m [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/consumers/[22m[1muser-events.consumer.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/consumers/user-events.consumer.spec.ts[0m:[93m289[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m289[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+    [96mpackages/notifications/src/app/consumers/user-events.consumer.spec.ts[0m:[93m314[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m314[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+    [96mpackages/notifications/src/app/consumers/user-events.consumer.spec.ts[0m:[93m368[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m368[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+    [96mpackages/notifications/src/app/consumers/user-events.consumer.spec.ts[0m:[93m399[0m:[93m47[0m - [91merror[0m[90m TS6133: [0m'queue' is declared but its value is never read.
+
+    [7m399[0m       mockChannel.consume.mockImplementation((queue, callback) => {
+    [7m   [0m [91m                                              ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mtemplate.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/services/template.service.ts[0m:[93m3[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module 'handlebars' or its corresponding type declarations.
+
+    [7m3[0m import * as Handlebars from 'handlebars';
+    [7m [0m [91m                            ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/template.service.ts[0m:[93m16[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.
+
+    [7m16[0m     private readonly configService: ConfigService,
+    [7m  [0m [91m                     ~~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/template.service.ts[0m:[93m55[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationTemplate' does not exist on type 'PrismaService'.
+
+    [7m55[0m       const dbTemplate = await this.prisma.notificationTemplate.findUnique({
+    [7m  [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/template.service.ts[0m:[93m141[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationTemplate' does not exist on type 'PrismaService'.
+
+    [7m141[0m     await this.prisma.notificationTemplate.upsert({
+    [7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m notifications [39m[27m[0m [2mpackages/notifications/src/app/services/[22m[1mretry.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m5[0m:[93m36[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/notifications' or its corresponding type declarations.
+
+    [7m5[0m import { NotificationStatus } from '@prisma/notifications';
+    [7m [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m247[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m247[0m     const notification = await this.prisma.notification.findUnique({
+    [7m   [0m [91m                                           ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m267[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m267[0m     await this.prisma.notification.update({
+    [7m   [0m [91m                      ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m288[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m288[0m     await this.prisma.notification.update({
+    [7m   [0m [91m                      ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m315[0m:[93m47[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m315[0m       const notifications = await this.prisma.notification.findMany({
+    [7m   [0m [91m                                              ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m396[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m396[0m       this.prisma.notification.count({
+    [7m   [0m [91m                  ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m402[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m402[0m       this.prisma.notification.count({
+    [7m   [0m [91m                  ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m408[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m408[0m       this.prisma.notification.count({
+    [7m   [0m [91m                  ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m425[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m425[0m     const notification = await this.prisma.notification.findUnique({
+    [7m   [0m [91m                                           ~~~~~~~~~~~~[0m
+    [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m441[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.
+
+    [7m441[0m     await this.prisma.notification.update({
+    [7m   [0m [91m                      ~~~~~~~~~~~~[0m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/dto/notification-response.dto.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m6[0m   id: string;[39m
+[31m[7m [0m [91m  ~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'userId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m9[0m   userId: string;[39m
+[31m[7m [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'type' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m12[0m   type: NotificationType;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'template' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m15[0m   template: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m21[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'recipient' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m21[0m   recipient: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'status' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m24[0m   status: NotificationStatus;[39m
+[31m[7m  [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m27[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'attempts' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m27[0m   attempts: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m45[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'createdAt' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m45[0m   createdAt: Date;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m50[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m50[0m   id: string;[39m
+[31m[7m  [0m [91m  ~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m53[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'status' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m53[0m   status: NotificationStatus;[39m
+[31m[7m  [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m56[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'type' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m56[0m   type: NotificationType;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m59[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'attempts' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m59[0m   attempts: number;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m73[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'data' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m73[0m   data: NotificationResponseDto[];[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m76[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'pagination' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m76[0m   pagination: {[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m85[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'notificationId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m85[0m   notificationId: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m88[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'status' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m88[0m   status: NotificationStatus;[39m
+[31m[7m  [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-response.dto.ts[0m:[93m91[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'estimatedDelivery' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m91[0m   estimatedDelivery: Date;[39m
+[31m[7m  [0m [91m  ~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/dto/send-notification.dto.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/dto/send-notification.dto.ts[0m:[93m8[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'userId' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m8[0m   userId: string;[39m
+[31m[7m [0m [91m  ~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/send-notification.dto.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'type' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m12[0m   type: NotificationType;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/send-notification.dto.ts[0m:[93m16[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'template' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m16[0m   template: string;[39m
+[31m[7m  [0m [91m  ~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/dto/notification-preferences.dto.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/dto/notification-preferences.dto.ts[0m:[93m39[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'email' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m39[0m   email: {[39m
+[31m[7m  [0m [91m  ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-preferences.dto.ts[0m:[93m45[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'sms' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m45[0m   sms: {[39m
+[31m[7m  [0m [91m  ~~~[0m[39m
+[31m[96mpackages/notifications/src/app/dto/notification-preferences.dto.ts[0m:[93m51[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'push' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m51[0m   push: {[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/email.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/email.service.ts[0m:[93m3[0m:[93m25[0m - [91merror[0m[90m TS2307: [0mCannot find module '@sendgrid/mail' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import * as sgMail from '@sendgrid/mail';[39m
+[31m[7m [0m [91m                        ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/email.service.ts[0m:[93m21[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'boolean | undefined' is not assignable to type 'boolean'.[39m
+[31m  Type 'undefined' is not assignable to type 'boolean'.[39m
+[31m[39m
+[31m[7m21[0m     this.enabled = this.configService.get<boolean>('notification.sendgrid.enabled');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/email.service.ts[0m:[93m22[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType '{ email: string; name: string; } | undefined' is not assignable to type '{ email: string; name: string; }'.[39m
+[31m  Type 'undefined' is not assignable to type '{ email: string; name: string; }'.[39m
+[31m[39m
+[31m[7m22[0m     this.from = this.configService.get('notification.sendgrid.from');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/email.service.ts[0m:[93m23[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.[39m
+[31m  Type 'undefined' is not assignable to type 'string'.[39m
+[31m[39m
+[31m[7m23[0m     this.replyTo = this.configService.get<string>('notification.sendgrid.replyTo');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/controllers/templates.controller.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m14[0m:[93m34[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/notifications' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m14[0m import { NotificationType } from '@prisma/notifications';[39m
+[31m[7m  [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m20[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m20[0m   name: string;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m23[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'body' has no initializer and is not definitely assigned in the constructor.[39m
+[31m[39m
+[31m[7m23[0m   body: string;[39m
+[31m[7m  [0m [91m  ~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m51[0m:[93m33[0m - [91merror[0m[90m TS2554: [0mExpected 5 arguments, but got 1.[39m
+[31m[39m
+[31m[7m51[0m     return this.templateService.createTemplate(dto);[39m
+[31m[7m  [0m [91m                                ~~~~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mpackages/notifications/src/app/services/template.service.ts[0m:[93m136[0m:[93m5[0m[39m
+[31m    [7m136[0m     type: NotificationType,[39m
+[31m    [7m   [0m [96m    ~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m    An argument for 'type' was not provided.[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m63[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'findAll' does not exist on type 'TemplateService'.[39m
+[31m[39m
+[31m[7m63[0m     return this.templateService.findAll({ type, isActive });[39m
+[31m[7m  [0m [91m                                ~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m71[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'findById' does not exist on type 'TemplateService'.[39m
+[31m[39m
+[31m[7m71[0m     return this.templateService.findById(id);[39m
+[31m[7m  [0m [91m                                ~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m79[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'findByName' does not exist on type 'TemplateService'.[39m
+[31m[39m
+[31m[7m79[0m     return this.templateService.findByName(name);[39m
+[31m[7m  [0m [91m                                ~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m87[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'updateTemplate' does not exist on type 'TemplateService'.[39m
+[31m[39m
+[31m[7m87[0m     return this.templateService.updateTemplate(id, dto);[39m
+[31m[7m  [0m [91m                                ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m96[0m:[93m32[0m - [91merror[0m[90m TS2339: [0mProperty 'deleteTemplate' does not exist on type 'TemplateService'.[39m
+[31m[39m
+[31m[7m96[0m     await this.templateService.deleteTemplate(id);[39m
+[31m[7m  [0m [91m                               ~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m104[0m:[93m33[0m - [91merror[0m[90m TS2551: [0mProperty 'activateTemplate' does not exist on type 'TemplateService'. Did you mean 'createTemplate'?[39m
+[31m[39m
+[31m[7m104[0m     return this.templateService.activateTemplate(id);[39m
+[31m[7m   [0m [91m                                ~~~~~~~~~~~~~~~~[0m[39m
+[31m[39m
+[31m  [96mpackages/notifications/src/app/services/template.service.ts[0m:[93m134[0m:[93m9[0m[39m
+[31m    [7m134[0m   async createTemplate([39m
+[31m    [7m   [0m [96m        ~~~~~~~~~~~~~~[0m[39m
+[31m    'createTemplate' is declared here.[39m
+[31m[96mpackages/notifications/src/app/controllers/templates.controller.ts[0m:[93m112[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'deactivateTemplate' does not exist on type 'TemplateService'.[39m
+[31m[39m
+[31m[7m112[0m     return this.templateService.deactivateTemplate(id);[39m
+[31m[7m   [0m [91m                                ~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/push.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/push.service.ts[0m:[93m143[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m143[0m         `Failed to send push notification: ${error.message}`,[39m
+[31m[7m   [0m [91m                                             ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m144[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m144[0m         error.stack[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m149[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m149[0m         error: error.message,[39m
+[31m[7m   [0m [91m               ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m159[0m:[93m5[0m - [91merror[0m[90m TS6133: [0m'payload' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m159[0m     payload: PushPayload[39m
+[31m[7m   [0m [91m    ~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m212[0m:[93m47[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m212[0m         `Failed to send push notifications: ${error.message}`,[39m
+[31m[7m   [0m [91m                                              ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m213[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m213[0m         error.stack[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m218[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m218[0m         error: error.message,[39m
+[31m[7m   [0m [91m               ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m228[0m:[93m5[0m - [91merror[0m[90m TS6133: [0m'payload' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m228[0m     payload: PushPayload[39m
+[31m[7m   [0m [91m    ~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m267[0m:[93m52[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m267[0m         `Failed to send topic push notification: ${error.message}`,[39m
+[31m[7m   [0m [91m                                                   ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m268[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m268[0m         error.stack[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m273[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m273[0m         error: error.message,[39m
+[31m[7m   [0m [91m               ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m314[0m:[93m42[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m314[0m         `Failed to subscribe to topic: ${error.message}`,[39m
+[31m[7m   [0m [91m                                         ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m315[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m315[0m         error.stack[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m320[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m320[0m         error: error.message,[39m
+[31m[7m   [0m [91m               ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m361[0m:[93m46[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m361[0m         `Failed to unsubscribe from topic: ${error.message}`,[39m
+[31m[7m   [0m [91m                                             ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m362[0m:[93m9[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m362[0m         error.stack[39m
+[31m[7m   [0m [91m        ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/push.service.ts[0m:[93m367[0m:[93m16[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m367[0m         error: error.message,[39m
+[31m[7m   [0m [91m               ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/delivery-tracking.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m3[0m:[93m54[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/notifications' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { NotificationStatus, NotificationType } from '@prisma/notifications';[39m
+[31m[7m [0m [91m                                                     ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m45[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m45[0m     await this.prisma.notification.update({[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m67[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m67[0m     const notification = await this.prisma.notification.findUnique({[39m
+[31m[7m  [0m [91m                                           ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m76[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m76[0m     await this.prisma.notification.update({[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m103[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m103[0m     await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m128[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m128[0m     await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m149[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m149[0m     await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m179[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m179[0m       this.prisma.notification.count({ where: whereClause }),[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m182[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m182[0m       this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m190[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m190[0m       this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m198[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m198[0m       this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m212[0m:[93m54[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m212[0m     const deliveredNotifications = await this.prisma.notification.findMany({[39m
+[31m[7m   [0m [91m                                                     ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m227[0m:[93m13[0m - [91merror[0m[90m TS7006: [0mParameter 'n' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m227[0m       .map((n) => {[39m
+[31m[7m   [0m [91m            ~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m231[0m:[93m16[0m - [91merror[0m[90m TS7006: [0mParameter 't' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m231[0m       .filter((t) => t > 0);[39m
+[31m[7m   [0m [91m               ~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m235[0m:[93m33[0m - [91merror[0m[90m TS7006: [0mParameter 'a' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m235[0m         ? deliveryTimes.reduce((a, b) => a + b, 0) / deliveryTimes.length[39m
+[31m[7m   [0m [91m                                ~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m235[0m:[93m36[0m - [91merror[0m[90m TS7006: [0mParameter 'b' implicitly has an 'any' type.[39m
+[31m[39m
+[31m[7m235[0m         ? deliveryTimes.reduce((a, b) => a + b, 0) / deliveryTimes.length[39m
+[31m[7m   [0m [91m                                   ~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m265[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m265[0m         this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                    ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m268[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m268[0m         this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                    ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m275[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m275[0m         this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                    ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m303[0m:[93m45[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m303[0m     const notifications = await this.prisma.notification.findMany({[39m
+[31m[7m   [0m [91m                                            ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m322[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m322[0m     const total = await this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                                    ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/delivery-tracking.service.ts[0m:[93m341[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m341[0m     const notification = await this.prisma.notification.findUnique({[39m
+[31m[7m   [0m [91m                                           ~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/consumers/user-events.consumer.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/consumers/user-events.consumer.ts[0m:[93m3[0m:[93m41[0m - [91merror[0m[90m TS2307: [0mCannot find module 'amqplib' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { Channel, ConsumeMessage } from 'amqplib';[39m
+[31m[7m [0m [91m                                        ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/controllers/preferences.controller.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/controllers/preferences.controller.ts[0m:[93m7[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'UseGuards' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m7[0m   UseGuards,[39m
+[31m[7m [0m [91m  ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/controllers/preferences.controller.ts[0m:[93m62[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'resetToDefaults' does not exist on type 'PreferencesService'.[39m
+[31m[39m
+[31m[7m62[0m     return this.preferencesService.resetToDefaults(userId);[39m
+[31m[7m  [0m [91m                                   ~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/sms.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/sms.service.ts[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module 'twilio' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { Twilio } from 'twilio';[39m
+[31m[7m [0m [91m                       ~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/sms.service.ts[0m:[93m20[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.[39m
+[31m  Type 'undefined' is not assignable to type 'string'.[39m
+[31m[39m
+[31m[7m20[0m     this.from = this.configService.get<string>('notification.twilio.from');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/sms.service.ts[0m:[93m21[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'boolean | undefined' is not assignable to type 'boolean'.[39m
+[31m  Type 'undefined' is not assignable to type 'boolean'.[39m
+[31m[39m
+[31m[7m21[0m     this.enabled = this.configService.get<boolean>('notification.twilio.enabled');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/consumers/auth-events.consumer.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/consumers/auth-events.consumer.ts[0m:[93m3[0m:[93m41[0m - [91merror[0m[90m TS2307: [0mCannot find module 'amqplib' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import { Channel, ConsumeMessage } from 'amqplib';[39m
+[31m[7m [0m [91m                                        ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/consumers/auth-events.consumer.ts[0m:[93m202[0m:[93m13[0m - [91merror[0m[90m TS6133: [0m'smsBody' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m202[0m       const smsBody = `Security Alert: Suspicious login attempt from ${event.location} at ${new Date(event.timestamp).toLocaleString()}. If this wasn't you, secure your account immediately.`;[39m
+[31m[7m   [0m [91m            ~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/controllers/notifications.controller.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/controllers/notifications.controller.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m TS6133: [0m'UseGuards' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m9[0m   UseGuards,[39m
+[31m[7m [0m [91m  ~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/notification.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m4[0m:[93m25[0m - [91merror[0m[90m TS2307: [0mCannot find module 'amqplib' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m4[0m import { Channel } from 'amqplib';[39m
+[31m[7m [0m [91m                        ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m33[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'number | undefined' is not assignable to type 'number'.[39m
+[31m  Type 'undefined' is not assignable to type 'number'.[39m
+[31m[39m
+[31m[7m33[0m     this.maxAttempts = this.configService.get<number>('notification.rabbitmq.maxAttempts');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m34[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'number[] | undefined' is not assignable to type 'number[]'.[39m
+[31m  Type 'undefined' is not assignable to type 'number[]'.[39m
+[31m[39m
+[31m[7m34[0m     this.retryDelays = this.configService.get<number[]>('notification.rabbitmq.retryDelay');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m49[0m:[93m46[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m49[0m       const notification = await this.prisma.notification.create({[39m
+[31m[7m  [0m [91m                                             ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m81[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m81[0m     const notification = await this.prisma.notification.findUnique({[39m
+[31m[7m  [0m [91m                                           ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m92[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m92[0m       await this.prisma.notification.update({[39m
+[31m[7m  [0m [91m                        ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m125[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m125[0m       await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                        ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m158[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m158[0m       await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                        ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m179[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m179[0m       await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                        ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m259[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m259[0m     return this.prisma.notification.findUnique({[39m
+[31m[7m   [0m [91m                       ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m284[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m284[0m       this.prisma.notification.findMany({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/notification.service.ts[0m:[93m298[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m298[0m       this.prisma.notification.count({ where: { userId } }),[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/preferences.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/preferences.service.ts[0m:[93m1[0m:[93m30[0m - [91merror[0m[90m TS6133: [0m'NotFoundException' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m1[0m import { Injectable, Logger, NotFoundException } from '@nestjs/common';[39m
+[31m[7m [0m [91m                             ~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/preferences.service.ts[0m:[93m15[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m15[0m     let preferences = await this.prisma.notificationPreferences.findUnique({[39m
+[31m[7m  [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/preferences.service.ts[0m:[93m39[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m39[0m     let preferences = await this.prisma.notificationPreferences.findUnique({[39m
+[31m[7m  [0m [91m                                        ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/preferences.service.ts[0m:[93m53[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m53[0m     const updated = await this.prisma.notificationPreferences.update({[39m
+[31m[7m  [0m [91m                                      ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/preferences.service.ts[0m:[93m100[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m100[0m     return this.prisma.notificationPreferences.create({[39m
+[31m[7m   [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/preferences.service.ts[0m:[93m157[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationPreferences' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m157[0m       await this.prisma.notificationPreferences.delete({[39m
+[31m[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/preferences.service.ts[0m:[93m162[0m:[93m11[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m162[0m       if (error.code === 'P2025') {[39m
+[31m[7m   [0m [91m          ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/health.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/health.service.ts[0m:[93m120[0m:[93m58[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m120[0m       this.logger.error(`Database health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                         ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m123[0m:[93m18[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m123[0m         message: error.message,[39m
+[31m[7m   [0m [91m                 ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m133[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'isEnabled' does not exist on type 'EmailService'.[39m
+[31m[39m
+[31m[7m133[0m       const enabled = this.emailService.isEnabled();[39m
+[31m[7m   [0m [91m                                        ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m139[0m:[93m55[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m139[0m       this.logger.error(`Email health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                      ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m142[0m:[93m18[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m142[0m         message: error.message,[39m
+[31m[7m   [0m [91m                 ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m152[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'isEnabled' does not exist on type 'SmsService'.[39m
+[31m[39m
+[31m[7m152[0m       const enabled = this.smsService.isEnabled();[39m
+[31m[7m   [0m [91m                                      ~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m158[0m:[93m53[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m158[0m       this.logger.error(`SMS health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                    ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m161[0m:[93m18[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m161[0m         message: error.message,[39m
+[31m[7m   [0m [91m                 ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m177[0m:[93m54[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m177[0m       this.logger.error(`Push health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                     ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m180[0m:[93m18[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m180[0m         message: error.message,[39m
+[31m[7m   [0m [91m                 ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m196[0m:[93m58[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m196[0m       this.logger.error(`RabbitMQ health check failed: ${error.message}`);[39m
+[31m[7m   [0m [91m                                                         ~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/health.service.ts[0m:[93m199[0m:[93m18[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m199[0m         message: error.message,[39m
+[31m[7m   [0m [91m                 ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/retry.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m5[0m:[93m36[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/notifications' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m5[0m import { NotificationStatus } from '@prisma/notifications';[39m
+[31m[7m [0m [91m                                   ~~~~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m247[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m247[0m     const notification = await this.prisma.notification.findUnique({[39m
+[31m[7m   [0m [91m                                           ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m267[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m267[0m     await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m288[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m288[0m     await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m315[0m:[93m47[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m315[0m       const notifications = await this.prisma.notification.findMany({[39m
+[31m[7m   [0m [91m                                              ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m396[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m396[0m       this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m402[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m402[0m       this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m408[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m408[0m       this.prisma.notification.count({[39m
+[31m[7m   [0m [91m                  ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m425[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m425[0m     const notification = await this.prisma.notification.findUnique({[39m
+[31m[7m   [0m [91m                                           ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/retry.service.ts[0m:[93m441[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notification' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m441[0m     await this.prisma.notification.update({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/notifications/src/app/services/template.service.ts[39m
+[31mERROR: [96mpackages/notifications/src/app/services/template.service.ts[0m:[93m3[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module 'handlebars' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m3[0m import * as Handlebars from 'handlebars';[39m
+[31m[7m [0m [91m                            ~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/template.service.ts[0m:[93m16[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m16[0m     private readonly configService: ConfigService,[39m
+[31m[7m  [0m [91m                     ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/template.service.ts[0m:[93m55[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationTemplate' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m55[0m       const dbTemplate = await this.prisma.notificationTemplate.findUnique({[39m
+[31m[7m  [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/notifications/src/app/services/template.service.ts[0m:[93m141[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'notificationTemplate' does not exist on type 'PrismaService'.[39m
+[31m[39m
+[31m[7m141[0m     await this.prisma.notificationTemplate.upsert({[39m
+[31m[7m   [0m [91m                      ~~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+---------------------------|---------|----------|---------|---------|-------------------
+File                       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------|---------|----------|---------|---------|-------------------
+[31;1mAll files                 [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m app                      [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  app.controller.ts       [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-10             [0m 
+[31;1m  app.service.ts          [0m | [31;1m      0[0m | [32;1m     100[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-6              [0m 
+[31;1m app/controllers          [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  health.controller.ts    [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-71             [0m 
+[31;1m app/entities             [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  notification.entity.ts  [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-13             [0m 
+[31;1m app/filters              [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m                 [0m 
+[31;1m  all-exceptions.filter.ts[0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-62             [0m 
+[31;1m  http-exception.filter.ts[0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-38             [0m 
+---------------------------|---------|----------|---------|---------|-------------------
+[1m[31mJest: "global" coverage threshold for statements (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for branches (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for lines (80%) not met: 0%[39m[22m
+[1m[31mJest: "global" coverage threshold for functions (80%) not met: 0%[39m[22m
+[1mTest Suites: [22m[1m[31m8 failed[39m[22m, 8 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        15.989 s
+[2mRan all test suites[22m[2m.[22m

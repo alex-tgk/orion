@@ -1,18 +1,18 @@
 {
   "run": {
-    "command": "nx build shared",
-    "startTime": "2025-10-18T05:52:20.220Z",
-    "endTime": "2025-10-18T05:52:23.018Z",
+    "command": "nx test user --coverage",
+    "startTime": "2025-10-18T12:11:24.621Z",
+    "endTime": "2025-10-18T12:11:47.293Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "shared:build",
-      "target": "build",
-      "projectName": "shared",
-      "hash": "8803139040967509424",
-      "startTime": "2025-10-18T05:52:20.275Z",
-      "endTime": "2025-10-18T05:52:23.017Z",
+      "taskId": "user:test",
+      "target": "test",
+      "projectName": "user",
+      "hash": "3119727100735509570",
+      "startTime": "2025-10-18T12:11:24.720Z",
+      "endTime": "2025-10-18T12:11:47.291Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

@@ -70,9 +70,9 @@ export class ProxyService {
    * Build route registry from configuration
    */
   private buildRouteRegistry(): RouteRegistry {
-    const authServiceUrl = this.configService.get<string>('gateway.AUTH_SERVICE_URL');
-    const userServiceUrl = this.configService.get<string>('gateway.USER_SERVICE_URL');
-    const notificationServiceUrl = this.configService.get<string>('gateway.NOTIFICATION_SERVICE_URL');
+    const authServiceUrl = this.configService.get<string>('gateway.AUTH_SERVICE_URL') || 'http://localhost:3001';
+    const userServiceUrl = this.configService.get<string>('gateway.USER_SERVICE_URL') || 'http://localhost:3002';
+    const notificationServiceUrl = this.configService.get<string>('gateway.NOTIFICATION_SERVICE_URL') || 'http://localhost:3003';
 
     return {
       '/api/v1/auth/*': {

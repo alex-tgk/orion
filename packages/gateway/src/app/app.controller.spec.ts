@@ -1,25 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { HttpException, HttpStatus } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { HealthService } from './services/health.service';
-import { ProxyService } from './services/proxy.service';
-import axios from 'axios';
-
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+import { AppService } from './app.service';
 
 describe('AppController', () => {
   let controller: AppController;
-  let healthService: HealthService;
-  let proxyService: ProxyService;
 
-  const mockHealthService = {
-    checkHealth: jest.fn(),
-  };
-
-  const mockProxyService = {
-    getRouteConfig: jest.fn(),
-    rewritePath: jest.fn(),
+  const mockAppService = {
+    getHealth: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -27,93 +14,59 @@ describe('AppController', () => {
       controllers: [AppController],
       providers: [
         {
-          provide: HealthService,
-          useValue: mockHealthService,
-        },
-        {
-          provide: ProxyService,
-          useValue: mockProxyService,
+          provide: AppService,
+          useValue: mockAppService,
         },
       ],
     }).compile();
 
     controller = module.get<AppController>(AppController);
-    healthService = module.get<HealthService>(HealthService);
-    proxyService = module.get<ProxyService>(ProxyService);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('initialization', () => {
+    it('should be defined', () => {
+      expect(controller).toBeDefined();
+    });
   });
 
   describe('getHealth', () => {
-    it('should return health status', async () => {
+    it('should return health status from service', () => {
+      // Arrange
       const healthStatus = {
-        status: 'healthy' as const,
-        services: {},
-        timestamp: new Date().toISOString(),
+        status: 'ok',
+        service: 'gateway',
+        uptime: 12345.67,
+        timestamp: '2025-01-18T14:30:00Z',
       };
 
-      mockHealthService.checkHealth.mockResolvedValue(healthStatus);
+      mockAppService.getHealth.mockReturnValue(healthStatus);
 
-      const result = await controller.getHealth();
+      // Act
+      const result = controller.getHealth();
 
+      // Assert
       expect(result).toEqual(healthStatus);
-      expect(mockHealthService.checkHealth).toHaveBeenCalled();
-    });
-  });
-
-  describe('proxyRequest', () => {
-    it('should throw 404 for unknown route', async () => {
-      const mockRequest: any = {
-        path: '/unknown',
-        method: 'GET',
-      };
-      const mockResponse: any = {};
-
-      mockProxyService.getRouteConfig.mockReturnValue(null);
-
-      await expect(
-        controller.proxyRequest(mockRequest, mockResponse)
-      ).rejects.toThrow(HttpException);
+      expect(mockAppService.getHealth).toHaveBeenCalled();
     });
 
-    it('should proxy request to backend service', async () => {
-      const mockRequest: any = {
-        path: '/api/v1/users/me',
-        method: 'GET',
-        headers: {},
-        query: {},
-      };
-      const mockResponse: any = {
-        setHeader: jest.fn(),
-        status: jest.fn().mockReturnThis(),
-        send: jest.fn(),
-      };
+    it('should call app service getHealth method', () => {
+      // Arrange
+      mockAppService.getHealth.mockReturnValue({
+        status: 'ok',
+        service: 'gateway',
+        uptime: 100,
+        timestamp: new Date().toISOString(),
+      });
 
-      const routeConfig = {
-        target: 'http://localhost:3002',
-        pathRewrite: {},
-        authRequired: true,
-      };
+      // Act
+      controller.getHealth();
 
-      mockProxyService.getRouteConfig.mockReturnValue(routeConfig);
-      mockProxyService.rewritePath.mockReturnValue('/api/v1/users/me');
-
-      mockedAxios.mockResolvedValue({
-        status: 200,
-        headers: {},
-        data: { userId: '123' },
-      } as any);
-
-      await controller.proxyRequest(mockRequest, mockResponse);
-
-      expect(mockResponse.status).toHaveBeenCalledWith(200);
-      expect(mockResponse.send).toHaveBeenCalledWith({ userId: '123' });
+      // Assert
+      expect(mockAppService.getHealth).toHaveBeenCalledTimes(1);
     });
   });
 });

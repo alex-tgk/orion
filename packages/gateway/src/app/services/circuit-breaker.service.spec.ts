@@ -4,7 +4,6 @@ import { CircuitBreakerService } from './circuit-breaker.service';
 
 describe('CircuitBreakerService', () => {
   let service: CircuitBreakerService;
-  let configService: ConfigService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -13,14 +12,13 @@ describe('CircuitBreakerService', () => {
         {
           provide: ConfigService,
           useValue: {
-            get: jest.fn((key: string, defaultValue: any) => defaultValue),
+            get: jest.fn((_key: string, defaultValue: any) => defaultValue),
           },
         },
       ],
     }).compile();
 
     service = module.get<CircuitBreakerService>(CircuitBreakerService);
-    configService = module.get<ConfigService>(ConfigService);
   });
 
   afterEach(() => {

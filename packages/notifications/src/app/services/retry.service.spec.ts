@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { RetryService } from './retry.service';
 import { ConfigService } from '@nestjs/config';
+import { PrismaService } from '@orion/shared';
 
 describe('RetryService', () => {
   let service: RetryService;
-  let configService: ConfigService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -13,14 +13,23 @@ describe('RetryService', () => {
         {
           provide: ConfigService,
           useValue: {
-            get: jest.fn((key: string, defaultValue: any) => defaultValue),
+            get: jest.fn((_key: string, defaultValue: any) => defaultValue),
+          },
+        },
+        {
+          provide: PrismaService,
+          useValue: {
+            notification: {
+              count: jest.fn(),
+              findUnique: jest.fn(),
+              update: jest.fn(),
+            },
           },
         },
       ],
     }).compile();
 
     service = module.get<RetryService>(RetryService);
-    configService = module.get<ConfigService>(ConfigService);
   });
 
   describe('retry logic', () => {

@@ -4,12 +4,10 @@ import { PrismaService } from '@orion/shared';
 import { PreferencesService } from './preferences.service';
 import { CacheService } from './cache.service';
 import { EventPublisherService } from './event-publisher.service';
+import { Theme } from '../dto';
 
 describe('PreferencesService', () => {
   let service: PreferencesService;
-  let prisma: PrismaService;
-  let cache: CacheService;
-  let eventPublisher: EventPublisherService;
 
   const mockPreferences = {
     id: 'pref-123',
@@ -48,9 +46,6 @@ describe('PreferencesService', () => {
     }).compile();
 
     service = module.get<PreferencesService>(PreferencesService);
-    prisma = module.get<PrismaService>(PrismaService);
-    cache = module.get<CacheService>(CacheService);
-    eventPublisher = module.get<EventPublisherService>(EventPublisherService);
 
     jest.clearAllMocks();
   });
@@ -71,8 +66,8 @@ describe('PreferencesService', () => {
       const result = await service.findByUserId('user-123', 'user-123');
 
       expect(result).toEqual(cachedPrefs);
-      expect(cache.get).toHaveBeenCalledWith('preferences:user-123');
-      expect(prisma.userPreferences.findUnique).not.toHaveBeenCalled();
+      expect(mockCacheService.get).toHaveBeenCalledWith('preferences:user-123');
+      expect(mockPrismaService.userPreferences.findUnique).not.toHaveBeenCalled();
     });
 
     it('should fetch from database if not cached', async () => {
@@ -82,7 +77,7 @@ describe('PreferencesService', () => {
       const result = await service.findByUserId('user-123', 'user-123');
 
       expect(result.notifications).toEqual(mockPreferences.notifications);
-      expect(cache.set).toHaveBeenCalled();
+      expect(mockCacheService.set).toHaveBeenCalled();
     });
 
     it('should throw ForbiddenException if user tries to view another users preferences', async () => {
@@ -105,7 +100,7 @@ describe('PreferencesService', () => {
     it('should update preferences successfully', async () => {
       const updateDto = {
         notifications: { email: false },
-        display: { theme: 'dark' as const },
+        display: { theme: Theme.DARK },
       };
 
       mockPrismaService.userPreferences.findUnique.mockResolvedValue(mockPreferences);
@@ -118,8 +113,8 @@ describe('PreferencesService', () => {
       const result = await service.update('user-123', updateDto, 'user-123');
 
       expect(result.display.theme).toBe('dark');
-      expect(cache.delete).toHaveBeenCalledWith('preferences:user-123');
-      expect(eventPublisher.publishUserPreferencesUpdated).toHaveBeenCalled();
+      expect(mockCacheService.delete).toHaveBeenCalledWith('preferences:user-123');
+      expect(mockEventPublisherService.publishUserPreferencesUpdated).toHaveBeenCalled();
     });
 
     it('should throw ForbiddenException if user tries to update another users preferences', async () => {

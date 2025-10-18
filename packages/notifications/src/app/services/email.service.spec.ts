@@ -8,11 +8,10 @@ jest.mock('@sendgrid/mail');
 
 describe('EmailService', () => {
   let service: EmailService;
-  let configService: ConfigService;
 
   const mockConfigService = {
     get: jest.fn((key: string) => {
-      const config = {
+      const config: Record<string, any> = {
         'notification.sendgrid.apiKey': 'test-api-key',
         'notification.sendgrid.enabled': true,
         'notification.sendgrid.from': {
@@ -37,7 +36,6 @@ describe('EmailService', () => {
     }).compile();
 
     service = module.get<EmailService>(EmailService);
-    configService = module.get<ConfigService>(ConfigService);
 
     // Clear all mocks
     jest.clearAllMocks();

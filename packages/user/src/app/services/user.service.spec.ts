@@ -4,7 +4,7 @@ import { PrismaService } from '@orion/shared';
 import { UserService } from './user.service';
 import { CacheService } from './cache.service';
 import { EventPublisherService } from './event-publisher.service';
-import { User } from '@prisma/client';
+import { User } from '@prisma/user';
 
 describe('UserService', () => {
   let service: UserService;

@@ -48,7 +48,7 @@ export class CustomRateLimitGuard extends ThrottlerGuard {
   /**
    * Override error handling
    */
-  protected override async throwThrottlingException(context: ExecutionContext): Promise<void> {
+  protected override async throwThrottlingException(_context: ExecutionContext): Promise<void> {
     throw new ThrottlerException('Too many requests. Please try again later.');
   }
 }

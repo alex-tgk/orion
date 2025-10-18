@@ -1,6 +1,6 @@
 import { Injectable, Logger, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '@orion/shared';
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/user';
 import { UserPreferencesDto, UpdateUserPreferencesDto } from '../dto';
 import { CacheService } from './cache.service';
 import { EventPublisherService } from './event-publisher.service';

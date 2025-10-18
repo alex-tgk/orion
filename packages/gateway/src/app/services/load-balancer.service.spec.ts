@@ -8,9 +8,12 @@ describe('LoadBalancerService', () => {
   const createMockInstances = (count: number): ServiceInstance[] => {
     return Array.from({ length: count }, (_, i) => ({
       id: `instance-${i}`,
+      name: 'test-service',
       host: `host-${i}`,
       port: 3000 + i,
+      url: `http://host-${i}:${3000 + i}`,
       healthy: true,
+      lastHealthCheck: new Date(),
       metadata: {},
     }));
   };

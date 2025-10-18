@@ -19,7 +19,7 @@ export function setupSwagger(
 ): void {
   const logger = new Logger('SwaggerSetup');
 
-  const port = process.env.PORT || '3000';
+  const port = process.env['PORT'] || '3000';
 
   const config = new DocumentBuilder()
     .setTitle(options.title || `ORION ${serviceName.charAt(0).toUpperCase() + serviceName.slice(1)} Service`)

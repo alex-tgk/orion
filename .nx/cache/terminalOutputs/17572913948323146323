@@ -1,0 +1,368 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mstorage.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/storage.service.spec.ts[0m:[93m44[0m:[93m12[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+    [7m44[0m       } as Express.Multer.File;
+    [7m  [0m [91m           ~~~~~~~[0m
+    [96mpackages/user/src/app/services/storage.service.spec.ts[0m:[93m53[0m:[93m12[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+    [7m53[0m       } as Express.Multer.File;
+    [7m  [0m [91m           ~~~~~~~[0m
+    [96mpackages/user/src/app/services/storage.service.spec.ts[0m:[93m62[0m:[93m12[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+    [7m62[0m       } as Express.Multer.File;
+    [7m  [0m [91m           ~~~~~~~[0m
+    [96mpackages/user/src/app/services/storage.service.spec.ts[0m:[93m75[0m:[93m12[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+    [7m75[0m       } as Express.Multer.File;
+    [7m  [0m [91m           ~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mhealth.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/health.service.spec.ts[0m:[93m9[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'prisma' is declared but its value is never read.
+
+    [7m9[0m   let prisma: PrismaService;
+    [7m [0m [91m      ~~~~~~[0m
+    [96mpackages/user/src/app/services/health.service.spec.ts[0m:[93m10[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'cache' is declared but its value is never read.
+
+    [7m10[0m   let cache: CacheService;
+    [7m  [0m [91m      ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mevent-publisher.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/event-publisher.service.spec.ts[0m:[93m4[0m:[93m23[0m - [91merror[0m[90m TS2307: [0mCannot find module 'amqplib' or its corresponding type declarations.
+
+    [7m4[0m import * as amqp from 'amqplib';
+    [7m [0m [91m                      ~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/event-publisher.service.spec.ts[0m:[93m220[0m:[93m59[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ notifications: { email: boolean; }; display: { theme: string; }; }' is not assignable to parameter of type '{ notifications?: { email?: boolean | undefined; sms?: boolean | undefined; push?: boolean | undefined; } | undefined; privacy?: { profileVisibility?: "public" | "private" | "friends" | undefined; showEmail?: boolean | undefined; showLocation?: boolean | undefined; } | undefined; display?: { ...; } | undefined; }'.
+      The types of 'display.theme' are incompatible between these types.
+        Type 'string' is not assignable to type '"dark" | "light" | "auto" | undefined'.
+
+    [7m220[0m       await service.publishUserPreferencesUpdated(userId, preferences);
+    [7m   [0m [91m                                                          ~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mpreferences.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/preferences.service.spec.ts[0m:[93m75[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.
+
+    [7m75[0m       expect(prisma.userPreferences.findUnique).not.toHaveBeenCalled();
+    [7m  [0m [91m                    ~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/preferences.service.spec.ts[0m:[93m118[0m:[93m55[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ notifications: { email: boolean; }; display: { theme: "dark"; }; }' is not assignable to parameter of type 'UpdateUserPreferencesDto'.
+      The types of 'display.theme' are incompatible between these types.
+        Type '"dark"' is not assignable to type 'Theme | undefined'.
+
+    [7m118[0m       const result = await service.update('user-123', updateDto, 'user-123');
+    [7m   [0m [91m                                                      ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1muser.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/user.service.spec.ts[0m:[93m19[0m:[93m5[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'avatar' does not exist in type '{ name: string; id: string; email: string; password: string; isActive: boolean; createdAt: Date; updatedAt: Date; lastLoginAt: Date | null; }'.
+
+    [7m19[0m     avatar: null,
+    [7m  [0m [91m    ~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/[22m[1musers.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/users.controller.spec.ts[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m TS2741: [0mProperty 'name' is missing in type '{ id: string; email: string; }' but required in type 'AuthenticatedUser'.
+
+    [7m26[0m   const mockAuthUser: AuthenticatedUser = {
+    [7m  [0m [91m        ~~~~~~~~~~~~[0m
+
+      [96mpackages/user/src/app/strategies/jwt.strategy.ts[0m:[93m17[0m:[93m3[0m
+        [7m17[0m   name: string;
+        [7m  [0m [96m  ~~~~[0m
+        'name' is declared here.
+    [96mpackages/user/src/app/users.controller.spec.ts[0m:[93m45[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType '"public"' is not assignable to type 'ProfileVisibility'.
+
+    [7m45[0m     privacy: { profileVisibility: 'public' as const, showEmail: false, showLocation: true },
+    [7m  [0m [91m               ~~~~~~~~~~~~~~~~~[0m
+
+      [96mpackages/user/src/app/dto/user-preferences.dto.ts[0m:[93m28[0m:[93m3[0m
+        [7m28[0m   profileVisibility: ProfileVisibility;
+        [7m  [0m [96m  ~~~~~~~~~~~~~~~~~[0m
+        The expected type comes from property 'profileVisibility' which is declared here on type 'PrivacyPreferencesDto'
+    [96mpackages/user/src/app/users.controller.spec.ts[0m:[93m46[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType '"dark"' is not assignable to type 'Theme'.
+
+    [7m46[0m     display: { theme: 'dark' as const, language: 'en' },
+    [7m  [0m [91m               ~~~~~[0m
+
+      [96mpackages/user/src/app/dto/user-preferences.dto.ts[0m:[93m48[0m:[93m3[0m
+        [7m48[0m   theme: Theme;
+        [7m  [0m [96m  ~~~~~[0m
+        The expected type comes from property 'theme' which is declared here on type 'DisplayPreferencesDto'
+    [96mpackages/user/src/app/users.controller.spec.ts[0m:[93m245[0m:[93m20[0m - [91merror[0m[90m TS2694: [0mNamespace 'global.Express' has no exported member 'Multer'.
+
+    [7m245[0m       } as Express.Multer.File;
+    [7m   [0m [91m                   ~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.spec.ts[0m:[93m265[0m:[93m20[0m - [91merror[0m[90m TS2694: [0mNamespace 'global.Express' has no exported member 'Multer'.
+
+    [7m265[0m       } as Express.Multer.File;
+    [7m   [0m [91m                   ~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.spec.ts[0m:[93m301[0m:[93m20[0m - [91merror[0m[90m TS2322: [0mType '"light"' is not assignable to type 'Theme | undefined'.
+
+    [7m301[0m         display: { theme: 'light' },
+    [7m   [0m [91m                   ~~~~~[0m
+
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to get key test-key[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mSyntaxError: Unexpected token 'i', "invalid-json" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at CacheService.get [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.ts:64:19[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:97:22[90m)[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to set key test-key[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:129:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to delete key test-key[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:151:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to delete pattern user:*[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:186:46[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to check existence of key test-key[39m
+[31m[Nest] 97412  - [39m10/18/2025, 8:06:04 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:211:48[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mcache.service.spec.ts[22m
+  CacheService
+    [32m✓[39m [2mshould be defined (29 ms)[22m
+    onModuleInit
+      [31m✕[39m [2mshould connect to Redis on module initialization (13 ms)[22m
+      [31m✕[39m [2mshould register event listeners (11 ms)[22m
+    get
+      [32m✓[39m [2mshould retrieve and parse cached value (11 ms)[22m
+      [32m✓[39m [2mshould return null if key does not exist (10 ms)[22m
+      [32m✓[39m [2mshould handle JSON parse errors gracefully (14 ms)[22m
+      [32m✓[39m [2mshould return null if Redis client is not connected (21 ms)[22m
+    set
+      [32m✓[39m [2mshould set value without TTL (10 ms)[22m
+      [32m✓[39m [2mshould set value with TTL (17 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (13 ms)[22m
+      [31m✕[39m [2mshould do nothing if Redis client is not connected (10 ms)[22m
+    delete
+      [32m✓[39m [2mshould delete a key (9 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (10 ms)[22m
+      [31m✕[39m [2mshould do nothing if Redis client is not connected (10 ms)[22m
+    deletePattern
+      [32m✓[39m [2mshould delete keys matching pattern (20 ms)[22m
+      [32m✓[39m [2mshould do nothing if no keys match pattern (10 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (11 ms)[22m
+    exists
+      [32m✓[39m [2mshould return true if key exists (13 ms)[22m
+      [32m✓[39m [2mshould return false if key does not exist (16 ms)[22m
+      [32m✓[39m [2mshould return false on error (12 ms)[22m
+    isConnected
+      [32m✓[39m [2mshould return true when Redis client is connected (11 ms)[22m
+      [31m✕[39m [2mshould return false when Redis client is not connected (10 ms)[22m
+      [32m✓[39m [2mshould return false when Redis status is not ready (19 ms)[22m
+    disabled cache
+      [32m✓[39m [2mshould skip Redis initialization when disabled (11 ms)[22m
+
+[1m[31m  [1m● [22m[1mCacheService › onModuleInit › should connect to Redis on module initialization[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32m{"db": 0, "host": "localhost", "password": "test-password", "port": 6379, "retryStrategy": Any<Function>}[39m
+
+    Number of calls: [31m0[39m
+[2m[22m
+[2m    [0m [90m 58 |[39m   describe([32m'onModuleInit'[39m[33m,[39m () [33m=>[39m {[22m
+[2m     [90m 59 |[39m     it([32m'should connect to Redis on module initialization'[39m[33m,[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 60 |[39m       expect([33mRedis[39m)[33m.[39mtoHaveBeenCalledWith({[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 61 |[39m         host[33m:[39m [32m'localhost'[39m[33m,[39m[22m
+[2m     [90m 62 |[39m         port[33m:[39m [35m6379[39m[33m,[39m[22m
+[2m     [90m 63 |[39m         password[33m:[39m [32m'test-password'[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:60:21)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCacheService › onModuleInit › should register event listeners[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32m"connect"[39m, [32mAny<Function>[39m
+
+    Number of calls: [31m0[39m
+[2m[22m
+[2m    [0m [90m 68 |[39m[22m
+[2m     [90m 69 |[39m     it([32m'should register event listeners'[39m[33m,[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 70 |[39m       expect(mockRedisClient[33m.[39mon)[33m.[39mtoHaveBeenCalledWith([32m'connect'[39m[33m,[39m expect[33m.[39many([33mFunction[39m))[33m;[39m[22m
+[2m     [90m    |[39m                                  [31m[1m^[22m[2m[39m[22m
+[2m     [90m 71 |[39m       expect(mockRedisClient[33m.[39mon)[33m.[39mtoHaveBeenCalledWith([32m'error'[39m[33m,[39m expect[33m.[39many([33mFunction[39m))[33m;[39m[22m
+[2m     [90m 72 |[39m     })[33m;[39m[22m
+[2m     [90m 73 |[39m   })[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:70:34)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCacheService › set › should do nothing if Redis client is not connected[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mnot[2m.[22mtoHaveBeenCalled[2m()[22m
+
+    Expected number of calls: [32m0[39m
+    Received number of calls: [31m1[39m
+
+    1: [31m"test-key"[39m, [31m"{\"data\":\"test\"}"[39m
+[2m[22m
+[2m    [0m [90m 137 |[39m       [36mawait[39m service[33m.[39m[36mset[39m([32m'test-key'[39m[33m,[39m { data[33m:[39m [32m'test'[39m })[33m;[39m[22m
+[2m     [90m 138 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 139 |[39m       expect(mockRedisClient[33m.[39m[36mset[39m)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m[22m
+[2m     [90m     |[39m                                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 140 |[39m     })[33m;[39m[22m
+[2m     [90m 141 |[39m   })[33m;[39m[22m
+[2m     [90m 142 |[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:139:39)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCacheService › delete › should do nothing if Redis client is not connected[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mnot[2m.[22mtoHaveBeenCalled[2m()[22m
+
+    Expected number of calls: [32m0[39m
+    Received number of calls: [31m1[39m
+
+    1: [31m"test-key"[39m
+[2m[22m
+[2m    [0m [90m 159 |[39m       [36mawait[39m service[33m.[39m[36mdelete[39m([32m'test-key'[39m)[33m;[39m[22m
+[2m     [90m 160 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 161 |[39m       expect(mockRedisClient[33m.[39mdel)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m[22m
+[2m     [90m     |[39m                                       [31m[1m^[22m[2m[39m[22m
+[2m     [90m 162 |[39m     })[33m;[39m[22m
+[2m     [90m 163 |[39m   })[33m;[39m[22m
+[2m     [90m 164 |[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:161:39)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCacheService › isConnected › should return false when Redis client is not connected[39m[22m
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mfalse[39m
+    Received: [31mtrue[39m
+[2m[22m
+[2m    [0m [90m 225 |[39m       [36mawait[39m service[33m.[39monModuleDestroy()[33m;[39m[22m
+[2m     [90m 226 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 227 |[39m       expect(service[33m.[39misConnected())[33m.[39mtoBe([36mfalse[39m)[33m;[39m[22m
+[2m     [90m     |[39m                                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 228 |[39m     })[33m;[39m[22m
+[2m     [90m 229 |[39m[22m
+[2m     [90m 230 |[39m     it([32m'should return false when Redis status is not ready'[39m[33m,[39m () [33m=>[39m {[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:227:37)[22m[2m[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1msearch.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [1m[31mJest encountered an unexpected token[39m[22m
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see [4mhttps://jestjs.io/docs/ecmascript-modules[24m for how to enable it.
+     • If you are trying to use TypeScript, see [4mhttps://jestjs.io/docs/getting-started#using-typescript[24m
+     • To have some of your "node_modules" files transformed, you can specify a custom [1m"transformIgnorePatterns"[22m in your config.
+     • If you need a custom transformation, specify a [1m"transform"[22m option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the [1m"moduleNameMapper"[22m config option.
+
+    You'll find more details and examples of these config options in the docs:
+    [36mhttps://jestjs.io/docs/configuration[39m
+    For information about custom transformations, see:
+    [36mhttps://jestjs.io/docs/code-transformation[39m
+
+    [1m[31mDetails:[39m[22m
+
+    /Users/acarroll/dev/projects/orion/node_modules/.pnpm/uuid@13.0.0/node_modules/uuid/dist-node/index.js:1
+    export { default as MAX } from './max.js';
+    ^^^^^^
+
+    SyntaxError: Unexpected token 'export'
+
+    [0m [90m 1 |[39m [36mimport[39m { [33mInjectable[39m[33m,[39m [33mNestMiddleware[39m } [36mfrom[39m [32m'@nestjs/common'[39m[33m;[39m
+     [90m 2 |[39m [36mimport[39m { [33mRequest[39m[33m,[39m [33mResponse[39m[33m,[39m [33mNextFunction[39m } [36mfrom[39m [32m'express'[39m[33m;[39m
+    [31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m { v4 [36mas[39m uuidv4 } [36mfrom[39m [32m'uuid'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 4 |[39m [90m// TODO: Import LoggerService when logger package is available[39m
+     [90m 5 |[39m [90m// import { LoggerService } from '@orion/logger';[39m
+     [90m 6 |[39m[0m
+
+      [2mat Runtime.createScriptFromCode ([22m../../node_modules/.pnpm/jest-runtime@30.2.0/node_modules/jest-runtime/build/index.js[2m:1318:40)[22m
+      [2mat Object.<anonymous> ([22m../shared/src/middleware/correlation-id.middleware.ts[2m:3:1)[22m
+      [2mat Object.<anonymous> ([22m../shared/src/index.ts[2m:12:1)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/services/search.service.spec.ts[39m[0m[2m:2:1)[22m
+
+[1mTest Suites: [22m[1m[31m8 failed[39m[22m, 8 total
+[1mTests:       [22m[1m[31m5 failed[39m[22m, [1m[32m19 passed[39m[22m, 24 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        6.211 s
+[2mRan all test suites[22m[2m.[22m

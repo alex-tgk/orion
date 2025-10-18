@@ -1,0 +1,335 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mservice-discovery.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m4[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module '@nestjs/axios' or its corresponding type declarations.
+
+    [7m4[0m import { HttpService } from '@nestjs/axios';
+    [7m [0m [91m                            ~~~~~~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m98[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'throwError'.
+
+    [7m98[0m         throwError(() => new Error('Connection refused'))
+    [7m  [0m [91m        ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m134[0m:[93m30[0m - [91merror[0m[90m TS2304: [0mCannot find name 'throwError'.
+
+    [7m134[0m         .mockReturnValueOnce(throwError(() => new Error('Error'))); // Unhealthy
+    [7m   [0m [91m                             ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m158[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'throwError'.
+
+    [7m158[0m         throwError(() => new Error('Connection refused'))
+    [7m   [0m [91m        ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m176[0m:[93m30[0m - [91merror[0m[90m TS2304: [0mCannot find name 'throwError'.
+
+    [7m176[0m         .mockReturnValueOnce(throwError(() => new Error('Error')));
+    [7m   [0m [91m                             ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m209[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'throwError'.
+
+    [7m209[0m         throwError(() => new Error('Error'))
+    [7m   [0m [91m        ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m249[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'throwError'.
+
+    [7m249[0m         throwError(() => new Error('Error'))
+    [7m   [0m [91m        ~~~~~~~~~~[0m
+    [96mpackages/gateway/src/app/services/service-discovery.service.spec.ts[0m:[93m275[0m:[93m30[0m - [91merror[0m[90m TS2304: [0mCannot find name 'throwError'.
+
+    [7m275[0m         .mockReturnValueOnce(throwError(() => new Error('Error')))
+    [7m   [0m [91m                             ~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mjwt-cache.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/jwt-cache.service.spec.ts[0m:[93m13[0m:[93m7[0m - [91merror[0m[90m TS6133: [0m'redisService' is declared but its value is never read.
+
+    [7m13[0m   let redisService: RedisService;
+    [7m  [0m [91m      ~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/webhooks/[22m[1merror-webhook.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/webhooks/error-webhook.controller.spec.ts[0m:[93m5[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module '@orion/shared/errors' or its corresponding type declarations.
+
+    [7m5[0m import { ErrorSeverity, ErrorCategory } from '@orion/shared/errors';
+    [7m [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/webhooks/[22m[1merror-webhook.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/webhooks/error-webhook.service.spec.ts[0m:[93m6[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module '@orion/shared/errors' or its corresponding type declarations.
+
+    [7m6[0m import { ErrorSeverity, ErrorCategory } from '@orion/shared/errors';
+    [7m [0m [91m                                             ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mauth.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/auth.middleware.spec.ts[0m:[93m2[0m:[93m48[0m - [91merror[0m[90m TS6133: [0m'HttpStatus' is declared but its value is never read.
+
+    [7m2[0m import { UnauthorizedException, HttpException, HttpStatus } from '@nestjs/common';
+    [7m [0m [91m                                               ~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mlogging.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [1m[31mJest encountered an unexpected token[39m[22m
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see [4mhttps://jestjs.io/docs/ecmascript-modules[24m for how to enable it.
+     • If you are trying to use TypeScript, see [4mhttps://jestjs.io/docs/getting-started#using-typescript[24m
+     • To have some of your "node_modules" files transformed, you can specify a custom [1m"transformIgnorePatterns"[22m in your config.
+     • If you need a custom transformation, specify a [1m"transform"[22m option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the [1m"moduleNameMapper"[22m config option.
+
+    You'll find more details and examples of these config options in the docs:
+    [36mhttps://jestjs.io/docs/configuration[39m
+    For information about custom transformations, see:
+    [36mhttps://jestjs.io/docs/code-transformation[39m
+
+    [1m[31mDetails:[39m[22m
+
+    /Users/acarroll/dev/projects/orion/node_modules/.pnpm/uuid@13.0.0/node_modules/uuid/dist-node/index.js:1
+    export { default as MAX } from './max.js';
+    ^^^^^^
+
+    SyntaxError: Unexpected token 'export'
+
+    [0m [90m 1 |[39m [36mimport[39m { [33mInjectable[39m[33m,[39m [33mLogger[39m[33m,[39m [33mNestMiddleware[39m } [36mfrom[39m [32m'@nestjs/common'[39m[33m;[39m
+     [90m 2 |[39m [36mimport[39m { [33mResponse[39m[33m,[39m [33mNextFunction[39m } [36mfrom[39m [32m'express'[39m[33m;[39m
+    [31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m { v4 [36mas[39m uuidv4 } [36mfrom[39m [32m'uuid'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 4 |[39m [36mimport[39m { [33mRequestContext[39m } [36mfrom[39m [32m'../interfaces/request-context.interface'[39m[33m;[39m
+     [90m 5 |[39m
+     [90m 6 |[39m [33m@[39m[33mInjectable[39m()[0m
+
+      [2mat Runtime.createScriptFromCode ([22m../../node_modules/.pnpm/jest-runtime@30.2.0/node_modules/jest-runtime/build/index.js[2m:1318:40)[22m
+      [2mat Object.require ([22msrc/app/middleware/logging.middleware.ts[2m:3:1)[22m
+      [2mat Object.<anonymous> ([22m[0m[36msrc/app/middleware/logging.middleware.spec.ts[39m[0m[2m:1:1)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mrequest-transform.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/request-transform.middleware.ts[0m:[93m7[0m:[93m28[0m - [91merror[0m[90m TS6133: [0m'res' is declared but its value is never read.
+
+    [7m7[0m   use(req: RequestContext, res: Response, next: NextFunction): void {
+    [7m [0m [91m                           ~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mcircuit-breaker.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/circuit-breaker.service.ts[0m:[93m131[0m:[93m35[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Error'.
+
+    [7m131[0m       this.onFailure(serviceName, error);
+    [7m   [0m [91m                                  ~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mredis.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/services/redis.service.ts[0m:[93m8[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'client' has no initializer and is not definitely assigned in the constructor.
+
+    [7m8[0m   private client: Redis;
+    [7m [0m [91m          ~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mrate-limit.middleware.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/gateway/src/app/middleware/rate-limit.middleware.ts[0m:[93m3[0m:[93m10[0m - [91merror[0m[90m TS6133: [0m'Request' is declared but its value is never read.
+
+    [7m3[0m import { Request, Response, NextFunction } from 'express';
+    [7m [0m [91m         ~~~~~~~[0m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/[22m[1mapp.controller.spec.ts[22m ([0m[1m[41m6.492 s[49m[22m[0m)
+  AppController
+    initialization
+      [32m✓[39m [2mshould be defined (22 ms)[22m
+    getHealth
+      [32m✓[39m [2mshould return health status from service (4 ms)[22m
+      [32m✓[39m [2mshould call app service getHealth method (3 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mproxy.service.spec.ts[22m ([0m[1m[41m6.627 s[49m[22m[0m)
+  ProxyService
+    [32m✓[39m [2mshould be defined (18 ms)[22m
+    getRouteConfig
+      [32m✓[39m [2mshould return route config for /api/v1/auth/login (3 ms)[22m
+      [32m✓[39m [2mshould return route config for /api/v1/users/me (3 ms)[22m
+      [32m✓[39m [2mshould return null for unknown route (2 ms)[22m
+    rewritePath
+      [32m✓[39m [2mshould rewrite auth path correctly (2 ms)[22m
+      [32m✓[39m [2mshould not rewrite if no pathRewrite config (2 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mresponse-transform.middleware.spec.ts[22m ([0m[1m[41m6.605 s[49m[22m[0m)
+  ResponseTransformMiddleware
+    [32m✓[39m [2mshould be defined (19 ms)[22m
+    response send override
+      [32m✓[39m [2mshould override response send method (5 ms)[22m
+    correlation ID in response
+      [32m✓[39m [2mshould add correlation ID to response headers (3 ms)[22m
+      [32m✓[39m [2mshould not add correlation ID if not present (3 ms)[22m
+    security headers
+      [32m✓[39m [2mshould add security headers in development (3 ms)[22m
+      [32m✓[39m [2mshould add HSTS header in production (2 ms)[22m
+    internal headers removal
+      [32m✓[39m [2mshould remove internal headers from response (2 ms)[22m
+    response body handling
+      [32m✓[39m [2mshould call original send with body (2 ms)[22m
+    integration
+      [32m✓[39m [2mshould apply all transformations together (3 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/middleware/[22m[1mcors.middleware.spec.ts[22m ([0m[1m[41m6.634 s[49m[22m[0m)
+  CorsMiddleware
+    [32m✓[39m [2mshould be defined (19 ms)[22m
+    CORS headers
+      [32m✓[39m [2mshould set all required CORS headers (5 ms)[22m
+      [32m✓[39m [2mshould call next() for non-OPTIONS requests (2 ms)[22m
+    preflight requests
+      [32m✓[39m [2mshould handle OPTIONS preflight requests (3 ms)[22m
+    configuration
+      [32m✓[39m [2mshould use configured origin (3 ms)[22m
+
+[31m[Nest] 6516  - [39m10/18/2025, 8:11:06 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for user: Connection refused[39m
+[31m[Nest] 6516  - [39m10/18/2025, 8:11:06 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for auth: Connection refused[39m
+[31m[Nest] 6516  - [39m10/18/2025, 8:11:06 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for user: Connection refused[39m
+[31m[Nest] 6516  - [39m10/18/2025, 8:11:06 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mHealth check failed for notification: Connection refused[39m
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mhealth.service.spec.ts[22m ([0m[1m[41m6.744 s[49m[22m[0m)
+  HealthService
+    [32m✓[39m [2mshould be defined (16 ms)[22m
+    checkHealth
+      [32m✓[39m [2mshould return healthy status when all services are up (4 ms)[22m
+      [32m✓[39m [2mshould return degraded status when some services are down (4 ms)[22m
+      [32m✓[39m [2mshould return unhealthy status when all services are down (3 ms)[22m
+
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m gateway [39m[27m[0m [2mpackages/gateway/src/app/services/[22m[1mload-balancer.service.spec.ts[22m ([0m[1m[41m6.738 s[49m[22m[0m)
+  LoadBalancerService
+    initialization
+      [32m✓[39m [2mshould be defined (19 ms)[22m
+      [32m✓[39m [2mshould default to ROUND_ROBIN strategy (3 ms)[22m
+    setStrategy
+      [32m✓[39m [2mshould set load balancing strategy (2 ms)[22m
+      [32m✓[39m [2mshould change strategy multiple times (3 ms)[22m
+    selectInstance
+      [32m✓[39m [2mshould return null for empty instances (3 ms)[22m
+      [32m✓[39m [2mshould return single instance when only one available (2 ms)[22m
+    Round Robin Strategy
+      [32m✓[39m [2mshould distribute requests evenly (3 ms)[22m
+      [32m✓[39m [2mshould maintain separate counters for different services (2 ms)[22m
+    Least Connections Strategy
+      [32m✓[39m [2mshould select instance with fewest connections (2 ms)[22m
+      [32m✓[39m [2mshould balance connections as they are decremented (3 ms)[22m
+      [32m✓[39m [2mshould handle zero connections gracefully (1 ms)[22m
+    Random Strategy
+      [32m✓[39m [2mshould select random instances (2 ms)[22m
+      [32m✓[39m [2mshould select from all available instances (2 ms)[22m
+    Weighted Round Robin Strategy
+      [32m✓[39m [2mshould distribute based on weights (2 ms)[22m
+      [32m✓[39m [2mshould fallback to round robin when all weights are zero (2 ms)[22m
+      [32m✓[39m [2mshould handle negative weights (2 ms)[22m
+    Connection Management
+      [32m✓[39m [2mshould increment active connections (2 ms)[22m
+      [32m✓[39m [2mshould decrement active connections (2 ms)[22m
+      [32m✓[39m [2mshould not allow negative connections (1 ms)[22m
+      [32m✓[39m [2mshould track total requests independently of active connections (2 ms)[22m
+    Metrics Management
+      [32m✓[39m [2mshould get all metrics (2 ms)[22m
+      [32m✓[39m [2mshould reset metrics for specific instance (2 ms)[22m
+      [32m✓[39m [2mshould reset all metrics (1 ms)[22m
+    Edge Cases
+      [32m✓[39m [2mshould handle rapid instance selection (4 ms)[22m
+      [32m✓[39m [2mshould handle strategy changes mid-operation (2 ms)[22m
+      [32m✓[39m [2mshould handle instance list changes (2 ms)[22m
+
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/gateway/src/app/middleware/request-transform.middleware.ts[39m
+[31mERROR: [96mpackages/gateway/src/app/middleware/request-transform.middleware.ts[0m:[93m7[0m:[93m28[0m - [91merror[0m[90m TS6133: [0m'res' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m7[0m   use(req: RequestContext, res: Response, next: NextFunction): void {[39m
+[31m[7m [0m [91m                           ~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/gateway/src/app/services/metrics.service.ts[39m
+[31mERROR: [96mpackages/gateway/src/app/services/metrics.service.ts[0m:[93m125[0m:[93m35[0m - [91merror[0m[90m TS6133: [0m'service' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m125[0m   private getServiceResponseTimes(service: string): number[] {[39m
+[31m[7m   [0m [91m                                  ~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/gateway/src/app/services/circuit-breaker.service.ts[39m
+[31mERROR: [96mpackages/gateway/src/app/services/circuit-breaker.service.ts[0m:[93m131[0m:[93m35[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Error'.[39m
+[31m[39m
+[31m[7m131[0m       this.onFailure(serviceName, error);[39m
+[31m[7m   [0m [91m                                  ~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/gateway/src/app/middleware/rate-limit.middleware.ts[39m
+[31mERROR: [96mpackages/gateway/src/app/middleware/rate-limit.middleware.ts[0m:[93m3[0m:[93m10[0m - [91merror[0m[90m TS6133: [0m'Request' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m3[0m import { Request, Response, NextFunction } from 'express';[39m
+[31m[7m [0m [91m         ~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/gateway/src/app/middleware/auth.middleware.ts[39m
+[31mERROR: [96mpackages/gateway/src/app/middleware/auth.middleware.ts[0m:[93m2[0m:[93m10[0m - [91merror[0m[90m TS6133: [0m'Request' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m2[0m import { Request, Response, NextFunction } from 'express';[39m
+[31m[7m [0m [91m         ~~~~~~~[0m[39m
+[31m[96mpackages/gateway/src/app/middleware/auth.middleware.ts[0m:[93m16[0m:[93m34[0m - [91merror[0m[90m TS6133: [0m'res' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m16[0m   async use(req: RequestContext, res: Response, next: NextFunction): Promise<void> {[39m
+[31m[7m  [0m [91m                                 ~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/gateway/src/app/services/jwt-cache.service.ts[39m
+[31mERROR: [96mpackages/gateway/src/app/services/jwt-cache.service.ts[0m:[93m19[0m:[93m5[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.[39m
+[31m  Type 'undefined' is not assignable to type 'string'.[39m
+[31m[39m
+[31m[7m19[0m     this.authServiceUrl = this.configService.get<string>('gateway.AUTH_SERVICE_URL');[39m
+[31m[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~[0m[39m
+[31mSTACK: [39m
+[31mFailed to collect coverage from /Users/acarroll/dev/projects/orion/packages/gateway/src/app/controllers/health.controller.ts[39m
+[31mERROR: [96mpackages/gateway/src/app/controllers/health.controller.ts[0m:[93m7[0m:[93m8[0m - [91merror[0m[90m TS2307: [0mCannot find module '@nestjs/terminus' or its corresponding type declarations.[39m
+[31m[39m
+[31m[7m7[0m } from '@nestjs/terminus';[39m
+[31m[7m [0m [91m       ~~~~~~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/gateway/src/app/controllers/health.controller.ts[0m:[93m26[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'http' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m26[0m     private readonly http: HttpHealthIndicator,[39m
+[31m[7m  [0m [91m                     ~~~~[0m[39m
+[31m[96mpackages/gateway/src/app/controllers/health.controller.ts[0m:[93m27[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'configService' is declared but its value is never read.[39m
+[31m[39m
+[31m[7m27[0m     private readonly configService: ConfigService,[39m
+[31m[7m  [0m [91m                     ~~~~~~~~~~~~~[0m[39m
+[31m[96mpackages/gateway/src/app/controllers/health.controller.ts[0m:[93m43[0m:[93m28[0m - [91merror[0m[90m TS2339: [0mProperty 'ping' does not exist on type 'RedisService'.[39m
+[31m[39m
+[31m[7m43[0m           await this.redis.ping();[39m
+[31m[7m  [0m [91m                           ~~~~[0m[39m
+[31m[96mpackages/gateway/src/app/controllers/health.controller.ts[0m:[93m53[0m:[93m24[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m53[0m               message: error.message,[39m
+[31m[7m  [0m [91m                       ~~~~~[0m[39m
+[31m[96mpackages/gateway/src/app/controllers/health.controller.ts[0m:[93m130[0m:[93m28[0m - [91merror[0m[90m TS2339: [0mProperty 'ping' does not exist on type 'RedisService'.[39m
+[31m[39m
+[31m[7m130[0m           await this.redis.ping();[39m
+[31m[7m   [0m [91m                           ~~~~[0m[39m
+[31m[96mpackages/gateway/src/app/controllers/health.controller.ts[0m:[93m137[0m:[93m47[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.[39m
+[31m[39m
+[31m[7m137[0m           throw new Error(`Redis not ready: ${error.message}`);[39m
+[31m[7m   [0m [91m                                              ~~~~~[0m[39m
+[31mSTACK: [39m
+-----------------------------------|---------|----------|---------|---------|-------------------
+File                               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------------|---------|----------|---------|---------|-------------------
+[32;1mAll files                         [0m | [32;1m   84.4[0m | [33;1m   65.67[0m | [32;1m  83.72[0m | [32;1m  84.07[0m | [31;1m                 [0m 
+[32;1m app                              [0m | [32;1m   92.3[0m | [32;1m     100[0m | [33;1m  66.66[0m | [32;1m  88.88[0m | [31;1m                 [0m 
+[32;1m  app.controller.ts               [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                 [0m 
+[32;1m  app.service.ts                  [0m | [32;1m     80[0m | [32;1m     100[0m | [31;1m      0[0m | [33;1m  66.66[0m | [31;1m6                [0m 
+[33;1m app/middleware                   [0m | [33;1m  57.81[0m | [31;1m      30[0m | [33;1m     60[0m | [33;1m  56.89[0m | [31;1m                 [0m 
+[32;1m  cors.middleware.ts              [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                 [0m 
+[31;1m  logging.middleware.ts           [0m | [31;1m      0[0m | [31;1m       0[0m | [31;1m      0[0m | [31;1m      0[0m | [31;1m1-62             [0m 
+[32;1m  response-transform.middleware.ts[0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                 [0m 
+[32;1m app/services                     [0m | [32;1m  95.74[0m | [32;1m   80.85[0m | [32;1m  93.33[0m | [32;1m  95.52[0m | [31;1m                 [0m 
+[32;1m  health.service.ts               [0m | [32;1m   92.1[0m | [33;1m   58.33[0m | [32;1m  83.33[0m | [32;1m  91.42[0m | [31;1m36,76,88         [0m 
+[32;1m  load-balancer.service.ts        [0m | [32;1m  97.26[0m | [32;1m      96[0m | [32;1m    100[0m | [32;1m  97.18[0m | [31;1m86,170           [0m 
+[32;1m  proxy.service.ts                [0m | [32;1m  96.66[0m | [33;1m      70[0m | [32;1m  85.71[0m | [32;1m  96.42[0m | [31;1m36               [0m 
+-----------------------------------|---------|----------|---------|---------|-------------------
+[1m[31mJest: "global" coverage threshold for branches (80%) not met: 65.67%[39m[22m
+[1mTest Suites: [22m[1m[31m10 failed[39m[22m, [1m[32m6 passed[39m[22m, 16 total
+[1mTests:       [22m[1m[32m53 passed[39m[22m, 53 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        [1m[33m12.459 s[39m[22m
+[2mRan all test suites[22m[2m.[22m

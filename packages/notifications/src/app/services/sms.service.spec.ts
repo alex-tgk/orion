@@ -16,7 +16,7 @@ describe('SmsService', () => {
 
   const mockConfigService = {
     get: jest.fn((key: string) => {
-      const config = {
+      const config: Record<string, any> = {
         'notification.twilio.accountSid': 'test-account-sid',
         'notification.twilio.authToken': 'test-auth-token',
         'notification.twilio.from': '+11234567890',

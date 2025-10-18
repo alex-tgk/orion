@@ -1,15 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { HttpException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { RateLimitMiddleware } from './rate-limit.middleware';
 import { RedisService } from '../services/redis.service';
 import { ProxyService } from '../services/proxy.service';
-import { Response } from 'express';
 
 describe('RateLimitMiddleware', () => {
   let middleware: RateLimitMiddleware;
-  let redisService: RedisService;
-  let proxyService: ProxyService;
 
   const mockRedisService = {
     incr: jest.fn(),
@@ -51,8 +48,6 @@ describe('RateLimitMiddleware', () => {
     }).compile();
 
     middleware = module.get<RateLimitMiddleware>(RateLimitMiddleware);
-    redisService = module.get<RedisService>(RedisService);
-    proxyService = module.get<ProxyService>(ProxyService);
   });
 
   afterEach(() => {

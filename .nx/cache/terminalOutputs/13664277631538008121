@@ -1,0 +1,374 @@
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mstorage.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/storage.service.spec.ts[0m:[93m10[0m:[93m11[0m - [91merror[0m[90m TS6196: [0m'MulterFile' is declared but never used.
+
+    [7m10[0m interface MulterFile {
+    [7m  [0m [91m          ~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mevent-publisher.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/event-publisher.service.spec.ts[0m:[93m4[0m:[93m23[0m - [91merror[0m[90m TS2307: [0mCannot find module 'amqplib' or its corresponding type declarations.
+
+    [7m4[0m import * as amqp from 'amqplib';
+    [7m [0m [91m                      ~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1muser.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/user.service.spec.ts[0m:[93m7[0m:[93m22[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.
+
+    [7m7[0m import { User } from '@prisma/user';
+    [7m [0m [91m                     ~~~~~~~~~~~~~~[0m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/[22m[1musers.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m55[0m:[93m22[0m - [91merror[0m[90m TS6138: [0mProperty 'healthService' is declared but its value is never read.
+
+    [7m55[0m     private readonly healthService: HealthService,
+    [7m  [0m [91m                     ~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m75[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 50; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m75[0m   @Throttle(CUSTOM_RATE_LIMITS.SEARCH)
+    [7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m98[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 20; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m98[0m   @Throttle(CUSTOM_RATE_LIMITS.UPDATE_PROFILE)
+    [7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m115[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 5; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m115[0m   @Throttle(CUSTOM_RATE_LIMITS.DELETE_PROFILE)
+    [7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m136[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 10; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m136[0m   @Throttle(CUSTOM_RATE_LIMITS.UPLOAD_AVATAR)
+    [7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m149[0m:[93m19[0m - [91merror[0m[90m TS2694: [0mNamespace 'global.Express' has no exported member 'Multer'.
+
+    [7m149[0m     file: Express.Multer.File,
+    [7m   [0m [91m                  ~~~~~~[0m
+    [96mpackages/user/src/app/users.controller.ts[0m:[93m193[0m:[93m13[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ readonly ttl: number; readonly limit: 20; }' is not assignable to parameter of type 'Record<string, ThrottlerMethodOrControllerOptions>'.
+      Property 'ttl' is incompatible with index signature.
+        Type 'number' has no properties in common with type 'ThrottlerMethodOrControllerOptions'.
+
+    [7m193[0m   @Throttle(CUSTOM_RATE_LIMITS.UPDATE_PROFILE)
+    [7m   [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to get key test-key[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mSyntaxError: Unexpected token 'i', "invalid-json" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at CacheService.get [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.ts:64:19[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:97:22[90m)[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to set key test-key[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:138:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to delete key test-key[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:168:45[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to delete pattern user:*[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:211:46[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39m[31mFailed to check existence of key test-key[39m
+[31m[Nest] 6031  - [39m10/18/2025, 8:10:51 AM [31m  ERROR[39m [38;5;3m[CacheService] [39mError: Redis error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/cache.service.spec.ts:236:48[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mcache.service.spec.ts[22m
+  CacheService
+    [32m✓[39m [2mshould be defined (30 ms)[22m
+    onModuleInit
+      [31m✕[39m [2mshould connect to Redis on module initialization (16 ms)[22m
+      [31m✕[39m [2mshould register event listeners (13 ms)[22m
+    get
+      [32m✓[39m [2mshould retrieve and parse cached value (27 ms)[22m
+      [32m✓[39m [2mshould return null if key does not exist (14 ms)[22m
+      [32m✓[39m [2mshould handle JSON parse errors gracefully (20 ms)[22m
+      [32m✓[39m [2mshould return null if Redis client is not connected (14 ms)[22m
+    set
+      [32m✓[39m [2mshould set value without TTL (12 ms)[22m
+      [32m✓[39m [2mshould set value with TTL (12 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (13 ms)[22m
+      [32m✓[39m [2mshould do nothing if Redis client is not connected (13 ms)[22m
+    delete
+      [32m✓[39m [2mshould delete a key (24 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (11 ms)[22m
+      [32m✓[39m [2mshould do nothing if Redis client is not connected (12 ms)[22m
+    deletePattern
+      [32m✓[39m [2mshould delete keys matching pattern (11 ms)[22m
+      [32m✓[39m [2mshould do nothing if no keys match pattern (12 ms)[22m
+      [32m✓[39m [2mshould handle errors gracefully (13 ms)[22m
+    exists
+      [32m✓[39m [2mshould return true if key exists (12 ms)[22m
+      [32m✓[39m [2mshould return false if key does not exist (15 ms)[22m
+      [32m✓[39m [2mshould return false on error (25 ms)[22m
+    isConnected
+      [32m✓[39m [2mshould return true when Redis client is connected (14 ms)[22m
+      [32m✓[39m [2mshould return false when Redis client is not connected (12 ms)[22m
+      [32m✓[39m [2mshould return false when Redis status is not ready (9 ms)[22m
+    disabled cache
+      [32m✓[39m [2mshould skip Redis initialization when disabled (11 ms)[22m
+
+[1m[31m  [1m● [22m[1mCacheService › onModuleInit › should connect to Redis on module initialization[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32m{"db": 0, "host": "localhost", "password": "test-password", "port": 6379, "retryStrategy": Any<Function>}[39m
+
+    Number of calls: [31m0[39m
+[2m[22m
+[2m    [0m [90m 58 |[39m   describe([32m'onModuleInit'[39m[33m,[39m () [33m=>[39m {[22m
+[2m     [90m 59 |[39m     it([32m'should connect to Redis on module initialization'[39m[33m,[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 60 |[39m       expect([33mRedis[39m)[33m.[39mtoHaveBeenCalledWith({[22m
+[2m     [90m    |[39m                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 61 |[39m         host[33m:[39m [32m'localhost'[39m[33m,[39m[22m
+[2m     [90m 62 |[39m         port[33m:[39m [35m6379[39m[33m,[39m[22m
+[2m     [90m 63 |[39m         password[33m:[39m [32m'test-password'[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:60:21)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mCacheService › onModuleInit › should register event listeners[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32m"connect"[39m, [32mAny<Function>[39m
+
+    Number of calls: [31m0[39m
+[2m[22m
+[2m    [0m [90m 68 |[39m[22m
+[2m     [90m 69 |[39m     it([32m'should register event listeners'[39m[33m,[39m () [33m=>[39m {[22m
+[2m    [31m[1m>[22m[2m[39m[90m 70 |[39m       expect(mockRedisClient[33m.[39mon)[33m.[39mtoHaveBeenCalledWith([32m'connect'[39m[33m,[39m expect[33m.[39many([33mFunction[39m))[33m;[39m[22m
+[2m     [90m    |[39m                                  [31m[1m^[22m[2m[39m[22m
+[2m     [90m 71 |[39m       expect(mockRedisClient[33m.[39mon)[33m.[39mtoHaveBeenCalledWith([32m'error'[39m[33m,[39m expect[33m.[39many([33mFunction[39m))[33m;[39m[22m
+[2m     [90m 72 |[39m     })[33m;[39m[22m
+[2m     [90m 73 |[39m   })[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/cache.service.spec.ts[39m[0m[2m:70:34)[22m[2m[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mpreferences.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.
+
+    [7m3[0m import { Prisma } from '@prisma/user';
+    [7m [0m [91m                       ~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m37[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.
+
+    [7m37[0m     const preferences = await this.prisma.userPreferences.findUnique({
+    [7m  [0m [91m                                          ~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m67[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.
+
+    [7m67[0m     const existing = await this.prisma.userPreferences.findUnique({
+    [7m  [0m [91m                                       ~~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/preferences.service.ts[0m:[93m103[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'userPreferences' does not exist on type 'PrismaService'.
+
+    [7m103[0m     const updated = await this.prisma.userPreferences.update({
+    [7m   [0m [91m                                      ~~~~~~~~~~~~~~~[0m
+
+[31m[Nest] 6036  - [39m10/18/2025, 8:10:52 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mDatabase health check failed[39m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1msearch.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m3[0m:[93m24[0m - [91merror[0m[90m TS2307: [0mCannot find module '@prisma/user' or its corresponding type declarations.
+
+    [7m3[0m import { Prisma } from '@prisma/user';
+    [7m [0m [91m                       ~~~~~~~~~~~~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m61[0m:[93m11[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'avatar' does not exist in type 'UserSelect<DefaultArgs>'.
+
+    [7m61[0m           avatar: true,
+    [7m  [0m [91m          ~~~~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m76[0m:[93m20[0m - [91merror[0m[90m TS2339: [0mProperty 'avatar' does not exist on type '{ email: string; name: string; createdAt: Date; updatedAt: Date; id: string; password: string; isActive: boolean; lastLoginAt: Date | null; }'.
+
+    [7m76[0m       avatar: user.avatar || undefined,
+    [7m  [0m [91m                   ~~~~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m77[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'bio' does not exist on type '{ email: string; name: string; createdAt: Date; updatedAt: Date; id: string; password: string; isActive: boolean; lastLoginAt: Date | null; }'.
+
+    [7m77[0m       bio: user.bio || undefined,
+    [7m  [0m [91m                ~~~[0m
+    [96mpackages/user/src/app/services/search.service.ts[0m:[93m78[0m:[93m22[0m - [91merror[0m[90m TS2339: [0mProperty 'location' does not exist on type '{ email: string; name: string; createdAt: Date; updatedAt: Date; id: string; password: string; isActive: boolean; lastLoginAt: Date | null; }'.
+
+    [7m78[0m       location: user.location || undefined,
+    [7m  [0m [91m                     ~~~~~~~~[0m
+
+[31m[Nest] 6036  - [39m10/18/2025, 8:10:52 AM [31m  ERROR[39m [38;5;3m[HealthService] [39mError: Database connection failed
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:97:53[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 6036  - [39m10/18/2025, 8:10:52 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mDatabase health check failed[39m
+[31m[Nest] 6036  - [39m10/18/2025, 8:10:52 AM [31m  ERROR[39m [38;5;3m[HealthService] [39mError: DB error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:121:53[90m)[39m
+    at Promise.finally.completed [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1557:28[90m)[39m
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1497:10[90m)[39m
+    at _callCircusTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1007:40[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at _runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:947:3[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:862:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at _runTestsForDescribeBlock [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:857:11[90m)[39m
+    at run [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:761:3[90m)[39m
+    at runAndTransformResultsToJestFormat [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/jestAdapterInit.js:1918:21[90m)[39m
+    at jestAdapter [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-circus@30.2.0_babel-plugin-macros@3.1.0/node_modules/[4mjest-circus[24m/build/runner.js:101:19[90m)[39m
+    at runTestInternal [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:275:16[90m)[39m
+    at runTest [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:343:7[90m)[39m
+    at Object.worker [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-runner@30.2.0/node_modules/[4mjest-runner[24m/build/testWorker.js:497:12[90m)[39m
+[31m[Nest] 6036  - [39m10/18/2025, 8:10:52 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mCache health check failed[39m
+[31m[Nest] 6036  - [39m10/18/2025, 8:10:52 AM [31m  ERROR[39m [38;5;3m[HealthService] [39mError: Cache error
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:134:15[90m)[39m
+    at [90m/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:305:39
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:312:13[90m)[39m
+    at Object.mockConstructor [as isConnected] [90m(/Users/acarroll/dev/projects/orion/[39mnode_modules/[4m.pnpm[24m/jest-mock@30.2.0/node_modules/[4mjest-mock[24m/build/index.js:102:19[90m)[39m
+    at HealthService.checkCache [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.ts:101:38[90m)[39m
+    at HealthService.getReadiness [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.ts:65:25[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at Object.<anonymous> [90m(/Users/acarroll/dev/projects/orion/[39mpackages/user/src/app/services/health.service.spec.ts:137:22[90m)[39m
+[31m[Nest] 6036  - [39m10/18/2025, 8:10:52 AM [31m  ERROR[39m [38;5;3m[HealthService] [39m[31mDatabase health check failed[39m
+Unknown error
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m user [39m[27m[0m [2mpackages/user/src/app/services/[22m[1mhealth.service.spec.ts[22m ([0m[1m[41m5.216 s[49m[22m[0m)
+  HealthService
+    [32m✓[39m [2mshould be defined (17 ms)[22m
+    getHealth
+      [32m✓[39m [2mshould return basic health status (4 ms)[22m
+      [32m✓[39m [2mshould return timestamp in ISO format (2 ms)[22m
+    getLiveness
+      [32m✓[39m [2mshould return liveness status (1 ms)[22m
+      [32m✓[39m [2mshould always return ok status for liveness (2 ms)[22m
+    getReadiness
+      [32m✓[39m [2mshould return ok status when all checks pass (2 ms)[22m
+      [32m✓[39m [2mshould return degraded status when database check fails (12 ms)[22m
+      [32m✓[39m [2mshould return degraded status when cache check fails (2 ms)[22m
+      [32m✓[39m [2mshould return degraded status when both checks fail (3 ms)[22m
+      [32m✓[39m [2mshould handle cache check throwing error (4 ms)[22m
+      [32m✓[39m [2mshould handle non-Error exceptions in database check (2 ms)[22m
+      [32m✓[39m [2mshould include service metadata in readiness response (1 ms)[22m
+    service name configuration
+      [31m✕[39m [2mshould use configured service name (3 ms)[22m
+      [31m✕[39m [2mshould use default service name if not configured (3 ms)[22m
+
+[1m[31m  [1m● [22m[1mHealthService › service name configuration › should use configured service name[39m[22m
+
+    [2mexpect([22m[31mjest.fn()[39m[2m).[22mtoHaveBeenCalledWith[2m([22m[32m...expected[39m[2m)[22m
+
+    Expected: [32m"app.serviceName"[39m, [32m"user-service"[39m
+
+    Number of calls: [31m0[39m
+[2m[22m
+[2m    [0m [90m 172 |[39m[22m
+[2m     [90m 173 |[39m       expect(result[33m.[39mservice)[33m.[39mtoBe([32m'user-service'[39m)[33m;[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 174 |[39m       expect(mockConfigService[33m.[39m[36mget[39m)[33m.[39mtoHaveBeenCalledWith([32m'app.serviceName'[39m[33m,[39m [32m'user-service'[39m)[33m;[39m[22m
+[2m     [90m     |[39m                                     [31m[1m^[22m[2m[39m[22m
+[2m     [90m 175 |[39m     })[33m;[39m[22m
+[2m     [90m 176 |[39m[22m
+[2m     [90m 177 |[39m     it([32m'should use default service name if not configured'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/health.service.spec.ts[39m[0m[2m:174:37)[22m[2m[22m
+
+[1m[31m  [1m● [22m[1mHealthService › service name configuration › should use default service name if not configured[39m[22m
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"user-service"[39m
+    Received: [31mundefined[39m
+[2m[22m
+[2m    [0m [90m 190 |[39m       [36mconst[39m result [33m=[39m testService[33m.[39mgetHealth()[33m;[39m[22m
+[2m     [90m 191 |[39m[22m
+[2m    [31m[1m>[22m[2m[39m[90m 192 |[39m       expect(result[33m.[39mservice)[33m.[39mtoBe([32m'user-service'[39m)[33m;[39m[22m
+[2m     [90m     |[39m                              [31m[1m^[22m[2m[39m[22m
+[2m     [90m 193 |[39m     })[33m;[39m[22m
+[2m     [90m 194 |[39m   })[33m;[39m[22m
+[2m     [90m 195 |[39m })[33m;[39m[0m[22m
+[2m[22m
+[2m      [2mat Object.<anonymous> ([22m[2m[0m[36msrc/app/services/health.service.spec.ts[39m[0m[2m:192:30)[22m[2m[22m
+
+[1mTest Suites: [22m[1m[31m8 failed[39m[22m, 8 total
+[1mTests:       [22m[1m[31m4 failed[39m[22m, [1m[32m34 passed[39m[22m, 38 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        6.405 s, estimated 8 s
+[2mRan all test suites[22m[2m.[22m
