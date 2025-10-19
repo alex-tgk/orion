@@ -1,6 +1,6 @@
 export interface QueueMessage {
   messageId?: string;
-  content: any;
+  content: unknown;
   properties?: {
     contentType?: string;
     contentEncoding?: string;
@@ -33,7 +33,7 @@ export interface Queue {
   vhost: string;
   durable: boolean;
   autoDelete: boolean;
-  arguments?: Record<string, any>;
+  arguments?: Record<string, unknown>;
   stats: QueueStats;
   state?: string;
 }

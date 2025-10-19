@@ -37,12 +37,12 @@ class ApiClient {
     return response.data;
   }
 
-  async post<T>(url: string, data?: any, config = {}) {
+  async post<T>(url: string, data?: unknown, config = {}) {
     const response = await this.client.post<T>(url, data, config);
     return response.data;
   }
 
-  async put<T>(url: string, data?: any, config = {}) {
+  async put<T>(url: string, data?: unknown, config = {}) {
     const response = await this.client.put<T>(url, data, config);
     return response.data;
   }
@@ -52,7 +52,7 @@ class ApiClient {
     return response.data;
   }
 
-  async patch<T>(url: string, data?: any, config = {}) {
+  async patch<T>(url: string, data?: unknown, config = {}) {
     const response = await this.client.patch<T>(url, data, config);
     return response.data;
   }

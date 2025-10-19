@@ -62,7 +62,7 @@ export class FeatureFlagDto {
   @ApiProperty({ description: 'Additional metadata' })
   @IsObject()
   @IsOptional()
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 
   @ApiProperty({ description: 'Created timestamp' })
   @IsString()
@@ -103,7 +103,7 @@ export class CreateFeatureFlagDto {
   @ApiPropertyOptional({ description: 'Additional metadata' })
   @IsObject()
   @IsOptional()
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export class UpdateFeatureFlagDto {
@@ -129,7 +129,7 @@ export class UpdateFeatureFlagDto {
   @ApiPropertyOptional({ description: 'Additional metadata' })
   @IsObject()
   @IsOptional()
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export class FeatureFlagListResponseDto {

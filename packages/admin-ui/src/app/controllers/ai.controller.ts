@@ -1,7 +1,37 @@
 import { Controller, Get, Post, Body, Logger, HttpException, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
+
+interface AIProvidersResponse {
+  providers: string[];
+  available: string[];
+  total: number;
+}
+
+interface AIChatMessage {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+}
+
+interface AIChatRequest {
+  provider: string;
+  model: string;
+  messages: AIChatMessage[];
+  temperature?: number;
+  maxTokens?: number;
+}
+
+interface AIChatResponse {
+  content: string;
+  model: string;
+  provider: string;
+  usage?: {
+    promptTokens: number;
+    completionTokens: number;
+    totalTokens: number;
+  };
+}
 
 @ApiTags('AI Integration')
 @Controller('ai')
@@ -17,7 +47,7 @@ export class AIController {
   @ApiOperation({ summary: 'Get available AI providers (proxied from AI wrapper service)' })
   @ApiResponse({ status: 200, description: 'AI providers retrieved successfully' })
   @ApiResponse({ status: 503, description: 'AI wrapper service unavailable' })
-  async getProviders(): Promise<any> {
+  async getProviders(): Promise<AIProvidersResponse> {
     try {
       const response = await axios.get(`${this.aiWrapperUrl}/api/ai/providers`, {
         timeout: 5000,
@@ -25,12 +55,13 @@ export class AIController {
 
       return response.data;
     } catch (error) {
-      this.logger.error(`Failed to fetch AI providers: ${error.message}`);
+      const axiosError = error as AxiosError;
+      this.logger.error(`Failed to fetch AI providers: ${axiosError.message}`);
       throw new HttpException(
         {
           statusCode: HttpStatus.SERVICE_UNAVAILABLE,
           message: 'AI wrapper service is unavailable',
-          error: error.message,
+          error: axiosError.message,
         },
         HttpStatus.SERVICE_UNAVAILABLE,
       );
@@ -63,7 +94,7 @@ export class AIController {
   })
   @ApiResponse({ status: 200, description: 'AI response generated successfully' })
   @ApiResponse({ status: 503, description: 'AI wrapper service unavailable' })
-  async chat(@Body() chatRequest: any): Promise<any> {
+  async chat(@Body() chatRequest: AIChatRequest): Promise<AIChatResponse> {
     try {
       const response = await axios.post(`${this.aiWrapperUrl}/api/ai/chat`, chatRequest, {
         timeout: 30000, // 30 seconds for AI responses
@@ -71,17 +102,18 @@ export class AIController {
 
       return response.data;
     } catch (error) {
-      this.logger.error(`Failed to send chat request: ${error.message}`);
+      const axiosError = error as AxiosError;
+      this.logger.error(`Failed to send chat request: ${axiosError.message}`);
 
-      if (error.response) {
-        throw new HttpException(error.response.data, error.response.status);
+      if (axiosError.response) {
+        throw new HttpException(axiosError.response.data, axiosError.response.status);
       }
 
       throw new HttpException(
         {
           statusCode: HttpStatus.SERVICE_UNAVAILABLE,
           message: 'AI wrapper service is unavailable',
-          error: error.message,
+          error: axiosError.message,
         },
         HttpStatus.SERVICE_UNAVAILABLE,
       );

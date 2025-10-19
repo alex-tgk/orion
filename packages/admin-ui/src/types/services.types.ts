@@ -72,7 +72,7 @@ export interface PM2Process {
     restart_time: number;
     status: string;
     pm_uptime: number;
-    axm_monitor?: Record<string, any>;
+    axm_monitor?: Record<string, unknown>;
     pm_err_log_path: string;
     pm_out_log_path: string;
   };

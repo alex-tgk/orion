@@ -1,6 +1,5 @@
 import { Injectable, Logger, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import * as pm2 from 'pm2';
-import { promisify } from 'util';
 import { PM2ProcessDto, PM2ProcessListDto, PM2LogsDto, PM2ProcessStatus } from '../dto/pm2.dto';
 
 @Injectable()
@@ -97,7 +96,7 @@ export class PM2Service implements OnModuleInit, OnModuleDestroy {
       await this.connect();
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       pm2.restart(id, (err) => {
         if (err) {
           this.logger.error(`Failed to restart process ${id}: ${err.message}`);
@@ -115,7 +114,7 @@ export class PM2Service implements OnModuleInit, OnModuleDestroy {
       await this.connect();
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       pm2.reload(id, (err) => {
         if (err) {
           this.logger.error(`Failed to reload process ${id}: ${err.message}`);
@@ -133,7 +132,7 @@ export class PM2Service implements OnModuleInit, OnModuleDestroy {
       await this.connect();
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       pm2.stop(id, (err) => {
         if (err) {
           this.logger.error(`Failed to stop process ${id}: ${err.message}`);
@@ -151,7 +150,7 @@ export class PM2Service implements OnModuleInit, OnModuleDestroy {
       await this.connect();
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       pm2.restart(id, (err) => {
         if (err) {
           this.logger.error(`Failed to start process ${id}: ${err.message}`);
@@ -164,7 +163,7 @@ export class PM2Service implements OnModuleInit, OnModuleDestroy {
     });
   }
 
-  async getProcessLogs(id: number, lines: number = 100): Promise<PM2LogsDto> {
+  async getProcessLogs(id: number, _: number = 100): Promise<PM2LogsDto> {
     const process = await this.getProcess(id);
 
     // Note: PM2 doesn't provide a direct API to read logs programmatically

@@ -18,7 +18,8 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
     try {
       await this.connect();
     } catch (error) {
-      this.logger.error(`Failed to connect to RabbitMQ on init: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to connect to RabbitMQ on init: ${err.message}`);
       // Don't throw - allow graceful degradation
     }
   }
@@ -41,7 +42,8 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
         this.logger.warn('RabbitMQ connection closed');
       });
     } catch (error) {
-      this.logger.error(`Failed to connect to RabbitMQ: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to connect to RabbitMQ: ${err.message}`);
       throw error;
     }
   }
@@ -64,7 +66,8 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
       }
       this.logger.log('Disconnected from RabbitMQ');
     } catch (error) {
-      this.logger.error(`Error disconnecting from RabbitMQ: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Error disconnecting from RabbitMQ: ${err.message}`);
     }
   }
 
@@ -111,6 +114,7 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
 
         totalMessages += queueInfo.messageCount;
       } catch (error) {
+      const err = error as Error;
         this.logger.debug(`Queue ${queueName} not found or inaccessible`);
       }
     }
@@ -145,7 +149,8 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
         state: 'running',
       };
     } catch (error) {
-      this.logger.error(`Failed to get queue info for ${name}: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to get queue info for ${name}: ${err.message}`);
       throw new Error(`Queue ${name} not found`);
     }
   }
@@ -186,7 +191,8 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
         timestamp: new Date().toISOString(),
       };
     } catch (error) {
-      this.logger.error(`Failed to peek messages from ${queueName}: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to peek messages from ${queueName}: ${err.message}`);
       throw new Error(`Failed to peek messages from queue ${queueName}`);
     }
   }
@@ -205,11 +211,12 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
         message: `Successfully purged ${result.messageCount} messages`,
       };
     } catch (error) {
-      this.logger.error(`Failed to purge queue ${queueName}: ${error.message}`);
+      const err = error as Error;
+      this.logger.error(`Failed to purge queue ${queueName}: ${err.message}`);
       return {
         messagesPurged: 0,
         success: false,
-        message: `Failed to purge queue: ${error.message}`,
+        message: `Failed to purge queue: ${err.message}`,
       };
     }
   }
@@ -224,6 +231,7 @@ export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
       await this.channel.checkQueue('analytics.events');
       return true;
     } catch (error) {
+      const err = error as Error;
       return false;
     }
   }

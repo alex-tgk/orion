@@ -5,7 +5,6 @@
 
 import React, { useState, useRef, useEffect, KeyboardEvent } from 'react';
 import { Send, Loader2 } from 'lucide-react';
-import { Button, TextInput } from '@tremor/react';
 
 interface ChatInputProps {
   onSend: (message: string) => void;

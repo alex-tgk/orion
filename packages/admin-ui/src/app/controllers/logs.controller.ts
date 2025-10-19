@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Query, Logger, HttpCode, HttpStatus, Sse } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiQuery } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Observable, interval, map } from 'rxjs';
 import { LogsService } from '../services/logs.service';
-import { QueryLogsDto, LogListResponseDto, ExportLogsDto, ExportLogsResponseDto, LogEntryDto } from '../dto/log.dto';
+import { QueryLogsDto, LogListResponseDto, ExportLogsDto, ExportLogsResponseDto } from '../dto/log.dto';
 
 interface MessageEvent {
   data: string | object;

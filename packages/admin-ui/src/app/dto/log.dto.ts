@@ -33,7 +33,7 @@ export class LogEntryDto {
 
   @ApiProperty({ description: 'Additional context data' })
   @IsOptional()
-  context?: Record<string, any>;
+  context?: Record<string, unknown>;
 
   @ApiProperty({ description: 'Stack trace (for errors)' })
   @IsString()

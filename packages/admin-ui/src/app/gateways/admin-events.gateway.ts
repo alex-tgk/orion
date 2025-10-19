@@ -41,7 +41,7 @@ export class AdminEventsGateway implements OnGatewayInit, OnGatewayConnection, O
     private readonly pm2Service: PM2Service,
   ) {}
 
-  afterInit(server: Server) {
+  afterInit(_: Server) {
     this.logger.log('WebSocket Gateway initialized');
 
     // Start periodic health checks (every 10 seconds)
@@ -96,7 +96,7 @@ export class AdminEventsGateway implements OnGatewayInit, OnGatewayConnection, O
   }
 
   @SubscribeMessage('ping')
-  handlePing(@MessageBody() data: any, @ConnectedSocket() client: Socket) {
+  handlePing(@MessageBody() data: unknown, @ConnectedSocket() client: Socket) {
     client.emit('pong', { timestamp: new Date().toISOString() });
   }
 

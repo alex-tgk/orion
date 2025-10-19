@@ -64,7 +64,7 @@ export class ServiceHealthDto {
   @ApiProperty({ description: 'Additional details' })
   @IsObject()
   @IsOptional()
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
 }
 
 export class ServiceDto {

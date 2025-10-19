@@ -19,7 +19,7 @@ export interface FeatureFlag {
   status: FeatureFlagStatus;
   enabled: boolean;
   rollout?: FeatureFlagRollout;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   createdAt: string;
   updatedAt: string;
   createdBy?: string;
@@ -31,7 +31,7 @@ export interface CreateFeatureFlagInput {
   key: string;
   enabled?: boolean;
   rollout?: FeatureFlagRollout;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface UpdateFeatureFlagInput {
@@ -39,7 +39,7 @@ export interface UpdateFeatureFlagInput {
   description?: string;
   enabled?: boolean;
   rollout?: FeatureFlagRollout;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface FeatureFlagListResponse {

@@ -27,7 +27,7 @@ export class DependencyHealthDto {
   @ApiProperty({ description: 'Additional details' })
   @IsObject()
   @IsOptional()
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
 
   @ApiProperty({ description: 'Error message if unhealthy' })
   @IsString()

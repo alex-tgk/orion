@@ -1,5 +1,5 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsString, IsNumber, IsBoolean, IsOptional, IsArray, IsObject, Min } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsNumber, IsBoolean, IsOptional, IsArray, IsObject } from 'class-validator';
 
 export class QueueMessageDto {
   @ApiProperty({ description: 'Message ID (if available)' })
@@ -9,7 +9,7 @@ export class QueueMessageDto {
 
   @ApiProperty({ description: 'Message content' })
   @IsObject()
-  content: any;
+  content: Record<string, unknown>;
 
   @ApiProperty({ description: 'Message properties' })
   @IsObject()
@@ -86,7 +86,7 @@ export class QueueDto {
   @ApiProperty({ description: 'Queue arguments' })
   @IsObject()
   @IsOptional()
-  arguments?: Record<string, any>;
+  arguments?: Record<string, unknown>;
 
   @ApiProperty({ description: 'Queue statistics' })
   stats: QueueStatsDto;

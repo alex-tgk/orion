@@ -67,11 +67,9 @@ export class HealthService {
     }
 
     try {
-      const startTime = Date.now();
       const response = await axios.get(`${serviceConfig.url}${serviceConfig.healthEndpoint}`, {
         timeout: 5000,
       });
-      const responseTime = Date.now() - startTime;
 
       const healthData: HealthCheckDto = {
         status: response.data.status || HealthStatus.HEALTHY,
