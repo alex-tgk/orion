@@ -1,0 +1,313 @@
+
+> @orion/ai-wrapper@1.0.0 test /Users/acarroll/dev/projects/orion/packages/ai-wrapper
+> jest
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2msrc/services/[22m[1mparallel-ai.service.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [1m[31mJest encountered an unexpected token[39m[22m
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see [4mhttps://jestjs.io/docs/ecmascript-modules[24m for how to enable it.
+     • If you are trying to use TypeScript, see [4mhttps://jestjs.io/docs/getting-started#using-typescript[24m
+     • To have some of your "node_modules" files transformed, you can specify a custom [1m"transformIgnorePatterns"[22m in your config.
+     • If you need a custom transformation specify a [1m"transform"[22m option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the [1m"moduleNameMapper"[22m config option.
+
+    You'll find more details and examples of these config options in the docs:
+    [36mhttps://jestjs.io/docs/configuration[39m
+    For information about custom transformations, see:
+    [36mhttps://jestjs.io/docs/code-transformation[39m
+
+    [1m[31mDetails:[39m[22m
+
+    SyntaxError: /Users/acarroll/dev/projects/orion/packages/ai-wrapper/src/services/parallel-ai.service.spec.ts: Missing semicolon. (11:13)
+
+    [0m [90m  9 |[39m
+     [90m 10 |[39m describe([32m'ParallelAIService'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 11 |[39m   [36mlet[39m service[33m:[39m [33mParallelAIService[39m[33m;[39m
+     [90m    |[39m              [31m[1m^[22m[39m
+     [90m 12 |[39m   [36mlet[39m claudeWrapper[33m:[39m [33mClaudeWrapper[39m[33m;[39m
+     [90m 13 |[39m   [36mlet[39m copilotWrapper[33m:[39m [33mCopilotWrapper[39m[33m;[39m
+     [90m 14 |[39m   [36mlet[39m amazonQWrapper[33m:[39m [33mAmazonQWrapper[39m[33m;[39m[0m
+
+      [2mat constructor ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parse-error.ts[2m:95:45)[22m
+      [2mat Parser.toParseError [as raise] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/tokenizer/index.ts[2m:1503:19)[22m
+      [2mat Parser.raise [as semicolon] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/util.ts[2m:149:10)[22m
+      [2mat Parser.semicolon [as parseVarStatement] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1247:10)[22m
+      [2mat Parser.parseVarStatement [as parseStatementContent] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:607:21)[22m
+      [2mat Parser.parseStatementContent [as parseStatementLike] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:477:17)[22m
+      [2mat Parser.parseStatementLike [as parseStatementListItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:426:17)[22m
+      [2mat Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1439:16)[22m
+      [2mat Parser.parseBlockOrModuleBlockBody [as parseBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1412:10)[22m
+      [2mat Parser.parseBlockBody [as parseBlock] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1380:10)[22m
+      [2mat Parser.parseBlock [as parseFunctionBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2616:24)[22m
+      [2mat Parser.parseFunctionBody [as parseArrowExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2553:10)[22m
+      [2mat Parser.parseArrowExpression [as parseParenAndDistinguishExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1837:12)[22m
+      [2mat Parser.parseParenAndDistinguishExpression [as parseExprAtom] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1162:21)[22m
+      [2mat Parser.parseExprAtom [as parseExprSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:734:23)[22m
+      [2mat Parser.parseExprSubscripts [as parseUpdate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:713:21)[22m
+      [2mat Parser.parseUpdate [as parseMaybeUnary] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:675:23)[22m
+      [2mat Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:409:14)[22m
+      [2mat Parser.parseMaybeUnaryOrPrivate [as parseExprOps] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:421:23)[22m
+      [2mat Parser.parseExprOps [as parseMaybeConditional] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:376:23)[22m
+      [2mat Parser.parseMaybeConditional [as parseMaybeAssign] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:301:21)[22m
+      [2mat parseMaybeAssign ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:257:12)[22m
+      [2mat Parser.callback [as allowInAnd] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3192:12)[22m
+      [2mat Parser.allowInAnd [as parseMaybeAssignAllowIn] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:256:17)[22m
+      [2mat Parser.parseMaybeAssignAllowIn [as parseMaybeAssignAllowInOrVoidPattern] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3306:17)[22m
+      [2mat Parser.parseMaybeAssignAllowInOrVoidPattern [as parseExprListItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2788:18)[22m
+      [2mat Parser.parseExprListItem [as parseCallExpressionArguments] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1034:14)[22m
+      [2mat Parser.parseCallExpressionArguments [as parseCoverCallAndAsyncArrowHead] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:914:29)[22m
+      [2mat Parser.parseCoverCallAndAsyncArrowHead [as parseSubscript] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:796:19)[22m
+      [2mat Parser.parseSubscript [as parseSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:755:19)[22m
+      [2mat Parser.parseSubscripts [as parseExprSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:740:17)[22m
+      [2mat Parser.parseExprSubscripts [as parseUpdate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:713:21)[22m
+      [2mat Parser.parseUpdate [as parseMaybeUnary] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:675:23)[22m
+      [2mat Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:409:14)[22m
+      [2mat Parser.parseMaybeUnaryOrPrivate [as parseExprOps] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:421:23)[22m
+      [2mat Parser.parseExprOps [as parseMaybeConditional] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:376:23)[22m
+      [2mat Parser.parseMaybeConditional [as parseMaybeAssign] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:301:21)[22m
+      [2mat Parser.parseMaybeAssign [as parseExpressionBase] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:226:23)[22m
+      [2mat parseExpressionBase ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:217:39)[22m
+      [2mat Parser.callback [as allowInAnd] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3187:16)[22m
+      [2mat Parser.allowInAnd [as parseExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:217:17)[22m
+      [2mat Parser.parseExpression [as parseStatementContent] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:683:23)[22m
+      [2mat Parser.parseStatementContent [as parseStatementLike] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:477:17)[22m
+      [2mat Parser.parseStatementLike [as parseModuleItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:414:17)[22m
+      [2mat Parser.parseModuleItem [as parseBlockOrModuleBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1438:16)[22m
+      [2mat Parser.parseBlockOrModuleBlockBody [as parseBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1412:10)[22m
+      [2mat Parser.parseBlockBody [as parseProgram] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:229:10)[22m
+      [2mat Parser.parseProgram [as parseTopLevel] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:203:25)[22m
+      [2mat Parser.parseTopLevel [as parse] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/index.ts[2m:93:10)[22m
+      [2mat parse ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/index.ts[2m:92:38)[22m
+      [2mat parser ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/parser/index.ts[2m:28:19)[22m
+          at parser.next (<anonymous>)
+      [2mat normalizeFile ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transformation/normalize-file.ts[2m:49:24)[22m
+          at normalizeFile.next (<anonymous>)
+      [2mat run ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transformation/index.ts[2m:40:36)[22m
+          at run.next (<anonymous>)
+      [2mat transform ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transform.ts[2m:29:20)[22m
+          at transform.next (<anonymous>)
+      [2mat evaluateSync ([22mnode_modules/.pnpm/gensync@1.0.0-beta.2/node_modules/gensync/index.js[2m:251:28)[22m
+      [2mat sync ([22mnode_modules/.pnpm/gensync@1.0.0-beta.2/node_modules/gensync/index.js[2m:89:14)[22m
+      [2mat fn ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/errors/rewrite-stack-trace.ts[2m:99:14)[22m
+      [2mat transformSync ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transform.ts[2m:66:52)[22m
+      [2mat ScriptTransformer.transformSource ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:545:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:674:40)[22m
+      [2mat ScriptTransformer.transform ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:726:19)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2msrc/wrappers/[22m[1mclaude.wrapper.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [1m[31mJest encountered an unexpected token[39m[22m
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see [4mhttps://jestjs.io/docs/ecmascript-modules[24m for how to enable it.
+     • If you are trying to use TypeScript, see [4mhttps://jestjs.io/docs/getting-started#using-typescript[24m
+     • To have some of your "node_modules" files transformed, you can specify a custom [1m"transformIgnorePatterns"[22m in your config.
+     • If you need a custom transformation specify a [1m"transform"[22m option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the [1m"moduleNameMapper"[22m config option.
+
+    You'll find more details and examples of these config options in the docs:
+    [36mhttps://jestjs.io/docs/configuration[39m
+    For information about custom transformations, see:
+    [36mhttps://jestjs.io/docs/code-transformation[39m
+
+    [1m[31mDetails:[39m[22m
+
+    SyntaxError: /Users/acarroll/dev/projects/orion/packages/ai-wrapper/src/wrappers/claude.wrapper.spec.ts: Missing semicolon. (6:13)
+
+    [0m [90m 4 |[39m
+     [90m 5 |[39m describe([32m'ClaudeWrapper'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 6 |[39m   [36mlet[39m wrapper[33m:[39m [33mClaudeWrapper[39m[33m;[39m
+     [90m   |[39m              [31m[1m^[22m[39m
+     [90m 7 |[39m
+     [90m 8 |[39m   beforeEach([36masync[39m () [33m=>[39m {
+     [90m 9 |[39m     [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({[0m
+
+      [2mat constructor ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parse-error.ts[2m:95:45)[22m
+      [2mat Parser.toParseError [as raise] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/tokenizer/index.ts[2m:1503:19)[22m
+      [2mat Parser.raise [as semicolon] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/util.ts[2m:149:10)[22m
+      [2mat Parser.semicolon [as parseVarStatement] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1247:10)[22m
+      [2mat Parser.parseVarStatement [as parseStatementContent] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:607:21)[22m
+      [2mat Parser.parseStatementContent [as parseStatementLike] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:477:17)[22m
+      [2mat Parser.parseStatementLike [as parseStatementListItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:426:17)[22m
+      [2mat Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1439:16)[22m
+      [2mat Parser.parseBlockOrModuleBlockBody [as parseBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1412:10)[22m
+      [2mat Parser.parseBlockBody [as parseBlock] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1380:10)[22m
+      [2mat Parser.parseBlock [as parseFunctionBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2616:24)[22m
+      [2mat Parser.parseFunctionBody [as parseArrowExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2553:10)[22m
+      [2mat Parser.parseArrowExpression [as parseParenAndDistinguishExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1837:12)[22m
+      [2mat Parser.parseParenAndDistinguishExpression [as parseExprAtom] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1162:21)[22m
+      [2mat Parser.parseExprAtom [as parseExprSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:734:23)[22m
+      [2mat Parser.parseExprSubscripts [as parseUpdate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:713:21)[22m
+      [2mat Parser.parseUpdate [as parseMaybeUnary] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:675:23)[22m
+      [2mat Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:409:14)[22m
+      [2mat Parser.parseMaybeUnaryOrPrivate [as parseExprOps] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:421:23)[22m
+      [2mat Parser.parseExprOps [as parseMaybeConditional] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:376:23)[22m
+      [2mat Parser.parseMaybeConditional [as parseMaybeAssign] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:301:21)[22m
+      [2mat parseMaybeAssign ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:257:12)[22m
+      [2mat Parser.callback [as allowInAnd] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3192:12)[22m
+      [2mat Parser.allowInAnd [as parseMaybeAssignAllowIn] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:256:17)[22m
+      [2mat Parser.parseMaybeAssignAllowIn [as parseMaybeAssignAllowInOrVoidPattern] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3306:17)[22m
+      [2mat Parser.parseMaybeAssignAllowInOrVoidPattern [as parseExprListItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2788:18)[22m
+      [2mat Parser.parseExprListItem [as parseCallExpressionArguments] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1034:14)[22m
+      [2mat Parser.parseCallExpressionArguments [as parseCoverCallAndAsyncArrowHead] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:914:29)[22m
+      [2mat Parser.parseCoverCallAndAsyncArrowHead [as parseSubscript] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:796:19)[22m
+      [2mat Parser.parseSubscript [as parseSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:755:19)[22m
+      [2mat Parser.parseSubscripts [as parseExprSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:740:17)[22m
+      [2mat Parser.parseExprSubscripts [as parseUpdate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:713:21)[22m
+      [2mat Parser.parseUpdate [as parseMaybeUnary] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:675:23)[22m
+      [2mat Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:409:14)[22m
+      [2mat Parser.parseMaybeUnaryOrPrivate [as parseExprOps] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:421:23)[22m
+      [2mat Parser.parseExprOps [as parseMaybeConditional] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:376:23)[22m
+      [2mat Parser.parseMaybeConditional [as parseMaybeAssign] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:301:21)[22m
+      [2mat Parser.parseMaybeAssign [as parseExpressionBase] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:226:23)[22m
+      [2mat parseExpressionBase ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:217:39)[22m
+      [2mat Parser.callback [as allowInAnd] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3187:16)[22m
+      [2mat Parser.allowInAnd [as parseExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:217:17)[22m
+      [2mat Parser.parseExpression [as parseStatementContent] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:683:23)[22m
+      [2mat Parser.parseStatementContent [as parseStatementLike] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:477:17)[22m
+      [2mat Parser.parseStatementLike [as parseModuleItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:414:17)[22m
+      [2mat Parser.parseModuleItem [as parseBlockOrModuleBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1438:16)[22m
+      [2mat Parser.parseBlockOrModuleBlockBody [as parseBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1412:10)[22m
+      [2mat Parser.parseBlockBody [as parseProgram] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:229:10)[22m
+      [2mat Parser.parseProgram [as parseTopLevel] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:203:25)[22m
+      [2mat Parser.parseTopLevel [as parse] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/index.ts[2m:93:10)[22m
+      [2mat parse ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/index.ts[2m:92:38)[22m
+      [2mat parser ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/parser/index.ts[2m:28:19)[22m
+          at parser.next (<anonymous>)
+      [2mat normalizeFile ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transformation/normalize-file.ts[2m:49:24)[22m
+          at normalizeFile.next (<anonymous>)
+      [2mat run ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transformation/index.ts[2m:40:36)[22m
+          at run.next (<anonymous>)
+      [2mat transform ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transform.ts[2m:29:20)[22m
+          at transform.next (<anonymous>)
+      [2mat evaluateSync ([22mnode_modules/.pnpm/gensync@1.0.0-beta.2/node_modules/gensync/index.js[2m:251:28)[22m
+      [2mat sync ([22mnode_modules/.pnpm/gensync@1.0.0-beta.2/node_modules/gensync/index.js[2m:89:14)[22m
+      [2mat fn ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/errors/rewrite-stack-trace.ts[2m:99:14)[22m
+      [2mat transformSync ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transform.ts[2m:66:52)[22m
+      [2mat ScriptTransformer.transformSource ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:545:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:674:40)[22m
+      [2mat ScriptTransformer.transform ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:726:19)[22m
+
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2msrc/controllers/[22m[1mai.controller.spec.ts[22m
+  [1m● [22mTest suite failed to run
+
+    [1m[31mJest encountered an unexpected token[39m[22m
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see [4mhttps://jestjs.io/docs/ecmascript-modules[24m for how to enable it.
+     • If you are trying to use TypeScript, see [4mhttps://jestjs.io/docs/getting-started#using-typescript[24m
+     • To have some of your "node_modules" files transformed, you can specify a custom [1m"transformIgnorePatterns"[22m in your config.
+     • If you need a custom transformation specify a [1m"transform"[22m option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the [1m"moduleNameMapper"[22m config option.
+
+    You'll find more details and examples of these config options in the docs:
+    [36mhttps://jestjs.io/docs/configuration[39m
+    For information about custom transformations, see:
+    [36mhttps://jestjs.io/docs/code-transformation[39m
+
+    [1m[31mDetails:[39m[22m
+
+    SyntaxError: /Users/acarroll/dev/projects/orion/packages/ai-wrapper/src/controllers/ai.controller.spec.ts: Missing semicolon. (12:16)
+
+    [0m [90m 10 |[39m
+     [90m 11 |[39m describe([32m'AIController'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 12 |[39m   [36mlet[39m controller[33m:[39m [33mAIController[39m[33m;[39m
+     [90m    |[39m                 [31m[1m^[22m[39m
+     [90m 13 |[39m   [36mlet[39m service[33m:[39m [33mParallelAIService[39m[33m;[39m
+     [90m 14 |[39m
+     [90m 15 |[39m   [36mconst[39m mockAIResponse[33m:[39m [33mAIResponse[39m [33m=[39m {[0m
+
+      [2mat constructor ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parse-error.ts[2m:95:45)[22m
+      [2mat Parser.toParseError [as raise] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/tokenizer/index.ts[2m:1503:19)[22m
+      [2mat Parser.raise [as semicolon] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/util.ts[2m:149:10)[22m
+      [2mat Parser.semicolon [as parseVarStatement] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1247:10)[22m
+      [2mat Parser.parseVarStatement [as parseStatementContent] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:607:21)[22m
+      [2mat Parser.parseStatementContent [as parseStatementLike] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:477:17)[22m
+      [2mat Parser.parseStatementLike [as parseStatementListItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:426:17)[22m
+      [2mat Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1439:16)[22m
+      [2mat Parser.parseBlockOrModuleBlockBody [as parseBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1412:10)[22m
+      [2mat Parser.parseBlockBody [as parseBlock] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1380:10)[22m
+      [2mat Parser.parseBlock [as parseFunctionBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2616:24)[22m
+      [2mat Parser.parseFunctionBody [as parseArrowExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2553:10)[22m
+      [2mat Parser.parseArrowExpression [as parseParenAndDistinguishExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1837:12)[22m
+      [2mat Parser.parseParenAndDistinguishExpression [as parseExprAtom] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1162:21)[22m
+      [2mat Parser.parseExprAtom [as parseExprSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:734:23)[22m
+      [2mat Parser.parseExprSubscripts [as parseUpdate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:713:21)[22m
+      [2mat Parser.parseUpdate [as parseMaybeUnary] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:675:23)[22m
+      [2mat Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:409:14)[22m
+      [2mat Parser.parseMaybeUnaryOrPrivate [as parseExprOps] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:421:23)[22m
+      [2mat Parser.parseExprOps [as parseMaybeConditional] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:376:23)[22m
+      [2mat Parser.parseMaybeConditional [as parseMaybeAssign] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:301:21)[22m
+      [2mat parseMaybeAssign ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:257:12)[22m
+      [2mat Parser.callback [as allowInAnd] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3192:12)[22m
+      [2mat Parser.allowInAnd [as parseMaybeAssignAllowIn] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:256:17)[22m
+      [2mat Parser.parseMaybeAssignAllowIn [as parseMaybeAssignAllowInOrVoidPattern] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3306:17)[22m
+      [2mat Parser.parseMaybeAssignAllowInOrVoidPattern [as parseExprListItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:2788:18)[22m
+      [2mat Parser.parseExprListItem [as parseCallExpressionArguments] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:1034:14)[22m
+      [2mat Parser.parseCallExpressionArguments [as parseCoverCallAndAsyncArrowHead] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:914:29)[22m
+      [2mat Parser.parseCoverCallAndAsyncArrowHead [as parseSubscript] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:796:19)[22m
+      [2mat Parser.parseSubscript [as parseSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:755:19)[22m
+      [2mat Parser.parseSubscripts [as parseExprSubscripts] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:740:17)[22m
+      [2mat Parser.parseExprSubscripts [as parseUpdate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:713:21)[22m
+      [2mat Parser.parseUpdate [as parseMaybeUnary] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:675:23)[22m
+      [2mat Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:409:14)[22m
+      [2mat Parser.parseMaybeUnaryOrPrivate [as parseExprOps] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:421:23)[22m
+      [2mat Parser.parseExprOps [as parseMaybeConditional] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:376:23)[22m
+      [2mat Parser.parseMaybeConditional [as parseMaybeAssign] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:301:21)[22m
+      [2mat Parser.parseMaybeAssign [as parseExpressionBase] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:226:23)[22m
+      [2mat parseExpressionBase ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:217:39)[22m
+      [2mat Parser.callback [as allowInAnd] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:3187:16)[22m
+      [2mat Parser.allowInAnd [as parseExpression] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/expression.ts[2m:217:17)[22m
+      [2mat Parser.parseExpression [as parseStatementContent] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:683:23)[22m
+      [2mat Parser.parseStatementContent [as parseStatementLike] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:477:17)[22m
+      [2mat Parser.parseStatementLike [as parseModuleItem] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:414:17)[22m
+      [2mat Parser.parseModuleItem [as parseBlockOrModuleBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1438:16)[22m
+      [2mat Parser.parseBlockOrModuleBlockBody [as parseBlockBody] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:1412:10)[22m
+      [2mat Parser.parseBlockBody [as parseProgram] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:229:10)[22m
+      [2mat Parser.parseProgram [as parseTopLevel] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/statement.ts[2m:203:25)[22m
+      [2mat Parser.parseTopLevel [as parse] ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/parser/index.ts[2m:93:10)[22m
+      [2mat parse ([22mnode_modules/.pnpm/@babel+parser@7.28.4/node_modules/@babel/parser/src/index.ts[2m:92:38)[22m
+      [2mat parser ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/parser/index.ts[2m:28:19)[22m
+          at parser.next (<anonymous>)
+      [2mat normalizeFile ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transformation/normalize-file.ts[2m:49:24)[22m
+          at normalizeFile.next (<anonymous>)
+      [2mat run ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transformation/index.ts[2m:40:36)[22m
+          at run.next (<anonymous>)
+      [2mat transform ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transform.ts[2m:29:20)[22m
+          at transform.next (<anonymous>)
+      [2mat evaluateSync ([22mnode_modules/.pnpm/gensync@1.0.0-beta.2/node_modules/gensync/index.js[2m:251:28)[22m
+      [2mat sync ([22mnode_modules/.pnpm/gensync@1.0.0-beta.2/node_modules/gensync/index.js[2m:89:14)[22m
+      [2mat fn ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/errors/rewrite-stack-trace.ts[2m:99:14)[22m
+      [2mat transformSync ([22mnode_modules/.pnpm/@babel+core@7.28.4/node_modules/@babel/core/src/transform.ts[2m:66:52)[22m
+      [2mat ScriptTransformer.transformSource ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:545:31)[22m
+      [2mat ScriptTransformer._transformAndBuildScript ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:674:40)[22m
+      [2mat ScriptTransformer.transform ([22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js[2m:726:19)[22m
+
+[1mTest Suites: [22m[1m[31m3 failed[39m[22m, 3 total
+[1mTests:       [22m0 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        1.401 s
+[2mRan all test suites[22m[2m.[22m
+[41m[30m ELIFECYCLE [39m[49m [31mTest failed. See above for more details.[39m

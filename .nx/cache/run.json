@@ -1,21 +1,21 @@
 {
   "run": {
-    "command": "nx build ai-wrapper",
-    "startTime": "2025-10-19T05:41:36.710Z",
-    "endTime": "2025-10-19T05:41:39.311Z",
+    "command": "nx test ai-wrapper",
+    "startTime": "2025-10-19T05:43:40.816Z",
+    "endTime": "2025-10-19T05:43:45.612Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "ai-wrapper:build",
-      "target": "build",
+      "taskId": "ai-wrapper:test",
+      "target": "test",
       "projectName": "ai-wrapper",
-      "hash": "262226266894898560",
-      "startTime": "2025-10-19T05:41:36.773Z",
-      "endTime": "2025-10-19T05:41:39.295Z",
+      "hash": "9953901533327874933",
+      "startTime": "2025-10-19T05:43:40.891Z",
+      "endTime": "2025-10-19T05:43:45.609Z",
       "params": "",
       "cacheStatus": "cache-miss",
-      "status": 0
+      "status": 1
     }
   ]
 }
