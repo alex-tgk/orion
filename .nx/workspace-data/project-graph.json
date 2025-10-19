@@ -1417,6 +1417,118 @@
         "implicitDependencies": []
       }
     },
+    "ai-wrapper": {
+      "name": "ai-wrapper",
+      "type": "app",
+      "data": {
+        "root": "packages/ai-wrapper",
+        "name": "ai-wrapper",
+        "tags": [
+          "npm:public",
+          "type:service",
+          "platform:backend"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "start",
+              "test"
+            ]
+          },
+          "description": "CLI-based AI wrapper service for parallel generation using logged-in subscriptions",
+          "js": {
+            "packageName": "@orion/ai-wrapper",
+            "packageVersion": "1.0.0",
+            "packageMain": "dist/main.js",
+            "isInPackageManagerWorkspaces": false
+          }
+        },
+        "targets": {
+          "start": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "start"
+            },
+            "metadata": {
+              "scriptContent": "node dist/main.js",
+              "runCommand": "pnpm run start"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "test"
+            },
+            "metadata": {
+              "scriptContent": "jest",
+              "runCommand": "pnpm run test"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true
+          },
+          "nx-release-publish": {
+            "executor": "@nx/js:release-publish",
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "options": {},
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "nx:run-commands",
+            "outputs": [
+              "{projectRoot}/dist"
+            ],
+            "options": {
+              "command": "tsc",
+              "cwd": "packages/ai-wrapper"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "cache": true
+          },
+          "serve": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "ts-node src/main.ts",
+              "cwd": "packages/ai-wrapper"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "cache": false
+          },
+          "dev": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "pnpm run dev",
+              "cwd": "packages/ai-wrapper"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/ai-wrapper/src",
+        "projectType": "application",
+        "implicitDependencies": []
+      }
+    },
     "mcp-server": {
       "name": "mcp-server",
       "type": "app",
@@ -23288,11 +23400,6 @@
         "source": "cost-tracking",
         "target": "npm:rxjs",
         "type": "static"
-      },
-      {
-        "source": "cost-tracking",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "feature-flags": [
@@ -23457,11 +23564,6 @@
         "source": "notifications",
         "target": "npm:handlebars",
         "type": "static"
-      },
-      {
-        "source": "notifications",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "ai-interface": [
@@ -23524,11 +23626,6 @@
         "source": "ai-interface",
         "target": "npm:openai",
         "type": "static"
-      },
-      {
-        "source": "ai-interface",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "orchestrator": [
@@ -23540,11 +23637,6 @@
       {
         "source": "orchestrator",
         "target": "shared",
-        "type": "static"
-      },
-      {
-        "source": "orchestrator",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -23619,10 +23711,82 @@
         "source": "ab-testing",
         "target": "npm:uuid",
         "type": "static"
+      }
+    ],
+    "ai-wrapper": [
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@nestjs/schematics",
+        "type": "static"
       },
       {
-        "source": "ab-testing",
-        "target": "npm:@nx/webpack",
+        "source": "ai-wrapper",
+        "target": "npm:@nestjs/testing",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@types/express@4.17.23",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@types/node",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@types/jest",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:jest",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:ts-jest",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:ts-node",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:typescript",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@nestjs/core",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@nestjs/platform-express",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:@nestjs/config",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "ai-wrapper",
+        "target": "npm:reflect-metadata",
         "type": "static"
       }
     ],
@@ -23663,11 +23827,6 @@
         "source": "migrations",
         "target": "shared",
         "type": "static"
-      },
-      {
-        "source": "migrations",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "analytics": [
@@ -23699,11 +23858,6 @@
       {
         "source": "analytics",
         "target": "npm:class-transformer",
-        "type": "static"
-      },
-      {
-        "source": "analytics",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -23762,11 +23916,6 @@
         "source": "dev-tools",
         "target": "npm:@jest/globals",
         "type": "static"
-      },
-      {
-        "source": "dev-tools",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "scheduler": [
@@ -23778,11 +23927,6 @@
       {
         "source": "scheduler",
         "target": "shared",
-        "type": "static"
-      },
-      {
-        "source": "scheduler",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -23886,11 +24030,6 @@
         "source": "vector-db",
         "target": "npm:express@5.1.0",
         "type": "static"
-      },
-      {
-        "source": "vector-db",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "admin-ui": [
@@ -23993,11 +24132,6 @@
         "source": "admin-ui",
         "target": "npm:puppeteer",
         "type": "static"
-      },
-      {
-        "source": "admin-ui",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "auth-e2e": [
@@ -24076,11 +24210,6 @@
       {
         "source": "webhooks",
         "target": "npm:@nestjs/core",
-        "type": "static"
-      },
-      {
-        "source": "webhooks",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -24164,11 +24293,6 @@
         "source": "gateway",
         "target": "npm:bull",
         "type": "static"
-      },
-      {
-        "source": "gateway",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "storage": [
@@ -24236,11 +24360,6 @@
         "source": "storage",
         "target": "npm:@nestjs/platform-express",
         "type": "static"
-      },
-      {
-        "source": "storage",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "config": [
@@ -24252,11 +24371,6 @@
       {
         "source": "config",
         "target": "shared",
-        "type": "static"
-      },
-      {
-        "source": "config",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -24289,11 +24403,6 @@
       {
         "source": "logger",
         "target": "npm:winston-daily-rotate-file",
-        "type": "static"
-      },
-      {
-        "source": "logger",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -24341,11 +24450,6 @@
       {
         "source": "search",
         "target": "npm:axios",
-        "type": "static"
-      },
-      {
-        "source": "search",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -24446,11 +24550,6 @@
         "source": "audit",
         "target": "shared",
         "type": "static"
-      },
-      {
-        "source": "audit",
-        "target": "npm:@nx/webpack",
-        "type": "static"
       }
     ],
     "cache": [
@@ -24497,11 +24596,6 @@
       {
         "source": "cache",
         "target": "shared",
-        "type": "static"
-      },
-      {
-        "source": "cache",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -24584,11 +24678,6 @@
       {
         "source": "auth",
         "target": "npm:passport-jwt",
-        "type": "static"
-      },
-      {
-        "source": "auth",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -24751,11 +24840,6 @@
       {
         "source": "user",
         "target": "npm:@nestjs/testing",
-        "type": "static"
-      },
-      {
-        "source": "user",
-        "target": "npm:@nx/webpack",
         "type": "static"
       }
     ],
@@ -49742,15 +49826,18 @@
   "version": "6.0",
   "errors": [
     {
-      "stack": " - packages/admin-ui/webpack.config.js: Error [ERR_REQUIRE_ESM]: require() of ES Module /Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js from /Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js not supported.\nwebpack.config.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains \"type\": \"module\" which declares all .js files in that package scope as ES modules.\nInstead either rename webpack.config.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change \"type\": \"module\" to \"type\": \"commonjs\" in /Users/acarroll/dev/projects/orion/packages/admin-ui/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).\n\n    at resolveUserDefinedWebpackConfig (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js:19:16)\n    at createWebpackTargets (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:78:101)\n    at createNodesInternal (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:64:34)\n    at async /Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/utils.js:10:27\n    at async Promise.all (index 1)\n    at async createNodesFromFiles (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/utils.js:8:5)\n    at async exports.createNodesV2 (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:40:20)\n    at async LoadedNxPlugin.createNodes (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/loaded-nx-plugin.js:22:36)\n    at async LoadedNxPlugin.createNodes.<computed> (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/loaded-nx-plugin.js:32:28)\n    at async createNodes (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/isolation/plugin-worker.js:76:36)\n    at async consumeMessage (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/isolation/messaging.js:42:26)",
-      "message": "An error occurred while processing files for the @nx/webpack/plugin plugin\n.\n  - packages/admin-ui/webpack.config.js: require() of ES Module /Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js from /Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js not supported.\nwebpack.config.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains \"type\": \"module\" which declares all .js files in that package scope as ES modules.\nInstead either rename webpack.config.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change \"type\": \"module\" to \"type\": \"commonjs\" in /Users/acarroll/dev/projects/orion/packages/admin-ui/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).\n",
+      "stack": " - packages/admin-ui/webpack.config.js: Error: ENOENT: no such file or directory, open '/Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js'\n    at Object.readFileUtf8 (node:internal/fs/sync:25:18)\n    at Object.readFileSync (node:fs:441:19)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1258:18)\n    at Module.load (node:internal/modules/cjs/loader:1091:32)\n    at Module._load (node:internal/modules/cjs/loader:938:12)\n    at Module.require (node:internal/modules/cjs/loader:1115:19)\n    at require (node:internal/modules/helpers:130:18)\n    at resolveUserDefinedWebpackConfig (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js:19:16)\n    at createWebpackTargets (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:78:101)\n    at createNodesInternal (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:64:34)",
+      "message": "An error occurred while processing files for the @nx/webpack/plugin plugin\n.\n  - packages/admin-ui/webpack.config.js: ENOENT: no such file or directory, open '/Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js'",
       "errors": [
         [
           "packages/admin-ui/webpack.config.js",
           {
-            "stack": "Error [ERR_REQUIRE_ESM]: require() of ES Module /Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js from /Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js not supported.\nwebpack.config.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains \"type\": \"module\" which declares all .js files in that package scope as ES modules.\nInstead either rename webpack.config.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change \"type\": \"module\" to \"type\": \"commonjs\" in /Users/acarroll/dev/projects/orion/packages/admin-ui/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).\n\n    at resolveUserDefinedWebpackConfig (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js:19:16)\n    at createWebpackTargets (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:78:101)\n    at createNodesInternal (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:64:34)\n    at async /Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/utils.js:10:27\n    at async Promise.all (index 1)\n    at async createNodesFromFiles (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/utils.js:8:5)\n    at async exports.createNodesV2 (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:40:20)\n    at async LoadedNxPlugin.createNodes (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/loaded-nx-plugin.js:22:36)\n    at async LoadedNxPlugin.createNodes.<computed> (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/loaded-nx-plugin.js:32:28)\n    at async createNodes (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/isolation/plugin-worker.js:76:36)\n    at async consumeMessage (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/nx@21.6.5_@swc-node+register@1.9.2_@swc+core@1.13.5_@swc+helpers@0.5.17__@swc+types@0.1_a3ae0b26bb0ea46a69b1937c6ddd8722/node_modules/nx/src/project-graph/plugins/isolation/messaging.js:42:26)",
-            "message": "require() of ES Module /Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js from /Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js not supported.\nwebpack.config.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains \"type\": \"module\" which declares all .js files in that package scope as ES modules.\nInstead either rename webpack.config.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change \"type\": \"module\" to \"type\": \"commonjs\" in /Users/acarroll/dev/projects/orion/packages/admin-ui/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).\n",
-            "code": "ERR_REQUIRE_ESM"
+            "stack": "Error: ENOENT: no such file or directory, open '/Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js'\n    at Object.readFileUtf8 (node:internal/fs/sync:25:18)\n    at Object.readFileSync (node:fs:441:19)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1258:18)\n    at Module.load (node:internal/modules/cjs/loader:1091:32)\n    at Module._load (node:internal/modules/cjs/loader:938:12)\n    at Module.require (node:internal/modules/cjs/loader:1115:19)\n    at require (node:internal/modules/helpers:130:18)\n    at resolveUserDefinedWebpackConfig (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/utils/webpack/resolve-user-defined-webpack-config.js:19:16)\n    at createWebpackTargets (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:78:101)\n    at createNodesInternal (/Users/acarroll/dev/projects/orion/node_modules/.pnpm/@nx+webpack@21.6.5_@babel+traverse@7.28.4_@swc-node+register@1.9.2_@swc+core@1.13.5_@sw_04604b1a73e883e2ea98edfbee272e66/node_modules/@nx/webpack/src/plugins/plugin.js:64:34)",
+            "message": "ENOENT: no such file or directory, open '/Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js'",
+            "errno": -2,
+            "code": "ENOENT",
+            "syscall": "open",
+            "path": "/Users/acarroll/dev/projects/orion/packages/admin-ui/webpack.config.js"
           }
         ]
       ],
@@ -51338,6 +51425,138 @@
           }
         ],
         [
+          "packages/notifications/webpack.config.js",
+          {
+            "projects": {
+              "packages/notifications": {
+                "projectType": "application",
+                "targets": {
+                  "build": {
+                    "command": "webpack-cli build",
+                    "options": {
+                      "cwd": "packages/notifications",
+                      "args": [
+                        "--node-env=production"
+                      ]
+                    },
+                    "cache": true,
+                    "dependsOn": [
+                      "^build"
+                    ],
+                    "inputs": [
+                      "production",
+                      "^production",
+                      {
+                        "externalDependencies": [
+                          "webpack-cli"
+                        ]
+                      }
+                    ],
+                    "outputs": [
+                      "{workspaceRoot}/dist/packages/notifications"
+                    ],
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Runs Webpack build",
+                      "help": {
+                        "command": "pnpm exec webpack-cli build --help",
+                        "example": {
+                          "options": {
+                            "json": "stats.json"
+                          },
+                          "args": [
+                            "--profile"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "serve": {
+                    "continuous": true,
+                    "command": "webpack-cli serve",
+                    "options": {
+                      "cwd": "packages/notifications",
+                      "args": [
+                        "--node-env=development"
+                      ]
+                    },
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Starts Webpack dev server",
+                      "help": {
+                        "command": "pnpm exec webpack-cli serve --help",
+                        "example": {
+                          "options": {
+                            "args": [
+                              "--client-progress",
+                              "--history-api-fallback "
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "preview": {
+                    "continuous": true,
+                    "command": "webpack-cli serve",
+                    "options": {
+                      "cwd": "packages/notifications",
+                      "args": [
+                        "--node-env=production"
+                      ]
+                    },
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Starts Webpack dev server in production mode",
+                      "help": {
+                        "command": "pnpm exec webpack-cli serve --help",
+                        "example": {
+                          "options": {
+                            "args": [
+                              "--client-progress",
+                              "--history-api-fallback "
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "serve-static": {
+                    "continuous": true,
+                    "dependsOn": [
+                      "build"
+                    ],
+                    "executor": "@nx/web:file-server",
+                    "options": {
+                      "buildTarget": "build",
+                      "spa": true
+                    }
+                  },
+                  "build-deps": {
+                    "dependsOn": [
+                      "^build"
+                    ]
+                  },
+                  "watch-deps": {
+                    "continuous": true,
+                    "dependsOn": [
+                      "build-deps"
+                    ],
+                    "command": "pnpm exec nx watch --projects notifications --includeDependentProjects -- pnpm exec nx build-deps notifications"
+                  }
+                },
+                "metadata": {}
+              }
+            }
+          }
+        ],
+        [
           "packages/orchestrator/webpack.config.js",
           {
             "projects": {
@@ -51734,402 +51953,6 @@
           }
         ],
         [
-          "packages/vector-db/webpack.config.js",
-          {
-            "projects": {
-              "packages/vector-db": {
-                "projectType": "application",
-                "targets": {
-                  "build": {
-                    "command": "webpack-cli build",
-                    "options": {
-                      "cwd": "packages/vector-db",
-                      "args": [
-                        "--node-env=production"
-                      ]
-                    },
-                    "cache": true,
-                    "dependsOn": [
-                      "^build"
-                    ],
-                    "inputs": [
-                      "production",
-                      "^production",
-                      {
-                        "externalDependencies": [
-                          "webpack-cli"
-                        ]
-                      }
-                    ],
-                    "outputs": [
-                      "{workspaceRoot}/dist/packages/vector-db"
-                    ],
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Runs Webpack build",
-                      "help": {
-                        "command": "pnpm exec webpack-cli build --help",
-                        "example": {
-                          "options": {
-                            "json": "stats.json"
-                          },
-                          "args": [
-                            "--profile"
-                          ]
-                        }
-                      }
-                    }
-                  },
-                  "serve": {
-                    "continuous": true,
-                    "command": "webpack-cli serve",
-                    "options": {
-                      "cwd": "packages/vector-db",
-                      "args": [
-                        "--node-env=development"
-                      ]
-                    },
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Starts Webpack dev server",
-                      "help": {
-                        "command": "pnpm exec webpack-cli serve --help",
-                        "example": {
-                          "options": {
-                            "args": [
-                              "--client-progress",
-                              "--history-api-fallback "
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "preview": {
-                    "continuous": true,
-                    "command": "webpack-cli serve",
-                    "options": {
-                      "cwd": "packages/vector-db",
-                      "args": [
-                        "--node-env=production"
-                      ]
-                    },
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Starts Webpack dev server in production mode",
-                      "help": {
-                        "command": "pnpm exec webpack-cli serve --help",
-                        "example": {
-                          "options": {
-                            "args": [
-                              "--client-progress",
-                              "--history-api-fallback "
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "serve-static": {
-                    "continuous": true,
-                    "dependsOn": [
-                      "build"
-                    ],
-                    "executor": "@nx/web:file-server",
-                    "options": {
-                      "buildTarget": "build",
-                      "spa": true
-                    }
-                  },
-                  "build-deps": {
-                    "dependsOn": [
-                      "^build"
-                    ]
-                  },
-                  "watch-deps": {
-                    "continuous": true,
-                    "dependsOn": [
-                      "build-deps"
-                    ],
-                    "command": "pnpm exec nx watch --projects vector-db --includeDependentProjects -- pnpm exec nx build-deps vector-db"
-                  }
-                },
-                "metadata": {}
-              }
-            }
-          }
-        ],
-        [
-          "packages/webhooks/webpack.config.js",
-          {
-            "projects": {
-              "packages/webhooks": {
-                "projectType": "application",
-                "targets": {
-                  "build": {
-                    "command": "webpack-cli build",
-                    "options": {
-                      "cwd": "packages/webhooks",
-                      "args": [
-                        "--node-env=production"
-                      ]
-                    },
-                    "cache": true,
-                    "dependsOn": [
-                      "^build"
-                    ],
-                    "inputs": [
-                      "production",
-                      "^production",
-                      {
-                        "externalDependencies": [
-                          "webpack-cli"
-                        ]
-                      }
-                    ],
-                    "outputs": [
-                      "{workspaceRoot}/dist/packages/webhooks"
-                    ],
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Runs Webpack build",
-                      "help": {
-                        "command": "pnpm exec webpack-cli build --help",
-                        "example": {
-                          "options": {
-                            "json": "stats.json"
-                          },
-                          "args": [
-                            "--profile"
-                          ]
-                        }
-                      }
-                    }
-                  },
-                  "serve": {
-                    "continuous": true,
-                    "command": "webpack-cli serve",
-                    "options": {
-                      "cwd": "packages/webhooks",
-                      "args": [
-                        "--node-env=development"
-                      ]
-                    },
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Starts Webpack dev server",
-                      "help": {
-                        "command": "pnpm exec webpack-cli serve --help",
-                        "example": {
-                          "options": {
-                            "args": [
-                              "--client-progress",
-                              "--history-api-fallback "
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "preview": {
-                    "continuous": true,
-                    "command": "webpack-cli serve",
-                    "options": {
-                      "cwd": "packages/webhooks",
-                      "args": [
-                        "--node-env=production"
-                      ]
-                    },
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Starts Webpack dev server in production mode",
-                      "help": {
-                        "command": "pnpm exec webpack-cli serve --help",
-                        "example": {
-                          "options": {
-                            "args": [
-                              "--client-progress",
-                              "--history-api-fallback "
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "serve-static": {
-                    "continuous": true,
-                    "dependsOn": [
-                      "build"
-                    ],
-                    "executor": "@nx/web:file-server",
-                    "options": {
-                      "buildTarget": "build",
-                      "spa": true
-                    }
-                  },
-                  "build-deps": {
-                    "dependsOn": [
-                      "^build"
-                    ]
-                  },
-                  "watch-deps": {
-                    "continuous": true,
-                    "dependsOn": [
-                      "build-deps"
-                    ],
-                    "command": "pnpm exec nx watch --projects webhooks --includeDependentProjects -- pnpm exec nx build-deps webhooks"
-                  }
-                },
-                "metadata": {}
-              }
-            }
-          }
-        ],
-        [
-          "packages/notifications/webpack.config.js",
-          {
-            "projects": {
-              "packages/notifications": {
-                "projectType": "application",
-                "targets": {
-                  "build": {
-                    "command": "webpack-cli build",
-                    "options": {
-                      "cwd": "packages/notifications",
-                      "args": [
-                        "--node-env=production"
-                      ]
-                    },
-                    "cache": true,
-                    "dependsOn": [
-                      "^build"
-                    ],
-                    "inputs": [
-                      "production",
-                      "^production",
-                      {
-                        "externalDependencies": [
-                          "webpack-cli"
-                        ]
-                      }
-                    ],
-                    "outputs": [
-                      "{workspaceRoot}/dist/packages/notifications"
-                    ],
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Runs Webpack build",
-                      "help": {
-                        "command": "pnpm exec webpack-cli build --help",
-                        "example": {
-                          "options": {
-                            "json": "stats.json"
-                          },
-                          "args": [
-                            "--profile"
-                          ]
-                        }
-                      }
-                    }
-                  },
-                  "serve": {
-                    "continuous": true,
-                    "command": "webpack-cli serve",
-                    "options": {
-                      "cwd": "packages/notifications",
-                      "args": [
-                        "--node-env=development"
-                      ]
-                    },
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Starts Webpack dev server",
-                      "help": {
-                        "command": "pnpm exec webpack-cli serve --help",
-                        "example": {
-                          "options": {
-                            "args": [
-                              "--client-progress",
-                              "--history-api-fallback "
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "preview": {
-                    "continuous": true,
-                    "command": "webpack-cli serve",
-                    "options": {
-                      "cwd": "packages/notifications",
-                      "args": [
-                        "--node-env=production"
-                      ]
-                    },
-                    "metadata": {
-                      "technologies": [
-                        "webpack"
-                      ],
-                      "description": "Starts Webpack dev server in production mode",
-                      "help": {
-                        "command": "pnpm exec webpack-cli serve --help",
-                        "example": {
-                          "options": {
-                            "args": [
-                              "--client-progress",
-                              "--history-api-fallback "
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "serve-static": {
-                    "continuous": true,
-                    "dependsOn": [
-                      "build"
-                    ],
-                    "executor": "@nx/web:file-server",
-                    "options": {
-                      "buildTarget": "build",
-                      "spa": true
-                    }
-                  },
-                  "build-deps": {
-                    "dependsOn": [
-                      "^build"
-                    ]
-                  },
-                  "watch-deps": {
-                    "continuous": true,
-                    "dependsOn": [
-                      "build-deps"
-                    ],
-                    "command": "pnpm exec nx watch --projects notifications --includeDependentProjects -- pnpm exec nx build-deps notifications"
-                  }
-                },
-                "metadata": {}
-              }
-            }
-          }
-        ],
-        [
           "packages/storage/webpack.config.js",
           {
             "projects": {
@@ -52392,11 +52215,275 @@
               }
             }
           }
+        ],
+        [
+          "packages/vector-db/webpack.config.js",
+          {
+            "projects": {
+              "packages/vector-db": {
+                "projectType": "application",
+                "targets": {
+                  "build": {
+                    "command": "webpack-cli build",
+                    "options": {
+                      "cwd": "packages/vector-db",
+                      "args": [
+                        "--node-env=production"
+                      ]
+                    },
+                    "cache": true,
+                    "dependsOn": [
+                      "^build"
+                    ],
+                    "inputs": [
+                      "production",
+                      "^production",
+                      {
+                        "externalDependencies": [
+                          "webpack-cli"
+                        ]
+                      }
+                    ],
+                    "outputs": [
+                      "{workspaceRoot}/dist/packages/vector-db"
+                    ],
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Runs Webpack build",
+                      "help": {
+                        "command": "pnpm exec webpack-cli build --help",
+                        "example": {
+                          "options": {
+                            "json": "stats.json"
+                          },
+                          "args": [
+                            "--profile"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "serve": {
+                    "continuous": true,
+                    "command": "webpack-cli serve",
+                    "options": {
+                      "cwd": "packages/vector-db",
+                      "args": [
+                        "--node-env=development"
+                      ]
+                    },
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Starts Webpack dev server",
+                      "help": {
+                        "command": "pnpm exec webpack-cli serve --help",
+                        "example": {
+                          "options": {
+                            "args": [
+                              "--client-progress",
+                              "--history-api-fallback "
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "preview": {
+                    "continuous": true,
+                    "command": "webpack-cli serve",
+                    "options": {
+                      "cwd": "packages/vector-db",
+                      "args": [
+                        "--node-env=production"
+                      ]
+                    },
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Starts Webpack dev server in production mode",
+                      "help": {
+                        "command": "pnpm exec webpack-cli serve --help",
+                        "example": {
+                          "options": {
+                            "args": [
+                              "--client-progress",
+                              "--history-api-fallback "
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "serve-static": {
+                    "continuous": true,
+                    "dependsOn": [
+                      "build"
+                    ],
+                    "executor": "@nx/web:file-server",
+                    "options": {
+                      "buildTarget": "build",
+                      "spa": true
+                    }
+                  },
+                  "build-deps": {
+                    "dependsOn": [
+                      "^build"
+                    ]
+                  },
+                  "watch-deps": {
+                    "continuous": true,
+                    "dependsOn": [
+                      "build-deps"
+                    ],
+                    "command": "pnpm exec nx watch --projects vector-db --includeDependentProjects -- pnpm exec nx build-deps vector-db"
+                  }
+                },
+                "metadata": {}
+              }
+            }
+          }
+        ],
+        [
+          "packages/webhooks/webpack.config.js",
+          {
+            "projects": {
+              "packages/webhooks": {
+                "projectType": "application",
+                "targets": {
+                  "build": {
+                    "command": "webpack-cli build",
+                    "options": {
+                      "cwd": "packages/webhooks",
+                      "args": [
+                        "--node-env=production"
+                      ]
+                    },
+                    "cache": true,
+                    "dependsOn": [
+                      "^build"
+                    ],
+                    "inputs": [
+                      "production",
+                      "^production",
+                      {
+                        "externalDependencies": [
+                          "webpack-cli"
+                        ]
+                      }
+                    ],
+                    "outputs": [
+                      "{workspaceRoot}/dist/packages/webhooks"
+                    ],
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Runs Webpack build",
+                      "help": {
+                        "command": "pnpm exec webpack-cli build --help",
+                        "example": {
+                          "options": {
+                            "json": "stats.json"
+                          },
+                          "args": [
+                            "--profile"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "serve": {
+                    "continuous": true,
+                    "command": "webpack-cli serve",
+                    "options": {
+                      "cwd": "packages/webhooks",
+                      "args": [
+                        "--node-env=development"
+                      ]
+                    },
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Starts Webpack dev server",
+                      "help": {
+                        "command": "pnpm exec webpack-cli serve --help",
+                        "example": {
+                          "options": {
+                            "args": [
+                              "--client-progress",
+                              "--history-api-fallback "
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "preview": {
+                    "continuous": true,
+                    "command": "webpack-cli serve",
+                    "options": {
+                      "cwd": "packages/webhooks",
+                      "args": [
+                        "--node-env=production"
+                      ]
+                    },
+                    "metadata": {
+                      "technologies": [
+                        "webpack"
+                      ],
+                      "description": "Starts Webpack dev server in production mode",
+                      "help": {
+                        "command": "pnpm exec webpack-cli serve --help",
+                        "example": {
+                          "options": {
+                            "args": [
+                              "--client-progress",
+                              "--history-api-fallback "
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "serve-static": {
+                    "continuous": true,
+                    "dependsOn": [
+                      "build"
+                    ],
+                    "executor": "@nx/web:file-server",
+                    "options": {
+                      "buildTarget": "build",
+                      "spa": true
+                    }
+                  },
+                  "build-deps": {
+                    "dependsOn": [
+                      "^build"
+                    ]
+                  },
+                  "watch-deps": {
+                    "continuous": true,
+                    "dependsOn": [
+                      "build-deps"
+                    ],
+                    "command": "pnpm exec nx watch --projects webhooks --includeDependentProjects -- pnpm exec nx build-deps webhooks"
+                  }
+                },
+                "metadata": {}
+              }
+            }
+          }
         ]
       ],
       "name": "AggregateCreateNodesError",
       "pluginIndex": 0
     }
   ],
-  "computedAt": 1760828038176
+  "computedAt": 1760844544392
 }

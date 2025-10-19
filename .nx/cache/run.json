@@ -1,18 +1,29 @@
 {
   "run": {
-    "command": "nx test vector-db --coverage",
-    "startTime": "2025-10-18T16:25:21.174Z",
-    "endTime": "2025-10-18T16:25:35.668Z",
+    "command": "nx build auth",
+    "startTime": "2025-10-19T03:15:41.803Z",
+    "endTime": "2025-10-19T03:15:56.842Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "vector-db:test",
-      "target": "test",
-      "projectName": "vector-db",
-      "hash": "6025511241267399402",
-      "startTime": "2025-10-18T16:25:21.234Z",
-      "endTime": "2025-10-18T16:25:35.667Z",
+      "taskId": "shared:build",
+      "target": "build",
+      "projectName": "shared",
+      "hash": "12056749213474089570",
+      "startTime": "2025-10-19T03:15:41.997Z",
+      "endTime": "2025-10-19T03:15:53.408Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "auth:build",
+      "target": "build",
+      "projectName": "auth",
+      "hash": "11619223223352924463",
+      "startTime": "2025-10-19T03:15:53.553Z",
+      "endTime": "2025-10-19T03:15:56.840Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

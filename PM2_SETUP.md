@@ -3,13 +3,17 @@
 ## Current Status
 
 PM2 is configured to run the following services:
-- ✅ **auth** - Authentication service (port 3010) - WORKING
 - ✅ **admin-ui** - Admin dashboard (port 3000) - WORKING
 - ✅ **document-intelligence** - Document demo (port 3001) - WORKING
-- ⚠️ **gateway** - API Gateway (port 3100) - Needs dependency setup
-- ⏸️ **ai-wrapper** - AI service (port 3200) - Not yet built
 
-## Quick Start (Working Services)
+Backend services (auth, gateway, ai-wrapper) should be run with `pnpm nx serve` instead:
+- **auth** - `pnpm nx serve auth` (requires PostgreSQL + Redis)
+- **gateway** - `pnpm nx serve gateway`
+- **ai-wrapper** - `pnpm nx serve ai-wrapper` (requires build first)
+
+## Quick Start
+
+### Start Frontend Apps with PM2
 
 ```bash
 # Start PM2 with current configuration
@@ -28,10 +32,25 @@ pm2 stop all
 pm2 delete all
 ```
 
-This will start 3 working services:
-- auth (backend)
-- admin-ui (frontend)
-- document-intelligence (frontend)
+This will start 2 frontend applications:
+- admin-ui (port 3000)
+- document-intelligence (port 3001)
+
+### Start Backend Services with NX
+
+```bash
+# In separate terminals:
+
+# Terminal 1 - Auth service
+pnpm nx serve auth
+
+# Terminal 2 - Gateway
+pnpm nx serve gateway
+
+# Terminal 3 - AI Wrapper (after building)
+pnpm nx build ai-wrapper
+pnpm nx serve ai-wrapper
+```
 
 ## Service Details
 

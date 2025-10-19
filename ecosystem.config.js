@@ -1,35 +1,5 @@
 module.exports = {
   apps: [
-    // Backend services (NestJS)
-    {
-      name: 'auth',
-      script: 'main.js',
-      cwd: './dist/packages/auth',
-      instances: 1,
-      autorestart: true,
-      watch: false,
-      max_memory_restart: '500M',
-      env: {
-        PORT: 3010,
-        NODE_ENV: 'production',
-        DATABASE_URL: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/orion',
-        REDIS_URL: process.env.REDIS_URL || 'redis://localhost:6379'
-      }
-    },
-    {
-      name: 'gateway',
-      script: 'main.js',
-      cwd: './dist/packages/gateway',
-      instances: 1,
-      autorestart: true,
-      watch: false,
-      max_memory_restart: '300M',
-      env: {
-        PORT: 3100,
-        NODE_ENV: 'production'
-      }
-    },
-
     // Frontend applications (served with static file server)
     {
       name: 'admin-ui',
@@ -56,21 +26,18 @@ module.exports = {
       }
     }
 
-    // Note: AI Wrapper service requires build first
-    // Run: pnpm nx build ai-wrapper
-    // Then uncomment:
-    // {
-    //   name: 'ai-wrapper',
-    //   script: 'main.js',
-    //   cwd: './dist/packages/ai-wrapper',
-    //   instances: 1,
-    //   autorestart: true,
-    //   watch: false,
-    //   max_memory_restart: '300M',
-    //   env: {
-    //     PORT: 3200,
-    //     NODE_ENV: 'production'
-    //   }
-    // }
+    // Backend services - Run these with `pnpm nx serve <service>` instead
+    // They require PostgreSQL and Redis to be running
+    //
+    // Auth service:
+    //   pnpm nx serve auth
+    //   Requires: PostgreSQL on port 5432, Redis on port 6379
+    //
+    // Gateway service:
+    //   pnpm nx serve gateway
+    //
+    // AI Wrapper service:
+    //   pnpm nx serve ai-wrapper
+    //   (after building with: pnpm nx build ai-wrapper)
   ]
 };
