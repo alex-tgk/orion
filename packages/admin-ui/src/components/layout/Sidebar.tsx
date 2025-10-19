@@ -1,13 +1,15 @@
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  Server, 
-  Users, 
-  Flag, 
-  Webhook, 
-  BarChart, 
-  FileText, 
-  Settings 
+import {
+  LayoutDashboard,
+  Server,
+  Users,
+  Flag,
+  Webhook,
+  BarChart,
+  FileText,
+  MessageSquare,
+  Settings,
+  Layers
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -16,9 +18,11 @@ const navigation = [
   { name: 'Services', href: '/services', icon: Server },
   { name: 'Users', href: '/users', icon: Users },
   { name: 'Feature Flags', href: '/feature-flags', icon: Flag },
+  { name: 'Queues', href: '/queues', icon: Layers },
   { name: 'Webhooks', href: '/webhooks', icon: Webhook },
   { name: 'Analytics', href: '/analytics', icon: BarChart },
   { name: 'Logs', href: '/logs', icon: FileText },
+  { name: 'AI Chat', href: '/ai-chat', icon: MessageSquare },
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
 
