@@ -1,35 +1,25 @@
 module.exports = {
   apps: [
+    // Backend services (NestJS)
     {
       name: 'auth',
-      script: 'dist/main.js',
-      cwd: './packages/auth',
+      script: 'main.js',
+      cwd: './dist/packages/auth',
       instances: 1,
       autorestart: true,
       watch: false,
       max_memory_restart: '500M',
       env: {
         PORT: 3010,
-        NODE_ENV: 'production'
-      }
-    },
-    {
-      name: 'ai-wrapper',
-      script: 'dist/main.js',
-      cwd: './packages/ai-wrapper',
-      instances: 1,
-      autorestart: true,
-      watch: false,
-      max_memory_restart: '300M',
-      env: {
-        PORT: 3200,
-        NODE_ENV: 'production'
+        NODE_ENV: 'production',
+        DATABASE_URL: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/orion',
+        REDIS_URL: process.env.REDIS_URL || 'redis://localhost:6379'
       }
     },
     {
       name: 'gateway',
-      script: 'dist/main.js',
-      cwd: './packages/gateway',
+      script: 'main.js',
+      cwd: './dist/packages/gateway',
       instances: 1,
       autorestart: true,
       watch: false,
@@ -39,6 +29,8 @@ module.exports = {
         NODE_ENV: 'production'
       }
     },
+
+    // Frontend applications (served with static file server)
     {
       name: 'admin-ui',
       script: 'npx',
@@ -63,5 +55,22 @@ module.exports = {
         NODE_ENV: 'production'
       }
     }
+
+    // Note: AI Wrapper service requires build first
+    // Run: pnpm nx build ai-wrapper
+    // Then uncomment:
+    // {
+    //   name: 'ai-wrapper',
+    //   script: 'main.js',
+    //   cwd: './dist/packages/ai-wrapper',
+    //   instances: 1,
+    //   autorestart: true,
+    //   watch: false,
+    //   max_memory_restart: '300M',
+    //   env: {
+    //     PORT: 3200,
+    //     NODE_ENV: 'production'
+    //   }
+    // }
   ]
 };
