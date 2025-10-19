@@ -274,6 +274,56 @@ services:
       retries: 3
       start_period: 40s
 
+  # AI Wrapper Service
+  ai-wrapper:
+    build:
+      context: .
+      dockerfile: packages/ai-wrapper/Dockerfile
+      args:
+        - NODE_ENV=development
+    container_name: orion-ai-wrapper
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: ${AI_WRAPPER_PORT:-3200}
+
+      # CLI tool paths (optional)
+      CLAUDE_CLI_PATH: ${CLAUDE_CLI_PATH:-}
+      COPILOT_CLI_PATH: ${COPILOT_CLI_PATH:-}
+      AMAZONQ_CLI_PATH: ${AMAZONQ_CLI_PATH:-}
+
+      # Execution settings
+      AI_EXECUTION_TIMEOUT: ${AI_EXECUTION_TIMEOUT:-120000}
+      AI_MAX_PARALLEL_REQUESTS: ${AI_MAX_PARALLEL_REQUESTS:-5}
+      AI_RETRY_ATTEMPTS: ${AI_RETRY_ATTEMPTS:-2}
+
+      # Caching
+      AI_CACHE_ENABLED: ${AI_CACHE_ENABLED:-true}
+      AI_CACHE_TTL: ${AI_CACHE_TTL:-3600}
+
+      # Redis for caching
+      REDIS_URL: redis://redis:6379
+      REDIS_ENABLED: ${REDIS_ENABLED:-true}
+
+      # CORS
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:4200}
+    ports:
+      - "${AI_WRAPPER_PORT:-3200}:3200"
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./packages/ai-wrapper:/app/packages/ai-wrapper:ro
+      - ./packages/shared:/app/packages/shared:ro
+    networks:
+      - orion-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3200/health', (r) => {r.statusCode === 200 ? process.exit(0) : process.exit(1)}).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
   # Admin UI Service
   admin-ui:
     build:
@@ -292,6 +342,7 @@ services:
       AUTH_SERVICE_URL: http://auth:3001
       USER_SERVICE_URL: http://user:3002
       NOTIFICATION_SERVICE_URL: http://notifications:3003
+      AI_WRAPPER_URL: http://ai-wrapper:3200
 
       # Database (if needed)
       DATABASE_URL: postgresql://${DB_USER:-orion}:${DB_PASSWORD:-orion_dev}@postgres:5432/${DB_NAME:-orion_dev}

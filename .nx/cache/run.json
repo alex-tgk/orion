@@ -1,32 +1,21 @@
 {
   "run": {
-    "command": "nx build auth",
-    "startTime": "2025-10-19T03:15:41.803Z",
-    "endTime": "2025-10-19T03:15:56.842Z",
+    "command": "nx build ai-wrapper",
+    "startTime": "2025-10-19T03:37:37.343Z",
+    "endTime": "2025-10-19T03:37:40.707Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "shared:build",
+      "taskId": "ai-wrapper:build",
       "target": "build",
-      "projectName": "shared",
-      "hash": "12056749213474089570",
-      "startTime": "2025-10-19T03:15:41.997Z",
-      "endTime": "2025-10-19T03:15:53.408Z",
+      "projectName": "ai-wrapper",
+      "hash": "14451553235689975137",
+      "startTime": "2025-10-19T03:37:37.465Z",
+      "endTime": "2025-10-19T03:37:40.693Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
-    },
-    {
-      "taskId": "auth:build",
-      "target": "build",
-      "projectName": "auth",
-      "hash": "11619223223352924463",
-      "startTime": "2025-10-19T03:15:53.553Z",
-      "endTime": "2025-10-19T03:15:56.840Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 1
     }
   ]
 }
