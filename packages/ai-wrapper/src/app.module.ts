@@ -5,6 +5,8 @@ import { ParallelAIService } from './services/parallel-ai.service';
 import { ClaudeWrapper } from './wrappers/claude.wrapper';
 import { CopilotWrapper } from './wrappers/copilot.wrapper';
 import { AmazonQWrapper } from './wrappers/amazonq.wrapper';
+import { GeminiWrapper } from './wrappers/gemini.wrapper';
+import { CodexWrapper } from './wrappers/codex.wrapper';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { AmazonQWrapper } from './wrappers/amazonq.wrapper';
     ClaudeWrapper,
     CopilotWrapper,
     AmazonQWrapper,
+    GeminiWrapper,
+    CodexWrapper,
   ],
   exports: [ParallelAIService],
 })

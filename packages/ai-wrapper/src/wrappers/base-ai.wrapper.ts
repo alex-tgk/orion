@@ -11,7 +11,7 @@ export interface AIRequest {
 export interface AIResponse {
   content: string;
   model: string;
-  provider: 'claude' | 'copilot' | 'amazonq' | 'codex';
+  provider: 'claude' | 'copilot' | 'amazonq' | 'gemini' | 'codex';
   tokensUsed?: number;
   executionTime: number;
   cached?: boolean;

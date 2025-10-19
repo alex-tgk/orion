@@ -16,6 +16,8 @@ export class AIController {
         claude: available.includes('claude'),
         copilot: available.includes('copilot'),
         amazonq: available.includes('amazonq'),
+        gemini: available.includes('gemini'),
+        codex: available.includes('codex'),
       }
     };
   }

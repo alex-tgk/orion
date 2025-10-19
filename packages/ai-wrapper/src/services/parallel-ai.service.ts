@@ -2,11 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { ClaudeWrapper } from '../wrappers/claude.wrapper';
 import { CopilotWrapper } from '../wrappers/copilot.wrapper';
 import { AmazonQWrapper } from '../wrappers/amazonq.wrapper';
+import { GeminiWrapper } from '../wrappers/gemini.wrapper';
+import { CodexWrapper } from '../wrappers/codex.wrapper';
 import { AIRequest, AIResponse } from '../wrappers/base-ai.wrapper';
 
 export interface ParallelAIRequest {
   prompts: AIRequest[];
-  providers?: ('claude' | 'copilot' | 'amazonq')[];
+  providers?: ('claude' | 'copilot' | 'amazonq' | 'gemini' | 'codex')[];
   strategy?: 'fastest' | 'all' | 'consensus';
 }
 
@@ -25,11 +27,15 @@ export class ParallelAIService {
     private claudeWrapper: ClaudeWrapper,
     private copilotWrapper: CopilotWrapper,
     private amazonQWrapper: AmazonQWrapper,
+    private geminiWrapper: GeminiWrapper,
+    private codexWrapper: CodexWrapper,
   ) {
     this.wrappers = new Map([
       ['claude', claudeWrapper],
       ['copilot', copilotWrapper],
       ['amazonq', amazonQWrapper],
+      ['gemini', geminiWrapper],
+      ['codex', codexWrapper],
     ]);
   }
 
