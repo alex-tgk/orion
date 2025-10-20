@@ -1,6 +1,6 @@
 # Multi-stage Dockerfile for User Service
 # Stage 1: Base with pnpm
-FROM node:20-alpine AS base
+FROM node:25-alpine AS base
 WORKDIR /app
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -30,7 +30,7 @@ COPY packages/shared/package.json ./packages/shared/
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
 # Stage 5: Runtime
-FROM node:20-alpine AS runtime
+FROM node:25-alpine AS runtime
 WORKDIR /app
 
 # Install dumb-init for proper signal handling
