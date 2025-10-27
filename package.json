@@ -210,7 +210,7 @@
     "helmet": "^8.0.0",
     "ioredis": "^5.8.1",
     "lodash": "^4.17.21",
-    "openai": "^6.5.0",
+    "openai": "^6.7.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
